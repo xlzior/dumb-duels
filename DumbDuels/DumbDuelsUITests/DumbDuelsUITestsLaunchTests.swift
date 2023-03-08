@@ -1,13 +1,13 @@
 //
-//  Dumb_DuelsUITestsLaunchTests.swift
-//  Dumb DuelsUITests
+//  DumbDuelsUITestsLaunchTests.swift
+//  DumbDuelsUITests
 //
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
 import XCTest
 
-final class Dumb_DuelsUITestsLaunchTests: XCTestCase {
+final class DumbDuelsUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Dumb Duels
+//  DumbDuels
 //
 //  Created by Wen Jun Lye on 8/3/23.
 //

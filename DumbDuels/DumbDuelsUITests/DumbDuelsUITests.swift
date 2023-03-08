@@ -1,13 +1,13 @@
 //
-//  Dumb_DuelsUITests.swift
-//  Dumb DuelsUITests
+//  DumbDuelsUITests.swift
+//  DumbDuelsUITests
 //
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
 import XCTest
 
-final class Dumb_DuelsUITests: XCTestCase {
+final class DumbDuelsUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

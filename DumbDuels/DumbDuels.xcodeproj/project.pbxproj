@@ -16,6 +16,17 @@
 		7B2B294029B82BE300281FC7 /* DumbDuelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B293F29B82BE300281FC7 /* DumbDuelsTests.swift */; };
 		7B2B294A29B82BE300281FC7 /* DumbDuelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */; };
 		7B2B294C29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */; };
+		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
+		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
+		8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844F29BF29BD00BAE8C5 /* Component.swift */; };
+		8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845129BF29EB00BAE8C5 /* EntityManager.swift */; };
+		8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */; };
+		8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */; };
+		8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */; };
+		8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845A29BF3D1D00BAE8C5 /* Pair.swift */; };
+		8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */; };
+		8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */; };
+		8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITests.swift; sourceTree = "<group>"; };
 		7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
+		8C35844F29BF29BD00BAE8C5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		8C35845129BF29EB00BAE8C5 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTypeID.swift; sourceTree = "<group>"; };
+		8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentID.swift; sourceTree = "<group>"; };
+		8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitSet.swift; sourceTree = "<group>"; };
+		8C35845A29BF3D1D00BAE8C5 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Entity.swift"; sourceTree = "<group>"; };
+		8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Component.swift"; sourceTree = "<group>"; };
+		8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Internal.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +121,8 @@
 		7B2B292729B82BE000281FC7 /* DumbDuels */ = {
 			isa = PBXGroup;
 			children = (
+				8C35845929BF3CFD00BAE8C5 /* Utils */,
+				8C35844A29BF297000BAE8C5 /* ECSFramework */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
 				7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */,
 				7B2B292C29B82BE000281FC7 /* ViewController.swift */,
@@ -125,6 +149,31 @@
 				7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */,
 			);
 			path = DumbDuelsUITests;
+			sourceTree = "<group>";
+		};
+		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
+			isa = PBXGroup;
+			children = (
+				8C35844B29BF29AC00BAE8C5 /* Entity.swift */,
+				8C35844D29BF29B500BAE8C5 /* EntityID.swift */,
+				8C35844F29BF29BD00BAE8C5 /* Component.swift */,
+				8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */,
+				8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */,
+				8C35845129BF29EB00BAE8C5 /* EntityManager.swift */,
+				8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */,
+				8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */,
+				8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */,
+				8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */,
+			);
+			path = ECSFramework;
+			sourceTree = "<group>";
+		};
+		8C35845929BF3CFD00BAE8C5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8C35845A29BF3D1D00BAE8C5 /* Pair.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +329,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */,
+				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
+				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
+				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
+				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
+				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
+				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
+				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
+				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
+				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
+				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

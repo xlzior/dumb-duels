@@ -1,0 +1,12 @@
+//
+//  EntityManager+Entity.swift
+//  DumbDuels
+//
+//  Created by Bing Sen Lim on 13/3/23.
+//
+
+import Foundation
+
+extension EntityManager {
+    
+}

@@ -75,6 +75,8 @@
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
 		A7E43A0529C379FC00027AC6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0329C379FC00027AC6 /* GameViewController.swift */; };
 		A7E43A0629C379FC00027AC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0429C379FC00027AC6 /* HomeViewController.swift */; };
+		A7E43A0A29C37AD600027AC6 /* GameAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0829C37AD600027AC6 /* GameAreaView.swift */; };
+		A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0929C37AD600027AC6 /* PlayerButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +169,8 @@
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
 		A7E43A0329C379FC00027AC6 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A7E43A0429C379FC00027AC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A7E43A0829C37AD600027AC6 /* GameAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAreaView.swift; sourceTree = "<group>"; };
+		A7E43A0929C37AD600027AC6 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +224,7 @@
 				A7E43A0229C379FC00027AC6 /* Controllers */,
 				7BA7EBB829C36B900096457F /* Events */,
 				7BA7EB7B29C2D4470096457F /* Game */,
+				A7E43A0729C37AD600027AC6 /* Views */,
 				8C35845929BF3CFD00BAE8C5 /* Utils */,
 				8C35844A29BF297000BAE8C5 /* ECSFramework */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
@@ -408,6 +413,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		A7E43A0729C37AD600027AC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7E43A0829C37AD600027AC6 /* GameAreaView.swift */,
+				A7E43A0929C37AD600027AC6 /* PlayerButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -576,6 +590,7 @@
 				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
 				7BA7EBE829C36BBD0096457F /* EventPriority.swift in Sources */,
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
+				A7E43A0A29C37AD600027AC6 /* GameAreaView.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
@@ -585,6 +600,7 @@
 				7BA7EBEE29C36BD70096457F /* System.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
+				A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */,
 				7BA7EBFA29C36C070096457F /* Heap.swift in Sources */,
 				A7E43A0529C379FC00027AC6 /* GameViewController.swift in Sources */,
 				7BA7EBEA29C36BBD0096457F /* CollisionEvent.swift in Sources */,

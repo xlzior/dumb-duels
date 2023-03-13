@@ -8,10 +8,10 @@
 import UIKit
 
 class GameAreaView: UIView {
-    let gameAspectRatio: CGFloat = 100 / 65
+    let gameAspectRatio: CGFloat = 1_000 / 650
 
     init(screenSize: CGSize) {
-        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 65))
+        super.init(frame: CGRect(x: 0, y: 0, width: 1_000, height: 650))
         style()
         letterBox(screenSize)
         position(screenSize)

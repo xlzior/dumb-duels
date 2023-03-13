@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    private @IBAction func playButtonClicked(_ sender: Any) {
+    @IBAction private func playButtonClicked(_ sender: Any) {
         guard let controller = storyboard?.instantiateViewController(
             withIdentifier: "GameViewController"
         ) as? GameViewController else {

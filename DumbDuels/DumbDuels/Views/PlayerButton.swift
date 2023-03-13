@@ -12,15 +12,16 @@ class PlayerButton: UIButton {
 
     init(screenSize: CGSize, isPlayerOne: Bool) {
         super.init(frame: CGRect(x: 0, y: 0, width: 180, height: 100))
-        style()
         scale(screenSize.height)
         position(screenSize, isPlayerOne)
+        style()
     }
 
     private func style() {
-        backgroundColor = .white
+        backgroundColor = Colour.secondary.uiColour
         layer.borderWidth = 10
-        layer.borderColor = UIColor.black.cgColor
+        layer.cornerRadius = frame.height / 3
+        layer.borderColor = Colour.secondaryDark.cgColour
     }
 
     private func scale(_ screenHeight: CGFloat) {

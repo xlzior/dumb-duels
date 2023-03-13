@@ -77,6 +77,7 @@
 		A7E43A0629C379FC00027AC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0429C379FC00027AC6 /* HomeViewController.swift */; };
 		A7E43A0A29C37AD600027AC6 /* GameAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0829C37AD600027AC6 /* GameAreaView.swift */; };
 		A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0929C37AD600027AC6 /* PlayerButton.swift */; };
+		A7E43A0D29C37B9B00027AC6 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0C29C37B9B00027AC6 /* Colour.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,7 @@
 		A7E43A0429C379FC00027AC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A7E43A0829C37AD600027AC6 /* GameAreaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAreaView.swift; sourceTree = "<group>"; };
 		A7E43A0929C37AD600027AC6 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
+		A7E43A0C29C37B9B00027AC6 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -416,6 +418,7 @@
 		A7E43A0729C37AD600027AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A7E43A0C29C37B9B00027AC6 /* Colour.swift */,
 				A7E43A0829C37AD600027AC6 /* GameAreaView.swift */,
 				A7E43A0929C37AD600027AC6 /* PlayerButton.swift */,
 			);
@@ -611,6 +614,7 @@
 				7BA7EBDB29C36BBD0096457F /* AxeComponent.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7BA7EBBC29C36B900096457F /* Event.swift in Sources */,
+				A7E43A0D29C37B9B00027AC6 /* Colour.swift in Sources */,
 				7BA7EBDD29C36BBD0096457F /* RotationComponent.swift in Sources */,
 				7BA7EBDC29C36BBD0096457F /* ScoreComponent.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,

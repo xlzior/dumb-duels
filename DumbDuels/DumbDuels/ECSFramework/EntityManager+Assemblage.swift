@@ -12,10 +12,13 @@ extension EntityManager {
     var numAssemblages: Int {
         assemblageEntityMap.keys.count
     }
-    
-    // TODO
+
     func canBecomeMember(_ entity: Entity, ofFamilyWithTraits traits: TraitSet) -> Bool {
-        false
+        guard let componentTypeIds = getAllComponentTypes(for: entity.id) else {
+            assertionFailure("Test canBecomeMember failure: Entity \(entity.id) does not exist")
+            return false
+        }
+        return traits.isMatch(components: componentTypeIds)
     }
     
     func members(withTraits traits: TraitSet) -> Set<EntityID> {
@@ -30,4 +33,9 @@ extension EntityManager {
         members(withTraits: traits).contains(entityId)
     }
     
+    // TODO: If needed, this can be moved into Assemblage file
+    func createMember<R>(with components: R.Components, for assemblage: Assemblage<R>) -> Entity
+        where R: AssemblageRequirementsManager {
+            R.createMember(entityManager: self, components: components)
+    }
 }

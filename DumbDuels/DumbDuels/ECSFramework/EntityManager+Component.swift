@@ -60,7 +60,7 @@ extension EntityManager {
     func getAllComponentTypes(for entityId: EntityID) -> Set<ComponentTypeID>? {
         let componentTypes = entityComponentMap[entityId]?.map{ $0.first }
         guard let componentTypes else {
-            return Set()
+            return nil
         }
         return Set(componentTypes)
     }

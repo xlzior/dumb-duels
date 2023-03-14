@@ -30,6 +30,7 @@
 		8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846229BF4F9900BAE8C5 /* Assemblage.swift */; };
 		8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */; };
 		8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */; };
+		8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		8C35846229BF4F9900BAE8C5 /* Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assemblage.swift; sourceTree = "<group>"; };
 		8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Assemblage.swift"; sourceTree = "<group>"; };
 		8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblageRequirementsManager.swift; sourceTree = "<group>"; };
+		8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+ComponentsBuilder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */,
 				8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */,
 				8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */,
+				8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */,
 			);
 			path = ECSFramework;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,

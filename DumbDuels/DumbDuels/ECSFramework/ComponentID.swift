@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ComponentID: Hashable {
+struct ComponentID {
     typealias ID = String
     
     let id: ID
@@ -16,6 +16,6 @@ struct ComponentID: Hashable {
         self.id = UUID().uuidString
     }
 }
-//
-//extension ComponentID: Equatable {}
-//extension ComponentID: Hashable {}
+
+extension ComponentID: Equatable {}
+extension ComponentID: Hashable {}

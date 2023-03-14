@@ -27,6 +27,8 @@
 		8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */; };
 		8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */; };
 		8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */; };
+		8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846229BF4F9900BAE8C5 /* Assemblage.swift */; };
+		8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Entity.swift"; sourceTree = "<group>"; };
 		8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Component.swift"; sourceTree = "<group>"; };
 		8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Internal.swift"; sourceTree = "<group>"; };
+		8C35846229BF4F9900BAE8C5 /* Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assemblage.swift; sourceTree = "<group>"; };
+		8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Assemblage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,10 +163,12 @@
 				8C35844F29BF29BD00BAE8C5 /* Component.swift */,
 				8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */,
 				8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */,
-				8C35845129BF29EB00BAE8C5 /* EntityManager.swift */,
+				8C35846229BF4F9900BAE8C5 /* Assemblage.swift */,
 				8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */,
+				8C35845129BF29EB00BAE8C5 /* EntityManager.swift */,
 				8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */,
 				8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */,
+				8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */,
 				8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */,
 			);
 			path = ECSFramework;
@@ -333,9 +339,11 @@
 				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
 				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
 				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
+				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
+				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
 				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,

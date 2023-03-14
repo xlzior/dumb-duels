@@ -12,8 +12,8 @@ struct EntityID {
     
     let id: ID
     
-    init() {
-        self.id = UUID().uuidString
+    init(_ id: ID = UUID().uuidString) {
+        self.id = id
     }
 }
 

@@ -7,11 +7,14 @@
 
 import Foundation
 class Component {
-    static var typeID: ComponentTypeID {
+    static var typeId: ComponentTypeID {
         ComponentTypeID(Self.self)
     }
     
     var id: ComponentID
+    var typeId: ComponentTypeID {
+        Self.typeId
+    }
     
     init() {
         self.id = ComponentID()

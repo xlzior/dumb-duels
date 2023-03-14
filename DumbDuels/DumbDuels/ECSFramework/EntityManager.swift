@@ -36,3 +36,9 @@ final class EntityManager {
         assemblageEntityMap.removeAll()
     }
 }
+
+extension EntityManager: CustomDebugStringConvertible {
+    var debugDescription: String {
+        "EntityManager entities: \(numEntities) components \(numComponents) families: \(numAssemblages)"
+    }
+}

@@ -6,3 +6,6 @@
 //
 
 import Foundation
+struct Assemblage<R> where R: AssemblageRequirementsManager {
+    
+}

@@ -6,29 +6,23 @@
 //
 
 import Foundation
-class Component {
+protocol Component: AnyObject {
+    static var typeId: ComponentTypeID { get }
+    
+    var id: ComponentID { get }
+    var typeId: ComponentTypeID { get }
+}
+
+extension Component {
     static var typeId: ComponentTypeID {
         ComponentTypeID(Self.self)
     }
     
-    var id: ComponentID
-    var typeId: ComponentTypeID {
-        Self.typeId
+    var id: ComponentID {
+        self.id
     }
     
-    init() {
-        self.id = ComponentID()
-    }
-}
-
-extension Component: Equatable {
-    static func == (lhs: Component, rhs: Component) -> Bool {
-        lhs.id == rhs.id
-    }
-}
-
-extension Component: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+    var typeId: ComponentTypeID {
+        Self.typeId
     }
 }

@@ -5,13 +5,16 @@
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
-struct Heap<T: Comparable> {
+struct Heap<T> {
     var nodes = [T]()
+    private let sort: (T, T) -> Bool
 
-    public init() {
+    public init(sort: @escaping (T, T) -> Bool) {
+        self.sort = sort
     }
 
-    public init(array: [T]) {
+    public init(sort: @escaping (T, T) -> Bool, array: [T]) {
+        self.sort = sort
         self.nodes = array
         heapify()
     }
@@ -77,7 +80,7 @@ struct Heap<T: Comparable> {
         var childIndex = index
         var parentIndex = parent(of: childIndex)
 
-        while childIndex > 0 && node < nodes[parentIndex] {
+        while childIndex > 0 && sort(node, nodes[parentIndex]) {
             nodes[childIndex] = nodes[parentIndex]
             childIndex = parentIndex
             parentIndex = parent(of: childIndex)
@@ -91,10 +94,10 @@ struct Heap<T: Comparable> {
         let right = rightChild(of: start)
 
         var first = start
-        if left < end && nodes[left] < nodes[first] {
+        if left < end && sort(nodes[left], nodes[first]) {
             first = left
         }
-        if right < end && nodes[right] < nodes[first] {
+        if right < end && sort(nodes[right], nodes[first]) {
             first = right
         }
 

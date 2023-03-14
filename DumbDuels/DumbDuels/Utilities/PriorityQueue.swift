@@ -5,8 +5,12 @@
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
-struct PriorityQueue<T: Comparable> {
-    fileprivate var heap = Heap<T>()
+struct PriorityQueue<T> {
+    fileprivate var heap: Heap<T>
+
+    init(sort: @escaping (T, T) -> Bool) {
+        self.heap = Heap<T>(sort: sort)
+    }
 
     public var isEmpty: Bool {
         heap.isEmpty

@@ -10,7 +10,7 @@ import XCTest
 
 final class PriorityQueueTests: XCTestCase {
     func testEnqueue() {
-        var intPQ = PriorityQueue<Int>()
+        var intPQ = PriorityQueue<Int>(sort: <)
         intPQ.enqueue(5)
         XCTAssertFalse(intPQ.isEmpty)
         XCTAssertEqual(intPQ.count, 1)
@@ -22,7 +22,7 @@ final class PriorityQueueTests: XCTestCase {
         XCTAssertEqual(intPQ.count, 3)
         XCTAssertEqual(intPQ.first, 3)
 
-        var stringPQ = PriorityQueue<String>()
+        var stringPQ = PriorityQueue<String>(sort: <)
         stringPQ.enqueue("abc")
         XCTAssertFalse(stringPQ.isEmpty)
         XCTAssertEqual(stringPQ.count, 1)
@@ -36,13 +36,13 @@ final class PriorityQueueTests: XCTestCase {
     }
 
     func testEnqueueMultiple() {
-        var intPQ = PriorityQueue<Int>()
+        var intPQ = PriorityQueue<Int>(sort: <)
         intPQ.enqueue(5)
         intPQ.enqueue([7, 3, 2, 1, 4])
         XCTAssertEqual(intPQ.count, 6)
         XCTAssertEqual(intPQ.first, 1)
 
-        var stringPQ = PriorityQueue<String>()
+        var stringPQ = PriorityQueue<String>(sort: <)
         stringPQ.enqueue("abc")
         stringPQ.enqueue(["def", "ghi", "jkl"])
         XCTAssertEqual(stringPQ.count, 4)
@@ -50,7 +50,7 @@ final class PriorityQueueTests: XCTestCase {
     }
 
     func testDequeue() {
-        var intPQ = PriorityQueue<Int>()
+        var intPQ = PriorityQueue<Int>(sort: <)
         intPQ.enqueue(5)
         intPQ.enqueue(7)
         intPQ.enqueue(3)
@@ -70,7 +70,7 @@ final class PriorityQueueTests: XCTestCase {
         XCTAssertEqual(intPQ.count, 0)
         XCTAssertNil(intPQ.first)
 
-        var stringPQ = PriorityQueue<String>()
+        var stringPQ = PriorityQueue<String>(sort: <)
         stringPQ.enqueue("abc")
         stringPQ.enqueue("def")
         stringPQ.enqueue("ghi")

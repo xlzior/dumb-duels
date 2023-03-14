@@ -8,6 +8,8 @@
 import XCTest
 @testable import DumbDuels
 
+// TODO: rewrite eventmanager tests
+
 //struct MockSystem {
 //
 //}

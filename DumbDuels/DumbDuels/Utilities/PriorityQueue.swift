@@ -5,6 +5,8 @@
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
+// Adapted from https://github.com/kodecocodes/swift-algorithm-club/blob/master/Priority%20Queue/PriorityQueue.swift
+
 struct PriorityQueue<T> {
     fileprivate var heap: Heap<T>
 

@@ -5,6 +5,8 @@
 //  Created by Wen Jun Lye on 8/3/23.
 //
 
+// Adapted from https://github.com/kodecocodes/swift-algorithm-club/blob/master/Heap/Heap.swift
+
 struct Heap<T> {
     var nodes = [T]()
     private let sort: (T, T) -> Bool

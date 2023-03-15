@@ -7,6 +7,8 @@
 
 import SpriteKit
 
+/// A Node represents an entity in the game scene. It has a position, and optionally a physics body that will allow
+/// it to have physics interactions.
 public class Node {
     let node: SKNode
     public var physicsBody: PhysicsBody? {

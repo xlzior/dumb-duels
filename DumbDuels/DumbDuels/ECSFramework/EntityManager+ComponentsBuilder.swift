@@ -19,7 +19,7 @@ extension ComponentsBuilder {
     static func buildBlock(_ components: Component...) -> [Component] {
         components
     }
-    
+
     struct Context {
         let index: Int
     }
@@ -28,24 +28,7 @@ extension ComponentsBuilder {
 // TODO: Test if it will still work without the `Component` parameter, remove if it works without it,
 // TODO: otherwise, add a createEntities() method for one component only
 extension EntityManager {
-    /// Creates an entity and assigning one component.
-    ///
-    /// Sample Usage:
-    /// ```
-    /// let newEntity = entityManager.createEntity {
-    ///     Position(x: 1, y: 2)
-    /// }
-    /// ```
-    /// Parameters:
-    ///   - builder: The component builder
-    /// Returns:
-    ///   - The newly created component with provided component assigned.
-    @discardableResult
-    func createEntity(@ComponentsBuilder using builder: () -> Component) -> Entity {
-        self.createEntity(with: builder())
-    }
-    
-    /// Creates an entity and assigning multiple components.
+    /// Creates an entity and assigning one or multiple components.
     ///
     /// Sample Usage:
     /// ```
@@ -62,7 +45,7 @@ extension EntityManager {
     func createEntity(@ComponentsBuilder using builder: () -> [Component]) -> Entity {
         self.createEntity(with: builder())
     }
-    
+
     /// Creates multiple entites and assigning multiple components each.
     /// The index in context can be used to customize the data passed into the components for each entity
     ///
@@ -80,6 +63,6 @@ extension EntityManager {
     @discardableResult
     func createEntities(count: Int,
                         @ComponentsBuilder using builder: (ComponentsBuilder.Context) -> [Component]) -> [Entity] {
-        (0..<count).map{ self.createEntity(with: builder(ComponentsBuilder.Context(index: $0)))}
+        (0..<count).map { self.createEntity(with: builder(ComponentsBuilder.Context(index: $0)))}
     }
 }

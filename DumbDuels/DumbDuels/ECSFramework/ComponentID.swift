@@ -9,11 +9,11 @@ import Foundation
 
 struct ComponentID {
     typealias ID = String
-    
+
     let id: ID
-    
-    init() {
-        self.id = UUID().uuidString
+
+    init(_ id: ID = UUID().uuidString) {
+        self.id = id
     }
 }
 

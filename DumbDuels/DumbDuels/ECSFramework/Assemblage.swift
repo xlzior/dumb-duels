@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// TODO for wenjun: After stencils generated, make sure this warning goes away as buildBlock is implemented
+
 #if swift(<5.4)
 enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
 #else
@@ -16,7 +16,7 @@ enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
 
 struct Assemblage<R> where R: AssemblageRequirementsManager {
     let traits: TraitSet
-    
+
     init(entityManager: EntityManager,
          requiredComponents: @autoclosure () -> R.ComponentTypes,
          excludedComponents: [Component.Type]) {

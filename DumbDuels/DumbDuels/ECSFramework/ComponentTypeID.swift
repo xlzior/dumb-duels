@@ -15,7 +15,7 @@ extension ComponentTypeID {
     init<C>(_ componentType: C.Type) where C: Component {
         self.id = Self.makeRuntimeHash(componentType)
     }
-    
+
     static func makeRuntimeHash<C>(_ componentType: C.Type) -> ID where C: Component {
         ObjectIdentifier(componentType).hashValue
     }

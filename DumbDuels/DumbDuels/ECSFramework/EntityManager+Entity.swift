@@ -14,47 +14,55 @@ extension EntityManager {
         entityComponentMap[entityId] = []
         return Entity(id: entityId)
     }
-    
+
     // Needed for Assemblage generated file
     @discardableResult
     func createEntity(with components: Component...) -> Entity {
+        print("calling from variadic components entity creation")
         let newEntity = createEntity()
         assign(components: components, to: newEntity.id)
         return newEntity
     }
-    
+
     @discardableResult
     func createEntity<C>(with components: C) -> Entity where C: Collection, C.Element == Component {
+        print("calling from collection components entity creation")
         let newEntity = createEntity()
         assign(components: components, to: newEntity.id)
         return newEntity
     }
-    
+
     var numEntities: Int {
         entityComponentMap.keys.count
     }
-    
+
     func exists(entity entityId: EntityID) -> Bool {
         entityComponentMap.keys.contains(entityId)
     }
 
+    @discardableResult
     func destroy(entity: Entity) -> Bool {
         destroy(entityId: entity.id)
     }
-    
+
+    @discardableResult
     func destroy(entityId: EntityID) -> Bool {
         guard entityComponentMap.keys.contains(entityId) else {
             assertionFailure("Attempt to destroy non-existent entity \(entityId)")
             return false
         }
-        
+
         // Assemblage memeberships will be updated in this function as well
         removeAllComponents(for: entityId)
-        
+
         entityComponentMap.removeValue(forKey: entityId)
         return true
     }
-    
+
+    func makeEntitiesIterator() -> EntitiesIterator {
+        EntitiesIterator(entityManager: self)
+    }
+
     private func nextEntityId() -> EntityID {
         EntityID(UUID().uuidString)
     }
@@ -67,7 +75,7 @@ extension EntityManager {
      */
     struct EntitiesIterator: IteratorProtocol {
         private var iterator: AnyIterator<Entity>
-        
+
         init(entityManager: EntityManager) {
             var iter = entityManager.entityComponentMap.keys.makeIterator()
             iterator = AnyIterator {
@@ -77,7 +85,7 @@ extension EntityManager {
                 return Entity(id: entityId)
             }
         }
-        
+
         func next() -> Entity? {
             iterator.next()
         }

@@ -9,9 +9,9 @@ import Foundation
 
 struct EntityID {
     typealias ID = String
-    
+
     let id: ID
-    
+
     init(_ id: ID = UUID().uuidString) {
         self.id = id
     }

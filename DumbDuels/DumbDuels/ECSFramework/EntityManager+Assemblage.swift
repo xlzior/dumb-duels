@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension EntityManager {
     var numAssemblages: Int {
         assemblageEntityMap.keys.count
@@ -20,19 +19,19 @@ extension EntityManager {
         }
         return traits.isMatch(components: componentTypeIds)
     }
-    
+
     func members(withTraits traits: TraitSet) -> Set<EntityID> {
         assemblageEntityMap[traits] ?? Set()
     }
-    
+
     func isMember(_ entity: Entity, ofFamilyWithTraits traits: TraitSet) -> Bool {
         isMember(entity.id, ofFamilyWithTraits: traits)
     }
-    
+
     func isMember(_ entityId: EntityID, ofFamilyWithTraits traits: TraitSet) -> Bool {
         members(withTraits: traits).contains(entityId)
     }
-    
+
     // TODO: If needed, this can be moved into Assemblage file
     func createMember<R>(with components: R.Components, for assemblage: Assemblage<R>) -> Entity
         where R: AssemblageRequirementsManager {

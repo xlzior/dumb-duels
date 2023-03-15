@@ -11,5 +11,4 @@ protocol GameManager {
 //    let entityManager: EntityManager
 //    let eventManager: EventManager
 //    let systemManager: SystemManager
-//    func update(with time: Double)
 }

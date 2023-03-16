@@ -25,8 +25,6 @@ extension ComponentsBuilder {
     }
 }
 
-// TODO: Test if it will still work without the `Component` parameter, remove if it works without it,
-// TODO: otherwise, add a createEntities() method for one component only
 extension EntityManager {
     /// Creates an entity and assigning one or multiple components.
     ///

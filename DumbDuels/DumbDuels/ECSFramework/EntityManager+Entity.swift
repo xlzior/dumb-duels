@@ -18,7 +18,6 @@ extension EntityManager {
     // Needed for Assemblage generated file
     @discardableResult
     func createEntity(with components: Component...) -> Entity {
-        print("calling from variadic components entity creation")
         let newEntity = createEntity()
         assign(components: components, to: newEntity.id)
         return newEntity
@@ -26,7 +25,6 @@ extension EntityManager {
 
     @discardableResult
     func createEntity<C>(with components: C) -> Entity where C: Collection, C.Element == Component {
-        print("calling from collection components entity creation")
         let newEntity = createEntity()
         assign(components: components, to: newEntity.id)
         return newEntity
@@ -70,7 +68,7 @@ extension EntityManager {
 
 extension EntityManager {
     /**
-     * Allows external users to loop through entities without knowing underlying implementation (i.e. without using entityComponentsMap.keys)
+     * Allows external users to loop through entities without knowing underlying implementation
      * The order of sequence is not guaranteed to stay the same for use
      */
     struct EntitiesIterator: IteratorProtocol {

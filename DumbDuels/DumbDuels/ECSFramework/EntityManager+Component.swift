@@ -37,9 +37,6 @@ extension EntityManager {
         assign(component: component, to: entity.id)
     }
 
-    // TODO: remove if not needed
-//    func assign<C>(component: C, to entity: Entity) -> Bool where C: Component
-
     func getComponent<C>(ofType componentType: ComponentTypeID, for entityId: EntityID) -> C? where C: Component {
         let component = get(componentType: componentType, for: entityId)
         guard let component else {

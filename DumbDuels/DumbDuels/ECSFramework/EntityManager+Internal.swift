@@ -31,8 +31,7 @@ extension EntityManager {
         // If component exists it must be assigned to some entity already
         // because remove(component:from) should remove the component from this map when unassigning
         // TODO: Remove this if we want to allow same component instance to be assigned to multiple entities
-        guard componentsByType[componentTypeId] == nil ||
-              componentsByType[componentTypeId]?[componentId] == nil else {
+        guard componentsByType[componentTypeId]?[componentId] == nil else {
             assertionFailure("\(componentId) of type \(componentTypeId) is already assigned previously.")
             return false
         }

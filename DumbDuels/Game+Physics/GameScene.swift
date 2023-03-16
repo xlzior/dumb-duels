@@ -41,15 +41,20 @@ public class GameScene {
     }
 
     public func addBody(for entity: EntityID, bodyToAdd: PhysicsBody) {
+        guard entityPhysicsMap[entity] == nil else {
+            assertionFailure("Trying to add an entity that already exists.")
+            return
+        }
         baseGameScene.addChild(bodyToAdd.node)
         entityPhysicsMap[entity] = bodyToAdd
     }
 
     public func removeBody(for entity: EntityID) {
-        let physicsBody = entityPhysicsMap.removeValue(forKey: entity)
-        if let physicsBody = physicsBody {
-            baseGameScene.removeChildren(in: [physicsBody.node])
+        guard let physicsBody = entityPhysicsMap.removeValue(forKey: entity) else {
+            assertionFailure("Trying to remove an entity that does not exist.")
+            return
         }
+        baseGameScene.removeChildren(in: [physicsBody.node])
     }
 
     func getPhysicsBody(for skPhysicsBody: SKPhysicsBody) -> PhysicsBody? {
@@ -63,12 +68,28 @@ public class GameScene {
     }
 
     func apply(impulse: CGVector, to entity: EntityID) {
+        guard entityPhysicsMap[entity] != nil else {
+            assertionFailure("Trying to apply impulse to an entity that does not exist.")
+            return
+        }
         entityPhysicsMap[entity]?.applyImpulse(impulse)
     }
 
     public func sync(entityPhysicsMap: [EntityID: PhysicsBody]) {
         for (entity, physicsBody) in entityPhysicsMap {
+            guard entityPhysicsMap[entity] != nil else {
+                assertionFailure("Trying to sync entity that does not exist.")
+                continue
+            }
             self.entityPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
         }
+    }
+
+    public func sync(_ physicsBody: PhysicsBody, for entity: EntityID) {
+        guard entityPhysicsMap[entity] != nil else {
+            assertionFailure("Trying to sync entity that does not exist.")
+            return
+        }
+        entityPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
     }
 }

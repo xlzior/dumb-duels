@@ -8,7 +8,7 @@
 import SpriteKit
 
 public class PhysicsBody {
-    let node: SKNode
+    private(set) var node: SKNode
     private let assertionFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
 
     public init(rectangleOf size: CGSize, center: CGPoint, physicsDetails: PhysicsDetails) {
@@ -40,18 +40,11 @@ public class PhysicsBody {
     }
 
     func updateWith(newPhysicsBody: PhysicsBody) {
-        position = newPhysicsBody.position
-        mass = newPhysicsBody.mass
-        velocity = newPhysicsBody.velocity
-        affectedByGravity = newPhysicsBody.affectedByGravity
-        linearDamping = newPhysicsBody.linearDamping
-        isDynamic = newPhysicsBody.isDynamic
-        allowsRotation = newPhysicsBody.allowsRotation
-        restitution = newPhysicsBody.restitution
-        friction = newPhysicsBody.friction
-        categoryBitMask = newPhysicsBody.categoryBitMask
-        collisionBitMask = newPhysicsBody.collisionBitMask
-        contactTestBitMask = newPhysicsBody.contactTestBitMask
+        guard node.physicsBody != nil else {
+            assertionFailure(assertionFailureMessage)
+            return
+        }
+        node = newPhysicsBody.node
     }
 
     public var position: CGPoint {

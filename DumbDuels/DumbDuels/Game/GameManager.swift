@@ -5,10 +5,10 @@
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
-import Foundation
+import UIKit
 
 class GameManager {
-    private let gameController: ViewController
+    private let gameController: UIViewController
 
     private let entityManager: EntityManager
     private let entityCreator: EntityCreator
@@ -16,7 +16,7 @@ class GameManager {
     private let systemManager: SystemManager
     private let eventManager: EventManager
 
-    init(gameController: ViewController) {
+    init(gameController: UIViewController) {
         self.gameController = gameController
 
         let entityManager = EntityManager()

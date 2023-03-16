@@ -13,9 +13,36 @@
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
 		7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293129B82BE300281FC7 /* Assets.xcassets */; };
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
-		7B2B294029B82BE300281FC7 /* DumbDuelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B293F29B82BE300281FC7 /* DumbDuelsTests.swift */; };
 		7B2B294A29B82BE300281FC7 /* DumbDuelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */; };
 		7B2B294C29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */; };
+		7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */; };
+		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
+		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
+		8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844F29BF29BD00BAE8C5 /* Component.swift */; };
+		8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845129BF29EB00BAE8C5 /* EntityManager.swift */; };
+		8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */; };
+		8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */; };
+		8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */; };
+		8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845A29BF3D1D00BAE8C5 /* Pair.swift */; };
+		8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */; };
+		8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */; };
+		8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */; };
+		8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846229BF4F9900BAE8C5 /* Assemblage.swift */; };
+		8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */; };
+		8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */; };
+		8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */; };
+		8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35846F29C1741100BAE8C5 /* Assemblage+Requirements.generated.swift */; };
+		8C35847329C176BC00BAE8C5 /* EntityCreationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35847229C176BC00BAE8C5 /* EntityCreationTests.swift */; };
+		8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35847829C177DE00BAE8C5 /* SampleComponents.swift */; };
+		8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35847A29C1799500BAE8C5 /* ComponentTests.swift */; };
+		8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */; };
+		8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */; };
+		8C35848529C2BC1C00BAE8C5 /* AssemblageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */; };
+		8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848629C2FADF00BAE8C5 /* FSM.swift */; };
+		8C35848929C32E9C00BAE8C5 /* ComponentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848829C32E9C00BAE8C5 /* ComponentProvider.swift */; };
+		8C35848B29C32F9B00BAE8C5 /* ComponentProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848A29C32F9B00BAE8C5 /* ComponentProviderTests.swift */; };
+		8C35848D29C3327E00BAE8C5 /* EntityStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848C29C3327E00BAE8C5 /* EntityStateTests.swift */; };
+		8C35848F29C33D5400BAE8C5 /* EntityStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848E29C33D5400BAE8C5 /* EntityStateMachineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +72,37 @@
 		7B2B293429B82BE300281FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B2B293629B82BE300281FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B2B293F29B82BE300281FC7 /* DumbDuelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsTests.swift; sourceTree = "<group>"; };
 		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITests.swift; sourceTree = "<group>"; };
 		7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Assemblage+Requirements.stencil"; sourceTree = "<group>"; };
+		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
+		8C35844F29BF29BD00BAE8C5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		8C35845129BF29EB00BAE8C5 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTypeID.swift; sourceTree = "<group>"; };
+		8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentID.swift; sourceTree = "<group>"; };
+		8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitSet.swift; sourceTree = "<group>"; };
+		8C35845A29BF3D1D00BAE8C5 /* Pair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pair.swift; sourceTree = "<group>"; };
+		8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Entity.swift"; sourceTree = "<group>"; };
+		8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Component.swift"; sourceTree = "<group>"; };
+		8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Internal.swift"; sourceTree = "<group>"; };
+		8C35846229BF4F9900BAE8C5 /* Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assemblage.swift; sourceTree = "<group>"; };
+		8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+Assemblage.swift"; sourceTree = "<group>"; };
+		8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblageRequirementsManager.swift; sourceTree = "<group>"; };
+		8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EntityManager+ComponentsBuilder.swift"; sourceTree = "<group>"; };
+		8C35846F29C1741100BAE8C5 /* Assemblage+Requirements.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assemblage+Requirements.generated.swift"; sourceTree = "<group>"; };
+		8C35847229C176BC00BAE8C5 /* EntityCreationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCreationTests.swift; sourceTree = "<group>"; };
+		8C35847829C177DE00BAE8C5 /* SampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleComponents.swift; sourceTree = "<group>"; };
+		8C35847A29C1799500BAE8C5 /* ComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTests.swift; sourceTree = "<group>"; };
+		8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDestroyTests.swift; sourceTree = "<group>"; };
+		8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitSetTests.swift; sourceTree = "<group>"; };
+		8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblageTests.swift; sourceTree = "<group>"; };
+		8C35848629C2FADF00BAE8C5 /* FSM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSM.swift; sourceTree = "<group>"; };
+		8C35848829C32E9C00BAE8C5 /* ComponentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentProvider.swift; sourceTree = "<group>"; };
+		8C35848A29C32F9B00BAE8C5 /* ComponentProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentProviderTests.swift; sourceTree = "<group>"; };
+		8C35848C29C3327E00BAE8C5 /* EntityStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStateTests.swift; sourceTree = "<group>"; };
+		8C35848E29C33D5400BAE8C5 /* EntityStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStateMachineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +153,8 @@
 		7B2B292729B82BE000281FC7 /* DumbDuels */ = {
 			isa = PBXGroup;
 			children = (
+				8C35845929BF3CFD00BAE8C5 /* Utils */,
+				8C35844A29BF297000BAE8C5 /* ECSFramework */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
 				7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */,
 				7B2B292C29B82BE000281FC7 /* ViewController.swift */,
@@ -113,7 +169,7 @@
 		7B2B293E29B82BE300281FC7 /* DumbDuelsTests */ = {
 			isa = PBXGroup;
 			children = (
-				7B2B293F29B82BE300281FC7 /* DumbDuelsTests.swift */,
+				8C35847129C1760F00BAE8C5 /* ECSFrameworkTests */,
 			);
 			path = DumbDuelsTests;
 			sourceTree = "<group>";
@@ -125,6 +181,79 @@
 				7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */,
 			);
 			path = DumbDuelsUITests;
+			sourceTree = "<group>";
+		};
+		7BA7EB9829C362960096457F /* Stencils */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */,
+			);
+			path = Stencils;
+			sourceTree = "<group>";
+		};
+		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
+			isa = PBXGroup;
+			children = (
+				8C35847729C177CB00BAE8C5 /* TestUtils */,
+				7BA7EB9829C362960096457F /* Stencils */,
+				8C35846E29C173F000BAE8C5 /* Generated */,
+				8C35844B29BF29AC00BAE8C5 /* Entity.swift */,
+				8C35844D29BF29B500BAE8C5 /* EntityID.swift */,
+				8C35844F29BF29BD00BAE8C5 /* Component.swift */,
+				8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */,
+				8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */,
+				8C35846229BF4F9900BAE8C5 /* Assemblage.swift */,
+				8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */,
+				8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */,
+				8C35845129BF29EB00BAE8C5 /* EntityManager.swift */,
+				8C35845C29BF3FA300BAE8C5 /* EntityManager+Entity.swift */,
+				8C35845E29BF3FB100BAE8C5 /* EntityManager+Component.swift */,
+				8C35846829C04D2600BAE8C5 /* EntityManager+Assemblage.swift */,
+				8C35846029BF3FDC00BAE8C5 /* EntityManager+Internal.swift */,
+				8C35846C29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift */,
+				8C35848629C2FADF00BAE8C5 /* FSM.swift */,
+				8C35848829C32E9C00BAE8C5 /* ComponentProvider.swift */,
+			);
+			path = ECSFramework;
+			sourceTree = "<group>";
+		};
+		8C35845929BF3CFD00BAE8C5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8C35845A29BF3D1D00BAE8C5 /* Pair.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8C35846E29C173F000BAE8C5 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				8C35846F29C1741100BAE8C5 /* Assemblage+Requirements.generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		8C35847129C1760F00BAE8C5 /* ECSFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C35847229C176BC00BAE8C5 /* EntityCreationTests.swift */,
+				8C35847A29C1799500BAE8C5 /* ComponentTests.swift */,
+				8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */,
+				8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */,
+				8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */,
+				8C35848A29C32F9B00BAE8C5 /* ComponentProviderTests.swift */,
+				8C35848C29C3327E00BAE8C5 /* EntityStateTests.swift */,
+				8C35848E29C33D5400BAE8C5 /* EntityStateMachineTests.swift */,
+			);
+			path = ECSFrameworkTests;
+			sourceTree = "<group>";
+		};
+		8C35847729C177CB00BAE8C5 /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+				8C35847829C177DE00BAE8C5 /* SampleComponents.swift */,
+			);
+			path = TestUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +328,7 @@
 					};
 					7B2B293A29B82BE300281FC7 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = 7B2B292429B82BE000281FC7;
 					};
 					7B2B294429B82BE300281FC7 = {
@@ -234,6 +364,7 @@
 			files = (
 				7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */,
 				7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */,
+				7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */,
 				7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,9 +411,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C35848929C32E9C00BAE8C5 /* ComponentProvider.swift in Sources */,
+				8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */,
+				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
+				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
+				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
+				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
+				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
+				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
+				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
+				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
+				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
+				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
+				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
+				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
+				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
+				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
+				8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */,
+				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +440,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B2B294029B82BE300281FC7 /* DumbDuelsTests.swift in Sources */,
+				8C35848B29C32F9B00BAE8C5 /* ComponentProviderTests.swift in Sources */,
+				8C35847329C176BC00BAE8C5 /* EntityCreationTests.swift in Sources */,
+				8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */,
+				8C35848D29C3327E00BAE8C5 /* EntityStateTests.swift in Sources */,
+				8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */,
+				8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */,
+				8C35848F29C33D5400BAE8C5 /* EntityStateMachineTests.swift in Sources */,
+				8C35848529C2BC1C00BAE8C5 /* AssemblageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,15 +680,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NV79569755;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DumbDuels.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DumbDuels";
@@ -543,11 +707,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NV79569755;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

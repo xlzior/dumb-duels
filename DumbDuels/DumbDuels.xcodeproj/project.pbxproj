@@ -15,6 +15,7 @@
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
 		7B2B294A29B82BE300281FC7 /* DumbDuelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */; };
 		7B2B294C29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */; };
+		7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */; };
 		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
 		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
 		8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844F29BF29BD00BAE8C5 /* Component.swift */; };
@@ -74,6 +75,7 @@
 		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITests.swift; sourceTree = "<group>"; };
 		7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Assemblage+Requirements.stencil"; sourceTree = "<group>"; };
 		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
 		8C35844F29BF29BD00BAE8C5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -181,10 +183,19 @@
 			path = DumbDuelsUITests;
 			sourceTree = "<group>";
 		};
+		7BA7EB9829C362960096457F /* Stencils */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */,
+			);
+			path = Stencils;
+			sourceTree = "<group>";
+		};
 		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
 			isa = PBXGroup;
 			children = (
 				8C35847729C177CB00BAE8C5 /* TestUtils */,
+				7BA7EB9829C362960096457F /* Stencils */,
 				8C35846E29C173F000BAE8C5 /* Generated */,
 				8C35844B29BF29AC00BAE8C5 /* Entity.swift */,
 				8C35844D29BF29B500BAE8C5 /* EntityID.swift */,
@@ -353,6 +364,7 @@
 			files = (
 				7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */,
 				7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */,
+				7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */,
 				7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,9 +9,12 @@ import UIKit
 
 class PlayerButton: UIButton {
     let buttonAspectRatio = 1.8
+    var isPlayerOne: Bool
 
     init(screenSize: CGSize, isPlayerOne: Bool) {
+        self.isPlayerOne = isPlayerOne
         super.init(frame: CGRect(x: 0, y: 0, width: 180, height: 100))
+
         scale(screenSize.height)
         position(screenSize, isPlayerOne)
         style()
@@ -41,9 +44,18 @@ class PlayerButton: UIButton {
         )
     }
 
+    @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {
+        print("Tap", self.isPlayerOne)
+        // TODO: Send ButtonTappedEvent
+    }
+
+    @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
+        print("Long press", self.isPlayerOne)
+        // TODO: Send ButtonLongPressedEvent
+    }
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

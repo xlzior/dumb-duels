@@ -43,6 +43,9 @@
 		7BA7EBEF29C36BD70096457F /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBED29C36BD70096457F /* SystemManager.swift */; };
 		7BA7EBF929C36C070096457F /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBF729C36C070096457F /* PriorityQueue.swift */; };
 		7BA7EBFA29C36C070096457F /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBF829C36C070096457F /* Heap.swift */; };
+		7BA7EC1429C37F2A0096457F /* HeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1029C37F2A0096457F /* HeapTests.swift */; };
+		7BA7EC1529C37F2A0096457F /* PriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */; };
+		7BA7EC1629C37F2A0096457F /* EventManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */; };
 		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
 		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
 		8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844F29BF29BD00BAE8C5 /* Component.swift */; };
@@ -138,6 +141,9 @@
 		7BA7EBED29C36BD70096457F /* SystemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		7BA7EBF729C36C070096457F /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		7BA7EBF829C36C070096457F /* Heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		7BA7EC1029C37F2A0096457F /* HeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeapTests.swift; sourceTree = "<group>"; };
+		7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueueTests.swift; sourceTree = "<group>"; };
+		7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerTests.swift; sourceTree = "<group>"; };
 		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
 		8C35844F29BF29BD00BAE8C5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 		7B2B293E29B82BE300281FC7 /* DumbDuelsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7BA7EC0F29C37F2A0096457F /* DataStructureTests */,
+				7BA7EC1229C37F2A0096457F /* EventTests */,
 				8C35847129C1760F00BAE8C5 /* ECSFrameworkTests */,
 			);
 			path = DumbDuelsTests;
@@ -326,6 +334,23 @@
 				7BA7EBD529C36BBD0096457F /* ResetRoundEvent.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		7BA7EC0F29C37F2A0096457F /* DataStructureTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EC1029C37F2A0096457F /* HeapTests.swift */,
+				7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */,
+			);
+			path = DataStructureTests;
+			sourceTree = "<group>";
+		};
+		7BA7EC1229C37F2A0096457F /* EventTests */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */,
+			);
+			path = EventTests;
 			sourceTree = "<group>";
 		};
 		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
@@ -646,8 +671,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C35848B29C32F9B00BAE8C5 /* ComponentProviderTests.swift in Sources */,
+				7BA7EC1529C37F2A0096457F /* PriorityQueueTests.swift in Sources */,
+				7BA7EC1629C37F2A0096457F /* EventManagerTests.swift in Sources */,
 				8C35847329C176BC00BAE8C5 /* EntityCreationTests.swift in Sources */,
 				8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */,
+				7BA7EC1429C37F2A0096457F /* HeapTests.swift in Sources */,
 				8C35848D29C3327E00BAE8C5 /* EntityStateTests.swift in Sources */,
 				8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */,
 				8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */,

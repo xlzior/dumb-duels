@@ -6,8 +6,8 @@
 //
 
 class PlayerSystem: System {
-    var entityManager: EntityManager
-    var eventManger: EventManager
+    unowned var entityManager: EntityManager
+    unowned var eventManger: EventManager
 
     init(for entityManager: EntityManager, eventManger: EventManager) {
         self.entityManager = entityManager

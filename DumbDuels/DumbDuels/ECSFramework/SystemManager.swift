@@ -6,6 +6,7 @@
 //
 
 class SystemManager {
+    // TODO: hashmap from System.Type to System
     var systems: [any System] = []
 
     func register(_ system: any System) {

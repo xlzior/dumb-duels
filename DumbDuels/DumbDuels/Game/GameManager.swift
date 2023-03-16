@@ -35,6 +35,10 @@ class GameManager {
         systemManager.register(PlayerSystem(for: entityManager, eventManger: eventManager))
     }
 
+    private func updateSystems() {
+        // update everything one by one
+    }
+
     private func startGame() {
 
     }

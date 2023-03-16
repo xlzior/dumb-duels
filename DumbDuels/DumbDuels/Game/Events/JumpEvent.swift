@@ -15,6 +15,7 @@ struct JumpEvent: Event {
             return
         }
 
+        // TODO: don't allow double jumps
         physicsSystem.applyImpulse(to: entityId)
     }
 }

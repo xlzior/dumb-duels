@@ -9,7 +9,7 @@ private func sort(lhs: Event, rhs: Event) -> Bool {
     lhs.priority.rawValue < rhs.priority.rawValue
 }
 
-struct EventManager {
+class EventManager {
     private var systems: SystemManager
     private var events = PriorityQueue<Event>(sort: sort)
 
@@ -17,12 +17,12 @@ struct EventManager {
         self.systems = systems
     }
 
-    mutating func fire(_ event: Event) {
+    func fire(_ event: Event) {
         events.enqueue(event)
     }
 
     @discardableResult
-    mutating func poll() -> Bool {
+    func poll() -> Bool {
         guard let event = events.dequeue() else {
             return false
         }
@@ -33,7 +33,7 @@ struct EventManager {
     }
 
     @discardableResult
-    mutating func pollAll() -> Bool {
+    func pollAll() -> Bool {
         if events.isEmpty {
             return false
         }

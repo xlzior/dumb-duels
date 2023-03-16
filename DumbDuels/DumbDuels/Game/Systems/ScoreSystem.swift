@@ -6,7 +6,7 @@
 //
 
 class ScoreSystem: System {
-    var entityManager: EntityManager
+    unowned var entityManager: EntityManager
 
     init(for entityManager: EntityManager, eventManger: EventManager) {
         self.entityManager = entityManager

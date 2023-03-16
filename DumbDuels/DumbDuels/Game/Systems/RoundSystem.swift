@@ -1,13 +1,13 @@
 //
-//  AxeSystem.swift
+//  RoundSystem.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
-class AxeSystem: System {
-    var entityManager: EntityManager
-    var eventManger: EventManager
+class RoundSystem: System {
+    unowned var entityManager: EntityManager
+    unowned var eventManger: EventManager
 
     init(for entityManager: EntityManager, eventManger: EventManager) {
         self.entityManager = entityManager

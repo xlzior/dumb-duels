@@ -93,12 +93,12 @@
 		6F67C6DA29BEDE15009E0579 /* Game+Physics */ = {
 			isa = PBXGroup;
 			children = (
-				6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */,
 				6F67C6F129C1714F009E0579 /* Simulator.swift */,
 				6F67C6F729C176C9009E0579 /* GameScene.swift */,
+				6F67C6FF29C19027009E0579 /* BaseGameScene.swift */,
 				6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */,
 				6F67C6FD29C18BA3009E0579 /* PhysicsContactDelegate.swift */,
-				6F67C6FF29C19027009E0579 /* BaseGameScene.swift */,
+				6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */,
 				6F67C70129C1F4BC009E0579 /* PhysicsDetails.swift */,
 			);
 			path = "Game+Physics";

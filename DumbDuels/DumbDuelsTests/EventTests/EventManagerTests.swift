@@ -10,11 +10,11 @@ import XCTest
 
 // TODO: rewrite eventmanager tests
 
-//struct MockSystem {
+// struct MockSystem {
 //
-//}
+// }
 //
-//struct MockEvent: Event {
+// struct MockEvent: Event {
 //    var wasCalled = false
 //    var priority: Int
 //
@@ -26,9 +26,9 @@ import XCTest
 //    func execute() {
 //
 //    }
-//}
+// }
 //
-//final class EventManagerTests: XCTestCase {
+// final class EventManagerTests: XCTestCase {
 //    func testPoll_nothing() throws {
 //        var manager = EventManager()
 //        XCTAssertNil(manager.poll())
@@ -48,4 +48,4 @@ import XCTest
 //    func testPoll_all() throws {
 //        var manager = EventManager()
 //    }
-//}
+// }

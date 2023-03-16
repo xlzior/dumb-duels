@@ -154,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A7E439C929C2D49A00027AC6 /* GameManager */,
+				7BA7EB6C29C2CCF40096457F /* Events */,
 				8C35845929BF3CFD00BAE8C5 /* Utils */,
 				8C35844A29BF297000BAE8C5 /* ECSFramework */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
@@ -170,6 +171,8 @@
 		7B2B293E29B82BE300281FC7 /* DumbDuelsTests */ = {
 			isa = PBXGroup;
 			children = (
+				7BA7EB7429C2CD250096457F /* DataStructureTests */,
+				7BA7EB7329C2CD020096457F /* EventTests */,
 				8C35847129C1760F00BAE8C5 /* ECSFrameworkTests */,
 			);
 			path = DumbDuelsTests;
@@ -221,6 +224,8 @@
 		8C35845929BF3CFD00BAE8C5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7BA7EB6229C2CCB80096457F /* Heap.swift */,
+				7BA7EB6329C2CCB80096457F /* PriorityQueue.swift */,
 				8C35845A29BF3D1D00BAE8C5 /* Pair.swift */,
 			);
 			path = Utils;
@@ -442,8 +447,10 @@
 				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
 				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
 				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
+				7BA7EB7129C2CCF40096457F /* EventConsumer.swift in Sources */,
 				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
+				7BA7EB6429C2CCB80096457F /* Heap.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				A7E439E529C2F6E100027AC6 /* PlatformComponent.swift in Sources */,
@@ -461,12 +468,15 @@
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				7BA7EB6529C2CCB80096457F /* PriorityQueue.swift in Sources */,
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				A7E439D929C2EFD100027AC6 /* SizeComponent.swift in Sources */,
+				7BA7EB7029C2CCF40096457F /* EventManager.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */,
 				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,
+				7BA7EB7229C2CCF40096457F /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +489,8 @@
 				8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */,
 				8C35848D29C3327E00BAE8C5 /* EntityStateTests.swift in Sources */,
 				8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */,
+				7BA7EB6B29C2CCCF0096457F /* HeapTests.swift in Sources */,
+				7BA7EB6929C2CCCF0096457F /* EventManagerTests.swift in Sources */,
 				8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */,
 				8C35848F29C33D5400BAE8C5 /* EntityStateMachineTests.swift in Sources */,
 				8C35848529C2BC1C00BAE8C5 /* AssemblageTests.swift in Sources */,

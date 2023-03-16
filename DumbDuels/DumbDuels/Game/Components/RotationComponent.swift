@@ -11,7 +11,8 @@ class RotationComponent: Component {
     var id: ComponentID
     var angleInRadians: CGFloat
 
-    init() {
+    init(angleInRadians: CGFloat = 0) {
         self.id = ComponentID()
+        self.angleInRadians = angleInRadians
     }
 }

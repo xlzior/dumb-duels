@@ -11,12 +11,19 @@ class GameManager {
     private let gameController: ViewController
 
     private let entityManager: EntityManager
+    private let entityCreator: EntityCreator
+
     private let systemManager: SystemManager
     private let eventManager: EventManager
 
     init(gameController: ViewController) {
         self.gameController = gameController
-        self.entityManager = EntityManager()
+
+        let entityManager = EntityManager()
+        let entityCreator = EntityCreator(entityManager: entityManager)
+        self.entityManager = entityManager
+        self.entityCreator = entityCreator
+
         let systemManager = SystemManager()
         let eventManager = EventManager(systems: systemManager)
         self.systemManager = systemManager

@@ -71,6 +71,9 @@
 		8C35848B29C32F9B00BAE8C5 /* ComponentProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848A29C32F9B00BAE8C5 /* ComponentProviderTests.swift */; };
 		8C35848D29C3327E00BAE8C5 /* EntityStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848C29C3327E00BAE8C5 /* EntityStateTests.swift */; };
 		8C35848F29C33D5400BAE8C5 /* EntityStateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848E29C33D5400BAE8C5 /* EntityStateMachineTests.swift */; };
+		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
+		A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* Sizes.swift */; };
+		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +162,9 @@
 		8C35848A29C32F9B00BAE8C5 /* ComponentProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentProviderTests.swift; sourceTree = "<group>"; };
 		8C35848C29C3327E00BAE8C5 /* EntityStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStateTests.swift; sourceTree = "<group>"; };
 		8C35848E29C33D5400BAE8C5 /* EntityStateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityStateMachineTests.swift; sourceTree = "<group>"; };
+		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
+		A7E439F829C374BE00027AC6 /* Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,8 +250,10 @@
 		7BA7EB7B29C2D4470096457F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				A7E439F629C374BE00027AC6 /* Constants */,
 				7BA7EBBE29C36BBD0096457F /* Components */,
 				7BA7EBCE29C36BBD0096457F /* Events */,
+				A7E439FB29C374E800027AC6 /* EntityCreator.swift */,
 				7BA7EBBD29C36BBD0096457F /* GameManager.swift */,
 				7BA7EBC829C36BBD0096457F /* Systems */,
 			);
@@ -378,6 +386,15 @@
 				8C35847829C177DE00BAE8C5 /* SampleComponents.swift */,
 			);
 			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		A7E439F629C374BE00027AC6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A7E439F729C374BE00027AC6 /* Positions.swift */,
+				A7E439F829C374BE00027AC6 /* Sizes.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -570,6 +587,7 @@
 				7BA7EBDD29C36BBD0096457F /* RotationComponent.swift in Sources */,
 				7BA7EBDC29C36BBD0096457F /* ScoreComponent.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				A7E439F929C374BE00027AC6 /* Positions.swift in Sources */,
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7BA7EBE129C36BBD0096457F /* PlayerSystem.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
@@ -579,12 +597,14 @@
 				7BA7EBBB29C36B900096457F /* EventManager.swift in Sources */,
 				7BA7EBE729C36BBD0096457F /* ButtonPressEvent.swift in Sources */,
 				7BA7EBE429C36BBD0096457F /* RenderSystem.swift in Sources */,
+				A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */,
 				8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */,
 				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,
 				7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */,
 				7BA7EBDA29C36BBD0096457F /* SizeComponent.swift in Sources */,
 				7BA7EBE629C36BBD0096457F /* JumpEvent.swift in Sources */,
 				7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */,
+				A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */,
 				7BA7EBE929C36BBD0096457F /* MoveEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

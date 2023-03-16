@@ -16,3 +16,10 @@ class PositionComponent: Component {
         self.position = position
     }
 }
+
+extension PositionComponent {
+    enum FaceDirection: CGFloat {
+        case left = -1.0
+        case right = 1.0
+    }
+}

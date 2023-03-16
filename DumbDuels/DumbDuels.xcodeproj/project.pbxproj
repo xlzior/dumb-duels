@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6F67C6DF29BF3C7B009E0579 /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */; };
-		6F67C6F029C07804009E0579 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6EF29C07804009E0579 /* GameManager.swift */; };
 		6F67C6F229C1714F009E0579 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F129C1714F009E0579 /* Simulator.swift */; };
 		6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F729C176C9009E0579 /* GameScene.swift */; };
 		6F67C6FA29C180F0009E0579 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
-		6F67C6EF29C07804009E0579 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		6F67C6F129C1714F009E0579 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
 		6F67C6F729C176C9009E0579 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,18 +104,9 @@
 			path = "Game+Physics";
 			sourceTree = "<group>";
 		};
-		6F67C6EE29C077EE009E0579 /* AxeGame */ = {
-			isa = PBXGroup;
-			children = (
-				6F67C6EF29C07804009E0579 /* GameManager.swift */,
-			);
-			path = AxeGame;
-			sourceTree = "<group>";
-		};
 		7B2B291C29B82BE000281FC7 = {
 			isa = PBXGroup;
 			children = (
-				6F67C6EE29C077EE009E0579 /* AxeGame */,
 				6F67C6DA29BEDE15009E0579 /* Game+Physics */,
 				7B2B292729B82BE000281FC7 /* DumbDuels */,
 				7B2B293E29B82BE300281FC7 /* DumbDuelsTests */,
@@ -324,7 +313,6 @@
 				6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */,
 				6F67C6FE29C18BA3009E0579 /* PhysicsContactDelegate.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
-				6F67C6F029C07804009E0579 /* GameManager.swift in Sources */,
 				6F67C6FA29C180F0009E0579 /* GameSceneDelegate.swift in Sources */,
 				6F67C70029C19027009E0579 /* BaseGameScene.swift in Sources */,
 				6F67C6DF29BF3C7B009E0579 /* PhysicsBody.swift in Sources */,

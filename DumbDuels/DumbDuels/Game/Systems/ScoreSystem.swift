@@ -19,9 +19,11 @@ class ScoreSystem: System {
     }
 
     func increment(for entityId: EntityID) {
-        guard let scoreComponent = entityManager.getComponent(ofType: ScoreComponent.Type, for: entityId) else {
+        guard let scoreComponent: ScoreComponent = entityManager.getComponent(
+            ofType: ScoreComponent.typeId,
+            for: entityId) else {
             return
         }
-        scoreComponent.value += 1
+        scoreComponent.score += 1
     }
 }

@@ -8,7 +8,7 @@
 class HoldingAxeComponent: Component {
     var id: ComponentID
     var axeEntityID: EntityID
-    
+
     init(axeEntityID: EntityID) {
         self.id = ComponentID()
         self.axeEntityID = axeEntityID

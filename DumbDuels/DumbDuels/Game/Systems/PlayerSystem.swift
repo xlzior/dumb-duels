@@ -19,12 +19,17 @@ class PlayerSystem: System {
     }
 
     func handleButtonPress(entityId: EntityID) {
-        if entityManager.has(componentTypeId: HoldingAxeComponent.Type, entityId: entityId) {
-            entityManager.remove(componentType: HoldingAxeComponent.Type, from: entityId)
-            let axe = entityManager.getComponent(ofType: HoldingAxeComponent.Type, for: entityId)
-            eventManger.fire(ThrowAxeEvent(entityId: axe))
-        } else {
-            eventManger.fire(JumpEvent(entityId: entityId))
+        let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
+
+        if !hasAxe {
+            return eventManger.fire(JumpEvent(entityId: entityId))
         }
+
+        guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(
+            ofType: HoldingAxeComponent.typeId,
+            for: entityId) else {
+            return
+        }
+        eventManger.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID))
     }
 }

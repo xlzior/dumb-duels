@@ -11,7 +11,7 @@ class SpriteComponent: Component {
     var id: ComponentID
     var assetName: String
     var alpha: CGFloat
-    
+
     init(assetName: String, alpha: CGFloat = 1) {
         self.id = ComponentID()
         self.assetName = assetName

@@ -16,7 +16,7 @@ class PhysicsSystem: System {
 
     }
 
-    func applyImpulse(to: EntityID) {
+    func applyImpulse(to entityId: EntityID) {
 
     }
 }

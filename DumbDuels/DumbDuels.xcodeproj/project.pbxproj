@@ -153,7 +153,6 @@
 		7B2B292729B82BE000281FC7 /* DumbDuels */ = {
 			isa = PBXGroup;
 			children = (
-				A7E439C929C2D49A00027AC6 /* GameManager */,
 				7BA7EB7B29C2D4470096457F /* Game */,
 				7BA7EB6C29C2CCF40096457F /* Events */,
 				8C35845929BF3CFD00BAE8C5 /* Utils */,
@@ -199,6 +198,7 @@
 		7BA7EB7B29C2D4470096457F /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				A7E439D029C2ED1A00027AC6 /* Components */,
 				7BA7EB7E29C2D74D0096457F /* Systems */,
 				7BA7EB7C29C2D4540096457F /* GameManager.swift */,
 				7BA7EB8529C2F1770096457F /* Events */,
@@ -297,14 +297,6 @@
 				8C35847829C177DE00BAE8C5 /* SampleComponents.swift */,
 			);
 			path = TestUtils;
-			sourceTree = "<group>";
-		};
-		A7E439C929C2D49A00027AC6 /* GameManager */ = {
-			isa = PBXGroup;
-			children = (
-				A7E439D029C2ED1A00027AC6 /* Components */,
-			);
-			path = GameManager;
 			sourceTree = "<group>";
 		};
 		A7E439D029C2ED1A00027AC6 /* Components */ = {

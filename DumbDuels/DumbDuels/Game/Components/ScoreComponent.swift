@@ -8,7 +8,7 @@
 class ScoreComponent: Component {
     var id: ComponentID
     var score: Int
-    
+
     init(score: Int = 0) {
         self.id = ComponentID()
         self.score = score

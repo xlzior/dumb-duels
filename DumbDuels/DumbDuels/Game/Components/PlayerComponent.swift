@@ -8,7 +8,7 @@
 class PlayerComponent: Component {
     var id: ComponentID
     let fsm: EntityStateMachine<State>
-    
+
     init(fsm: EntityStateMachine<State>) {
         self.id = ComponentID()
         self.fsm = fsm

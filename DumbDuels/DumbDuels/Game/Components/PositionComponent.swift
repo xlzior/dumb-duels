@@ -10,7 +10,7 @@ import CoreGraphics
 class PositionComponent: Component {
     var id: ComponentID
     var position: CGPoint
-    
+
     init(position: CGPoint) {
         self.id = ComponentID()
         self.position = position

@@ -35,6 +35,8 @@
 		8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35847829C177DE00BAE8C5 /* SampleComponents.swift */; };
 		8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35847A29C1799500BAE8C5 /* ComponentTests.swift */; };
 		8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */; };
+		8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */; };
+		8C35848529C2BC1C00BAE8C5 /* AssemblageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,8 @@
 		8C35847829C177DE00BAE8C5 /* SampleComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleComponents.swift; sourceTree = "<group>"; };
 		8C35847A29C1799500BAE8C5 /* ComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTests.swift; sourceTree = "<group>"; };
 		8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityDestroyTests.swift; sourceTree = "<group>"; };
+		8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitSetTests.swift; sourceTree = "<group>"; };
+		8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblageTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,8 @@
 				8C35847229C176BC00BAE8C5 /* EntityCreationTests.swift */,
 				8C35847A29C1799500BAE8C5 /* ComponentTests.swift */,
 				8C35848029C1A7F400BAE8C5 /* EntityDestroyTests.swift */,
+				8C35848229C2BC0A00BAE8C5 /* TraitSetTests.swift */,
+				8C35848429C2BC1C00BAE8C5 /* AssemblageTests.swift */,
 			);
 			path = ECSFrameworkTests;
 			sourceTree = "<group>";
@@ -406,8 +412,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C35847329C176BC00BAE8C5 /* EntityCreationTests.swift in Sources */,
+				8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */,
 				8C35847B29C1799500BAE8C5 /* ComponentTests.swift in Sources */,
 				8C35848129C1A7F400BAE8C5 /* EntityDestroyTests.swift in Sources */,
+				8C35848529C2BC1C00BAE8C5 /* AssemblageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

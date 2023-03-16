@@ -6,30 +6,39 @@
 //
 
 import XCTest
+@testable import DumbDuels
 
 final class TraitSetTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testCommutativity() {
+        let trait1 = TraitSet(requiredComponents: [XComponent.self, YComponent.self],
+                              excludedComponents: [ZComponent.self])
+        let trait2 = TraitSet(requiredComponents: [YComponent.self, XComponent.self],
+                              excludedComponents: [ZComponent.self])
+        let trait3 = TraitSet(requiredComponents: [YComponent.self, ZComponent.self],
+                              excludedComponents: [XComponent.self])
+
+        XCTAssertEqual(trait1, trait2)
+        XCTAssertEqual(trait1.hashValue, trait2.hashValue)
+        XCTAssertNotEqual(trait1, trait3)
+        XCTAssertNotEqual(trait1.hashValue, trait3.hashValue)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testIsMatch() {
+        let manager = EntityManager()
+        let entity = manager.createEntity {
+            XComponent(1)
+            YComponent(2)
+            ZComponent(3)
+            WComponent(4)
         }
+
+        let noMatch = manager.assemblage(requiredComponents: XComponent.self, YComponent.self,
+                                         excludedComponents: ZComponent.self)
+        let isMatch = manager.assemblage(requiredComponents: XComponent.self, YComponent.self)
+
+        XCTAssertTrue(isMatch.canBecomeMember(entity: entity))
+        XCTAssertFalse(noMatch.canBecomeMember(entity: entity))
     }
 
 }

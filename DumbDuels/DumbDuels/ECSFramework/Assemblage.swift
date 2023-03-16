@@ -16,6 +16,7 @@ enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
 
 struct Assemblage<R> where R: AssemblageRequirementsManager {
     let traits: TraitSet
+    unowned let manager: EntityManager
 
     init(entityManager: EntityManager,
          requiredComponents: @autoclosure () -> R.ComponentTypes,
@@ -23,6 +24,122 @@ struct Assemblage<R> where R: AssemblageRequirementsManager {
         let required = R(requiredComponents())
         let traits = TraitSet(requiredComponents: required.componentTypes, excludedComponents: excludedComponents)
         self.traits = traits
+        self.manager = entityManager
         entityManager.onAssemblageInit(traits: traits)
+    }
+
+    var members: Set<EntityID> {
+        manager.members(withTraits: traits)
+    }
+
+    public var count: Int {
+        members.count
+    }
+
+    var isEmpty: Bool {
+        members.isEmpty
+    }
+
+    public func isMember(entity: Entity) -> Bool {
+        manager.isMember(entity, ofFamilyWithTraits: traits)
+    }
+
+    public func canBecomeMember(entity: Entity) -> Bool {
+        manager.canBecomeMember(entity, ofFamilyWithTraits: traits)
+    }
+}
+
+extension Assemblage: Equatable {
+    public static func == (lhs: Assemblage<R>, rhs: Assemblage<R>) -> Bool {
+        lhs.manager === rhs.manager && lhs.traits == rhs.traits
+    }
+}
+
+extension Assemblage: Sequence {
+    public func makeIterator() -> ComponentsIterator {
+        ComponentsIterator(assemblage: self)
+    }
+}
+
+extension Assemblage: LazySequenceProtocol {}
+
+extension Assemblage {
+    public struct ComponentsIterator: IteratorProtocol {
+        var memberIdsIterator: Set<EntityID>.Iterator
+        unowned let manager: EntityManager
+
+        public init(assemblage: Assemblage<R>) {
+            self.manager = assemblage.manager
+            memberIdsIterator = manager.members(withTraits: assemblage.traits).makeIterator()
+        }
+
+        public mutating func next() -> R.Components? {
+            guard let entityId: EntityID = memberIdsIterator.next() else {
+                return nil
+            }
+            return R.components(entityManager: manager, entityId: entityId)
+        }
+    }
+}
+
+extension Assemblage.ComponentsIterator: LazySequenceProtocol {}
+extension Assemblage.ComponentsIterator: Sequence {}
+
+extension Assemblage {
+    public var entities: EntityIterator {
+        EntityIterator(assemblage: self)
+    }
+
+    public struct EntityIterator: IteratorProtocol {
+        var memberIdsIterator: Set<EntityID>.Iterator
+        unowned let manager: EntityManager
+
+        public init(assemblage: Assemblage<R>) {
+            self.manager = assemblage.manager
+            memberIdsIterator = manager.members(withTraits: assemblage.traits).makeIterator()
+        }
+
+        public mutating func next() -> Entity? {
+            guard let entityId = memberIdsIterator.next() else {
+                return nil
+            }
+            return Entity(id: entityId)
+        }
+    }
+}
+
+extension Assemblage.EntityIterator: LazySequenceProtocol {}
+extension Assemblage.EntityIterator: Sequence {}
+
+extension Assemblage {
+    public var entityAndComponents: EntityComponentIterator {
+        EntityComponentIterator(assemblage: self)
+    }
+
+    public struct EntityComponentIterator: IteratorProtocol {
+        var memberIdsIterator: Set<EntityID>.Iterator
+        unowned let manager: EntityManager
+
+        public init(assemblage: Assemblage<R>) {
+            self.manager = assemblage.manager
+            memberIdsIterator = manager.members(withTraits: assemblage.traits).makeIterator()
+        }
+
+        public mutating func next() -> R.EntityAndComponents? {
+            guard let entityId = memberIdsIterator.next() else {
+                return nil
+            }
+            return R.entityAndComponents(entityManager: manager, entityId: entityId)
+        }
+    }
+}
+
+extension Assemblage.EntityComponentIterator: LazySequenceProtocol {}
+extension Assemblage.EntityComponentIterator: Sequence {}
+
+extension Assemblage {
+    @discardableResult
+    public func createMember(with components: R.Components) -> Entity {
+        R.createMember(entityManager: manager, components: components)
     }
 }

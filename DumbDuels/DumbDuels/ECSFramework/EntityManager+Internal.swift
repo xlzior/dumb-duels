@@ -33,8 +33,6 @@ extension EntityManager {
         // TODO: Remove this if we want to allow same component instance to be assigned to multiple entities
         guard componentsByType[componentTypeId] == nil ||
               componentsByType[componentTypeId]?[componentId] == nil else {
-            print("componentTypeId: \(componentTypeId)")
-            print("componentId: \(componentId)")
             assertionFailure("\(componentId) of type \(componentTypeId) is already assigned previously.")
             return false
         }

@@ -72,10 +72,10 @@ final class EntityDestroyTests: XCTestCase {
         XCTAssertNil(retrievedYComponent)
 
         // Ensure assemblage membership is correct
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage4.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage4.traits))
     }
 
     func testRemoveAllComponents() {
@@ -114,9 +114,9 @@ final class EntityDestroyTests: XCTestCase {
         XCTAssertNil(retrievedYComponent)
 
         // Ensure assemblage membership is correct
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage4.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage4.traits))
     }
 }

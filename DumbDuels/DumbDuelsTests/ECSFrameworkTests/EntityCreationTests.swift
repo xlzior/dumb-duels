@@ -29,9 +29,9 @@ final class EntityCreationTests: XCTestCase {
         XCTAssertEqual(retrievedComponent?.id, component.id)
         retrievedComponent = manager.getComponent(ofType: XComponent.typeId, for: entity.id)
         XCTAssertEqual(retrievedComponent?.id, component.id)
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
     }
 
     func testCreateEntityMultipleComponent() {
@@ -71,10 +71,10 @@ final class EntityCreationTests: XCTestCase {
         XCTAssertEqual(retrievedYComponent?.id, yComponent.id)
 
         // Ensure assemblage membership is correct
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage4.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage4.traits))
     }
 
     // Same test scenraio as testCreateOneEntityOneComponent
@@ -98,9 +98,9 @@ final class EntityCreationTests: XCTestCase {
         XCTAssertEqual(retrievedComponent?.id, component.id)
         retrievedComponent = manager.getComponent(ofType: XComponent.typeId, for: entity.id)
         XCTAssertEqual(retrievedComponent?.id, component.id)
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
     }
 
     func testAssignMultipleComponents() {
@@ -139,10 +139,10 @@ final class EntityCreationTests: XCTestCase {
         XCTAssertEqual(retrievedYComponent?.id, yComponent.id)
 
         // Ensure assemblage membership is correct
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-        XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
-        XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage4.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+        XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
+        XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage4.traits))
     }
 
     func testCreateMultipleEntitiesOneComponent() {
@@ -171,9 +171,9 @@ final class EntityCreationTests: XCTestCase {
             XCTAssertEqual(manager.getAllComponentTypes(for: entity.id), Set([XComponent.typeId]))
 
             // Ensure assemblage membership is correct
-            XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-            XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-            XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
+            XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+            XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+            XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
         }
     }
 
@@ -211,10 +211,10 @@ final class EntityCreationTests: XCTestCase {
             XCTAssertEqual(retrievedXComponent?.x, retrievedYComponent?.y)
 
             // Ensure assemblage membership is correct
-            XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage1.traits))
-            XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage2.traits))
-            XCTAssertTrue(manager.isMember(entity, ofFamilyWithTraits: assemblage3.traits))
-            XCTAssertFalse(manager.isMember(entity, ofFamilyWithTraits: assemblage4.traits))
+            XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage1.traits))
+            XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage2.traits))
+            XCTAssertTrue(manager.isMember(entity, ofAssemblageWithTraits: assemblage3.traits))
+            XCTAssertFalse(manager.isMember(entity, ofAssemblageWithTraits: assemblage4.traits))
         }
     }
 }

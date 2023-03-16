@@ -77,7 +77,7 @@ extension EntityManager {
         }
 
         // Is **previously** a member
-        let isMember = isMember(entityId, ofFamilyWithTraits: traits)
+        let isMember = isMember(entityId, ofAssemblageWithTraits: traits)
         if !exists(entity: entityId) && isMember {
             // Probably reached here after destroyed(entityId) is called
             remove(entityId: entityId, fromAssemblageWithTraits: traits)

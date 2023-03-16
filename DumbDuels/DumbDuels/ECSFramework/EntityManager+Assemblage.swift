@@ -12,7 +12,7 @@ extension EntityManager {
         assemblageEntityMap.keys.count
     }
 
-    func canBecomeMember(_ entity: Entity, ofFamilyWithTraits traits: TraitSet) -> Bool {
+    func canBecomeMember(_ entity: Entity, ofAssemblageWithTraits traits: TraitSet) -> Bool {
         guard let componentTypeIds = getAllComponentTypes(for: entity.id) else {
             assertionFailure("Test canBecomeMember failure: Entity \(entity.id) does not exist")
             return false
@@ -24,11 +24,11 @@ extension EntityManager {
         assemblageEntityMap[traits] ?? Set()
     }
 
-    func isMember(_ entity: Entity, ofFamilyWithTraits traits: TraitSet) -> Bool {
-        isMember(entity.id, ofFamilyWithTraits: traits)
+    func isMember(_ entity: Entity, ofAssemblageWithTraits traits: TraitSet) -> Bool {
+        isMember(entity.id, ofAssemblageWithTraits: traits)
     }
 
-    func isMember(_ entityId: EntityID, ofFamilyWithTraits traits: TraitSet) -> Bool {
+    func isMember(_ entityId: EntityID, ofAssemblageWithTraits traits: TraitSet) -> Bool {
         members(withTraits: traits).contains(entityId)
     }
 

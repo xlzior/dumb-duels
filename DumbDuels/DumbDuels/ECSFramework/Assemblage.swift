@@ -103,7 +103,7 @@ extension Assemblage {
             guard let entityId = memberIdsIterator.next() else {
                 return nil
             }
-            return Entity(id: entityId)
+            return Entity(id: entityId, manager: self.manager)
         }
     }
 }

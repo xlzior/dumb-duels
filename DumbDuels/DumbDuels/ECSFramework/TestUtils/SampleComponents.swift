@@ -7,23 +7,33 @@
 // swiftlint:disable identifier_name
 import Foundation
 
-class XComponent: Component {
+class XComponent: ComponentInitializable {
     var id: ComponentID
     var x: Int
 
     init(_ x: Int) {
         self.x = x
-        self.id = ComponentID()
+        id = ComponentID()
+    }
+
+    required init() {
+        x = 1
+        id = ComponentID()
     }
 }
 
-class YComponent: Component {
+class YComponent: ComponentInitializable {
     var id: ComponentID
     var y: Int
 
     init(_ y: Int) {
         self.y = y
         self.id = ComponentID()
+    }
+
+    required init() {
+        y = 1
+        id = ComponentID()
     }
 }
 

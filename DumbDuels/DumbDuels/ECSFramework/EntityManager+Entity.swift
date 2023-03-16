@@ -12,7 +12,7 @@ extension EntityManager {
     func createEntity() -> Entity {
         let entityId = nextEntityId()
         entityComponentMap[entityId] = []
-        return Entity(id: entityId)
+        return Entity(id: entityId, manager: self)
     }
 
     // Needed for Assemblage generated file
@@ -80,7 +80,7 @@ extension EntityManager {
                 guard let entityId = iter.next() else {
                     return nil
                 }
-                return Entity(id: entityId)
+                return Entity(id: entityId, manager: entityManager)
             }
         }
 

@@ -27,7 +27,7 @@ struct Requires1<Component1>: AssemblageRequirementsManager where Component1: Co
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         return (entity, component1)
     }
@@ -95,7 +95,7 @@ struct Requires2<Component1, Component2>: AssemblageRequirementsManager where Co
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         return (entity, component1, component2)
@@ -167,7 +167,7 @@ struct Requires3<Component1, Component2, Component3>: AssemblageRequirementsMana
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -243,7 +243,7 @@ struct Requires4<Component1, Component2, Component3, Component4>: AssemblageRequ
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -323,7 +323,7 @@ struct Requires5<Component1, Component2, Component3, Component4, Component5>: As
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -407,7 +407,7 @@ struct Requires6<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -495,7 +495,7 @@ struct Requires7<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6, Component7) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -587,7 +587,7 @@ struct Requires8<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8) {
-        let entity: Entity = Entity(id: entityId)
+        let entity: Entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!

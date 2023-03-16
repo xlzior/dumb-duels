@@ -86,6 +86,7 @@ final class EntityCreationTests: XCTestCase {
         let assemblage3 = manager.assemblage(requiredComponents: XComponent.self, YComponent.self)
         let component = XComponent(1)
         let entity = manager.createEntity()
+        // entity.assign(component: component)
         manager.assign(component: component, to: entity)
 
         XCTAssertEqual(manager.numEntities, 1)
@@ -113,6 +114,8 @@ final class EntityCreationTests: XCTestCase {
         let yComponent = YComponent(2)
         let entity = manager.createEntity()
         let components: [Component] = [xComponent, yComponent]
+        // entity.assign(component: xComponent)
+        // entity.assign(component: yComponent)
         manager.assign(components: components, to: entity)
 
         // Ensure entity, components and families setup properly into manager

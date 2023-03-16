@@ -153,6 +153,7 @@
 		7B2B292729B82BE000281FC7 /* DumbDuels */ = {
 			isa = PBXGroup;
 			children = (
+				A7E439C929C2D49A00027AC6 /* GameManager */,
 				8C35845929BF3CFD00BAE8C5 /* Utils */,
 				8C35844A29BF297000BAE8C5 /* ECSFramework */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
@@ -254,6 +255,30 @@
 				8C35847829C177DE00BAE8C5 /* SampleComponents.swift */,
 			);
 			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		A7E439C929C2D49A00027AC6 /* GameManager */ = {
+			isa = PBXGroup;
+			children = (
+				A7E439D029C2ED1A00027AC6 /* Components */,
+			);
+			path = GameManager;
+			sourceTree = "<group>";
+		};
+		A7E439D029C2ED1A00027AC6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A7E439D429C2EF5C00027AC6 /* PositionComponent.swift */,
+				A7E439D629C2EF6B00027AC6 /* RotationComponent.swift */,
+				A7E439D829C2EFD100027AC6 /* SizeComponent.swift */,
+				A7E439DA29C2F0FF00027AC6 /* SpriteComponent.swift */,
+				A7E439DC29C2F16B00027AC6 /* ScoreComponent.swift */,
+				A7E439DE29C2F67D00027AC6 /* HoldingAxeComponent.swift */,
+				A7E439E029C2F68800027AC6 /* PlayerComponent.swift */,
+				A7E439E229C2F68F00027AC6 /* AxeComponent.swift */,
+				A7E439E429C2F6E100027AC6 /* PlatformComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,16 +445,24 @@
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
+				A7E439E529C2F6E100027AC6 /* PlatformComponent.swift in Sources */,
+				A7E439DD29C2F16B00027AC6 /* ScoreComponent.swift in Sources */,
 				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
+				A7E439E329C2F68F00027AC6 /* AxeComponent.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
 				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
+				A7E439E129C2F68800027AC6 /* PlayerComponent.swift in Sources */,
+				A7E439D529C2EF5C00027AC6 /* PositionComponent.swift in Sources */,
+				A7E439DB29C2F0FF00027AC6 /* SpriteComponent.swift in Sources */,
+				A7E439DF29C2F67D00027AC6 /* HoldingAxeComponent.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
+				A7E439D929C2EFD100027AC6 /* SizeComponent.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */,
 				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,

@@ -154,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				A7E439C929C2D49A00027AC6 /* GameManager */,
+				7BA7EB7B29C2D4470096457F /* Game */,
 				7BA7EB6C29C2CCF40096457F /* Events */,
 				8C35845929BF3CFD00BAE8C5 /* Utils */,
 				8C35844A29BF297000BAE8C5 /* ECSFramework */,
@@ -195,6 +196,41 @@
 			path = Stencils;
 			sourceTree = "<group>";
 		};
+		7BA7EB7B29C2D4470096457F /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EB7E29C2D74D0096457F /* Systems */,
+				7BA7EB7C29C2D4540096457F /* GameManager.swift */,
+				7BA7EB8529C2F1770096457F /* Events */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		7BA7EB7E29C2D74D0096457F /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EB7F29C2D7660096457F /* PlayerSystem.swift */,
+				7BA7EB8629C2F9430096457F /* AxeSystem.swift */,
+				7BA7EB8129C2D76E0096457F /* ScoreSystem.swift */,
+				7BA7EB8329C2D7760096457F /* RenderSystem.swift */,
+				7BA7EB9429C30E020096457F /* PhysicsSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		7BA7EB8529C2F1770096457F /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				7BA7EB8829C2F95D0096457F /* ButtonPressEvent.swift */,
+				7BA7EB8A29C2FFD60096457F /* ThrowAxeEvent.swift */,
+				7BA7EB8C29C2FFE40096457F /* JumpEvent.swift */,
+				7BA7EB8E29C300060096457F /* MoveEvent.swift */,
+				7BA7EB9029C300120096457F /* CollisionEvent.swift */,
+				7BA7EB9229C301830096457F /* EventPriority.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +242,7 @@
 				8C35844F29BF29BD00BAE8C5 /* Component.swift */,
 				8C35845529BF2FBF00BAE8C5 /* ComponentID.swift */,
 				8C35845329BF2DCE00BAE8C5 /* ComponentTypeID.swift */,
+				7BA7EB7529C2D0D40096457F /* System.swift */,
 				8C35846229BF4F9900BAE8C5 /* Assemblage.swift */,
 				8C35846A29C0856200BAE8C5 /* AssemblageRequirementsManager.swift */,
 				8C35845729BF3BCC00BAE8C5 /* TraitSet.swift */,
@@ -445,17 +482,22 @@
 				8C35848929C32E9C00BAE8C5 /* ComponentProvider.swift in Sources */,
 				8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */,
 				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
+				7BA7EB7A29C2D2460096457F /* SystemManager.swift in Sources */,
+				7BA7EB7629C2D0D40096457F /* System.swift in Sources */,
 				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
 				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
-				7BA7EB7129C2CCF40096457F /* EventConsumer.swift in Sources */,
 				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
+				7BA7EB9329C301830096457F /* EventPriority.swift in Sources */,
 				7BA7EB6429C2CCB80096457F /* Heap.swift in Sources */,
+				7BA7EB8B29C2FFD60096457F /* ThrowAxeEvent.swift in Sources */,
+				7BA7EB8F29C300060096457F /* MoveEvent.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				A7E439E529C2F6E100027AC6 /* PlatformComponent.swift in Sources */,
 				A7E439DD29C2F16B00027AC6 /* ScoreComponent.swift in Sources */,
 				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
+				7BA7EB8729C2F9430096457F /* AxeSystem.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
 				A7E439E329C2F68F00027AC6 /* AxeComponent.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
@@ -465,14 +507,22 @@
 				A7E439DB29C2F0FF00027AC6 /* SpriteComponent.swift in Sources */,
 				A7E439DF29C2F67D00027AC6 /* HoldingAxeComponent.swift in Sources */,
 				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
+				7BA7EB8429C2D7760096457F /* RenderSystem.swift in Sources */,
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
+				7BA7EB9129C300120096457F /* CollisionEvent.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				7BA7EB8029C2D7660096457F /* PlayerSystem.swift in Sources */,
 				7BA7EB6529C2CCB80096457F /* PriorityQueue.swift in Sources */,
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
+				7BA7EB8929C2F95D0096457F /* ButtonPressEvent.swift in Sources */,
+				7BA7EB8229C2D76E0096457F /* ScoreSystem.swift in Sources */,
+				7BA7EB8D29C2FFE40096457F /* JumpEvent.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				A7E439D929C2EFD100027AC6 /* SizeComponent.swift in Sources */,
 				7BA7EB7029C2CCF40096457F /* EventManager.swift in Sources */,
+				7BA7EB7D29C2D4540096457F /* GameManager.swift in Sources */,
+				7BA7EB9529C30E020096457F /* PhysicsSystem.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				8C35848729C2FADF00BAE8C5 /* FSM.swift in Sources */,
 				8C35846129BF3FDC00BAE8C5 /* EntityManager+Internal.swift in Sources */,

@@ -6,12 +6,16 @@
 //
 
 private func sort(lhs: Event, rhs: Event) -> Bool {
-    lhs.priority < rhs.priority
+    lhs.priority.rawValue < rhs.priority.rawValue
 }
 
 struct EventManager {
-    // TODO: needs to have a reference to the systems manager
+    private var systems: SystemManager
     private var events = PriorityQueue<Event>(sort: sort)
+
+    init(systems: SystemManager) {
+        self.systems = systems
+    }
 
     mutating func fire(_ event: Event) {
         events.enqueue(event)
@@ -23,8 +27,7 @@ struct EventManager {
             return false
         }
 
-        // TODO: pass in systems manager to event, so event can effect changes
-        event.execute()
+        event.execute(with: systems)
 
         return true
     }

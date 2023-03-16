@@ -14,6 +14,7 @@ public class PhysicsBody {
     public init(rectangleOf size: CGSize, center: CGPoint, physicsDetails: PhysicsDetails) {
         let body = SKPhysicsBody(rectangleOf: size, center: center)
         self.node = SKNode()
+        self.node.position = center
         self.node.physicsBody = body
         updateWith(physicsDetails: physicsDetails)
     }
@@ -21,11 +22,12 @@ public class PhysicsBody {
     public init(circleOf radius: CGFloat, center: CGPoint, physicsDetails: PhysicsDetails) {
         let body = SKPhysicsBody(circleOfRadius: radius, center: center)
         self.node = SKNode()
+        self.node.position = center
         self.node.physicsBody = body
         updateWith(physicsDetails: physicsDetails)
     }
 
-    func updateWith(physicsDetails: PhysicsDetails) {
+    private func updateWith(physicsDetails: PhysicsDetails) {
         mass = physicsDetails.mass
         velocity = physicsDetails.velocity
         affectedByGravity = physicsDetails.affectedByGravity
@@ -50,6 +52,11 @@ public class PhysicsBody {
     public var position: CGPoint {
         get { node.position }
         set { node.position = newValue }
+    }
+
+    public var zRotation: CGFloat {
+        get { node.zRotation }
+        set { node.zRotation = newValue }
     }
 
     public var mass: CGFloat {

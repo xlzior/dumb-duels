@@ -19,6 +19,7 @@ public struct PhysicsDetails {
     let categoryBitMask: UInt32
     let collisionBitMask: UInt32
     let contactTestBitMask: UInt32
+    let zRotation: CGFloat
 
     public init(mass: CGFloat,
                 velocity: CGVector,
@@ -30,7 +31,8 @@ public struct PhysicsDetails {
                 friction: CGFloat = 0.2,
                 categoryBitMask: UInt32 = 0xFFFFFFFF,
                 collisionBitMask: UInt32 = 0xFFFFFFFF,
-                contactTestBitMask: UInt32 = 0x00000000) {
+                contactTestBitMask: UInt32 = 0x00000000,
+                zRotation: CGFloat = .zero) {
         self.mass = mass
         self.velocity = velocity
         self.affectedByGravity = affectedByGravity
@@ -42,5 +44,6 @@ public struct PhysicsDetails {
         self.categoryBitMask = categoryBitMask
         self.collisionBitMask = collisionBitMask
         self.contactTestBitMask = contactTestBitMask
+        self.zRotation = zRotation
     }
 }

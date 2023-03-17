@@ -55,7 +55,7 @@ public class GameScene {
               bodyIDPhysicsMap[id] == nil,
               physicsBodyIDMap[bodyToAdd] == nil,
               skNodePhysicsBodyMap[bodyToAdd.node] == nil else {
-            assertionFailure("Trying to add an entity that already exists.")
+            assertionFailure("Trying to add an id that already exists.")
             return
         }
         baseGameScene.addChild(bodyToAdd.node)
@@ -68,7 +68,7 @@ public class GameScene {
         guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
               bodyIDPhysicsMap.removeValue(forKey: physicsBody) != nil,
               skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
-            assertionFailure("Trying to remove an entity that does not exist.")
+            assertionFailure("Trying to remove an id that does not exist.")
             return
         }
         baseGameScene.removeChildren(in: [physicsBody.node])
@@ -77,7 +77,8 @@ public class GameScene {
     func getBodyID(for skPhysicsBody: SKPhysicsBody) -> BodyID? {
         if let skNode = skPhysicsBody.node,
            let physicsBody = skNodePhysicsBodyMap[skNode],
-           let bodyID = physicsBodyIDMap[physicsBody] {
+           let bodyID = physicsBodyIDMap[physicsBody],
+           bodyIDPhysicsMap[bodyID] == physicsBody {
             return bodyID
         }
         assertionFailure("Could not find corresponding BodyID for SKPhysicsBody")
@@ -88,21 +89,21 @@ public class GameScene {
         guard let physicsBody = bodyIDPhysicsMap[id],
               physicsBodyIDMap[physicsBody] != nil,
               skNodePhysicsBodyMap[physicsBody.node] != nil else {
-            assertionFailure("Trying to apply impulse to an entity that does not exist.")
+            assertionFailure("Trying to apply impulse to an id that does not exist.")
             return
         }
         physicsBody.applyImpulse(impulse)
     }
 
     public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
-        for (entity, physicsBody) in updatedBodyIDPhysicsMap {
-            guard bodyIDPhysicsMap[entity] != nil,
+        for (id, physicsBody) in updatedBodyIDPhysicsMap {
+            guard bodyIDPhysicsMap[id] != nil,
                   physicsBodyIDMap[physicsBody] != nil,
                   skNodePhysicsBodyMap[physicsBody.node] != nil else {
-                assertionFailure("Trying to sync entity that does not exist.")
+                assertionFailure("Trying to sync for an id that does not exist.")
                 continue
             }
-            bodyIDPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
+            bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)
         }
     }
 
@@ -110,7 +111,7 @@ public class GameScene {
         guard bodyIDPhysicsMap[id] != nil,
               physicsBodyIDMap[physicsBody] != nil,
               skNodePhysicsBodyMap[physicsBody.node] != nil else {
-            assertionFailure("Trying to sync entity that does not exist.")
+            assertionFailure("Trying to sync for an id that does not exist.")
             return
         }
         bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)

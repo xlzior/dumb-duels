@@ -11,7 +11,7 @@ struct ButtonPressEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let inputSystem: InputSystem = systems.get() else {
+        guard let inputSystem = systems.get(ofType: InputSystem.self) else {
             return
         }
 

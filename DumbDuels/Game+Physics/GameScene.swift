@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias EntityID = String
+public typealias EntityID = AnyHashable
 
 public class GameScene {
     private(set) var baseGameScene: BaseGameScene

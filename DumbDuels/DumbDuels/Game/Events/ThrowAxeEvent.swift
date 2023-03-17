@@ -19,8 +19,9 @@ struct ThrowAxeEvent: Event {
             return
         }
 
-        physicsSystem.applyImpulse(
-            faceDirection.rawValue * throwStrength * Constants.throwForce,
-            to: entityId)
+        let impulse = CGVector(dx: faceDirection.rawValue * throwStrength * Constants.throwForce.dx,
+                               dy: throwStrength * Constants.throwForce.dy)
+
+        physicsSystem.applyImpulse(impulse, to: entityId)
     }
 }

@@ -7,11 +7,11 @@
 
 import SpriteKit
 
-public typealias EntityID = AnyHashable
+public typealias BodyID = AnyHashable
 
 public class GameScene {
     private(set) var baseGameScene: BaseGameScene
-    public private(set) var entityPhysicsMap: [EntityID: PhysicsBody]
+    public private(set) var entityPhysicsMap: [BodyID: PhysicsBody]
 
     public var gameSceneDelegate: GameSceneDelegate? {
         get { baseGameScene.gameSceneDelegate }
@@ -33,14 +33,14 @@ public class GameScene {
         self.baseGameScene.gameScene = self
     }
 
-    public func setup(entityPhysicsMap: [EntityID: PhysicsBody]) {
+    public func setup(entityPhysicsMap: [BodyID: PhysicsBody]) {
         self.entityPhysicsMap = entityPhysicsMap
         for (_, physicsBody) in entityPhysicsMap {
             baseGameScene.addChild(physicsBody.node)
         }
     }
 
-    public func addBody(for entity: EntityID, bodyToAdd: PhysicsBody) {
+    public func addBody(for entity: BodyID, bodyToAdd: PhysicsBody) {
         guard entityPhysicsMap[entity] == nil else {
             assertionFailure("Trying to add an entity that already exists.")
             return
@@ -49,7 +49,7 @@ public class GameScene {
         entityPhysicsMap[entity] = bodyToAdd
     }
 
-    public func removeBody(for entity: EntityID) {
+    public func removeBody(for entity: BodyID) {
         guard let physicsBody = entityPhysicsMap.removeValue(forKey: entity) else {
             assertionFailure("Trying to remove an entity that does not exist.")
             return
@@ -75,7 +75,7 @@ public class GameScene {
         entityPhysicsMap[entity]?.applyImpulse(impulse)
     }
 
-    public func sync(entityPhysicsMap: [EntityID: PhysicsBody]) {
+    public func sync(entityPhysicsMap: [BodyID: PhysicsBody]) {
         for (entity, physicsBody) in entityPhysicsMap {
             guard entityPhysicsMap[entity] != nil else {
                 assertionFailure("Trying to sync entity that does not exist.")
@@ -85,7 +85,7 @@ public class GameScene {
         }
     }
 
-    public func sync(_ physicsBody: PhysicsBody, for entity: EntityID) {
+    public func sync(_ physicsBody: PhysicsBody, for entity: BodyID) {
         guard entityPhysicsMap[entity] != nil else {
             assertionFailure("Trying to sync entity that does not exist.")
             return

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F67C6DF29BF3C7B009E0579 /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */; };
+		6F67C6F229C1714F009E0579 /* Simulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F129C1714F009E0579 /* Simulator.swift */; };
+		6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F729C176C9009E0579 /* GameScene.swift */; };
+		6F67C6FA29C180F0009E0579 /* GameSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */; };
+		6F67C6FE29C18BA3009E0579 /* PhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6FD29C18BA3009E0579 /* PhysicsContactDelegate.swift */; };
+		6F67C70029C19027009E0579 /* BaseGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C6FF29C19027009E0579 /* BaseGameScene.swift */; };
+		6F67C70229C1F4BC009E0579 /* PhysicsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C70129C1F4BC009E0579 /* PhysicsDetails.swift */; };
 		7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292829B82BE000281FC7 /* AppDelegate.swift */; };
 		7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */; };
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
@@ -101,6 +108,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
+		6F67C6F129C1714F009E0579 /* Simulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simulator.swift; sourceTree = "<group>"; };
+		6F67C6F729C176C9009E0579 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneDelegate.swift; sourceTree = "<group>"; };
+		6F67C6FD29C18BA3009E0579 /* PhysicsContactDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsContactDelegate.swift; sourceTree = "<group>"; };
+		6F67C6FF29C19027009E0579 /* BaseGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGameScene.swift; sourceTree = "<group>"; };
+		6F67C70129C1F4BC009E0579 /* PhysicsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsDetails.swift; sourceTree = "<group>"; };
 		7B2B292529B82BE000281FC7 /* DumbDuels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumbDuels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B292829B82BE000281FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,9 +220,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F67C6DA29BEDE15009E0579 /* Game+Physics */ = {
+			isa = PBXGroup;
+			children = (
+				6F67C6F129C1714F009E0579 /* Simulator.swift */,
+				6F67C6F729C176C9009E0579 /* GameScene.swift */,
+				6F67C6FF29C19027009E0579 /* BaseGameScene.swift */,
+				6F67C6F929C180F0009E0579 /* GameSceneDelegate.swift */,
+				6F67C6FD29C18BA3009E0579 /* PhysicsContactDelegate.swift */,
+				6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */,
+				6F67C70129C1F4BC009E0579 /* PhysicsDetails.swift */,
+			);
+			path = "Game+Physics";
+			sourceTree = "<group>";
+		};
 		7B2B291C29B82BE000281FC7 = {
 			isa = PBXGroup;
 			children = (
+				6F67C6DA29BEDE15009E0579 /* Game+Physics */,
 				7B2B292729B82BE000281FC7 /* DumbDuels */,
 				7B2B293E29B82BE300281FC7 /* DumbDuelsTests */,
 				7B2B294829B82BE300281FC7 /* DumbDuelsUITests */,
@@ -606,6 +635,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F67C70229C1F4BC009E0579 /* PhysicsDetails.swift in Sources */,
+				6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */,
+				6F67C6FE29C18BA3009E0579 /* PhysicsContactDelegate.swift in Sources */,
+				7B2B292D29B82BE000281FC7 /* ViewController.swift in Sources */,
+				6F67C6FA29C180F0009E0579 /* GameSceneDelegate.swift in Sources */,
+				6F67C70029C19027009E0579 /* BaseGameScene.swift in Sources */,
+				6F67C6DF29BF3C7B009E0579 /* PhysicsBody.swift in Sources */,
+				6F67C6F229C1714F009E0579 /* Simulator.swift in Sources */,
 				7BA7EBD729C36BBD0096457F /* SpriteComponent.swift in Sources */,
 				8C35848929C32E9C00BAE8C5 /* ComponentProvider.swift in Sources */,
 				7BA7EBE529C36BBD0096457F /* ThrowAxeEvent.swift in Sources */,
@@ -849,7 +886,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -882,7 +919,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -916,7 +953,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -943,7 +980,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -967,7 +1004,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsUITests";

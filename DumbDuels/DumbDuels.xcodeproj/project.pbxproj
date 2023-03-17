@@ -241,7 +241,8 @@
 				6F67C6DE29BF3C7B009E0579 /* PhysicsBody.swift */,
 				6F67C70129C1F4BC009E0579 /* PhysicsDetails.swift */,
 			);
-			path = "Game+Physics";
+			name = "Game+Physics";
+			path = "DumbDuels/Game+Physics";
 			sourceTree = "<group>";
 		};
 		7B2B291C29B82BE000281FC7 = {
@@ -313,7 +314,8 @@
 				7BA7EBBD29C36BBD0096457F /* GameManager.swift */,
 				A7E43A1029C4530400027AC6 /* GameController.swift */,
 			);
-			path = Game;
+			name = Game;
+			path = AxeGame;
 			sourceTree = "<group>";
 		};
 		7BA7EB9829C362960096457F /* Stencils */ = {

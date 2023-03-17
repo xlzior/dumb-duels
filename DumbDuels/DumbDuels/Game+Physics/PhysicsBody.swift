@@ -11,34 +11,47 @@ public class PhysicsBody {
     private(set) var node: SKNode
     private let assertionFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
 
-    public init(rectangleOf size: CGSize, center: CGPoint, physicsDetails: PhysicsDetails) {
-        let body = SKPhysicsBody(rectangleOf: size, center: center)
+    init(position: CGPoint = PhysicsEngineDefaults.position,
+         size: CGSize? = nil,
+         radius: CGFloat? = nil,
+         zRotation: CGFloat = PhysicsEngineDefaults.zRotation,
+         mass: CGFloat = PhysicsEngineDefaults.mass,
+         velocity: CGVector = PhysicsEngineDefaults.velocity,
+         affectedByGravity: Bool = PhysicsEngineDefaults.affectedByGravity,
+         linearDamping: CGFloat = PhysicsEngineDefaults.linearDamping,
+         isDynamic: Bool = PhysicsEngineDefaults.isDynamic,
+         allowsRotation: Bool = PhysicsEngineDefaults.allowsRotation,
+         restitution: CGFloat = PhysicsEngineDefaults.restitution,
+         friction: CGFloat = PhysicsEngineDefaults.friction,
+         categoryBitMask: UInt32 = PhysicsEngineDefaults.categoryBitMask,
+         collisionBitMask: UInt32 = PhysicsEngineDefaults.collisionBitMask,
+         contactBitMask: UInt32 = PhysicsEngineDefaults.contactBitMask
+        ) {
+        guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
+            assertionFailure("Please pass in only either a size to initialize a rectangle body or a radius to initialize a circle body")
+            return
+        }
+        var body: SKPhysicsBody
+        if let size = size {
+            body = SKPhysicsBody(rectangleOf: size, center: position)
+        } else if let radius = radius {
+            body = SKPhysicsBody(circleOfRadius: radius, center: position)
+        }
         self.node = SKNode()
-        self.node.position = center
         self.node.physicsBody = body
-        updateWith(physicsDetails: physicsDetails)
-    }
-
-    public init(circleOf radius: CGFloat, center: CGPoint, physicsDetails: PhysicsDetails) {
-        let body = SKPhysicsBody(circleOfRadius: radius, center: center)
-        self.node = SKNode()
-        self.node.position = center
-        self.node.physicsBody = body
-        updateWith(physicsDetails: physicsDetails)
-    }
-
-    private func updateWith(physicsDetails: PhysicsDetails) {
-        mass = physicsDetails.mass
-        velocity = physicsDetails.velocity
-        affectedByGravity = physicsDetails.affectedByGravity
-        linearDamping = physicsDetails.linearDamping
-        isDynamic = physicsDetails.isDynamic
-        allowsRotation = physicsDetails.allowsRotation
-        restitution = physicsDetails.restitution
-        friction = physicsDetails.friction
-        categoryBitMask = physicsDetails.categoryBitMask
-        collisionBitMask = physicsDetails.collisionBitMask
-        contactTestBitMask = physicsDetails.contactTestBitMask
+        self.position = position
+        self.zRotation = zRotation
+        self.mass = mass
+        self.velocity = velocity
+        self.affectedByGravity = affectedByGravity
+        self.linearDamping = linearDamping
+        self.isDynamic = isDynamic
+        self.allowsRotation = allowsRotation
+        self.restitution = restitution
+        self.friction = friction
+        self.categoryBitMask = categoryBitMask
+        self.collisionBitMask = collisionBitMask
+        self.contactTestBitMask = contactTestBitMask
     }
 
     func updateWith(newPhysicsBody: PhysicsBody) {
@@ -63,7 +76,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0
+                return PhysicsEngineDefaults.mass
             }
             return physicsBody.mass
         }
@@ -80,7 +93,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return CGVector.zero
+                return PhysicsEngineDefaults.velocity
             }
             return physicsBody.velocity
         }
@@ -97,7 +110,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return true
+                return PhysicsEngineDefaults.affectedByGravity
             }
             return physicsBody.affectedByGravity
         }
@@ -114,7 +127,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0.1
+                return PhysicsEngineDefaults.linearDamping
             }
             return physicsBody.linearDamping
         }
@@ -131,7 +144,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return true
+                return PhysicsEngineDefaults.isDynamic
             }
             return physicsBody.isDynamic
         }
@@ -148,7 +161,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return true
+                return PhysicsEngineDefaults.allowsRotation
             }
             return physicsBody.allowsRotation
         }
@@ -165,7 +178,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0.2
+                return PhysicsEngineDefaults.restitution
             }
             return physicsBody.restitution
         }
@@ -182,7 +195,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0.2
+                return PhysicsEngineDefaults.friction
             }
             return physicsBody.friction
         }
@@ -200,7 +213,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0xFFFFFFFF
+                return PhysicsEngineDefaults.categoryBitMask
             }
             return physicsBody.categoryBitMask
         }
@@ -220,7 +233,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0xFFFFFFFF
+                return PhysicsEngineDefaults.collisionBitMask
             }
             return physicsBody.collisionBitMask
         }
@@ -240,7 +253,7 @@ public class PhysicsBody {
         get {
             guard let physicsBody = node.physicsBody else {
                 assertionFailure(assertionFailureMessage)
-                return 0x00000000
+                return PhysicsEngineDefaults.contactBitMask
             }
             return physicsBody.contactTestBitMask
         }

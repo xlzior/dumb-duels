@@ -9,6 +9,7 @@ import UIKit
 
 class ScoreLabel: UILabel {
     var isPlayerOne: Bool
+    var playerID: EntityID?
 
     init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0) {
         self.isPlayerOne = isPlayerOne

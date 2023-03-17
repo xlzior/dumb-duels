@@ -11,10 +11,8 @@ class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
 
     var gameView: UIView!
-    var playerOneButton: UIButton!
-    var playerTwoButton: UIButton!
-    var playerOneScore: ScoreLabel!
-    var playerTwoScore: ScoreLabel!
+    var playerButtons: [PlayerButton] = []
+    var playerScores: [ScoreLabel] = []
 
     var gameManager: GameManager?
 
@@ -25,48 +23,60 @@ class GameViewController: UIViewController {
         setUpGameManager()
     }
 
-    func updateScore() {
-
-    }
-    
-    func render() {
-        
-    }
-
     private func setUpGameView() {
         gameView = GameAreaView(screenSize: screenSize)
         view.addSubview(gameView)
 
-        playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true)
-        playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false)
+        let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true)
+        let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false)
+        playerButtons.append(contentsOf: [playerOneButton, playerTwoButton])
         view.addSubview(playerOneButton)
         view.addSubview(playerTwoButton)
 
-        playerOneScore = ScoreLabel(screenSize: screenSize, isPlayerOne: true)
-        playerTwoScore = ScoreLabel(screenSize: screenSize, isPlayerOne: false)
+        let playerOneScore = ScoreLabel(screenSize: screenSize, isPlayerOne: true)
+        let playerTwoScore = ScoreLabel(screenSize: screenSize, isPlayerOne: false)
+        playerScores.append(contentsOf: [playerOneScore, playerTwoScore])
         view.addSubview(playerOneScore)
         view.addSubview(playerTwoScore)
     }
 
     private func setUpGestureRecognisers() {
-        for playerButton in [playerOneButton, playerTwoButton] {
-            let tapRecognizer = UITapGestureRecognizer(target: playerButton, action: #selector(buttonTapped))
+        for playerButton in playerButtons {
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
             let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buttonLongPressed))
 
-            playerButton?.addGestureRecognizer(tapRecognizer)
-            playerButton?.addGestureRecognizer(longPressRecognizer)
+            playerButton.addGestureRecognizer(tapRecognizer)
+            playerButton.addGestureRecognizer(longPressRecognizer)
         }
     }
 
     private func setUpGameManager() {
-        gameManager = GameManager(gameController: self)
+        gameManager = GameManager(gameController: self, screenSize: screenSize)
     }
 
     @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {
-        assertionFailure("buttonTapped method should not be called")
+        guard let playerID = (tapRecognizer.view as? PlayerButton)?.playerID else {
+            return
+        }
+        gameManager?.handleButtonPress(for: playerID)
     }
 
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
         assertionFailure("buttonLongPressed method should not be called")
+    }
+}
+
+extension GameViewController: GameController {
+    func registerPlayerID(playerIndex: Int, playerEntityID: EntityID) {
+        playerButtons[playerIndex].playerID = playerEntityID
+        playerScores[playerIndex].playerID = playerEntityID
+    }
+
+    func updateScore() {
+
+    }
+
+    func render() {
+
     }
 }

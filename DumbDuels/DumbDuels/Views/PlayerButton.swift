@@ -10,6 +10,7 @@ import UIKit
 class PlayerButton: UIButton {
     let buttonAspectRatio = 1.8
     var isPlayerOne: Bool
+    var playerID: EntityID?
 
     init(screenSize: CGSize, isPlayerOne: Bool) {
         self.isPlayerOne = isPlayerOne
@@ -42,16 +43,6 @@ class PlayerButton: UIButton {
             width: frame.width,
             height: frame.height
         )
-    }
-
-    @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {
-        print("Tap", self.isPlayerOne)
-        // TODO: Send ButtonTappedEvent
-    }
-
-    @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
-        print("Long press", self.isPlayerOne)
-        // TODO: Send ButtonLongPressedEvent
     }
 
     @available(*, unavailable)

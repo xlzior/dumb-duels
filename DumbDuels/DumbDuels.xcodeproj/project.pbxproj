@@ -89,6 +89,7 @@
 		A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0929C37AD600027AC6 /* PlayerButton.swift */; };
 		A7E43A0D29C37B9B00027AC6 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0C29C37B9B00027AC6 /* Colour.swift */; };
 		A7E43A0F29C440C300027AC6 /* ScoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0E29C440C300027AC6 /* ScoreLabel.swift */; };
+		A7E43A1129C4530400027AC6 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1029C4530400027AC6 /* GameController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		A7E43A0929C37AD600027AC6 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		A7E43A0C29C37B9B00027AC6 /* Colour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		A7E43A0E29C440C300027AC6 /* ScoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLabel.swift; sourceTree = "<group>"; };
+		A7E43A1029C4530400027AC6 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 				7BA7EBCE29C36BBD0096457F /* Events */,
 				A7E439FB29C374E800027AC6 /* EntityCreator.swift */,
 				7BA7EBBD29C36BBD0096457F /* GameManager.swift */,
+				A7E43A1029C4530400027AC6 /* GameController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
 				7BA7EBE829C36BBD0096457F /* EventPriority.swift in Sources */,
 				A7E43A0F29C440C300027AC6 /* ScoreLabel.swift in Sources */,
+				A7E43A1129C4530400027AC6 /* GameController.swift in Sources */,
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
 				A7E43A0A29C37AD600027AC6 /* GameAreaView.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,

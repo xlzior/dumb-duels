@@ -66,7 +66,7 @@ public class GameScene {
 
     public func removeBody(for id: BodyID) {
         guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
-              bodyIDPhysicsMap.removeValue(forKey: physicsBody) != nil,
+              physicsBodyIDMap.removeValue(forKey: physicsBody) != nil,
               skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
             assertionFailure("Trying to remove an id that does not exist.")
             return

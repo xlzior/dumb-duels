@@ -9,10 +9,12 @@ import UIKit
 
 class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
+    var screenOffset: CGPoint = CGPoint()
 
     var gameView: UIView!
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
+    var entityViews: [EntityID: UIImageView] = [:]
 
     var gameManager: GameManager?
 
@@ -25,6 +27,7 @@ class GameViewController: UIViewController {
 
     private func setUpGameView() {
         gameView = GameAreaView(screenSize: screenSize)
+        screenOffset = gameView.frame.origin
         view.addSubview(gameView)
 
         let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true)
@@ -51,7 +54,8 @@ class GameViewController: UIViewController {
     }
 
     private func setUpGameManager() {
-        gameManager = GameManager(gameController: self, screenSize: screenSize)
+        let details = RenderSystemDetails(gameController: self, screenSize: screenSize, screenOffset: screenOffset)
+        gameManager = GameManager(renderSystemDetails: details)
     }
 
     @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {
@@ -62,7 +66,7 @@ class GameViewController: UIViewController {
     }
 
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
-        assertionFailure("buttonLongPressed method should not be called")
+        assertionFailure("buttonLongPressed method not implemented for this sprint")
     }
 }
 
@@ -72,11 +76,49 @@ extension GameViewController: GameController {
         playerScores[playerIndex].playerID = playerEntityID
     }
 
-    func updateScore() {
-
+    func addView(for entityID: EntityID, with details: RenderDetails) {
+        let entityView = createView(details)
+        entityViews[entityID] = entityView
+        view.addSubview(entityView)
     }
 
-    func render() {
+    func updateView(for entityID: EntityID, with details: RenderDetails) {
+        guard let entityViewToUpdate = entityViews[entityID] else {
+            return
+        }
+        setUpView(entityViewToUpdate, details)
+    }
 
+    func removeViews(for entityIDs: Set<EntityID>) {
+        for entityID in entityIDs {
+            removeView(for: entityID)
+        }
+    }
+
+    private func createView(_ details: RenderDetails) -> UIImageView {
+        let entityView = setUpView(UIImageView(frame: CGRect()), details)
+        return entityView
+    }
+
+    @discardableResult
+    private func setUpView(_ imageView: UIImageView, _ details: RenderDetails) -> UIImageView {
+        imageView.image = UIImage(named: details.spriteName)
+        imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
+        imageView.center = details.centerPosition
+        imageView.transform = CGAffineTransform(rotationAngle: details.rotation)
+        return imageView
+    }
+
+    private func removeView(for entityID: EntityID) {
+        guard let entityViewToRemove = entityViews[entityID] else {
+            return
+        }
+        entityViewToRemove.removeFromSuperview()
+    }
+
+    func updateScore(for entityID: EntityID, with newScore: Int) {
+        for score in playerScores where score.playerID == entityID {
+            score.text = String(newScore)
+        }
     }
 }

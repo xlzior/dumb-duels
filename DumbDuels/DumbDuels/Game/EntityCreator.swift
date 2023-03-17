@@ -11,11 +11,10 @@ class EntityCreator {
     private let entityManager: EntityManager
 
     init(entityManager: EntityManager) {
-        self.entityManager = EntityManager()
+        self.entityManager = entityManager
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
-//        Create Axe with offset from player, depending on the side that the player is facing
         let axe = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -26,9 +25,26 @@ class EntityCreator {
         return axe
     }
 
-    func createPlayer(at position: CGPoint, of size: CGSize, holding axeEntityID: EntityID) -> Entity {
+    func createAxe(withHorizontalOffset offset: CGFloat, from position: CGPoint, of size: CGSize) -> Entity {
+        let axePosition = CGPoint(x: position.x + offset, y: position.y)
+        let axe = entityManager.createEntity {
+            PositionComponent(position: axePosition)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "axe")
+            AxeComponent()
+        }
+        return axe
+    }
+
+    func createPlayer(
+        at position: CGPoint,
+        facing faceDirection: FaceDirection,
+        of size: CGSize,
+        holding axeEntityID: EntityID
+    ) -> Entity {
         let player = entityManager.createEntity {
-            PositionComponent(position: position)
+            PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "player")
@@ -50,7 +66,19 @@ class EntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "platform")
-            AxeComponent()
+            PlatformComponent()
+        }
+        return platform
+    }
+
+    func createPlatform(withVerticalOffset offset: CGFloat, from position: CGPoint, of size: CGSize) -> Entity {
+        let platformPosition = CGPoint(x: position.x, y: position.y + offset)
+        let platform = entityManager.createEntity {
+            PositionComponent(position: platformPosition)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "platform")
+            PlatformComponent()
         }
         return platform
     }

@@ -8,8 +8,7 @@
 import UIKit
 
 class GameManager {
-    private let gameController: GameController
-    private let screenSize: CGSize
+    private let renderSystemDetails: RenderSystemDetails
 
     private let entityManager: EntityManager
     private let entityCreator: EntityCreator
@@ -17,9 +16,8 @@ class GameManager {
     private let systemManager: SystemManager
     private let eventManager: EventManager
 
-    init(gameController: GameController, screenSize: CGSize) {
-        self.gameController = gameController
-        self.screenSize = screenSize
+    init(renderSystemDetails: RenderSystemDetails) {
+        self.renderSystemDetails = renderSystemDetails
 
         let entityManager = EntityManager()
         let entityCreator = EntityCreator(entityManager: entityManager)
@@ -38,14 +36,30 @@ class GameManager {
 
     private func setUpEntities() {
         for playerIndex in 0...1 {
-            let platform = entityCreator.createPlatform(at: Positions.platforms[playerIndex], of: Sizes.platform)
-            let axe = entityCreator.createAxe(at: Positions.axes[playerIndex], of: Sizes.axe)
+            let playerPosition = Positions.players[playerIndex]
+            let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
+
+            let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
+            let platform = entityCreator.createPlatform(
+                withVerticalOffset: verticalOffset,
+                from: playerPosition,
+                of: Sizes.platform
+            )
+
+            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2) * faceDirection.rawValue
+            let axe = entityCreator.createAxe(
+                withHorizontalOffset: horizontalOffset,
+                from: playerPosition,
+                of: Sizes.axe
+            )
+
             let player = entityCreator.createPlayer(
-                at: Positions.players[playerIndex],
+                at: playerPosition,
+                facing: faceDirection,
                 of: Sizes.player,
                 holding: axe.id
             )
-            gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
+            renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
     }
 
@@ -54,8 +68,7 @@ class GameManager {
         systemManager.register(RenderSystem(
             for: entityManager,
             eventManger: eventManager,
-            gameController: gameController,
-            screenSize: screenSize
+            details: renderSystemDetails
         ))
     }
 
@@ -64,6 +77,7 @@ class GameManager {
     }
 
     private func startGame() {
+        // TODO: replace with physics system, this is for display initial positions (for testing only)
         guard let renderSystem = systemManager.get(ofType: RenderSystem.self) else {
             return
         }

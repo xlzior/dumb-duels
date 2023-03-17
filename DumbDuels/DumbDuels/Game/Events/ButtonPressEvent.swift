@@ -11,8 +11,7 @@ struct ButtonPressEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        // TODO: WJ FIX PLS < 3
-        guard let playerSystem: PlayerSystem = systems.get() else {
+        guard let playerSystem = systems.get(ofType: PlayerSystem.self) else {
             return
         }
 

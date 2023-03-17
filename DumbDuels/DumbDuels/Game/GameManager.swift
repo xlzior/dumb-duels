@@ -64,7 +64,7 @@ class GameManager {
     }
 
     private func startGame() {
-        guard let renderSystem: RenderSystem = systemManager.get() else {
+        guard let renderSystem = systemManager.get(ofType: RenderSystem.self) else {
             return
         }
         renderSystem.update()

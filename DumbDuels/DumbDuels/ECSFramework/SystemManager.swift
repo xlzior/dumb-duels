@@ -6,14 +6,24 @@
 //
 
 class SystemManager {
-    // TODO: hashmap from System.Type to System
-    var systems: [any System] = []
+    var systems = [System]()
+    var nameToSystem = [String: System]()
 
     func register(_ system: any System) {
         systems.append(system)
+
+        let name = String(describing: type(of: system).self)
+        nameToSystem[name] = system
     }
 
-    func get<C: System>() -> C? {
-        systems.compactMap({ _ in systems as? C }).first
+    func get<S: System>(ofType type: S.Type) -> S? {
+        let name = String(describing: type.self)
+        return nameToSystem[name] as? S
+    }
+
+    func update() {
+        for system in systems {
+            system.update()
+        }
     }
 }

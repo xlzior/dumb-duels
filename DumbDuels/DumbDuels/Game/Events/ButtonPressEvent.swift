@@ -11,10 +11,10 @@ struct ButtonPressEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let playerSystem = systems.get(ofType: PlayerSystem.self) else {
+        guard let inputSystem: InputSystem = systems.get() else {
             return
         }
 
-        playerSystem.handleButtonPress(entityId: entityId)
+        inputSystem.handleButtonPress(entityId: entityId)
     }
 }

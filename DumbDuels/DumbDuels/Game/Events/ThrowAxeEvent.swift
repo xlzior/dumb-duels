@@ -5,19 +5,22 @@
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
+import CoreGraphics
+
 struct ThrowAxeEvent: Event {
     var priority: EventPriority = .game
 
     var entityId: EntityID
-
-    // TODO: (sprint 2) scale to represent how hard to throw the axe
+    var faceDirection: FaceDirection
+    var throwStrength: CGFloat = 1.0
 
     func execute(with systems: SystemManager) {
         guard let physicsSystem = systems.get(ofType: PhysicsSystem.self) else {
             return
         }
 
-        // TODO: need to figure out whether throw left or throw right
-        physicsSystem.applyImpulse(to: entityId)
+        physicsSystem.applyImpulse(
+            faceDirection.rawValue * throwStrength * Constants.throwForce,
+            to: entityId)
     }
 }

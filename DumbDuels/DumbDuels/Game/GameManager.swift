@@ -64,7 +64,10 @@ class GameManager {
     }
 
     private func setUpSystems() {
-        systemManager.register(PlayerSystem(for: entityManager, eventManger: eventManager))
+        systemManager.register(InputSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(RoundSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(PhysicsSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(ScoreSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(RenderSystem(
             for: entityManager,
             eventManger: eventManager,
@@ -73,7 +76,7 @@ class GameManager {
     }
 
     private func updateSystems() {
-        // update everything one by one
+        systemManager.update()
     }
 
     private func startGame() {

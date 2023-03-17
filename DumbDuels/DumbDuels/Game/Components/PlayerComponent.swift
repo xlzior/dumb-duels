@@ -13,10 +13,6 @@ class PlayerComponent: Component {
         self.id = ComponentID()
         self.fsm = fsm
     }
-
-    // TODO: FSM implementation
-    // when state changed to holding Axe
-    // add a HoldingAxe component
 }
 
 extension PlayerComponent {

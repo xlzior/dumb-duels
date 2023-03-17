@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public typealias BodyID = AnyHashable
+public typealias BodyID = String
 
 public class GameScene {
     private(set) var baseGameScene: BaseGameScene

@@ -11,7 +11,7 @@ struct JumpEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let physicsSystem: PhysicsSystem = systems.get() else {
+        guard let physicsSystem = systems.get(ofType: PhysicsSystem.self) else {
             return
         }
 

@@ -13,7 +13,7 @@ struct ThrowAxeEvent: Event {
     // TODO: (sprint 2) scale to represent how hard to throw the axe
 
     func execute(with systems: SystemManager) {
-        guard let physicsSystem: PhysicsSystem = systems.get() else {
+        guard let physicsSystem = systems.get(ofType: PhysicsSystem.self) else {
             return
         }
 

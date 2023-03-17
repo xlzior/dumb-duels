@@ -1,20 +1,20 @@
 //
-//  PlayerButton.swift
+//  ScoreLabel.swift
 //  DumbDuels
 //
-//  Created by Esmanda Wong on 13/3/23.
+//  Created by Esmanda Wong on 17/3/23.
 //
 
 import UIKit
 
-class PlayerButton: UIButton {
-    let buttonAspectRatio = 1.8
+class ScoreLabel: UILabel {
     var isPlayerOne: Bool
     var playerID: EntityID?
 
-    init(screenSize: CGSize, isPlayerOne: Bool) {
+    init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0) {
         self.isPlayerOne = isPlayerOne
-        super.init(frame: CGRect(x: 0, y: 0, width: 180, height: 100))
+        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        text = String(score)
 
         scale(screenSize.height)
         position(screenSize, isPlayerOne)
@@ -22,10 +22,11 @@ class PlayerButton: UIButton {
     }
 
     private func style() {
-        backgroundColor = Colour.secondary.uiColour
-        layer.borderWidth = 10
-        layer.cornerRadius = frame.height / 3
-        layer.borderColor = Colour.secondaryDark.cgColour
+        textColor = Colour.secondary.uiColour
+        font = UIFont.systemFont(ofSize: 100.0, weight: UIFont.Weight.heavy)
+        textAlignment = .center
+        numberOfLines = 0
+        sizeToFit()
     }
 
     private func scale(_ screenHeight: CGFloat) {
@@ -35,8 +36,8 @@ class PlayerButton: UIButton {
 
     private func position(_ screenSize: CGSize, _ isPlayerOne: Bool) {
         let xPos = isPlayerOne
-            ? screenSize.width * 0.05
-            : screenSize.width * 0.95 - frame.width
+            ? screenSize.width * 0.35
+            : screenSize.width * 0.65 - frame.width
         frame = CGRect(
             x: xPos,
             y: screenSize.height * 0.85,
@@ -45,7 +46,6 @@ class PlayerButton: UIButton {
         )
     }
 
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

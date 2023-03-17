@@ -7,19 +7,19 @@
 
 import CoreGraphics
 
+enum FaceDirection: CGFloat {
+    case left = -1.0
+    case right = 1.0
+}
+
 class PositionComponent: Component {
     var id: ComponentID
     var position: CGPoint
+    var faceDirection: FaceDirection
 
-    init(position: CGPoint) {
+    init(position: CGPoint, faceDirection: FaceDirection = .right) {
         self.id = ComponentID()
         self.position = position
-    }
-}
-
-extension PositionComponent {
-    enum FaceDirection: CGFloat {
-        case left = -1.0
-        case right = 1.0
+        self.faceDirection = faceDirection
     }
 }

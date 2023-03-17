@@ -8,7 +8,8 @@
 import CoreGraphics
 
 struct Positions {
-    static let players: [CGPoint] = []
-    static let axes: [CGPoint] = []
-    static let platforms: [CGPoint] = []
+    static let players: [CGPoint] = [
+        CGPoint(x: 200, y: 300),
+        CGPoint(x: 800, y: 300)
+    ]
 }

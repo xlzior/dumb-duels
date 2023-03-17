@@ -8,7 +8,7 @@
 import UIKit
 
 class RenderSystem: System {
-    var entityManager: EntityManager
+    unowned var entityManager: EntityManager
     var gameController: GameController
 
     var screenSize: CGSize

@@ -7,11 +7,11 @@
 
 class PlayerSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManger: EventManager
+    unowned var eventManager: EventManager
 
-    init(for entityManager: EntityManager, eventManger: EventManager) {
+    init(for entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
-        self.eventManger = eventManger
+        self.eventManager = eventManager
     }
 
     func update() {
@@ -21,8 +21,10 @@ class PlayerSystem: System {
     func handleButtonPress(entityId: EntityID) {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
+        // TODO: also add the condition that player is not already jumping
         if !hasAxe {
-            return eventManger.fire(JumpEvent(entityId: entityId))
+            handleJump(playerId: entityId)
+            return eventManager.fire(JumpEvent(entityId: entityId))
         }
 
         guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(
@@ -30,6 +32,17 @@ class PlayerSystem: System {
             for: entityId) else {
             return
         }
-        eventManger.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID))
+        eventManager.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID))
+    }
+
+    func handleJump(playerId: EntityID) {
+        // TODO: This function does not apply jump impulse to SpriteKit, rather it marks the player as
+        // TODO: jumping so that the player does not jump again upon spam input
+        // TODO: This is called inside handleButtonPress, after we know the player is going to jump.
+    }
+
+    func handleLand(playerId: EntityID) {
+        // TODO: Similar to handleJump, but the reverse
+        // TODO: This is called by LandEvent
     }
 }

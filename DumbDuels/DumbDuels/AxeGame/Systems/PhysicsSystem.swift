@@ -8,10 +8,12 @@
 import CoreGraphics
 
 class PhysicsSystem: System {
-    var entityManager: EntityManager
+    unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
     init(for entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
+        self.eventManager = eventManager
     }
 
     func update() {

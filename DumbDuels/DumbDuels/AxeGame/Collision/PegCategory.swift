@@ -6,3 +6,28 @@
 //
 
 import Foundation
+
+struct PegCategory: CollisionCategory {
+
+    var entityId: EntityID
+
+    func collides(with otherCategory: CollisionCategory) -> Event? {
+        otherCategory.collides(with: self)
+    }
+
+    func collides(with player: PlayerCategory) -> Event? {
+        nil
+    }
+
+    func collides(with axe: AxeCategory) -> Event? {
+        nil
+    }
+
+    func collides(with platform: PlatformCategory) -> Event? {
+        nil
+    }
+
+    func collides(with peg: PegCategory) -> Event? {
+        nil
+    }
+}

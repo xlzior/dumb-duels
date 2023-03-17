@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class CollidableComponent: Component {
+    var id: ComponentID
+
+    var categories: [CollisionCategory]
+
+    init(categories: CollisionCategory...) {
+        id = ComponentID()
+        self.categories = categories
+    }
+}

@@ -22,6 +22,8 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
+        let axeCategory = AxeCategory(entityId: axe.id)
+        axe.assign(component: CollidableComponent(categories: axeCategory))
         return axe
     }
 
@@ -50,6 +52,8 @@ class EntityCreator {
             SpriteComponent(assetName: "player")
             ScoreComponent()
         }
+        let playerCategory = PlayerCategory(entityId: player.id)
+        entityManager.assign(component: CollidableComponent(categories: playerCategory), to: player)
 
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
         fsm.createState(name: .holdingAxe)
@@ -82,6 +86,8 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
+        let platformCategory = PlatformCategory(entityId: platform.id)
+        entityManager.assign(component: CollidableComponent(categories: platformCategory), to: platform)
         return platform
     }
 }

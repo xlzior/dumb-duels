@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+protocol CollisionCategory {
+    var entityId: EntityID { get }
+    func collides(with otherCategory: CollisionCategory) -> Event?
+    func collides(with player: PlayerCategory) -> Event?
+    func collides(with axe: AxeCategory) -> Event?
+    func collides(with platform: PlatformCategory) -> Event?
+    func collides(with peg: PegCategory) -> Event?
+}

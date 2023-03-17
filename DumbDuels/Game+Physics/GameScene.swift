@@ -10,8 +10,8 @@ import SpriteKit
 public typealias EntityID = String
 
 public class GameScene {
-    var baseGameScene: BaseGameScene
-    var entityPhysicsMap: [EntityID: PhysicsBody]
+    private(set) var baseGameScene: BaseGameScene
+    public private(set) var entityPhysicsMap: [EntityID: PhysicsBody]
 
     public var gameSceneDelegate: GameSceneDelegate? {
         get { baseGameScene.gameSceneDelegate }

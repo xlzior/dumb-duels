@@ -8,18 +8,18 @@
 import Foundation
 
 public struct PhysicsDetails {
-    let mass: CGFloat
-    let velocity: CGVector
-    let affectedByGravity: Bool
-    let linearDamping: CGFloat
-    let isDynamic: Bool
-    let allowsRotation: Bool
-    let restitution: CGFloat
-    let friction: CGFloat
-    let categoryBitMask: UInt32
-    let collisionBitMask: UInt32
-    let contactTestBitMask: UInt32
-    let zRotation: CGFloat
+    public let mass: CGFloat
+    public let velocity: CGVector
+    public let affectedByGravity: Bool
+    public let linearDamping: CGFloat
+    public let isDynamic: Bool
+    public let allowsRotation: Bool
+    public let restitution: CGFloat
+    public let friction: CGFloat
+    public let categoryBitMask: UInt32
+    public let collisionBitMask: UInt32
+    public let contactTestBitMask: UInt32
+    public let zRotation: CGFloat
 
     public init(mass: CGFloat,
                 velocity: CGVector,

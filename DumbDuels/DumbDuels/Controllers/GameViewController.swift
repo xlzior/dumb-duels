@@ -13,11 +13,24 @@ class GameViewController: UIViewController {
     var gameView: UIView!
     var playerOneButton: UIButton!
     var playerTwoButton: UIButton!
+    var playerOneScore: ScoreLabel!
+    var playerTwoScore: ScoreLabel!
+
+    var gameManager: GameManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGameView()
         setUpGestureRecognisers()
+        setUpGameManager()
+    }
+
+    func updateScore() {
+
+    }
+    
+    func render() {
+        
     }
 
     private func setUpGameView() {
@@ -28,6 +41,11 @@ class GameViewController: UIViewController {
         playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false)
         view.addSubview(playerOneButton)
         view.addSubview(playerTwoButton)
+
+        playerOneScore = ScoreLabel(screenSize: screenSize, isPlayerOne: true)
+        playerTwoScore = ScoreLabel(screenSize: screenSize, isPlayerOne: false)
+        view.addSubview(playerOneScore)
+        view.addSubview(playerTwoScore)
     }
 
     private func setUpGestureRecognisers() {
@@ -38,6 +56,10 @@ class GameViewController: UIViewController {
             playerButton?.addGestureRecognizer(tapRecognizer)
             playerButton?.addGestureRecognizer(longPressRecognizer)
         }
+    }
+
+    private func setUpGameManager() {
+        gameManager = GameManager(gameController: self)
     }
 
     @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {

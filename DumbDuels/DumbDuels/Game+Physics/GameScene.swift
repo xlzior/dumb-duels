@@ -11,7 +11,9 @@ public typealias BodyID = AnyHashable
 
 public class GameScene {
     private(set) var baseGameScene: BaseGameScene
-    public private(set) var entityPhysicsMap: [BodyID: PhysicsBody]
+    public private(set) var bodyIDPhysicsMap: [BodyID: PhysicsBody]
+    public private(set) var physicsBodyIDMap: [PhysicsBody: BodyID]
+    private var skNodePhysicsBodyMap: [SKNode: PhysicsBody]
 
     public var gameSceneDelegate: GameSceneDelegate? {
         get { baseGameScene.gameSceneDelegate }
@@ -29,67 +31,88 @@ public class GameScene {
         }
         self.baseGameScene = baseGameScene
         self.baseGameScene.delegate = self.baseGameScene
-        self.entityPhysicsMap = [:]
+        self.bodyIDPhysicsMap = [:]
+        self.physicsBodyIDMap = [:]
+        self.skNodePhysicsBodyMap = [:]
         self.baseGameScene.gameScene = self
     }
 
-    public func setup(entityPhysicsMap: [BodyID: PhysicsBody]) {
-        self.entityPhysicsMap = entityPhysicsMap
-        for (_, physicsBody) in entityPhysicsMap {
+    public func setup(newBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
+        self.baseGameScene.removeAllChildren()
+        self.bodyIDPhysicsMap = [:]
+        self.physicsBodyIDMap = [:]
+        self.skNodePhysicsBodyMap = [:]
+        for (bodyID, physicsBody) in newBodyIDPhysicsMap {
             baseGameScene.addChild(physicsBody.node)
+            bodyIDPhysicsMap[bodyID] = physicsBody
+            physicsBodyIDMap[physicsBody] = bodyID
+            skNodePhysicsBodyMap[physicsBody.node] = physicsBody
         }
     }
 
-    public func addBody(for entity: BodyID, bodyToAdd: PhysicsBody) {
-        guard entityPhysicsMap[entity] == nil else {
+    public func addBody(for id: BodyID, bodyToAdd: PhysicsBody) {
+        guard baseGameScene.nodes(at: bodyToAdd.position).isEmpty,
+              bodyIDPhysicsMap[id] == nil,
+              physicsBodyIDMap[bodyToAdd] == nil,
+              skNodePhysicsBodyMap[bodyToAdd.node] == nil else {
             assertionFailure("Trying to add an entity that already exists.")
             return
         }
         baseGameScene.addChild(bodyToAdd.node)
-        entityPhysicsMap[entity] = bodyToAdd
+        bodyIDPhysicsMap[id] = bodyToAdd
+        physicsBodyIDMap[bodyToAdd] = id
+        skNodePhysicsBodyMap[bodyToAdd.node] = bodyToAdd
     }
 
-    public func removeBody(for entity: BodyID) {
-        guard let physicsBody = entityPhysicsMap.removeValue(forKey: entity) else {
+    public func removeBody(for id: BodyID) {
+        guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
+              bodyIDPhysicsMap.removeValue(forKey: physicsBody) != nil,
+              skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
             assertionFailure("Trying to remove an entity that does not exist.")
             return
         }
         baseGameScene.removeChildren(in: [physicsBody.node])
     }
 
-    func getPhysicsBody(for skPhysicsBody: SKPhysicsBody) -> PhysicsBody? {
-        for (_, physicsBody) in entityPhysicsMap {
-            if let nodeSkPhysicsBody = physicsBody.node.physicsBody, nodeSkPhysicsBody == skPhysicsBody {
-                return physicsBody
-            }
+    func getBodyID(for skPhysicsBody: SKPhysicsBody) -> BodyID? {
+        if let skNode = skPhysicsBody.node,
+           let physicsBody = skNodePhysicsBodyMap[skNode],
+           let bodyID = physicsBodyIDMap[physicsBody] {
+            return bodyID
         }
-        assertionFailure("Could not find corresponding PhysicsBody for SKPhysicsBody")
+        assertionFailure("Could not find corresponding BodyID for SKPhysicsBody")
         return nil
     }
 
-    func apply(impulse: CGVector, to entity: EntityID) {
-        guard entityPhysicsMap[entity] != nil else {
+    public func apply(impulse: CGVector, to id: BodyID) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
             assertionFailure("Trying to apply impulse to an entity that does not exist.")
             return
         }
-        entityPhysicsMap[entity]?.applyImpulse(impulse)
+        physicsBody.applyImpulse(impulse)
     }
 
-    public func sync(entityPhysicsMap: [BodyID: PhysicsBody]) {
-        for (entity, physicsBody) in entityPhysicsMap {
-            guard entityPhysicsMap[entity] != nil else {
+    public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
+        for (entity, physicsBody) in updatedBodyIDPhysicsMap {
+            guard bodyIDPhysicsMap[entity] != nil,
+                  physicsBodyIDMap[physicsBody] != nil,
+                  skNodePhysicsBodyMap[physicsBody.node] != nil else {
                 assertionFailure("Trying to sync entity that does not exist.")
                 continue
             }
-            self.entityPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
+            bodyIDPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
         }
     }
 
-    public func sync(_ physicsBody: PhysicsBody, for entity: BodyID) {
-        guard entityPhysicsMap[entity] != nil else {
+    public func sync(_ physicsBody: PhysicsBody, for id: BodyID) {
+        guard bodyIDPhysicsMap[id] != nil,
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
             assertionFailure("Trying to sync entity that does not exist.")
             return
         }
-        entityPhysicsMap[entity]?.updateWith(newPhysicsBody: physicsBody)
+        bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)
     }
 }

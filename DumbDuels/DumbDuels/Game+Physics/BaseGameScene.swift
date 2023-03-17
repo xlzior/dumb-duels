@@ -33,18 +33,18 @@ extension BaseGameScene: SKSceneDelegate {
 
 extension BaseGameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        guard let bodyA = gameScene?.getPhysicsBody(for: contact.bodyA),
-              let bodyB = gameScene?.getPhysicsBody(for: contact.bodyB) else {
+        guard let bodyAID = gameScene?.getBodyID(for: contact.bodyA),
+              let bodyBID = gameScene?.getBodyID(for: contact.bodyB) else {
             return
         }
-        physicsContactDelegate?.didContactBegin(for: bodyA, and: bodyB)
+        physicsContactDelegate?.didContactBegin(for: bodyAID, and: bodyBID)
     }
 
     func didEnd(_ contact: SKPhysicsContact) {
-        guard let bodyA = gameScene?.getPhysicsBody(for: contact.bodyA),
-              let bodyB = gameScene?.getPhysicsBody(for: contact.bodyB) else {
+        guard let bodyAID = gameScene?.getBodyID(for: contact.bodyA),
+              let bodyBID = gameScene?.getBodyID(for: contact.bodyB) else {
             return
         }
-        physicsContactDelegate?.didContactEnd(for: bodyA, and: bodyB)
+        physicsContactDelegate?.didContactEnd(for: bodyAID, and: bodyBID)
     }
 }

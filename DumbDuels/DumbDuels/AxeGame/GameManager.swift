@@ -16,6 +16,8 @@ class GameManager {
     private let systemManager: SystemManager
     private let eventManager: EventManager
 
+    private let simulator: Simulator
+
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
 
@@ -28,6 +30,8 @@ class GameManager {
         let eventManager = EventManager(systems: systemManager)
         self.systemManager = systemManager
         self.eventManager = eventManager
+
+        self.simulator = Simulator()
 
         setUpEntities()
         setUpSystems()
@@ -66,7 +70,11 @@ class GameManager {
     private func setUpSystems() {
         systemManager.register(InputSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(RoundSystem(for: entityManager, eventManager: eventManager))
-        systemManager.register(PhysicsSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(PhysicsSystem(
+            for: entityManager,
+            eventManager: eventManager,
+            scene: simulator.gameScene
+        ))
         systemManager.register(ScoreSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(RenderSystem(
             for: entityManager,
@@ -96,5 +104,27 @@ extension GameManager {
 
     func handleButtonLongPress(for entityID: EntityID) {
 
+    }
+}
+
+// MARK: - GameSceneDelegate
+extension GameManager: GameSceneDelegate {
+    func gameLoopDidStart() {
+
+    }
+
+    func update(with timeInterval: Double) {
+
+    }
+
+    func didSimulatePhysics() {
+
+    }
+
+    func didFinishUpdate() {
+//        1. sync the physics engine to the physics system
+//        2. Poll all events
+//        3. Sync from physics system to physics engine
+//        4. Render
     }
 }

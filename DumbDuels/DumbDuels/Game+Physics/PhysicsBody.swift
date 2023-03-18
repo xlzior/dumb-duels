@@ -11,27 +11,28 @@ public class PhysicsBody {
     private(set) var node: SKNode
     private let assertionFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
 
-    init(position: CGPoint = PhysicsEngineDefaults.position,
-         size: CGSize? = nil,
-         radius: CGFloat? = nil,
-         zRotation: CGFloat = PhysicsEngineDefaults.zRotation,
-         mass: CGFloat = PhysicsEngineDefaults.mass,
-         velocity: CGVector = PhysicsEngineDefaults.velocity,
-         affectedByGravity: Bool = PhysicsEngineDefaults.affectedByGravity,
-         linearDamping: CGFloat = PhysicsEngineDefaults.linearDamping,
-         isDynamic: Bool = PhysicsEngineDefaults.isDynamic,
-         allowsRotation: Bool = PhysicsEngineDefaults.allowsRotation,
-         restitution: CGFloat = PhysicsEngineDefaults.restitution,
-         friction: CGFloat = PhysicsEngineDefaults.friction,
-         categoryBitMask: UInt32 = PhysicsEngineDefaults.categoryBitMask,
-         collisionBitMask: UInt32 = PhysicsEngineDefaults.collisionBitMask,
-         contactBitMask: UInt32 = PhysicsEngineDefaults.contactBitMask
+    init?(position: CGPoint = PhysicsEngineDefaults.position,
+          size: CGSize? = nil,
+          radius: CGFloat? = nil,
+          zRotation: CGFloat = PhysicsEngineDefaults.zRotation,
+          mass: CGFloat = PhysicsEngineDefaults.mass,
+          velocity: CGVector = PhysicsEngineDefaults.velocity,
+          affectedByGravity: Bool = PhysicsEngineDefaults.affectedByGravity,
+          linearDamping: CGFloat = PhysicsEngineDefaults.linearDamping,
+          isDynamic: Bool = PhysicsEngineDefaults.isDynamic,
+          allowsRotation: Bool = PhysicsEngineDefaults.allowsRotation,
+          restitution: CGFloat = PhysicsEngineDefaults.restitution,
+          friction: CGFloat = PhysicsEngineDefaults.friction,
+          categoryBitMask: UInt32 = PhysicsEngineDefaults.categoryBitMask,
+          collisionBitMask: UInt32 = PhysicsEngineDefaults.collisionBitMask,
+          contactBitMask: UInt32 = PhysicsEngineDefaults.contactBitMask
         ) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure("Please pass in only either a size to initialize a rectangle body or a radius to initialize a circle body")
-            return
+            return nil
         }
-        var body: SKPhysicsBody
+        // TODO: fix this properly
+        var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
             body = SKPhysicsBody(rectangleOf: size, center: position)
         } else if let radius = radius {
@@ -51,7 +52,7 @@ public class PhysicsBody {
         self.friction = friction
         self.categoryBitMask = categoryBitMask
         self.collisionBitMask = collisionBitMask
-        self.contactTestBitMask = contactTestBitMask
+        self.contactTestBitMask = contactBitMask
     }
 
     func updateWith(newPhysicsBody: PhysicsBody) {

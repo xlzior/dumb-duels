@@ -93,7 +93,8 @@ class PhysicsSystem: System {
                                                    friction: physicsComponent.friction,
                                                    categoryBitMask: categoryBitMask,
                                                    collisionBitMask: collisionBitMask,
-                                                   contactBitMask: contactBitMask)
+                                                   contactBitMask: contactBitMask)!
+        // TODO: take out the force unwrap above?
         return physicsBody
     }
 }

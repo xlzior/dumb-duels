@@ -17,6 +17,9 @@ class GameManager {
     private let eventManager: EventManager
 
     private let simulator: Simulator
+    private var axeIds: [String] = ["asdasd", "asdasd"]
+    private var platformIds: [String] = ["asdasd", "asdasdasd"]
+    private var playerIds: [String] = ["asdasd", "asdasd"]
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -45,14 +48,15 @@ class GameManager {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
+            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2) * faceDirection.rawValue
+
             let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
             let platform = entityCreator.createPlatform(
                 withVerticalOffset: verticalOffset,
-                from: playerPosition,
+                from: playerPosition + CGPoint(x: horizontalOffset, y: 0),
                 of: Sizes.platform
             )
 
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2) * faceDirection.rawValue
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: horizontalOffset,
                 from: playerPosition,
@@ -65,6 +69,10 @@ class GameManager {
                 of: Sizes.player,
                 holding: axe.id
             )
+            playerIds[playerIndex] = player.id.id
+            axeIds[playerIndex] = axe.id.id
+            platformIds[playerIndex] = platform.id.id
+
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
     }
@@ -125,6 +133,21 @@ extension GameManager: GameSceneDelegate {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
+        // print("Player 1: \(physicsSystem.getPosition(of: playerIds[0]))")
+        // print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
+        // print("Platform 1: \(physicsSystem.getPosition(of: platformIds[0]))")
+
+        print("Player 2: \(physicsSystem.getPosition(of: playerIds[1]))")
+        print("Axe 2: \(physicsSystem.getPosition(of: axeIds[1]))")
+        print("Platform 2: \(physicsSystem.getPosition(of: platformIds[1]))")
+
+        // print("Player 1: \(physicsSystem.getBitmasks(of: playerIds[0]))")
+        // print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
+        // print("Platform 1: \(physicsSystem.getBitmasks(of: platformIds[0]))")
+
+        print("Player 2: \(physicsSystem.getBitmasks(of: playerIds[1]))")
+        print("Axe 2: \(physicsSystem.getBitmasks(of: axeIds[1]))")
+        print("Platform 2: \(physicsSystem.getBitmasks(of: platformIds[1]))")
 
         physicsSystem.syncFromPhysicsEngine()
         eventManager.pollAll()

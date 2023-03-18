@@ -17,4 +17,9 @@ struct CollisionHandler {
         print("Contact handler player: \(player.entityId), platform: \(platform.entityId)")
         return LandEvent(entityId: player.entityId)
     }
+
+    static func getEvent(between axe: AxeCategory, and platform: PlatformCategory) -> Event? {
+        print("Contact handler axe: \(axe.entityId), platform: \(platform.entityId)")
+        return nil
+    }
 }

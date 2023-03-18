@@ -90,7 +90,7 @@ class PhysicsSystem: System {
         let categoryBitMask = physicsComponent.categoryBitMask
         let collisionBitMask = physicsComponent.collisionBitMask
         let contactBitMask = physicsComponent.contactTestBitMask
-        //print("category: \(categoryBitMask), collision: \(collisionBitMask), contact: \(contactBitMask)")
+        // print("category: \(categoryBitMask), collision: \(collisionBitMask), contact: \(contactBitMask)")
         // let categoryBitMask = ColliisionUtils.bitmasks(for: collidableComponent.categories)
         // let collisionBitMask = ColliisionUtils.bitmasks(for: collidableComponent.collisions)
         // let contactBitMask = ColliisionUtils.bitmasks(for: collidableComponent.contacts)
@@ -111,5 +111,14 @@ class PhysicsSystem: System {
                                                    contactBitMask: contactBitMask)!
         // TODO: take out the force unwrap above?
         return physicsBody
+    }
+
+    func getPosition(of entityId: String) -> CGPoint? {
+        // MUST be node.
+        scene.getPosition(of: entityId)
+    }
+
+    func getBitmasks(of entityId: String) -> String {
+        "\(scene.getBitMasks(of: entityId))"
     }
 }

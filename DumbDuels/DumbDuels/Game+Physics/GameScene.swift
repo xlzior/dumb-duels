@@ -121,4 +121,18 @@ public class GameScene {
 
         bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: newPhysicsBody)
     }
+
+    public func getPosition(of entityId: String) -> CGPoint? {
+        guard let physicsBody = bodyIDPhysicsMap[entityId] else {
+            return nil
+        }
+        return physicsBody.node.position
+    }
+
+    public func getBitMasks(of entityId: String) -> String {
+        guard let physicsBody = bodyIDPhysicsMap[entityId] else {
+            return "empty"
+        }
+        return "self: \(physicsBody.categoryBitMask), collide: \(physicsBody.collisionBitMask), contact: \(physicsBody.contactTestBitMask)"
+    }
 }

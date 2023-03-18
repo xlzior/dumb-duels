@@ -30,7 +30,7 @@ struct AxeCategory: CollisionCategory {
     }
 
     func collides(with platform: PlatformCategory) -> Event? {
-        nil
+        CollisionHandler.getEvent(between: self, and: platform)
     }
 
     func collides(with peg: PegCategory) -> Event? {

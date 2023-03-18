@@ -26,7 +26,7 @@
 		7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */; };
 		7BA7EBBB29C36B900096457F /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBB929C36B900096457F /* EventManager.swift */; };
 		7BA7EBBC29C36B900096457F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBBA29C36B900096457F /* Event.swift */; };
-		7BA7EBD629C36BBD0096457F /* sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBBD29C36BBD0096457F /* sys.swift */; };
+		7BA7EBD629C36BBD0096457F /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBBD29C36BBD0096457F /* GameManager.swift */; };
 		7BA7EBD729C36BBD0096457F /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBBF29C36BBD0096457F /* SpriteComponent.swift */; };
 		7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */; };
 		7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */; };
@@ -153,7 +153,7 @@
 		7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Assemblage+Requirements.stencil"; sourceTree = "<group>"; };
 		7BA7EBB929C36B900096457F /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		7BA7EBBA29C36B900096457F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		7BA7EBBD29C36BBD0096457F /* sys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sys.swift; sourceTree = "<group>"; };
+		7BA7EBBD29C36BBD0096457F /* GameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		7BA7EBBF29C36BBD0096457F /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldingAxeComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
@@ -346,7 +346,7 @@
 				7BA7EBCE29C36BBD0096457F /* Events */,
 				A7E439FB29C374E800027AC6 /* EntityCreator.swift */,
 				8C3584A729C559FE00BAE8C5 /* PhysicsCreator.swift */,
-				7BA7EBBD29C36BBD0096457F /* sys.swift */,
+				7BA7EBBD29C36BBD0096457F /* GameManager.swift */,
 				A7E43A1029C4530400027AC6 /* GameController.swift */,
 			);
 			path = AxeGame;
@@ -718,7 +718,7 @@
 				7BA7EBF929C36C070096457F /* PriorityQueue.swift in Sources */,
 				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerAxeSystem.swift in Sources */,
-				7BA7EBD629C36BBD0096457F /* sys.swift in Sources */,
+				7BA7EBD629C36BBD0096457F /* GameManager.swift in Sources */,
 				8C35845229BF29EB00BAE8C5 /* EntityManager.swift in Sources */,
 				8C35847029C1741100BAE8C5 /* Assemblage+Requirements.generated.swift in Sources */,
 				7BA7EBE829C36BBD0096457F /* EventPriority.swift in Sources */,

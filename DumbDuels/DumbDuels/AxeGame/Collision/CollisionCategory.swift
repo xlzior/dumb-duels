@@ -9,6 +9,10 @@ import Foundation
 
 protocol CollisionCategory {
     var entityId: EntityID { get }
+    var ownBitmask: UInt32 { get }
+    var collideBitmask: UInt32 { get }
+    var contactBitmask: UInt32 { get }
+
     func collides(with otherCategory: any CollisionCategory) -> Event?
     func collides(with player: PlayerCategory) -> Event?
     func collides(with axe: AxeCategory) -> Event?

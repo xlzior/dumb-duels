@@ -16,6 +16,6 @@ struct JumpEvent: Event {
         }
 
         // TODO: don't allow double jumps
-        physicsSystem.apply(impulse: Constants.jumpForce, to: entityId)
+        physicsSystem.apply(impulse: Physics.jumpImpulse, to: entityId)
     }
 }

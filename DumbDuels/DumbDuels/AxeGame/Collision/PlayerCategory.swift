@@ -8,8 +8,14 @@
 import Foundation
 
 struct PlayerCategory: CollisionCategory {
-
     var entityId: EntityID
+    let ownBitmask: UInt32 = ColliisionUtils.playerBitmask
+    let collideBitmask: UInt32 = ColliisionUtils.playerCollideBitmask
+    let contactBitmask: UInt32 = ColliisionUtils.playerContactBitmask
+
+    init(entityId: EntityID) {
+        self.entityId = entityId
+    }
 
     func collides(with otherCategory: CollisionCategory) -> Event? {
         otherCategory.collides(with: self)

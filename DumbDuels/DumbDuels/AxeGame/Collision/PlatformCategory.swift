@@ -10,6 +10,13 @@ import Foundation
 struct PlatformCategory: CollisionCategory {
 
     var entityId: EntityID
+    let ownBitmask: UInt32 = ColliisionUtils.platformBitmask
+    let collideBitmask: UInt32 = ColliisionUtils.platformCollideBitmask
+    let contactBitmask: UInt32 = ColliisionUtils.platformContactBitmask
+
+    init(entityId: EntityID) {
+        self.entityId = entityId
+    }
 
     func collides(with otherCategory: CollisionCategory) -> Event? {
         otherCategory.collides(with: self)

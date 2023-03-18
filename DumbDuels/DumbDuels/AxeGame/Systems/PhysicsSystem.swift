@@ -14,9 +14,9 @@ class PhysicsSystem: System {
     var scene: GameScene
     private let physics: Assemblage4<PositionComponent, RotationComponent, PhysicsComponent, CollidableComponent>
 
-    init(for entityManager: EntityManager, eventManger: EventManager, scene: GameScene) {
+    init(for entityManager: EntityManager, eventManager: EventManager, scene: GameScene) {
         self.entityManager = entityManager
-        self.eventManager = eventManger
+        self.eventManager = eventManager
         self.scene = scene
         self.physics = entityManager.assemblage(requiredComponents:
                                                     PositionComponent.self,
@@ -76,9 +76,9 @@ class PhysicsSystem: System {
                                            rotationComponent: RotationComponent,
                                            physicsComponent: PhysicsComponent,
                                            collidableComponent: CollidableComponent) -> PhysicsBody {
-        let categoryBitMask = CategoryTypeBitMasks.getBitMask(for: collidableComponent.categories)
-        let collisionBitMask = CollisionTypeBitMasks.getBitMask(for: collidableComponent.collisions)
-        let contactBitMask = ContactTestTypeBitMasks.getBitMask(for: collidableComponent.contacts)
+        let categoryBitMask = ColliisionUtils.bitmasks(for: collidableComponent.categories)
+        let collisionBitMask = ColliisionUtils.bitmasks(for: collidableComponent.collisions)
+        let contactBitMask = ColliisionUtils.bitmasks(for: collidableComponent.contacts)
         var physicsBody: PhysicsBody = PhysicsBody(position: positionComponent.position,
                                                    size: physicsComponent.size,
                                                    radius: physicsComponent.radius,

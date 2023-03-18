@@ -8,8 +8,14 @@
 import Foundation
 
 struct AxeCategory: CollisionCategory {
-
     var entityId: EntityID
+    let ownBitmask: UInt32 = ColliisionUtils.axeBitmask
+    let collideBitmask: UInt32 = ColliisionUtils.axeCollideBitmask
+    let contactBitmask: UInt32 = ColliisionUtils.axeContactBitmask
+
+    init(entityId: EntityID) {
+        self.entityId = entityId
+    }
 
     func collides(with otherCategory: CollisionCategory) -> Event? {
         otherCategory.collides(with: self)

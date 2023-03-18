@@ -9,9 +9,11 @@ import CoreGraphics
 
 class EntityCreator {
     private let entityManager: EntityManager
+    private let physicsCreator: PhysicsCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
+        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
@@ -22,8 +24,10 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
-        let axeCategory = AxeCategory(entityId: axe.id)
-        axe.assign(component: CollidableComponent(categories: axeCategory))
+        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
+        let physicsComponent = physicsCreator.createAxe(of: size)
+        axe.assign(component: collidable)
+        axe.assign(component: physicsComponent)
         return axe
     }
 
@@ -52,8 +56,10 @@ class EntityCreator {
             SpriteComponent(assetName: "player")
             ScoreComponent()
         }
-        let playerCategory = PlayerCategory(entityId: player.id)
-        entityManager.assign(component: CollidableComponent(categories: playerCategory), to: player)
+        let collidable = physicsCreator.playerCollidable(playerId: player.id)
+        let physicsComponent = physicsCreator.createPlayer(of: size)
+        player.assign(component: collidable)
+        player.assign(component: physicsComponent)
 
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
         fsm.createState(name: .holdingAxe)
@@ -86,8 +92,11 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
-        let platformCategory = PlatformCategory(entityId: platform.id)
-        entityManager.assign(component: CollidableComponent(categories: platformCategory), to: platform)
+        let collidable = physicsCreator.platformCollidable(platformId: platform.id)
+        let physicsComponent = physicsCreator.createPlatform(of: size)
+        platform.assign(component: collidable)
+        platform.assign(component: physicsComponent)
+
         return platform
     }
 }

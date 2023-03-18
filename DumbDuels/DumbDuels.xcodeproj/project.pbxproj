@@ -35,7 +35,7 @@
 		7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */; };
 		7BA7EBDF29C36BBD0096457F /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC729C36BBD0096457F /* PositionComponent.swift */; };
 		7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC929C36BBD0096457F /* RoundSystem.swift */; };
-		7BA7EBE129C36BBD0096457F /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCA29C36BBD0096457F /* PlayerSystem.swift */; };
+		7BA7EBE129C36BBD0096457F /* InputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCA29C36BBD0096457F /* InputSystem.swift */; };
 		7BA7EBE229C36BBD0096457F /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCB29C36BBD0096457F /* PhysicsSystem.swift */; };
 		7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */; };
 		7BA7EBE429C36BBD0096457F /* RenderSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCD29C36BBD0096457F /* RenderSystem.swift */; };
@@ -45,14 +45,14 @@
 		7BA7EBE829C36BBD0096457F /* EventPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBD229C36BBD0096457F /* EventPriority.swift */; };
 		7BA7EBE929C36BBD0096457F /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBD329C36BBD0096457F /* MoveEvent.swift */; };
 		7BA7EBEA29C36BBD0096457F /* CollisionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBD429C36BBD0096457F /* CollisionEvent.swift */; };
-		7BA7EBEB29C36BBD0096457F /* ResetRoundEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBD529C36BBD0096457F /* ResetRoundEvent.swift */; };
 		7BA7EBEE29C36BD70096457F /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBEC29C36BD70096457F /* System.swift */; };
 		7BA7EBEF29C36BD70096457F /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBED29C36BD70096457F /* SystemManager.swift */; };
 		7BA7EBF929C36C070096457F /* PriorityQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBF729C36C070096457F /* PriorityQueue.swift */; };
 		7BA7EBFA29C36C070096457F /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBF829C36C070096457F /* Heap.swift */; };
 		7BA7EC1429C37F2A0096457F /* HeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1029C37F2A0096457F /* HeapTests.swift */; };
 		7BA7EC1529C37F2A0096457F /* PriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */; };
-		7BA7EC1629C37F2A0096457F /* EventManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */; };
+		7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9D4DB29C4419C00D7B34D /* Constants.swift */; };
+		7BF9D4E129C45C0200D7B34D /* GameWonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */; };
 		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
 		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
 		8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844F29BF29BD00BAE8C5 /* Component.swift */; };
@@ -145,7 +145,7 @@
 		7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC729C36BBD0096457F /* PositionComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC929C36BBD0096457F /* RoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSystem.swift; sourceTree = "<group>"; };
-		7BA7EBCA29C36BBD0096457F /* PlayerSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
+		7BA7EBCA29C36BBD0096457F /* InputSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCB29C36BBD0096457F /* PhysicsSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCD29C36BBD0096457F /* RenderSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderSystem.swift; sourceTree = "<group>"; };
@@ -155,14 +155,14 @@
 		7BA7EBD229C36BBD0096457F /* EventPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPriority.swift; sourceTree = "<group>"; };
 		7BA7EBD329C36BBD0096457F /* MoveEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
 		7BA7EBD429C36BBD0096457F /* CollisionEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionEvent.swift; sourceTree = "<group>"; };
-		7BA7EBD529C36BBD0096457F /* ResetRoundEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetRoundEvent.swift; sourceTree = "<group>"; };
 		7BA7EBEC29C36BD70096457F /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		7BA7EBED29C36BD70096457F /* SystemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
 		7BA7EBF729C36C070096457F /* PriorityQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueue.swift; sourceTree = "<group>"; };
 		7BA7EBF829C36C070096457F /* Heap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
 		7BA7EC1029C37F2A0096457F /* HeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeapTests.swift; sourceTree = "<group>"; };
 		7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueueTests.swift; sourceTree = "<group>"; };
-		7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManagerTests.swift; sourceTree = "<group>"; };
+		7BF9D4DB29C4419C00D7B34D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWonEvent.swift; sourceTree = "<group>"; };
 		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
 		8C35844F29BF29BD00BAE8C5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -288,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				7BA7EC0F29C37F2A0096457F /* DataStructureTests */,
-				7BA7EC1229C37F2A0096457F /* EventTests */,
 				8C35847129C1760F00BAE8C5 /* ECSFrameworkTests */,
 			);
 			path = DumbDuelsTests;
@@ -354,7 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				7BA7EBC929C36BBD0096457F /* RoundSystem.swift */,
-				7BA7EBCA29C36BBD0096457F /* PlayerSystem.swift */,
+				7BA7EBCA29C36BBD0096457F /* InputSystem.swift */,
 				7BA7EBCB29C36BBD0096457F /* PhysicsSystem.swift */,
 				7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */,
 				7BA7EBCD29C36BBD0096457F /* RenderSystem.swift */,
@@ -372,7 +371,7 @@
 				7BA7EBD229C36BBD0096457F /* EventPriority.swift */,
 				7BA7EBD329C36BBD0096457F /* MoveEvent.swift */,
 				7BA7EBD429C36BBD0096457F /* CollisionEvent.swift */,
-				7BA7EBD529C36BBD0096457F /* ResetRoundEvent.swift */,
+				7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -384,14 +383,6 @@
 				7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */,
 			);
 			path = DataStructureTests;
-			sourceTree = "<group>";
-		};
-		7BA7EC1229C37F2A0096457F /* EventTests */ = {
-			isa = PBXGroup;
-			children = (
-				7BA7EC1329C37F2A0096457F /* EventManagerTests.swift */,
-			);
-			path = EventTests;
 			sourceTree = "<group>";
 		};
 		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
@@ -469,6 +460,7 @@
 			children = (
 				A7E439F729C374BE00027AC6 /* Positions.swift */,
 				A7E439F829C374BE00027AC6 /* Sizes.swift */,
+				7BF9D4DB29C4419C00D7B34D /* Constants.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -650,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF9D4E129C45C0200D7B34D /* GameWonEvent.swift in Sources */,
 				6F67C70229C1F4BC009E0579 /* PhysicsDetails.swift in Sources */,
 				6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */,
 				6F67C6FE29C18BA3009E0579 /* PhysicsContactDelegate.swift in Sources */,
@@ -684,6 +677,7 @@
 				A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */,
 				7BA7EBFA29C36C070096457F /* Heap.swift in Sources */,
 				A7E43A0529C379FC00027AC6 /* GameViewController.swift in Sources */,
+				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				7BA7EBEA29C36BBD0096457F /* CollisionEvent.swift in Sources */,
 				7BA7EBE229C36BBD0096457F /* PhysicsSystem.swift in Sources */,
 				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
@@ -698,9 +692,8 @@
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
 				A7E439F929C374BE00027AC6 /* Positions.swift in Sources */,
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
-				7BA7EBE129C36BBD0096457F /* PlayerSystem.swift in Sources */,
+				7BA7EBE129C36BBD0096457F /* InputSystem.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
-				7BA7EBEB29C36BBD0096457F /* ResetRoundEvent.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */,
 				A7E43A0629C379FC00027AC6 /* HomeViewController.swift in Sources */,
@@ -728,7 +721,6 @@
 			files = (
 				8C35848B29C32F9B00BAE8C5 /* ComponentProviderTests.swift in Sources */,
 				7BA7EC1529C37F2A0096457F /* PriorityQueueTests.swift in Sources */,
-				7BA7EC1629C37F2A0096457F /* EventManagerTests.swift in Sources */,
 				8C35847329C176BC00BAE8C5 /* EntityCreationTests.swift in Sources */,
 				8C35848329C2BC0A00BAE8C5 /* TraitSetTests.swift in Sources */,
 				7BA7EC1429C37F2A0096457F /* HeapTests.swift in Sources */,

@@ -7,23 +7,26 @@
 
 class ScoreSystem: System {
     unowned var entityManager: EntityManager
+    unowned var eventManager: EventManager
 
-    init(for entityManager: EntityManager, eventManger: EventManager) {
+    private var players: Assemblage2<PlayerComponent, ScoreComponent>
+
+    init(for entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
+        self.eventManager = eventManager
+        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self,
+                                                ScoreComponent.self)
     }
 
     func update() {
-        // get all the Players (via assemblage)
-        // check the score component for all
-        // if one player's score == 5, trigger game over (fire GameOverEvent)
+        for (player, _, score) in players.entityAndComponents where score.score == 5 {
+            eventManager.fire(GameWonEvent(entityId: player.id))
+        }
     }
 
-    func increment(for entityId: EntityID) {
-        guard let scoreComponent: ScoreComponent = entityManager.getComponent(
-            ofType: ScoreComponent.typeId,
-            for: entityId) else {
-            return
+    func handleAxeHitPlayer(withEntityId entityId: EntityID) {
+        for (player, _, score) in players.entityAndComponents where player.id != entityId {
+            score.score += 1
         }
-        scoreComponent.score += 1
     }
 }

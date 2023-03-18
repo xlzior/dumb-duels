@@ -7,16 +7,30 @@
 
 class RoundSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManger: EventManager
+    unowned var eventManager: EventManager
 
-    init(for entityManager: EntityManager, eventManger: EventManager) {
+    private var axes: Assemblage2<AxeComponent, PositionComponent>
+    private var players: Assemblage1<PlayerComponent>
+
+    init(for entityManager: EntityManager, eventManager: EventManager) {
         self.entityManager = entityManager
-        self.eventManger = eventManger
+        self.eventManager = eventManager
+        self.axes = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self)
+        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self)
     }
 
     func update() {
-        // get both axes (via assemblage)
-        // check the Position component of both axes
-        // if they're both off screen, reset the round (fire a ResetRound Event)
+        for (_, position) in axes {
+            // TODO: if the axe is within the screen, return
+        }
+        // TODO: if we reach here, all axes are off screen
+        reset()
+    }
+
+    func reset() {
+        for (player) in players {
+            player.fsm.changeState(name: .holdingAxe)
+            // TODO: restore axe positions to the starting position?
+        }
     }
 }

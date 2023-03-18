@@ -55,7 +55,9 @@ class EntityCreator {
         fsm.createState(name: .holdingAxe)
             .addInstance(HoldingAxeComponent(axeEntityID: axeEntityID))
         fsm.createState(name: .notHoldingAxe)
+
         entityManager.assign(component: PlayerComponent(fsm: fsm), to: player)
+        fsm.changeState(name: .holdingAxe)
 
         return player
     }

@@ -52,7 +52,6 @@
 		7BA7EC1429C37F2A0096457F /* HeapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1029C37F2A0096457F /* HeapTests.swift */; };
 		7BA7EC1529C37F2A0096457F /* PriorityQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */; };
 		7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9D4DB29C4419C00D7B34D /* Constants.swift */; };
-		7BF9D4DF29C4428F00D7B34D /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9D4DE29C4428F00D7B34D /* CGVector+Extensions.swift */; };
 		7BF9D4E129C45C0200D7B34D /* GameWonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */; };
 		8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844B29BF29AC00BAE8C5 /* Entity.swift */; };
 		8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C35844D29BF29B500BAE8C5 /* EntityID.swift */; };
@@ -163,7 +162,6 @@
 		7BA7EC1029C37F2A0096457F /* HeapTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeapTests.swift; sourceTree = "<group>"; };
 		7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityQueueTests.swift; sourceTree = "<group>"; };
 		7BF9D4DB29C4419C00D7B34D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		7BF9D4DE29C4428F00D7B34D /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
 		7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWonEvent.swift; sourceTree = "<group>"; };
 		8C35844B29BF29AC00BAE8C5 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		8C35844D29BF29B500BAE8C5 /* EntityID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityID.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		7B2B292729B82BE000281FC7 /* DumbDuels */ = {
 			isa = PBXGroup;
 			children = (
-				7BF9D4DD29C4427D00D7B34D /* Extensions */,
 				A7E43A0229C379FC00027AC6 /* Controllers */,
 				7BA7EBB829C36B900096457F /* Events */,
 				7BA7EB7B29C2D4470096457F /* Game */,
@@ -386,14 +383,6 @@
 				7BA7EC1129C37F2A0096457F /* PriorityQueueTests.swift */,
 			);
 			path = DataStructureTests;
-			sourceTree = "<group>";
-		};
-		7BF9D4DD29C4427D00D7B34D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				7BF9D4DE29C4428F00D7B34D /* CGVector+Extensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8C35844A29BF297000BAE8C5 /* ECSFramework */ = {
@@ -682,7 +671,6 @@
 				7BA7EBEF29C36BD70096457F /* SystemManager.swift in Sources */,
 				7BA7EBDF29C36BBD0096457F /* PositionComponent.swift in Sources */,
 				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
-				7BF9D4DF29C4428F00D7B34D /* CGVector+Extensions.swift in Sources */,
 				7BA7EBEE29C36BD70096457F /* System.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,

@@ -22,6 +22,7 @@ class GameManager {
     private var playerIds: [String] = ["asdasd", "asdasd"]
 
     var event: Event?
+    var useSpriteKitView: Bool = true
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -39,11 +40,13 @@ class GameManager {
         self.simulator = Simulator()
         simulator.gameScene.gameSceneDelegate = self
         simulator.gameScene.physicsContactDelegate = self
-        let viewController = renderSystemDetails.gameController as? UIViewController
-        simulator.view.showsFPS = true
-        simulator.view.showsPhysics = true
-        simulator.view.showsNodeCount = true
-        viewController?.view = simulator.view
+        if useSpriteKitView {
+            let viewController = renderSystemDetails.gameController as? UIViewController
+            simulator.view.showsFPS = true
+            simulator.view.showsPhysics = true
+            simulator.view.showsNodeCount = true
+            viewController?.view = simulator.view
+        }
 
         setUpEntities()
         setUpSystems()
@@ -101,11 +104,13 @@ class GameManager {
         ))
         systemManager.register(CollisionSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(ScoreSystem(for: entityManager, eventManager: eventManager))
-//        systemManager.register(RenderSystem(
-//            for: entityManager,
-//            eventManger: eventManager,
-//            details: renderSystemDetails
-//        ))
+        if !useSpriteKitView {
+            systemManager.register(RenderSystem(
+                for: entityManager,
+                eventManger: eventManager,
+                details: renderSystemDetails
+            ))
+        }
     }
 
     private func updateSystems() {
@@ -115,13 +120,15 @@ class GameManager {
     private func startGame() {
         simulator.start()
 
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
-            print("Event fired!")
-            guard let throwAxeEvent = self.event else {
-                return
+        if useSpriteKitView {
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+                print("Event fired!")
+                guard let throwAxeEvent = self.event else {
+                    return
+                }
+                self.eventManager.fire(throwAxeEvent)
+                timer.invalidate()
             }
-            self.eventManager.fire(throwAxeEvent)
-            timer.invalidate()
         }
     }
 }

@@ -32,6 +32,8 @@ class PhysicsSystem: System {
 
     func syncFromPhysicsEngine() {
         for (id, physicsBody) in scene.bodyIDPhysicsMap {
+            print("syncFromPhysicsEngine vel", physicsBody.velocity)
+            print("syncFromPhysicsEngine pos", physicsBody.position)
             if let physicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
                 physicsComponent.velocity = physicsBody.velocity
                 physicsComponent.mass = physicsBody.mass
@@ -59,7 +61,10 @@ class PhysicsSystem: System {
     }
 
     func syncToPhysicsEngine() {
+//        print("syncToPhysicsEngine")
         for (entity, position, rotation, physics, collidable) in physics.entityAndComponents {
+            print("syncToPhysicsEngine vel", physics.velocity)
+            print("syncToPhysicsEngine pos", position.position)
             var physicsBody = initializePhysicsBodyFrom(positionComponent: position,
                                                         rotationComponent: rotation,
                                                         physicsComponent: physics,

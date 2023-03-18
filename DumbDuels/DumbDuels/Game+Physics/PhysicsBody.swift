@@ -32,6 +32,13 @@ public class PhysicsBody {
             return nil
         }
         // TODO: fix this properly
+//        self.node = SKNode()
+        self.node = size != nil
+            ? SKSpriteNode(color: .brown, size: size!)
+            : SKSpriteNode(color: .green, size: CGSize(width: radius! * 2, height: radius! * 2))
+        self.node.position = position
+        self.node.zRotation = zRotation
+
         var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
             // print("size is \(size)")
@@ -40,10 +47,8 @@ public class PhysicsBody {
             // print("radius is \(radius)")
             body = SKPhysicsBody(circleOfRadius: radius, center: position)
         }
-        self.node = SKNode()
+
         self.node.physicsBody = body
-        self.position = position
-        self.zRotation = zRotation
         self.mass = mass
         self.velocity = velocity
         self.affectedByGravity = affectedByGravity
@@ -58,12 +63,14 @@ public class PhysicsBody {
     }
 
     func updateWith(newPhysicsBody: PhysicsBody) {
+        print("updateWith vel", newPhysicsBody.velocity)
+        print("updateWith pos", newPhysicsBody.position)
         guard node.physicsBody != nil else {
             assertionFailure(assertionFailureMessage)
             return
         }
 
-        node.position = newPhysicsBody.position
+//        node.position = newPhysicsBody.position
         node.zRotation = newPhysicsBody.zRotation
         mass = newPhysicsBody.mass
         velocity = newPhysicsBody.velocity
@@ -82,8 +89,17 @@ public class PhysicsBody {
     public var position: CGPoint {
         get { node.position }
         set {
-            // print("position set to: \(newValue)")
+//            print("position set to: \(newValue)")
+            guard let pBody = node.physicsBody else {
+                return
+            }
+            print("before set vel", pBody.velocity)
+            print("before set pos", node.position)
+            node.physicsBody = nil
             node.position = newValue
+            node.physicsBody = pBody
+            print("after set", pBody.velocity)
+            print("after set pos", node.position)
         }
     }
 

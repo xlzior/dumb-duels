@@ -9,7 +9,7 @@ import SpriteKit
 
 /// The Simulator class
 public class Simulator {
-    private let view: SKView
+    let view: SKView
     public let gameScene: GameScene
 
     public init() {

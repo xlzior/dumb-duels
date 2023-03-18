@@ -19,8 +19,8 @@ class ColliisionUtils {
     static let pegCollideBitmask: UInt32 = axeBitmask
 
     static let playerContactBitmask: UInt32 = axeBitmask | platformBitmask
-    static let axeContactBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask | platformBitmask
-    static let platformContactBitmask: UInt32 = playerBitmask | axeBitmask
+    static let axeContactBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask
+    static let platformContactBitmask: UInt32 = playerBitmask
     static let pegContactBitmask: UInt32 = axeBitmask
 
     static func bitmasks(for categories: [CollisionCategory]) -> UInt32 {

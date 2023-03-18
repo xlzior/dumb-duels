@@ -95,6 +95,7 @@ public class GameScene {
         }
         print("GameScene applies impulse \(impulse) to BodyID \(id) physics body \(physicsBody)")
         physicsBody.applyImpulse(impulse)
+//        physicsBody.velocity += CGVector(dx: 600, dy: 600)
     }
 
     public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {

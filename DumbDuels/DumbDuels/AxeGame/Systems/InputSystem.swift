@@ -40,6 +40,7 @@ class InputSystem: System {
             return
         }
         eventManager.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID,
+                                        throwerId: entityId,
                                        faceDirection: playerFacing))
     }
 

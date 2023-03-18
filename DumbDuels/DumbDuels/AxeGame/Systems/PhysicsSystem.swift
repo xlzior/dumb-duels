@@ -47,7 +47,13 @@ class PhysicsSystem: System {
     }
 
     func apply(impulse: CGVector, to entityId: EntityID) {
-        scene.apply(impulse: impulse, to: entityId.id)
+        print("Physics system trying to add impulse \(impulse) to physics component of \(entityId.id)")
+        guard let physicsComponent: PhysicsComponent =
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: entityId) else {
+            return
+        }
+        physicsComponent.impulse = impulse
+        print("Physics system added impulse \(impulse) to physics component of \(entityId.id)")
     }
 
     func syncToPhysicsEngine() {
@@ -57,6 +63,11 @@ class PhysicsSystem: System {
                                                         physicsComponent: physics,
                                                         collidableComponent: collidable)
             scene.sync(physicsBody, for: entity.id.id)
+            if physics.impulse != .zero {
+                scene.apply(impulse: physics.impulse, to: entity.id.id)
+                print("Physics systems called scene to add impulse \(physics.impulse) to \(entity.id.id)")
+                physics.impulse = .zero
+            }
         }
     }
 

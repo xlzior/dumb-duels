@@ -71,6 +71,7 @@ class GameManager {
 
     private func setUpSystems() {
         systemManager.register(InputSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(PlayerAxeSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(RoundSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(PhysicsSystem(
             for: entityManager,
@@ -133,6 +134,11 @@ extension GameManager: GameSceneDelegate {
 
 extension GameManager: PhysicsContactDelegate {
     func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
+        print("Contact between \(bodyA) and \(bodyB) started")
+        guard let collisionSystem = systemManager.get(ofType: CollisionSystem.self) else {
+            return
+        }
+        collisionSystem.handleCollision(firstId: bodyA, secondId: bodyB)
     }
 
     func didContactEnd(for bodyA: BodyID, and bodyB: BodyID) {

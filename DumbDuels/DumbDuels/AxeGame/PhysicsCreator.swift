@@ -26,7 +26,7 @@ class PhysicsCreator {
                                          categoryBitMask: ColliisionUtils.axeBitmask,
                                          collisionBitMask: ColliisionUtils.axeCollideBitmask,
                                          contactTestBitMask: ColliisionUtils.axeContactBitmask,
-                                         zRotation: Physics.axeZRotation)
+                                         zRotation: Physics.axeZRotation, impulse: Physics.axeInitialImpulse)
         return component
     }
 
@@ -41,7 +41,7 @@ class PhysicsCreator {
                                          categoryBitMask: ColliisionUtils.playerBitmask,
                                          collisionBitMask: ColliisionUtils.playerCollideBitmask,
                                          contactTestBitMask: ColliisionUtils.playerContactBitmask,
-                                         zRotation: Physics.playerZRotation)
+                                         zRotation: Physics.playerZRotation, impulse: Physics.playerImpulse)
         return component
     }
 
@@ -56,7 +56,8 @@ class PhysicsCreator {
                                          categoryBitMask: ColliisionUtils.platformBitmask,
                                          collisionBitMask: ColliisionUtils.platformCollideBitmask,
                                          contactTestBitMask: ColliisionUtils.platformContactBitmask,
-                                         zRotation: Physics.platformZRotation)
+                                         zRotation: Physics.platformZRotation,
+                                         impulse: Physics.playerImpulse)
         return component
     }
 

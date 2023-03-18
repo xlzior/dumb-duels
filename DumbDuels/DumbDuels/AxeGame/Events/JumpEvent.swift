@@ -11,11 +11,10 @@ struct JumpEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let physicsSystem = systems.get(ofType: PhysicsSystem.self) else {
+        guard let playerAxeSystem = systems.get(ofType: PlayerAxeSystem.self) else {
             return
         }
 
-        // TODO: don't allow double jumps
-        physicsSystem.apply(impulse: Physics.jumpImpulse, to: entityId)
+        playerAxeSystem.jump(playerId: entityId)
     }
 }

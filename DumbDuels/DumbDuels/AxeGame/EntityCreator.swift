@@ -59,6 +59,7 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "player")
             ScoreComponent()
+            CanJumpComponent()
         }
         let collidable = physicsCreator.playerCollidable(playerId: player.id)
         let physicsComponent = physicsCreator.createPlayer(of: size)

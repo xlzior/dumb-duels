@@ -27,12 +27,14 @@ class PhysicsComponent: Component {
     var restitution: CGFloat
     var friction: CGFloat
     var zRotation: CGFloat
+    var impulse: CGVector
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                  linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                  restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                 collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat) {
+                 collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
+                  impulse: CGVector) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure("Please pass in only either a size to initialize a rectangle physics component or a radius to initialize a circle physics component")
             return nil
@@ -50,6 +52,7 @@ class PhysicsComponent: Component {
         self.restitution = restitution
         self.friction = friction
         self.zRotation = zRotation
+        self.impulse = impulse
         // TODO: assert is valid
 //        assert()
     }
@@ -58,24 +61,26 @@ class PhysicsComponent: Component {
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat) {
+                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
+                     impulse: CGVector) {
         self.init(shape: .circle, radius: radius, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
                   friction: friction, categoryBitMask: categoryBitMask, collisionBitMask: collisionBitMask,
-                  contactTestBitMask: contactTestBitMask, zRotation: zRotation)!
+                  contactTestBitMask: contactTestBitMask, zRotation: zRotation, impulse: impulse)!
     }
 
     convenience init(size: CGSize,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat) {
+                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
+                     impulse: CGVector) {
         self.init(shape: .rectangle, size: size, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
                   friction: friction, categoryBitMask: categoryBitMask, collisionBitMask: collisionBitMask,
-                  contactTestBitMask: contactTestBitMask, zRotation: zRotation)!
+                  contactTestBitMask: contactTestBitMask, zRotation: zRotation, impulse: impulse)!
     }
 
 //    func isValid() -> Bool {

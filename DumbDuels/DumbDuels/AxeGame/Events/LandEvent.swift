@@ -13,8 +13,11 @@ struct LandEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        // TODO: allow the player to jump again
-        // for preventing double jumps
+        guard let playerAxeSystem = systems.get(ofType: PlayerAxeSystem.self) else {
+            return
+        }
+        print("Possible landing of player \(entityId)")
+        playerAxeSystem.possibleLand(playerId: entityId)
     }
 
 }

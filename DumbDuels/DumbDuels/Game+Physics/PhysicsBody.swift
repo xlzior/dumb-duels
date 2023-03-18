@@ -81,7 +81,10 @@ public class PhysicsBody {
 
     public var position: CGPoint {
         get { node.position }
-        set { node.position = newValue }
+        set {
+            // print("position set to: \(newValue)")
+            node.position = newValue
+        }
     }
 
     public var zRotation: CGFloat {

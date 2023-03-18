@@ -49,11 +49,12 @@ class GameManager {
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
             let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2) * faceDirection.rawValue
+            print("horizontalOffset")
 
             let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
             let platform = entityCreator.createPlatform(
                 withVerticalOffset: verticalOffset,
-                from: playerPosition + CGPoint(x: horizontalOffset, y: 0),
+                from: playerPosition,
                 of: Sizes.platform
             )
 
@@ -133,17 +134,17 @@ extension GameManager: GameSceneDelegate {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
-        // print("Player 1: \(physicsSystem.getPosition(of: playerIds[0]))")
-        // print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
-        // print("Platform 1: \(physicsSystem.getPosition(of: platformIds[0]))")
+        print("Player 1: \(physicsSystem.getPosition(of: playerIds[0]))")
+        print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
+        print("Platform 1: \(physicsSystem.getPosition(of: platformIds[0]))")
 
         print("Player 2: \(physicsSystem.getPosition(of: playerIds[1]))")
         print("Axe 2: \(physicsSystem.getPosition(of: axeIds[1]))")
         print("Platform 2: \(physicsSystem.getPosition(of: platformIds[1]))")
 
-        // print("Player 1: \(physicsSystem.getBitmasks(of: playerIds[0]))")
-        // print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
-        // print("Platform 1: \(physicsSystem.getBitmasks(of: platformIds[0]))")
+        print("Player 1: \(physicsSystem.getBitmasks(of: playerIds[0]))")
+        print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
+        print("Platform 1: \(physicsSystem.getBitmasks(of: platformIds[0]))")
 
         print("Player 2: \(physicsSystem.getBitmasks(of: playerIds[1]))")
         print("Axe 2: \(physicsSystem.getBitmasks(of: axeIds[1]))")

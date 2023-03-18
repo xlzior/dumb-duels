@@ -38,7 +38,9 @@ class PhysicsSystem: System {
                 physicsComponent.zRotation = physicsBody.zRotation
             }
             if let positionComponent: PositionComponent = entityManager.getComponent(ofType: PositionComponent.typeId, for: EntityID(id)) {
-                positionComponent.position = physicsBody.position
+                // TODO: important change this back
+                positionComponent.position = CGPoint(x: physicsBody.position.x,
+                                                     y: physicsBody.position.y)
             }
             if let rotationComponent: RotationComponent = entityManager.getComponent(ofType: RotationComponent.typeId, for: EntityID(id)) {
                 rotationComponent.angleInRadians = physicsBody.zRotation
@@ -94,6 +96,8 @@ class PhysicsSystem: System {
         // let categoryBitMask = ColliisionUtils.bitmasks(for: collidableComponent.categories)
         // let collisionBitMask = ColliisionUtils.bitmasks(for: collidableComponent.collisions)
         // let contactBitMask = ColliisionUtils.bitmasks(for: collidableComponent.contacts)
+//        print("size: \(physicsComponent.size)")
+//        print("radius: \(physicsComponent.radius)")
         let physicsBody: PhysicsBody = PhysicsBody(position: positionComponent.position,
                                                    size: physicsComponent.size,
                                                    radius: physicsComponent.radius,

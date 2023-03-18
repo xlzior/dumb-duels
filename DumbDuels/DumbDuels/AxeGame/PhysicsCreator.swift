@@ -75,8 +75,8 @@ class PhysicsCreator {
         let platformCategory = PlatformCategory(entityId: playerId)
         let playerCategory = PlayerCategory(entityId: playerId)
         let component = CollidableComponent(categories: playerCategory,
-                            collisions: axeCategory, playerCategory,
-                            contacts: axeCategory, playerCategory)
+                            collisions: axeCategory, playerCategory, platformCategory,
+                            contacts: axeCategory, playerCategory, platformCategory)
         return component
     }
 

@@ -40,6 +40,10 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
+        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
+        let physicsComponent = physicsCreator.createAxe(of: size)
+        axe.assign(component: collidable)
+        axe.assign(component: physicsComponent)
         return axe
     }
 
@@ -80,6 +84,11 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
+        let collidable = physicsCreator.platformCollidable(platformId: platform.id)
+        let physicsComponent = physicsCreator.createPlatform(of: size)
+        platform.assign(component: collidable)
+        platform.assign(component: physicsComponent)
+
         return platform
     }
 

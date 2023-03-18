@@ -32,6 +32,8 @@ class GameManager {
         self.eventManager = eventManager
 
         self.simulator = Simulator()
+        simulator.gameScene.gameSceneDelegate = self
+        simulator.gameScene.physicsContactDelegate = self
 
         setUpEntities()
         setUpSystems()
@@ -75,6 +77,7 @@ class GameManager {
             eventManager: eventManager,
             scene: simulator.gameScene
         ))
+        systemManager.register(CollisionSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(ScoreSystem(for: entityManager, eventManager: eventManager))
         systemManager.register(RenderSystem(
             for: entityManager,
@@ -88,11 +91,7 @@ class GameManager {
     }
 
     private func startGame() {
-        // TODO: replace with physics system, this is for display initial positions (for testing only)
-        guard let renderSystem = systemManager.get(ofType: RenderSystem.self) else {
-            return
-        }
-        renderSystem.update()
+        simulator.start()
     }
 }
 
@@ -122,9 +121,20 @@ extension GameManager: GameSceneDelegate {
     }
 
     func didFinishUpdate() {
-//        1. sync the physics engine to the physics system
-//        2. Poll all events
-//        3. Sync from physics system to physics engine
-//        4. Render
+        guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
+            return
+        }
+
+        physicsSystem.syncFromPhysicsEngine()
+        eventManager.pollAll()
+        systemManager.update()
+    }
+}
+
+extension GameManager: PhysicsContactDelegate {
+    func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
+    }
+
+    func didContactEnd(for bodyA: BodyID, and bodyB: BodyID) {
     }
 }

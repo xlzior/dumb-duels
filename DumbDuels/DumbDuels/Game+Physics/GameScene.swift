@@ -26,10 +26,7 @@ public class GameScene {
     }
 
     public init() {
-        guard let baseGameScene = BaseGameScene(fileNamed: "BaseGameScene") else {
-            fatalError("BaseGameScene failed to load.")
-        }
-        self.baseGameScene = baseGameScene
+        self.baseGameScene = BaseGameScene(size: Sizes.game)
         self.baseGameScene.delegate = self.baseGameScene
         self.bodyIDPhysicsMap = [:]
         self.physicsBodyIDMap = [:]
@@ -107,13 +104,16 @@ public class GameScene {
         }
     }
 
-    public func sync(_ physicsBody: PhysicsBody, for id: BodyID) {
-        guard bodyIDPhysicsMap[id] != nil,
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+    public func sync(_ newPhysicsBody: PhysicsBody, for id: BodyID) {
+        guard let originalPhysicsBody = bodyIDPhysicsMap[id] else {
+            return assertionFailure("Trying to sync for an id that does not exist.")
+        }
+        guard physicsBodyIDMap[originalPhysicsBody] == id,
+              skNodePhysicsBodyMap[originalPhysicsBody.node] != nil else {
             assertionFailure("Trying to sync for an id that does not exist.")
             return
         }
-        bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)
+
+        bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: newPhysicsBody)
     }
 }

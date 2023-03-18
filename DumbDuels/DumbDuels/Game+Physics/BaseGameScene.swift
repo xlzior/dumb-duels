@@ -14,6 +14,8 @@ class BaseGameScene: SKScene {
 
     override func sceneDidLoad() {
         gameSceneDelegate?.gameLoopDidStart()
+        physicsWorld.gravity = CGVector(dx: 0, dy: -0.1)
+        physicsWorld.contactDelegate = self
     }
 }
 

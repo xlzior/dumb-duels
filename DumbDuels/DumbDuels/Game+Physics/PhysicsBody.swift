@@ -60,7 +60,21 @@ public class PhysicsBody {
             assertionFailure(assertionFailureMessage)
             return
         }
-        node = newPhysicsBody.node
+
+        node.position = newPhysicsBody.position
+        node.zRotation = newPhysicsBody.zRotation
+        mass = newPhysicsBody.mass
+        velocity = newPhysicsBody.velocity
+        affectedByGravity = newPhysicsBody.affectedByGravity
+        linearDamping = newPhysicsBody.linearDamping
+        isDynamic = newPhysicsBody.isDynamic
+        allowsRotation = newPhysicsBody.allowsRotation
+        restitution = newPhysicsBody.restitution
+        friction = newPhysicsBody.friction
+        categoryBitMask = newPhysicsBody.categoryBitMask
+        collisionBitMask = newPhysicsBody.collisionBitMask
+        contactTestBitMask = newPhysicsBody.contactTestBitMask
+
     }
 
     public var position: CGPoint {

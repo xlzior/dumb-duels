@@ -693,7 +693,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BF9D4E129C45C0200D7B34D /* GameWonEvent.swift in Sources */,
-				6F67C70229C1F4BC009E0579 /* PhysicsDetails.swift in Sources */,
 				6F67C6F829C176C9009E0579 /* GameScene.swift in Sources */,
 				6F67C6FE29C18BA3009E0579 /* PhysicsContactDelegate.swift in Sources */,
 				6F67C6FA29C180F0009E0579 /* GameSceneDelegate.swift in Sources */,

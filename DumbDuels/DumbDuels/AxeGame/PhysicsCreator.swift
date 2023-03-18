@@ -16,7 +16,8 @@ class PhysicsCreator {
 
     func createAxe(of size: CGSize) -> PhysicsComponent {
         // TODO: radius is set to size.height for now
-        let component = PhysicsComponent(radius: size.height, mass: Physics.axeMass, velocity: .zero,
+        print("axe size: \(size)")
+        let component = PhysicsComponent(radius: size.height / 2, mass: Physics.axeMass, velocity: .zero,
                                          affectedByGravity: Physics.axeGravity,
                                          linearDamping: Physics.axeDamping,
                                          isDynamic: Physics.axeIsDynamic,
@@ -31,6 +32,7 @@ class PhysicsCreator {
     }
 
     func createPlayer(of size: CGSize) -> PhysicsComponent {
+        print("player size: \(size)")
         let component = PhysicsComponent(size: size, mass: Physics.playerMass, velocity: .zero,
                                          affectedByGravity: Physics.playerGravity,
                                          linearDamping: Physics.playerDamping,
@@ -46,6 +48,7 @@ class PhysicsCreator {
     }
 
     func createPlatform(of size: CGSize) -> PhysicsComponent {
+        print("platform size: \(size)")
         let component = PhysicsComponent(size: size, mass: Physics.platformMass, velocity: .zero,
                                          affectedByGravity: Physics.platformGravity,
                                          linearDamping: Physics.platformDamping,
@@ -63,30 +66,19 @@ class PhysicsCreator {
 
     func axeCollidable(axeId: EntityID) -> CollidableComponent {
         let axeCategory = AxeCategory(entityId: axeId)
-        let playerCategory = PlayerCategory(entityId: axeId)
-        let pegCategory = PegCategory(entityId: axeId)
-        let component = CollidableComponent(categories: axeCategory,
-                            collisions: playerCategory, axeCategory, pegCategory,
-                            contacts: playerCategory, axeCategory, pegCategory)
+        let component = CollidableComponent(categories: axeCategory)
         return component
     }
 
     func playerCollidable(playerId: EntityID) -> CollidableComponent {
-        let axeCategory = AxeCategory(entityId: playerId)
-        let platformCategory = PlatformCategory(entityId: playerId)
         let playerCategory = PlayerCategory(entityId: playerId)
-        let component = CollidableComponent(categories: playerCategory,
-                            collisions: axeCategory, playerCategory, platformCategory,
-                            contacts: axeCategory, playerCategory, platformCategory)
+        let component = CollidableComponent(categories: playerCategory)
         return component
     }
 
     func platformCollidable(platformId: EntityID) -> CollidableComponent {
         let platformCategory = PlatformCategory(entityId: platformId)
-        let playerCategory = PlayerCategory(entityId: platformId)
-        let component = CollidableComponent(categories: platformCategory,
-                            collisions: playerCategory,
-                            contacts: playerCategory)
+        let component = CollidableComponent(categories: platformCategory)
         return component
     }
 }

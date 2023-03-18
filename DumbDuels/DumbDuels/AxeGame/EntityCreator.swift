@@ -28,6 +28,13 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createAxe(of: size)
         axe.assign(component: collidable)
         axe.assign(component: physicsComponent)
+        print("Axe \(axe.id) collidable bitmask: \(ColliisionUtils.bitmasks(for: collidable.categories))")
+        print("Axe \(axe.id) collidable CollideBitmask: \(ColliisionUtils.collideBitmasks(for: collidable.categories))")
+        print("Axe \(axe.id) collidable ContactBitmask: \(ColliisionUtils.contactBitmasks(for: collidable.categories))")
+
+        print("Axe \(axe.id) physics bitmask: \(physicsComponent.categoryBitMask)")
+        print("Axe \(axe.id) physics CollideBitmask: \(physicsComponent.collisionBitMask)")
+        print("Axe \(axe.id) physics ContactBitmask: \(physicsComponent.contactTestBitMask)")
         return axe
     }
 
@@ -44,6 +51,13 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createAxe(of: size)
         axe.assign(component: collidable)
         axe.assign(component: physicsComponent)
+        print("Axe \(axe.id) collidable bitmask: \(ColliisionUtils.bitmasks(for: collidable.categories))")
+        print("Axe \(axe.id) collidable CollideBitmask: \(ColliisionUtils.collideBitmasks(for: collidable.categories))")
+        print("Axe \(axe.id) collidable ContactBitmask: \(ColliisionUtils.contactBitmasks(for: collidable.categories))")
+
+        print("Axe \(axe.id) physics bitmask: \(physicsComponent.categoryBitMask)")
+        print("Axe \(axe.id) physics CollideBitmask: \(physicsComponent.collisionBitMask)")
+        print("Axe \(axe.id) physics ContactBitmask: \(physicsComponent.contactTestBitMask)")
         return axe
     }
 
@@ -65,6 +79,13 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createPlayer(of: size)
         player.assign(component: collidable)
         player.assign(component: physicsComponent)
+        print("Player \(player.id) collidable bitmask: \(ColliisionUtils.bitmasks(for: collidable.categories))")
+        print("Player \(player.id) collidable CollideBitmask: \(ColliisionUtils.collideBitmasks(for: collidable.categories))")
+        print("Player \(player.id) collidable ContactBitmask: \(ColliisionUtils.contactBitmasks(for: collidable.categories))")
+
+        print("Player \(player.id) physics bitmask: \(physicsComponent.categoryBitMask)")
+        print("Player \(player.id) physics CollideBitmask: \(physicsComponent.collisionBitMask)")
+        print("Player \(player.id) physics ContactBitmask: \(physicsComponent.contactTestBitMask)")
 
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
         fsm.createState(name: .holdingAxe)
@@ -89,6 +110,13 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: collidable)
         platform.assign(component: physicsComponent)
+        print("Platform \(platform.id) collidable bitmask: \(ColliisionUtils.bitmasks(for: collidable.categories))")
+        print("Platform \(platform.id) collidable CollideBitmask: \(ColliisionUtils.collideBitmasks(for: collidable.categories))")
+        print("Platform \(platform.id) collidable ContactBitmask: \(ColliisionUtils.contactBitmasks(for: collidable.categories))")
+
+        print("Platform \(platform.id) physics bitmask: \(physicsComponent.categoryBitMask)")
+        print("Platform \(platform.id) physics CollideBitmask: \(physicsComponent.collisionBitMask)")
+        print("Platform \(platform.id) physics ContactBitmask: \(physicsComponent.contactTestBitMask)")
 
         return platform
     }
@@ -106,6 +134,13 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: collidable)
         platform.assign(component: physicsComponent)
+        print("Platform \(platform.id) collidable bitmask: \(ColliisionUtils.bitmasks(for: collidable.categories))")
+        print("Platform \(platform.id) collidable CollideBitmask: \(ColliisionUtils.collideBitmasks(for: collidable.categories))")
+        print("Platform \(platform.id) collidable ContactBitmask: \(ColliisionUtils.contactBitmasks(for: collidable.categories))")
+
+        print("Platform \(platform.id) physics bitmask: \(physicsComponent.categoryBitMask)")
+        print("Platform \(platform.id) physics CollideBitmask: \(physicsComponent.collisionBitMask)")
+        print("Platform \(platform.id) physics ContactBitmask: \(physicsComponent.contactTestBitMask)")
 
         return platform
     }

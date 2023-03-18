@@ -40,6 +40,10 @@ public class GameScene {
         self.physicsBodyIDMap = [:]
         self.skNodePhysicsBodyMap = [:]
         for (bodyID, physicsBody) in newBodyIDPhysicsMap {
+            print("\(bodyID) area: \(physicsBody.node.physicsBody?.area)")
+            print("\(bodyID) bitmask: \(physicsBody.categoryBitMask)")
+            print("\(bodyID) CollideBitmask: \(physicsBody.collisionBitMask)")
+            print("\(bodyID) ContactBitmask: \(physicsBody.contactTestBitMask)")
             baseGameScene.addChild(physicsBody.node)
             bodyIDPhysicsMap[bodyID] = physicsBody
             physicsBodyIDMap[physicsBody] = bodyID

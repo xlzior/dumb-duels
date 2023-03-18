@@ -34,8 +34,10 @@ public class PhysicsBody {
         // TODO: fix this properly
         var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
+            // print("size is \(size)")
             body = SKPhysicsBody(rectangleOf: size, center: position)
         } else if let radius = radius {
+            // print("radius is \(radius)")
             body = SKPhysicsBody(circleOfRadius: radius, center: position)
         }
         self.node = SKNode()

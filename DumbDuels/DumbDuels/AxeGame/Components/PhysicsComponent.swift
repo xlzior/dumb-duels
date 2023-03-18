@@ -28,6 +28,9 @@ class PhysicsComponent: Component {
     var friction: CGFloat
     var zRotation: CGFloat
     var impulse: CGVector
+    var categoryBitMask: UInt32
+    var collisionBitMask: UInt32
+    var contactTestBitMask: UInt32
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
@@ -53,8 +56,9 @@ class PhysicsComponent: Component {
         self.friction = friction
         self.zRotation = zRotation
         self.impulse = impulse
-        // TODO: assert is valid
-//        assert()
+        self.categoryBitMask = categoryBitMask
+        self.collisionBitMask = collisionBitMask
+        self.contactTestBitMask = contactTestBitMask
     }
 
     convenience init(radius: CGFloat,

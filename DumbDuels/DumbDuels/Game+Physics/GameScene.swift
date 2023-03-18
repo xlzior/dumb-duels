@@ -40,10 +40,6 @@ public class GameScene {
         self.physicsBodyIDMap = [:]
         self.skNodePhysicsBodyMap = [:]
         for (bodyID, physicsBody) in newBodyIDPhysicsMap {
-            print("\(bodyID) area: \(physicsBody.node.physicsBody?.area)")
-            print("\(bodyID) bitmask: \(physicsBody.categoryBitMask)")
-            print("\(bodyID) CollideBitmask: \(physicsBody.collisionBitMask)")
-            print("\(bodyID) ContactBitmask: \(physicsBody.contactTestBitMask)")
             baseGameScene.addChild(physicsBody.node)
             bodyIDPhysicsMap[bodyID] = physicsBody
             physicsBodyIDMap[physicsBody] = bodyID
@@ -95,7 +91,6 @@ public class GameScene {
         }
         print("GameScene applies impulse \(impulse) to BodyID \(id) physics body \(physicsBody)")
         physicsBody.applyImpulse(impulse)
-//        physicsBody.velocity += CGVector(dx: 600, dy: 600)
     }
 
     public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {

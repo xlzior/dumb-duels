@@ -28,7 +28,8 @@ struct Physics {
     static let axeCor: CGFloat = 0.1
     static let axeIsDynamic = true
     static let axeZRotation = PhysicsEngineDefaults.zRotation
-    static let axeRotation = true
+    // TODO: axe rotation disabled for now
+    static let axeRotation = false
     static let axeFriction = PhysicsEngineDefaults.friction
     static let axeDamping = PhysicsEngineDefaults.linearDamping
     static let axeInitialImpulse: CGVector = .zero

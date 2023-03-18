@@ -31,23 +31,25 @@ public class PhysicsBody {
             assertionFailure("Please pass in only either a size to initialize a rectangle body or a radius to initialize a circle body")
             return nil
         }
+
         // TODO: fix this properly
-//        self.node = SKNode()
-        self.node = size != nil
-            ? SKSpriteNode(color: .brown, size: size!)
-            : SKSpriteNode(color: .green, size: CGSize(width: radius! * 2, height: radius! * 2))
-        self.node.position = position
-        self.node.zRotation = zRotation
+//        self.node = size != nil
+//            ? SKSpriteNode(imageNamed: "player")
+//            : SKSpriteNode(imageNamed: "axe")
+//        self.node.size = size != nil
+//            ? size!
+//            : CGSize(width: radius! * 2, height: radius! * 2)
 
         var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
-            // print("size is \(size)")
-            body = SKPhysicsBody(rectangleOf: size, center: position)
+            body = SKPhysicsBody(rectangleOf: size)
         } else if let radius = radius {
-            // print("radius is \(radius)")
-            body = SKPhysicsBody(circleOfRadius: radius, center: position)
+            body = SKPhysicsBody(circleOfRadius: radius)
         }
 
+        self.node = SKNode()
+        self.node.position = position
+        self.node.zRotation = zRotation
         self.node.physicsBody = body
         self.mass = mass
         self.velocity = velocity
@@ -63,8 +65,6 @@ public class PhysicsBody {
     }
 
     func updateWith(newPhysicsBody: PhysicsBody) {
-        print("updateWith vel", newPhysicsBody.velocity)
-        print("updateWith pos", newPhysicsBody.position)
         guard node.physicsBody != nil else {
             assertionFailure(assertionFailureMessage)
             return
@@ -89,17 +89,12 @@ public class PhysicsBody {
     public var position: CGPoint {
         get { node.position }
         set {
-//            print("position set to: \(newValue)")
             guard let pBody = node.physicsBody else {
                 return
             }
-            print("before set vel", pBody.velocity)
-            print("before set pos", node.position)
             node.physicsBody = nil
             node.position = newValue
             node.physicsBody = pBody
-            print("after set", pBody.velocity)
-            print("after set pos", node.position)
         }
     }
 

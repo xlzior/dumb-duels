@@ -14,13 +14,12 @@ class RenderSystem: System {
     var screenSize: CGSize
     var screenOffset: CGPoint
     var scalingFactor: Double {
-//        let screenAspectRatio = (screenSize.width * 0.9) / (screenSize.height * 0.8)
-//        let gameAspectRatio = Sizes.game.width / Sizes.game.height
-//        let scalingFactor = screenAspectRatio > gameAspectRatio
-//            ? (screenSize.height * 0.8) / Sizes.game.height
-//            : (screenSize.width * 0.9) / Sizes.game.width
-//        return scalingFactor
-        1.0
+        let screenAspectRatio = (screenSize.width * 0.9) / (screenSize.height * 0.8)
+        let gameAspectRatio = Sizes.game.width / Sizes.game.height
+        let scalingFactor = screenAspectRatio > gameAspectRatio
+            ? (screenSize.height * 0.8) / Sizes.game.height
+            : (screenSize.width * 0.9) / Sizes.game.width
+        return scalingFactor
     }
 
     var renderedEntities: Set<EntityID> = Set()

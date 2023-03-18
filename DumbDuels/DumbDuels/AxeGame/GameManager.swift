@@ -22,7 +22,7 @@ class GameManager {
     private var playerIds: [String] = ["asdasd", "asdasd"]
 
     var event: Event?
-    var useSpriteKitView: Bool = true
+    var useSpriteKitView: Bool = false
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -58,9 +58,6 @@ class GameManager {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 10) * faceDirection.rawValue
-            print("horizontalOffset")
-
             let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
             let platform = entityCreator.createPlatform(
                 withVerticalOffset: verticalOffset,
@@ -68,6 +65,7 @@ class GameManager {
                 of: Sizes.platform
             )
 
+            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * faceDirection.rawValue
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: horizontalOffset,
                 from: playerPosition,
@@ -122,7 +120,6 @@ class GameManager {
 
         if useSpriteKitView {
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
-                print("Event fired!")
                 guard let throwAxeEvent = self.event else {
                     return
                 }
@@ -162,21 +159,6 @@ extension GameManager: GameSceneDelegate {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
-//        print("Player 1: \(physicsSystem.getPosition(of: playerIds[0]))")
-//        print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
-//        print("Platform 1: \(physicsSystem.getPosition(of: platformIds[0]))")
-//
-//        print("Player 2: \(physicsSystem.getPosition(of: playerIds[1]))")
-//        print("Axe 2: \(physicsSystem.getPosition(of: axeIds[1]))")
-//        print("Platform 2: \(physicsSystem.getPosition(of: platformIds[1]))")
-//
-//        print("Player 1: \(physicsSystem.getBitmasks(of: playerIds[0]))")
-//        print("Axe 1: \(physicsSystem.getPosition(of: axeIds[0]))")
-//        print("Platform 1: \(physicsSystem.getBitmasks(of: platformIds[0]))")
-//
-//        print("Player 2: \(physicsSystem.getBitmasks(of: playerIds[1]))")
-//        print("Axe 2: \(physicsSystem.getBitmasks(of: axeIds[1]))")
-//        print("Platform 2: \(physicsSystem.getBitmasks(of: platformIds[1]))")
 
         physicsSystem.syncFromPhysicsEngine()
         eventManager.pollAll()
@@ -190,8 +172,6 @@ extension GameManager: PhysicsContactDelegate {
         guard let collisionSystem = systemManager.get(ofType: CollisionSystem.self) else {
             return
         }
-        print(simulator.gameScene.bodyIDPhysicsMap[bodyA]?.position)
-        print(simulator.gameScene.bodyIDPhysicsMap[bodyB]?.position)
         collisionSystem.handleCollision(firstId: bodyA, secondId: bodyB)
     }
 

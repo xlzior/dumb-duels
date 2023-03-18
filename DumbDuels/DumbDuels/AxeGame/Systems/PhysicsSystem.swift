@@ -32,8 +32,6 @@ class PhysicsSystem: System {
 
     func syncFromPhysicsEngine() {
         for (id, physicsBody) in scene.bodyIDPhysicsMap {
-            print("syncFromPhysicsEngine vel", physicsBody.velocity)
-            print("syncFromPhysicsEngine pos", physicsBody.position)
             if let physicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
                 physicsComponent.velocity = physicsBody.velocity
                 physicsComponent.mass = physicsBody.mass
@@ -61,10 +59,7 @@ class PhysicsSystem: System {
     }
 
     func syncToPhysicsEngine() {
-//        print("syncToPhysicsEngine")
         for (entity, position, rotation, physics, collidable) in physics.entityAndComponents {
-            print("syncToPhysicsEngine vel", physics.velocity)
-            print("syncToPhysicsEngine pos", position.position)
             var physicsBody = initializePhysicsBodyFrom(positionComponent: position,
                                                         rotationComponent: rotation,
                                                         physicsComponent: physics,
@@ -94,15 +89,9 @@ class PhysicsSystem: System {
                                            rotationComponent: RotationComponent,
                                            physicsComponent: PhysicsComponent,
                                            collidableComponent: CollidableComponent) -> PhysicsBody {
-        let categoryBitMask = physicsComponent.categoryBitMask
-        let collisionBitMask = physicsComponent.collisionBitMask
-        let contactBitMask = physicsComponent.contactTestBitMask
-        // print("category: \(categoryBitMask), collision: \(collisionBitMask), contact: \(contactBitMask)")
-        // let categoryBitMask = ColliisionUtils.bitmasks(for: collidableComponent.categories)
-        // let collisionBitMask = ColliisionUtils.bitmasks(for: collidableComponent.collisions)
-        // let contactBitMask = ColliisionUtils.bitmasks(for: collidableComponent.contacts)
-//        print("size: \(physicsComponent.size)")
-//        print("radius: \(physicsComponent.radius)")
+        let categoryBitMask = ColliisionUtils.bitmasks(for: collidableComponent.categories)
+        let collisionBitMask = ColliisionUtils.collideBitmasks(for: collidableComponent.categories)
+        let contactBitMask = ColliisionUtils.contactBitmasks(for: collidableComponent.categories)
         let physicsBody: PhysicsBody = PhysicsBody(position: positionComponent.position,
                                                    size: physicsComponent.size,
                                                    radius: physicsComponent.radius,

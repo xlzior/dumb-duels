@@ -15,8 +15,6 @@ class PhysicsCreator {
     }
 
     func createAxe(of size: CGSize) -> PhysicsComponent {
-        // TODO: radius is set to size.height for now
-        print("axe size: \(size)")
         let component = PhysicsComponent(radius: size.height / 2, mass: Physics.axeMass, velocity: .zero,
                                          affectedByGravity: Physics.axeGravity,
                                          linearDamping: Physics.axeDamping,
@@ -32,7 +30,6 @@ class PhysicsCreator {
     }
 
     func createPlayer(of size: CGSize) -> PhysicsComponent {
-        print("player size: \(size)")
         let component = PhysicsComponent(size: size, mass: Physics.playerMass, velocity: .zero,
                                          affectedByGravity: Physics.playerGravity,
                                          linearDamping: Physics.playerDamping,
@@ -48,7 +45,6 @@ class PhysicsCreator {
     }
 
     func createPlatform(of size: CGSize) -> PhysicsComponent {
-        print("platform size: \(size)")
         let component = PhysicsComponent(size: size, mass: Physics.platformMass, velocity: .zero,
                                          affectedByGravity: Physics.platformGravity,
                                          linearDamping: Physics.platformDamping,

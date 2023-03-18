@@ -42,11 +42,10 @@ class PhysicsComponent: Component {
             assertionFailure("Please pass in only either a size to initialize a rectangle physics component or a radius to initialize a circle physics component")
             return nil
         }
-        // TODO: Important, change back this size multiplier
         self.id = ComponentID()
         self.shape = shape
-        self.radius = radius // != nil ? radius! * 1.2294 : nil
-        self.size = size // != nil ? CGSize(width: size!.width * 1.2294, height: size!.height * 1.2294) : nil
+        self.radius = radius
+        self.size = size
         self.mass = mass
         self.velocity = velocity
         self.affectedByGravity = affectedByGravity

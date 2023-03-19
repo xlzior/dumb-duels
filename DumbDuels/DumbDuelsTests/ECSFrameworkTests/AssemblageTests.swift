@@ -118,8 +118,32 @@ final class AssemblageTests: XCTestCase {
         XCTAssertEqual(assemblage1.count, numCopies)
     }
 
+    func testPerformanceCreateAssemblageAfterEntities() {
+        let numCopies = 100_000
+        let manager = EntityManager()
+        for idx in 0..<numCopies {
+            manager.createEntity(with: XComponent(idx), YComponent(idx))
+        }
+        for idx in 0..<numCopies {
+            manager.createEntity(with: ZComponent(idx))
+        }
+        self.measure {
+            let assemblage1 = manager.assemblage(requiredComponents: XComponent.self)
+        }
+    }
+
+    func testPerformanceCreateEntities() {
+        let numCopies = 100_000
+        let manager = EntityManager()
+        self.measure {
+            for idx in 0..<numCopies {
+                manager.createEntity(with: XComponent(idx))
+            }
+        }
+    }
+
     func testComponentsAndMembersIteration() {
-        let numCopies = 1_000
+        let numCopies = 100_000
         let manager = EntityManager()
         for idx in 0..<numCopies {
             manager.createEntity(with: XComponent(idx), YComponent(idx))

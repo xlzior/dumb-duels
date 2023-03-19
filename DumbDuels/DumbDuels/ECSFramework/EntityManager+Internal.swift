@@ -85,13 +85,10 @@ extension EntityManager {
 
         // Should **currently** be a member
         let isMatch = traits.isMatch(components: componentTypeIds)
-        switch(isMatch, isMember) {
-        case (true, false):
+        if isMatch && !isMember {
             add(entityId: entityId, toAssemblageWithTraits: traits)
-        case (false, true):
+        } else if !isMatch && isMember {
             remove(entityId: entityId, fromAssemblageWithTraits: traits)
-        default:
-            break
         }
     }
 

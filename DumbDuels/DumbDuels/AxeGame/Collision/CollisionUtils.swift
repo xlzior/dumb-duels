@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ColliisionUtils {
+class CollisionUtils {
     static let playerBitmask: UInt32 =  0x1 << 0
     static let axeBitmask: UInt32 =  0x1 << 1
     static let platformBitmask: UInt32 = 0x1 << 2

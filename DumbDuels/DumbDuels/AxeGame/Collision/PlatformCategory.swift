@@ -10,9 +10,9 @@ import Foundation
 struct PlatformCategory: CollisionCategory {
 
     var entityId: EntityID
-    let ownBitmask: UInt32 = ColliisionUtils.platformBitmask
-    let collideBitmask: UInt32 = ColliisionUtils.platformCollideBitmask
-    let contactBitmask: UInt32 = ColliisionUtils.platformContactBitmask
+    let ownBitmask: UInt32 = CollisionUtils.platformBitmask
+    let collideBitmask: UInt32 = CollisionUtils.platformCollideBitmask
+    let contactBitmask: UInt32 = CollisionUtils.platformContactBitmask
 
     init(entityId: EntityID) {
         self.entityId = entityId

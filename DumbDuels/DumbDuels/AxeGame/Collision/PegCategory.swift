@@ -10,9 +10,9 @@ import Foundation
 struct PegCategory: CollisionCategory {
 
     var entityId: EntityID
-    let ownBitmask: UInt32 = ColliisionUtils.pegBitmask
-    let collideBitmask: UInt32 = ColliisionUtils.pegCollideBitmask
-    let contactBitmask: UInt32 = ColliisionUtils.pegContactBitmask
+    let ownBitmask: UInt32 = CollisionUtils.pegBitmask
+    let collideBitmask: UInt32 = CollisionUtils.pegCollideBitmask
+    let contactBitmask: UInt32 = CollisionUtils.pegContactBitmask
 
     init(entityId: EntityID) {
         self.entityId = entityId

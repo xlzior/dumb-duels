@@ -22,9 +22,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.axeRotation,
                                          restitution: Physics.axeCor,
                                          friction: Physics.axeFriction,
-                                         categoryBitMask: ColliisionUtils.axeBitmask,
-                                         collisionBitMask: ColliisionUtils.axeCollideBitmask,
-                                         contactTestBitMask: ColliisionUtils.axeContactBitmask,
+                                         categoryBitMask: CollisionUtils.axeBitmask,
+                                         collisionBitMask: CollisionUtils.axeCollideBitmask,
+                                         contactTestBitMask: CollisionUtils.axeContactBitmask,
                                          zRotation: Physics.axeZRotation, impulse: Physics.axeInitialImpulse)
         return component
     }
@@ -37,9 +37,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.playerRotation,
                                          restitution: Physics.playerCor,
                                          friction: Physics.playerFriction,
-                                         categoryBitMask: ColliisionUtils.playerBitmask,
-                                         collisionBitMask: ColliisionUtils.playerCollideBitmask,
-                                         contactTestBitMask: ColliisionUtils.playerContactBitmask,
+                                         categoryBitMask: CollisionUtils.playerBitmask,
+                                         collisionBitMask: CollisionUtils.playerCollideBitmask,
+                                         contactTestBitMask: CollisionUtils.playerContactBitmask,
                                          zRotation: Physics.playerZRotation, impulse: Physics.playerImpulse)
         return component
     }
@@ -52,9 +52,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.platformRotation,
                                          restitution: Physics.platformCor,
                                          friction: Physics.platformFriction,
-                                         categoryBitMask: ColliisionUtils.platformBitmask,
-                                         collisionBitMask: ColliisionUtils.platformCollideBitmask,
-                                         contactTestBitMask: ColliisionUtils.platformContactBitmask,
+                                         categoryBitMask: CollisionUtils.platformBitmask,
+                                         collisionBitMask: CollisionUtils.platformCollideBitmask,
+                                         contactTestBitMask: CollisionUtils.platformContactBitmask,
                                          zRotation: Physics.platformZRotation,
                                          impulse: Physics.playerImpulse)
         return component

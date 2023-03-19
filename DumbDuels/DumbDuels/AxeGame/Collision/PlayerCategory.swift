@@ -9,9 +9,9 @@ import Foundation
 
 struct PlayerCategory: CollisionCategory {
     var entityId: EntityID
-    let ownBitmask: UInt32 = ColliisionUtils.playerBitmask
-    let collideBitmask: UInt32 = ColliisionUtils.playerCollideBitmask
-    let contactBitmask: UInt32 = ColliisionUtils.playerContactBitmask
+    let ownBitmask: UInt32 = CollisionUtils.playerBitmask
+    let collideBitmask: UInt32 = CollisionUtils.playerCollideBitmask
+    let contactBitmask: UInt32 = CollisionUtils.playerContactBitmask
 
     init(entityId: EntityID) {
         self.entityId = entityId

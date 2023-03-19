@@ -83,23 +83,15 @@ class GameManager {
             platformIds[playerIndex] = platform.id.id
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
-
-            if playerIndex == 0 {
-                event = ThrowAxeEvent(entityId: axe.id, throwerId: player.id, faceDirection: faceDirection)
-            }
         }
 
     }
 
     private func setUpSystems() {
-        systemManager.register(InputSystem(for: entityManager, eventFirer: eventManager))
-        systemManager.register(PlayerAxeSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(InputSystem(for: entityManager))
+        systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
-        systemManager.register(PhysicsSystem(
-            for: entityManager,
-            eventFirer: eventManager,
-            scene: simulator.gameScene
-        ))
+        systemManager.register(PhysicsSystem(for: entityManager, scene: simulator.gameScene))
         systemManager.register(CollisionSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(ScoreSystem(for: entityManager, eventFirer: eventManager))
         if !useSpriteKitView {

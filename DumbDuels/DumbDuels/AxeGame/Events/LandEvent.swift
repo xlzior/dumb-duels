@@ -13,11 +13,10 @@ struct LandEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let playerAxeSystem = systems.get(ofType: PlayerAxeSystem.self) else {
+        guard let playerSystem = systems.get(ofType: PlayerSystem.self) else {
             return
         }
         print("Possible landing of player \(entityId)")
-        playerAxeSystem.possibleLand(playerId: entityId)
+        playerSystem.possibleLand(playerId: entityId)
     }
-
 }

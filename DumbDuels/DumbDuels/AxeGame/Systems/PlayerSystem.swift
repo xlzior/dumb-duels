@@ -2,47 +2,34 @@
 //  PlayerSystem.swift
 //  DumbDuels
 //
-//  Created by Wen Jun Lye on 16/3/23.
+//  Created by Bing Sen Lim on 18/3/23.
 //
+
+import Foundation
 
 class PlayerSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    private var cannotJumpPlayer: Assemblage1<PlayerComponent>
+
+    init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.cannotJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, excludedComponents: CanJumpComponent.self)
     }
 
     func update() {
 
     }
 
-    func handleButtonPress(entityId: EntityID) {
-        let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
-
-        // TODO: also add the condition that player is not already jumping
-        if !hasAxe {
-            handleJump(playerId: entityId)
-            return eventManager.fire(JumpEvent(entityId: entityId))
-        }
-
-        guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(
-            ofType: HoldingAxeComponent.typeId,
-            for: entityId) else {
+    func possibleLand(playerId: EntityID ) {
+        guard entityManager.isMember(playerId, ofAssemblageWithTraits: cannotJumpPlayer.traits),
+              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: playerId),
+              physicsComponent.velocity.dy <= 0 else {
+            print("Player \(playerId) cannot jump")
             return
         }
-        eventManager.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID))
+        entityManager.assign(component: CanJumpComponent(), to: playerId)
+        print("Player \(playerId) assigned can jump component")
     }
 
-    func handleJump(playerId: EntityID) {
-        // TODO: This function does not apply jump impulse to SpriteKit, rather it marks the player as
-        // TODO: jumping so that the player does not jump again upon spam input
-        // TODO: This is called inside handleButtonPress, after we know the player is going to jump.
-    }
-
-    func handleLand(playerId: EntityID) {
-        // TODO: Similar to handleJump, but the reverse
-        // TODO: This is called by LandEvent
-    }
 }

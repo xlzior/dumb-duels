@@ -9,14 +9,12 @@ import CoreGraphics
 
 class PhysicsSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventFirer: EventFirer
 
     var scene: GameScene
     private let physics: Assemblage4<PositionComponent, RotationComponent, PhysicsComponent, CollidableComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer, scene: GameScene) {
+    init(for entityManager: EntityManager, scene: GameScene) {
         self.entityManager = entityManager
-        self.eventFirer = eventFirer
         self.scene = scene
         self.physics = entityManager.assemblage(requiredComponents:
                                                     PositionComponent.self,

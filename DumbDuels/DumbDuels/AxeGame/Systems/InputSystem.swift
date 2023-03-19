@@ -5,13 +5,23 @@
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
+import CoreGraphics
+
 class InputSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventFirer: EventFirer
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    private var holdingAxePlayer: Assemblage2<PlayerComponent, HoldingAxeComponent>
+    private var axe: Assemblage2<AxeComponent, PhysicsComponent>
+    private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
+
+    private var throwStrength: CGFloat = 1.0
+
+    init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.eventFirer = eventFirer
+        self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
+                                                         HoldingAxeComponent.self)
+        self.axe = entityManager.assemblage(requiredComponents: AxeComponent.self, PhysicsComponent.self)
+        self.canJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
     }
 
     func update() {
@@ -29,7 +39,7 @@ class InputSystem: System {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
         if !hasAxe {
-            return eventFirer.fire(JumpEvent(entityId: entityId))
+            return jump(playerId: entityId)
         }
 
         guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(
@@ -37,12 +47,37 @@ class InputSystem: System {
             for: entityId) else {
             return
         }
-        eventFirer.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID,
-                                        throwerId: entityId,
-                                       faceDirection: playerFacing))
+        throwsAxe(axeId: holdingAxe.axeEntityID, by: entityId, towards: playerFacing)
     }
 
     func handleButtonLongPress(entityId: EntityID) {
         // TODO: charge the axe
+    }
+
+    func throwsAxe(axeId: EntityID, by playerId: EntityID, towards: FaceDirection) {
+        guard entityManager.isMember(playerId, ofAssemblageWithTraits: holdingAxePlayer.traits),
+              entityManager.isMember(axeId, ofAssemblageWithTraits: axe.traits),
+              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: axeId) else {
+            assertionFailure("Throw axe failed for playerId \(playerId) and axeId \(axeId)")
+            return
+        }
+        physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
+                                            dy: throwStrength * Constants.throwForce.dy)
+        physicsComponent.affectedByGravity = true
+        entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
+    }
+
+    func jump(playerId: EntityID) {
+        guard entityManager.isMember(playerId, ofAssemblageWithTraits: canJumpPlayer.traits),
+              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: playerId),
+              let canJumpComponent: CanJumpComponent = entityManager.getComponent(for: playerId) else {
+            print("Player \(playerId) cannot jump")
+            return
+        }
+        physicsComponent.impulse += Constants.jumpForce
+        canJumpComponent.jumpsLeft -= 1
+        if canJumpComponent.jumpsLeft <= 0 {
+            entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
+        }
     }
 }

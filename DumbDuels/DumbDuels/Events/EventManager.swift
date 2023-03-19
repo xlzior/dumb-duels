@@ -17,10 +17,6 @@ class EventManager {
         self.systems = systems
     }
 
-    func fire(_ event: Event) {
-        events.enqueue(event)
-    }
-
     @discardableResult
     func poll() -> Bool {
         guard let event = events.dequeue() else {
@@ -43,5 +39,11 @@ class EventManager {
         }
 
         return true
+    }
+}
+
+extension EventManager: EventFirer {
+    func fire(_ event: Event) {
+        events.enqueue(event)
     }
 }

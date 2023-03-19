@@ -66,7 +66,10 @@ class GameViewController: UIViewController {
     }
 
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
-        assertionFailure("buttonLongPressed method not implemented for this sprint")
+        guard let playerID = (longPressRecognizer.view as? PlayerButton)?.playerID else {
+            return
+        }
+        gameManager?.handleButtonLongPress(for: playerID)
     }
 }
 

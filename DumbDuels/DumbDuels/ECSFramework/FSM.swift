@@ -128,6 +128,7 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
     /// - Parameter name: The name of the new state - used to identify it later in the changeState method call.
     /// - Returns: The new EntityState object that is the state. This will need to be configured with
     /// the appropriate component providers.
+    @discardableResult
     public func createState(name: StateIdentifier) -> EntityState {
         let state = EntityState()
         states[name] = state

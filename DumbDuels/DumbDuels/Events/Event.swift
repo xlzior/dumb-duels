@@ -7,7 +7,6 @@
 
 protocol Event {
     var priority: EventPriority { get set }
-    var entityId: EntityID { get set }
 
     func execute(with systems: SystemManager)
 }

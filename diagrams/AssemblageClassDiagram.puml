@@ -1,0 +1,25 @@
+@startuml AssemblageClassDiagram
+hide empty members
+
+protocol AssemblageRequirementsManager {
+  associatedtype Components
+  associatedtype ComponentTypes
+  associatedtype EntityAndComponents
+}
+class R implements AssemblageRequirementsManager
+struct Assemblage<R>
+
+struct TraitSet {
+  Set<ComponentTypeID> requiredComponents
+  Set<ComponentTypeID> excludedComponents
+}
+
+Assemblage --> TraitSet
+
+protocol RequiringComponents2 implements AssemblageRequirementsManager {
+  associatedtype Component1
+  associatedtype Component2
+}
+
+struct Requires2<Component1, Component2> implements AssemblageRequirementsManager
+struct Requires2<Component1, Component2> implements RequiringComponents2

@@ -29,8 +29,6 @@ class InputSystem: System {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
         if !hasAxe {
-            // TODO: guard whether can jump
-            // prevent double jumping
             return eventManager.fire(JumpEvent(entityId: entityId))
         }
 
@@ -44,7 +42,7 @@ class InputSystem: System {
                                        faceDirection: playerFacing))
     }
 
-    func handleLongPress(entityId: EntityID) {
-
+    func handleButtonLongPress(entityId: EntityID) {
+        // TODO: charge the axe
     }
 }

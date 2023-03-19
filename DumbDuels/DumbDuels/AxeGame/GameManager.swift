@@ -137,7 +137,7 @@ extension GameManager {
     }
 
     func handleButtonLongPress(for entityID: EntityID) {
-
+        eventManager.fire(ButtonLongPressEvent(entityId: entityID))
     }
 }
 

@@ -9,11 +9,11 @@ import Foundation
 
 class CollisionSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
+    unowned var eventFirer: EventFirer
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.eventFirer = eventFirer
     }
 
     func update() {
@@ -30,7 +30,7 @@ class CollisionSystem: System {
         for firstCategory in firstCollider.categories {
             for secondCategory in secondCollider.categories {
                 if let collisionEvent = firstCategory.collides(with: secondCategory) {
-                    eventManager.fire(collisionEvent)
+                    eventFirer.fire(collisionEvent)
                 }
             }
         }

@@ -7,11 +7,11 @@
 
 class InputSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
+    unowned var eventFirer: EventFirer
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.eventFirer = eventFirer
     }
 
     func update() {
@@ -29,7 +29,7 @@ class InputSystem: System {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
         if !hasAxe {
-            return eventManager.fire(JumpEvent(entityId: entityId))
+            return eventFirer.fire(JumpEvent(entityId: entityId))
         }
 
         guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(
@@ -37,7 +37,7 @@ class InputSystem: System {
             for: entityId) else {
             return
         }
-        eventManager.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID,
+        eventFirer.fire(ThrowAxeEvent(entityId: holdingAxe.axeEntityID,
                                         throwerId: entityId,
                                        faceDirection: playerFacing))
     }

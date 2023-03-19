@@ -92,16 +92,16 @@ class GameManager {
     }
 
     private func setUpSystems() {
-        systemManager.register(InputSystem(for: entityManager, eventManager: eventManager))
-        systemManager.register(PlayerAxeSystem(for: entityManager, eventManager: eventManager))
-        systemManager.register(RoundSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(InputSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(PlayerAxeSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PhysicsSystem(
             for: entityManager,
-            eventManager: eventManager,
+            eventFirer: eventManager,
             scene: simulator.gameScene
         ))
-        systemManager.register(CollisionSystem(for: entityManager, eventManager: eventManager))
-        systemManager.register(ScoreSystem(for: entityManager, eventManager: eventManager))
+        systemManager.register(CollisionSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(ScoreSystem(for: entityManager, eventFirer: eventManager))
         if !useSpriteKitView {
             systemManager.register(RenderSystem(
                 for: entityManager,

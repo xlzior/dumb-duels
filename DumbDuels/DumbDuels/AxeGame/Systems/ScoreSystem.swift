@@ -7,20 +7,20 @@
 
 class ScoreSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
+    unowned var eventFirer: EventFirer
 
     private var players: Assemblage2<PlayerComponent, ScoreComponent>
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.eventFirer = eventFirer
         self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                 ScoreComponent.self)
     }
 
     func update() {
         for (player, _, score) in players.entityAndComponents where score.score == 5 {
-            eventManager.fire(GameWonEvent(entityId: player.id))
+            eventFirer.fire(GameWonEvent(entityId: player.id))
         }
     }
 

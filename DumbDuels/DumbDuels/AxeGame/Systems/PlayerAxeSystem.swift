@@ -10,16 +10,16 @@ import Foundation
 class PlayerAxeSystem: System {
 
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
+    unowned var eventFirer: EventFirer
 
     private var holdingAxePlayer: Assemblage2<PlayerComponent, HoldingAxeComponent>
     private var axe: Assemblage2<AxeComponent, PhysicsComponent>
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
     private var cannotJumpPlayer: Assemblage1<PlayerComponent>
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.eventFirer = eventFirer
         self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                          HoldingAxeComponent.self)
         self.axe = entityManager.assemblage(requiredComponents: AxeComponent.self, PhysicsComponent.self)

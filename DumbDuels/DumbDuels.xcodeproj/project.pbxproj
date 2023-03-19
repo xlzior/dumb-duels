@@ -24,6 +24,7 @@
 		7B2B294A29B82BE300281FC7 /* DumbDuelsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */; };
 		7B2B294C29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */; };
 		7B770B2529C6C48E0091AE16 /* ButtonLongPressEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B770B2429C6C48E0091AE16 /* ButtonLongPressEvent.swift */; };
+		7B770B2729C6D2610091AE16 /* EventFirer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B770B2629C6D2610091AE16 /* EventFirer.swift */; };
 		7BA7EB9C29C3633C0096457F /* Assemblage+Requirements.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */; };
 		7BA7EBBB29C36B900096457F /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBB929C36B900096457F /* EventManager.swift */; };
 		7BA7EBBC29C36B900096457F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBBA29C36B900096457F /* Event.swift */; };
@@ -150,6 +151,7 @@
 		7B2B294929B82BE300281FC7 /* DumbDuelsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITests.swift; sourceTree = "<group>"; };
 		7B2B294B29B82BE300281FC7 /* DumbDuelsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumbDuelsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7B770B2429C6C48E0091AE16 /* ButtonLongPressEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonLongPressEvent.swift; sourceTree = "<group>"; };
+		7B770B2629C6D2610091AE16 /* EventFirer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFirer.swift; sourceTree = "<group>"; };
 		7BA7EB9B29C3633C0096457F /* Assemblage+Requirements.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Assemblage+Requirements.stencil"; sourceTree = "<group>"; };
 		7BA7EBB929C36B900096457F /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		7BA7EBBA29C36B900096457F /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 			children = (
 				7BA7EBB929C36B900096457F /* EventManager.swift */,
 				7BA7EBBA29C36B900096457F /* Event.swift */,
+				7B770B2629C6D2610091AE16 /* EventFirer.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -732,6 +735,7 @@
 				7BA7EBDF29C36BBD0096457F /* PositionComponent.swift in Sources */,
 				8C35845029BF29BD00BAE8C5 /* Component.swift in Sources */,
 				7BA7EBEE29C36BD70096457F /* System.swift in Sources */,
+				7B770B2729C6D2610091AE16 /* EventFirer.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
 				A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */,

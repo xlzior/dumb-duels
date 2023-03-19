@@ -7,14 +7,14 @@
 
 class RoundSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventManager: EventManager
+    unowned var eventFirer: EventFirer
 
     private var axes: Assemblage2<AxeComponent, PositionComponent>
     private var players: Assemblage1<PlayerComponent>
 
-    init(for entityManager: EntityManager, eventManager: EventManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
-        self.eventManager = eventManager
+        self.eventFirer = eventFirer
         self.axes = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self)
         self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self)
     }

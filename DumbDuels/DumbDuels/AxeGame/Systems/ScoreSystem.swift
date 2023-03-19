@@ -7,13 +7,11 @@
 
 class ScoreSystem: System {
     unowned var entityManager: EntityManager
-    unowned var eventFirer: EventFirer
 
     private var players: Assemblage2<PlayerComponent, ScoreComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.eventFirer = eventFirer
         self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                 ScoreComponent.self)
     }
@@ -21,13 +19,6 @@ class ScoreSystem: System {
     func update() {
 
     }
-
-    // TODO: ship to roundsystem
-//    func update() {
-//        for (player, _, score) in players.entityAndComponents where score.score == 5 {
-//            eventFirer.fire(GameWonEvent(entityId: player.id))
-//        }
-//    }
 
     func handleAxeHitPlayer(withEntityId entityId: EntityID) {
         for (player, _, score) in players.entityAndComponents where player.id != entityId {

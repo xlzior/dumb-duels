@@ -93,7 +93,7 @@ class GameManager {
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PhysicsSystem(for: entityManager, scene: simulator.gameScene))
         systemManager.register(CollisionSystem(for: entityManager, eventFirer: eventManager))
-        systemManager.register(ScoreSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(ScoreSystem(for: entityManager))
         if !useSpriteKitView {
             systemManager.register(RenderSystem(
                 for: entityManager,

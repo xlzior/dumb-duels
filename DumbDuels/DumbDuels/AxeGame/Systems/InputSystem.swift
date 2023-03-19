@@ -51,7 +51,7 @@ class InputSystem: System {
     }
 
     func handleButtonLongPress(entityId: EntityID) {
-        // TODO: charge the axe
+        // TODO: charge the axe by modifying the throwStrength variable
     }
 
     func throwsAxe(axeId: EntityID, by playerId: EntityID, towards: FaceDirection) {

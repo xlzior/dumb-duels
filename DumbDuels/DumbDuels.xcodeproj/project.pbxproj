@@ -16,6 +16,8 @@
 		6F67C71129C457DC009E0579 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71029C457DC009E0579 /* PhysicsComponent.swift */; };
 		6F67C71329C462DD009E0579 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71229C462DD009E0579 /* Physics.swift */; };
 		6F67C71529C48D91009E0579 /* PhysicsEngineDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71429C48D91009E0579 /* PhysicsEngineDefaults.swift */; };
+		6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C72029C8454B009E0579 /* WallComponent.swift */; };
+		6F67C72329C845D8009E0579 /* WallCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C72229C845D8009E0579 /* WallCategory.swift */; };
 		7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292829B82BE000281FC7 /* AppDelegate.swift */; };
 		7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */; };
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
@@ -137,6 +139,8 @@
 		6F67C71029C457DC009E0579 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		6F67C71229C462DD009E0579 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		6F67C71429C48D91009E0579 /* PhysicsEngineDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsEngineDefaults.swift; sourceTree = "<group>"; };
+		6F67C72029C8454B009E0579 /* WallComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallComponent.swift; sourceTree = "<group>"; };
+		6F67C72229C845D8009E0579 /* WallCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCategory.swift; sourceTree = "<group>"; };
 		7B2B292529B82BE000281FC7 /* DumbDuels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumbDuels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B292829B82BE000281FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 				7BA7EBC729C36BBD0096457F /* PositionComponent.swift */,
 				6F67C71029C457DC009E0579 /* PhysicsComponent.swift */,
 				8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */,
+				6F67C72029C8454B009E0579 /* WallComponent.swift */,
 				8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */,
 			);
 			path = Components;
@@ -503,6 +508,7 @@
 				8C35849929C43A1B00BAE8C5 /* PegCategory.swift */,
 				8C35849F29C43F3500BAE8C5 /* CollisionHandler.swift */,
 				8C3584A529C54FE500BAE8C5 /* CollisionUtils.swift */,
+				6F67C72229C845D8009E0579 /* WallCategory.swift */,
 			);
 			path = Collision;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 				8C35848929C32E9C00BAE8C5 /* ComponentProvider.swift in Sources */,
 				8C35844C29BF29AC00BAE8C5 /* Entity.swift in Sources */,
 				8C35845D29BF3FA300BAE8C5 /* EntityManager+Entity.swift in Sources */,
+				6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */,
 				7BA7EBF929C36C070096457F /* PriorityQueue.swift in Sources */,
 				8C35845829BF3BCC00BAE8C5 /* TraitSet.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
@@ -723,6 +730,7 @@
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
+				6F67C72329C845D8009E0579 /* WallCategory.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				7BA7EBEF29C36BD70096457F /* SystemManager.swift in Sources */,
 				7BA7EBDF29C36BBD0096457F /* PositionComponent.swift in Sources */,

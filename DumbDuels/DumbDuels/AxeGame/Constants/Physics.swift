@@ -55,4 +55,15 @@ struct Physics {
     static let pegFriction = PhysicsEngineDefaults.friction
     static let pegDamping = PhysicsEngineDefaults.linearDamping
     static let pegImpulse: CGVector = .zero
+
+    // Wall physics constants
+    static let wallMass: CGFloat = 1.0
+    static let wallGravity = false
+    static let wallCor: CGFloat = 0.8
+    static let wallIsDynamic = false
+    static let wallZRotation = PhysicsEngineDefaults.zRotation
+    static let wallRotation = false
+    static let wallFriction = PhysicsEngineDefaults.friction
+    static let wallDamping = PhysicsEngineDefaults.linearDamping
+    static let wallImpulse: CGVector = .zero
 }

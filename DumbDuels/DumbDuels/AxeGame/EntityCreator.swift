@@ -106,4 +106,17 @@ class EntityCreator {
 
         return platform
     }
+
+    func createWall(at position: CGPoint, of size: CGSize) -> Entity {
+        let wall = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            WallComponent()
+        }
+
+        let physicsComponent = physicsCreator.createWall(of: size, for: wall.id)
+        wall.assign(component: physicsComponent)
+
+        return wall
+    }
 }

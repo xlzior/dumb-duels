@@ -53,7 +53,22 @@ class PhysicsCreator {
                                          friction: Physics.platformFriction,
                                          categories: [platformCategory],
                                          zRotation: Physics.platformZRotation,
-                                         impulse: Physics.playerImpulse)
+                                         impulse: Physics.platformImpulse)
+        return component
+    }
+
+    func createWall(of size: CGSize, for wallId: EntityID) -> PhysicsComponent {
+        let wallCategory = WallCategory(entityId: wallId)
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.wallMass, velocity: .zero,
+                                         affectedByGravity: Physics.wallGravity,
+                                         linearDamping: Physics.wallDamping,
+                                         isDynamic: Physics.wallIsDynamic,
+                                         allowsRotation: Physics.wallRotation,
+                                         restitution: Physics.wallCor,
+                                         friction: Physics.wallFriction,
+                                         categories: [wallCategory],
+                                         zRotation: Physics.wallZRotation,
+                                         impulse: Physics.wallImpulse)
         return component
     }
 }

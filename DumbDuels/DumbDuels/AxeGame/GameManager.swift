@@ -80,6 +80,9 @@ class GameManager {
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
 
+        for wallIndex in 0..<3 {
+            let wall = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
+        }
     }
 
     private func setUpSystems() {

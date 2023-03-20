@@ -9,7 +9,7 @@ import Foundation
 
 struct Physics {
     static let jumpImpulse = CGVector(dx: 0.0, dy: -100)
-    static let axeImpulse = CGVector(dx: 0.0, dy: 1000)
+    static let axeImpulse = CGVector(dx: 0.0, dy: 1_000)
 
     // Player physics constants
     static let playerMass: CGFloat = 1.0

@@ -32,7 +32,7 @@ struct Assemblage<R> where R: AssemblageRequirementsManager {
         manager.members(withTraits: traits)
     }
 
-    public var count: Int {
+    var count: Int {
         members.count
     }
 
@@ -40,11 +40,11 @@ struct Assemblage<R> where R: AssemblageRequirementsManager {
         members.isEmpty
     }
 
-    public func isMember(entity: Entity) -> Bool {
+    func isMember(entity: Entity) -> Bool {
         manager.isMember(entity, ofAssemblageWithTraits: traits)
     }
 
-    public func canBecomeMember(entity: Entity) -> Bool {
+    func canBecomeMember(entity: Entity) -> Bool {
         manager.canBecomeMember(entity, ofAssemblageWithTraits: traits)
     }
 }

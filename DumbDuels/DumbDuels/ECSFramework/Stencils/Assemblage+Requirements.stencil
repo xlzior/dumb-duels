@@ -48,11 +48,11 @@ struct Requires{{ idx }}<{{ CompParams }}>: AssemblageRequirementsManager where 
         {% for comp in components %}
         let {{ comp|lowercase }}: {{ comp }} = entityManager.getComponent(ofType: {{ comp }}.typeId, for: entityId)!
         {% endfor %}
-        return ({{ CompsLowercased }})
+        ({{ CompsLowercased }})
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, {{ CompParams }}) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         {% for comp in components %}
         let {{ comp|lowercase }}: {{ comp }} = entityManager.getComponent(ofType: {{ comp }}.typeId, for: entityId)!
         {% endfor %}

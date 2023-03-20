@@ -61,6 +61,6 @@ extension EntityManager {
     @discardableResult
     func createEntities(count: Int,
                         @ComponentsBuilder using builder: (ComponentsBuilder.Context) -> [Component]) -> [Entity] {
-        (0..<count).map { self.createEntity(with: builder(ComponentsBuilder.Context(index: $0)))}
+        (0..<count).map { self.createEntity(with: builder(ComponentsBuilder.Context(index: $0))) }
     }
 }

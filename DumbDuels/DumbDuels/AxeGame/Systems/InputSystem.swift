@@ -24,7 +24,8 @@ class InputSystem: System {
                                                          HoldingAxeComponent.self)
         self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self,
                                                     excludedComponents: PhysicsComponent.self, CollidableComponent.self)
-        self.canJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
+        self.canJumpPlayer = entityManager.assemblage(
+            requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
     }
 
     func update() {

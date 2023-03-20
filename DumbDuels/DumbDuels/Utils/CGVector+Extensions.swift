@@ -36,14 +36,14 @@ extension CGVector {
      * Returns the length (magnitude) of the vector described by the CGVector.
      */
     func length() -> CGFloat {
-        return sqrt(dx*dx + dy*dy)
+        sqrt(dx * dx + dy * dy)
     }
 
     /**
      * Returns the squared length of the vector described by the CGVector.
      */
     func lengthSquared() -> CGFloat {
-        return dx*dx + dy*dy
+        dx * dx + dy * dy
     }
 
     /**
@@ -52,7 +52,7 @@ extension CGVector {
      public  */
     func normalized() -> CGVector {
         let len = length()
-        return len>0 ? self / len : CGVector.zero
+        return len > 0 ? self / len : CGVector.zero
     }
 
     /**
@@ -67,7 +67,7 @@ extension CGVector {
      * Calculates the distance between two CGVectors. Pythagoras!
      */
     func distanceTo(_ vector: CGVector) -> CGFloat {
-        return (self - vector).length()
+        (self - vector).length()
     }
 
     /**
@@ -75,14 +75,14 @@ extension CGVector {
      * The range of the angle is -π to π; an angle of 0 points to the right.
      */
     var angle: CGFloat {
-        return atan2(dy, dx)
+        atan2(dy, dx)
     }
 
     /**
      * Adds two CGVector values and returns the result as a new CGVector.
      */
     static func + (left: CGVector, right: CGVector) -> CGVector {
-        return CGVector(dx: left.dx + right.dx, dy: left.dy + right.dy)
+        CGVector(dx: left.dx + right.dx, dy: left.dy + right.dy)
     }
 
     /**
@@ -96,7 +96,7 @@ extension CGVector {
      * Subtracts two CGVector values and returns the result as a new CGVector.
      */
     static func - (left: CGVector, right: CGVector) -> CGVector {
-        return CGVector(dx: left.dx - right.dx, dy: left.dy - right.dy)
+        CGVector(dx: left.dx - right.dx, dy: left.dy - right.dy)
     }
 
     /**
@@ -110,7 +110,7 @@ extension CGVector {
      * Multiplies two CGVector values and returns the result as a new CGVector.
      */
     static func * (left: CGVector, right: CGVector) -> CGVector {
-        return CGVector(dx: left.dx * right.dx, dy: left.dy * right.dy)
+        CGVector(dx: left.dx * right.dx, dy: left.dy * right.dy)
     }
 
     /**
@@ -125,7 +125,7 @@ extension CGVector {
      * returns the result as a new CGVector.
      */
     static func * (vector: CGVector, scalar: CGFloat) -> CGVector {
-        return CGVector(dx: vector.dx * scalar, dy: vector.dy * scalar)
+        CGVector(dx: vector.dx * scalar, dy: vector.dy * scalar)
     }
 
     /**
@@ -139,7 +139,7 @@ extension CGVector {
      * Divides two CGVector values and returns the result as a new CGVector.
      */
     static func / (left: CGVector, right: CGVector) -> CGVector {
-        return CGVector(dx: left.dx / right.dx, dy: left.dy / right.dy)
+        CGVector(dx: left.dx / right.dx, dy: left.dy / right.dy)
     }
 
     /**
@@ -154,7 +154,7 @@ extension CGVector {
      * returns the result as a new CGVector.
      */
     static func / (vector: CGVector, scalar: CGFloat) -> CGVector {
-        return CGVector(dx: vector.dx / scalar, dy: vector.dy / scalar)
+        CGVector(dx: vector.dx / scalar, dy: vector.dy / scalar)
     }
 
     /**

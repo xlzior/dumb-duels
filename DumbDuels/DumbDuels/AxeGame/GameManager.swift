@@ -22,7 +22,7 @@ class GameManager {
     private var playerIds: [String] = ["asdasd", "asdasd"]
 
     var event: Event?
-    var useSpriteKitView: Bool = false
+    var useSpriteKitView = false
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails

@@ -67,9 +67,7 @@ class InputSystem: System {
             return
         }
         let physicsCreator = PhysicsCreator(entityManager: entityManager)
-        let collidable = physicsCreator.axeCollidable(axeId: axeId)
-        let physicsComponent = physicsCreator.createAxe(of: axeSizeComponent.actualSize)
-        entityManager.assign(component: collidable, to: axeId)
+        let physicsComponent = physicsCreator.createAxe(of: axeSizeComponent.actualSize, for: axeId)
         entityManager.assign(component: physicsComponent, to: axeId)
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)

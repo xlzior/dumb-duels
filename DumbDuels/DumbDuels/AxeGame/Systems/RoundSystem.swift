@@ -11,15 +11,15 @@ class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
-    private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, PhysicsComponent, CollidableComponent>
+    private var thrownAxe: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage3<PlayerComponent, ScoreComponent, PositionComponent>
 
     init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self, CollidableComponent.self)
-        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, excludedComponents: PhysicsComponent.self, CollidableComponent.self)
+        self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self)
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, excludedComponents: PhysicsComponent.self)
         self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
                                                 PositionComponent.self)
     }
@@ -51,7 +51,7 @@ class RoundSystem: System {
                 return
             }
             print("holdingAxe id: \(holdingAxe.axeEntityID)")
-            guard let (entity, axe, axePosition, physics, _) =
+            guard let (entity, axe, axePosition, physics) =
                     thrownAxe.getEntityAndComponents(for: holdingAxe.axeEntityID) else {
                 print("inside here")
                 return
@@ -75,7 +75,7 @@ class RoundSystem: System {
 
     private func isAllThrownAxeOutOfBounds() -> Bool {
         let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (entity, _, position, _, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
+        for (entity, _, position, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
             print("axe \(entity.id) is still in bounds")
             return false
         }

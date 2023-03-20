@@ -9,18 +9,19 @@ import CoreGraphics
 
 class PhysicsSystem: System {
     unowned var entityManager: EntityManager
+    unowned var eventFirer: EventFirer
 
     var scene: GameScene
-    private let physics: Assemblage4<PositionComponent, RotationComponent, PhysicsComponent, CollidableComponent>
+    private let physics: Assemblage3<PositionComponent, RotationComponent, PhysicsComponent>
 
-    init(for entityManager: EntityManager, scene: GameScene) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer, scene: GameScene) {
         self.entityManager = entityManager
+        self.eventFirer = eventFirer
         self.scene = scene
         self.physics = entityManager.assemblage(requiredComponents:
                                                     PositionComponent.self,
                                                     RotationComponent.self,
-                                                    PhysicsComponent.self,
-                                                    CollidableComponent.self)
+                                                    PhysicsComponent.self)
         self.setUpPhysics()
     }
 
@@ -53,17 +54,15 @@ class PhysicsSystem: System {
     }
 
     func syncToPhysicsEngine() {
-        for (entity, position, rotation, physics, collidable) in physics.entityAndComponents {
+        for (entity, position, rotation, physics) in physics.entityAndComponents {
             guard !physics.toBeRemoved else {
                 scene.removeBody(for: entity.id.id)
                 entityManager.remove(componentType: PhysicsComponent.typeId, from: entity.id)
-                entityManager.remove(componentType: CollidableComponent.typeId, from: entity.id)
                 continue
             }
             if let physicsBody = initializePhysicsBodyFrom(positionComponent: position,
                                                            rotationComponent: rotation,
-                                                           physicsComponent: physics,
-                                                           collidableComponent: collidable) {
+                                                           physicsComponent: physics) {
                 scene.sync(physicsBody, for: entity.id.id)
             } else {
                 assertionFailure("Error creating PhysicsBody when syncing to physics engine.")
@@ -77,11 +76,10 @@ class PhysicsSystem: System {
 
     func setUpPhysics() {
         var entityIDPhysicsBodyMap = [EntityID.ID: PhysicsBody]()
-        for (entity, position, rotation, physics, collidable) in physics.entityAndComponents {
+        for (entity, position, rotation, physics) in physics.entityAndComponents {
             if let physicsBody = initializePhysicsBodyFrom(positionComponent: position,
                                                            rotationComponent: rotation,
-                                                           physicsComponent: physics,
-                                                           collidableComponent: collidable) {
+                                                           physicsComponent: physics) {
                 entityIDPhysicsBodyMap[entity.id.id] = physicsBody
             } else {
                 assertionFailure("Error creating PhysicsBody when setting up PhysicsSystem.")
@@ -92,12 +90,11 @@ class PhysicsSystem: System {
 
     private func initializePhysicsBodyFrom(positionComponent: PositionComponent,
                                            rotationComponent: RotationComponent,
-                                           physicsComponent: PhysicsComponent,
-                                           collidableComponent: CollidableComponent) -> PhysicsBody? {
-        let categoryBitMask = CollisionUtils.bitmasks(for: collidableComponent.categories)
-        let collisionBitMask = CollisionUtils.collideBitmasks(for: collidableComponent.categories)
-        let contactBitMask = CollisionUtils.contactBitmasks(for: collidableComponent.categories)
-        let physicsBody: PhysicsBody? = PhysicsBody(position: positionComponent.position,
+                                           physicsComponent: PhysicsComponent) -> PhysicsBody? {
+        let categoryBitMask = CollisionUtils.bitmasks(for: physicsComponent.categories)
+        let collisionBitMask = CollisionUtils.collideBitmasks(for: physicsComponent.categories)
+        let contactBitMask = CollisionUtils.contactBitmasks(for: physicsComponent.categories)
+        let physicsBody = PhysicsBody(position: positionComponent.position,
                                                     size: physicsComponent.size,
                                                     radius: physicsComponent.radius,
                                                     zRotation: rotationComponent.angleInRadians,
@@ -113,5 +110,21 @@ class PhysicsSystem: System {
                                                     collisionBitMask: collisionBitMask,
                                                     contactBitMask: contactBitMask)
         return physicsBody
+    }
+
+    func handleCollision(firstId: String, secondId: String) {
+        let firstEid = EntityID(firstId)
+        let secondEid = EntityID(secondId)
+        guard let firstPhysicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: firstEid),
+              let secondPhysicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondEid) else {
+            return
+        }
+        for firstCategory in firstPhysicsComponent.categories {
+            for secondCategory in secondPhysicsComponent.categories {
+                if let collisionEvent = firstCategory.collides(with: secondCategory) {
+                    eventFirer.fire(collisionEvent)
+                }
+            }
+        }
     }
 }

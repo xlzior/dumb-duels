@@ -89,7 +89,6 @@ public class GameScene {
             assertionFailure("Trying to apply impulse to an id that does not exist.")
             return
         }
-        print("GameScene applies impulse \(impulse) to BodyID \(id) physics body \(physicsBody)")
         physicsBody.applyImpulse(impulse)
     }
 
@@ -101,6 +100,7 @@ public class GameScene {
                 assertionFailure("Trying to sync for an id that does not exist.")
                 continue
             }
+
             bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)
         }
     }
@@ -114,19 +114,5 @@ public class GameScene {
         }
 
         bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: newPhysicsBody)
-    }
-
-    public func getPosition(of entityId: String) -> CGPoint? {
-        guard let physicsBody = bodyIDPhysicsMap[entityId] else {
-            return nil
-        }
-        return physicsBody.node.position
-    }
-
-    public func getBitMasks(of entityId: String) -> String {
-        guard let physicsBody = bodyIDPhysicsMap[entityId] else {
-            return "empty"
-        }
-        return "self: \(physicsBody.categoryBitMask), collide: \(physicsBody.collisionBitMask), contact: \(physicsBody.contactTestBitMask)"
     }
 }

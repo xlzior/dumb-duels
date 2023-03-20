@@ -90,10 +90,6 @@ class GameManager {
             entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
                                                     PositionComponent.self)
 
-            for (entity, _, _, _) in axeFamily.entityAndComponents {
-                print("Game Manager init has axe of id: \(entity.id)")
-            }
-
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
 
@@ -173,7 +169,6 @@ extension GameManager: GameSceneDelegate {
 
 extension GameManager: PhysicsContactDelegate {
     func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
-        print("Contact between \(bodyA) and \(bodyB) started")
         guard let collisionSystem = systemManager.get(ofType: CollisionSystem.self) else {
             return
         }

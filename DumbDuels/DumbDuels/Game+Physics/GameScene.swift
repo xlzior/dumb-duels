@@ -89,7 +89,6 @@ public class GameScene {
             assertionFailure("Trying to apply impulse to an id that does not exist.")
             return
         }
-        print("GameScene applies impulse \(impulse) to BodyID \(id) physics body \(physicsBody)")
         physicsBody.applyImpulse(impulse)
     }
 

@@ -34,7 +34,7 @@ public class PhysicsBody {
             return nil
         }
 
-        var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
+        var body = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
             body = SKPhysicsBody(rectangleOf: size)
         } else if let radius = radius {

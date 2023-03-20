@@ -40,7 +40,6 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
-        print("axe with id \(axe.id) created")
 //        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
 //        let physicsComponent = physicsCreator.createAxe(of: size)
 //        axe.assign(component: collidable)
@@ -63,7 +62,7 @@ class EntityCreator {
             SpriteComponent(assetName: "player")
             ScoreComponent()
             CanJumpComponent()
-            SyncXPositionComponent(entityToSync: platformId)
+            SyncXPositionComponent(syncFrom: platformId)
         }
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)

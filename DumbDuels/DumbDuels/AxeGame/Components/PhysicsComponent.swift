@@ -31,12 +31,17 @@ class PhysicsComponent: Component {
     var toBeRemoved: Bool
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
-                 mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
-                 linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
+                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
+                  linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                   restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
                   zRotation: CGFloat, impulse: CGVector, toBeRemoved: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
-            assertionFailure("Please pass in only either a size for a rectangle physics component or a radius for a circle physics component")
+            assertionFailure(
+                """
+                Please pass in only either a size for a rectangle physics component
+                or a radius for a circle physics component
+                """
+            )
             return nil
         }
         guard mass > 0 else {

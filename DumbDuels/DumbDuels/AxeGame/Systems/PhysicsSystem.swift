@@ -31,15 +31,18 @@ class PhysicsSystem: System {
 
     func syncFromPhysicsEngine() {
         for (id, physicsBody) in scene.bodyIDPhysicsMap {
-            if let physicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
+            if let physicsComponent: PhysicsComponent =
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
                 physicsComponent.velocity = physicsBody.velocity
                 physicsComponent.mass = physicsBody.mass
                 physicsComponent.zRotation = physicsBody.zRotation
             }
-            if let positionComponent: PositionComponent = entityManager.getComponent(ofType: PositionComponent.typeId, for: EntityID(id)) {
+            if let positionComponent: PositionComponent =
+                entityManager.getComponent(ofType: PositionComponent.typeId, for: EntityID(id)) {
                 positionComponent.position = physicsBody.position
             }
-            if let rotationComponent: RotationComponent = entityManager.getComponent(ofType: RotationComponent.typeId, for: EntityID(id)) {
+            if let rotationComponent: RotationComponent =
+                entityManager.getComponent(ofType: RotationComponent.typeId, for: EntityID(id)) {
                 rotationComponent.angleInRadians = physicsBody.zRotation
             }
         }
@@ -115,8 +118,10 @@ class PhysicsSystem: System {
     func handleCollision(firstId: String, secondId: String) {
         let firstEid = EntityID(firstId)
         let secondEid = EntityID(secondId)
-        guard let firstPhysicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: firstEid),
-              let secondPhysicsComponent: PhysicsComponent = entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondEid) else {
+        guard let firstPhysicsComponent: PhysicsComponent =
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: firstEid),
+              let secondPhysicsComponent: PhysicsComponent =
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondEid) else {
             return
         }
         for firstCategory in firstPhysicsComponent.categories {

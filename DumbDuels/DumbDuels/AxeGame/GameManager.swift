@@ -19,7 +19,7 @@ class GameManager {
     private let simulator: Simulator
 
     var event: Event?
-    var useSpriteKitView: Bool = false
+    var useSpriteKitView = false
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -62,9 +62,8 @@ class GameManager {
                 of: Sizes.platform
             )
 
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * faceDirection.rawValue
             let axe = entityCreator.createAxe(
-                withHorizontalOffset: horizontalOffset,
+                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
                 of: Sizes.axe
             )

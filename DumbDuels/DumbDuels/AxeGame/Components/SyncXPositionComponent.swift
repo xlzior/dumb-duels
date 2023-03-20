@@ -9,10 +9,10 @@ import Foundation
 
 class SyncXPositionComponent: Component {
     var id: ComponentID
-    var entityToSync: EntityID
+    var syncFrom: EntityID
 
-    init(entityToSync: EntityID) {
+    init(syncFrom: EntityID) {
         self.id = ComponentID()
-        self.entityToSync = entityToSync
+        self.syncFrom = syncFrom
     }
 }

@@ -7,7 +7,7 @@
 
 // Adapted from https://github.com/kodecocodes/swift-algorithm-club/blob/master/Priority%20Queue/PriorityQueue.swift
 
-struct PriorityQueue<T> {
+public struct PriorityQueue<T> {
     fileprivate var heap: Heap<T>
 
     init(sort: @escaping (T, T) -> Bool) {
@@ -35,6 +35,6 @@ struct PriorityQueue<T> {
     }
 
     public mutating func dequeue() -> T? {
-        return heap.remove()
+        heap.remove()
     }
 }

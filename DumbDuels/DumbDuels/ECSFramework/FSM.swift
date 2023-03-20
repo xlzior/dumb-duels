@@ -147,7 +147,6 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
         if newState === currentState {
             return
         }
-
         var toAdd: [ComponentTypeID: ComponentProvider]
 
         if let currentState = currentState {

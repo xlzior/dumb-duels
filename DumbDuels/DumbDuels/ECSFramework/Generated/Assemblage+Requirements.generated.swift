@@ -27,7 +27,7 @@ struct Requires1<Component1>: AssemblageRequirementsManager where Component1: Co
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         return (entity, component1)
     }
@@ -41,7 +41,7 @@ extension Requires1: RequiringComponents1 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents1 {
     static func buildBlock(_ component1: R.Component1) -> (R.Components) {
-        return (component1)
+        (component1)
     }
 }
 
@@ -95,7 +95,7 @@ struct Requires2<Component1, Component2>: AssemblageRequirementsManager where Co
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         return (entity, component1, component2)
@@ -110,7 +110,7 @@ extension Requires2: RequiringComponents2 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents2 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2) -> (R.Components) {
-        return (component1, component2)
+        (component1, component2)
     }
 }
 
@@ -167,7 +167,7 @@ struct Requires3<Component1, Component2, Component3>: AssemblageRequirementsMana
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -183,7 +183,7 @@ extension Requires3: RequiringComponents3 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents3 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3) -> (R.Components) {
-        return (component1, component2, component3)
+        (component1, component2, component3)
     }
 }
 
@@ -243,7 +243,7 @@ struct Requires4<Component1, Component2, Component3, Component4>: AssemblageRequ
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -260,7 +260,7 @@ extension Requires4: RequiringComponents4 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents4 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3, _ component4: R.Component4) -> (R.Components) {
-        return (component1, component2, component3, component4)
+        (component1, component2, component3, component4)
     }
 }
 
@@ -323,7 +323,7 @@ struct Requires5<Component1, Component2, Component3, Component4, Component5>: As
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -341,7 +341,7 @@ extension Requires5: RequiringComponents5 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents5 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3, _ component4: R.Component4, _ component5: R.Component5) -> (R.Components) {
-        return (component1, component2, component3, component4, component5)
+        (component1, component2, component3, component4, component5)
     }
 }
 
@@ -407,7 +407,7 @@ struct Requires6<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -426,7 +426,7 @@ extension Requires6: RequiringComponents6 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents6 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3, _ component4: R.Component4, _ component5: R.Component5, _ component6: R.Component6) -> (R.Components) {
-        return (component1, component2, component3, component4, component5, component6)
+        (component1, component2, component3, component4, component5, component6)
     }
 }
 
@@ -495,7 +495,7 @@ struct Requires7<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6, Component7) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -515,7 +515,7 @@ extension Requires7: RequiringComponents7 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents7 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3, _ component4: R.Component4, _ component5: R.Component5, _ component6: R.Component6, _ component7: R.Component7) -> (R.Components) {
-        return (component1, component2, component3, component4, component5, component6, component7)
+        (component1, component2, component3, component4, component5, component6, component7)
     }
 }
 
@@ -587,7 +587,7 @@ struct Requires8<Component1, Component2, Component3, Component4, Component5, Com
     }
 
     static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, Component1, Component2, Component3, Component4, Component5, Component6, Component7, Component8) {
-        let entity: Entity = Entity(id: entityId, manager: entityManager)
+        let entity = Entity(id: entityId, manager: entityManager)
         let component1: Component1 = entityManager.getComponent(ofType: Component1.typeId, for: entityId)!
         let component2: Component2 = entityManager.getComponent(ofType: Component2.typeId, for: entityId)!
         let component3: Component3 = entityManager.getComponent(ofType: Component3.typeId, for: entityId)!
@@ -608,7 +608,7 @@ extension Requires8: RequiringComponents8 { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents8 {
     static func buildBlock(_ component1: R.Component1, _ component2: R.Component2, _ component3: R.Component3, _ component4: R.Component4, _ component5: R.Component5, _ component6: R.Component6, _ component7: R.Component7, _ component8: R.Component8) -> (R.Components) {
-        return (component1, component2, component3, component4, component5, component6, component7, component8)
+        (component1, component2, component3, component4, component5, component6, component7, component8)
     }
 }
 

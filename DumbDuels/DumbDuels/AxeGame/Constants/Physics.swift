@@ -9,7 +9,7 @@ import Foundation
 
 struct Physics {
     static let jumpImpulse = CGVector(dx: 0.0, dy: -100)
-    static let axeImpulse = CGVector(dx: 0.0, dy: 1000)
+    static let axeImpulse = CGVector(dx: 0.0, dy: 1_000)
 
     // Player physics constants
     static let playerMass: CGFloat = 1.0
@@ -24,7 +24,7 @@ struct Physics {
 
     // Axe physics constants
     static let axeMass: CGFloat = 1.0
-    static let axeGravity = false
+    static let axeGravity = true
     static let axeCor: CGFloat = 0.1
     static let axeIsDynamic = true
     static let axeZRotation = PhysicsEngineDefaults.zRotation

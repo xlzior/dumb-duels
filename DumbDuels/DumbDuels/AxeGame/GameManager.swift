@@ -17,9 +17,6 @@ class GameManager {
     private let eventManager: EventManager
 
     private let simulator: Simulator
-    private var axeIds: [String] = ["asdasd", "asdasd"]
-    private var platformIds: [String] = ["asdasd", "asdasdasd"]
-    private var playerIds: [String] = ["asdasd", "asdasd"]
 
     var event: Event?
     var useSpriteKitView = false
@@ -80,15 +77,6 @@ class GameManager {
                 holding: axe.id,
                 onPlatform: platform.id
             )
-            playerIds[playerIndex] = player.id.id
-            axeIds[playerIndex] = axe.id.id
-            platformIds[playerIndex] = platform.id.id
-
-            let axeFamily: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent> =
-            entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self)
-            let playerFamily: Assemblage3<PlayerComponent, ScoreComponent, PositionComponent> =
-            entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
-                                                    PositionComponent.self)
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }

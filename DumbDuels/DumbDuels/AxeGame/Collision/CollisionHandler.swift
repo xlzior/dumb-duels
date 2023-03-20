@@ -9,17 +9,14 @@ import Foundation
 
 struct CollisionHandler {
     static func getEvent(between player: PlayerCategory, and axe: AxeCategory) -> Event? {
-        print("Contact handler player: \(player.entityId), axe: \(axe.entityId)")
-        return PlayerHitEvent(entityId: player.entityId, hitBy: axe.entityId)
+        PlayerHitEvent(entityId: player.entityId, hitBy: axe.entityId)
     }
 
     static func getEvent(between player: PlayerCategory, and platform: PlatformCategory) -> Event? {
-        print("Contact handler player: \(player.entityId), platform: \(platform.entityId)")
-        return LandEvent(entityId: player.entityId)
+        LandEvent(entityId: player.entityId)
     }
 
     static func getEvent(between axe: AxeCategory, and platform: PlatformCategory) -> Event? {
-        print("Contact handler axe: \(axe.entityId), platform: \(platform.entityId)")
-        return nil
+        nil
     }
 }

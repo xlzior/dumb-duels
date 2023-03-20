@@ -7,7 +7,7 @@
 
 // Adapted from https://github.com/kodecocodes/swift-algorithm-club/blob/master/Heap/Heap.swift
 
-struct Heap<T> {
+public struct Heap<T> {
     var nodes = [T]()
     private let sort: (T, T) -> Bool
 

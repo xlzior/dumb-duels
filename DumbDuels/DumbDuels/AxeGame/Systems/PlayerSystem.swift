@@ -10,11 +10,13 @@ import Foundation
 class PlayerSystem: System {
     unowned var entityManager: EntityManager
 
-    private var cannotJumpPlayer: Assemblage1<PlayerComponent>
+    private var cannotJumpPlayer: Assemblage2<PlayerComponent, PhysicsComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.cannotJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, excludedComponents: CanJumpComponent.self)
+        self.cannotJumpPlayer = entityManager.assemblage(
+            requiredComponents: PlayerComponent.self, PhysicsComponent.self,
+            excludedComponents: CanJumpComponent.self)
     }
 
     func update() {
@@ -22,14 +24,11 @@ class PlayerSystem: System {
     }
 
     func possibleLand(playerId: EntityID ) {
-        guard entityManager.isMember(playerId, ofAssemblageWithTraits: cannotJumpPlayer.traits),
-              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: playerId),
-              physicsComponent.velocity.dy <= 0 else {
-            print("Player \(playerId) cannot jump")
+        guard let (_, physics) = cannotJumpPlayer.getComponents(for: playerId),
+              physics.velocity.dy <= 0 else {
             return
         }
         entityManager.assign(component: CanJumpComponent(), to: playerId)
-        print("Player \(playerId) assigned can jump component")
     }
 
 }

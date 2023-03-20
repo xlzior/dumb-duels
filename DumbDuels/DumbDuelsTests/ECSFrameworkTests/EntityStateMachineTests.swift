@@ -14,6 +14,7 @@ final class EntityStateMachineTests: XCTestCase {
     var entity = Entity(id: EntityID(), manager: .init())
 
     override func setUp() {
+        super.setUp()
         manager = EntityManager()
         entity = manager.createEntity()
         fsm = EntityStateMachine(entity: entity)

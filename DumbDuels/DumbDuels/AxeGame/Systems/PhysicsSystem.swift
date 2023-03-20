@@ -94,7 +94,7 @@ class PhysicsSystem: System {
         let categoryBitMask = CollisionUtils.bitmasks(for: collidableComponent.categories)
         let collisionBitMask = CollisionUtils.collideBitmasks(for: collidableComponent.categories)
         let contactBitMask = CollisionUtils.contactBitmasks(for: collidableComponent.categories)
-        let physicsBody: PhysicsBody = PhysicsBody(position: positionComponent.position,
+        let physicsBody = PhysicsBody(position: positionComponent.position,
                                                    size: physicsComponent.size,
                                                    radius: physicsComponent.radius,
                                                    zRotation: rotationComponent.angleInRadians,

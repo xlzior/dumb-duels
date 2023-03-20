@@ -17,12 +17,9 @@ class GameManager {
     private let eventManager: EventManager
 
     private let simulator: Simulator
-    private var axeIds: [String] = ["asdasd", "asdasd"]
-    private var platformIds: [String] = ["asdasd", "asdasdasd"]
-    private var playerIds: [String] = ["asdasd", "asdasd"]
 
     var event: Event?
-    var useSpriteKitView: Bool = false
+    var useSpriteKitView = false
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -65,9 +62,8 @@ class GameManager {
                 of: Sizes.platform
             )
 
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * faceDirection.rawValue
             let axe = entityCreator.createAxe(
-                withHorizontalOffset: horizontalOffset,
+                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
                 of: Sizes.axe
             )
@@ -80,19 +76,6 @@ class GameManager {
                 holding: axe.id,
                 onPlatform: platform.id
             )
-            playerIds[playerIndex] = player.id.id
-            axeIds[playerIndex] = axe.id.id
-            platformIds[playerIndex] = platform.id.id
-
-            let axeFamily: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent> =
-            entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self)
-            let playerFamily: Assemblage3<PlayerComponent, ScoreComponent, PositionComponent> =
-            entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
-                                                    PositionComponent.self)
-
-            for (entity, _, _, _) in axeFamily.entityAndComponents {
-                print("Game Manager init has axe of id: \(entity.id)")
-            }
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
@@ -173,7 +156,6 @@ extension GameManager: GameSceneDelegate {
 
 extension GameManager: PhysicsContactDelegate {
     func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
-        print("Contact between \(bodyA) and \(bodyB) started")
         guard let collisionSystem = systemManager.get(ofType: CollisionSystem.self) else {
             return
         }

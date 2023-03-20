@@ -57,7 +57,6 @@ class GameManager {
         for playerIndex in 0...1 {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
-            let wallPosition = Positions.walls[playerIndex]
 
             let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
             let platform = entityCreator.createPlatform(
@@ -80,13 +79,15 @@ class GameManager {
                 holding: axe.id
             )
 
-            let wall = entityCreator.createWall(at: wallPosition, of: Sizes.wall)
-
             playerIds[playerIndex] = player.id.id
             axeIds[playerIndex] = axe.id.id
             platformIds[playerIndex] = platform.id.id
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
+        }
+
+        for wallPosition in Positions.walls {
+            let wall = entityCreator.createWall(at: wallPosition, of: Sizes.wall)
         }
     }
 

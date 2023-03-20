@@ -147,7 +147,7 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
         if newState === currentState {
             return
         }
-
+        print("changing state to \(name), oldState: \(currentState)")
         var toAdd: [ComponentTypeID: ComponentProvider]
 
         if let currentState = currentState {
@@ -161,6 +161,7 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
                    current.identifier == other.identifier {
                     toAdd[componentTypeId] = nil
                 } else {
+                    print("removed component of type \(componentTypeId) from \(entity.id)")
                     entity.remove(componentType: componentTypeId)
                 }
             }
@@ -169,6 +170,7 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
         }
 
         for (_, provider) in toAdd {
+            print("added component of type \(provider.getComponent().typeId) to \(entity.id)")
             entity.assign(component: provider.getComponent())
         }
         currentState = newState

@@ -106,12 +106,10 @@ public class GameScene {
     }
 
     public func sync(_ newPhysicsBody: PhysicsBody, for id: BodyID) {
-        guard let originalPhysicsBody = bodyIDPhysicsMap[id] else {
-            return assertionFailure("Trying to sync for an id that does not exist.")
-        }
-        guard physicsBodyIDMap[originalPhysicsBody] == id,
+        guard let originalPhysicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[originalPhysicsBody] == id,
               skNodePhysicsBodyMap[originalPhysicsBody.node] != nil else {
-            assertionFailure("Trying to sync for an id that does not exist.")
+            addBody(for: id, bodyToAdd: newPhysicsBody)
             return
         }
 

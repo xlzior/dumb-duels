@@ -24,10 +24,10 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
-        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
-        let physicsComponent = physicsCreator.createAxe(of: size)
-        axe.assign(component: collidable)
-        axe.assign(component: physicsComponent)
+//        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
+//        let physicsComponent = physicsCreator.createAxe(of: size)
+//        axe.assign(component: collidable)
+//        axe.assign(component: physicsComponent)
         return axe
     }
 
@@ -40,18 +40,21 @@ class EntityCreator {
             SpriteComponent(assetName: "axe")
             AxeComponent()
         }
-        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
-        let physicsComponent = physicsCreator.createAxe(of: size)
-        axe.assign(component: collidable)
-        axe.assign(component: physicsComponent)
+        print("axe with id \(axe.id) created")
+//        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
+//        let physicsComponent = physicsCreator.createAxe(of: size)
+//        axe.assign(component: collidable)
+//        axe.assign(component: physicsComponent)
         return axe
     }
 
     func createPlayer(
+        index: Int,
         at position: CGPoint,
         facing faceDirection: FaceDirection,
         of size: CGSize,
-        holding axeEntityID: EntityID
+        holding axeEntityID: EntityID,
+        onPlatform platformId: EntityID
     ) -> Entity {
         let player = entityManager.createEntity {
             PositionComponent(position: position, faceDirection: faceDirection)
@@ -60,6 +63,7 @@ class EntityCreator {
             SpriteComponent(assetName: "player")
             ScoreComponent()
             CanJumpComponent()
+            SyncXPositionComponent(entityToSync: platformId)
         }
         let collidable = physicsCreator.playerCollidable(playerId: player.id)
         let physicsComponent = physicsCreator.createPlayer(of: size)
@@ -71,7 +75,7 @@ class EntityCreator {
             .addInstance(HoldingAxeComponent(axeEntityID: axeEntityID))
         fsm.createState(name: .notHoldingAxe)
 
-        entityManager.assign(component: PlayerComponent(fsm: fsm), to: player)
+        entityManager.assign(component: PlayerComponent(fsm: fsm, idx: index), to: player)
         fsm.changeState(name: .holdingAxe)
 
         return player

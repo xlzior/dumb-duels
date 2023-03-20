@@ -11,7 +11,7 @@ class InputSystem: System {
     unowned var entityManager: EntityManager
 
     private var holdingAxePlayer: Assemblage2<PlayerComponent, HoldingAxeComponent>
-    private var axe: Assemblage2<AxeComponent, PhysicsComponent>
+    private var unthrownAxe: Assemblage2<AxeComponent, SizeComponent>
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
 
     private var throwStrength: CGFloat = 1.0
@@ -20,7 +20,7 @@ class InputSystem: System {
         self.entityManager = entityManager
         self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                          HoldingAxeComponent.self)
-        self.axe = entityManager.assemblage(requiredComponents: AxeComponent.self, PhysicsComponent.self)
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self)
         self.canJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
     }
 
@@ -55,19 +55,29 @@ class InputSystem: System {
     }
 
     func throwsAxe(axeId: EntityID, by playerId: EntityID, towards: FaceDirection) {
+        let nilPhysicsComponent: PhysicsComponent? = entityManager.getComponent(for: axeId)
         guard entityManager.isMember(playerId, ofAssemblageWithTraits: holdingAxePlayer.traits),
-              entityManager.isMember(axeId, ofAssemblageWithTraits: axe.traits),
-              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: axeId) else {
+              entityManager.isMember(axeId, ofAssemblageWithTraits: unthrownAxe.traits),
+              nilPhysicsComponent == nil,
+              // assert does not have collidable component
+              // maybe can use same 
+              let playerComponent: PlayerComponent = entityManager.getComponent(for: playerId),
+              let axeSizeComponent: SizeComponent = entityManager.getComponent(for: axeId) else {
             assertionFailure("Throw axe failed for playerId \(playerId) and axeId \(axeId)")
             return
         }
+        let physicsCreator = PhysicsCreator(entityManager: entityManager)
+        let collidable = physicsCreator.axeCollidable(axeId: axeId)
+        let physicsComponent = physicsCreator.createAxe(of: axeSizeComponent.actualSize)
+        entityManager.assign(component: collidable, to: axeId)
+        entityManager.assign(component: physicsComponent, to: axeId)
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)
-        physicsComponent.affectedByGravity = true
-        entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
+        playerComponent.fsm.changeState(name: .notHoldingAxe)
     }
 
     func jump(playerId: EntityID) {
+        print("tries to jump player: \(playerId)")
         guard entityManager.isMember(playerId, ofAssemblageWithTraits: canJumpPlayer.traits),
               let physicsComponent: PhysicsComponent = entityManager.getComponent(for: playerId),
               let canJumpComponent: CanJumpComponent = entityManager.getComponent(for: playerId) else {

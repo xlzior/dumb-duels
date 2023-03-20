@@ -31,13 +31,14 @@ class PhysicsComponent: Component {
     var categoryBitMask: UInt32
     var collisionBitMask: UInt32
     var contactTestBitMask: UInt32
+    var toBeRemoved: Bool
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                  linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                  restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
                  collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
-                  impulse: CGVector) {
+                  impulse: CGVector, toBeRemoved: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure("Please pass in only either a size to initialize a rectangle physics component or a radius to initialize a circle physics component")
             return nil
@@ -59,6 +60,7 @@ class PhysicsComponent: Component {
         self.categoryBitMask = categoryBitMask
         self.collisionBitMask = collisionBitMask
         self.contactTestBitMask = contactTestBitMask
+        self.toBeRemoved = toBeRemoved
     }
 
     convenience init(radius: CGFloat,

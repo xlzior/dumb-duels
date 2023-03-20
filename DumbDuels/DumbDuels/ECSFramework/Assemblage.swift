@@ -142,4 +142,18 @@ extension Assemblage {
     public func createMember(with components: R.Components) -> Entity {
         R.createMember(entityManager: manager, components: components)
     }
+
+    public func getComponents(for entityId: EntityID) -> R.Components? {
+        guard isMember(entity: Entity(id: entityId, manager: self.manager)) else {
+            return nil
+        }
+        return R.components(entityManager: manager, entityId: entityId)
+    }
+
+    public func getEntityAndComponents(for entityId: EntityID) -> R.EntityAndComponents? {
+        guard isMember(entity: Entity(id: entityId, manager: self.manager)) else {
+            return nil
+        }
+        return R.entityAndComponents(entityManager: manager, entityId: entityId)
+    }
 }

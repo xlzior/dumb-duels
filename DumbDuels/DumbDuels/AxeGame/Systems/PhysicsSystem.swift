@@ -36,9 +36,7 @@ class PhysicsSystem: System {
                 physicsComponent.zRotation = physicsBody.zRotation
             }
             if let positionComponent: PositionComponent = entityManager.getComponent(ofType: PositionComponent.typeId, for: EntityID(id)) {
-                // TODO: important change this back
-                positionComponent.position = CGPoint(x: physicsBody.position.x,
-                                                     y: physicsBody.position.y)
+                positionComponent.position = physicsBody.position
             }
             if let rotationComponent: RotationComponent = entityManager.getComponent(ofType: RotationComponent.typeId, for: EntityID(id)) {
                 rotationComponent.angleInRadians = physicsBody.zRotation
@@ -58,6 +56,12 @@ class PhysicsSystem: System {
 
     func syncToPhysicsEngine() {
         for (entity, position, rotation, physics, collidable) in physics.entityAndComponents {
+            guard !physics.toBeRemoved else {
+                scene.removeBody(for: entity.id.id)
+                entityManager.remove(componentType: PhysicsComponent.typeId, from: entity.id)
+                entityManager.remove(componentType: CollidableComponent.typeId, from: entity.id)
+                continue
+            }
             var physicsBody = initializePhysicsBodyFrom(positionComponent: position,
                                                         rotationComponent: rotation,
                                                         physicsComponent: physics,

@@ -11,35 +11,75 @@ class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
-    private var axes: Assemblage2<AxeComponent, PositionComponent>
-    private var players: Assemblage2<PlayerComponent, ScoreComponent>
+    private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, PhysicsComponent, CollidableComponent>
+    private var unthrownAxe: Assemblage1<AxeComponent>
+    private var players: Assemblage3<PlayerComponent, ScoreComponent, PositionComponent>
 
     init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.axes = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self)
-        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self)
+        self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self, CollidableComponent.self)
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, excludedComponents: PhysicsComponent.self, CollidableComponent.self)
+        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
+                                                PositionComponent.self)
     }
 
     func update() {
-        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (_, position) in axes where frame.contains(position.position) {
-            return
+        if isAllAxeThrown() && isAllThrownAxeOutOfBounds() {
+            checkWin()
+            reset()
         }
-        checkWin()
-        reset()
     }
 
     func checkWin() {
-        for (entity, _, score) in players.entityAndComponents where score.score >= 5 {
+        for (entity, _, score, _) in players.entityAndComponents where score.score >= 5 {
             eventFirer.fire(GameWonEvent(entityId: entity.id))
         }
     }
 
     func reset() {
-        for (player, _) in players {
+        print("trying to reset")
+        for (entity, player, _, playerPosition) in players.entityAndComponents {
+            // reset player
             player.fsm.changeState(name: .holdingAxe)
-            // TODO: restore axe positions to the starting position?
+            playerPosition.position = Positions.players[player.idx]
+            // TODO: reset velocity?
+
+            // TODO: can combine 2 guards
+            guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(for: entity.id) else {
+                print("dont have holding axe component")
+                return
+            }
+            print("holdingAxe id: \(holdingAxe.axeEntityID)")
+            guard let (entity, axe, axePosition, physics, _) =
+                    thrownAxe.getEntityAndComponents(for: holdingAxe.axeEntityID) else {
+                print("inside here")
+                return
+            }
+            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) *
+                                   playerPosition.faceDirection.rawValue
+            axePosition.position = playerPosition.position + CGPoint(x: horizontalOffset, y: 0)
+            print("axeId: \(entity.id), position: \(axePosition.position)")
+            physics.toBeRemoved = true
         }
+    }
+
+    private func isAllAxeThrown() -> Bool {
+        for _ in unthrownAxe.entities {
+            print("not all axe thrown")
+            return false
+        }
+        print("all axes thrown")
+        return true
+    }
+
+    private func isAllThrownAxeOutOfBounds() -> Bool {
+        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
+        for (entity, _, position, _, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
+            print("axe \(entity.id) is still in bounds")
+            return false
+        }
+        print("all axes thrown are out of bounds")
+        return true
     }
 }

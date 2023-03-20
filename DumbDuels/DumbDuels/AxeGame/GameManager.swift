@@ -73,14 +73,26 @@ class GameManager {
             )
 
             let player = entityCreator.createPlayer(
+                index: playerIndex,
                 at: playerPosition,
                 facing: faceDirection,
                 of: Sizes.player,
-                holding: axe.id
+                holding: axe.id,
+                onPlatform: platform.id
             )
             playerIds[playerIndex] = player.id.id
             axeIds[playerIndex] = axe.id.id
             platformIds[playerIndex] = platform.id.id
+
+            let axeFamily: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent> =
+            entityManager.assemblage(requiredComponents: AxeComponent.self, PositionComponent.self, PhysicsComponent.self)
+            let playerFamily: Assemblage3<PlayerComponent, ScoreComponent, PositionComponent> =
+            entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
+                                                    PositionComponent.self)
+
+            for (entity, _, _, _) in axeFamily.entityAndComponents {
+                print("Game Manager init has axe of id: \(entity.id)")
+            }
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
@@ -89,6 +101,7 @@ class GameManager {
 
     private func setUpSystems() {
         systemManager.register(InputSystem(for: entityManager))
+        systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PhysicsSystem(for: entityManager, scene: simulator.gameScene))

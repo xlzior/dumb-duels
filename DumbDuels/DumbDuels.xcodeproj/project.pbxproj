@@ -95,6 +95,8 @@
 		8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */; };
 		8C3584AC29C5A50E00BAE8C5 /* CanJumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */; };
 		8C3584AE29C5A9A500BAE8C5 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584AD29C5A9A500BAE8C5 /* CGVector+Extensions.swift */; };
+		8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */; };
+		8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */; };
 		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
 		A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* Sizes.swift */; };
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
@@ -220,6 +222,8 @@
 		8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 		8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanJumpComponent.swift; sourceTree = "<group>"; };
 		8C3584AD29C5A9A500BAE8C5 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
+		8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncXPositionComponent.swift; sourceTree = "<group>"; };
+		8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlatformSyncSystem.swift; sourceTree = "<group>"; };
 		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		A7E439F829C374BE00027AC6 /* Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
@@ -381,6 +385,7 @@
 				8C35849B29C43A4400BAE8C5 /* CollidableComponent.swift */,
 				6F67C71029C457DC009E0579 /* PhysicsComponent.swift */,
 				8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */,
+				8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				A7E43A1829C4C6A500027AC6 /* RenderSystemDetails.swift */,
 				8C35849D29C43AA000BAE8C5 /* CollisionSystem.swift */,
 				8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */,
+				8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -737,10 +743,12 @@
 				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				8C3584A829C559FE00BAE8C5 /* PhysicsCreator.swift in Sources */,
 				7BA7EBE229C36BBD0096457F /* PhysicsSystem.swift in Sources */,
+				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
 				8C35845B29BF3D1D00BAE8C5 /* Pair.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
 				8C35849429C4399200BAE8C5 /* PlayerCategory.swift in Sources */,
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
+				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
 				7BA7EBDB29C36BBD0096457F /* AxeComponent.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7BA7EBBC29C36B900096457F /* Event.swift in Sources */,

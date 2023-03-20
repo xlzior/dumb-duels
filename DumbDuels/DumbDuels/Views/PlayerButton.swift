@@ -8,6 +8,7 @@
 import UIKit
 
 class PlayerButton: UIButton {
+    static let zPosition: CGFloat = 101
     let buttonAspectRatio = 1.8
     var isPlayerOne: Bool
     var playerID: EntityID?
@@ -26,6 +27,7 @@ class PlayerButton: UIButton {
         layer.borderWidth = 10
         layer.cornerRadius = frame.height / 3
         layer.borderColor = Colour.secondaryDark.cgColour
+        layer.zPosition = PlayerButton.zPosition
     }
 
     private func scale(_ screenHeight: CGFloat) {

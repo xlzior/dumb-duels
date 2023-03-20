@@ -9,6 +9,7 @@ import CoreGraphics
 
 class InputSystem: System {
     unowned var entityManager: EntityManager
+    private var physicsCreator: PhysicsCreator
 
     private var holdingAxePlayer: Assemblage2<PlayerComponent, HoldingAxeComponent>
     private var unthrownAxe: Assemblage2<AxeComponent, SizeComponent>
@@ -18,6 +19,7 @@ class InputSystem: System {
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
+        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
         self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                          HoldingAxeComponent.self)
         self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self,
@@ -60,7 +62,6 @@ class InputSystem: System {
               let (player, _) = holdingAxePlayer.getComponents(for: playerId) else {
             return
         }
-        let physicsCreator = PhysicsCreator(entityManager: entityManager)
         let collidable = physicsCreator.axeCollidable(axeId: axeId)
         let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize)
         entityManager.assign(component: collidable, to: axeId)

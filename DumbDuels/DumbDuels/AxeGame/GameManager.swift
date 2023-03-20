@@ -62,9 +62,8 @@ class GameManager {
                 of: Sizes.platform
             )
 
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * faceDirection.rawValue
             let axe = entityCreator.createAxe(
-                withHorizontalOffset: horizontalOffset,
+                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
                 of: Sizes.axe
             )

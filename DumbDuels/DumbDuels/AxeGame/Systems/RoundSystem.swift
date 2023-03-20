@@ -55,9 +55,7 @@ class RoundSystem: System {
                     thrownAxe.getEntityAndComponents(for: holdingAxe.axeEntityID) else {
                 return
             }
-            // TODO: do something about horizontal offset
-            let horizontalOffset = (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) *
-                                   playerPosition.faceDirection.rawValue
+            let horizontalOffset = Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection)
             axePosition.position = playerPosition.position + CGPoint(x: horizontalOffset, y: 0)
             physics.toBeRemoved = true
         }

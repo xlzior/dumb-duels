@@ -64,9 +64,7 @@ class EntityCreator {
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId)
         }
-        let collidable = physicsCreator.playerCollidable(playerId: player.id)
-        let physicsComponent = physicsCreator.createPlayer(of: size)
-        player.assign(component: collidable)
+        let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
 
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
@@ -88,9 +86,7 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
-        let collidable = physicsCreator.platformCollidable(platformId: platform.id)
-        let physicsComponent = physicsCreator.createPlatform(of: size)
-        platform.assign(component: collidable)
+        let physicsComponent = physicsCreator.createPlatform(of: size, for: platform.id)
         platform.assign(component: physicsComponent)
 
         return platform
@@ -105,9 +101,7 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
-        let collidable = physicsCreator.platformCollidable(platformId: platform.id)
-        let physicsComponent = physicsCreator.createPlatform(of: size)
-        platform.assign(component: collidable)
+        let physicsComponent = physicsCreator.createPlatform(of: size, for: platform.id)
         platform.assign(component: physicsComponent)
 
         return platform

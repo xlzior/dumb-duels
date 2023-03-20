@@ -23,7 +23,7 @@ class InputSystem: System {
         self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                          HoldingAxeComponent.self)
         self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self,
-                                                    excludedComponents: PhysicsComponent.self, CollidableComponent.self)
+                                                    excludedComponents: PhysicsComponent.self)
         self.canJumpPlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
     }
@@ -63,9 +63,8 @@ class InputSystem: System {
               let (player, _) = holdingAxePlayer.getComponents(for: playerId) else {
             return
         }
-        let collidable = physicsCreator.axeCollidable(axeId: axeId)
-        let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize)
-        entityManager.assign(component: collidable, to: axeId)
+        let physicsCreator = PhysicsCreator(entityManager: entityManager)
+        let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize, for: axeId)
         entityManager.assign(component: physicsComponent, to: axeId)
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)

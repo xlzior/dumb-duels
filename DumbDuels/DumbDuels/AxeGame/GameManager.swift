@@ -87,8 +87,7 @@ class GameManager {
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
-        systemManager.register(PhysicsSystem(for: entityManager, scene: simulator.gameScene))
-        systemManager.register(CollisionSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager, scene: simulator.gameScene))
         systemManager.register(ScoreSystem(for: entityManager))
         if !useSpriteKitView {
             systemManager.register(RenderSystem(
@@ -156,10 +155,10 @@ extension GameManager: GameSceneDelegate {
 
 extension GameManager: PhysicsContactDelegate {
     func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
-        guard let collisionSystem = systemManager.get(ofType: CollisionSystem.self) else {
+        guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
-        collisionSystem.handleCollision(firstId: bodyA, secondId: bodyB)
+        physicsSystem.handleCollision(firstId: bodyA, secondId: bodyB)
     }
 
     func didContactEnd(for bodyA: BodyID, and bodyB: BodyID) {

@@ -11,22 +11,19 @@ class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
-    private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, PhysicsComponent, CollidableComponent>
+    private var thrownAxe: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
 
     init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.thrownAxe = entityManager.assemblage(
-            requiredComponents: AxeComponent.self, PositionComponent.self,
-            PhysicsComponent.self, CollidableComponent.self)
-        self.unthrownAxe = entityManager.assemblage(
-            requiredComponents: AxeComponent.self,
-            excludedComponents: PhysicsComponent.self, CollidableComponent.self)
-        self.players = entityManager.assemblage(
-            requiredComponents: PlayerComponent.self, ScoreComponent.self,
-            PositionComponent.self, PhysicsComponent.self)
+        self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
+                                                  PositionComponent.self, PhysicsComponent.self)
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
+                                                    excludedComponents: PhysicsComponent.self)
+        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
+                                                PositionComponent.self, PhysicsComponent.self)
     }
 
     func update() {
@@ -51,7 +48,7 @@ class RoundSystem: System {
 
             // reset axe
             guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(for: entity.id),
-                  let (_, _, axePosition, physics, _) =
+                  let (_, _, axePosition, physics) =
                     thrownAxe.getEntityAndComponents(for: holdingAxe.axeEntityID) else {
                 return
             }
@@ -70,7 +67,7 @@ class RoundSystem: System {
 
     private func isAllThrownAxeOutOfBounds() -> Bool {
         let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (_, _, position, _, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
+        for (_, _, position, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
             return false
         }
         return true

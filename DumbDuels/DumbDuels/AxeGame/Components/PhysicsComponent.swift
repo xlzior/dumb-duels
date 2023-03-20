@@ -13,7 +13,6 @@ class PhysicsComponent: Component {
         case rectangle
     }
 
-    // TODO: Store radius or CGSize depending on rectangle or circle shape
     var id: ComponentID
     var shape: Shape
     var radius: CGFloat?
@@ -28,21 +27,40 @@ class PhysicsComponent: Component {
     var friction: CGFloat
     var zRotation: CGFloat
     var impulse: CGVector
-    var categoryBitMask: UInt32
-    var collisionBitMask: UInt32
-    var contactTestBitMask: UInt32
+    var categories: [any CollisionCategory]
     var toBeRemoved: Bool
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
-                 mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
-                 linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
-                 restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                 collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
-                  impulse: CGVector, toBeRemoved: Bool = false) {
+                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
+                  linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
+                  restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
+                  zRotation: CGFloat, impulse: CGVector, toBeRemoved: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
-            assertionFailure("Please pass in only either a size to initialize a rectangle physics component or a radius to initialize a circle physics component")
+            assertionFailure(
+                """
+                Please pass in only either a size for a rectangle physics component
+                or a radius for a circle physics component
+                """
+            )
             return nil
         }
+        guard mass > 0 else {
+            assertionFailure("Mass cannot be negative")
+            return nil
+        }
+        guard linearDamping >= 0 && linearDamping <= 1 else {
+            assertionFailure("linearDamping must be a value from 0.0 to 1.0")
+            return nil
+        }
+        guard restitution >= 0 && restitution <= 1 else {
+            assertionFailure("restitution must be a value from 0.0 to 1.0")
+            return nil
+        }
+        guard friction >= 0 && linearDamping <= 1 else {
+            assertionFailure("friction must be a value from 0.0 to 1.0")
+            return nil
+        }
+
         self.id = ComponentID()
         self.shape = shape
         self.radius = radius
@@ -57,42 +75,29 @@ class PhysicsComponent: Component {
         self.friction = friction
         self.zRotation = zRotation
         self.impulse = impulse
-        self.categoryBitMask = categoryBitMask
-        self.collisionBitMask = collisionBitMask
-        self.contactTestBitMask = contactTestBitMask
+        self.categories = categories
         self.toBeRemoved = toBeRemoved
     }
 
-    convenience init(radius: CGFloat,
+    convenience init(circleOf radius: CGFloat,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
-                     restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
-                     impulse: CGVector) {
-        self.init(shape: .circle, radius: radius, mass: mass,
+                     restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
+                     zRotation: CGFloat, impulse: CGVector) {
+        self.init(shape: .circle, radius: radius, size: nil, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, categoryBitMask: categoryBitMask, collisionBitMask: collisionBitMask,
-                  contactTestBitMask: contactTestBitMask, zRotation: zRotation, impulse: impulse)!
+                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse)!
     }
 
-    convenience init(size: CGSize,
+    convenience init(rectangleOf size: CGSize,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
-                     restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                     collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
-                     impulse: CGVector) {
-        self.init(shape: .rectangle, size: size, mass: mass,
+                     restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
+                     zRotation: CGFloat, impulse: CGVector) {
+        self.init(shape: .rectangle, radius: nil, size: size, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, categoryBitMask: categoryBitMask, collisionBitMask: collisionBitMask,
-                  contactTestBitMask: contactTestBitMask, zRotation: zRotation, impulse: impulse)!
+                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse)!
     }
-
-//    func isValid() -> Bool {
-//        // TODO: make sure it if shape is cirlce then it must have radius
-//        // TODO: and if shape is rectangle then must have size
-//        // other stuff, not so importabt: e.g. restitution between >= 0 and <= 1
-//
-//    }
 }

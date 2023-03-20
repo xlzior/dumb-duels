@@ -12,16 +12,19 @@ class CollisionUtils {
     static let axeBitmask: UInt32 =  0x1 << 1
     static let platformBitmask: UInt32 = 0x1 << 2
     static let pegBitmask: UInt32 = 0x1 << 3
+    static let wallBitmask: UInt32 = 0x1 << 4
 
-    static let playerCollideBitmask: UInt32 = axeBitmask | platformBitmask
-    static let axeCollideBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask
-    static let platformCollideBitmask: UInt32 = playerBitmask
-    static let pegCollideBitmask: UInt32 = axeBitmask
+    static let playerCollideBitmask: UInt32 = axeBitmask | platformBitmask | wallBitmask
+    static let axeCollideBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask | wallBitmask
+    static let platformCollideBitmask: UInt32 = playerBitmask | wallBitmask
+    static let pegCollideBitmask: UInt32 = axeBitmask | wallBitmask
+    static let wallCollideBitmask: UInt32 = playerBitmask | axeBitmask | platformBitmask | pegBitmask
 
-    static let playerContactBitmask: UInt32 = axeBitmask | platformBitmask
-    static let axeContactBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask
-    static let platformContactBitmask: UInt32 = playerBitmask
-    static let pegContactBitmask: UInt32 = axeBitmask
+    static let playerContactBitmask: UInt32 = axeBitmask | platformBitmask | wallBitmask
+    static let axeContactBitmask: UInt32 = playerBitmask | axeBitmask | pegBitmask | wallBitmask
+    static let platformContactBitmask: UInt32 = playerBitmask | wallBitmask
+    static let pegContactBitmask: UInt32 = axeBitmask | wallBitmask
+    static let wallContactBitmask: UInt32 = playerBitmask | axeBitmask | platformBitmask | pegBitmask
 
     static func bitmasks(for categories: [CollisionCategory]) -> UInt32 {
         unionBitmasks(categories.map({ $0.ownBitmask }))

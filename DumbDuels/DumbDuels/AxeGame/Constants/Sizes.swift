@@ -12,4 +12,5 @@ struct Sizes {
     static let player: CGSize = CGSize(width: 80, height: 80)
     static let axe: CGSize = CGSize(width: 40, height: 40)
     static let platform: CGSize = CGSize(width: 200, height: 50)
+    static let wall: CGSize = CGSize(width: 1, height: game.height)
 }

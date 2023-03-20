@@ -18,4 +18,5 @@ protocol CollisionCategory {
     func collides(with axe: AxeCategory) -> Event?
     func collides(with platform: PlatformCategory) -> Event?
     func collides(with peg: PegCategory) -> Event?
+    func collides(with wall: WallCategory) -> Event?
 }

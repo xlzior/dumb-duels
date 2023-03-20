@@ -33,10 +33,10 @@ class PhysicsComponent: Component {
     var contactTestBitMask: UInt32
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
-                 mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
-                 linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
-                 restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
-                 collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
+                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
+                  linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
+                  restitution: CGFloat, friction: CGFloat, categoryBitMask: UInt32,
+                  collisionBitMask: UInt32, contactTestBitMask: UInt32, zRotation: CGFloat,
                   impulse: CGVector) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure("Please pass in only either a size to initialize a rectangle physics component or a radius to initialize a circle physics component")

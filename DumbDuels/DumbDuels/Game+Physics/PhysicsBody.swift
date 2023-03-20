@@ -70,7 +70,7 @@ public class PhysicsBody {
             return
         }
 
-//        node.position = newPhysicsBody.position
+        node.position = newPhysicsBody.position
         node.zRotation = newPhysicsBody.zRotation
         mass = newPhysicsBody.mass
         velocity = newPhysicsBody.velocity

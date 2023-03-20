@@ -12,4 +12,9 @@ struct Positions {
         CGPoint(x: 200, y: 300),
         CGPoint(x: 800, y: 300)
     ]
+
+    static let walls: [CGPoint] = [
+        CGPoint(x: 2, y: Sizes.game.height / 2),
+        CGPoint(x: Sizes.game.width - 2, y: Sizes.game.height / 2)
+    ]
 }

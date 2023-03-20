@@ -25,7 +25,8 @@ class PhysicsCreator {
                                          categoryBitMask: CollisionUtils.axeBitmask,
                                          collisionBitMask: CollisionUtils.axeCollideBitmask,
                                          contactTestBitMask: CollisionUtils.axeContactBitmask,
-                                         zRotation: Physics.axeZRotation, impulse: Physics.axeInitialImpulse)
+                                         zRotation: Physics.axeZRotation,
+                                         impulse: Physics.axeInitialImpulse)
         return component
     }
 
@@ -40,7 +41,8 @@ class PhysicsCreator {
                                          categoryBitMask: CollisionUtils.playerBitmask,
                                          collisionBitMask: CollisionUtils.playerCollideBitmask,
                                          contactTestBitMask: CollisionUtils.playerContactBitmask,
-                                         zRotation: Physics.playerZRotation, impulse: Physics.playerImpulse)
+                                         zRotation: Physics.playerZRotation,
+                                         impulse: Physics.playerImpulse)
         return component
     }
 
@@ -56,7 +58,23 @@ class PhysicsCreator {
                                          collisionBitMask: CollisionUtils.platformCollideBitmask,
                                          contactTestBitMask: CollisionUtils.platformContactBitmask,
                                          zRotation: Physics.platformZRotation,
-                                         impulse: Physics.playerImpulse)
+                                         impulse: Physics.platformImpulse)
+        return component
+    }
+
+    func createWall(of size: CGSize) -> PhysicsComponent {
+        let component = PhysicsComponent(size: size, mass: Physics.wallMass, velocity: .zero,
+                                         affectedByGravity: Physics.wallGravity,
+                                         linearDamping: Physics.wallDamping,
+                                         isDynamic: Physics.wallIsDynamic,
+                                         allowsRotation: Physics.wallRotation,
+                                         restitution: Physics.wallCor,
+                                         friction: Physics.wallFriction,
+                                         categoryBitMask: CollisionUtils.wallBitmask,
+                                         collisionBitMask: CollisionUtils.wallCollideBitmask,
+                                         contactTestBitMask: CollisionUtils.wallContactBitmask,
+                                         zRotation: Physics.wallZRotation,
+                                         impulse: Physics.wallImpulse)
         return component
     }
 
@@ -75,6 +93,12 @@ class PhysicsCreator {
     func platformCollidable(platformId: EntityID) -> CollidableComponent {
         let platformCategory = PlatformCategory(entityId: platformId)
         let component = CollidableComponent(categories: platformCategory)
+        return component
+    }
+
+    func wallCollidable(wallId: EntityID) -> CollidableComponent {
+        let wallCategory = WallCategory(entityId: wallId)
+        let component = CollidableComponent(categories: wallCategory)
         return component
     }
 }

@@ -15,7 +15,8 @@ struct Positions {
 
     static let walls: [CGPoint] = [
         CGPoint(x: 2, y: Sizes.game.height / 2),
-        CGPoint(x: Sizes.game.width - 2, y: Sizes.game.height / 2)
+        CGPoint(x: Sizes.game.width - 2, y: Sizes.game.height / 2),
+        CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height - 2)
     ]
 
     static let axes: [CGPoint] = [

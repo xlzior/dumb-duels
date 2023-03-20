@@ -59,7 +59,7 @@ struct Physics {
     // Wall physics constants
     static let wallMass: CGFloat = 1.0
     static let wallGravity = false
-    static let wallCor: CGFloat = 0.2
+    static let wallCor: CGFloat = 0.8
     static let wallIsDynamic = false
     static let wallZRotation = PhysicsEngineDefaults.zRotation
     static let wallRotation = false

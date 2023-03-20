@@ -16,7 +16,7 @@ class PhysicsCreator {
 
     func createAxe(of size: CGSize, for axeId: EntityID) -> PhysicsComponent {
         let axeCategory = AxeCategory(entityId: axeId)
-        let component = PhysicsComponent(radius: size.height / 2, mass: Physics.axeMass, velocity: .zero,
+        let component = PhysicsComponent(circleOf: size.height / 2, mass: Physics.axeMass, velocity: .zero,
                                          affectedByGravity: Physics.axeGravity,
                                          linearDamping: Physics.axeDamping,
                                          isDynamic: Physics.axeIsDynamic,
@@ -30,7 +30,7 @@ class PhysicsCreator {
 
     func createPlayer(of size: CGSize, for playerId: EntityID) -> PhysicsComponent {
         let playerCategory = PlayerCategory(entityId: playerId)
-        let component = PhysicsComponent(size: size, mass: Physics.playerMass, velocity: .zero,
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.playerMass, velocity: .zero,
                                          affectedByGravity: Physics.playerGravity,
                                          linearDamping: Physics.playerDamping,
                                          isDynamic: Physics.playerIsDynamic,
@@ -44,7 +44,7 @@ class PhysicsCreator {
 
     func createPlatform(of size: CGSize, for platformId: EntityID) -> PhysicsComponent {
         let platformCategory = PlatformCategory(entityId: platformId)
-        let component = PhysicsComponent(size: size, mass: Physics.platformMass, velocity: .zero,
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.platformMass, velocity: .zero,
                                          affectedByGravity: Physics.platformGravity,
                                          linearDamping: Physics.platformDamping,
                                          isDynamic: Physics.platformIsDynamic,

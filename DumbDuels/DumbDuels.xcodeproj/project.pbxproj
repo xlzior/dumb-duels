@@ -108,6 +108,7 @@
 		A7E43A1529C4722B00027AC6 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1429C4722B00027AC6 /* CGPoint+Extensions.swift */; };
 		A7E43A1729C4ACA700027AC6 /* RenderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1629C4ACA700027AC6 /* RenderDetails.swift */; };
 		A7E43A1929C4C6A500027AC6 /* RenderSystemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1829C4C6A500027AC6 /* RenderSystemDetails.swift */; };
+		A7FD5D8529C8269900BF1199 /* GameAreaBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD5D8429C8269900BF1199 /* GameAreaBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +234,7 @@
 		A7E43A1429C4722B00027AC6 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		A7E43A1629C4ACA700027AC6 /* RenderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderDetails.swift; sourceTree = "<group>"; };
 		A7E43A1829C4C6A500027AC6 /* RenderSystemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderSystemDetails.swift; sourceTree = "<group>"; };
+		A7FD5D8429C8269900BF1199 /* GameAreaBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAreaBorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -535,6 +537,7 @@
 				A7E43A0829C37AD600027AC6 /* GameAreaView.swift */,
 				A7E43A0929C37AD600027AC6 /* PlayerButton.swift */,
 				A7E43A0E29C440C300027AC6 /* ScoreLabel.swift */,
+				A7FD5D8429C8269900BF1199 /* GameAreaBorder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 				8C35846D29C0B5C500BAE8C5 /* EntityManager+ComponentsBuilder.swift in Sources */,
 				7BA7EBE129C36BBD0096457F /* InputSystem.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
+				A7FD5D8529C8269900BF1199 /* GameAreaBorder.swift in Sources */,
 				8C35844E29BF29B500BAE8C5 /* EntityID.swift in Sources */,
 				7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */,
 				8C35849829C439F000BAE8C5 /* PlatformCategory.swift in Sources */,

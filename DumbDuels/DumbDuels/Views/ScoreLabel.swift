@@ -8,6 +8,7 @@
 import UIKit
 
 class ScoreLabel: UILabel {
+    static let zPosition: CGFloat = 101
     var isPlayerOne: Bool
     var playerID: EntityID?
 
@@ -27,6 +28,7 @@ class ScoreLabel: UILabel {
         textAlignment = .center
         numberOfLines = 0
         sizeToFit()
+        layer.zPosition = ScoreLabel.zPosition
     }
 
     private func scale(_ screenHeight: CGFloat) {

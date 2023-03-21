@@ -8,8 +8,15 @@
 import CoreGraphics
 
 struct Sizes {
-    static let game: CGSize = CGSize(width: 1_000, height: 650)
-    static let player: CGSize = CGSize(width: 80, height: 80)
-    static let axe: CGSize = CGSize(width: 40, height: 40)
-    static let platform: CGSize = CGSize(width: 200, height: 50)
+    static let game = CGSize(width: 1_000, height: 650)
+    static let player = CGSize(width: 80, height: 80)
+    static let axe = CGSize(width: 40, height: 40)
+    static let platform = CGSize(width: 200, height: 50)
+    static let walls = [CGSize(width: 1, height: game.height),
+                        CGSize(width: 1, height: game.height),
+                        CGSize(width: game.width, height: 1)]
+
+    static func axeOffsetFromPlayer(facing direction: FaceDirection) -> CGFloat {
+        (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * direction.rawValue
+    }
 }

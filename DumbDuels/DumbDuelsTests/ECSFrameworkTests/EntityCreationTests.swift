@@ -149,7 +149,7 @@ final class EntityCreationTests: XCTestCase {
     }
 
     func testCreateMultipleEntitiesOneComponent() {
-        let numCopies = 1000
+        let numCopies = 1_000
         let manager = EntityManager()
         let assemblage1 = manager.assemblage(requiredComponents: XComponent.self)
         let assemblage2 = manager.assemblage(requiredComponents: YComponent.self)
@@ -181,7 +181,7 @@ final class EntityCreationTests: XCTestCase {
     }
 
     func testCreateMultipleEntitiesMultipleComponent() {
-        let numCopies = 1000
+        let numCopies = 1_000
         let manager = EntityManager()
         let assemblage1 = manager.assemblage(requiredComponents: XComponent.self)
         let assemblage2 = manager.assemblage(requiredComponents: YComponent.self)

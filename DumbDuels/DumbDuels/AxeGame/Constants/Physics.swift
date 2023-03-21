@@ -9,7 +9,7 @@ import Foundation
 
 struct Physics {
     static let jumpImpulse = CGVector(dx: 0.0, dy: -100)
-    static let axeImpulse = CGVector(dx: 0.0, dy: 1000)
+    static let axeImpulse = CGVector(dx: 0.0, dy: 1_000)
 
     // Player physics constants
     static let playerMass: CGFloat = 1.0
@@ -24,7 +24,7 @@ struct Physics {
 
     // Axe physics constants
     static let axeMass: CGFloat = 1.0
-    static let axeGravity = false
+    static let axeGravity = true
     static let axeCor: CGFloat = 0.1
     static let axeIsDynamic = true
     static let axeZRotation = PhysicsEngineDefaults.zRotation
@@ -55,4 +55,15 @@ struct Physics {
     static let pegFriction = PhysicsEngineDefaults.friction
     static let pegDamping = PhysicsEngineDefaults.linearDamping
     static let pegImpulse: CGVector = .zero
+
+    // Wall physics constants
+    static let wallMass: CGFloat = 1.0
+    static let wallGravity = false
+    static let wallCor: CGFloat = 0.8
+    static let wallIsDynamic = false
+    static let wallZRotation = PhysicsEngineDefaults.zRotation
+    static let wallRotation = false
+    static let wallFriction = PhysicsEngineDefaults.friction
+    static let wallDamping = PhysicsEngineDefaults.linearDamping
+    static let wallImpulse: CGVector = .zero
 }

@@ -16,13 +16,13 @@ struct Entity {
     }
 
     @discardableResult
-    public func remove(componentType: ComponentTypeID) -> Entity {
+    func remove(componentType: ComponentTypeID) -> Entity {
         manager.remove(componentType: componentType, from: self.id)
         return self
     }
 
     @discardableResult
-    public func assign(component: Component) -> Entity {
+    func assign(component: Component) -> Entity {
         manager.assign(component: component, to: self)
         return self
     }

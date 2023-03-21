@@ -1,17 +1,18 @@
 //
-//  PlayerCategory.swift
+//  WallCategory.swift
 //  DumbDuels
 //
-//  Created by Bing Sen Lim on 17/3/23.
+//  Created by Bryan Kwok on 20/3/23.
 //
 
 import Foundation
 
-struct PlayerCategory: CollisionCategory {
+struct WallCategory: CollisionCategory {
+
     var entityId: EntityID
-    let ownBitmask: UInt32 = CollisionUtils.playerBitmask
-    let collideBitmask: UInt32 = CollisionUtils.playerCollideBitmask
-    let contactBitmask: UInt32 = CollisionUtils.playerContactBitmask
+    let ownBitmask: UInt32 = CollisionUtils.wallBitmask
+    let collideBitmask: UInt32 = CollisionUtils.wallCollideBitmask
+    let contactBitmask: UInt32 = CollisionUtils.wallContactBitmask
 
     init(entityId: EntityID) {
         self.entityId = entityId
@@ -26,11 +27,11 @@ struct PlayerCategory: CollisionCategory {
     }
 
     func collides(with axe: AxeCategory) -> Event? {
-        CollisionHandler.getEvent(between: self, and: axe)
+        nil
     }
 
     func collides(with platform: PlatformCategory) -> Event? {
-        CollisionHandler.getEvent(between: self, and: platform)
+        nil
     }
 
     func collides(with peg: PegCategory) -> Event? {

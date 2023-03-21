@@ -37,4 +37,8 @@ struct PegCategory: CollisionCategory {
     func collides(with peg: PegCategory) -> Event? {
         nil
     }
+
+    func collides(with wall: WallCategory) -> Event? {
+        nil
+    }
 }

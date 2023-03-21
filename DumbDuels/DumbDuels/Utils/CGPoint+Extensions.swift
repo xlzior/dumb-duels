@@ -9,11 +9,11 @@ import CoreGraphics
 
 extension CGPoint {
     static func + (left: CGPoint, right: CGPoint) -> CGPoint {
-      CGPoint(x: left.x + right.x, y: left.y + right.y)
+        CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
 
     static func += (left: inout CGPoint, right: CGPoint) {
-      left = left + right
+        left = left + right
     }
 
     static func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
@@ -21,7 +21,7 @@ extension CGPoint {
     }
 
     static func *= (left: inout CGPoint, right: CGFloat) {
-      left = left * right
+        left = left * right
     }
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
-    var screenOffset: CGPoint = CGPoint()
+    var screenOffset = CGPoint()
 
     var gameView: UIView!
     var playerButtons: [PlayerButton] = []
@@ -29,6 +29,7 @@ class GameViewController: UIViewController {
         gameView = GameAreaView(screenSize: screenSize)
         screenOffset = gameView.frame.origin
         view.addSubview(gameView)
+        view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))
 
         let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true)
         let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false)

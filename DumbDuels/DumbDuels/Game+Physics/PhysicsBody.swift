@@ -9,7 +9,9 @@ import SpriteKit
 
 public class PhysicsBody {
     private(set) var node: SKNode
-    private let assertionFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
+    private let nodeNoPhysicsBodyFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
+    private let incorrectShapeInitializationFailureMessage =
+        "Please pass in only either a size to initialize a rectangle body or a radius to initialize a circle body"
 
     init?(position: CGPoint = PhysicsEngineDefaults.position,
           size: CGSize? = nil,
@@ -28,19 +30,11 @@ public class PhysicsBody {
           contactBitMask: UInt32 = PhysicsEngineDefaults.contactBitMask
         ) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
-            assertionFailure("Please pass in only either a size to initialize a rectangle body or a radius to initialize a circle body")
+            assertionFailure(incorrectShapeInitializationFailureMessage)
             return nil
         }
 
-        // TODO: fix this properly
-//        self.node = size != nil
-//            ? SKSpriteNode(imageNamed: "player")
-//            : SKSpriteNode(imageNamed: "axe")
-//        self.node.size = size != nil
-//            ? size!
-//            : CGSize(width: radius! * 2, height: radius! * 2)
-
-        var body: SKPhysicsBody = SKPhysicsBody(circleOfRadius: 0)
+        var body = SKPhysicsBody(circleOfRadius: 0)
         if let size = size {
             body = SKPhysicsBody(rectangleOf: size)
         } else if let radius = radius {
@@ -66,11 +60,11 @@ public class PhysicsBody {
 
     func updateWith(newPhysicsBody: PhysicsBody) {
         guard node.physicsBody != nil else {
-            assertionFailure(assertionFailureMessage)
+            assertionFailure(nodeNoPhysicsBodyFailureMessage)
             return
         }
 
-//        node.position = newPhysicsBody.position
+        node.position = newPhysicsBody.position
         node.zRotation = newPhysicsBody.zRotation
         mass = newPhysicsBody.mass
         velocity = newPhysicsBody.velocity
@@ -83,18 +77,17 @@ public class PhysicsBody {
         categoryBitMask = newPhysicsBody.categoryBitMask
         collisionBitMask = newPhysicsBody.collisionBitMask
         contactTestBitMask = newPhysicsBody.contactTestBitMask
-
     }
 
     public var position: CGPoint {
         get { node.position }
         set {
-            guard let pBody = node.physicsBody else {
+            guard let physicsBody = node.physicsBody else {
                 return
             }
             node.physicsBody = nil
             node.position = newValue
-            node.physicsBody = pBody
+            node.physicsBody = physicsBody
         }
     }
 
@@ -106,14 +99,14 @@ public class PhysicsBody {
     public var mass: CGFloat {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.mass
             }
             return physicsBody.mass
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.mass = newValue
@@ -123,14 +116,14 @@ public class PhysicsBody {
     public var velocity: CGVector {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.velocity
             }
             return physicsBody.velocity
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.velocity = newValue
@@ -140,14 +133,14 @@ public class PhysicsBody {
     public var affectedByGravity: Bool {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.affectedByGravity
             }
             return physicsBody.affectedByGravity
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.affectedByGravity = newValue
@@ -157,14 +150,14 @@ public class PhysicsBody {
     public var linearDamping: CGFloat {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.linearDamping
             }
             return physicsBody.linearDamping
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.linearDamping = newValue
@@ -174,14 +167,14 @@ public class PhysicsBody {
     public var isDynamic: Bool {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.isDynamic
             }
             return physicsBody.isDynamic
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.isDynamic = newValue
@@ -191,14 +184,14 @@ public class PhysicsBody {
     public var allowsRotation: Bool {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.allowsRotation
             }
             return physicsBody.allowsRotation
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.allowsRotation = newValue
@@ -208,14 +201,14 @@ public class PhysicsBody {
     public var restitution: CGFloat {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.restitution
             }
             return physicsBody.restitution
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.restitution = newValue
@@ -225,14 +218,14 @@ public class PhysicsBody {
     public var friction: CGFloat {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.friction
             }
             return physicsBody.friction
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.friction = newValue
@@ -243,14 +236,14 @@ public class PhysicsBody {
     public var categoryBitMask: UInt32 {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.categoryBitMask
             }
             return physicsBody.categoryBitMask
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.categoryBitMask = newValue
@@ -263,14 +256,14 @@ public class PhysicsBody {
     public var collisionBitMask: UInt32 {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.collisionBitMask
             }
             return physicsBody.collisionBitMask
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.collisionBitMask = newValue
@@ -283,14 +276,14 @@ public class PhysicsBody {
     public var contactTestBitMask: UInt32 {
         get {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return PhysicsEngineDefaults.contactBitMask
             }
             return physicsBody.contactTestBitMask
         }
         set {
             guard let physicsBody = node.physicsBody else {
-                assertionFailure(assertionFailureMessage)
+                assertionFailure(nodeNoPhysicsBodyFailureMessage)
                 return
             }
             physicsBody.contactTestBitMask = newValue
@@ -299,7 +292,7 @@ public class PhysicsBody {
 
     public func applyImpulse(_ impulse: CGVector) {
         guard let physicsBody = node.physicsBody else {
-            assertionFailure(assertionFailureMessage)
+            assertionFailure(nodeNoPhysicsBodyFailureMessage)
             return
         }
         physicsBody.applyImpulse(impulse)

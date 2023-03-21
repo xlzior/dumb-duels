@@ -9,19 +9,23 @@ import CoreGraphics
 
 class InputSystem: System {
     unowned var entityManager: EntityManager
+    private var physicsCreator: PhysicsCreator
 
     private var holdingAxePlayer: Assemblage2<PlayerComponent, HoldingAxeComponent>
-    private var axe: Assemblage2<AxeComponent, PhysicsComponent>
+    private var unthrownAxe: Assemblage2<AxeComponent, SizeComponent>
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
 
     private var throwStrength: CGFloat = 1.0
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
+        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
         self.holdingAxePlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
                                                          HoldingAxeComponent.self)
-        self.axe = entityManager.assemblage(requiredComponents: AxeComponent.self, PhysicsComponent.self)
-        self.canJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self,
+                                                    excludedComponents: PhysicsComponent.self)
+        self.canJumpPlayer = entityManager.assemblage(
+            requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
     }
 
     func update() {
@@ -51,32 +55,29 @@ class InputSystem: System {
     }
 
     func handleButtonLongPress(entityId: EntityID) {
-        // TODO: charge the axe by modifying the throwStrength variable
+        // TODO(sprint2): charge the axe by modifying the throwStrength variable
     }
 
     func throwsAxe(axeId: EntityID, by playerId: EntityID, towards: FaceDirection) {
-        guard entityManager.isMember(playerId, ofAssemblageWithTraits: holdingAxePlayer.traits),
-              entityManager.isMember(axeId, ofAssemblageWithTraits: axe.traits),
-              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: axeId) else {
-            assertionFailure("Throw axe failed for playerId \(playerId) and axeId \(axeId)")
+        guard let (_, axeSize) = unthrownAxe.getComponents(for: axeId),
+              let (player, _) = holdingAxePlayer.getComponents(for: playerId) else {
             return
         }
+        let physicsCreator = PhysicsCreator(entityManager: entityManager)
+        let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize, for: axeId)
+        entityManager.assign(component: physicsComponent, to: axeId)
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)
-        physicsComponent.affectedByGravity = true
-        entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
+        player.fsm.changeState(name: .notHoldingAxe)
     }
 
     func jump(playerId: EntityID) {
-        guard entityManager.isMember(playerId, ofAssemblageWithTraits: canJumpPlayer.traits),
-              let physicsComponent: PhysicsComponent = entityManager.getComponent(for: playerId),
-              let canJumpComponent: CanJumpComponent = entityManager.getComponent(for: playerId) else {
-            print("Player \(playerId) cannot jump")
+        guard let (_, canJump, physics) = canJumpPlayer.getComponents(for: playerId) else {
             return
         }
-        physicsComponent.impulse += Constants.jumpForce
-        canJumpComponent.jumpsLeft -= 1
-        if canJumpComponent.jumpsLeft <= 0 {
+        physics.impulse += Constants.jumpForce
+        canJump.jumpsLeft -= 1
+        if canJump.jumpsLeft <= 0 {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }
     }

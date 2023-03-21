@@ -8,14 +8,14 @@
 import CoreGraphics
 
 struct PhysicsEngineDefaults {
-    static let position: CGPoint = CGPoint.zero
-    static let zRotation: CGFloat = CGFloat.zero
+    static let position = CGPoint.zero
+    static let zRotation = CGFloat.zero
     static let mass: CGFloat = 1
-    static let velocity: CGVector = CGVector.zero
-    static let affectedByGravity: Bool = true
+    static let velocity = CGVector.zero
+    static let affectedByGravity = true
     static let linearDamping: CGFloat = 0.1
-    static let isDynamic: Bool = true
-    static let allowsRotation: Bool = true
+    static let isDynamic = true
+    static let allowsRotation = true
     static let restitution: CGFloat = 0.2
     static let friction: CGFloat = 0.2
     static let categoryBitMask: UInt32 = 0xFFFFFFFF

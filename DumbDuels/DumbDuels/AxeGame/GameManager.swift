@@ -101,10 +101,6 @@ class GameManager {
         }
     }
 
-    private func updateSystems() {
-        systemManager.update()
-    }
-
     private func startGame() {
         simulator.start()
 
@@ -126,8 +122,12 @@ extension GameManager {
         eventManager.fire(ButtonPressEvent(entityId: entityID))
     }
 
-    func handleButtonLongPress(for entityID: EntityID) {
-        eventManager.fire(ButtonLongPressEvent(entityId: entityID))
+    func handleButtonLongPressStart(for entityID: EntityID) {
+        eventManager.fire(ButtonLongPressEvent(entityId: entityID, state: .start))
+    }
+
+    func handleButtonLongPressEnd(for entityID: EntityID) {
+        eventManager.fire(ButtonLongPressEvent(entityId: entityID, state: .end))
     }
 }
 

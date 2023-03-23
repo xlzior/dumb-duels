@@ -70,7 +70,12 @@ class GameViewController: UIViewController {
         guard let playerID = (longPressRecognizer.view as? PlayerButton)?.playerID else {
             return
         }
-        gameManager?.handleButtonLongPress(for: playerID)
+
+        if longPressRecognizer.state == .began {
+            gameManager?.handleButtonLongPressStart(for: playerID)
+        } else if longPressRecognizer.state == .ended {
+            gameManager?.handleButtonLongPressEnd(for: playerID)
+        }
     }
 }
 

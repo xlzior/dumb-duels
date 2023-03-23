@@ -14,6 +14,7 @@ class RoundSystem: System {
     private var thrownAxe: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
+    private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
     init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
@@ -24,6 +25,7 @@ class RoundSystem: System {
                                                     excludedComponents: PhysicsComponent.self)
         self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
                                                 PositionComponent.self, PhysicsComponent.self)
+        self.throwStrength = entityManager.assemblage(requiredComponents: ThrowStrengthComponent.self, SizeComponent.self)
     }
 
     func update() {
@@ -55,6 +57,12 @@ class RoundSystem: System {
             let horizontalOffset = Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection)
             axePosition.position = playerPosition.position + CGPoint(x: horizontalOffset, y: 0)
             physics.toBeRemoved = true
+        }
+
+        for (throwStrengthComponent, sizeComponent) in throwStrength {
+            throwStrengthComponent.throwStrength = Constants.defaultThrowStrength
+            throwStrengthComponent.multiplier = Constants.defaultMultiplier
+            sizeComponent.xScale = throwStrengthComponent.throwStrength
         }
     }
 

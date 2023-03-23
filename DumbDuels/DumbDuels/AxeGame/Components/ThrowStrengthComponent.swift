@@ -9,12 +9,21 @@ import CoreGraphics
 
 class ThrowStrengthComponent: Component {
     var id: ComponentID
-    var throwStrength = Constants.minimumThrowStrength
+    var throwStrength = Constants.defaultThrowStrength
+    let fsm: EntityStateMachine<State>
 
     /// Whether the throw strength is increasing or decreasing
-    var multiplier: CGFloat = 1.0
+    var multiplier = Constants.defaultMultiplier
 
-    init() {
+    init(fsm: EntityStateMachine<State>) {
         self.id = ComponentID()
+        self.fsm = fsm
+    }
+}
+
+extension ThrowStrengthComponent {
+    enum State {
+        case charging
+        case notCharging
     }
 }

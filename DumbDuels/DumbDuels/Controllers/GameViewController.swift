@@ -48,6 +48,7 @@ class GameViewController: UIViewController {
         for playerButton in playerButtons {
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
             let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buttonLongPressed))
+            longPressRecognizer.minimumPressDuration = 0
 
             playerButton.addGestureRecognizer(tapRecognizer)
             playerButton.addGestureRecognizer(longPressRecognizer)

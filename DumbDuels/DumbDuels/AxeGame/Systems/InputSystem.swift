@@ -45,6 +45,8 @@ class InputSystem: System {
             return
         }
 
+        throwStrengthComponent.fsm.changeState(name: .charging)
+
         if throwStrengthComponent.throwStrength <= Constants.minimumThrowStrength {
             throwStrengthComponent.multiplier = 1
         }
@@ -69,6 +71,9 @@ class InputSystem: System {
     func handleButtonLongPress(entityId: EntityID, state: GestureState) {
         if state == .start {
             isLongPressed.insert(entityId)
+            updateThrowStrength(for: entityId)
+            // TODO: figure out how to handle button presses now that everything is considered a long press
+            handleButtonPress(entityId: entityId)
         } else {
             isLongPressed.remove(entityId)
             throwAxe(for: entityId)
@@ -93,6 +98,7 @@ class InputSystem: System {
             return
         }
 
+        throwStrengthComponent.fsm.changeState(name: .notCharging)
         let throwStrength = throwStrengthComponent.throwStrength
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)

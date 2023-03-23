@@ -49,12 +49,18 @@ class EntityCreator {
 
     func createThrowStrength(at position: CGPoint) -> Entity {
         let throwStrength = entityManager.createEntity {
-            ThrowStrengthComponent()
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: CGSize(width: 75, height: 30))
-            SpriteComponent(assetName: "chargingBar")
         }
+
+        let fsm = EntityStateMachine<ThrowStrengthComponent.State>(entity: throwStrength)
+        fsm.createState(name: .charging)
+            .addInstance(SpriteComponent(assetName: "chargingBar"))
+        fsm.createState(name: .notCharging)
+
+        throwStrength.assign(component: ThrowStrengthComponent(fsm: fsm))
+        fsm.changeState(name: .notCharging)
 
         return throwStrength
     }

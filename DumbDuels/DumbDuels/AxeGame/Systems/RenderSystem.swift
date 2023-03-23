@@ -74,6 +74,9 @@ class RenderSystem: System {
         }
 
         gameController.removeViews(for: entitiesToRemove)
+        for entity in entitiesToRemove {
+            renderedEntities.remove(entity)
+        }
     }
 
     private func renderScores() {

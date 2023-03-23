@@ -9,11 +9,13 @@ import UIKit
 
 class GameAreaBorder: UIView {
     static let zPosition: CGFloat = 101
+    let outlineThickness = CGFloat(10)
 
     init(screenSize: CGSize, gameAreaFrame: CGRect) {
         let origin = CGPoint()
         super.init(frame: CGRect(origin: origin, size: screenSize))
         addBorders(origin: origin, screenSize: screenSize, gameAreaFrame: gameAreaFrame)
+        addOutline(gameAreaFrame: gameAreaFrame)
         layer.zPosition = GameAreaBorder.zPosition
     }
 
@@ -25,7 +27,7 @@ class GameAreaBorder: UIView {
         ))
         let bottomBorder = UIView(frame: CGRect(
             origin: CGPoint(x: 0, y: gameAreaFrame.maxY),
-            size: CGSize(width: screenSize.width, height: screenSize.width - gameAreaFrame.maxY)
+            size: CGSize(width: screenSize.width, height: screenSize.height - gameAreaFrame.maxY)
         ))
         let leftBorder = UIView(frame: CGRect(
             origin: origin,
@@ -39,6 +41,34 @@ class GameAreaBorder: UIView {
         for border in borders {
             border.backgroundColor = Colour.primary.uiColour
             addSubview(border)
+        }
+    }
+
+    private func addOutline(gameAreaFrame: CGRect) {
+        let outlineHeight = gameAreaFrame.height + 2 * outlineThickness
+        let outlineWidth = gameAreaFrame.width + 2 * outlineThickness
+
+        var outlines = [UIView]()
+        let topOutline = UIView(frame: CGRect(
+            origin: CGPoint(x: gameAreaFrame.minX - outlineThickness, y: gameAreaFrame.minY - outlineThickness),
+            size: CGSize(width: outlineWidth, height: outlineThickness)
+        ))
+        let bottomOutline = UIView(frame: CGRect(
+            origin: CGPoint(x: gameAreaFrame.minX - outlineThickness, y: gameAreaFrame.maxY),
+            size: CGSize(width: outlineWidth, height: outlineThickness)
+        ))
+        let leftOutline = UIView(frame: CGRect(
+            origin: CGPoint(x: gameAreaFrame.minX - outlineThickness, y: gameAreaFrame.minY - outlineThickness),
+            size: CGSize(width: outlineThickness, height: outlineHeight)
+        ))
+        let rightOutline = UIView(frame: CGRect(
+            origin: CGPoint(x: gameAreaFrame.maxX, y: gameAreaFrame.minY - outlineThickness),
+            size: CGSize(width: outlineThickness, height: outlineHeight)
+        ))
+        outlines.append(contentsOf: [topOutline, bottomOutline, leftOutline, rightOutline])
+        for outline in outlines {
+            outline.backgroundColor = Colour.secondary.uiColour
+            addSubview(outline)
         }
     }
 

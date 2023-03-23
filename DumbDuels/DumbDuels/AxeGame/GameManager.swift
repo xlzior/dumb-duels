@@ -118,16 +118,12 @@ class GameManager {
 
 // MARK: - Handle Input
 extension GameManager {
-    func handleButtonPress(for entityID: EntityID) {
-        eventManager.fire(ButtonPressEvent(entityId: entityID))
+    func handleButtonDown(for entityID: EntityID) {
+        eventManager.fire(ButtonDownEvent(entityId: entityID))
     }
 
-    func handleButtonLongPressStart(for entityID: EntityID) {
-        eventManager.fire(ButtonLongPressEvent(entityId: entityID, state: .start))
-    }
-
-    func handleButtonLongPressEnd(for entityID: EntityID) {
-        eventManager.fire(ButtonLongPressEvent(entityId: entityID, state: .end))
+    func handleButtonUp(for entityID: EntityID) {
+        eventManager.fire(ButtonUpEvent(entityId: entityID))
     }
 }
 

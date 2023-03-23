@@ -60,24 +60,20 @@ class InputSystem: System {
         sizeComponent.xScale = throwStrengthComponent.throwStrength
     }
 
-    func handleButtonPress(entityId: EntityID) {
+    func handleButtonDown(entityId: EntityID) {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
-        if !hasAxe {
-            return jump(playerId: entityId)
+        if hasAxe {
+            isLongPressed.insert(entityId)
+            updateThrowStrength(for: entityId)
+        } else {
+            jump(playerId: entityId)
         }
     }
 
-    func handleButtonLongPress(entityId: EntityID, state: GestureState) {
-        if state == .start {
-            isLongPressed.insert(entityId)
-            updateThrowStrength(for: entityId)
-            // TODO: figure out how to handle button presses now that everything is considered a long press
-            handleButtonPress(entityId: entityId)
-        } else {
-            isLongPressed.remove(entityId)
-            throwAxe(for: entityId)
-        }
+    func handleButtonUp(entityId: EntityID) {
+        isLongPressed.remove(entityId)
+        throwAxe(for: entityId)
     }
 
     func throwAxe(for playerId: EntityID) {

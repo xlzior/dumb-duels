@@ -1,11 +1,11 @@
 //
-//  ButtonPressEvent.swift
+//  ButtonDownEvent.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
-struct ButtonPressEvent: Event {
+struct ButtonDownEvent: Event {
     var priority: EventPriority = .input
 
     var entityId: EntityID
@@ -15,6 +15,6 @@ struct ButtonPressEvent: Event {
             return
         }
 
-        inputSystem.handleButtonPress(entityId: entityId)
+        inputSystem.handleButtonDown(entityId: entityId)
     }
 }

@@ -14,7 +14,7 @@ class ScoreLabel: UILabel {
 
     init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0) {
         self.isPlayerOne = isPlayerOne
-        super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        super.init(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
         text = String(score)
 
         scale(screenSize.height)
@@ -27,7 +27,6 @@ class ScoreLabel: UILabel {
         font = UIFont.systemFont(ofSize: 100.0, weight: UIFont.Weight.heavy)
         textAlignment = .center
         numberOfLines = 0
-        sizeToFit()
         layer.zPosition = ScoreLabel.zPosition
     }
 

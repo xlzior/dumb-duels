@@ -12,9 +12,6 @@ class ThrowStrengthComponent: Component {
     var throwStrength = Constants.defaultThrowStrength
     let fsm: EntityStateMachine<State>
 
-    /// Whether the throw strength is increasing or decreasing
-    var multiplier = Constants.defaultMultiplier
-
     init(fsm: EntityStateMachine<State>) {
         self.id = ComponentID()
         self.fsm = fsm

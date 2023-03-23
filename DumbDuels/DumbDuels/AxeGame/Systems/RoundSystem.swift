@@ -61,7 +61,6 @@ class RoundSystem: System {
 
         for (throwStrengthComponent, sizeComponent) in throwStrength {
             throwStrengthComponent.throwStrength = Constants.defaultThrowStrength
-            throwStrengthComponent.multiplier = Constants.defaultMultiplier
             sizeComponent.xScale = throwStrengthComponent.throwStrength
         }
     }

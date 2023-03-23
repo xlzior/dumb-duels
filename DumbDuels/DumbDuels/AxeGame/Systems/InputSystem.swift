@@ -5,6 +5,7 @@
 //  Created by Wen Jun Lye on 16/3/23.
 //
 
+import Foundation
 import CoreGraphics
 
 class InputSystem: System {
@@ -16,7 +17,7 @@ class InputSystem: System {
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
-    private var isLongPressed = Set<EntityID>()
+    private var longPressStartTimes = [EntityID: Date]()
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
@@ -33,13 +34,14 @@ class InputSystem: System {
     }
 
     func update() {
-        for entityId in isLongPressed {
+        for entityId in longPressStartTimes.keys {
             updateThrowStrength(for: entityId)
         }
     }
 
     func updateThrowStrength(for entityId: EntityID) {
-        guard let (_, _, _, withThrowStrength) = holdingAxePlayer.getComponents(for: entityId),
+        guard let longPressStarted = longPressStartTimes[entityId],
+              let (_, _, _, withThrowStrength) = holdingAxePlayer.getComponents(for: entityId),
               let (throwStrengthComponent, sizeComponent) = throwStrength.getComponents(
                 for: withThrowStrength.throwStrengthEntityId) else {
             return
@@ -47,24 +49,22 @@ class InputSystem: System {
 
         throwStrengthComponent.fsm.changeState(name: .charging)
 
-        if throwStrengthComponent.throwStrength <= Constants.minimumThrowStrength {
-            throwStrengthComponent.multiplier = 1
-        }
+        let now = Date()
+        let timeElapsed = (now - longPressStarted).truncatingRemainder(dividingBy: 2 * Constants.chargingTime)
+        let throwStrengthRange = Constants.maximumThrowStrength - Constants.minimumThrowStrength
+        let newThrowStrength = timeElapsed < Constants.chargingTime
+            ? Constants.minimumThrowStrength + timeElapsed / throwStrengthRange
+            : Constants.maximumThrowStrength + Constants.chargingTime - timeElapsed / throwStrengthRange
 
-        if throwStrengthComponent.throwStrength >= Constants.maximumThrowStrength {
-            throwStrengthComponent.multiplier = -1
-        }
-
-        throwStrengthComponent.throwStrength += throwStrengthComponent.multiplier
-                                                * Constants.throwStrengthChangeRate
-        sizeComponent.xScale = throwStrengthComponent.throwStrength
+        throwStrengthComponent.throwStrength = newThrowStrength
+        sizeComponent.xScale = newThrowStrength
     }
 
     func handleButtonDown(entityId: EntityID) {
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
         if hasAxe {
-            isLongPressed.insert(entityId)
+            longPressStartTimes[entityId] = Date()
             updateThrowStrength(for: entityId)
         } else {
             jump(playerId: entityId)
@@ -72,7 +72,7 @@ class InputSystem: System {
     }
 
     func handleButtonUp(entityId: EntityID) {
-        isLongPressed.remove(entityId)
+        longPressStartTimes[entityId] = nil
         throwAxe(for: entityId)
     }
 

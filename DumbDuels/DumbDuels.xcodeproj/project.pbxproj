@@ -22,6 +22,7 @@
 		7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */; };
 		7B23F6B329CC55EA006677F6 /* ButtonUpEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6B229CC55EA006677F6 /* ButtonUpEvent.swift */; };
 		7B23F6B529CC9BCC006677F6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6B429CC9BCC006677F6 /* Date.swift */; };
+		7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2A3DD529CD81A500C735D2 /* PegComponent.swift */; };
 		7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292829B82BE000281FC7 /* AppDelegate.swift */; };
 		7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */; };
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
@@ -149,6 +150,7 @@
 		7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowStrengthComponent.swift; sourceTree = "<group>"; };
 		7B23F6B229CC55EA006677F6 /* ButtonUpEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonUpEvent.swift; sourceTree = "<group>"; };
 		7B23F6B429CC9BCC006677F6 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		7B2A3DD529CD81A500C735D2 /* PegComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegComponent.swift; sourceTree = "<group>"; };
 		7B2B292529B82BE000281FC7 /* DumbDuels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumbDuels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B292829B82BE000281FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */,
 				7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */,
 				7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */,
+				7B2A3DD529CD81A500C735D2 /* PegComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				8C35849429C4399200BAE8C5 /* PlayerCategory.swift in Sources */,
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
+				7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */,
 				7BA7EBDB29C36BBD0096457F /* AxeComponent.swift in Sources */,
 				8C35845629BF2FBF00BAE8C5 /* ComponentID.swift in Sources */,
 				7BA7EBBC29C36B900096457F /* Event.swift in Sources */,

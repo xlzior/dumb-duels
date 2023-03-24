@@ -84,6 +84,10 @@ class GameManager {
         for wallIndex in 0..<3 {
             let wall = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
+
+        for pegPosition in Positions.pegs {
+            let peg = entityCreator.createPeg(at: pegPosition, of: Sizes.peg)
+        }
     }
 
     private func setUpSystems() {

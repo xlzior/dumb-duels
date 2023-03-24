@@ -144,4 +144,19 @@ class EntityCreator {
 
         return wall
     }
+
+    func createPeg(at position: CGPoint, of size: CGSize) -> Entity {
+        let peg = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "peg")
+            PegComponent()
+        }
+
+        let physicsComponent = physicsCreator.createPeg(of: size, for: peg.id)
+        peg.assign(component: physicsComponent)
+
+        return peg
+    }
 }

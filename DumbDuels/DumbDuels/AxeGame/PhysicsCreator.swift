@@ -77,4 +77,20 @@ class PhysicsCreator {
                                          angularImpulse: Physics.wallAngularImpulse)
         return component
     }
+
+    func createPeg(of size: CGSize, for pegId: EntityID) -> PhysicsComponent {
+        let pegCategory = PegCategory(entityId: pegId)
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.pegMass, velocity: .zero,
+                                         affectedByGravity: Physics.pegGravity,
+                                         linearDamping: Physics.pegDamping,
+                                         isDynamic: Physics.pegIsDynamic,
+                                         allowsRotation: Physics.pegRotation,
+                                         restitution: Physics.pegCor,
+                                         friction: Physics.pegFriction,
+                                         categories: [pegCategory],
+                                         zRotation: Physics.pegZRotation,
+                                         impulse: Physics.pegImpulse,
+                                         angularImpulse: Physics.pegAngularImpulse)
+        return component
+    }
 }

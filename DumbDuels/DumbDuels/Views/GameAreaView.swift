@@ -19,8 +19,6 @@ class GameAreaView: UIView {
 
     private func style() {
         backgroundColor = .white
-        layer.borderWidth = 10
-        layer.borderColor = Colour.secondary.cgColour
     }
 
     private func letterBox(_ screenSize: CGSize) {

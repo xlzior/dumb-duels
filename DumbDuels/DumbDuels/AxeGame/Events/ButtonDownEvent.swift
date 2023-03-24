@@ -11,10 +11,6 @@ struct ButtonDownEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let inputSystem = systems.get(ofType: InputSystem.self) else {
-            return
-        }
-
-        inputSystem.handleButtonDown(entityId: entityId)
+        systems.inputSystem?.handleButtonDown(entityId: entityId)
     }
 }

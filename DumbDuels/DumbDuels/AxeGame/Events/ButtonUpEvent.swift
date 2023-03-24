@@ -11,10 +11,6 @@ struct ButtonUpEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let inputSystem = systems.get(ofType: InputSystem.self) else {
-            return
-        }
-
-        inputSystem.handleButtonUp(entityId: entityId)
+        systems.inputSystem?.handleButtonUp(entityId: entityId)
     }
 }

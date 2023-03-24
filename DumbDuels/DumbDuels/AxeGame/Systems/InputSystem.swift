@@ -98,6 +98,9 @@ class InputSystem: System {
         let throwStrength = throwStrengthComponent.throwStrength
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
                                             dy: throwStrength * Constants.throwForce.dy)
+        physicsComponent.angularImpulse = towards == .right
+            ? Constants.throwAngularForce
+            : -Constants.throwAngularForce
         player.fsm.changeState(name: .notHoldingAxe)
     }
 

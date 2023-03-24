@@ -108,6 +108,11 @@ extension GameViewController: GameController {
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)
+
+        if details.facing == .left {
+            imageView.transform = CGAffineTransformScale(imageView.transform, -1, 1)
+        }
+
         return imageView
     }
 

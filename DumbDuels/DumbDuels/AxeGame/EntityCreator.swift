@@ -31,10 +31,14 @@ class EntityCreator {
         return axe
     }
 
-    func createAxe(withHorizontalOffset offset: CGFloat, from position: CGPoint, of size: CGSize) -> Entity {
+    func createAxe(
+        withHorizontalOffset offset: CGFloat,
+        from position: CGPoint,
+        of size: CGSize,
+        facing: FaceDirection) -> Entity {
         let axePosition = CGPoint(x: position.x + offset, y: position.y)
         let axe = entityManager.createEntity {
-            PositionComponent(position: axePosition)
+            PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "axe")

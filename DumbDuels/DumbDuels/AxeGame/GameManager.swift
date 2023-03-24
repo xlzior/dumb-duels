@@ -65,7 +65,8 @@ class GameManager {
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
-                of: Sizes.axe
+                of: Sizes.axe,
+                facing: faceDirection
             )
 
             let player = entityCreator.createPlayer(

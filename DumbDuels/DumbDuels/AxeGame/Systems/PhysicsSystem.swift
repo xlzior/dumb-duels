@@ -56,6 +56,14 @@ class PhysicsSystem: System {
         physicsComponent.impulse = impulse
     }
 
+    func apply(angularImpulse: CGFloat, to entityId: EntityID) {
+        guard let physicsComponent: PhysicsComponent =
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: entityId) else {
+            return
+        }
+        physicsComponent.angularImpulse = angularImpulse
+    }
+
     func syncToPhysicsEngine() {
         for (entity, position, rotation, physics) in physics.entityAndComponents {
             guard !physics.toBeRemoved else {
@@ -73,6 +81,10 @@ class PhysicsSystem: System {
             if physics.impulse != .zero {
                 scene.apply(impulse: physics.impulse, to: entity.id.id)
                 physics.impulse = .zero
+            }
+            if physics.angularImpulse != .zero {
+                scene.apply(angularImpulse: physics.angularImpulse, to: entity.id.id)
+                physics.angularImpulse = .zero
             }
         }
     }

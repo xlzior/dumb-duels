@@ -6,7 +6,7 @@
 //
 
 public struct Entity {
-    private(set) var id: EntityID
+    public private(set) var id: EntityID
     unowned let manager: EntityManager
 
     init(id: EntityID, manager: EntityManager) {
@@ -15,13 +15,13 @@ public struct Entity {
     }
 
     @discardableResult
-    func remove(componentType: ComponentTypeID) -> Entity {
+    public func remove(componentType: ComponentTypeID) -> Entity {
         manager.remove(componentType: componentType, from: self.id)
         return self
     }
 
     @discardableResult
-    func assign(component: Component) -> Entity {
+    public func assign(component: Component) -> Entity {
         manager.assign(component: component, to: self)
         return self
     }

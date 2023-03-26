@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RenderSystem: System {
+public class RenderSystem: System {
     unowned var entityManager: EntityManager
     var gameController: GameController
 
@@ -24,19 +24,19 @@ class RenderSystem: System {
 
     var renderedEntities: Set<EntityID> = Set()
     var renderables: Assemblage4<SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
-    var players: Assemblage2<PlayerComponent, ScoreComponent>
+    var playerScores: Assemblage1<ScoreComponent>
 
-    init(for entityManager: EntityManager, eventManger: EventManager, details: RenderSystemDetails) {
+    public init(for entityManager: EntityManager, eventManger: EventManager, details: RenderSystemDetails) {
         self.entityManager = entityManager
         self.gameController = details.gameController
         self.screenSize = details.screenSize
         self.screenOffset = details.screenOffset
         self.renderables = entityManager.assemblage(requiredComponents: SpriteComponent.self,
             PositionComponent.self, SizeComponent.self, RotationComponent.self)
-        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self)
+        self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
     }
 
-    func update() {
+    public func update() {
         renderEntities()
         renderScores()
     }
@@ -81,8 +81,8 @@ class RenderSystem: System {
     }
 
     private func renderScores() {
-        for (entity, _, score) in players.entityAndComponents {
-            gameController.updateScore(for: entity.id, with: score.score)
+        for (score) in playerScores {
+            gameController.updateScore(for: score.playerId, with: score.score)
         }
     }
 }

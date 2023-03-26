@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+open class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
     var screenOffset = CGPoint()
 
@@ -16,12 +16,14 @@ class GameViewController: UIViewController {
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
 
-    var gameManager: GameManager?
+    public var renderSystemDetails: RenderSystemDetails?
+    public var gameManager: GameManager?
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         setUpGameView()
         setUpGestureRecognisers()
+        setUpRenderSystemDetails()
         setUpGameManager()
     }
 
@@ -53,9 +55,13 @@ class GameViewController: UIViewController {
         }
     }
 
-    private func setUpGameManager() {
-        let details = RenderSystemDetails(gameController: self, screenSize: screenSize, screenOffset: screenOffset)
-        gameManager = GameManager(renderSystemDetails: details)
+    private func setUpRenderSystemDetails() {
+        renderSystemDetails = RenderSystemDetails(
+            gameController: self, screenSize: screenSize, screenOffset: screenOffset)
+    }
+
+    open func setUpGameManager() {
+        assertionFailure("Override in child class")
     }
 
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
@@ -72,25 +78,25 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameController {
-    func registerPlayerID(playerIndex: Int, playerEntityID: EntityID) {
+    public func registerPlayerID(playerIndex: Int, playerEntityID: EntityID) {
         playerButtons[playerIndex].playerID = playerEntityID
         playerScores[playerIndex].playerID = playerEntityID
     }
 
-    func addView(for entityID: EntityID, with details: RenderDetails) {
+    public func addView(for entityID: EntityID, with details: RenderDetails) {
         let entityView = createView(details)
         entityViews[entityID] = entityView
         view.addSubview(entityView)
     }
 
-    func updateView(for entityID: EntityID, with details: RenderDetails) {
+    public func updateView(for entityID: EntityID, with details: RenderDetails) {
         guard let entityViewToUpdate = entityViews[entityID] else {
             return
         }
         setUpView(entityViewToUpdate, details)
     }
 
-    func removeViews(for entityIDs: Set<EntityID>) {
+    public func removeViews(for entityIDs: Set<EntityID>) {
         for entityID in entityIDs {
             removeView(for: entityID)
         }
@@ -123,7 +129,7 @@ extension GameViewController: GameController {
         entityViewToRemove.removeFromSuperview()
     }
 
-    func updateScore(for entityID: EntityID, with newScore: Int) {
+    public func updateScore(for entityID: EntityID, with newScore: Int) {
         for score in playerScores where score.playerID == entityID {
             score.text = String(newScore)
         }

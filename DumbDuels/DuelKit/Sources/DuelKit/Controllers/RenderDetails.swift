@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-struct RenderDetails {
+public struct RenderDetails {
     let spriteName: String
     let centerPosition: CGPoint
     let width: CGFloat

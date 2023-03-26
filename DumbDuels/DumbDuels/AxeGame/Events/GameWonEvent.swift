@@ -5,6 +5,8 @@
 //  Created by Wen Jun Lye on 17/3/23.
 //
 
+import DuelKit
+
 struct GameWonEvent: Event {
     var priority = 2
 

@@ -9,19 +9,19 @@ import Foundation
 
 #if swift(<5.4)
 @_functionBuilder
-enum ComponentsBuilder {}
+public enum ComponentsBuilder {}
 #else
 @resultBuilder
-enum ComponentsBuilder {}
+public enum ComponentsBuilder {}
 #endif
 
 extension ComponentsBuilder {
-    static func buildBlock(_ components: Component...) -> [Component] {
+    public static func buildBlock(_ components: Component...) -> [Component] {
         components
     }
 
-    struct Context {
-        let index: Int
+    public struct Context {
+        public let index: Int
     }
 }
 
@@ -40,7 +40,7 @@ extension EntityManager {
     /// Returns:
     ///   - The newly created component with provided components assigned.
     @discardableResult
-    func createEntity(@ComponentsBuilder using builder: () -> [Component]) -> Entity {
+    public func createEntity(@ComponentsBuilder using builder: () -> [Component]) -> Entity {
         self.createEntity(with: builder())
     }
 
@@ -59,7 +59,7 @@ extension EntityManager {
     /// Returns:
     ///   - The newly created component with provided components assigned.
     @discardableResult
-    func createEntities(count: Int,
+    public func createEntities(count: Int,
                         @ComponentsBuilder using builder: (ComponentsBuilder.Context) -> [Component]) -> [Entity] {
         (0..<count).map { self.createEntity(with: builder(ComponentsBuilder.Context(index: $0))) }
     }

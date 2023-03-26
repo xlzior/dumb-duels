@@ -5,6 +5,8 @@
 //  Created by Esmanda Wong on 16/3/23.
 //
 
+import DuelKit
+
 class PlayerComponent: Component {
     var id: ComponentID
     // TODO: should player even store this? Or store some global variable to identify which player

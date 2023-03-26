@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBAction private func playButtonClicked(_ sender: Any) {
         guard let controller = storyboard?.instantiateViewController(
             withIdentifier: "GameViewController"
-        ) as? GameViewController else {
+        ) as? AxeGameViewController else {
             return
         }
         navigationController?.pushViewController(controller, animated: true)

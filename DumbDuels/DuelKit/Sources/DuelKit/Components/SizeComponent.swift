@@ -8,15 +8,15 @@
 import CoreGraphics
 
 public class SizeComponent: Component {
-    var id: ComponentID
+    public var id: ComponentID
     let originalSize: CGSize
-    var xScale: CGFloat
-    var yScale: CGFloat
-    var actualSize: CGSize {
+    public var xScale: CGFloat
+    public var yScale: CGFloat
+    public var actualSize: CGSize {
         CGSize(width: originalSize.width * xScale, height: originalSize.height * yScale)
     }
 
-    init(originalSize: CGSize, xScale: CGFloat = 1, yScale: CGFloat = 1) {
+    public init(originalSize: CGSize, xScale: CGFloat = 1, yScale: CGFloat = 1) {
         self.id = ComponentID()
         self.originalSize = originalSize
         self.xScale = xScale

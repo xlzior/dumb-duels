@@ -6,7 +6,7 @@
 //
 
 private func sort(lhs: Event, rhs: Event) -> Bool {
-    lhs.priority.rawValue < rhs.priority.rawValue
+    lhs.priority < rhs.priority
 }
 
 public class EventManager {
@@ -29,7 +29,7 @@ public class EventManager {
     }
 
     @discardableResult
-    func pollAll() -> Bool {
+    public func pollAll() -> Bool {
         if events.isEmpty {
             return false
         }
@@ -43,7 +43,7 @@ public class EventManager {
 }
 
 extension EventManager: EventFirer {
-    func fire(_ event: Event) {
+    public func fire(_ event: Event) {
         events.enqueue(event)
     }
 }

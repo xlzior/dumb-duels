@@ -6,11 +6,13 @@
 //
 
 public class ScoreComponent: Component {
-    var id: ComponentID
-    var score: Int
+    public var id: ComponentID
+    public var score: Int
+    var playerId: EntityID
 
-    init(score: Int = 0) {
+    public init(score: Int = 0, for playerId: EntityID) {
         self.id = ComponentID()
         self.score = score
+        self.playerId = playerId
     }
 }

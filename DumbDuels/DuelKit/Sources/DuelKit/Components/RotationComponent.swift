@@ -8,10 +8,10 @@
 import CoreGraphics
 
 public class RotationComponent: Component {
-    var id: ComponentID
-    var angleInRadians: CGFloat
+    public var id: ComponentID
+    public var angleInRadians: CGFloat
 
-    init(angleInRadians: CGFloat = 0) {
+    public init(angleInRadians: CGFloat = 0) {
         self.id = ComponentID()
         self.angleInRadians = angleInRadians
     }

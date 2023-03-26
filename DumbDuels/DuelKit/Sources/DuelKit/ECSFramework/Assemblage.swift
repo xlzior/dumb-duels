@@ -8,19 +8,19 @@
 import Foundation
 
 #if swift(<5.4)
-enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
+public enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
 #else
 @resultBuilder
-enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
+public enum AssemblageMemberBuilder<R> where R: AssemblageRequirementsManager {}
 #endif
 
 public struct Assemblage<R> where R: AssemblageRequirementsManager {
-    let traits: TraitSet
+    public let traits: TraitSet
     unowned let manager: EntityManager
 
-    init(entityManager: EntityManager,
-         requiredComponents: @autoclosure () -> R.ComponentTypes,
-         excludedComponents: [Component.Type]) {
+    public init(entityManager: EntityManager,
+                requiredComponents: @autoclosure () -> R.ComponentTypes,
+                excludedComponents: [Component.Type]) {
         let required = R(requiredComponents())
         let traits = TraitSet(requiredComponents: required.componentTypes, excludedComponents: excludedComponents)
         self.traits = traits
@@ -28,23 +28,23 @@ public struct Assemblage<R> where R: AssemblageRequirementsManager {
         entityManager.onAssemblageInit(traits: traits)
     }
 
-    var members: Set<EntityID> {
+    public var members: Set<EntityID> {
         manager.members(withTraits: traits)
     }
 
-    var count: Int {
+    public var count: Int {
         members.count
     }
 
-    var isEmpty: Bool {
+    public var isEmpty: Bool {
         members.isEmpty
     }
 
-    func isMember(entity: Entity) -> Bool {
+    public func isMember(entity: Entity) -> Bool {
         manager.isMember(entity, ofAssemblageWithTraits: traits)
     }
 
-    func canBecomeMember(entity: Entity) -> Bool {
+    public func canBecomeMember(entity: Entity) -> Bool {
         manager.canBecomeMember(entity, ofAssemblageWithTraits: traits)
     }
 }

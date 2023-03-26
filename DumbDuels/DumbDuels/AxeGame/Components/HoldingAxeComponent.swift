@@ -5,6 +5,8 @@
 //  Created by Esmanda Wong on 16/3/23.
 //
 
+import DuelKit
+
 class HoldingAxeComponent: ComponentInitializable {
     var id: ComponentID
     var axeEntityID: EntityID

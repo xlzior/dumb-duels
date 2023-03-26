@@ -85,11 +85,12 @@ class EntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "player")
-            ScoreComponent()
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
+        let scoreComponent = ScoreComponent(for: player.id)
+        player.assign(component: scoreComponent)
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
 

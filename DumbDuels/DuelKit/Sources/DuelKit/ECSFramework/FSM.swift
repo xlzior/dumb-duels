@@ -28,25 +28,25 @@ public class EntityState {
 
 extension EntityState {
     @discardableResult
-    func addInstance<C: ComponentInitializable>(_ component: C) -> Self {
+    public func addInstance<C: ComponentInitializable>(_ component: C) -> Self {
         addMapping(forType: C.self).withInstance(component)
         return self
     }
 
     @discardableResult
-    func addType(_ componentType: ComponentInitializable.Type) -> Self {
+    public func addType(_ componentType: ComponentInitializable.Type) -> Self {
         addMapping(forType: componentType).withType(componentType)
         return self
     }
 
     @discardableResult
-    func addMethod<C: ComponentInitializable>(closure: DynamicComponentProvider<C>.Closure) -> Self {
+    public func addMethod<C: ComponentInitializable>(closure: DynamicComponentProvider<C>.Closure) -> Self {
         addMapping(forType: C.self).withMethod(closure)
         return self
     }
 
     @discardableResult
-    func addProvider<C: ComponentInitializable>(componentType: C.Type, provider: ComponentProvider) -> Self {
+    public func addProvider<C: ComponentInitializable>(componentType: C.Type, provider: ComponentProvider) -> Self {
         addMapping(forType: componentType).withProvider(provider)
         return self
     }
@@ -106,10 +106,10 @@ public class EntityStateMachine<StateIdentifier: Hashable> {
     private var currentState: EntityState?
 
     /// The entity whose state machine this is
-    var entity: Entity
+    public var entity: Entity
 
     /// Initializer. Creates an EntityStateMachine.
-    init(entity: Entity) {
+    public init(entity: Entity) {
         self.entity = entity
         states = [:]
     }

@@ -7,18 +7,18 @@
 
 import CoreGraphics
 
-struct PhysicsEngineDefaults {
-    static let position = CGPoint.zero
-    static let zRotation = CGFloat.zero
-    static let mass: CGFloat = 1
-    static let velocity = CGVector.zero
-    static let affectedByGravity = true
-    static let linearDamping: CGFloat = 0.1
-    static let isDynamic = true
-    static let allowsRotation = true
-    static let restitution: CGFloat = 0.2
-    static let friction: CGFloat = 0.2
-    static let categoryBitMask: UInt32 = 0xFFFFFFFF
-    static let collisionBitMask: UInt32 = 0xFFFFFFFF
-    static let contactBitMask: UInt32 = 0x00000000
+public struct PhysicsEngineDefaults {
+    public static let position = CGPoint.zero
+    public static let zRotation = CGFloat.zero
+    public static let mass: CGFloat = 1
+    public static let velocity = CGVector.zero
+    public static let affectedByGravity = true
+    public static let linearDamping: CGFloat = 0.1
+    public static let isDynamic = true
+    public static let allowsRotation = true
+    public static let restitution: CGFloat = 0.2
+    public static let friction: CGFloat = 0.2
+    public static let categoryBitMask: UInt32 = 0xFFFFFFFF
+    public static let collisionBitMask: UInt32 = 0xFFFFFFFF
+    public static let contactBitMask: UInt32 = 0x00000000
 }

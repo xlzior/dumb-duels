@@ -5,7 +5,7 @@
 //  Created by Wen Jun Lye on 23/3/23.
 //
 
-import CoreGraphics
+import DuelKit
 
 class ThrowStrengthComponent: Component {
     var id: ComponentID

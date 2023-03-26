@@ -8,30 +8,30 @@
 import Foundation
 
 public class PhysicsComponent: Component {
-    enum Shape {
+    public enum Shape {
         case circle
         case rectangle
     }
 
-    var id: ComponentID
-    var shape: Shape
-    var radius: CGFloat?
-    var size: CGSize?
-    var mass: CGFloat
-    var velocity: CGVector
-    var affectedByGravity: Bool
-    var linearDamping: CGFloat
-    var isDynamic: Bool
-    var allowsRotation: Bool
-    var restitution: CGFloat
-    var friction: CGFloat
-    var zRotation: CGFloat
-    var impulse: CGVector
-    var angularImpulse: CGFloat
-    var ownBitmask: UInt32
-    var collideBitmask: UInt32
-    var contactBitmask: UInt32
-    var toBeRemoved: Bool
+    public var id: ComponentID
+    public var shape: Shape
+    public var radius: CGFloat?
+    public var size: CGSize?
+    public var mass: CGFloat
+    public var velocity: CGVector
+    public var affectedByGravity: Bool
+    public var linearDamping: CGFloat
+    public var isDynamic: Bool
+    public var allowsRotation: Bool
+    public var restitution: CGFloat
+    public var friction: CGFloat
+    public var zRotation: CGFloat
+    public var impulse: CGVector
+    public var angularImpulse: CGFloat
+    public var ownBitmask: UInt32
+    public var collideBitmask: UInt32
+    public var contactBitmask: UInt32
+    public var toBeRemoved: Bool
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
                   mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
@@ -87,7 +87,7 @@ public class PhysicsComponent: Component {
         self.toBeRemoved = toBeRemoved
     }
 
-    convenience init(circleOf radius: CGFloat,
+    public convenience init(circleOf radius: CGFloat,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, ownBitmask: UInt32,
@@ -101,7 +101,7 @@ public class PhysicsComponent: Component {
                   angularImpulse: angularImpulse)!
     }
 
-    convenience init(rectangleOf size: CGSize,
+    public convenience init(rectangleOf size: CGSize,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, ownBitmask: UInt32,

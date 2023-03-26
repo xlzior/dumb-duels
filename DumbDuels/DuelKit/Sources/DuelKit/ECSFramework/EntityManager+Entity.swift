@@ -71,7 +71,7 @@ extension EntityManager {
      * Allows external users to loop through entities without knowing underlying implementation
      * The order of sequence is not guaranteed to stay the same for use
      */
-    struct EntitiesIterator: IteratorProtocol {
+    public struct EntitiesIterator: IteratorProtocol {
         private var iterator: AnyIterator<Entity>
 
         init(entityManager: EntityManager) {
@@ -84,7 +84,7 @@ extension EntityManager {
             }
         }
 
-        func next() -> Entity? {
+        public func next() -> Entity? {
             iterator.next()
         }
     }

@@ -5,7 +5,8 @@
 //  Created by Bryan Kwok on 17/3/23.
 //
 
-import Foundation
+import CoreGraphics
+import DuelKit
 
 struct Physics {
     static let jumpImpulse = CGVector(dx: 0.0, dy: -100)

@@ -11,9 +11,9 @@ public protocol DefaultInitializable {
     init()
 }
 
-typealias ComponentInitializable = Component & DefaultInitializable
+public typealias ComponentInitializable = Component & DefaultInitializable
 
-protocol ComponentProvider {
+public protocol ComponentProvider {
     var identifier: AnyHashable { get }
     func getComponent() -> Component
 }
@@ -33,7 +33,7 @@ extension ComponentInstanceProvider: ComponentProvider {
         ObjectIdentifier(instance)
     }
 
-    func getComponent() -> Component {
+    public func getComponent() -> Component {
         instance
     }
 }
@@ -50,12 +50,12 @@ public final class ComponentTypeProvider {
 }
 
 extension ComponentTypeProvider: ComponentProvider {
-    func getComponent() -> Component {
+    public func getComponent() -> Component {
         componentType.init()
     }
 }
 
-final class DynamicComponentProvider<C: Component> {
+public final class DynamicComponentProvider<C: Component> {
     /// A wrapper class is needed for the provideComponent function to make it hashable using ObjectIdentifier
     public final class Closure {
         let provideComponent: () -> C

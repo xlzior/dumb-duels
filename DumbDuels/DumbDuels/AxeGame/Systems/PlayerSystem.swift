@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DuelKit
 
 class PlayerSystem: System {
     unowned var entityManager: EntityManager

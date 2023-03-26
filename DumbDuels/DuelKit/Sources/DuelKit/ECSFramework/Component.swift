@@ -13,15 +13,15 @@ public protocol Component: AnyObject {
 }
 
 extension Component {
-    static var typeId: ComponentTypeID {
+    public static var typeId: ComponentTypeID {
         ComponentTypeID(Self.self)
     }
 
-    var id: ComponentID {
+    public var id: ComponentID {
         self.id
     }
 
-    var typeId: ComponentTypeID {
+    public var typeId: ComponentTypeID {
         Self.typeId
     }
 }

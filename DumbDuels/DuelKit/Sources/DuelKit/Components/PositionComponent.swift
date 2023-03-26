@@ -13,11 +13,11 @@ public enum FaceDirection: CGFloat {
 }
 
 public class PositionComponent: Component {
-    var id: ComponentID
-    var position: CGPoint
-    var faceDirection: FaceDirection
+    public var id: ComponentID
+    public var position: CGPoint
+    public var faceDirection: FaceDirection
 
-    init(position: CGPoint, faceDirection: FaceDirection = .right) {
+    public init(position: CGPoint, faceDirection: FaceDirection = .right) {
         self.id = ComponentID()
         self.position = position
         self.faceDirection = faceDirection

@@ -8,17 +8,17 @@
 import CoreGraphics
 
 public class SpriteComponent: ComponentInitializable {
-    var id: ComponentID
-    var assetName: String
-    var alpha: CGFloat
+    public var id: ComponentID
+    public var assetName: String
+    public var alpha: CGFloat
 
-    init(assetName: String, alpha: CGFloat = 1) {
+    public init(assetName: String, alpha: CGFloat = 1) {
         self.id = ComponentID()
         self.assetName = assetName
         self.alpha = alpha
     }
 
-    required init() {
+    public required init() {
         self.id = ComponentID()
         self.assetName = ""
         self.alpha = 1.0

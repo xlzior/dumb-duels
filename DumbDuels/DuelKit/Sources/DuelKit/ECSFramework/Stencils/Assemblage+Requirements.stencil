@@ -48,7 +48,7 @@ public struct Requires{{ idx }}<{{ CompParams }}>: AssemblageRequirementsManager
         {% for comp in components %}
         let {{ comp|lowercase }}: {{ comp }} = entityManager.getComponent(ofType: {{ comp }}.typeId, for: entityId)!
         {% endfor %}
-        ({{ CompsLowercased }})
+        return ({{ CompsLowercased }})
     }
 
     public static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, {{ CompParams }}) {
@@ -68,7 +68,7 @@ extension Requires{{ idx }}: RequiringComponents{{ idx }} { }
 
 extension AssemblageMemberBuilder where R: RequiringComponents{{ idx }} {
     public static func buildBlock({{ CompsNamedRParams }}) -> (R.Components) {
-        return ({{ CompsLowercased }})
+        ({{ CompsLowercased }})
     }
 }
 

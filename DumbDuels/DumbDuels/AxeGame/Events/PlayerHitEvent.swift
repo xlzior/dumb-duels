@@ -12,10 +12,12 @@ struct PlayerHitEvent: Event {
     var hitBy: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let scoreSystem = systems.get(ofType: ScoreSystem.self) else {
+        guard let scoreSystem = systems.get(ofType: ScoreSystem.self),
+              let playerSystem = systems.get(ofType: PlayerSystem.self) else {
             return
         }
 
         scoreSystem.handleAxeHitPlayer(withEntityId: entityId)
+        playerSystem.handleAxeHitPlayer(withEntityId: entityId)
     }
 }

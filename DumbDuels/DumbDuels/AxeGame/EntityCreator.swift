@@ -67,6 +67,29 @@ class EntityCreator {
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
 
+        // TODO: Refactor hit animation
+        let animationComponent = AnimationComponent(
+            isPlaying: false,
+            frames: [AnimationFrame(
+                frameDuration: 0.5,
+                spriteName: "player-flash",
+                alpha: 1,
+                position: position,
+                xScale: 1,
+                yScale: 1,
+                rotationAngle: 0),
+            AnimationFrame(
+                frameDuration: 0.1,
+                spriteName: "player",
+                alpha: 1,
+                position: position,
+                xScale: 1,
+                yScale: 1,
+                rotationAngle: 0)],
+            numRepeat: 0
+        )
+        player.assign(component: animationComponent)
+
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
         fsm.createState(name: .holdingAxe)
             .addInstance(HoldingAxeComponent(axeEntityID: axeEntityID))

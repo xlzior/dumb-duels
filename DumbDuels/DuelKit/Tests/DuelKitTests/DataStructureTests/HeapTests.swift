@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DumbDuels
+@testable import DuelKit
 
 final class HeapTests: XCTestCase {
     func testConstructEmpty() throws {

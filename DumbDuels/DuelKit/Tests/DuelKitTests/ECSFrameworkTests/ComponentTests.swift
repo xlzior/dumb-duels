@@ -5,7 +5,7 @@
 //  Created by Bing Sen Lim on 15/3/23.
 //
 
-@testable import DumbDuels
+@testable import DuelKit
 import XCTest
 
 final class ComponentTests: XCTestCase {

@@ -1,6 +1,6 @@
 //
 //  GameViewController.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Esmanda Wong on 11/3/23.
 //

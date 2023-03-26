@@ -1,6 +1,6 @@
 //
 //  Colour.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Esmanda Wong on 12/3/23.
 //

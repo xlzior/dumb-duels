@@ -1,6 +1,6 @@
 //
 //  GameAreaBorder.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Esmanda Wong on 20/3/23.
 //

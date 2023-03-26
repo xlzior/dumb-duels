@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DumbDuels
+@testable import DuelKit
 
 final class EntityCreationTests: XCTestCase {
     // not tests: numComponents, hasComponents, countComponents, exists

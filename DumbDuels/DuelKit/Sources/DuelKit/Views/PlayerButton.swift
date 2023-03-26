@@ -1,6 +1,6 @@
 //
 //  PlayerButton.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Esmanda Wong on 13/3/23.
 //

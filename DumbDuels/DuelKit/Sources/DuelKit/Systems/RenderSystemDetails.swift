@@ -1,6 +1,6 @@
 //
 //  RenderSystemDetails.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Esmanda Wong on 18/3/23.
 //

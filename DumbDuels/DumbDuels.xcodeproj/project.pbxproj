@@ -111,8 +111,6 @@
 		A7E43A1529C4722B00027AC6 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1429C4722B00027AC6 /* CGPoint+Extensions.swift */; };
 		A7E43A1729C4ACA700027AC6 /* RenderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1629C4ACA700027AC6 /* RenderDetails.swift */; };
 		A7E43A1929C4C6A500027AC6 /* RenderSystemDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A1829C4C6A500027AC6 /* RenderSystemDetails.swift */; };
-		A7F2866F29CD7EAD00720B26 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2866E29CD7EAD00720B26 /* Animatable.swift */; };
-		A7F2867129CD7F3200720B26 /* PlayerDeathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867029CD7F3200720B26 /* PlayerDeathView.swift */; };
 		A7F2867329CD81ED00720B26 /* AnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867229CD81ED00720B26 /* AnimationSystem.swift */; };
 		A7F2867529CDF5B000720B26 /* AnimationFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867429CDF5B000720B26 /* AnimationFrame.swift */; };
 		A7F2867929CF3CEE00720B26 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867829CF3CEE00720B26 /* Interpolatable.swift */; };
@@ -245,8 +243,6 @@
 		A7E43A1429C4722B00027AC6 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		A7E43A1629C4ACA700027AC6 /* RenderDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderDetails.swift; sourceTree = "<group>"; };
 		A7E43A1829C4C6A500027AC6 /* RenderSystemDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderSystemDetails.swift; sourceTree = "<group>"; };
-		A7F2866E29CD7EAD00720B26 /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
-		A7F2867029CD7F3200720B26 /* PlayerDeathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeathView.swift; sourceTree = "<group>"; };
 		A7F2867229CD81ED00720B26 /* AnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSystem.swift; sourceTree = "<group>"; };
 		A7F2867429CDF5B000720B26 /* AnimationFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFrame.swift; sourceTree = "<group>"; };
 		A7F2867829CF3CEE00720B26 /* Interpolatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interpolatable.swift; sourceTree = "<group>"; };
@@ -353,7 +349,6 @@
 		7BA7EB7B29C2D4470096457F /* AxeGame */ = {
 			isa = PBXGroup;
 			children = (
-				A7F2866D29CD7E8800720B26 /* Graphics */,
 				8C35849029C4391000BAE8C5 /* Collision */,
 				A7E439F629C374BE00027AC6 /* Constants */,
 				7BA7EBBE29C36BBD0096457F /* Components */,
@@ -565,15 +560,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A7F2866D29CD7E8800720B26 /* Graphics */ = {
-			isa = PBXGroup;
-			children = (
-				A7F2866E29CD7EAD00720B26 /* Animatable.swift */,
-				A7F2867029CD7F3200720B26 /* PlayerDeathView.swift */,
-			);
-			path = Graphics;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -768,7 +754,6 @@
 				7B770B2729C6D2610091AE16 /* EventFirer.swift in Sources */,
 				8C35845F29BF3FB100BAE8C5 /* EntityManager+Component.swift in Sources */,
 				8C35846929C04D2600BAE8C5 /* EntityManager+Assemblage.swift in Sources */,
-				A7F2867129CD7F3200720B26 /* PlayerDeathView.swift in Sources */,
 				A7E43A0B29C37AD600027AC6 /* PlayerButton.swift in Sources */,
 				7BA7EBFA29C36C070096457F /* Heap.swift in Sources */,
 				A7E43A0529C379FC00027AC6 /* GameViewController.swift in Sources */,
@@ -782,7 +767,6 @@
 				8C35849429C4399200BAE8C5 /* PlayerCategory.swift in Sources */,
 				8C35847929C177DE00BAE8C5 /* SampleComponents.swift in Sources */,
 				A7F2867929CF3CEE00720B26 /* Interpolatable.swift in Sources */,
-				A7F2866F29CD7EAD00720B26 /* Animatable.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
 				7BA7EBDB29C36BBD0096457F /* AxeComponent.swift in Sources */,
 				A7F2867329CD81ED00720B26 /* AnimationSystem.swift in Sources */,

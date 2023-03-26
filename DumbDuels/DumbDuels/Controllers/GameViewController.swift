@@ -107,6 +107,7 @@ extension GameViewController: GameController {
     @discardableResult
     private func setUpView(_ imageView: UIImageView, _ details: RenderDetails) -> UIImageView {
         imageView.image = UIImage(named: details.spriteName)
+        imageView.alpha = details.alpha
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)

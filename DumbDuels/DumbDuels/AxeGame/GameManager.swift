@@ -89,7 +89,7 @@ class GameManager {
         systemManager.register(InputSystem(for: entityManager))
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
-        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: entityCreator))
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager, scene: simulator.gameScene))
         systemManager.register(ScoreSystem(for: entityManager))
         systemManager.register(AnimationSystem(for: entityManager))

@@ -18,7 +18,7 @@ class GameAreaView: UIView {
     }
 
     private func style() {
-        backgroundColor = .white
+        backgroundColor = .darkGray
         layer.borderWidth = 10
         layer.borderColor = Colour.secondary.cgColour
     }

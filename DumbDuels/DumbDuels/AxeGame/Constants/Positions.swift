@@ -23,4 +23,6 @@ struct Positions {
         CGPoint(x: 261, y: 300),
         CGPoint(x: 739, y: 300)
     ]
+
+    static let text: CGPoint = CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height * 2 / 3)
 }

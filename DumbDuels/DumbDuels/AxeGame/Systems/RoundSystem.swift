@@ -10,14 +10,16 @@ import CoreGraphics
 class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
+    unowned var entityCreator: EntityCreator
 
     private var thrownAxe: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
+        self.entityCreator = entityCreator
         self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
                                                   PositionComponent.self, PhysicsComponent.self)
         self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
@@ -40,6 +42,8 @@ class RoundSystem: System {
     }
 
     func reset() {
+        let battleText = entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+
         for (entity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
             // reset player
             player.fsm.changeState(name: .holdingAxe)

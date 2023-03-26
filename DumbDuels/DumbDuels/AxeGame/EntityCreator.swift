@@ -142,4 +142,54 @@ class EntityCreator {
 
         return wall
     }
+
+    func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
+        let battleText = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "battle")
+        }
+
+        let animationComponent = AnimationComponent(
+            shouldDestroyEntityOnEnd: true,
+            frames: [
+                AnimationFrame(
+                    frameDuration: 0.05,
+                    spriteName: "battle",
+                    alpha: 0,
+                    position: position,
+                    xScale: 1,
+                    yScale: 1,
+                    rotationAngle: 0),
+                AnimationFrame(
+                    frameDuration: 0.1,
+                spriteName: "battle",
+                alpha: 1,
+                position: position,
+                xScale: 1,
+                yScale: 1,
+                rotationAngle: 0),
+             AnimationFrame(
+                frameDuration: 0.1,
+                 spriteName: "battle",
+                 alpha: 1,
+                 position: position,
+                 xScale: 1,
+                 yScale: 1,
+                 rotationAngle: 0),
+            AnimationFrame(
+                frameDuration: 0.05,
+                spriteName: "battle",
+                alpha: 0,
+                position: position,
+                xScale: 1,
+                yScale: 1,
+                rotationAngle: 0)],
+            numRepeat: 2
+        )
+        battleText.assign(component: animationComponent)
+
+        return battleText
+    }
 }

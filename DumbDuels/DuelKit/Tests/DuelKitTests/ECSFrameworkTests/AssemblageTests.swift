@@ -28,9 +28,9 @@ final class AssemblageTests: XCTestCase {
     func testAssemblageCollision() {
         let manager = EntityManager()
         let assemblage1 = manager.assemblage(requiredComponents: XComponent.self,
-                                            excludedComponents: YComponent.self)
+                                             excludedComponents: YComponent.self)
         let assemblage2 = manager.assemblage(requiredComponents: XComponent.self,
-                                            excludedComponents: YComponent.self)
+                                             excludedComponents: YComponent.self)
         XCTAssertEqual(manager.numAssemblages, 1)
         XCTAssertEqual(manager.numEntities, 0)
         XCTAssertEqual(manager.numComponents, 0)

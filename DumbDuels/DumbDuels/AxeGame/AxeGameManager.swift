@@ -43,11 +43,11 @@ class AxeGameManager: GameManager {
         }
 
         for wallIndex in 0..<3 {
-            let wall = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
+            _ = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
 
         for pegPosition in Positions.pegs {
-            let peg = entityCreator.createPeg(at: pegPosition, of: Sizes.peg)
+            _ = entityCreator.createPeg(at: pegPosition, of: Sizes.peg)
         }
     }
 

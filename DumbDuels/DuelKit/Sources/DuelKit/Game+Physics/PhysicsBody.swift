@@ -251,8 +251,8 @@ public class PhysicsBody {
     }
 
     /// The collision bit mask determines what physics bodies can collide with this physics body.
-    /// If the logical AND of the collisionBitMask of this physics body with categoryBitMask of the other physics body produces a non-zero
-    /// result, the 2 bodies can collide.
+    /// If the logical AND of the collisionBitMask of this physics body with categoryBitMask of
+    /// the other physics body produces a non-zero result, the 2 bodies can collide.
     public var collisionBitMask: UInt32 {
         get {
             guard let physicsBody = node.physicsBody else {
@@ -271,8 +271,8 @@ public class PhysicsBody {
     }
 
     /// The contact test bit mask determines what physics bodies can come into contact with this physics body.
-    /// If the logical AND of the contactTestBitMask of this physics body with categoryBitMask of the other physics body produces a non-zero
-    /// result, the 2 bodies can come into contact.
+    /// If the logical AND of the contactTestBitMask of this physics body with categoryBitMask of
+    /// the other physics body produces a non-zero result, the 2 bodies can come into contact.
     public var contactTestBitMask: UInt32 {
         get {
             guard let physicsBody = node.physicsBody else {

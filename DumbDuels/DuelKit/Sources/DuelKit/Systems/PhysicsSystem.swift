@@ -17,14 +17,12 @@ public class PhysicsSystem: System {
     private let contactHandlers: ContactHandlerMap
 
     public init(for entityManager: EntityManager, eventFirer: EventFirer,
-         scene: GameScene, contactHandlers: ContactHandlerMap) {
+                scene: GameScene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.scene = scene
-        self.physics = entityManager.assemblage(requiredComponents:
-                                                    PositionComponent.self,
-                                                    RotationComponent.self,
-                                                    PhysicsComponent.self)
+        self.physics = entityManager.assemblage(
+            requiredComponents: PositionComponent.self, RotationComponent.self, PhysicsComponent.self)
         self.contactHandlers = contactHandlers
 
         self.setUpPhysics()

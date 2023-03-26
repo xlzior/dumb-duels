@@ -91,7 +91,7 @@ final class HeapTests: XCTestCase {
         XCTAssertNil(intHeap.first)
 
         var stringHeap = Heap(sort: <, array: ["abc", "def", "ghi", "jkl", "mno", "pqr",
-                                      "stu", "vwx", "yz"])
+                                               "stu", "vwx", "yz"])
         while stringHeap.remove() != nil {}
         XCTAssertTrue(stringHeap.isEmpty)
         XCTAssertEqual(stringHeap.count, 0)

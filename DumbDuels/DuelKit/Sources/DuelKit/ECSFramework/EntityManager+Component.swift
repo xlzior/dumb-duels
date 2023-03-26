@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension EntityManager {
+extension EntityManager {
     var numComponents: Int {
         componentsByType.reduce(0) {
             $0 + $1.value.keys.count

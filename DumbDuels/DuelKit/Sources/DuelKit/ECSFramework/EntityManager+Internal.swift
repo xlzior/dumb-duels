@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension EntityManager {
+extension EntityManager {
     @discardableResult
     func assign<C>(components: C, to entityId: EntityID) -> Bool where C: Collection, C.Element == Component {
         for component in components {

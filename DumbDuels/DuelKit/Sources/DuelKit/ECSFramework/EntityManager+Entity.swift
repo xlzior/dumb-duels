@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension EntityManager {
+extension EntityManager {
     @discardableResult
     func createEntity() -> Entity {
         let entityId = nextEntityId()

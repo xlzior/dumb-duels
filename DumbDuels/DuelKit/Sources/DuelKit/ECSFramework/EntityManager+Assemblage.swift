@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension EntityManager {
+extension EntityManager {
     var numAssemblages: Int {
         assemblageEntityMap.keys.count
     }

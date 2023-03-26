@@ -13,7 +13,8 @@ class AxeGameInputSystem {
     unowned var entityManager: EntityManager
     private var physicsCreator: PhysicsCreator
 
-    private var holdingAxePlayer: Assemblage4<PlayerComponent, PositionComponent, HoldingAxeComponent, WithThrowStrengthComponent>
+    private var holdingAxePlayer: Assemblage4<PlayerComponent, PositionComponent,
+                                              HoldingAxeComponent, WithThrowStrengthComponent>
     private var unthrownAxe: Assemblage2<AxeComponent, SizeComponent>
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
@@ -56,7 +57,8 @@ class AxeGameInputSystem {
     }
 
     func throwAxe(for playerId: EntityID) {
-        guard let (player, playerPosition, holdingAxe, withThrowStrength) = holdingAxePlayer.getComponents(for: playerId),
+        guard let (player, playerPosition, holdingAxe, withThrowStrength) =
+                holdingAxePlayer.getComponents(for: playerId),
               let (_, axeSize) = unthrownAxe.getComponents(for: holdingAxe.axeEntityID) else {
             return
         }

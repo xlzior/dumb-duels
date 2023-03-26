@@ -9,10 +9,10 @@ import CoreGraphics
 
 struct AnimationFrame {
     var frameDuration: Double
-    var spriteName: String
-    var alpha: CGFloat
-    var position: CGPoint
-    var xScale: CGFloat
-    var yScale: CGFloat
-    var rotationAngle: CGFloat
+    var spriteName: String?
+    var alpha: CGFloat?
+    var position: CGPoint?
+    var xScale: CGFloat?
+    var yScale: CGFloat?
+    var rotationAngle: CGFloat?
 }

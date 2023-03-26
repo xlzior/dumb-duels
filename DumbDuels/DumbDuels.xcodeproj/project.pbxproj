@@ -114,6 +114,7 @@
 		A7F2867329CD81ED00720B26 /* AnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867229CD81ED00720B26 /* AnimationSystem.swift */; };
 		A7F2867529CDF5B000720B26 /* AnimationFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867429CDF5B000720B26 /* AnimationFrame.swift */; };
 		A7F2867929CF3CEE00720B26 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F2867829CF3CEE00720B26 /* Interpolatable.swift */; };
+		A7F6366A29D09EEE002217F1 /* AnimationCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F6366929D09EEE002217F1 /* AnimationCreator.swift */; };
 		A7FD5D8529C8269900BF1199 /* GameAreaBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD5D8429C8269900BF1199 /* GameAreaBorder.swift */; };
 /* End PBXBuildFile section */
 
@@ -246,6 +247,7 @@
 		A7F2867229CD81ED00720B26 /* AnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSystem.swift; sourceTree = "<group>"; };
 		A7F2867429CDF5B000720B26 /* AnimationFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFrame.swift; sourceTree = "<group>"; };
 		A7F2867829CF3CEE00720B26 /* Interpolatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interpolatable.swift; sourceTree = "<group>"; };
+		A7F6366929D09EEE002217F1 /* AnimationCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationCreator.swift; sourceTree = "<group>"; };
 		A7FD5D8429C8269900BF1199 /* GameAreaBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAreaBorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -356,6 +358,7 @@
 				7BA7EBCE29C36BBD0096457F /* Events */,
 				A7E439FB29C374E800027AC6 /* EntityCreator.swift */,
 				8C3584A729C559FE00BAE8C5 /* PhysicsCreator.swift */,
+				A7F6366929D09EEE002217F1 /* AnimationCreator.swift */,
 				7BA7EBBD29C36BBD0096457F /* GameManager.swift */,
 				A7E43A1029C4530400027AC6 /* GameController.swift */,
 			);
@@ -742,6 +745,7 @@
 				8C3584A029C43F3500BAE8C5 /* CollisionHandler.swift in Sources */,
 				8C35846329BF4F9900BAE8C5 /* Assemblage.swift in Sources */,
 				A7E43A0A29C37AD600027AC6 /* GameAreaView.swift in Sources */,
+				A7F6366A29D09EEE002217F1 /* AnimationCreator.swift in Sources */,
 				8C35846B29C0856200BAE8C5 /* AssemblageRequirementsManager.swift in Sources */,
 				8C35845429BF2DCE00BAE8C5 /* ComponentTypeID.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,

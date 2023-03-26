@@ -10,10 +10,12 @@ import CoreGraphics
 class EntityCreator {
     private let entityManager: EntityManager
     private let physicsCreator: PhysicsCreator
+    private let animationCreator: AnimationCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.physicsCreator = PhysicsCreator(entityManager: entityManager)
+        self.animationCreator = AnimationCreator()
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
@@ -66,28 +68,7 @@ class EntityCreator {
         }
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
-
-        // TODO: Refactor hit animation
-        let animationComponent = AnimationComponent(
-            isPlaying: false,
-            frames: [AnimationFrame(
-                frameDuration: 0.5,
-                spriteName: "player-flash",
-                alpha: 1,
-                position: position,
-                xScale: 1,
-                yScale: 1,
-                rotationAngle: 0),
-            AnimationFrame(
-                frameDuration: 0.1,
-                spriteName: "player",
-                alpha: 1,
-                position: position,
-                xScale: 1,
-                yScale: 1,
-                rotationAngle: 0)],
-            numRepeat: 0
-        )
+        let animationComponent = animationCreator.createPlayerHitAnimation()
         player.assign(component: animationComponent)
 
         let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
@@ -150,44 +131,7 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "battle")
         }
-
-        let animationComponent = AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
-            frames: [
-                AnimationFrame(
-                    frameDuration: 0.05,
-                    spriteName: "battle",
-                    alpha: 0,
-                    position: position,
-                    xScale: 1,
-                    yScale: 1,
-                    rotationAngle: 0),
-                AnimationFrame(
-                    frameDuration: 0.1,
-                spriteName: "battle",
-                alpha: 1,
-                position: position,
-                xScale: 1,
-                yScale: 1,
-                rotationAngle: 0),
-             AnimationFrame(
-                frameDuration: 0.1,
-                 spriteName: "battle",
-                 alpha: 1,
-                 position: position,
-                 xScale: 1,
-                 yScale: 1,
-                 rotationAngle: 0),
-            AnimationFrame(
-                frameDuration: 0.05,
-                spriteName: "battle",
-                alpha: 0,
-                position: position,
-                xScale: 1,
-                yScale: 1,
-                rotationAngle: 0)],
-            numRepeat: 2
-        )
+        let animationComponent = animationCreator.createBattleFlashAnimation()
         battleText.assign(component: animationComponent)
 
         return battleText

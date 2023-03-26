@@ -25,7 +25,6 @@ class AnimationSystem: System {
         let currentTime = Date()
         let timeElapsed = currentTime.timeIntervalSince(prevTime)
         prevTime = currentTime
-//        print(animatables.count)
 
         for (entity, animation, sprite, position, size, rotation) in animatables.entityAndComponents {
             guard animation.isPlaying else {
@@ -69,37 +68,53 @@ class AnimationSystem: System {
         position: PositionComponent,
         size: SizeComponent,
         rotation: RotationComponent) {
-        // TODO: only interpolate if exist
         let currentFrame = animation.animationFrames[animation.currentFrameIdx]
         let nextFrame = animation.animationFrames[animation.nextFrameIdx]
         let timeElapsed = animation.timeElapsedForCurrentFrame
 
-        sprite.assetName = currentFrame.spriteName
-        sprite.alpha = interpolate(
-            previousValue: currentFrame.alpha,
-            nextValue: nextFrame.alpha,
-            timeElapsed: timeElapsed,
-            frameDuration: currentFrame.frameDuration)
-        position.position = interpolate(
-            previousValue: currentFrame.position,
-            nextValue: nextFrame.position,
-            timeElapsed: timeElapsed,
-            frameDuration: currentFrame.frameDuration)
-        size.xScale = interpolate(
-            previousValue: currentFrame.xScale,
-            nextValue: nextFrame.xScale,
-            timeElapsed: timeElapsed,
-            frameDuration: currentFrame.frameDuration)
-        size.yScale = interpolate(
-            previousValue: currentFrame.yScale,
-            nextValue: nextFrame.yScale,
-            timeElapsed: timeElapsed,
-            frameDuration: currentFrame.frameDuration)
-        rotation.angleInRadians = interpolate(
-            previousValue: currentFrame.rotationAngle,
-            nextValue: nextFrame.rotationAngle,
-            timeElapsed: timeElapsed,
-            frameDuration: currentFrame.frameDuration)
+        if let spriteName = currentFrame.spriteName {
+            sprite.assetName = spriteName
+        }
+
+        if let alpha = currentFrame.alpha, let nextAlpha = nextFrame.alpha {
+            sprite.alpha = interpolate(
+                previousValue: alpha,
+                nextValue: nextAlpha,
+                timeElapsed: timeElapsed,
+                frameDuration: currentFrame.frameDuration)
+        }
+
+        if let currentPosition = currentFrame.position, let nextPosition = nextFrame.position {
+            position.position = interpolate(
+                previousValue: currentPosition,
+                nextValue: nextPosition,
+                timeElapsed: timeElapsed,
+                frameDuration: currentFrame.frameDuration)
+        }
+
+        if let xScale = currentFrame.xScale, let nextXScale = nextFrame.xScale {
+            size.xScale = interpolate(
+                previousValue: xScale,
+                nextValue: nextXScale,
+                timeElapsed: timeElapsed,
+                frameDuration: currentFrame.frameDuration)
+        }
+
+        if let yScale = currentFrame.yScale, let nextYScale = nextFrame.yScale {
+            size.yScale = interpolate(
+                previousValue: yScale,
+                nextValue: nextYScale,
+                timeElapsed: timeElapsed,
+                frameDuration: currentFrame.frameDuration)
+        }
+
+        if let rotationAngle = currentFrame.rotationAngle, let nextRotationAngle = nextFrame.rotationAngle {
+            rotation.angleInRadians = interpolate(
+                previousValue: rotationAngle,
+                nextValue: nextRotationAngle,
+                timeElapsed: timeElapsed,
+                frameDuration: currentFrame.frameDuration)
+        }
     }
 
     private func interpolate<T: Interpolatable>(

@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import DuelKit
 
 class AxeGameInputSystem {
     unowned var entityManager: EntityManager
@@ -21,7 +22,7 @@ class AxeGameInputSystem {
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
+        self.physicsCreator = PhysicsCreator()
         self.holdingAxePlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, PositionComponent.self,
             HoldingAxeComponent.self, WithThrowStrengthComponent.self)
@@ -62,7 +63,7 @@ class AxeGameInputSystem {
         let axeId = holdingAxe.axeEntityID
         let towards = playerPosition.faceDirection
 
-        let physicsCreator = PhysicsCreator(entityManager: entityManager)
+        let physicsCreator = PhysicsCreator()
         let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize, for: axeId)
         entityManager.assign(component: physicsComponent, to: axeId)
 

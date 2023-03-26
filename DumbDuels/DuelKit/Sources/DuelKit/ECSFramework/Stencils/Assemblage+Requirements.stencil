@@ -1,0 +1,103 @@
+// swiftlint:disable file_length
+// swiftlint:disable function_parameter_count
+// swiftlint:disable large_tuple
+// swiftlint:disable line_length
+// swiftlint:disable multiline_parameters
+{% for idx in 1...8 %}
+{% map 1...idx into components using index %}Component{{ index }}{% endmap %}
+{% set CompParams %}{{components|join: ", "}}{% endset %}
+{% map components into compWhere using comp %}{{ comp }}: Component{% endmap %}
+{% set CompsWhere %}{{compWhere|join: ", "}}{% endset %}
+{% map components into compEncodable using comp %}{{ comp }}: Encodable{% endmap %}
+{% set CompsWhereEncodable %}{{compEncodable|join: ", "}}{% endset %}
+{% map components into compsDecodable using comp %}{{ comp }}: Decodable{% endmap %}
+{% set CompsWhereDecodable %}{{compsDecodable|join: ", "}}{% endset %}
+{% map components into compTypes using comp %}{{ comp }}.Type{% endmap %}
+{% set CompsTypes %}{{compTypes|join: ", "}}{% endset %}
+{% map components into compSelf using comp %}{{ comp }}.self{% endmap %}
+{% set CompsSelf %}{{compSelf|join: ", "}}{% endset %}
+{% map components into compsLowercased using comp %}{{ comp|lowercase }}{% endmap %}
+{% set CompsLowercased %}{{compsLowercased|join: ", "}}{% endset %}
+{% map components into compsTuple using comp %}components.{{ maploop.counter }}{% endmap %}
+{% set CompsTuple %}{{compsTuple|join: ", "}}{% endset %}
+{% map components into compsTypeParams using comp %}{% if not maploop.first %}_ {% endif %}{{ comp|lowercase }}: {{ comp }}.Type{% endmap %}
+{% set CompsTypeParams %}{{compsTypeParams|join: ", "}}{% endset %}
+{% map components into compsNamedParams using comp %}{% if not maploop.first %}_ {% endif %}{{ comp|lowercase }}: {{ comp }}{% endmap %}
+{% set CompsNamedParams %}{{compsNamedParams|join: ", "}}{% endset %}
+{% map components into compsNamedRParams using comp %}_ {{ comp|lowercase }}: R.{{ comp }}{% endmap %}
+{% set CompsNamedRParams %}{{compsNamedRParams|join: ", "}}{% endset %}
+
+// MARK: - Assemblage {{ idx }}
+
+public typealias Assemblage{{ idx }}<{{ CompParams }}> = Assemblage<Requires{{ idx }}<{{ CompParams }}>> where {{ CompsWhere }}
+
+public protocol RequiringComponents{{ idx }}: AssemblageRequirementsManager where Components == ({{ CompParams }}) {
+    {% for comp in components %}
+    associatedtype {{ comp }}: Component
+    {% endfor %}
+}
+
+public struct Requires{{ idx }}<{{ CompParams }}>: AssemblageRequirementsManager where {{ CompsWhere }} {
+    public let componentTypes: [Component.Type]
+
+    public init(_ components: ({{ CompsTypes }})) {
+        componentTypes = [{{ CompsSelf}}]
+    }
+
+    public static func components(entityManager: EntityManager, entityId: EntityID) -> ({{ CompParams }}) {
+        {% for comp in components %}
+        let {{ comp|lowercase }}: {{ comp }} = entityManager.getComponent(ofType: {{ comp }}.typeId, for: entityId)!
+        {% endfor %}
+        ({{ CompsLowercased }})
+    }
+
+    public static func entityAndComponents(entityManager: EntityManager, entityId: EntityID) -> (Entity, {{ CompParams }}) {
+        let entity = Entity(id: entityId, manager: entityManager)
+        {% for comp in components %}
+        let {{ comp|lowercase }}: {{ comp }} = entityManager.getComponent(ofType: {{ comp }}.typeId, for: entityId)!
+        {% endfor %}
+        return (entity, {{ CompsLowercased }})
+    }
+
+    public static func createMember(entityManager: EntityManager, components: ({{ CompParams }})) -> Entity {
+        {% if compEncodable.count == 1 %}entityManager.createEntity(with: components){% else %}entityManager.createEntity(with: {{ CompsTuple }}){% endif %}
+    }
+}
+
+extension Requires{{ idx }}: RequiringComponents{{ idx }} { }
+
+extension AssemblageMemberBuilder where R: RequiringComponents{{ idx }} {
+    public static func buildBlock({{ CompsNamedRParams }}) -> (R.Components) {
+        return ({{ CompsLowercased }})
+    }
+}
+
+extension EntityManager {
+    /// A assemblage conforms to the `LazySequenceProtocol` and therefore can be accessed like any other (lazy) sequence.
+    ///
+    /// **General usage**
+    /// ```swift
+    /// let assemblage = entityManager.assemblage(requiredComponents: {{ CompsSelf }})
+    /// // iterate each entity's components
+    /// assemblage.forEach { ({{ CompsLowercased }}) in
+    ///   ...
+    /// }
+    /// ```
+    /// - Parameters:
+    {% for comp in compsLowercased %}
+    ///   - {{ comp }}: Component type {{ forloop.counter }} required by members of this assemblage.
+    {% endfor %}
+    ///   - excludedComponents: All component types that must not be assigned to an entity in this assemblage.
+    /// - Returns: The assemblage of entities having {{ components.count }} required components each.
+    public func assemblage<{{ CompParams }}>(
+        requiredComponents {{ CompsTypeParams }},
+        excludedComponents: Component.Type...
+    ) -> Assemblage{{ idx }}<{{ CompParams }}> where {{ CompsWhere }} {
+        Assemblage{{ idx }}<{{ CompParams }}>(
+            entityManager: self,
+            requiredComponents: ({{ CompsLowercased }}),
+            excludedComponents: excludedComponents
+        )
+    }
+}
+{% endfor %}

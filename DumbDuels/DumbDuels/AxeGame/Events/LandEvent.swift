@@ -5,8 +5,10 @@
 //  Created by Bing Sen Lim on 17/3/23.
 //
 
+import DuelKit
+
 struct LandEvent: Event {
-    var priority: EventPriority = .game
+    var priority = 2
 
     var entityId: EntityID
 

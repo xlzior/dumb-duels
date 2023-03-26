@@ -144,11 +144,10 @@ extension GameManager: GameSceneDelegate {
     }
 
     func didFinishUpdate() {
-        guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
-            return
+        if let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) {
+            physicsSystem.syncFromPhysicsEngine()
         }
 
-        physicsSystem.syncFromPhysicsEngine()
         eventManager.pollAll()
         systemManager.update()
     }

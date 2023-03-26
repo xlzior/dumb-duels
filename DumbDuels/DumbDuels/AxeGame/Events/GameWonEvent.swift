@@ -6,7 +6,7 @@
 //
 
 struct GameWonEvent: Event {
-    var priority: EventPriority = .game
+    var priority = 2
 
     var entityId: EntityID
 

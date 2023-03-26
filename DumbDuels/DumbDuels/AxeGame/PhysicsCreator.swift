@@ -6,14 +6,9 @@
 //
 
 import Foundation
+import DuelKit
 
 class PhysicsCreator {
-    private let entityManager: EntityManager
-
-    init(entityManager: EntityManager) {
-        self.entityManager = EntityManager()
-    }
-
     func createAxe(of size: CGSize, for axeId: EntityID) -> PhysicsComponent {
         let axeCategory = AxeCategory(entityId: axeId)
         let component = PhysicsComponent(circleOf: size.height / 2, mass: Physics.axeMass, velocity: .zero,

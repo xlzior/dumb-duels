@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import DuelKit
 
 class EntityCreator {
     private let entityManager: EntityManager
@@ -13,7 +14,7 @@ class EntityCreator {
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
+        self.physicsCreator = PhysicsCreator()
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {

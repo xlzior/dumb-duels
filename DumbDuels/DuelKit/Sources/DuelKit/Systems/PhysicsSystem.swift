@@ -7,14 +7,17 @@
 
 import CoreGraphics
 
-class PhysicsSystem: System {
+public class PhysicsSystem: System {
+    public typealias ContactHandlerMap = [Pair<UInt32, UInt32>: (EntityID, EntityID) -> Event]
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
     var scene: GameScene
     private let physics: Assemblage3<PositionComponent, RotationComponent, PhysicsComponent>
+    private let contactHandlers: ContactHandlerMap
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer, scene: GameScene) {
+    public init(for entityManager: EntityManager, eventFirer: EventFirer,
+         scene: GameScene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.scene = scene
@@ -22,14 +25,16 @@ class PhysicsSystem: System {
                                                     PositionComponent.self,
                                                     RotationComponent.self,
                                                     PhysicsComponent.self)
+        self.contactHandlers = contactHandlers
+
         self.setUpPhysics()
     }
 
-    func update() {
+    public func update() {
         syncToPhysicsEngine()
     }
 
-    func syncFromPhysicsEngine() {
+    public func syncFromPhysicsEngine() {
         for (id, physicsBody) in scene.bodyIDPhysicsMap {
             if let physicsComponent: PhysicsComponent =
                 entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
@@ -106,24 +111,21 @@ class PhysicsSystem: System {
     private func initializePhysicsBodyFrom(positionComponent: PositionComponent,
                                            rotationComponent: RotationComponent,
                                            physicsComponent: PhysicsComponent) -> PhysicsBody? {
-        let categoryBitMask = CollisionUtils.bitmasks(for: physicsComponent.categories)
-        let collisionBitMask = CollisionUtils.collideBitmasks(for: physicsComponent.categories)
-        let contactBitMask = CollisionUtils.contactBitmasks(for: physicsComponent.categories)
         let physicsBody = PhysicsBody(position: positionComponent.position,
-                                                    size: physicsComponent.size,
-                                                    radius: physicsComponent.radius,
-                                                    zRotation: rotationComponent.angleInRadians,
-                                                    mass: physicsComponent.mass,
-                                                    velocity: physicsComponent.velocity,
-                                                    affectedByGravity: physicsComponent.affectedByGravity,
-                                                    linearDamping: physicsComponent.linearDamping,
-                                                    isDynamic: physicsComponent.isDynamic,
-                                                    allowsRotation: physicsComponent.allowsRotation,
-                                                    restitution: physicsComponent.restitution,
-                                                    friction: physicsComponent.friction,
-                                                    categoryBitMask: categoryBitMask,
-                                                    collisionBitMask: collisionBitMask,
-                                                    contactBitMask: contactBitMask)
+                                      size: physicsComponent.size,
+                                      radius: physicsComponent.radius,
+                                      zRotation: rotationComponent.angleInRadians,
+                                      mass: physicsComponent.mass,
+                                      velocity: physicsComponent.velocity,
+                                      affectedByGravity: physicsComponent.affectedByGravity,
+                                      linearDamping: physicsComponent.linearDamping,
+                                      isDynamic: physicsComponent.isDynamic,
+                                      allowsRotation: physicsComponent.allowsRotation,
+                                      restitution: physicsComponent.restitution,
+                                      friction: physicsComponent.friction,
+                                      categoryBitMask: physicsComponent.ownBitmask,
+                                      collisionBitMask: physicsComponent.collideBitmask,
+                                      contactBitMask: physicsComponent.contactBitmask)
         return physicsBody
     }
 
@@ -136,12 +138,13 @@ class PhysicsSystem: System {
                 entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondEid) else {
             return
         }
-        for firstCategory in firstPhysicsComponent.categories {
-            for secondCategory in secondPhysicsComponent.categories {
-                if let collisionEvent = firstCategory.collides(with: secondCategory) {
-                    eventFirer.fire(collisionEvent)
-                }
-            }
+
+        let firstCategory = firstPhysicsComponent.ownBitmask
+        let secondCategory = secondPhysicsComponent.ownBitmask
+        let key = Pair(first: firstCategory, second: secondCategory)
+        if let eventProducer = contactHandlers[key] {
+            let event = eventProducer(firstEid, secondEid)
+            eventFirer.fire(event)
         }
     }
 }

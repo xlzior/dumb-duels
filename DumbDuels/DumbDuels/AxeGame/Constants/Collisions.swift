@@ -1,5 +1,5 @@
 //
-//  CollisionUtils.swift
+//  Collisions.swift
 //  DumbDuels
 //
 //  Created by Bing Sen Lim on 18/3/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CollisionUtils {
+class Collisions {
     static let playerBitmask: UInt32 = 0x1 << 0
     static let axeBitmask: UInt32 = 0x1 << 1
     static let platformBitmask: UInt32 = 0x1 << 2
@@ -25,18 +25,6 @@ class CollisionUtils {
     static let platformContactBitmask: UInt32 = playerBitmask | wallBitmask
     static let pegContactBitmask: UInt32 = axeBitmask | wallBitmask
     static let wallContactBitmask: UInt32 = playerBitmask | axeBitmask | platformBitmask | pegBitmask
-
-    static func bitmasks(for categories: [CollisionCategory]) -> UInt32 {
-        unionBitmasks(categories.map({ $0.ownBitmask }))
-    }
-
-    static func collideBitmasks(for categories: [CollisionCategory]) -> UInt32 {
-        unionBitmasks(categories.map({ $0.collideBitmask }))
-    }
-
-    static func contactBitmasks(for categories: [CollisionCategory]) -> UInt32 {
-        unionBitmasks(categories.map({ $0.contactBitmask }))
-    }
 
     private static func unionBitmasks(_ bitmasks: [UInt32]) -> UInt32 {
         var result: UInt32 = 0x00000000

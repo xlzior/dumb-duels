@@ -1,6 +1,6 @@
 //
 //  Date.swift
-//  DuelKit
+//  DumbDuels
 //
 //  Created by Wen Jun Lye on 23/3/23.
 //

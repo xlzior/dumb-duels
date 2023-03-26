@@ -1,6 +1,6 @@
 //
 //  CGPoint+Extensions.swift
-//  DuelKit
+//  DumbDuels
 //
 //  Created by Esmanda Wong on 17/3/23.
 //

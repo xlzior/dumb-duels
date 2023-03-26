@@ -1,6 +1,6 @@
 //
 //  CGVector+Extensions.swift
-//  DuelKit
+//  DumbDuels
 //
 //  Created by Bing Sen Lim on 18/3/23.
 //

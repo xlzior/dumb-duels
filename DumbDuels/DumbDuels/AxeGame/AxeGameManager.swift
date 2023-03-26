@@ -1,6 +1,6 @@
 //
 //  AxeGameManager.swift
-//  DuelKit
+//  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
 //

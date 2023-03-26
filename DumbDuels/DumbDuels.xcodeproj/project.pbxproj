@@ -186,16 +186,16 @@
 		7BA7EBBE29C36BBD0096457F /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6F67C72029C8454B009E0579 /* WallComponent.swift */,
+				7B2A3DD529CD81A500C735D2 /* PegComponent.swift */,
+				7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */,
+				7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */,
 				7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */,
 				7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */,
-				7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */,
-				7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */,
 				8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */,
-				6F67C72029C8454B009E0579 /* WallComponent.swift */,
 				8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */,
-				7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */,
 				7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */,
-				7B2A3DD529CD81A500C735D2 /* PegComponent.swift */,
+				7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";

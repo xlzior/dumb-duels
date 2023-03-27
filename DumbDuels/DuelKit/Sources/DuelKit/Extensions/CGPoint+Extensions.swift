@@ -7,13 +7,17 @@
 
 import CoreGraphics
 
-extension CGPoint {
+extension CGPoint: Interpolatable {
     static func + (left: CGPoint, right: CGPoint) -> CGPoint {
         CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
 
     static func += (left: inout CGPoint, right: CGPoint) {
         left = left + right
+    }
+
+    static func - (left: CGPoint, right: CGPoint) -> CGPoint {
+        CGPoint(x: left.x - right.x, y: left.y - right.y)
     }
 
     static func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
@@ -24,4 +28,7 @@ extension CGPoint {
         left = left * right
     }
 
+    static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
+        CGPoint(x: point.x / scalar, y: point.y / scalar)
+    }
 }

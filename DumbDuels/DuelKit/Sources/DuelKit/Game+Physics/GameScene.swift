@@ -41,16 +41,16 @@ class GameScene: Scene {
     }
 
     func createCirclePhysicsSimulatableBody(for id: EntityID,
-                                                   withRadius radius: CGFloat,
-                                                   at position: CGPoint) -> PhysicsSimulatableBody {
+                                            withRadius radius: CGFloat,
+                                            at position: CGPoint) -> PhysicsSimulatableBody {
         let newPhysicsBody = PhysicsBody(circleOf: radius, at: position)
         addBody(for: id, bodyToAdd: newPhysicsBody)
         return newPhysicsBody
     }
 
     func createRectanglePhysicsSimulatableBody(for id: EntityID,
-                                                      withSize size: CGSize,
-                                                      at position: CGPoint) -> PhysicsSimulatableBody {
+                                               withSize size: CGSize,
+                                               at position: CGPoint) -> PhysicsSimulatableBody {
         let newPhysicsBody = PhysicsBody(rectangleOf: size, at: position)
         addBody(for: id, bodyToAdd: newPhysicsBody)
         return newPhysicsBody

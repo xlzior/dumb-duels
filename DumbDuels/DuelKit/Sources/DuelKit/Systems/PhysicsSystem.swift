@@ -12,7 +12,7 @@ public class PhysicsSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
-    var scene: GameScene
+    var scene: Scene
     private let physics: Assemblage3<PositionComponent, RotationComponent, PhysicsComponent>
     private let contactHandlers: ContactHandlerMap
 

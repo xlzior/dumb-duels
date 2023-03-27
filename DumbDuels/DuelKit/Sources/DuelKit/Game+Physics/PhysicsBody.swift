@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public class PhysicsBody {
+public class PhysicsBody: PhysicsSimulatableBody {
     private(set) var node: SKNode
     private let nodeNoPhysicsBodyFailureMessage = "SKNode does not contain an associated SKPhysicsBody."
     private let incorrectShapeInitializationFailureMessage =

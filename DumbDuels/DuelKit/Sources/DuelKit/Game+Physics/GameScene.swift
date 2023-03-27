@@ -9,10 +9,10 @@ import SpriteKit
 
 public typealias BodyID = String
 
-public class GameScene {
+public class GameScene: Scene {
     private(set) var baseGameScene: BaseGameScene
-    public private(set) var bodyIDPhysicsMap: [BodyID: PhysicsBody]
-    public private(set) var physicsBodyIDMap: [PhysicsBody: BodyID]
+    public private(set) var bodyIDPhysicsMap: [BodyID: PhysicsBody] // should be private
+    private var physicsBodyIDMap: [PhysicsBody: BodyID]
     private var skNodePhysicsBodyMap: [SKNode: PhysicsBody]
 
     public var gameSceneDelegate: GameSceneDelegate? {
@@ -100,19 +100,6 @@ public class GameScene {
             return
         }
         physicsBody.applyAngularImpulse(angularImpulse)
-    }
-
-    public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
-        for (id, physicsBody) in updatedBodyIDPhysicsMap {
-            guard bodyIDPhysicsMap[id] != nil,
-                  physicsBodyIDMap[physicsBody] != nil,
-                  skNodePhysicsBodyMap[physicsBody.node] != nil else {
-                assertionFailure("Trying to sync for an id that does not exist.")
-                continue
-            }
-
-            bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: physicsBody)
-        }
     }
 
     public func sync(_ newPhysicsBody: PhysicsBody, for id: BodyID) {

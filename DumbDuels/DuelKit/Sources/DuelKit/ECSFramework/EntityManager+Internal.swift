@@ -9,7 +9,7 @@ import Foundation
 
 extension EntityManager {
     @discardableResult
-    func assign<C>(components: C, to entityId: EntityID) -> Bool where C: Collection, C.Element == Component {
+    public func assign<C>(components: C, to entityId: EntityID) -> Bool where C: Collection, C.Element == Component {
         for component in components {
             let isSuccessfullyAssigned = assign(component: component, to: entityId)
 
@@ -24,7 +24,7 @@ extension EntityManager {
     }
 
     @discardableResult
-    func assign(component: Component, to entityId: EntityID) -> Bool {
+    public func assign(component: Component, to entityId: EntityID) -> Bool {
         let componentTypeId = component.typeId
         let componentId = component.id
 

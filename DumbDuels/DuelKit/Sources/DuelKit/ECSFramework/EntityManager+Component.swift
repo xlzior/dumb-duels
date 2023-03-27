@@ -14,7 +14,7 @@ extension EntityManager {
         }
     }
 
-    func has(componentTypeId: ComponentTypeID, entityId: EntityID) -> Bool {
+    public func has(componentTypeId: ComponentTypeID, entityId: EntityID) -> Bool {
         guard let allComponentsOfEntity = entityComponentMap[entityId] else {
             return false
         }
@@ -23,21 +23,21 @@ extension EntityManager {
     }
 
     // TODO: Check if needed
-    func countComponents(for entityId: EntityID) -> Int {
+    public func countComponents(for entityId: EntityID) -> Int {
         entityComponentMap[entityId]?.count ?? 0
     }
 
     @discardableResult
-    func assign<C>(components: C, to entity: Entity) -> Bool where C: Collection, C.Element == Component {
+    public func assign<C>(components: C, to entity: Entity) -> Bool where C: Collection, C.Element == Component {
         assign(components: components, to: entity.id)
     }
 
     @discardableResult
-    func assign(component: Component, to entity: Entity) -> Bool {
+    public func assign(component: Component, to entity: Entity) -> Bool {
         assign(component: component, to: entity.id)
     }
 
-    func getComponent<C>(ofType componentType: ComponentTypeID, for entityId: EntityID) -> C? where C: Component {
+    public func getComponent<C>(ofType componentType: ComponentTypeID, for entityId: EntityID) -> C? where C: Component {
         let component = get(componentType: componentType, for: entityId)
         guard let component else {
             // entity has no such component
@@ -56,11 +56,11 @@ extension EntityManager {
      * Example:
      * - position: PositionComponent = entityManager.get(for: entityId)
      */
-    func getComponent<C>(for entityId: EntityID) -> C? where C: Component {
+    public func getComponent<C>(for entityId: EntityID) -> C? where C: Component {
         getComponent(ofType: C.typeId, for: entityId)
     }
 
-    func getAllComponentTypes(for entityId: EntityID) -> Set<ComponentTypeID>? {
+    public func getAllComponentTypes(for entityId: EntityID) -> Set<ComponentTypeID>? {
         let componentTypes = entityComponentMap[entityId]?.map { $0.first }
         guard let componentTypes else {
             return nil
@@ -68,7 +68,7 @@ extension EntityManager {
         return Set(componentTypes)
     }
 
-    func remove(componentType: ComponentTypeID, from entityId: EntityID) {
+    public func remove(componentType: ComponentTypeID, from entityId: EntityID) {
         guard let component = get(componentType: componentType, for: entityId) else {
             return
         }
@@ -81,7 +81,7 @@ extension EntityManager {
     }
 
     // TODO: Will rewriting this without using remove() make it faster because update is not done repeatedly?
-    func removeAllComponents(for entityId: EntityID) {
+    public func removeAllComponents(for entityId: EntityID) {
         guard let allComponentTypes = getAllComponentTypes(for: entityId) else {
             return
         }

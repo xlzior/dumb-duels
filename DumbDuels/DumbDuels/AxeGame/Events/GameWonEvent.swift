@@ -13,9 +13,11 @@ struct GameWonEvent: Event {
     var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let gameOverSystem = systems.get(ofType: GameOverSystem.self) else {
+        guard let gameOverSystem = systems.get(ofType: GameOverSystem.self),
+              let renderSystem = systems.get(ofType: RenderSystem.self) else {
             return
         }
         gameOverSystem.handleGameWon(by: entityId)
+        renderSystem.handleGameOver()
     }
 }

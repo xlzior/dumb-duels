@@ -83,6 +83,10 @@ extension GameViewController: GameController {
         playerScores[playerIndex].playerID = playerEntityID
     }
 
+    public func goToHomePage() {
+        navigationController?.popViewController(animated: true)
+    }
+
     public func addView(for entityID: EntityID, with details: RenderDetails) {
         let entityView = createView(details)
         entityViews[entityID] = entityView

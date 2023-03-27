@@ -7,6 +7,7 @@
 
 public protocol GameController {
     func registerPlayerID(playerIndex: Int, playerEntityID: EntityID)
+    func goToHomePage()
     func addView(for entityID: EntityID, with details: RenderDetails)
     func updateView(for entityID: EntityID, with details: RenderDetails)
     func updateScore(for entityID: EntityID, with newScore: Int)

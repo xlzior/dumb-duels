@@ -9,4 +9,6 @@ import CoreGraphics
 
 enum SpaceshipConstants {
     static let rotationSpeed: CGFloat = 0.03
+
+    static let propulsionForce: CGFloat = 500.0
 }

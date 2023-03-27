@@ -8,7 +8,7 @@
 class SpaceshipCollisions {
     static let spaceshipBitmask: UInt32 = 0x1 << 0
 
-    static let spaceshipCollideBitmask: UInt32 = 0
+    static let spaceshipCollideBitmask: UInt32 = spaceshipBitmask
 
     static let spaceshipContactBitmask: UInt32 = 0
 }

@@ -24,6 +24,7 @@ class SpaceshipGameManager: GameManager {
     override func setUpSystems() {
         systemManager.register(SpaceshipGameInputSystem(for: entityManager))
         systemManager.register(RotationSystem(for: entityManager))
+        systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: [:]))
         systemManager.register(RenderSystem(

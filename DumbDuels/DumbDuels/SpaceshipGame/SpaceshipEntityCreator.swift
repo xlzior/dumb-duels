@@ -25,7 +25,7 @@ class SpaceshipEntityCreator {
             SpriteComponent(assetName: "spaceship\(index)")
             SpaceshipComponent()
         }
-        let physicsComponent = physicsCreator.createSpaceship(of: size, for: spaceship.id)
+        let physicsComponent = physicsCreator.createSpaceship(of: size)
         spaceship.assign(component: physicsComponent)
 
         return spaceship

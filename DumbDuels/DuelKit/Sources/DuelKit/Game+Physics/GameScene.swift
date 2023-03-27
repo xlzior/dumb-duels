@@ -9,23 +9,23 @@ import SpriteKit
 
 // typealias BodyID = EntityID
 
-public class GameScene: Scene {
+class GameScene: Scene {
     private(set) var baseGameScene: BaseGameScene
     private var bodyIDPhysicsMap: [EntityID: PhysicsBody]
     private var physicsBodyIDMap: [PhysicsBody: EntityID]
     private var skNodePhysicsBodyMap: [SKNode: PhysicsBody]
 
-    public var gameSceneDelegate: GameSceneDelegate? {
+    var gameSceneDelegate: GameSceneDelegate? {
         get { baseGameScene.gameSceneDelegate }
         set { baseGameScene.gameSceneDelegate = newValue }
     }
 
-    public var physicsContactDelegate: PhysicsContactDelegate? {
+    var physicsContactDelegate: PhysicsContactDelegate? {
         get { baseGameScene.physicsContactDelegate }
         set { baseGameScene.physicsContactDelegate = newValue }
     }
 
-    public init() {
+    init() {
         self.baseGameScene = BaseGameScene(size: Sizes.game)
         self.baseGameScene.delegate = self.baseGameScene
         self.bodyIDPhysicsMap = [:]
@@ -34,13 +34,13 @@ public class GameScene: Scene {
         self.baseGameScene.gameScene = self
     }
 
-    public func forEachEntity(perform action: (EntityID, PhysicsSimulatableBody) -> Void) {
+    func forEachEntity(perform action: (EntityID, PhysicsSimulatableBody) -> Void) {
         for (id, physicsBody) in bodyIDPhysicsMap {
             action(id, physicsBody)
         }
     }
 
-    public func createCirclePhysicsSimulatableBody(for id: EntityID,
+    func createCirclePhysicsSimulatableBody(for id: EntityID,
                                                    withRadius radius: CGFloat,
                                                    at position: CGPoint) -> PhysicsSimulatableBody {
         let newPhysicsBody = PhysicsBody(circleOf: radius, at: position)
@@ -48,7 +48,7 @@ public class GameScene: Scene {
         return newPhysicsBody
     }
 
-    public func createRectanglePhysicsSimulatableBody(for id: EntityID,
+    func createRectanglePhysicsSimulatableBody(for id: EntityID,
                                                       withSize size: CGSize,
                                                       at position: CGPoint) -> PhysicsSimulatableBody {
         let newPhysicsBody = PhysicsBody(rectangleOf: size, at: position)
@@ -56,7 +56,7 @@ public class GameScene: Scene {
         return newPhysicsBody
     }
 
-    public func removePhysicsSimulatableBody(for id: EntityID) {
+    func removePhysicsSimulatableBody(for id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
               physicsBodyIDMap.removeValue(forKey: physicsBody) != nil,
               skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
@@ -66,7 +66,7 @@ public class GameScene: Scene {
         baseGameScene.removeChildren(in: [physicsBody.node])
     }
 
-    public func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody? {
+    func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody? {
         guard let physicsBody = bodyIDPhysicsMap[id],
               physicsBodyIDMap[physicsBody] != nil,
               skNodePhysicsBodyMap[physicsBody.node] != nil else {
@@ -75,7 +75,7 @@ public class GameScene: Scene {
         return physicsBody
     }
 
-    public func apply(impulse: CGVector, to id: EntityID) {
+    func apply(impulse: CGVector, to id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap[id],
               physicsBodyIDMap[physicsBody] != nil,
               skNodePhysicsBodyMap[physicsBody.node] != nil else {
@@ -85,7 +85,7 @@ public class GameScene: Scene {
         physicsBody.applyImpulse(impulse)
     }
 
-    public func apply(angularImpulse: CGFloat, to id: EntityID) {
+    func apply(angularImpulse: CGFloat, to id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap[id],
               physicsBodyIDMap[physicsBody] != nil,
               skNodePhysicsBodyMap[physicsBody.node] != nil else {

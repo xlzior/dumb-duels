@@ -24,4 +24,15 @@ extension CGPoint {
         left = left * right
     }
 
+    static func - (left: CGPoint, right: CGPoint) -> CGVector {
+        CGVector(dx: left.x - right.x, dy: left.y - right.y)
+    }
+
+    func length() -> CGFloat {
+        sqrt(x * x + y * y)
+    }
+
+    func toVector() -> CGVector {
+        CGVector(dx: x, dy: y)
+    }
 }

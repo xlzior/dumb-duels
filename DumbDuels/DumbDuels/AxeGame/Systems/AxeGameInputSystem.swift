@@ -66,7 +66,7 @@ class AxeGameInputSystem {
         let towards = playerPosition.faceDirection
 
         let physicsCreator = PhysicsCreator()
-        let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize, for: axeId)
+        let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize)
         entityManager.assign(component: physicsComponent, to: axeId)
 
         guard let throwStrengthComponent: ThrowStrengthComponent = entityManager.getComponent(
@@ -82,7 +82,7 @@ class AxeGameInputSystem {
         physicsComponent.angularImpulse = towards == .right
             ? Constants.throwAngularForce
             : -Constants.throwAngularForce
-        player.fsm.changeState(name: .notHoldingAxe)
+        entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
     }
 
     func jump(playerId: EntityID) {

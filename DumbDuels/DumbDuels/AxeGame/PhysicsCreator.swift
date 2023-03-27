@@ -9,7 +9,7 @@ import Foundation
 import DuelKit
 
 class PhysicsCreator {
-    func createAxe(of size: CGSize, for axeId: EntityID) -> PhysicsComponent {
+    func createAxe(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(circleOf: size.height / 2, mass: Physics.axeMass, velocity: .zero,
                                          affectedByGravity: Physics.axeGravity,
                                          linearDamping: Physics.axeDamping,
@@ -26,7 +26,7 @@ class PhysicsCreator {
         return component
     }
 
-    func createPlayer(of size: CGSize, for playerId: EntityID) -> PhysicsComponent {
+    func createPlayer(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.playerMass, velocity: .zero,
                                          affectedByGravity: Physics.playerGravity,
                                          linearDamping: Physics.playerDamping,
@@ -43,7 +43,7 @@ class PhysicsCreator {
         return component
     }
 
-    func createPlatform(of size: CGSize, for platformId: EntityID) -> PhysicsComponent {
+    func createPlatform(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.platformMass, velocity: .zero,
                                          affectedByGravity: Physics.platformGravity,
                                          linearDamping: Physics.platformDamping,
@@ -60,7 +60,7 @@ class PhysicsCreator {
         return component
     }
 
-    func createWall(of size: CGSize, for wallId: EntityID) -> PhysicsComponent {
+    func createWall(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.wallMass, velocity: .zero,
                                          affectedByGravity: Physics.wallGravity,
                                          linearDamping: Physics.wallDamping,
@@ -77,7 +77,7 @@ class PhysicsCreator {
         return component
     }
 
-    func createPeg(of size: CGSize, for pegId: EntityID) -> PhysicsComponent {
+    func createPeg(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.pegMass, velocity: .zero,
                                          affectedByGravity: Physics.pegGravity,
                                          linearDamping: Physics.pegDamping,
@@ -91,6 +91,24 @@ class PhysicsCreator {
                                          zRotation: Physics.pegZRotation,
                                          impulse: Physics.pegImpulse,
                                          angularImpulse: Physics.pegAngularImpulse)
+        return component
+    }
+
+    func createParticle(of radius: CGFloat, initialVelocity: CGVector) -> PhysicsComponent {
+        let component = PhysicsComponent(circleOf: radius, mass: Physics.axeParticleMass,
+                                         velocity: initialVelocity,
+                                         affectedByGravity: Physics.axeParticleGravity,
+                                         linearDamping: Physics.axeParticleDamping,
+                                         isDynamic: Physics.axeParticleIsDynamic,
+                                         allowsRotation: Physics.axeParticleRotation,
+                                         restitution: Physics.axeParticleCor,
+                                         friction: Physics.axeParticleFriction,
+                                         ownBitmask: Collisions.axeParticleBitmask,
+                                         collideBitmask: Collisions.axeParticleCollideBitmask,
+                                         contactBitmask: Collisions.axeParticleContactBitmask,
+                                         zRotation: Physics.axeParticleZRotation,
+                                         impulse: Physics.axeParticleInitialImpulse,
+                                         angularImpulse: Physics.axeParticleInitialAngularImpulse)
         return component
     }
 }

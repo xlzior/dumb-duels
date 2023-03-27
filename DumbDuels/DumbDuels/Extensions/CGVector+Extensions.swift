@@ -128,6 +128,10 @@ extension CGVector {
         CGVector(dx: vector.dx * scalar, dy: vector.dy * scalar)
     }
 
+    static func * (scalar: CGFloat, vector: CGVector) -> CGVector {
+        CGVector(dx: vector.dx * scalar, dy: vector.dy * scalar)
+    }
+
     /**
      * Multiplies the x and y fields of a CGVector with the same scalar value.
      */
@@ -162,5 +166,13 @@ extension CGVector {
      */
     static func /= (vector: inout CGVector, scalar: CGFloat) {
         vector = vector / scalar
+    }
+
+    func reverse() -> CGVector {
+        CGVector(dx: -dx, dy: -dy)
+    }
+
+    func toPoint() -> CGPoint {
+        CGPoint(x: dx, y: dy)
     }
 }

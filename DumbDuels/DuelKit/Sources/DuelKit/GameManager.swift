@@ -67,7 +67,12 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     }
 
     open func didFinishUpdate() {
+        if let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) {
+            physicsSystem.syncFromPhysicsEngine()
+        }
 
+        eventManager.pollAll()
+        systemManager.update()
     }
 
     open  func didContactBegin(for entityA: EntityID, and entityB: EntityID) {

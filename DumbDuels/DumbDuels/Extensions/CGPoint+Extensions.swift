@@ -35,4 +35,8 @@ extension CGPoint {
     func toVector() -> CGVector {
         CGVector(dx: x, dy: y)
     }
+
+    static func random(maxX: Double, maxY: Double) -> CGPoint {
+        CGPoint(x: Double.random(in: 0...maxX), y: Double.random(in: 0...maxY))
+    }
 }

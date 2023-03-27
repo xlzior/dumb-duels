@@ -45,13 +45,15 @@ class AxeGameManager: GameManager {
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
 
+        _ = creator.createLava(at: Positions.lava, of: Sizes.lava)
+
         for wallIndex in 0..<3 {
             _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
 
-//        for pegPosition in Positions.pegs {
-//            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
-//        }
+        for pegPosition in Positions.pegs {
+            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
+        }
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
@@ -93,6 +95,7 @@ class AxeGameManager: GameManager {
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
         systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(RenderSystem(
             for: entityManager,

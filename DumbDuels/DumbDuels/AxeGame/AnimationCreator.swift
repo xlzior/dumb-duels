@@ -6,6 +6,7 @@
 //
 
 import DuelKit
+import CoreGraphics
 
 class AnimationCreator {
     func createPlayerHitAnimation() -> AnimationComponent {
@@ -18,6 +19,41 @@ class AnimationCreator {
                 AnimationFrame(
                     frameDuration: 0.01,
                     spriteName: "player")],
+            numRepeat: 0
+        )
+        return component
+    }
+
+    func createLavaSmokeAnimation() -> AnimationComponent {
+        var randomXDeltas = [CGFloat]()
+        var randomYDeltas = [CGFloat]()
+
+        for _ in 1...4 {
+            let randomXDelta = CGFloat.random(in: -1.5...1.5)
+            let randomYDelta = CGFloat.random(in: 0.5...4)
+            randomXDeltas.append(randomXDelta)
+            randomYDeltas.append(randomYDelta)
+        }
+
+        let component = AnimationComponent(
+            shouldDestroyEntityOnEnd: true,
+            frames: [
+                AnimationFrame(
+                    frameDuration: 0.001,
+                    alpha: 0,
+                    deltaPosition: CGPoint(x: randomXDeltas[0], y: randomYDeltas[0])),
+                AnimationFrame(
+                    frameDuration: 0.3,
+                    alpha: 1,
+                    deltaPosition: CGPoint(x: randomXDeltas[1], y: randomYDeltas[1])),
+                AnimationFrame(
+                    frameDuration: 0.3,
+                    alpha: 0.5,
+                    deltaPosition: CGPoint(x: randomXDeltas[2], y: randomYDeltas[2])),
+                AnimationFrame(
+                    frameDuration: 0.3,
+                    alpha: 0,
+                    deltaPosition: CGPoint(x: randomXDeltas[3], y: randomYDeltas[3]))],
             numRepeat: 0
         )
         return component

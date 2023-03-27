@@ -30,5 +30,7 @@ struct Positions {
         CGPoint(x: 600, y: 375)
     ]
 
+    static let lava = CGPoint(x: Sizes.game.width / 2, y: Sizes.lava.height / 2)
+
     static let text = CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height * 2 / 3)
 }

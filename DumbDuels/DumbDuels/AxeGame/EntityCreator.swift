@@ -177,6 +177,33 @@ class EntityCreator {
         return axeParticle
     }
 
+    func createLava(at position: CGPoint, of size: CGSize) -> Entity {
+        let lava = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: Assets.lava)
+        }
+//        let physicsComponent = physicsCreator.createPeg(of: size, for: lava.id)
+//        lava.assign(component: physicsComponent)
+
+        return lava
+    }
+
+    func createLavaSmoke(at position: CGPoint, of size: CGSize) -> Entity {
+        let lavaSmoke = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: Assets.lava)
+        }
+
+        let animationComponent = animationCreator.createLavaSmokeAnimation()
+        lavaSmoke.assign(component: animationComponent)
+
+        return lavaSmoke
+    }
+
     func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
         let battleText = entityManager.createEntity {
             PositionComponent(position: position)

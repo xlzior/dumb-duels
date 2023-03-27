@@ -84,8 +84,8 @@ public class AnimationSystem: System {
                 frameDuration: currentFrame.frameDuration)
         }
 
-        if let currentPosition = currentFrame.position, let nextPosition = nextFrame.position {
-            position.position = interpolate(
+        if let currentPosition = currentFrame.deltaPosition, let nextPosition = nextFrame.deltaPosition {
+            position.position += interpolate(
                 previousValue: currentPosition,
                 nextValue: nextPosition,
                 timeElapsed: timeElapsed,

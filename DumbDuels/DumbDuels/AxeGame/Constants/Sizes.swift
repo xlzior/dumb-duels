@@ -16,6 +16,8 @@ extension Sizes {
                         CGSize(width: 1, height: Sizes.game.height),
                         CGSize(width: Sizes.game.width, height: 1)]
     static let peg = CGSize(width: 30, height: 30)
+    static let lava = CGSize(width: Sizes.game.width, height: 70)
+    static let lavaSmoke = CGSize(width: 10, height: 10)
     static let battleText = CGSize(width: 300, height: 50)
     static let gameWonText = CGSize(width: 800, height: 100)
     static let gameTiedText = CGSize(width: 600, height: 100)

@@ -11,7 +11,7 @@ public struct AnimationFrame {
     public var frameDuration: Double
     public var spriteName: String?
     public var alpha: CGFloat?
-    public var position: CGPoint?
+    public var deltaPosition: CGPoint?
     public var xScale: CGFloat?
     public var yScale: CGFloat?
     public var rotationAngle: CGFloat?
@@ -20,7 +20,7 @@ public struct AnimationFrame {
         frameDuration: Double,
         spriteName: String? = nil,
         alpha: CGFloat? = nil,
-        position: CGPoint? = nil,
+        deltaPosition: CGPoint? = nil,
         xScale: CGFloat? = nil,
         yScale: CGFloat? = nil,
         rotationAngle: CGFloat? = nil
@@ -28,7 +28,7 @@ public struct AnimationFrame {
         self.frameDuration = frameDuration
         self.spriteName = spriteName
         self.alpha = alpha
-        self.position = position
+        self.deltaPosition = deltaPosition
         self.xScale = xScale
         self.yScale = yScale
         self.rotationAngle = rotationAngle

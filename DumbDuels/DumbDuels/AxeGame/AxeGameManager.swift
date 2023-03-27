@@ -112,13 +112,4 @@ class AxeGameManager: GameManager {
             details: renderSystemDetails
         ))
     }
-
-    override func didFinishUpdate() {
-        if let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) {
-            physicsSystem.syncFromPhysicsEngine()
-        }
-
-        eventManager.pollAll()
-        systemManager.update()
-    }
 }

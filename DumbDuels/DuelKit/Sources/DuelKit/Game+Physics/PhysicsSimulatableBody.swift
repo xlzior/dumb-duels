@@ -21,6 +21,4 @@ public protocol PhysicsSimulatableBody {
     var categoryBitMask: UInt32 { get set }
     var collisionBitMask: UInt32 { get set }
     var contactTestBitMask: UInt32 { get set }
-    func applyImpulse(_ impulse: CGVector)
-    func applyAngularImpulse(_ impulse: CGFloat)
 }

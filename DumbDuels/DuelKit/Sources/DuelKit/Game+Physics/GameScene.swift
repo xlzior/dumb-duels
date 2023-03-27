@@ -7,12 +7,12 @@
 
 import SpriteKit
 
-public typealias BodyID = String
+// typealias BodyID = EntityID
 
 public class GameScene: Scene {
     private(set) var baseGameScene: BaseGameScene
-    public private(set) var bodyIDPhysicsMap: [BodyID: PhysicsBody] // should be private
-    private var physicsBodyIDMap: [PhysicsBody: BodyID]
+    private var bodyIDPhysicsMap: [EntityID: PhysicsBody]
+    private var physicsBodyIDMap: [PhysicsBody: EntityID]
     private var skNodePhysicsBodyMap: [SKNode: PhysicsBody]
 
     public var gameSceneDelegate: GameSceneDelegate? {
@@ -34,20 +34,68 @@ public class GameScene: Scene {
         self.baseGameScene.gameScene = self
     }
 
-    public func setup(newBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
-        self.baseGameScene.removeAllChildren()
-        self.bodyIDPhysicsMap = [:]
-        self.physicsBodyIDMap = [:]
-        self.skNodePhysicsBodyMap = [:]
-        for (bodyID, physicsBody) in newBodyIDPhysicsMap {
-            baseGameScene.addChild(physicsBody.node)
-            bodyIDPhysicsMap[bodyID] = physicsBody
-            physicsBodyIDMap[physicsBody] = bodyID
-            skNodePhysicsBodyMap[physicsBody.node] = physicsBody
+    public func forEachEntity(perform action: (EntityID, PhysicsSimulatableBody) -> Void) {
+        for (id, physicsBody) in bodyIDPhysicsMap {
+            action(id, physicsBody)
         }
     }
 
-    public func addBody(for id: BodyID, bodyToAdd: PhysicsBody) {
+    public func createCirclePhysicsSimulatableBody(for id: EntityID,
+                                                   withRadius radius: CGFloat,
+                                                   at position: CGPoint) -> PhysicsSimulatableBody {
+        let newPhysicsBody = PhysicsBody(circleOf: radius, at: position)
+        addBody(for: id, bodyToAdd: newPhysicsBody)
+        return newPhysicsBody
+    }
+
+    public func createRectanglePhysicsSimulatableBody(for id: EntityID,
+                                                      withSize size: CGSize,
+                                                      at position: CGPoint) -> PhysicsSimulatableBody {
+        let newPhysicsBody = PhysicsBody(rectangleOf: size, at: position)
+        addBody(for: id, bodyToAdd: newPhysicsBody)
+        return newPhysicsBody
+    }
+
+    public func removePhysicsSimulatableBody(for id: EntityID) {
+        guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
+              physicsBodyIDMap.removeValue(forKey: physicsBody) != nil,
+              skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
+            assertionFailure("Trying to remove an id that does not exist.")
+            return
+        }
+        baseGameScene.removeChildren(in: [physicsBody.node])
+    }
+
+    public func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody? {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            return nil
+        }
+        return physicsBody
+    }
+
+    public func apply(impulse: CGVector, to id: EntityID) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            assertionFailure("Trying to apply impulse to an id that does not exist.")
+            return
+        }
+        physicsBody.applyImpulse(impulse)
+    }
+
+    public func apply(angularImpulse: CGFloat, to id: EntityID) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            assertionFailure("Trying to apply impulse to an id that does not exist.")
+            return
+        }
+        physicsBody.applyAngularImpulse(angularImpulse)
+    }
+
+    func addBody(for id: EntityID, bodyToAdd: PhysicsBody) {
         guard baseGameScene.nodes(at: bodyToAdd.position).isEmpty,
               bodyIDPhysicsMap[id] == nil,
               physicsBodyIDMap[bodyToAdd] == nil,
@@ -61,55 +109,14 @@ public class GameScene: Scene {
         skNodePhysicsBodyMap[bodyToAdd.node] = bodyToAdd
     }
 
-    public func removeBody(for id: BodyID) {
-        guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
-              physicsBodyIDMap.removeValue(forKey: physicsBody) != nil,
-              skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
-            assertionFailure("Trying to remove an id that does not exist.")
-            return
-        }
-        baseGameScene.removeChildren(in: [physicsBody.node])
-    }
-
-    func getBodyID(for skPhysicsBody: SKPhysicsBody) -> BodyID? {
+    func getEntityID(for skPhysicsBody: SKPhysicsBody) -> EntityID? {
         if let skNode = skPhysicsBody.node,
            let physicsBody = skNodePhysicsBodyMap[skNode],
-           let bodyID = physicsBodyIDMap[physicsBody],
-           bodyIDPhysicsMap[bodyID] == physicsBody {
-            return bodyID
+           let entityID = physicsBodyIDMap[physicsBody],
+           bodyIDPhysicsMap[entityID] == physicsBody {
+            return entityID
         }
         assertionFailure("Could not find corresponding BodyID for SKPhysicsBody")
         return nil
-    }
-
-    public func apply(impulse: CGVector, to id: BodyID) {
-        guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
-            assertionFailure("Trying to apply impulse to an id that does not exist.")
-            return
-        }
-        physicsBody.applyImpulse(impulse)
-    }
-
-    public func apply(angularImpulse: CGFloat, to id: BodyID) {
-        guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
-            assertionFailure("Trying to apply impulse to an id that does not exist.")
-            return
-        }
-        physicsBody.applyAngularImpulse(angularImpulse)
-    }
-
-    public func sync(_ newPhysicsBody: PhysicsBody, for id: BodyID) {
-        guard let originalPhysicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[originalPhysicsBody] == id,
-              skNodePhysicsBodyMap[originalPhysicsBody.node] != nil else {
-            addBody(for: id, bodyToAdd: newPhysicsBody)
-            return
-        }
-
-        bodyIDPhysicsMap[id]?.updateWith(newPhysicsBody: newPhysicsBody)
     }
 }

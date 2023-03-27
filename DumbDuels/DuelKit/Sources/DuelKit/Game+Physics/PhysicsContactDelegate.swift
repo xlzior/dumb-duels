@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol PhysicsContactDelegate: AnyObject {
-    func didContactBegin(for bodyA: BodyID, and bodyB: BodyID)
-    func didContactEnd(for bodyA: BodyID, and bodyB: BodyID)
+    func didContactBegin(for entityA: EntityID, and entityB: EntityID)
+    func didContactEnd(for entityA: EntityID, and entityB: EntityID)
 }

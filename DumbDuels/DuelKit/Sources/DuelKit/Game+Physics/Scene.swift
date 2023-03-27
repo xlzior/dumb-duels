@@ -10,11 +10,16 @@ import Foundation
 public protocol Scene {
     var gameSceneDelegate: GameSceneDelegate? { get set }
     var physicsContactDelegate: PhysicsContactDelegate? { get set }
-    var bodyIDPhysicsMap: [BodyID: PhysicsBody] { get } // to remove
-    func setup(newBodyIDPhysicsMap: [BodyID: PhysicsBody])
-    func addBody(for id: BodyID, bodyToAdd: PhysicsBody)
-    func removeBody(for id: BodyID)
-    func apply(impulse: CGVector, to id: BodyID)
-    func apply(angularImpulse: CGFloat, to id: BodyID)
-    func sync(_ newPhysicsBody: PhysicsBody, for id: BodyID)
+    func forEachEntity(perform action: (_ id: EntityID,
+                                        _ physicsSimulatableBody: PhysicsSimulatableBody) -> Void)
+    func createCirclePhysicsSimulatableBody(for id: EntityID,
+                                            withRadius radius: CGFloat,
+                                            at position: CGPoint) -> PhysicsSimulatableBody
+    func createRectanglePhysicsSimulatableBody(for id: EntityID,
+                                               withSize size: CGSize,
+                                               at position: CGPoint) -> PhysicsSimulatableBody
+    func removePhysicsSimulatableBody(for id: EntityID)
+    func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody?
+    func apply(impulse: CGVector, to id: EntityID)
+    func apply(angularImpulse: CGFloat, to id: EntityID)
 }

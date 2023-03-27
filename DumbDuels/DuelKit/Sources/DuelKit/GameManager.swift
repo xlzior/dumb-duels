@@ -70,14 +70,14 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     }
 
-    open  func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
+    open  func didContactBegin(for entityA: EntityID, and entityB: EntityID) {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
-        physicsSystem.handleCollision(firstId: bodyA, secondId: bodyB)
+        physicsSystem.handleCollision(firstId: entityA, secondId: entityB)
     }
 
-    open func didContactEnd(for bodyA: BodyID, and bodyB: BodyID) {
+    open func didContactEnd(for entityA: EntityID, and entityB: EntityID) {
 
     }
 }

@@ -18,6 +18,8 @@ class RoundSystem: System {
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
+    private var isGameOver = false
+
     init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
@@ -43,14 +45,28 @@ class RoundSystem: System {
     }
 
     func checkWin() {
+        var winningEntities = [EntityID]()
         for (entity, _, score, _, _) in players.entityAndComponents where score.score >= 5 {
-            eventFirer.fire(GameWonEvent(entityId: entity.id))
+            winningEntities.append(entity.id)
         }
+
+        guard !winningEntities.isEmpty else {
+            return
+        }
+
+        if winningEntities.count > 1 {
+            eventFirer.fire(GameTieEvent())
+        } else {
+            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
+        }
+        isGameOver = true
     }
 
     func reset() {
         // battle animation
-        let battleText = entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+        if !isGameOver {
+            _ = entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+        }
 
         // Destroy all thrown axes since they are out of bounds
         for (_, _, _, physicsComponent) in thrownAxe {

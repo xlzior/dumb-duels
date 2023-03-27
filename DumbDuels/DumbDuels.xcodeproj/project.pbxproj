@@ -48,6 +48,9 @@
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
 		A7E43A0629C379FC00027AC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0429C379FC00027AC6 /* HomeViewController.swift */; };
 		A7E52EF529D1F2F800075F99 /* AnimationCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF429D1F2F800075F99 /* AnimationCreator.swift */; };
+		A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF629D1F43300075F99 /* GameTieEvent.swift */; };
+		A7E52EF929D1F43F00075F99 /* GameOverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */; };
+		A7E52EFB29D1F47900075F99 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EFA29D1F47900075F99 /* Assets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
 		A7E43A0429C379FC00027AC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A7E52EF429D1F2F800075F99 /* AnimationCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationCreator.swift; sourceTree = "<group>"; };
+		A7E52EF629D1F43300075F99 /* GameTieEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTieEvent.swift; sourceTree = "<group>"; };
+		A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverSystem.swift; sourceTree = "<group>"; };
+		A7E52EFA29D1F47900075F99 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,7 @@
 				8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */,
 				8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */,
 				8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */,
+				A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -226,6 +233,7 @@
 		7BA7EBCE29C36BBD0096457F /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				A7E52EF629D1F43300075F99 /* GameTieEvent.swift */,
 				7BF9D4E029C45C0200D7B34D /* GameWonEvent.swift */,
 				8C3584A129C44A5A00BAE8C5 /* PlayerHitEvent.swift */,
 				8C3584A329C44D9B00BAE8C5 /* LandEvent.swift */,
@@ -254,6 +262,7 @@
 		A7E439F629C374BE00027AC6 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				A7E52EFA29D1F47900075F99 /* Assets.swift */,
 				A7E439F729C374BE00027AC6 /* Positions.swift */,
 				A7E439F829C374BE00027AC6 /* Sizes.swift */,
 				8C3584A529C54FE500BAE8C5 /* Collisions.swift */,
@@ -430,6 +439,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E52EF929D1F43F00075F99 /* GameOverSystem.swift in Sources */,
 				8C3584AC29C5A50E00BAE8C5 /* CanJumpComponent.swift in Sources */,
 				7BF9D4E129C45C0200D7B34D /* GameWonEvent.swift in Sources */,
 				7BE0FDF929D03A120035AE98 /* CGPoint+Extensions.swift in Sources */,
@@ -447,6 +457,7 @@
 				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
 				7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
+				A7E52EFB29D1F47900075F99 /* Assets.swift in Sources */,
 				A7E439F929C374BE00027AC6 /* Positions.swift in Sources */,
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
@@ -461,6 +472,7 @@
 				A7E52EF529D1F2F800075F99 /* AnimationCreator.swift in Sources */,
 				7BE0FDFA29D03A120035AE98 /* CGVector+Extensions.swift in Sources */,
 				A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */,
+				A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */,
 				8CB0FA6329D17DC000C2FAC8 /* AxeParticleComponent.swift in Sources */,
 				7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */,
 				6F67C71329C462DD009E0579 /* Physics.swift in Sources */,

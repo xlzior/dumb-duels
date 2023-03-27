@@ -49,9 +49,9 @@ class AxeGameManager: GameManager {
             _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
 
-        for pegPosition in Positions.pegs {
-            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
-        }
+//        for pegPosition in Positions.pegs {
+//            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
+//        }
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
@@ -92,6 +92,7 @@ class AxeGameManager: GameManager {
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
+        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
         systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(RenderSystem(
             for: entityManager,

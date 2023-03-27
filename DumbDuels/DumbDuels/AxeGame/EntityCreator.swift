@@ -25,7 +25,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "axe")
+            SpriteComponent(assetName: Assets.axe)
             AxeComponent()
         }
 //        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
@@ -45,7 +45,7 @@ class EntityCreator {
             PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "axe")
+            SpriteComponent(assetName: Assets.axe)
             AxeComponent()
         }
 //        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
@@ -64,7 +64,7 @@ class EntityCreator {
 
         let fsm = EntityStateMachine<ThrowStrengthComponent.State>(entity: throwStrength)
         fsm.createState(name: .charging)
-            .addInstance(SpriteComponent(assetName: "chargingBar"))
+            .addInstance(SpriteComponent(assetName: Assets.chargingBar))
         fsm.createState(name: .notCharging)
 
         throwStrength.assign(component: ThrowStrengthComponent(fsm: fsm))
@@ -87,7 +87,7 @@ class EntityCreator {
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "player")
+            SpriteComponent(assetName: Assets.player)
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
@@ -110,7 +110,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "platform")
+            SpriteComponent(assetName: Assets.platform)
             PlatformComponent()
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
@@ -125,7 +125,7 @@ class EntityCreator {
             PositionComponent(position: platformPosition)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "platform")
+            SpriteComponent(assetName: Assets.platform)
             PlatformComponent()
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
@@ -152,7 +152,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "peg")
+            SpriteComponent(assetName: Assets.peg)
             PegComponent()
         }
 
@@ -182,11 +182,22 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "battle")
+            SpriteComponent(assetName: Assets.battleText)
         }
         let animationComponent = animationCreator.createBattleFlashAnimation()
         battleText.assign(component: animationComponent)
 
         return battleText
+    }
+
+    func createGameOverText(at position: CGPoint, of size: CGSize, displaying text: String) -> Entity {
+        let gameOverText = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: text)
+        }
+
+        return gameOverText
     }
 }

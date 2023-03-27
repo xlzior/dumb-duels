@@ -36,7 +36,7 @@ extension CGPoint {
         CGVector(dx: x, dy: y)
     }
 
-    static func random(maxX: Double, maxY: Double) -> CGPoint {
-        CGPoint(x: Double.random(in: 0...maxX), y: Double.random(in: 0...maxY))
+    static func random(within size: CGSize) -> CGPoint {
+        CGPoint(x: CGFloat.random(in: 0...size.width), y: CGFloat.random(in: 0...size.height))
     }
 }

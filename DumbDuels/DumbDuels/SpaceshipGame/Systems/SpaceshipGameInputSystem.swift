@@ -23,6 +23,8 @@ class SpaceshipGameInputSystem: InputSystem {
             return
         }
 
+        // TODO: angle convention for cgvector is not the same as rotation component conventions
+        // TODO: change CGVector+Extensions?
         let angle = CGVector(angle: Double.pi / 2 - rotation.angleInRadians)
         physics.impulse = SpaceshipConstants.propulsionForce * angle
     }

@@ -92,6 +92,16 @@ public class GameScene {
         physicsBody.applyImpulse(impulse)
     }
 
+    public func apply(angularImpulse: CGFloat, to id: BodyID) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            assertionFailure("Trying to apply impulse to an id that does not exist.")
+            return
+        }
+        physicsBody.applyAngularImpulse(angularImpulse)
+    }
+
     public func sync(updatedBodyIDPhysicsMap: [BodyID: PhysicsBody]) {
         for (id, physicsBody) in updatedBodyIDPhysicsMap {
             guard bodyIDPhysicsMap[id] != nil,

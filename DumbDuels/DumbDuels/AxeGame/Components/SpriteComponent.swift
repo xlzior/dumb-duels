@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-class SpriteComponent: Component {
+class SpriteComponent: ComponentInitializable {
     var id: ComponentID
     var assetName: String
     var alpha: CGFloat
@@ -16,5 +16,11 @@ class SpriteComponent: Component {
         self.id = ComponentID()
         self.assetName = assetName
         self.alpha = alpha
+    }
+
+    required init() {
+        self.id = ComponentID()
+        self.assetName = ""
+        self.alpha = 1.0
     }
 }

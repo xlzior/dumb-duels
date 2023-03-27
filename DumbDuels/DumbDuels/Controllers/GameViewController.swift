@@ -46,10 +46,9 @@ class GameViewController: UIViewController {
 
     private func setUpGestureRecognisers() {
         for playerButton in playerButtons {
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(buttonTapped))
             let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buttonLongPressed))
+            longPressRecognizer.minimumPressDuration = 0
 
-            playerButton.addGestureRecognizer(tapRecognizer)
             playerButton.addGestureRecognizer(longPressRecognizer)
         }
     }
@@ -59,18 +58,16 @@ class GameViewController: UIViewController {
         gameManager = GameManager(renderSystemDetails: details)
     }
 
-    @objc func buttonTapped(tapRecognizer: UITapGestureRecognizer) {
-        guard let playerID = (tapRecognizer.view as? PlayerButton)?.playerID else {
-            return
-        }
-        gameManager?.handleButtonPress(for: playerID)
-    }
-
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
         guard let playerID = (longPressRecognizer.view as? PlayerButton)?.playerID else {
             return
         }
-        gameManager?.handleButtonLongPress(for: playerID)
+
+        if longPressRecognizer.state == .began {
+            gameManager?.handleButtonDown(for: playerID)
+        } else if longPressRecognizer.state == .ended {
+            gameManager?.handleButtonUp(for: playerID)
+        }
     }
 }
 
@@ -111,6 +108,11 @@ extension GameViewController: GameController {
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)
+
+        if details.facing == .left {
+            imageView.transform = CGAffineTransformScale(imageView.transform, -1, 1)
+        }
+
         return imageView
     }
 

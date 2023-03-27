@@ -297,6 +297,14 @@ public class PhysicsBody {
         }
         physicsBody.applyImpulse(impulse)
     }
+
+    public func applyAngularImpulse(_ impulse: CGFloat) {
+        guard let physicsBody = node.physicsBody else {
+            assertionFailure(nodeNoPhysicsBodyFailureMessage)
+            return
+        }
+        physicsBody.applyAngularImpulse(impulse)
+    }
 }
 
 extension PhysicsBody: Hashable {

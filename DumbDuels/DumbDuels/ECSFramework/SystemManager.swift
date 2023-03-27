@@ -8,12 +8,17 @@
 class SystemManager {
     var systems = [System]()
     var nameToSystem = [String: System]()
+    var inputSystem: (any InputSystem)?
 
     func register(_ system: any System) {
         systems.append(system)
 
         let name = String(describing: type(of: system).self)
         nameToSystem[name] = system
+
+        if system is InputSystem {
+            inputSystem = system as? InputSystem
+        }
     }
 
     func get<S: System>(ofType type: S.Type) -> S? {

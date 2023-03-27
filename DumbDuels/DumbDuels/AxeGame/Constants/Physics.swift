@@ -21,6 +21,7 @@ struct Physics {
     static let playerFriction = PhysicsEngineDefaults.friction
     static let playerDamping = PhysicsEngineDefaults.linearDamping
     static let playerImpulse: CGVector = .zero
+    static let playerAngularImpulse: CGFloat = .zero
 
     // Axe physics constants
     static let axeMass: CGFloat = 1.0
@@ -32,6 +33,7 @@ struct Physics {
     static let axeFriction = PhysicsEngineDefaults.friction
     static let axeDamping = PhysicsEngineDefaults.linearDamping
     static let axeInitialImpulse: CGVector = .zero
+    static let axeInitialAngularImpulse: CGFloat = .zero
 
     // Platform physics constants
     static let platformMass: CGFloat = 1.0
@@ -43,6 +45,7 @@ struct Physics {
     static let platformFriction = PhysicsEngineDefaults.friction
     static let platformDamping = PhysicsEngineDefaults.linearDamping
     static let platformImpulse: CGVector = .zero
+    static let platformAngularImpulse: CGFloat = .zero
 
     // Peg physics constants
     static let pegMass: CGFloat = 1.0
@@ -54,6 +57,7 @@ struct Physics {
     static let pegFriction = PhysicsEngineDefaults.friction
     static let pegDamping = PhysicsEngineDefaults.linearDamping
     static let pegImpulse: CGVector = .zero
+    static let pegAngularImpulse: CGFloat = .zero
 
     // Wall physics constants
     static let wallMass: CGFloat = 1.0
@@ -65,4 +69,5 @@ struct Physics {
     static let wallFriction = PhysicsEngineDefaults.friction
     static let wallDamping = PhysicsEngineDefaults.linearDamping
     static let wallImpulse: CGVector = .zero
+    static let wallAngularImpulse: CGFloat = .zero
 }

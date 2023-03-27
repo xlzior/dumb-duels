@@ -23,4 +23,9 @@ struct Positions {
         CGPoint(x: 261, y: 300),
         CGPoint(x: 739, y: 300)
     ]
+
+    static let pegs: [CGPoint] = [
+        CGPoint(x: 400, y: 375),
+        CGPoint(x: 600, y: 375)
+    ]
 }

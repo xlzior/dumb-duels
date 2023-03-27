@@ -31,10 +31,14 @@ class EntityCreator {
         return axe
     }
 
-    func createAxe(withHorizontalOffset offset: CGFloat, from position: CGPoint, of size: CGSize) -> Entity {
+    func createAxe(
+        withHorizontalOffset offset: CGFloat,
+        from position: CGPoint,
+        of size: CGSize,
+        facing: FaceDirection) -> Entity {
         let axePosition = CGPoint(x: position.x + offset, y: position.y)
         let axe = entityManager.createEntity {
-            PositionComponent(position: axePosition)
+            PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "axe")
@@ -47,6 +51,24 @@ class EntityCreator {
         return axe
     }
 
+    func createThrowStrength(at position: CGPoint) -> Entity {
+        let throwStrength = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: CGSize(width: 75, height: 30))
+        }
+
+        let fsm = EntityStateMachine<ThrowStrengthComponent.State>(entity: throwStrength)
+        fsm.createState(name: .charging)
+            .addInstance(SpriteComponent(assetName: "chargingBar"))
+        fsm.createState(name: .notCharging)
+
+        throwStrength.assign(component: ThrowStrengthComponent(fsm: fsm))
+        fsm.changeState(name: .notCharging)
+
+        return throwStrength
+    }
+
     func createPlayer(
         index: Int,
         at position: CGPoint,
@@ -55,6 +77,8 @@ class EntityCreator {
         holding axeEntityID: EntityID,
         onPlatform platformId: EntityID
     ) -> Entity {
+        let throwStrengthEntity = createThrowStrength(at: position + CGPoint(x: 0, y: 100))
+
         let player = entityManager.createEntity {
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
@@ -63,6 +87,7 @@ class EntityCreator {
             ScoreComponent()
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId)
+            WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
@@ -118,5 +143,20 @@ class EntityCreator {
         wall.assign(component: physicsComponent)
 
         return wall
+    }
+
+    func createPeg(at position: CGPoint, of size: CGSize) -> Entity {
+        let peg = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "peg")
+            PegComponent()
+        }
+
+        let physicsComponent = physicsCreator.createPeg(of: size, for: peg.id)
+        peg.assign(component: physicsComponent)
+
+        return peg
     }
 }

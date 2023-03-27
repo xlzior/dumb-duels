@@ -61,7 +61,8 @@ class RenderSystem: System {
                 centerPosition: newPosition,
                 width: size.originalSize.width * size.xScale * scalingFactor,
                 height: size.originalSize.height * size.yScale * scalingFactor,
-                rotation: rotation.angleInRadians
+                rotation: rotation.angleInRadians,
+                facing: position.faceDirection
             )
 
             if renderedEntities.contains(entity.id) {
@@ -74,6 +75,9 @@ class RenderSystem: System {
         }
 
         gameController.removeViews(for: entitiesToRemove)
+        for entity in entitiesToRemove {
+            renderedEntities.remove(entity)
+        }
     }
 
     private func renderScores() {

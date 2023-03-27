@@ -24,7 +24,9 @@ class PhysicsCreator {
                                          restitution: Physics.axeCor,
                                          friction: Physics.axeFriction,
                                          categories: [axeCategory],
-                                         zRotation: Physics.axeZRotation, impulse: Physics.axeInitialImpulse)
+                                         zRotation: Physics.axeZRotation,
+                                         impulse: Physics.axeInitialImpulse,
+                                         angularImpulse: Physics.axeInitialAngularImpulse)
         return component
     }
 
@@ -38,7 +40,9 @@ class PhysicsCreator {
                                          restitution: Physics.playerCor,
                                          friction: Physics.playerFriction,
                                          categories: [playerCategory],
-                                         zRotation: Physics.playerZRotation, impulse: Physics.playerImpulse)
+                                         zRotation: Physics.playerZRotation,
+                                         impulse: Physics.playerImpulse,
+                                         angularImpulse: Physics.playerAngularImpulse)
         return component
     }
 
@@ -53,7 +57,8 @@ class PhysicsCreator {
                                          friction: Physics.platformFriction,
                                          categories: [platformCategory],
                                          zRotation: Physics.platformZRotation,
-                                         impulse: Physics.platformImpulse)
+                                         impulse: Physics.platformImpulse,
+                                         angularImpulse: Physics.platformAngularImpulse)
         return component
     }
 
@@ -68,7 +73,24 @@ class PhysicsCreator {
                                          friction: Physics.wallFriction,
                                          categories: [wallCategory],
                                          zRotation: Physics.wallZRotation,
-                                         impulse: Physics.wallImpulse)
+                                         impulse: Physics.wallImpulse,
+                                         angularImpulse: Physics.wallAngularImpulse)
+        return component
+    }
+
+    func createPeg(of size: CGSize, for pegId: EntityID) -> PhysicsComponent {
+        let pegCategory = PegCategory(entityId: pegId)
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.pegMass, velocity: .zero,
+                                         affectedByGravity: Physics.pegGravity,
+                                         linearDamping: Physics.pegDamping,
+                                         isDynamic: Physics.pegIsDynamic,
+                                         allowsRotation: Physics.pegRotation,
+                                         restitution: Physics.pegCor,
+                                         friction: Physics.pegFriction,
+                                         categories: [pegCategory],
+                                         zRotation: Physics.pegZRotation,
+                                         impulse: Physics.pegImpulse,
+                                         angularImpulse: Physics.pegAngularImpulse)
         return component
     }
 }

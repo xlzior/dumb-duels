@@ -15,6 +15,7 @@ struct Sizes {
     static let walls = [CGSize(width: 1, height: game.height),
                         CGSize(width: 1, height: game.height),
                         CGSize(width: game.width, height: 1)]
+    static let peg = CGSize(width: 30, height: 30)
 
     static func axeOffsetFromPlayer(facing direction: FaceDirection) -> CGFloat {
         (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * direction.rawValue

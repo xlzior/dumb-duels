@@ -27,6 +27,7 @@ class PhysicsComponent: Component {
     var friction: CGFloat
     var zRotation: CGFloat
     var impulse: CGVector
+    var angularImpulse: CGFloat
     var categories: [any CollisionCategory]
     var toBeRemoved: Bool
 
@@ -34,7 +35,8 @@ class PhysicsComponent: Component {
                   mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                   linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                   restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
-                  zRotation: CGFloat, impulse: CGVector, toBeRemoved: Bool = false) {
+                  zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat,
+                  toBeRemoved: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure(
                 """
@@ -75,6 +77,7 @@ class PhysicsComponent: Component {
         self.friction = friction
         self.zRotation = zRotation
         self.impulse = impulse
+        self.angularImpulse = angularImpulse
         self.categories = categories
         self.toBeRemoved = toBeRemoved
     }
@@ -83,21 +86,23 @@ class PhysicsComponent: Component {
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
-                     zRotation: CGFloat, impulse: CGVector) {
+                     zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
         self.init(shape: .circle, radius: radius, size: nil, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse)!
+                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse,
+                  angularImpulse: angularImpulse)!
     }
 
     convenience init(rectangleOf size: CGSize,
                      mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                      linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                      restitution: CGFloat, friction: CGFloat, categories: [any CollisionCategory],
-                     zRotation: CGFloat, impulse: CGVector) {
+                     zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
         self.init(shape: .rectangle, radius: nil, size: size, mass: mass,
                   velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse)!
+                  friction: friction, categories: categories, zRotation: zRotation, impulse: impulse,
+                  angularImpulse: angularImpulse)!
     }
 }

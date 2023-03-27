@@ -11,24 +11,19 @@ class GameManager {
     private let renderSystemDetails: RenderSystemDetails
 
     private let entityManager: EntityManager
-    private let entityCreator: EntityCreator
-
     private let systemManager: SystemManager
     private let eventManager: EventManager
 
     private let simulator: Simulator
 
+    // TODO: debugging only
     var event: Event?
     var useSpriteKitView = false
 
     init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
 
-        let entityManager = EntityManager()
-        let entityCreator = EntityCreator(entityManager: entityManager)
-        self.entityManager = entityManager
-        self.entityCreator = entityCreator
-
+        self.entityManager = EntityManager()
         let systemManager = SystemManager()
         let eventManager = EventManager(systems: systemManager)
         self.systemManager = systemManager
@@ -51,6 +46,8 @@ class GameManager {
     }
 
     private func setUpEntities() {
+        let entityCreator = EntityCreator(entityManager: entityManager)
+
         for playerIndex in 0...1 {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
@@ -65,7 +62,8 @@ class GameManager {
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
-                of: Sizes.axe
+                of: Sizes.axe,
+                facing: faceDirection
             )
 
             let player = entityCreator.createPlayer(
@@ -83,10 +81,14 @@ class GameManager {
         for wallIndex in 0..<3 {
             let wall = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
+
+        for pegPosition in Positions.pegs {
+            let peg = entityCreator.createPeg(at: pegPosition, of: Sizes.peg)
+        }
     }
 
     private func setUpSystems() {
-        systemManager.register(InputSystem(for: entityManager))
+        systemManager.register(AxeGameInputSystem(for: entityManager))
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
@@ -99,10 +101,6 @@ class GameManager {
                 details: renderSystemDetails
             ))
         }
-    }
-
-    private func updateSystems() {
-        systemManager.update()
     }
 
     private func startGame() {
@@ -122,12 +120,12 @@ class GameManager {
 
 // MARK: - Handle Input
 extension GameManager {
-    func handleButtonPress(for entityID: EntityID) {
-        eventManager.fire(ButtonPressEvent(entityId: entityID))
+    func handleButtonDown(for entityID: EntityID) {
+        eventManager.fire(ButtonDownEvent(entityId: entityID))
     }
 
-    func handleButtonLongPress(for entityID: EntityID) {
-        eventManager.fire(ButtonLongPressEvent(entityId: entityID))
+    func handleButtonUp(for entityID: EntityID) {
+        eventManager.fire(ButtonUpEvent(entityId: entityID))
     }
 }
 

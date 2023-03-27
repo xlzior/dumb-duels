@@ -12,10 +12,12 @@ import Foundation
 class EntityCreator {
     private let entityManager: EntityManager
     private let physicsCreator: PhysicsCreator
+    private let animationCreator: AnimationCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.physicsCreator = PhysicsCreator()
+        self.animationCreator = AnimationCreator()
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
@@ -94,6 +96,8 @@ class EntityCreator {
         player.assign(component: scoreComponent)
         let physicsComponent = physicsCreator.createPlayer(of: size)
         player.assign(component: physicsComponent)
+        let animationComponent = animationCreator.createPlayerHitAnimation()
+        player.assign(component: animationComponent)
 
         entityManager.assign(component: PlayerComponent(idx: index), to: player)
         player.assign(component: HoldingAxeComponent(axeEntityID: axeEntityID))
@@ -171,5 +175,18 @@ class EntityCreator {
         axeParticle.assign(component: physicsComponent)
 
         return axeParticle
+    }
+
+    func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
+        let battleText = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "battle")
+        }
+        let animationComponent = animationCreator.createBattleFlashAnimation()
+        battleText.assign(component: animationComponent)
+
+        return battleText
     }
 }

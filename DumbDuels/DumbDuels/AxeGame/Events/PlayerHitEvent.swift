@@ -15,11 +15,13 @@ struct PlayerHitEvent: Event {
 
     func execute(with systems: SystemManager) {
         guard let scoreSystem = systems.get(ofType: ScoreSystem.self),
-              let axeParticleSystem = systems.get(ofType: AxeParticleSystem.self) else {
+              let axeParticleSystem = systems.get(ofType: AxeParticleSystem.self),
+              let playerSystem = systems.get(ofType: PlayerSystem.self) else {
             return
         }
 
         scoreSystem.handleAxeHitPlayer(withEntityId: entityId)
         axeParticleSystem.createParticlesFrom(axeEntityId: hitBy)
+        playerSystem.handleAxeHitPlayer(withEntityId: entityId)
     }
 }

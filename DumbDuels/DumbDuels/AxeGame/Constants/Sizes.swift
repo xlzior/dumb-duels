@@ -16,6 +16,7 @@ extension Sizes {
                         CGSize(width: 1, height: Sizes.game.height),
                         CGSize(width: Sizes.game.width, height: 1)]
     static let peg = CGSize(width: 30, height: 30)
+    static let battleText = CGSize(width: 300, height: 50)
 
     static func axeOffsetFromPlayer(facing direction: FaceDirection) -> CGFloat {
         (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * direction.rawValue

@@ -11,15 +11,17 @@ import DuelKit
 class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
+    unowned var entityCreator: EntityCreator
 
     private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
+        self.entityCreator = entityCreator
         self.thrownAxe = entityManager.assemblage(
             requiredComponents: AxeComponent.self, PositionComponent.self,
             RotationComponent.self, PhysicsComponent.self)
@@ -47,12 +49,15 @@ class RoundSystem: System {
     }
 
     func reset() {
+        // battle animation
+        let battleText = entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+
         // Destroy all thrown axes since they are out of bounds
         for (_, _, _, physicsComponent) in thrownAxe {
             physicsComponent.toBeRemoved = true
             physicsComponent.shouldDestroyEntityWhenRemove = true
         }
-        let entityCreator = EntityCreator(entityManager: entityManager)
+
         for (playerEntity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
             // create new axe
             let axe = entityCreator.createAxe(

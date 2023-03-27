@@ -7,22 +7,23 @@
 
 import CoreGraphics
 
-class AnimationComponent: ComponentInitializable {
-    var id: ComponentID
-    var isPlaying: Bool
-    var shouldDestroyEntityOnEnd: Bool
+public class AnimationComponent: ComponentInitializable {
+    public var id: ComponentID
+    public var isPlaying: Bool
+    public var shouldDestroyEntityOnEnd: Bool
 
-    var animationFrames: [AnimationFrame]
-    var currentFrameIdx: Int
+    public var animationFrames: [AnimationFrame]
+    public var currentFrameIdx: Int
+    public var timeElapsedForCurrentFrame: Double
+
     var nextFrameIdx: Int {
         let nextIdx = currentFrameIdx + 1
         return nextIdx < animationFrames.count ? nextIdx : 0
     }
     var originalNumRepeat: Int
     var numRepeat: Int
-    var timeElapsedForCurrentFrame: Double
 
-    required init() {
+    public required init() {
         self.id = ComponentID()
         self.isPlaying = false
         self.shouldDestroyEntityOnEnd = false
@@ -34,7 +35,7 @@ class AnimationComponent: ComponentInitializable {
         self.timeElapsedForCurrentFrame = 0
     }
 
-    init(isPlaying: Bool = true, shouldDestroyEntityOnEnd: Bool = false, frames: [AnimationFrame],
+    public init(isPlaying: Bool = true, shouldDestroyEntityOnEnd: Bool = false, frames: [AnimationFrame],
          currentFrameIdx: Int = 0, numRepeat: Int, timeElapsed: Double = 0) {
         self.id = ComponentID()
         self.isPlaying = isPlaying

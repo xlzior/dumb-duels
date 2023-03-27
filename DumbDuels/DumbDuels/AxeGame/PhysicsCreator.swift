@@ -111,4 +111,21 @@ class PhysicsCreator {
                                          angularImpulse: Physics.axeParticleInitialAngularImpulse)
         return component
     }
+
+    func createLava(of size: CGSize, for lavaId: EntityID) -> PhysicsComponent {
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.lavaMass, velocity: .zero,
+                                         affectedByGravity: Physics.lavaGravity,
+                                         linearDamping: Physics.lavaDamping,
+                                         isDynamic: Physics.lavaIsDynamic,
+                                         allowsRotation: Physics.lavaRotation,
+                                         restitution: Physics.lavaCor,
+                                         friction: Physics.lavaFriction,
+                                         ownBitmask: Collisions.lavaBitmask,
+                                         collideBitmask: Collisions.lavaCollideBitmask,
+                                         contactBitmask: Collisions.lavaContactBitmask,
+                                         zRotation: Physics.lavaZRotation,
+                                         impulse: Physics.lavaImpulse,
+                                         angularImpulse: Physics.lavaAngularImpulse)
+        return component
+    }
 }

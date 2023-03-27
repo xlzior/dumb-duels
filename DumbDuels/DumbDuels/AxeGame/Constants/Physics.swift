@@ -57,6 +57,18 @@ struct Physics {
     static let pegImpulse: CGVector = .zero
     static let pegAngularImpulse: CGFloat = .zero
 
+    // Lava physics constants
+    static let lavaMass: CGFloat = 1.0
+    static let lavaGravity = false
+    static let lavaCor: CGFloat = 0.8
+    static let lavaIsDynamic = false
+    static let lavaZRotation = PhysicsEngineDefaults.zRotation
+    static let lavaRotation = false
+    static let lavaFriction = PhysicsEngineDefaults.friction
+    static let lavaDamping = PhysicsEngineDefaults.linearDamping
+    static let lavaImpulse: CGVector = .zero
+    static let lavaAngularImpulse: CGFloat = .zero
+
     // Wall physics constants
     static let wallMass: CGFloat = 1.0
     static let wallGravity = false

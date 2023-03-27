@@ -184,8 +184,9 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: Assets.lava)
         }
-//        let physicsComponent = physicsCreator.createPeg(of: size, for: lava.id)
-//        lava.assign(component: physicsComponent)
+
+        let physicsComponent = physicsCreator.createLava(of: size, for: lava.id)
+        lava.assign(component: physicsComponent)
 
         return lava
     }

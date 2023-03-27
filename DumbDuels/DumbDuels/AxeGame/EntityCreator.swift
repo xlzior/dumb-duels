@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import DuelKit
 
 class EntityCreator {
     private let entityManager: EntityManager
@@ -13,7 +14,7 @@ class EntityCreator {
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = PhysicsCreator(entityManager: entityManager)
+        self.physicsCreator = PhysicsCreator()
     }
 
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
@@ -84,11 +85,12 @@ class EntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "player")
-            ScoreComponent()
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
+        let scoreComponent = ScoreComponent(for: player.id)
+        player.assign(component: scoreComponent)
         let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
         player.assign(component: physicsComponent)
 

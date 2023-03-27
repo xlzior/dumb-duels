@@ -6,16 +6,10 @@
 //
 
 import Foundation
+import DuelKit
 
 class PhysicsCreator {
-    private let entityManager: EntityManager
-
-    init(entityManager: EntityManager) {
-        self.entityManager = EntityManager()
-    }
-
     func createAxe(of size: CGSize, for axeId: EntityID) -> PhysicsComponent {
-        let axeCategory = AxeCategory(entityId: axeId)
         let component = PhysicsComponent(circleOf: size.height / 2, mass: Physics.axeMass, velocity: .zero,
                                          affectedByGravity: Physics.axeGravity,
                                          linearDamping: Physics.axeDamping,
@@ -23,7 +17,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.axeRotation,
                                          restitution: Physics.axeCor,
                                          friction: Physics.axeFriction,
-                                         categories: [axeCategory],
+                                         ownBitmask: Collisions.axeBitmask,
+                                         collideBitmask: Collisions.axeCollideBitmask,
+                                         contactBitmask: Collisions.axeContactBitmask,
                                          zRotation: Physics.axeZRotation,
                                          impulse: Physics.axeInitialImpulse,
                                          angularImpulse: Physics.axeInitialAngularImpulse)
@@ -31,7 +27,6 @@ class PhysicsCreator {
     }
 
     func createPlayer(of size: CGSize, for playerId: EntityID) -> PhysicsComponent {
-        let playerCategory = PlayerCategory(entityId: playerId)
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.playerMass, velocity: .zero,
                                          affectedByGravity: Physics.playerGravity,
                                          linearDamping: Physics.playerDamping,
@@ -39,7 +34,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.playerRotation,
                                          restitution: Physics.playerCor,
                                          friction: Physics.playerFriction,
-                                         categories: [playerCategory],
+                                         ownBitmask: Collisions.playerBitmask,
+                                         collideBitmask: Collisions.playerCollideBitmask,
+                                         contactBitmask: Collisions.playerContactBitmask,
                                          zRotation: Physics.playerZRotation,
                                          impulse: Physics.playerImpulse,
                                          angularImpulse: Physics.playerAngularImpulse)
@@ -47,7 +44,6 @@ class PhysicsCreator {
     }
 
     func createPlatform(of size: CGSize, for platformId: EntityID) -> PhysicsComponent {
-        let platformCategory = PlatformCategory(entityId: platformId)
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.platformMass, velocity: .zero,
                                          affectedByGravity: Physics.platformGravity,
                                          linearDamping: Physics.platformDamping,
@@ -55,7 +51,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.platformRotation,
                                          restitution: Physics.platformCor,
                                          friction: Physics.platformFriction,
-                                         categories: [platformCategory],
+                                         ownBitmask: Collisions.platformBitmask,
+                                         collideBitmask: Collisions.platformCollideBitmask,
+                                         contactBitmask: Collisions.platformContactBitmask,
                                          zRotation: Physics.platformZRotation,
                                          impulse: Physics.platformImpulse,
                                          angularImpulse: Physics.platformAngularImpulse)
@@ -63,7 +61,6 @@ class PhysicsCreator {
     }
 
     func createWall(of size: CGSize, for wallId: EntityID) -> PhysicsComponent {
-        let wallCategory = WallCategory(entityId: wallId)
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.wallMass, velocity: .zero,
                                          affectedByGravity: Physics.wallGravity,
                                          linearDamping: Physics.wallDamping,
@@ -71,7 +68,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.wallRotation,
                                          restitution: Physics.wallCor,
                                          friction: Physics.wallFriction,
-                                         categories: [wallCategory],
+                                         ownBitmask: Collisions.wallBitmask,
+                                         collideBitmask: Collisions.wallCollideBitmask,
+                                         contactBitmask: Collisions.wallContactBitmask,
                                          zRotation: Physics.wallZRotation,
                                          impulse: Physics.wallImpulse,
                                          angularImpulse: Physics.wallAngularImpulse)
@@ -79,7 +78,6 @@ class PhysicsCreator {
     }
 
     func createPeg(of size: CGSize, for pegId: EntityID) -> PhysicsComponent {
-        let pegCategory = PegCategory(entityId: pegId)
         let component = PhysicsComponent(rectangleOf: size, mass: Physics.pegMass, velocity: .zero,
                                          affectedByGravity: Physics.pegGravity,
                                          linearDamping: Physics.pegDamping,
@@ -87,7 +85,9 @@ class PhysicsCreator {
                                          allowsRotation: Physics.pegRotation,
                                          restitution: Physics.pegCor,
                                          friction: Physics.pegFriction,
-                                         categories: [pegCategory],
+                                         ownBitmask: Collisions.pegBitmask,
+                                         collideBitmask: Collisions.pegCollideBitmask,
+                                         contactBitmask: Collisions.pegContactBitmask,
                                          zRotation: Physics.pegZRotation,
                                          impulse: Physics.pegImpulse,
                                          angularImpulse: Physics.pegAngularImpulse)

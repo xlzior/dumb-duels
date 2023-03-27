@@ -5,7 +5,7 @@
 //  Created by Bing Sen Lim on 20/3/23.
 //
 
-import Foundation
+import DuelKit
 
 class SyncXPositionComponent: Component {
     var id: ComponentID

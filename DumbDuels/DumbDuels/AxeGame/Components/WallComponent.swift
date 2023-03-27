@@ -5,7 +5,7 @@
 //  Created by Bryan Kwok on 20/3/23.
 //
 
-import Foundation
+import DuelKit
 
 class WallComponent: Component {
     var id: ComponentID

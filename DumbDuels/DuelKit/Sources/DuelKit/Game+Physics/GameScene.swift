@@ -7,8 +7,6 @@
 
 import SpriteKit
 
-// typealias BodyID = EntityID
-
 class GameScene: Scene {
     private(set) var baseGameScene: BaseGameScene
     private var bodyIDPhysicsMap: [EntityID: PhysicsBody]

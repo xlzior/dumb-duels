@@ -32,6 +32,7 @@ public class PhysicsComponent: Component {
     public var collideBitmask: UInt32
     public var contactBitmask: UInt32
     public var toBeRemoved: Bool
+    public var shouldDestroyEntityWhenRemove: Bool
 
     private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
                   mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
@@ -39,7 +40,7 @@ public class PhysicsComponent: Component {
                   restitution: CGFloat, friction: CGFloat, ownBitmask: UInt32,
                   collideBitmask: UInt32, contactBitmask: UInt32,
                   zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat,
-                  toBeRemoved: Bool = false) {
+                  toBeRemoved: Bool = false, shouldDestroyEntityWhenRemove: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure(
                 """
@@ -85,6 +86,7 @@ public class PhysicsComponent: Component {
         self.collideBitmask = collideBitmask
         self.contactBitmask = contactBitmask
         self.toBeRemoved = toBeRemoved
+        self.shouldDestroyEntityWhenRemove = shouldDestroyEntityWhenRemove
     }
 
     public convenience init(circleOf radius: CGFloat, mass: CGFloat, velocity: CGVector,

@@ -47,22 +47,25 @@ class RoundSystem: System {
     }
 
     func reset() {
-        for (entity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
+        // Destroy all thrown axes since they are out of bounds
+        for (_, _, _, physicsComponent) in thrownAxe {
+            physicsComponent.toBeRemoved = true
+            physicsComponent.shouldDestroyEntityWhenRemove = true
+        }
+        let entityCreator = EntityCreator(entityManager: entityManager)
+        for (playerEntity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
+            // create new axe
+            let axe = entityCreator.createAxe(
+                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
+                from: Positions.players[player.idx],
+                of: Sizes.axe,
+                facing: playerPosition.faceDirection
+            )
+
             // reset player
-            player.fsm.changeState(name: .holdingAxe)
+            playerEntity.assign(component: HoldingAxeComponent(axeEntityID: axe.id))
             playerPosition.position = Positions.players[player.idx]
             playerPhysics.velocity = CGVector.zero
-
-            // reset axe
-            guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(for: entity.id),
-                  let (_, axePosition, axeRotation, physics) =
-                    thrownAxe.getComponents(for: holdingAxe.axeEntityID) else {
-                return
-            }
-            let horizontalOffset = Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection)
-            axePosition.position = playerPosition.position + CGPoint(x: horizontalOffset, y: 0)
-            axeRotation.angleInRadians = 0
-            physics.toBeRemoved = true
         }
 
         for (throwStrengthComponent, sizeComponent) in throwStrength {

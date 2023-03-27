@@ -72,6 +72,9 @@ public class PhysicsSystem: System {
             guard !physics.toBeRemoved else {
                 scene.removeBody(for: entity.id.id)
                 entityManager.remove(componentType: PhysicsComponent.typeId, from: entity.id)
+                if physics.shouldDestroyEntityWhenRemove {
+                    entityManager.destroy(entity: entity)
+                }
                 continue
             }
             if let physicsBody = initializePhysicsBodyFrom(positionComponent: position,

@@ -7,6 +7,7 @@
 
 import CoreGraphics
 import DuelKit
+import Foundation
 
 class EntityCreator {
     private let entityManager: EntityManager
@@ -91,16 +92,11 @@ class EntityCreator {
         }
         let scoreComponent = ScoreComponent(for: player.id)
         player.assign(component: scoreComponent)
-        let physicsComponent = physicsCreator.createPlayer(of: size, for: player.id)
+        let physicsComponent = physicsCreator.createPlayer(of: size)
         player.assign(component: physicsComponent)
 
-        let fsm = EntityStateMachine<PlayerComponent.State>(entity: player)
-        fsm.createState(name: .holdingAxe)
-            .addInstance(HoldingAxeComponent(axeEntityID: axeEntityID))
-        fsm.createState(name: .notHoldingAxe)
-
-        entityManager.assign(component: PlayerComponent(fsm: fsm, idx: index), to: player)
-        fsm.changeState(name: .holdingAxe)
+        entityManager.assign(component: PlayerComponent(idx: index), to: player)
+        player.assign(component: HoldingAxeComponent(axeEntityID: axeEntityID))
 
         return player
     }
@@ -113,7 +109,7 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
-        let physicsComponent = physicsCreator.createPlatform(of: size, for: platform.id)
+        let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)
 
         return platform
@@ -128,7 +124,7 @@ class EntityCreator {
             SpriteComponent(assetName: "platform")
             PlatformComponent()
         }
-        let physicsComponent = physicsCreator.createPlatform(of: size, for: platform.id)
+        let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)
 
         return platform
@@ -141,7 +137,7 @@ class EntityCreator {
             WallComponent()
         }
 
-        let physicsComponent = physicsCreator.createWall(of: size, for: wall.id)
+        let physicsComponent = physicsCreator.createWall(of: size)
         wall.assign(component: physicsComponent)
 
         return wall
@@ -156,9 +152,24 @@ class EntityCreator {
             PegComponent()
         }
 
-        let physicsComponent = physicsCreator.createPeg(of: size, for: peg.id)
+        let physicsComponent = physicsCreator.createPeg(of: size)
         peg.assign(component: physicsComponent)
 
         return peg
+    }
+
+    @discardableResult
+    func createAxeParticle(at position: CGPoint, of size: CGSize, velocity: CGVector, createdTime: Date) -> Entity {
+        let axeParticle = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: "peg")
+            AxeParticleComponent(createdTime: createdTime)
+        }
+        let physicsComponent = physicsCreator.createParticle(of: size.width / 2, initialVelocity: velocity)
+        axeParticle.assign(component: physicsComponent)
+
+        return axeParticle
     }
 }

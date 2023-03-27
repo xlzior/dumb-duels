@@ -80,6 +80,7 @@ class AxeGameManager: GameManager {
         systemManager.register(AxeGameInputSystem(for: entityManager))
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
+        systemManager.register(AxeParticleSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))

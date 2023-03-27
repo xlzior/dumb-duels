@@ -68,4 +68,16 @@ struct Physics {
     static let wallDamping = PhysicsEngineDefaults.linearDamping
     static let wallImpulse: CGVector = .zero
     static let wallAngularImpulse: CGFloat = .zero
+
+    // Axe particle constants
+    static let axeParticleMass: CGFloat = 1.0
+    static let axeParticleGravity = true
+    static let axeParticleCor: CGFloat = 0.0
+    static let axeParticleIsDynamic = true
+    static let axeParticleZRotation = PhysicsEngineDefaults.zRotation
+    static let axeParticleRotation = false
+    static let axeParticleFriction = PhysicsEngineDefaults.friction
+    static let axeParticleDamping = PhysicsEngineDefaults.linearDamping
+    static let axeParticleInitialImpulse: CGVector = .zero
+    static let axeParticleInitialAngularImpulse: CGFloat = .zero
 }

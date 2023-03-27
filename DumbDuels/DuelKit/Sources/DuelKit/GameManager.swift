@@ -14,7 +14,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public let systemManager: SystemManager
     public let eventManager: EventManager
 
-    public let simulator: Simulatable
+    public var simulator: Simulatable
 
     public init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails

@@ -17,7 +17,7 @@ public class PhysicsSystem: System {
     private let contactHandlers: ContactHandlerMap
 
     public init(for entityManager: EntityManager, eventFirer: EventFirer,
-                scene: GameScene, contactHandlers: ContactHandlerMap) {
+                scene: Scene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.scene = scene

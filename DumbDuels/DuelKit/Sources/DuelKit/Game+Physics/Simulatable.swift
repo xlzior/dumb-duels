@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol Simulatable {
-    var gameScene: GameScene { get set }
+    var gameScene: Scene { get set }
     func start()
     func stop()
 }

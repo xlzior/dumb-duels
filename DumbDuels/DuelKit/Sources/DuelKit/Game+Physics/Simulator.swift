@@ -9,7 +9,7 @@ import SpriteKit
 
 public class Simulator: Simulatable {
     let view: SKView
-    public var gameScene: GameScene
+    public var gameScene: Scene
 
     public init() {
         self.view = SKView()
@@ -21,6 +21,10 @@ public class Simulator: Simulatable {
     // Entities and their physics information
 
     public func start() {
+        guard let gameScene = self.gameScene as? GameScene else {
+            assertionFailure("Internal representation of Scene should use GameScene")
+            return
+        }
         view.presentScene(gameScene.baseGameScene)
     }
 

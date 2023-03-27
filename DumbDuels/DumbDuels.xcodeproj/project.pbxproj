@@ -16,6 +16,12 @@
 		7B13494F29D1E32700E43A7F /* SpaceshipConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494E29D1E32700E43A7F /* SpaceshipConstants.swift */; };
 		7B13495129D1F14F00E43A7F /* WraparoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */; };
 		7B13495329D1F42600E43A7F /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495229D1F42600E43A7F /* CGFloat+Extensions.swift */; };
+		7B13495529D1F89E00E43A7F /* RockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495429D1F89E00E43A7F /* RockComponent.swift */; };
+		7B13495729D1F94300E43A7F /* BulletComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495629D1F94300E43A7F /* BulletComponent.swift */; };
+		7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495829D1FE8600E43A7F /* RockHitPlayerEvent.swift */; };
+		7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */; };
+		7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495C29D2002C00E43A7F /* GunComponent.swift */; };
+		7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495E29D203E800E43A7F /* GunSystem.swift */; };
 		7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */; };
 		7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */; };
 		7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2A3DD529CD81A500C735D2 /* PegComponent.swift */; };
@@ -94,6 +100,12 @@
 		7B13494E29D1E32700E43A7F /* SpaceshipConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipConstants.swift; sourceTree = "<group>"; };
 		7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WraparoundSystem.swift; sourceTree = "<group>"; };
 		7B13495229D1F42600E43A7F /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		7B13495429D1F89E00E43A7F /* RockComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockComponent.swift; sourceTree = "<group>"; };
+		7B13495629D1F94300E43A7F /* BulletComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletComponent.swift; sourceTree = "<group>"; };
+		7B13495829D1FE8600E43A7F /* RockHitPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockHitPlayerEvent.swift; sourceTree = "<group>"; };
+		7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletHitPlayerEvent.swift; sourceTree = "<group>"; };
+		7B13495C29D2002C00E43A7F /* GunComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunComponent.swift; sourceTree = "<group>"; };
+		7B13495E29D203E800E43A7F /* GunSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunSystem.swift; sourceTree = "<group>"; };
 		7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithThrowStrengthComponent.swift; sourceTree = "<group>"; };
 		7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowStrengthComponent.swift; sourceTree = "<group>"; };
 		7B2A3DD529CD81A500C735D2 /* PegComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegComponent.swift; sourceTree = "<group>"; };
@@ -290,6 +302,9 @@
 			isa = PBXGroup;
 			children = (
 				7BCC620329D1D7790092B602 /* SpaceshipComponent.swift */,
+				7B13495429D1F89E00E43A7F /* RockComponent.swift */,
+				7B13495629D1F94300E43A7F /* BulletComponent.swift */,
+				7B13495C29D2002C00E43A7F /* GunComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -300,6 +315,7 @@
 				7BCC620129D1D74F0092B602 /* SpaceshipGameInputSystem.swift */,
 				7B13494C29D1E2AB00E43A7F /* RotationSystem.swift */,
 				7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */,
+				7B13495E29D203E800E43A7F /* GunSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -318,6 +334,8 @@
 		7BCC620029D1D62D0092B602 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7B13495829D1FE8600E43A7F /* RockHitPlayerEvent.swift */,
+				7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -518,14 +536,17 @@
 				7BE0FDF929D03A120035AE98 /* CGPoint+Extensions.swift in Sources */,
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SpaceshipConstants.swift in Sources */,
+				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
 				6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AxeGameManager.swift in Sources */,
+				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				7B13494729D1DB7700E43A7F /* SpaceshipPhysics.swift in Sources */,
 				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				7BCC620C29D1D7AF0092B602 /* SpaceshipGameViewController.swift in Sources */,
+				7B13495529D1F89E00E43A7F /* RockComponent.swift in Sources */,
 				7B13495129D1F14F00E43A7F /* WraparoundSystem.swift in Sources */,
 				7B13494B29D1DEA700E43A7F /* SpaceshipSizes.swift in Sources */,
 				7BCC61FC29D1D6170092B602 /* SpaceshipPhysicsCreator.swift in Sources */,
@@ -558,8 +579,12 @@
 				7BE0FDFA29D03A120035AE98 /* CGVector+Extensions.swift in Sources */,
 				A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */,
 				A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */,
+				8CB0FA6329D17DC000C2FAC8 /* AxeParticleComponent.swift in Sources */,
+				7B13495729D1F94300E43A7F /* BulletComponent.swift in Sources */,
+				7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */,
 				7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */,
 				6F67C71329C462DD009E0579 /* Physics.swift in Sources */,
+				7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */,
 				7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */,
 				7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */,
 				7B13495329D1F42600E43A7F /* CGFloat+Extensions.swift in Sources */,

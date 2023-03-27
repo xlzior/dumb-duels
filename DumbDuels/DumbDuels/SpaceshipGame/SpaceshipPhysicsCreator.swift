@@ -27,4 +27,42 @@ class SpaceshipPhysicsCreator {
 
         return component
     }
+
+    func createRock(of size: CGSize, pointing: CGFloat) -> PhysicsComponent {
+        let component = PhysicsComponent(
+            circleOf: size.height / 2, mass: SpaceshipPhysics.rockMass, velocity: .zero,
+            affectedByGravity: SpaceshipPhysics.rockGravity,
+            linearDamping: SpaceshipPhysics.rockDamping,
+            isDynamic: SpaceshipPhysics.rockIsDynamic,
+            allowsRotation: SpaceshipPhysics.rockRotation,
+            restitution: SpaceshipPhysics.rockCor,
+            friction: SpaceshipPhysics.rockFriction,
+            ownBitmask: SpaceshipCollisions.rockBitmask,
+            collideBitmask: SpaceshipCollisions.rockCollideBitmask,
+            contactBitmask: SpaceshipCollisions.rockContactBitmask,
+            zRotation: SpaceshipPhysics.rockZRotation,
+            impulse: SpaceshipConstants.propulsionForce * CGVector(angle: Double.pi / 2 - pointing),
+            angularImpulse: SpaceshipPhysics.rockAngularImpulse)
+
+        return component
+    }
+
+    func createBullet(of size: CGSize, pointing: CGFloat) -> PhysicsComponent {
+        let component = PhysicsComponent(
+            rectangleOf: size, mass: SpaceshipPhysics.bulletMass, velocity: .zero,
+            affectedByGravity: SpaceshipPhysics.bulletGravity,
+            linearDamping: SpaceshipPhysics.bulletDamping,
+            isDynamic: SpaceshipPhysics.bulletIsDynamic,
+            allowsRotation: SpaceshipPhysics.bulletRotation,
+            restitution: SpaceshipPhysics.bulletCor,
+            friction: SpaceshipPhysics.bulletFriction,
+            ownBitmask: SpaceshipCollisions.bulletBitmask,
+            collideBitmask: SpaceshipCollisions.bulletCollideBitmask,
+            contactBitmask: SpaceshipCollisions.bulletContactBitmask,
+            zRotation: SpaceshipPhysics.bulletZRotation,
+            impulse: SpaceshipConstants.propulsionForce * CGVector(angle: Double.pi / 2 - pointing),
+            angularImpulse: SpaceshipPhysics.bulletAngularImpulse)
+
+        return component
+    }
 }

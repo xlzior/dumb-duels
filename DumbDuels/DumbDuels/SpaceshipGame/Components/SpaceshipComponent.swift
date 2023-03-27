@@ -9,8 +9,10 @@ import DuelKit
 
 class SpaceshipComponent: Component {
     var id: ComponentID
+    var index: Int
 
-    init() {
+    init(index: Int) {
         self.id = ComponentID()
+        self.index = index
     }
 }

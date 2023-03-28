@@ -41,6 +41,12 @@ public class RenderSystem: System {
         renderScores()
     }
 
+    public func handleGameOver() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.gameController.goToHomePage()
+        }
+    }
+
     private func renderEntities() {
         var entitiesToRemove = renderedEntities
 
@@ -58,6 +64,7 @@ public class RenderSystem: System {
 
             let renderDetails = RenderDetails(
                 spriteName: sprite.assetName,
+                alpha: sprite.alpha,
                 centerPosition: newPosition,
                 width: size.originalSize.width * size.xScale * scalingFactor,
                 height: size.originalSize.height * size.yScale * scalingFactor,

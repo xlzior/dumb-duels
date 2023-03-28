@@ -83,6 +83,10 @@ extension GameViewController: GameController {
         playerScores[playerIndex].playerID = playerEntityID
     }
 
+    public func goToHomePage() {
+        navigationController?.popViewController(animated: true)
+    }
+
     public func addView(for entityID: EntityID, with details: RenderDetails) {
         let entityView = createView(details)
         entityViews[entityID] = entityView
@@ -111,6 +115,7 @@ extension GameViewController: GameController {
     private func setUpView(_ imageView: UIImageView, _ details: RenderDetails) -> UIImageView {
         imageView.image = UIImage(named: details.spriteName)
         imageView.transform = CGAffineTransform(rotationAngle: 0)
+        imageView.alpha = details.alpha
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)

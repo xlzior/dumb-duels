@@ -94,9 +94,9 @@ class PhysicsCreator {
         return component
     }
 
-    func createParticle(of radius: CGFloat, initialVelocity: CGVector) -> PhysicsComponent {
+    func createParticle(of radius: CGFloat, with initialImpulse: CGVector) -> PhysicsComponent {
         let component = PhysicsComponent(circleOf: radius, mass: Physics.axeParticleMass,
-                                         velocity: initialVelocity,
+                                         velocity: .zero,
                                          affectedByGravity: Physics.axeParticleGravity,
                                          linearDamping: Physics.axeParticleDamping,
                                          isDynamic: Physics.axeParticleIsDynamic,
@@ -107,8 +107,25 @@ class PhysicsCreator {
                                          collideBitmask: Collisions.axeParticleCollideBitmask,
                                          contactBitmask: Collisions.axeParticleContactBitmask,
                                          zRotation: Physics.axeParticleZRotation,
-                                         impulse: Physics.axeParticleInitialImpulse,
+                                         impulse: initialImpulse,
                                          angularImpulse: Physics.axeParticleInitialAngularImpulse)
+        return component
+    }
+
+    func createLava(of size: CGSize, for lavaId: EntityID) -> PhysicsComponent {
+        let component = PhysicsComponent(rectangleOf: size, mass: Physics.lavaMass, velocity: .zero,
+                                         affectedByGravity: Physics.lavaGravity,
+                                         linearDamping: Physics.lavaDamping,
+                                         isDynamic: Physics.lavaIsDynamic,
+                                         allowsRotation: Physics.lavaRotation,
+                                         restitution: Physics.lavaCor,
+                                         friction: Physics.lavaFriction,
+                                         ownBitmask: Collisions.lavaBitmask,
+                                         collideBitmask: Collisions.lavaCollideBitmask,
+                                         contactBitmask: Collisions.lavaContactBitmask,
+                                         zRotation: Physics.lavaZRotation,
+                                         impulse: Physics.lavaImpulse,
+                                         angularImpulse: Physics.lavaAngularImpulse)
         return component
     }
 }

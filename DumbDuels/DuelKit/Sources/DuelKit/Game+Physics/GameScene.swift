@@ -48,8 +48,7 @@ public class GameScene {
     }
 
     public func addBody(for id: BodyID, bodyToAdd: PhysicsBody) {
-        guard baseGameScene.nodes(at: bodyToAdd.position).isEmpty,
-              bodyIDPhysicsMap[id] == nil,
+        guard bodyIDPhysicsMap[id] == nil,
               physicsBodyIDMap[bodyToAdd] == nil,
               skNodePhysicsBodyMap[bodyToAdd.node] == nil else {
             assertionFailure("Trying to add an id that already exists.")

@@ -9,6 +9,7 @@ import CoreGraphics
 
 public struct RenderDetails {
     let spriteName: String
+    let alpha: CGFloat
     let centerPosition: CGPoint
     let width: CGFloat
     let height: CGFloat
@@ -16,12 +17,14 @@ public struct RenderDetails {
     let facing: FaceDirection
 
     init(spriteName: String,
+         alpha: CGFloat,
          centerPosition: CGPoint,
          width: CGFloat,
          height: CGFloat,
          rotation: CGFloat = 0,
          facing: FaceDirection = .right) {
         self.spriteName = spriteName
+        self.alpha = alpha
         self.centerPosition = centerPosition
         self.width = width
         self.height = height

@@ -9,28 +9,31 @@ import UIKit
 import DuelKit
 
 class AxeGameManager: GameManager {
+    var entityCreator: EntityCreator?
+
     override func setUpEntities() {
-        let entityCreator = EntityCreator(entityManager: entityManager)
+        let creator = EntityCreator(entityManager: entityManager)
+        entityCreator = creator
 
         for playerIndex in 0...1 {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
             let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
-            let platform = entityCreator.createPlatform(
+            let platform = creator.createPlatform(
                 withVerticalOffset: verticalOffset,
                 from: playerPosition,
                 of: Sizes.platform
             )
 
-            let axe = entityCreator.createAxe(
+            let axe = creator.createAxe(
                 withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
                 of: Sizes.axe,
                 facing: faceDirection
             )
 
-            let player = entityCreator.createPlayer(
+            let player = creator.createPlayer(
                 index: playerIndex,
                 at: playerPosition,
                 facing: faceDirection,
@@ -42,12 +45,14 @@ class AxeGameManager: GameManager {
             renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
         }
 
+        _ = creator.createLava(at: Positions.lava, of: Sizes.lava)
+
         for wallIndex in 0..<3 {
-            _ = entityCreator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
+            _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
 
         for pegPosition in Positions.pegs {
-            _ = entityCreator.createPeg(at: pegPosition, of: Sizes.peg)
+            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
         }
     }
 
@@ -56,6 +61,7 @@ class AxeGameManager: GameManager {
         let player = Collisions.playerBitmask
         let axe = Collisions.axeBitmask
         let platform = Collisions.platformBitmask
+        let lava = Collisions.lavaBitmask
 
         contactHandlers[Pair(first: player, second: axe)] = { (player: EntityID, axe: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
@@ -73,18 +79,33 @@ class AxeGameManager: GameManager {
             LandEvent(entityId: player)
         }
 
+        contactHandlers[Pair(first: axe, second: lava)] = { (axe: EntityID, _: EntityID) -> Event in
+            LavaHitEvent(axeEntityId: axe)
+        }
+
+        contactHandlers[Pair(first: lava, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+            LavaHitEvent(axeEntityId: axe)
+        }
+
         return contactHandlers
     }
 
     override func setUpSystems() {
+        guard let creator = entityCreator else {
+            return
+        }
+
         systemManager.register(AxeGameInputSystem(for: entityManager))
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
-        systemManager.register(AxeParticleSystem(for: entityManager))
-        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
+        systemManager.register(LavaSystem(entityCreator: creator))
+        systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
+        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
         systemManager.register(RenderSystem(
             for: entityManager,
             eventManger: eventManager,

@@ -11,15 +11,19 @@ import DuelKit
 class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
+    unowned var entityCreator: EntityCreator
 
     private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage1<AxeComponent>
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    private var isGameOver = false
+
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
+        self.entityCreator = entityCreator
         self.thrownAxe = entityManager.assemblage(
             requiredComponents: AxeComponent.self, PositionComponent.self,
             RotationComponent.self, PhysicsComponent.self)
@@ -41,18 +45,35 @@ class RoundSystem: System {
     }
 
     func checkWin() {
+        var winningEntities = [EntityID]()
         for (entity, _, score, _, _) in players.entityAndComponents where score.score >= 5 {
-            eventFirer.fire(GameWonEvent(entityId: entity.id))
+            winningEntities.append(entity.id)
         }
+
+        guard !winningEntities.isEmpty else {
+            return
+        }
+
+        if winningEntities.count > 1 {
+            eventFirer.fire(GameTieEvent())
+        } else {
+            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
+        }
+        isGameOver = true
     }
 
     func reset() {
+        // battle animation
+        if !isGameOver {
+            entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+        }
+
         // Destroy all thrown axes since they are out of bounds
         for (_, _, _, physicsComponent) in thrownAxe {
             physicsComponent.toBeRemoved = true
             physicsComponent.shouldDestroyEntityWhenRemove = true
         }
-        let entityCreator = EntityCreator(entityManager: entityManager)
+
         for (playerEntity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
             // create new axe
             let axe = entityCreator.createAxe(

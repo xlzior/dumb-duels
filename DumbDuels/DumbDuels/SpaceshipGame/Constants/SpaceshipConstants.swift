@@ -17,4 +17,6 @@ enum SpaceshipConstants {
     static let gunInterval: TimeInterval = 0.5
     static let numBullets = 7
     static let bulletLifespan: TimeInterval = 2.0
+
+    static let rotationStoppedInternval: TimeInterval = 1.0
 }

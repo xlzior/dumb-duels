@@ -14,7 +14,7 @@ struct SpaceshipPhysics {
     static let spaceshipCor: CGFloat = 0.8
     static let spaceshipIsDynamic = true
     static let spaceshipZRotation = PhysicsEngineDefaults.zRotation
-    static let spaceshipRotation = true
+    static let spaceshipRotation = false
     static let spaceshipFriction = PhysicsEngineDefaults.friction
     static let spaceshipDamping = PhysicsEngineDefaults.linearDamping
     static let spaceshipImpulse: CGVector = .zero

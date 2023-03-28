@@ -63,7 +63,7 @@ class SpaceshipGameManager: GameManager {
         systemManager.register(SpaceshipGameInputSystem(for: entityManager))
         systemManager.register(BulletAgeSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager))
-        systemManager.register(RotationSystem(for: entityManager))
+        systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(SpaceshipScoreSystem(for: entityManager))
         systemManager.register(PowerupSystem(for: entityManager))

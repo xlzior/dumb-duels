@@ -26,11 +26,12 @@ class SPInputSystem: InputSystem {
         // TODO: angle convention for cgvector is not the same as rotation component conventions
         // TODO: change CGVector+Extensions?
         let angle = CGVector(angle: Double.pi / 2 - rotation.angleInRadians)
-        physics.impulse = SPConstants.propulsionForce * angle
+        // set the velocity directly so there is no drifting
+        physics.velocity = SPConstants.propulsionForce * angle
 
         entityManager.remove(componentType: AutoRotateComponent.typeId, from: entityId)
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + SPConstants.rotationStoppedInternval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + SPConstants.rotationStoppedInterval) {
             self.entityManager.assign(component: AutoRotateComponent(), to: entityId)
         }
     }

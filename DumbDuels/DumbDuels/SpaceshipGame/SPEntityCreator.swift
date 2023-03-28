@@ -73,10 +73,22 @@ class SPEntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            // TODO: handle other types of powerups
-            SpriteComponent(assetName: "rockPowerup")
-            PowerupComponent(ofType: RockPowerup())
             physicsCreator.createPowerup(of: size)
+        }
+
+        let powerupComponents: [[Component]] = [
+            [
+                SpriteComponent(assetName: "gunPowerup"),
+                PowerupComponent(ofType: GunPowerup())
+            ],
+            [
+                SpriteComponent(assetName: "rockPowerup"),
+                PowerupComponent(ofType: RockPowerup())
+            ]
+        ]
+
+        for comp in powerupComponents.randomElement()! {
+            powerup.assign(component: comp)
         }
 
         return powerup

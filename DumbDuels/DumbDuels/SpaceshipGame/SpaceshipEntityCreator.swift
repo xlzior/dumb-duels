@@ -34,14 +34,14 @@ class SpaceshipEntityCreator {
     }
 
     @discardableResult
-    func createRock(at position: CGPoint, angle: CGFloat) -> Entity {
+    func createRock(at position: CGPoint, angle: CGFloat, justActivatedBy playerId: EntityID) -> Entity {
         let size = SpaceshipSizes.rock
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "rock")
-            RockComponent()
+            RockComponent(justActivatedBy: playerId)
             physicsCreator.createRock(of: size, pointing: angle)
         }
         return rock
@@ -61,5 +61,23 @@ class SpaceshipEntityCreator {
             physicsCreator.createBullet(of: size, pointing: angle)
         }
         return bullet
+    }
+
+    @discardableResult
+    func createPowerup() -> Entity {
+        let size = SpaceshipSizes.powerup
+        let position = CGPoint.random(within: Sizes.game)
+
+        let powerup = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            // TODO: handle other types of powerups
+            SpriteComponent(assetName: "rockPowerup")
+            PowerupComponent(ofType: RockPowerup())
+            physicsCreator.createPowerup(of: size)
+        }
+
+        return powerup
     }
 }

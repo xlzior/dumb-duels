@@ -65,4 +65,23 @@ class SpaceshipPhysicsCreator {
 
         return component
     }
+
+    func createPowerup(of size: CGSize) -> PhysicsComponent {
+        let component = PhysicsComponent(
+            circleOf: size.height / 2, mass: SpaceshipPhysics.powerupMass, velocity: .zero,
+            affectedByGravity: SpaceshipPhysics.powerupGravity,
+            linearDamping: SpaceshipPhysics.powerupDamping,
+            isDynamic: SpaceshipPhysics.powerupIsDynamic,
+            allowsRotation: SpaceshipPhysics.powerupRotation,
+            restitution: SpaceshipPhysics.powerupCor,
+            friction: SpaceshipPhysics.powerupFriction,
+            ownBitmask: SpaceshipCollisions.powerupBitmask,
+            collideBitmask: SpaceshipCollisions.powerupCollideBitmask,
+            contactBitmask: SpaceshipCollisions.powerupContactBitmask,
+            zRotation: SpaceshipPhysics.powerupZRotation,
+            impulse: SpaceshipPhysics.powerupImpulse,
+            angularImpulse: SpaceshipPhysics.powerupAngularImpulse)
+
+        return component
+    }
 }

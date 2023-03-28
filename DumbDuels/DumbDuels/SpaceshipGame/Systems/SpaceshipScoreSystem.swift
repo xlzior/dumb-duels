@@ -27,7 +27,19 @@ class SpaceshipScoreSystem: System {
         reset()
     }
 
-    func handleRockHitPlayer(playerId: EntityID) {
+    func handleRockHitPlayer(rockId: EntityID, playerId: EntityID) {
+        guard let rock: RockComponent = entityManager.getComponent(
+            ofType: RockComponent.typeId, for: rockId) else {
+            return
+        }
+
+        if let rockActivatedBy = rock.playerId,
+           rockActivatedBy == playerId {
+            // first collision doesn't count
+            rock.playerId = nil
+            return
+        }
+
         incrementScoreFor(everyoneBut: playerId)
     }
 

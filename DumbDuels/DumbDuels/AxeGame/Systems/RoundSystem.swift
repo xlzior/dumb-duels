@@ -14,7 +14,8 @@ class RoundSystem: System {
 
     private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage2<AxeComponent, SyncXPositionComponent>
-    private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
+    private var players: Assemblage5<PlayerComponent, ScoreComponent, PositionComponent,
+                                     PhysicsComponent, SyncXPositionComponent>
     private var platforms: Assemblage2<PlatformComponent, PositionComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
@@ -30,7 +31,7 @@ class RoundSystem: System {
             excludedComponents: PhysicsComponent.self)
         self.players = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, ScoreComponent.self,
-            PositionComponent.self, PhysicsComponent.self)
+            PositionComponent.self, PhysicsComponent.self, SyncXPositionComponent.self)
         self.platforms = entityManager.assemblage(
             requiredComponents: PlatformComponent.self, PositionComponent.self)
         self.throwStrength = entityManager.assemblage(
@@ -45,7 +46,7 @@ class RoundSystem: System {
     }
 
     func checkWin() {
-        for (entity, _, score, _, _) in players.entityAndComponents where score.score >= 5 {
+        for (entity, _, score, _, _, _) in players.entityAndComponents where score.score >= 5 {
             eventFirer.fire(GameWonEvent(entityId: entity.id))
         }
     }
@@ -57,17 +58,13 @@ class RoundSystem: System {
             physicsComponent.shouldDestroyEntityWhenRemove = true
         }
         let entityCreator = EntityCreator(entityManager: entityManager)
-        var platformIds: [EntityID] = []
-        for platformEntity in platforms.entities {
-            platformIds.append(platformEntity.id)
-        }
-        for (playerEntity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
+        for (playerEntity, player, _, playerPosition, playerPhysics, playerSyncX) in players.entityAndComponents {
             // create new axe
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
                 from: Positions.players[player.idx],
                 of: Sizes.axe,
-                facing: playerPosition.faceDirection, onPlatform: platformIds[player.idx]
+                facing: playerPosition.faceDirection, onPlatform: playerSyncX.syncFrom
             )
 
             // reset player

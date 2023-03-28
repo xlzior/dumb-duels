@@ -1,5 +1,5 @@
 //
-//  SpaceshipGameManager.swift
+//  SPGameManager.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 27/3/23.
@@ -8,14 +8,14 @@
 import CoreGraphics
 import DuelKit
 
-class SpaceshipGameManager: GameManager {
+class SPGameManager: GameManager {
     override func setUpEntities() {
-        let entityCreator = SpaceshipEntityCreator(entityManager: entityManager)
+        let entityCreator = SPEntityCreator(entityManager: entityManager)
 
         for index in 0...1 {
             let position = CGPoint.random(within: Sizes.game)
             // TODO: make sure the ships don't already collide
-            let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SpaceshipSizes.spaceship)
+            let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
 
             // TODO: testing gun component and bullets
             // the gun already works, but there are no gun powerups being spawned
@@ -27,10 +27,10 @@ class SpaceshipGameManager: GameManager {
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
-        let spaceship = SpaceshipCollisions.spaceshipBitmask
-        let rock = SpaceshipCollisions.rockBitmask
-        let bullet = SpaceshipCollisions.bulletBitmask
-        let powerup = SpaceshipCollisions.powerupBitmask
+        let spaceship = SPCollisions.spaceshipBitmask
+        let rock = SPCollisions.rockBitmask
+        let bullet = SPCollisions.bulletBitmask
+        let powerup = SPCollisions.powerupBitmask
 
         contactHandlers[Pair(first: spaceship, second: rock)] = { (spaceship: EntityID, rock: EntityID) -> Event in
             RockHitPlayerEvent(rockId: rock, playerId: spaceship)
@@ -60,12 +60,12 @@ class SpaceshipGameManager: GameManager {
     }
 
     override func setUpSystems() {
-        systemManager.register(SpaceshipGameInputSystem(for: entityManager))
+        systemManager.register(SPInputSystem(for: entityManager))
         systemManager.register(BulletAgeSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager))
         systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
-        systemManager.register(SpaceshipScoreSystem(for: entityManager))
+        systemManager.register(SPScoreSystem(for: entityManager))
         systemManager.register(PowerupSystem(for: entityManager))
         systemManager.register(PhysicsSystem(
             for: entityManager, eventFirer: eventManager,

@@ -18,7 +18,7 @@ class AutoRotateSystem: System {
 
     func update() {
         for (_, rotation, _) in spaceships {
-            rotation.angleInRadians = (rotation.angleInRadians + SpaceshipConstants.rotationSpeed)
+            rotation.angleInRadians = (rotation.angleInRadians + SPConstants.rotationSpeed)
                 .truncatingRemainder(dividingBy: 2 * Double.pi)
         }
     }

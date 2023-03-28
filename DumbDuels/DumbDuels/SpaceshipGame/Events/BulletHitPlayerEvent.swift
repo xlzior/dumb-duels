@@ -14,7 +14,7 @@ struct BulletHitPlayerEvent: Event {
     let playerId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let scoreSystem = systems.get(ofType: SpaceshipScoreSystem.self) else {
+        guard let scoreSystem = systems.get(ofType: SPScoreSystem.self) else {
             return
         }
 

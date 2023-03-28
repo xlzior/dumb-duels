@@ -29,14 +29,7 @@ class PhysicsBody: PhysicsSimulatableBody {
 
     var position: CGPoint {
         get { node.position }
-        set {
-            guard let physicsBody = node.physicsBody else {
-                return
-            }
-            node.physicsBody = nil
-            node.position = newValue
-            node.physicsBody = physicsBody
-        }
+        set { node.position = newValue }
     }
 
     var zRotation: CGFloat {

@@ -17,10 +17,6 @@ class SPGameManager: GameManager {
             // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
 
-            // TODO: testing gun component and bullets
-            // the gun already works, but there are no gun powerups being spawned
-//            spaceship.assign(component: GunComponent())
-
             renderSystemDetails.gameController.registerPlayerID(playerIndex: index, playerEntityID: spaceship.id)
         }
     }

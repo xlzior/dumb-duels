@@ -163,16 +163,17 @@ class EntityCreator {
     }
 
     @discardableResult
-    func createAxeParticle(at position: CGPoint, of size: CGSize, velocity: CGVector, createdTime: Date) -> Entity {
+    func createAxeParticle(at position: CGPoint, of size: CGSize, sprite: String, impulse: CGVector) -> Entity {
         let axeParticle = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: "peg")
-            AxeParticleComponent(createdTime: createdTime)
+            SpriteComponent(assetName: sprite)
         }
-        let physicsComponent = physicsCreator.createParticle(of: size.width / 2, initialVelocity: velocity)
+        let physicsComponent = physicsCreator.createParticle(of: size.width / 2, with: impulse)
         axeParticle.assign(component: physicsComponent)
+        let animationComponent = animationCreator.createAxeParticleAnimation()
+        axeParticle.assign(component: animationComponent)
 
         return axeParticle
     }

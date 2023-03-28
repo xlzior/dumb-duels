@@ -19,7 +19,7 @@ class LavaSystem: System {
         let randomNumber = Int.random(in: 0...10)
         if randomNumber < 2 { // to limit the amount of lava
             let xPosition = CGFloat.random(in: 0...Sizes.game.width)
-            _ = entityCreator.createLavaSmoke(at: CGPoint(x: xPosition, y: Sizes.lava.height), of: Sizes.lavaSmoke)
+            _ = entityCreator.createLavaSmoke(at: CGPoint(x: xPosition, y: Sizes.lava.height), of: Sizes.particle)
         }
     }
 }

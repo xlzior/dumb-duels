@@ -89,14 +89,14 @@ class AxeGameManager: GameManager {
         systemManager.register(AxeGameInputSystem(for: entityManager))
         systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
-        systemManager.register(AxeParticleSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
+        systemManager.register(LavaSystem(entityCreator: creator))
+        systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
         systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(LavaSystem(entityCreator: creator))
-        systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(RenderSystem(
             for: entityManager,
             eventManger: eventManager,

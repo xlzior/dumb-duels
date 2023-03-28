@@ -48,7 +48,13 @@ public class AnimationSystem: System {
                 animation.isPlaying = false
                 animation.numRepeat = animation.originalNumRepeat
                 if animation.shouldDestroyEntityOnEnd {
-                    entityManager.destroy(entity: entity)
+                    guard let physics: PhysicsComponent = entityManager.getComponent(
+                        ofType: PhysicsComponent.typeId, for: entity.id) else {
+                        entityManager.destroy(entity: entity)
+                        continue
+                    }
+                    physics.toBeRemoved = true
+                    physics.shouldDestroyEntityWhenRemove = true
                 }
                 continue
             }

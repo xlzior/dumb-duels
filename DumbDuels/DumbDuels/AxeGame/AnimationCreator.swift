@@ -24,6 +24,27 @@ class AnimationCreator {
         return component
     }
 
+    func createAxeParticleAnimation() -> AnimationComponent {
+        let component = AnimationComponent(
+            shouldDestroyEntityOnEnd: true,
+            frames: [
+                AnimationFrame(
+                    frameDuration: 0.1,
+                    alpha: 0),
+                AnimationFrame(
+                    frameDuration: 0.55,
+                    alpha: 1),
+                AnimationFrame(
+                    frameDuration: 0.15,
+                    alpha: 1),
+                AnimationFrame(
+                    frameDuration: 0.1,
+                    alpha: 0)],
+            numRepeat: 0
+        )
+        return component
+    }
+
     func createLavaSmokeAnimation() -> AnimationComponent {
         var randomXDeltas = [CGFloat]()
         var randomYDeltas = [CGFloat]()
@@ -39,7 +60,7 @@ class AnimationCreator {
             shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
-                    frameDuration: 0.001,
+                    frameDuration: 0.1,
                     alpha: 0,
                     deltaPosition: CGPoint(x: randomXDeltas[0], y: randomYDeltas[0])),
                 AnimationFrame(
@@ -64,7 +85,7 @@ class AnimationCreator {
             shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
-                    frameDuration: 0.05,
+                    frameDuration: 0.1,
                     alpha: 0),
                 AnimationFrame(
                     frameDuration: 0.1,

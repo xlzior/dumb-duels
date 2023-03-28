@@ -10,6 +10,8 @@ struct Assets {
     static let playerHit: String = "player-flash"
 
     static let axe: String = "axe"
+    static let axeParticleGrey: String = "axe-0"
+    static let axeParticleBrown: String = "axe-1"
     static let chargingBar: String = "chargingBar"
     static let platform: String = "platform"
     static let peg: String = "peg"

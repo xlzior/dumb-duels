@@ -94,9 +94,9 @@ class PhysicsCreator {
         return component
     }
 
-    func createParticle(of radius: CGFloat, initialVelocity: CGVector) -> PhysicsComponent {
+    func createParticle(of radius: CGFloat, with initialImpulse: CGVector) -> PhysicsComponent {
         let component = PhysicsComponent(circleOf: radius, mass: Physics.axeParticleMass,
-                                         velocity: initialVelocity,
+                                         velocity: .zero,
                                          affectedByGravity: Physics.axeParticleGravity,
                                          linearDamping: Physics.axeParticleDamping,
                                          isDynamic: Physics.axeParticleIsDynamic,
@@ -107,7 +107,7 @@ class PhysicsCreator {
                                          collideBitmask: Collisions.axeParticleCollideBitmask,
                                          contactBitmask: Collisions.axeParticleContactBitmask,
                                          zRotation: Physics.axeParticleZRotation,
-                                         impulse: Physics.axeParticleInitialImpulse,
+                                         impulse: initialImpulse,
                                          angularImpulse: Physics.axeParticleInitialAngularImpulse)
         return component
     }

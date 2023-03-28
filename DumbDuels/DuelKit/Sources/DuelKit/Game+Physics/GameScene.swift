@@ -93,9 +93,29 @@ class GameScene: Scene {
         physicsBody.applyAngularImpulse(angularImpulse)
     }
 
+    func beginOscillation(for id: EntityID, at centerOfOscillation: CGPoint, axis: CGVector,
+                          amplitude: Double, period: Double, displacement: Double) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            return
+        }
+        let oscillate = SKAction.oscillation(centerOfOscillation: centerOfOscillation, axis: axis,
+                                             amplitude: amplitude, period: period, initialDisplacement: displacement)
+        physicsBody.node.run(SKAction.repeatForever(oscillate), withKey: "oscillation")
+    }
+
+    func stopOscillation(for id: EntityID) {
+        guard let physicsBody = bodyIDPhysicsMap[id],
+              physicsBodyIDMap[physicsBody] != nil,
+              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+            return
+        }
+        physicsBody.node.removeAction(forKey: "oscillation")
+    }
+
     func addBody(for id: EntityID, bodyToAdd: PhysicsBody) {
-        guard baseGameScene.nodes(at: bodyToAdd.position).isEmpty,
-              bodyIDPhysicsMap[id] == nil,
+        guard bodyIDPhysicsMap[id] == nil,
               physicsBodyIDMap[bodyToAdd] == nil,
               skNodePhysicsBodyMap[bodyToAdd.node] == nil else {
             assertionFailure("Trying to add an id that already exists.")

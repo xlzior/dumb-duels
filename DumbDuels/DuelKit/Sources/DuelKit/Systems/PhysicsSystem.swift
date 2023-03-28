@@ -14,6 +14,7 @@ public class PhysicsSystem: System {
 
     var scene: Scene
     private let physics: Assemblage3<PositionComponent, RotationComponent, PhysicsComponent>
+    private let oscillation: Assemblage1<OscillationComponent>
     private let contactHandlers: ContactHandlerMap
 
     public init(for entityManager: EntityManager, eventFirer: EventFirer,
@@ -23,6 +24,7 @@ public class PhysicsSystem: System {
         self.scene = scene
         self.physics = entityManager.assemblage(
             requiredComponents: PositionComponent.self, RotationComponent.self, PhysicsComponent.self)
+        self.oscillation = entityManager.assemblage(requiredComponents: OscillationComponent.self)
         self.contactHandlers = contactHandlers
 
         self.setUpPhysics()
@@ -103,6 +105,11 @@ public class PhysicsSystem: System {
                                          positionComponent: position,
                                          rotationComponent: rotation,
                                          physicsComponent: physics)
+        }
+        for (entity, oscillation) in oscillation.entityAndComponents {
+            scene.beginOscillation(for: entity.id, at: oscillation.centerOfOscillation, axis: oscillation.axis,
+                                   amplitude: oscillation.amplitude, period: oscillation.period,
+                                   displacement: oscillation.displacement)
         }
     }
 

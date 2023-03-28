@@ -10,20 +10,20 @@ import DuelKit
 
 class PowerupSystem: System {
     unowned var entityManager: EntityManager
-    private var entityCreator: SpaceshipEntityCreator
+    private var entityCreator: SPEntityCreator
     private var lastSpawned: Date?
 
     private var powerups: Assemblage2<PowerupComponent, PhysicsComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.entityCreator = SpaceshipEntityCreator(entityManager: entityManager)
+        self.entityCreator = SPEntityCreator(entityManager: entityManager)
         self.powerups = entityManager.assemblage(requiredComponents: PowerupComponent.self, PhysicsComponent.self)
     }
 
     func update() {
         if let lastSpawned,
-           Date() - lastSpawned <= SpaceshipConstants.powerupSpawnInterval {
+           Date() - lastSpawned <= SPConstants.powerupSpawnInterval {
             return
         }
 

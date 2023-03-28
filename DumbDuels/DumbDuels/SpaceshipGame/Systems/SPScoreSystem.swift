@@ -1,5 +1,5 @@
 //
-//  SpaceshipScoreSystem.swift
+//  SPScoreSystem.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 28/3/23.
@@ -7,7 +7,7 @@
 
 import DuelKit
 
-class SpaceshipScoreSystem: System {
+class SPScoreSystem: System {
     unowned var entityManager: EntityManager
     private var scores: Assemblage1<ScoreComponent>
 

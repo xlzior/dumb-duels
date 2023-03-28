@@ -10,7 +10,7 @@ import DuelKit
 
 class GunComponent: Component {
     var id: ComponentID
-    var numBulletsLeft = SpaceshipConstants.numBullets
+    var numBulletsLeft = SPConstants.numBullets
     var lastFired: Date?
 
     init() {

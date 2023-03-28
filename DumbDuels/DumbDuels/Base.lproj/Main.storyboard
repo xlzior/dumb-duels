@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="26.949152542372882" y="8.7804878048780495"/>
         </scene>
-        <!--Spaceship Game View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="589-bx-SCJ">
             <objects>
-                <viewController id="xkm-Vv-Vaz" customClass="SpaceshipGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xkm-Vv-Vaz" customClass="SPGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oXK-Ur-mGr">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

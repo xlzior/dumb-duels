@@ -1,5 +1,5 @@
 //
-//  SpaceshipEntityCreator.swift
+//  SPEntityCreator.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 27/3/23.
@@ -8,13 +8,13 @@
 import CoreGraphics
 import DuelKit
 
-class SpaceshipEntityCreator {
+class SPEntityCreator {
     private let entityManager: EntityManager
-    private let physicsCreator: SpaceshipPhysicsCreator
+    private let physicsCreator: SPPhysicsCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = SpaceshipPhysicsCreator()
+        self.physicsCreator = SPPhysicsCreator()
     }
 
     @discardableResult
@@ -36,7 +36,7 @@ class SpaceshipEntityCreator {
 
     @discardableResult
     func createRock(at position: CGPoint, angle: CGFloat, justActivatedBy playerId: EntityID) -> Entity {
-        let size = SpaceshipSizes.rock
+        let size = SPSizes.rock
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -50,7 +50,7 @@ class SpaceshipEntityCreator {
 
     @discardableResult
     func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint) -> Entity {
-        let size = SpaceshipSizes.bullet
+        let size = SPSizes.bullet
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
         let bullet = entityManager.createEntity {
@@ -66,7 +66,7 @@ class SpaceshipEntityCreator {
 
     @discardableResult
     func createPowerup() -> Entity {
-        let size = SpaceshipSizes.powerup
+        let size = SPSizes.powerup
         let position = CGPoint.random(within: Sizes.game)
 
         let powerup = entityManager.createEntity {

@@ -10,13 +10,13 @@ import DuelKit
 
 class GunSystem: System {
     unowned var entityManager: EntityManager
-    private var entityCreator: SpaceshipEntityCreator
+    private var entityCreator: SPEntityCreator
     private var lastFired = [EntityID: Date]()
     private var spaceshipsWithGun: Assemblage4<SpaceshipComponent, GunComponent, PositionComponent, RotationComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.entityCreator = SpaceshipEntityCreator(entityManager: entityManager)
+        self.entityCreator = SPEntityCreator(entityManager: entityManager)
         self.spaceshipsWithGun = entityManager.assemblage(
             requiredComponents: SpaceshipComponent.self, GunComponent.self,
             PositionComponent.self, RotationComponent.self)
@@ -30,7 +30,7 @@ class GunSystem: System {
             }
 
             if let lastFired = gun.lastFired,
-               Date() - lastFired < SpaceshipConstants.gunInterval {
+               Date() - lastFired < SPConstants.gunInterval {
                 return
             }
 

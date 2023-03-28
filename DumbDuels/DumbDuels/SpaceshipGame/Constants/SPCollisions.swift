@@ -1,11 +1,11 @@
 //
-//  SpaceshipCollisions.swift
+//  SPCollisions.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 27/3/23.
 //
 
-class SpaceshipCollisions {
+class SPCollisions {
     static let spaceshipBitmask: UInt32 = 0x1 << 0
     static let rockBitmask: UInt32 = 0x1 << 1
     static let bulletBitmask: UInt32 = 0x1 << 2

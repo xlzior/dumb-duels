@@ -1,5 +1,5 @@
 //
-//  SpaceshipPhysics.swift
+//  SPPhysics.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 27/3/23.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import DuelKit
 
-struct SpaceshipPhysics {
+struct SPPhysics {
     static let spaceshipMass: CGFloat = 1.0
     static let spaceshipGravity = false
     static let spaceshipCor: CGFloat = 0.8

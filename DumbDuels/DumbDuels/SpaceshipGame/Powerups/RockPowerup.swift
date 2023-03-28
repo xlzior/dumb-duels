@@ -16,7 +16,7 @@ struct RockPowerup: Powerup {
             .getComponents(for: playerId) else {
             return
         }
-        let entityCreator = SpaceshipEntityCreator(entityManager: entityManager)
+        let entityCreator = SPEntityCreator(entityManager: entityManager)
         let rockPosition = position.position + CGVector(angle: rotation.angleInRadians)
         entityCreator.createRock(at: rockPosition, angle: rotation.angleInRadians, justActivatedBy: playerId)
     }

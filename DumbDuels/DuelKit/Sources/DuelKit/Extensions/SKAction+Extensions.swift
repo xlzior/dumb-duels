@@ -15,8 +15,9 @@ extension SKAction {
             let displacement = a * sin(2 * Double.pi * currentTime / t + initialDisplacement)
             let xDisplacement = displacement * cos(abs(axis.angle))
             let yDisplacement = displacement * sin(abs(axis.angle))
-            node.position.x += xDisplacement
-            node.position.y += yDisplacement
+            let newPosition = CGPoint(x: centerOfOscillation.x + xDisplacement,
+                                      y: centerOfOscillation.y + yDisplacement)
+            node.position = newPosition
         }
 
         return action

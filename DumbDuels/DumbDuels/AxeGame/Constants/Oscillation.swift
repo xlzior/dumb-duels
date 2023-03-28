@@ -12,12 +12,12 @@ struct Oscillation {
     static let verticalAxis = CGVector(dx: 0, dy: 1)
 
     // Platform oscillation constants
-    static let platformAmplitude = 5.0
+    static let platformAmplitude = 100.0
     static let platformPeriod = 3.0
     static let platformDisplacement = 0.0
 
     // Peg oscillation constants
-    static let pegAmplitude = 5.0
+    static let pegAmplitude = 60.0
     static let pegPeriod = 3.0
     static let pegDisplacement = 0.0
 }

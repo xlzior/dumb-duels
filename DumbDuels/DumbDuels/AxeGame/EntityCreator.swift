@@ -123,7 +123,7 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "platform")
             PlatformComponent()
-            OscillationComponent(centerOfOscillation: position,
+            OscillationComponent(centerOfOscillation: platformPosition,
                                  axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude,
                                  period: Oscillation.platformPeriod, displacement: Oscillation.platformDisplacement)
         }
@@ -155,7 +155,7 @@ class EntityCreator {
             PegComponent()
             OscillationComponent(centerOfOscillation: position,
                                  axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude,
-                                 period: Oscillation.pegPeriod, displacement: Oscillation.pegDisplacement)
+                                 period: Oscillation.pegPeriod, displacement: Double.random(in: 1...10))
         }
 
         let physicsComponent = physicsCreator.createPeg(of: size)

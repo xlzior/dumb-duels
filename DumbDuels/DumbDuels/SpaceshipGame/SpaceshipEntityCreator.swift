@@ -17,6 +17,7 @@ class SpaceshipEntityCreator {
         self.physicsCreator = SpaceshipPhysicsCreator()
     }
 
+    @discardableResult
     func createSpaceship(index: Int, at position: CGPoint, of size: CGSize) -> Entity {
         let spaceship = entityManager.createEntity {
             PositionComponent(position: position)
@@ -30,26 +31,32 @@ class SpaceshipEntityCreator {
         return spaceship
     }
 
-    func createRock(at position: CGPoint, of size: CGSize, direction: CGFloat) -> Entity {
+    @discardableResult
+    func createRock(at position: CGPoint, angle: CGFloat) -> Entity {
+        let size = SpaceshipSizes.rock
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "rock")
             RockComponent()
-            physicsCreator.createRock(of: size, pointing: direction)
+            physicsCreator.createRock(of: size, pointing: angle)
         }
         return rock
     }
 
-    func createBullet(index: Int, from playerId: EntityID, direction: CGFloat, at position: CGPoint, of size: CGSize) -> Entity {
+    @discardableResult
+    func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint) -> Entity {
+        let size = SpaceshipSizes.bullet
+        // index is needed so I know what colour sprite to attach
+        // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
         let bullet = entityManager.createEntity {
             PositionComponent(position: position)
-            RotationComponent(angleInRadians: direction)
+            RotationComponent(angleInRadians: angle)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
             BulletComponent(for: playerId)
-            physicsCreator.createBullet(of: size, pointing: direction)
+            physicsCreator.createBullet(of: size, pointing: angle)
         }
         return bullet
     }

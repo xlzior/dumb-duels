@@ -17,10 +17,8 @@ class SpaceshipGameManager: GameManager {
             // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SpaceshipSizes.spaceship)
 
-            // TODO: testing bullet
-            let position2 = CGPoint.random(within: Sizes.game)
-            let direction = CGFloat.random(in: -Double.pi...Double.pi)
-            _ = entityCreator.createBullet(index: index, from: spaceship.id, direction: direction, at: position2, of: SpaceshipSizes.bullet)
+            // TODO: testing gun component and bullets
+            spaceship.assign(component: GunComponent())
 
             renderSystemDetails.gameController.registerPlayerID(playerIndex: index, playerEntityID: spaceship.id)
         }
@@ -28,7 +26,7 @@ class SpaceshipGameManager: GameManager {
         // TODO: testing rock
         let position = CGPoint.random(within: Sizes.game)
         let direction = CGFloat.random(in: -Double.pi...Double.pi)
-        _ = entityCreator.createRock(at: position, of: SpaceshipSizes.rock, direction: direction)
+        entityCreator.createRock(at: position, angle: direction)
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
@@ -58,6 +56,8 @@ class SpaceshipGameManager: GameManager {
 
     override func setUpSystems() {
         systemManager.register(SpaceshipGameInputSystem(for: entityManager))
+        systemManager.register(BulletAgeSystem(for: entityManager))
+        systemManager.register(GunSystem(for: entityManager))
         systemManager.register(RotationSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(PhysicsSystem(

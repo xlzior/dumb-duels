@@ -10,6 +10,7 @@ import DuelKit
 struct RockHitPlayerEvent: Event {
     var priority = 2
 
+    let rockId: EntityID
     let playerId: EntityID
 
     func execute(with systems: SystemManager) {
@@ -17,6 +18,6 @@ struct RockHitPlayerEvent: Event {
             return
         }
 
-        scoreSystem.handleRockHitPlayer(playerId: playerId)
+        scoreSystem.handleRockHitPlayer(rockId: rockId, playerId: playerId)
     }
 }

@@ -12,8 +12,9 @@ enum SpaceshipConstants {
 
     static let propulsionForce: CGFloat = 500.0
 
-    static let bulletLifespan: TimeInterval = 2.0
+    static let powerupSpawnInterval: TimeInterval = 20.0
 
     static let gunInterval: TimeInterval = 0.5
     static let numBullets = 7
+    static let bulletLifespan: TimeInterval = 2.0
 }

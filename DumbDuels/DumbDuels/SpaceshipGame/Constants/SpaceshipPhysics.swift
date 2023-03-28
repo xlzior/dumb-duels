@@ -42,4 +42,14 @@ struct SpaceshipPhysics {
     static let bulletImpulse: CGVector = .zero
     static let bulletAngularImpulse: CGFloat = .zero
 
+    static let powerupMass: CGFloat = 1.0
+    static let powerupGravity = false
+    static let powerupCor: CGFloat = 0.0
+    static let powerupIsDynamic = false
+    static let powerupZRotation = PhysicsEngineDefaults.zRotation
+    static let powerupRotation = false
+    static let powerupFriction = PhysicsEngineDefaults.friction
+    static let powerupDamping = PhysicsEngineDefaults.linearDamping
+    static let powerupImpulse: CGVector = .zero
+    static let powerupAngularImpulse: CGFloat = .zero
 }

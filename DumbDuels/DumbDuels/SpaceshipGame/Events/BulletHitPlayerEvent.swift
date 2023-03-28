@@ -14,8 +14,10 @@ struct BulletHitPlayerEvent: Event {
     let playerId: EntityID
 
     func execute(with systems: SystemManager) {
-        print("bullet hit player \(playerId)")
-        // TODO: if bullet was fired by player himself, nothing happens
-        // TODO: if bullet was fired by other player, this player dies, reset round
+        guard let scoreSystem = systems.get(ofType: SpaceshipScoreSystem.self) else {
+            return
+        }
+
+        scoreSystem.handleBulletHitPlayer(bulletId: bulletId, playerId: playerId)
     }
 }

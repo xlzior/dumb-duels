@@ -13,7 +13,10 @@ struct RockHitPlayerEvent: Event {
     let playerId: EntityID
 
     func execute(with systems: SystemManager) {
-        print("rock hit player \(playerId)")
-        // TODO: this player dies, reset round
+        guard let scoreSystem = systems.get(ofType: SpaceshipScoreSystem.self) else {
+            return
+        }
+
+        scoreSystem.handleRockHitPlayer(playerId: playerId)
     }
 }

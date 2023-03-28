@@ -23,6 +23,6 @@ extension Sizes {
     static let gameTiedText = CGSize(width: 600, height: 100)
 
     static func axeOffsetFromPlayer(facing direction: FaceDirection) -> CGFloat {
-        (Sizes.player.width / 2 + Sizes.axe.height / 2 + 1) * direction.rawValue
+        (Sizes.player.width / 2 + Sizes.axe.height / 2 + 10) * direction.rawValue
     }
 }

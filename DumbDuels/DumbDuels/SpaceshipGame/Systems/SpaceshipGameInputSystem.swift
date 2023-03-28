@@ -27,6 +27,12 @@ class SpaceshipGameInputSystem: InputSystem {
         // TODO: change CGVector+Extensions?
         let angle = CGVector(angle: Double.pi / 2 - rotation.angleInRadians)
         physics.impulse = SpaceshipConstants.propulsionForce * angle
+
+        entityManager.remove(componentType: AutoRotateComponent.typeId, from: entityId)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + SpaceshipConstants.rotationStoppedInternval) {
+            self.entityManager.assign(component: AutoRotateComponent(), to: entityId)
+        }
     }
 
     func handleButtonUp(entityId: EntityID) {

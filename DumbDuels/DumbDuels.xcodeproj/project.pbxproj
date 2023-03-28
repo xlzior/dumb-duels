@@ -12,7 +12,7 @@
 		7B13494729D1DB7700E43A7F /* SpaceshipPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494629D1DB7700E43A7F /* SpaceshipPhysics.swift */; };
 		7B13494929D1DC3E00E43A7F /* SpaceshipCollisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494829D1DC3E00E43A7F /* SpaceshipCollisions.swift */; };
 		7B13494B29D1DEA700E43A7F /* SpaceshipSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494A29D1DEA700E43A7F /* SpaceshipSizes.swift */; };
-		7B13494D29D1E2AB00E43A7F /* RotationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494C29D1E2AB00E43A7F /* RotationSystem.swift */; };
+		7B13494D29D1E2AB00E43A7F /* AutoRotateSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494C29D1E2AB00E43A7F /* AutoRotateSystem.swift */; };
 		7B13494F29D1E32700E43A7F /* SpaceshipConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494E29D1E32700E43A7F /* SpaceshipConstants.swift */; };
 		7B13495129D1F14F00E43A7F /* WraparoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */; };
 		7B13495329D1F42600E43A7F /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495229D1F42600E43A7F /* CGFloat+Extensions.swift */; };
@@ -30,6 +30,7 @@
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
 		7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293129B82BE300281FC7 /* Assets.xcassets */; };
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
+		7B3C40FB29D2D0FA001C11A7 /* AutoRotateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3C40FA29D2D0FA001C11A7 /* AutoRotateComponent.swift */; };
 		7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */; };
 		7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */; };
 		7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */; };
@@ -104,7 +105,7 @@
 		7B13494629D1DB7700E43A7F /* SpaceshipPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipPhysics.swift; sourceTree = "<group>"; };
 		7B13494829D1DC3E00E43A7F /* SpaceshipCollisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipCollisions.swift; sourceTree = "<group>"; };
 		7B13494A29D1DEA700E43A7F /* SpaceshipSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipSizes.swift; sourceTree = "<group>"; };
-		7B13494C29D1E2AB00E43A7F /* RotationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationSystem.swift; sourceTree = "<group>"; };
+		7B13494C29D1E2AB00E43A7F /* AutoRotateSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRotateSystem.swift; sourceTree = "<group>"; };
 		7B13494E29D1E32700E43A7F /* SpaceshipConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipConstants.swift; sourceTree = "<group>"; };
 		7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WraparoundSystem.swift; sourceTree = "<group>"; };
 		7B13495229D1F42600E43A7F /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
@@ -126,6 +127,7 @@
 		7B2B293629B82BE300281FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B3C40FA29D2D0FA001C11A7 /* AutoRotateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRotateComponent.swift; sourceTree = "<group>"; };
 		7B4BFFB929CFF5E400FA3EFC /* DuelKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DuelKit; sourceTree = "<group>"; };
 		7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldingAxeComponent.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				7B13495629D1F94300E43A7F /* BulletComponent.swift */,
 				7B13495C29D2002C00E43A7F /* GunComponent.swift */,
 				7BC8C2D229D2992A001CF6F7 /* PowerupComponent.swift */,
+				7B3C40FA29D2D0FA001C11A7 /* AutoRotateComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -341,7 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCC620129D1D74F0092B602 /* SpaceshipGameInputSystem.swift */,
-				7B13494C29D1E2AB00E43A7F /* RotationSystem.swift */,
+				7B13494C29D1E2AB00E43A7F /* AutoRotateSystem.swift */,
 				7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */,
 				7B13495E29D203E800E43A7F /* GunSystem.swift */,
 				7BC8C2C729D29042001CF6F7 /* BulletAgeSystem.swift */,
@@ -574,6 +577,7 @@
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AxeGameManager.swift in Sources */,
+				7B3C40FB29D2D0FA001C11A7 /* AutoRotateComponent.swift in Sources */,
 				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				7B13494729D1DB7700E43A7F /* SpaceshipPhysics.swift in Sources */,
@@ -591,7 +595,7 @@
 				7BC8C2D129D29816001CF6F7 /* RockPowerup.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
-				7B13494D29D1E2AB00E43A7F /* RotationSystem.swift in Sources */,
+				7B13494D29D1E2AB00E43A7F /* AutoRotateSystem.swift in Sources */,
 				7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */,
 				7BC8C2D529D299CA001CF6F7 /* PowerupSystem.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,

@@ -39,13 +39,15 @@ class EntityCreator {
         withHorizontalOffset offset: CGFloat,
         from position: CGPoint,
         of size: CGSize,
-        facing: FaceDirection) -> Entity {
+        facing: FaceDirection,
+        onPlatform platformId: EntityID) -> Entity {
         let axePosition = CGPoint(x: position.x + offset, y: position.y)
         let axe = entityManager.createEntity {
             PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: Assets.axe)
+            SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
 //        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
@@ -89,7 +91,7 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: Assets.player)
             CanJumpComponent()
-            SyncXPositionComponent(syncFrom: platformId)
+            SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
         let scoreComponent = ScoreComponent(for: player.id)
@@ -127,6 +129,9 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: Assets.platform)
             PlatformComponent()
+            OscillationComponent(centerOfOscillation: platformPosition,
+                                 axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude,
+                                 period: Oscillation.platformPeriod, displacement: Oscillation.platformDisplacement)
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)
@@ -154,6 +159,9 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: Assets.peg)
             PegComponent()
+            OscillationComponent(centerOfOscillation: position,
+                                 axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude,
+                                 period: Oscillation.pegPeriod, displacement: Double.random(in: 1...10))
         }
 
         let physicsComponent = physicsCreator.createPeg(of: size)

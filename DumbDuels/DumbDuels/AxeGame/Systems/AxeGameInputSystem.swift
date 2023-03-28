@@ -15,7 +15,7 @@ class AxeGameInputSystem {
 
     private var holdingAxePlayer: Assemblage4<PlayerComponent, PositionComponent,
                                               HoldingAxeComponent, WithThrowStrengthComponent>
-    private var unthrownAxe: Assemblage2<AxeComponent, SizeComponent>
+    private var unthrownAxe: Assemblage3<AxeComponent, SizeComponent, SyncXPositionComponent>
     private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
@@ -27,7 +27,8 @@ class AxeGameInputSystem {
         self.holdingAxePlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, PositionComponent.self,
             HoldingAxeComponent.self, WithThrowStrengthComponent.self)
-        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self, SizeComponent.self,
+        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
+                                                    SizeComponent.self, SyncXPositionComponent.self,
                                                     excludedComponents: PhysicsComponent.self)
         self.canJumpPlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
@@ -59,10 +60,12 @@ class AxeGameInputSystem {
     func throwAxe(for playerId: EntityID) {
         guard let (player, playerPosition, holdingAxe, withThrowStrength) =
                 holdingAxePlayer.getComponents(for: playerId),
-              let (_, axeSize) = unthrownAxe.getComponents(for: holdingAxe.axeEntityID) else {
+              let (_, axeSize, _) = unthrownAxe.getComponents(for: holdingAxe.axeEntityID) else {
             return
         }
         let axeId = holdingAxe.axeEntityID
+        entityManager.remove(componentType: SyncXPositionComponent.typeId, from: axeId)
+
         let towards = playerPosition.faceDirection
 
         let physicsCreator = PhysicsCreator()

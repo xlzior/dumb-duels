@@ -12,17 +12,19 @@ public class PhysicsSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
 
-    var scene: GameScene
+    var scene: Scene
     private let physics: Assemblage3<PositionComponent, RotationComponent, PhysicsComponent>
+    private let oscillation: Assemblage1<OscillationComponent>
     private let contactHandlers: ContactHandlerMap
 
     public init(for entityManager: EntityManager, eventFirer: EventFirer,
-                scene: GameScene, contactHandlers: ContactHandlerMap) {
+                scene: Scene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.scene = scene
         self.physics = entityManager.assemblage(
             requiredComponents: PositionComponent.self, RotationComponent.self, PhysicsComponent.self)
+        self.oscillation = entityManager.assemblage(requiredComponents: OscillationComponent.self)
         self.contactHandlers = contactHandlers
 
         self.setUpPhysics()
@@ -33,22 +35,22 @@ public class PhysicsSystem: System {
     }
 
     public func syncFromPhysicsEngine() {
-        for (id, physicsBody) in scene.bodyIDPhysicsMap {
+        scene.forEachEntity(perform: { id, physicsSimulatableBody in
             if let physicsComponent: PhysicsComponent =
-                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: EntityID(id)) {
-                physicsComponent.velocity = physicsBody.velocity
-                physicsComponent.mass = physicsBody.mass
-                physicsComponent.zRotation = physicsBody.zRotation
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: id) {
+                physicsComponent.velocity = physicsSimulatableBody.velocity
+                physicsComponent.mass = physicsSimulatableBody.mass
+                physicsComponent.zRotation = physicsSimulatableBody.zRotation
             }
             if let positionComponent: PositionComponent =
-                entityManager.getComponent(ofType: PositionComponent.typeId, for: EntityID(id)) {
-                positionComponent.position = physicsBody.position
+                entityManager.getComponent(ofType: PositionComponent.typeId, for: id) {
+                positionComponent.position = physicsSimulatableBody.position
             }
             if let rotationComponent: RotationComponent =
-                entityManager.getComponent(ofType: RotationComponent.typeId, for: EntityID(id)) {
-                rotationComponent.angleInRadians = physicsBody.zRotation
+                entityManager.getComponent(ofType: RotationComponent.typeId, for: id) {
+                rotationComponent.angleInRadians = physicsSimulatableBody.zRotation
             }
-        }
+        })
     }
 
     func apply(impulse: CGVector, to entityId: EntityID) {
@@ -70,73 +72,92 @@ public class PhysicsSystem: System {
     func syncToPhysicsEngine() {
         for (entity, position, rotation, physics) in physics.entityAndComponents {
             guard !physics.toBeRemoved else {
-                scene.removeBody(for: entity.id.id)
+                scene.removePhysicsSimulatableBody(for: entity.id)
                 entityManager.remove(componentType: PhysicsComponent.typeId, from: entity.id)
                 if physics.shouldDestroyEntityWhenRemove {
                     entityManager.destroy(entity: entity)
                 }
                 continue
             }
-            if let physicsBody = initializePhysicsBodyFrom(positionComponent: position,
-                                                           rotationComponent: rotation,
-                                                           physicsComponent: physics) {
-                scene.sync(physicsBody, for: entity.id.id)
+            if var physicsSimulatableBody = scene.getPhysicsSimulatableBody(for: entity.id) {
+                update(for: &physicsSimulatableBody, positionComponent: position,
+                       rotationComponent: rotation, physicsComponent: physics)
             } else {
-                assertionFailure("Error creating PhysicsBody when syncing to physics engine.")
+                createSimulatablePhysicsBody(for: entity.id,
+                                             positionComponent: position,
+                                             rotationComponent: rotation,
+                                             physicsComponent: physics)
             }
             if physics.impulse != .zero {
-                scene.apply(impulse: physics.impulse, to: entity.id.id)
+                scene.apply(impulse: physics.impulse, to: entity.id)
                 physics.impulse = .zero
             }
             if physics.angularImpulse != .zero {
-                scene.apply(angularImpulse: physics.angularImpulse, to: entity.id.id)
+                scene.apply(angularImpulse: physics.angularImpulse, to: entity.id)
                 physics.angularImpulse = .zero
             }
         }
     }
 
     func setUpPhysics() {
-        var entityIDPhysicsBodyMap = [EntityID.ID: PhysicsBody]()
         for (entity, position, rotation, physics) in physics.entityAndComponents {
-            if let physicsBody = initializePhysicsBodyFrom(positionComponent: position,
-                                                           rotationComponent: rotation,
-                                                           physicsComponent: physics) {
-                entityIDPhysicsBodyMap[entity.id.id] = physicsBody
-            } else {
-                assertionFailure("Error creating PhysicsBody when setting up PhysicsSystem.")
-            }
+            createSimulatablePhysicsBody(for: entity.id,
+                                         positionComponent: position,
+                                         rotationComponent: rotation,
+                                         physicsComponent: physics)
         }
-        self.scene.setup(newBodyIDPhysicsMap: entityIDPhysicsBodyMap)
+        for (entity, oscillation) in oscillation.entityAndComponents {
+            scene.beginOscillation(for: entity.id, at: oscillation.centerOfOscillation, axis: oscillation.axis,
+                                   amplitude: oscillation.amplitude, period: oscillation.period,
+                                   displacement: oscillation.displacement)
+        }
     }
 
-    private func initializePhysicsBodyFrom(positionComponent: PositionComponent,
-                                           rotationComponent: RotationComponent,
-                                           physicsComponent: PhysicsComponent) -> PhysicsBody? {
-        let physicsBody = PhysicsBody(position: positionComponent.position,
-                                      size: physicsComponent.size,
-                                      radius: physicsComponent.radius,
-                                      zRotation: rotationComponent.angleInRadians,
-                                      mass: physicsComponent.mass,
-                                      velocity: physicsComponent.velocity,
-                                      affectedByGravity: physicsComponent.affectedByGravity,
-                                      linearDamping: physicsComponent.linearDamping,
-                                      isDynamic: physicsComponent.isDynamic,
-                                      allowsRotation: physicsComponent.allowsRotation,
-                                      restitution: physicsComponent.restitution,
-                                      friction: physicsComponent.friction,
-                                      categoryBitMask: physicsComponent.ownBitmask,
-                                      collisionBitMask: physicsComponent.collideBitmask,
-                                      contactBitMask: physicsComponent.contactBitmask)
-        return physicsBody
+    private func update(for physicsSimulatableBody: inout PhysicsSimulatableBody,
+                        positionComponent: PositionComponent,
+                        rotationComponent: RotationComponent,
+                        physicsComponent: PhysicsComponent) {
+        physicsSimulatableBody.position = positionComponent.position
+        physicsSimulatableBody.zRotation = rotationComponent.angleInRadians
+        physicsSimulatableBody.mass = physicsComponent.mass
+        physicsSimulatableBody.velocity = physicsComponent.velocity
+        physicsSimulatableBody.affectedByGravity = physicsComponent.affectedByGravity
+        physicsSimulatableBody.linearDamping = physicsComponent.linearDamping
+        physicsSimulatableBody.isDynamic = physicsComponent.isDynamic
+        physicsSimulatableBody.allowsRotation = physicsComponent.allowsRotation
+        physicsSimulatableBody.restitution = physicsComponent.restitution
+        physicsSimulatableBody.friction = physicsComponent.friction
+        physicsSimulatableBody.categoryBitMask = physicsComponent.ownBitmask
+        physicsSimulatableBody.collisionBitMask = physicsComponent.collideBitmask
+        physicsSimulatableBody.contactTestBitMask = physicsComponent.contactBitmask
     }
 
-    func handleCollision(firstId: String, secondId: String) {
-        let firstEid = EntityID(firstId)
-        let secondEid = EntityID(secondId)
+    private func createSimulatablePhysicsBody(for id: EntityID,
+                                              positionComponent: PositionComponent,
+                                              rotationComponent: RotationComponent,
+                                              physicsComponent: PhysicsComponent) {
+        var physicsSimulatableBody: PhysicsSimulatableBody?
+        if physicsComponent.shape == .circle, let radius = physicsComponent.radius {
+            physicsSimulatableBody = scene.createCirclePhysicsSimulatableBody(for: id,
+                                                                              withRadius: radius,
+                                                                              at: positionComponent.position)
+        } else if physicsComponent.shape == .rectangle, let size = physicsComponent.size {
+            physicsSimulatableBody = scene.createRectanglePhysicsSimulatableBody(for: id,
+                                                                                 withSize: size,
+                                                                                 at: positionComponent.position)
+        }
+
+        if var physicsSimulatableBody = physicsSimulatableBody {
+            update(for: &physicsSimulatableBody, positionComponent: positionComponent,
+                   rotationComponent: rotationComponent, physicsComponent: physicsComponent)
+        }
+    }
+
+    func handleCollision(firstId: EntityID, secondId: EntityID) {
         guard let firstPhysicsComponent: PhysicsComponent =
-                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: firstEid),
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: firstId),
               let secondPhysicsComponent: PhysicsComponent =
-                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondEid) else {
+                entityManager.getComponent(ofType: PhysicsComponent.typeId, for: secondId) else {
             return
         }
 
@@ -144,7 +165,7 @@ public class PhysicsSystem: System {
         let secondCategory = secondPhysicsComponent.ownBitmask
         let key = Pair(first: firstCategory, second: secondCategory)
         if let eventProducer = contactHandlers[key] {
-            let event = eventProducer(firstEid, secondEid)
+            let event = eventProducer(firstId, secondId)
             eventFirer.fire(event)
         }
     }

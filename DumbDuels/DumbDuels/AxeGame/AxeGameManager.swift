@@ -30,7 +30,8 @@ class AxeGameManager: GameManager {
                 withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
                 of: Sizes.axe,
-                facing: faceDirection
+                facing: faceDirection,
+                onPlatform: platform.id
             )
 
             let player = creator.createPlayer(

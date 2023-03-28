@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F499E0729D21FF300245F6E /* Oscillation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F499E0629D21FF300245F6E /* Oscillation.swift */; };
 		6F67C71329C462DD009E0579 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71229C462DD009E0579 /* Physics.swift */; };
 		6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C72029C8454B009E0579 /* WallComponent.swift */; };
 		7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F499E0629D21FF300245F6E /* Oscillation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillation.swift; sourceTree = "<group>"; };
 		6F67C71229C462DD009E0579 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
 		6F67C72029C8454B009E0579 /* WallComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallComponent.swift; sourceTree = "<group>"; };
 		7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithThrowStrengthComponent.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				8C3584A529C54FE500BAE8C5 /* Collisions.swift */,
 				7BF9D4DB29C4419C00D7B34D /* Constants.swift */,
 				6F67C71229C462DD009E0579 /* Physics.swift */,
+				6F499E0629D21FF300245F6E /* Oscillation.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				7BE0FDF829D03A120035AE98 /* Date+Extensions.swift in Sources */,
 				8C3584A829C559FE00BAE8C5 /* PhysicsCreator.swift in Sources */,
+				6F499E0729D21FF300245F6E /* Oscillation.swift in Sources */,
 				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,

@@ -14,7 +14,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public let systemManager: SystemManager
     public let eventManager: EventManager
 
-    public let simulator: Simulator
+    public var simulator: Simulatable
 
     public init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -70,14 +70,14 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     }
 
-    open  func didContactBegin(for bodyA: BodyID, and bodyB: BodyID) {
+    open  func didContactBegin(for entityA: EntityID, and entityB: EntityID) {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }
-        physicsSystem.handleCollision(firstId: bodyA, secondId: bodyB)
+        physicsSystem.handleCollision(firstId: entityA, secondId: entityB)
     }
 
-    open func didContactEnd(for bodyA: BodyID, and bodyB: BodyID) {
+    open func didContactEnd(for entityA: EntityID, and entityB: EntityID) {
 
     }
 }

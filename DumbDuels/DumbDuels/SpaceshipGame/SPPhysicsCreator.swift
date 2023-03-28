@@ -41,7 +41,7 @@ class SPPhysicsCreator {
             collideBitmask: SPCollisions.rockCollideBitmask,
             contactBitmask: SPCollisions.rockContactBitmask,
             zRotation: SPPhysics.rockZRotation,
-            impulse: SPConstants.propulsionForce * CGVector(angle: Double.pi / 2 - pointing),
+            impulse: SPConstants.rockForce * CGVector(angle: Double.pi / 2 - pointing),
             angularImpulse: SPPhysics.rockAngularImpulse)
 
         return component
@@ -60,7 +60,7 @@ class SPPhysicsCreator {
             collideBitmask: SPCollisions.bulletCollideBitmask,
             contactBitmask: SPCollisions.bulletContactBitmask,
             zRotation: SPPhysics.bulletZRotation,
-            impulse: SPConstants.propulsionForce * CGVector(angle: Double.pi / 2 - pointing),
+            impulse: SPConstants.bulletForce * CGVector(angle: Double.pi / 2 - pointing),
             angularImpulse: SPPhysics.bulletAngularImpulse)
 
         return component

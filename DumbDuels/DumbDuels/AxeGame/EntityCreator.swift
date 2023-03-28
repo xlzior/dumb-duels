@@ -206,6 +206,7 @@ class EntityCreator {
         return lavaSmoke
     }
 
+    @discardableResult
     func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
         let battleText = entityManager.createEntity {
             PositionComponent(position: position)
@@ -219,6 +220,7 @@ class EntityCreator {
         return battleText
     }
 
+    @discardableResult
     func createGameOverText(at position: CGPoint, of size: CGSize, displaying text: String) -> Entity {
         let gameOverText = entityManager.createEntity {
             PositionComponent(position: position)

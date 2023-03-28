@@ -10,13 +10,14 @@ import CoreGraphics
 
 public class AnimationSystem: System {
     unowned var entityManager: EntityManager
-    var prevTime = Date()
+    var prevTime: Date
 
     var animatables: Assemblage5<
         AnimationComponent, SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
 
     public init(for entityManager: EntityManager) {
         self.entityManager = entityManager
+        self.prevTime = Date()
         self.animatables = entityManager.assemblage(requiredComponents: AnimationComponent.self,
             SpriteComponent.self, PositionComponent.self, SizeComponent.self, RotationComponent.self)
     }
@@ -45,8 +46,7 @@ public class AnimationSystem: System {
             animation.timeElapsedForCurrentFrame = animationTimeElapsed
 
             guard animation.numRepeat >= 0 else {
-                animation.isPlaying = false
-                animation.numRepeat = animation.originalNumRepeat
+                resetAnimationComponent(animation)
                 if animation.shouldDestroyEntityOnEnd {
                     guard let physics: PhysicsComponent = entityManager.getComponent(
                         ofType: PhysicsComponent.typeId, for: entity.id) else {
@@ -60,6 +60,7 @@ public class AnimationSystem: System {
             }
 
             interpolateAnimation(
+                timeElapsed: timeElapsed,
                 animation: animation,
                 sprite: sprite,
                 position: position,
@@ -68,7 +69,15 @@ public class AnimationSystem: System {
         }
     }
 
+    private func resetAnimationComponent(_ animation: AnimationComponent) {
+        animation.isPlaying = false
+        animation.numRepeat = animation.originalNumRepeat
+        animation.currentFrameIdx = 0
+        animation.timeElapsedForCurrentFrame = 0
+    }
+
     private func interpolateAnimation(
+        timeElapsed: CGFloat,
         animation: AnimationComponent,
         sprite: SpriteComponent,
         position: PositionComponent,
@@ -76,7 +85,7 @@ public class AnimationSystem: System {
         rotation: RotationComponent) {
         let currentFrame = animation.animationFrames[animation.currentFrameIdx]
         let nextFrame = animation.animationFrames[animation.nextFrameIdx]
-        let timeElapsed = animation.timeElapsedForCurrentFrame
+        let animationTimeElapsed = animation.timeElapsedForCurrentFrame
 
         if let spriteName = currentFrame.spriteName {
             sprite.assetName = spriteName
@@ -86,7 +95,7 @@ public class AnimationSystem: System {
             sprite.alpha = interpolate(
                 previousValue: alpha,
                 nextValue: nextAlpha,
-                timeElapsed: timeElapsed,
+                timeElapsed: animationTimeElapsed,
                 frameDuration: currentFrame.frameDuration)
         }
 
@@ -102,7 +111,7 @@ public class AnimationSystem: System {
             size.xScale = interpolate(
                 previousValue: xScale,
                 nextValue: nextXScale,
-                timeElapsed: timeElapsed,
+                timeElapsed: animationTimeElapsed,
                 frameDuration: currentFrame.frameDuration)
         }
 
@@ -110,7 +119,7 @@ public class AnimationSystem: System {
             size.yScale = interpolate(
                 previousValue: yScale,
                 nextValue: nextYScale,
-                timeElapsed: timeElapsed,
+                timeElapsed: animationTimeElapsed,
                 frameDuration: currentFrame.frameDuration)
         }
 
@@ -118,7 +127,7 @@ public class AnimationSystem: System {
             rotation.angleInRadians = interpolate(
                 previousValue: rotationAngle,
                 nextValue: nextRotationAngle,
-                timeElapsed: timeElapsed,
+                timeElapsed: animationTimeElapsed,
                 frameDuration: currentFrame.frameDuration)
         }
     }

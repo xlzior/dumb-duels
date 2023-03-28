@@ -24,8 +24,7 @@ class GameOverSystem: System {
     func update() {}
 
     func handleGameTied() {
-        _ = entityCreator.createGameOverText(
-            at: Positions.text, of: Sizes.gameTiedText, displaying: Assets.gameTiedText)
+        entityCreator.createGameOverText(at: Positions.text, of: Sizes.gameTiedText, displaying: Assets.gameTiedText)
     }
 
     func handleGameWon(by entityId: EntityID) {
@@ -33,7 +32,7 @@ class GameOverSystem: System {
             guard entity.id == entityId else {
                 continue
             }
-            _ = entityCreator.createGameOverText(
+            entityCreator.createGameOverText(
                 at: Positions.text, of: Sizes.gameWonText, displaying: Assets.gameWonText[player.idx])
         }
     }

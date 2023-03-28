@@ -25,6 +25,7 @@ public struct AnimationFrame {
         yScale: CGFloat? = nil,
         rotationAngle: CGFloat? = nil
     ) {
+        assert(frameDuration > 0, "Animation frame duration must be more than 0")
         self.frameDuration = frameDuration
         self.spriteName = spriteName
         self.alpha = alpha

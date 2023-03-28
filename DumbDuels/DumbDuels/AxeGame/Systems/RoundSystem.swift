@@ -65,7 +65,7 @@ class RoundSystem: System {
     func reset() {
         // battle animation
         if !isGameOver {
-            _ = entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+            entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
         }
 
         // Destroy all thrown axes since they are out of bounds

@@ -28,6 +28,8 @@ class SpaceshipEntityCreator {
             physicsCreator.createSpaceship(of: size)
         }
 
+        spaceship.assign(component: ScoreComponent(for: spaceship.id))
+
         return spaceship
     }
 

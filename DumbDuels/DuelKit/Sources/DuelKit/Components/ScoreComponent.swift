@@ -8,7 +8,7 @@
 public class ScoreComponent: Component {
     public var id: ComponentID
     public var score: Int
-    var playerId: EntityID
+    public var playerId: EntityID
 
     public init(score: Int = 0, for playerId: EntityID) {
         self.id = ComponentID()

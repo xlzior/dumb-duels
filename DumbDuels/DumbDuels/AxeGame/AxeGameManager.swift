@@ -61,6 +61,7 @@ class AxeGameManager: GameManager {
         let player = Collisions.playerBitmask
         let axe = Collisions.axeBitmask
         let platform = Collisions.platformBitmask
+        let lava = Collisions.lavaBitmask
 
         contactHandlers[Pair(first: player, second: axe)] = { (player: EntityID, axe: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
@@ -76,6 +77,14 @@ class AxeGameManager: GameManager {
 
         contactHandlers[Pair(first: platform, second: player)] = { (_: EntityID, player: EntityID) -> Event in
             LandEvent(entityId: player)
+        }
+
+        contactHandlers[Pair(first: axe, second: lava)] = { (axe: EntityID, _: EntityID) -> Event in
+            LavaHitEvent(axeEntityId: axe)
+        }
+
+        contactHandlers[Pair(first: lava, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+            LavaHitEvent(axeEntityId: axe)
         }
 
         return contactHandlers

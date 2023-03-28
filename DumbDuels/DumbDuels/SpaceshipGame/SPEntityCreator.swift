@@ -12,6 +12,12 @@ class SPEntityCreator {
     private let entityManager: EntityManager
     private let physicsCreator: SPPhysicsCreator
 
+    // Powerups
+    let powerups: [PowerupDetails] = [
+        PowerupDetails(assetName: "gunPowerup", type: GunPowerup()),
+        PowerupDetails(assetName: "rockPowerup", type: RockPowerup())
+    ]
+
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.physicsCreator = SPPhysicsCreator()
@@ -76,20 +82,9 @@ class SPEntityCreator {
             physicsCreator.createPowerup(of: size)
         }
 
-        let powerupComponents: [[Component]] = [
-            [
-                SpriteComponent(assetName: "gunPowerup"),
-                PowerupComponent(ofType: GunPowerup())
-            ],
-            [
-                SpriteComponent(assetName: "rockPowerup"),
-                PowerupComponent(ofType: RockPowerup())
-            ]
-        ]
-
-        for comp in powerupComponents.randomElement()! {
-            powerup.assign(component: comp)
-        }
+        let powerupDetails = powerups.randomElement()!
+        powerup.assign(component: SpriteComponent(assetName: powerupDetails.assetName))
+        powerup.assign(component: PowerupComponent(ofType: powerupDetails.type))
 
         return powerup
     }

@@ -74,13 +74,13 @@
 		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
 		A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* Sizes.swift */; };
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
-		A7E43A0629C379FC00027AC6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E43A0429C379FC00027AC6 /* HomeViewController.swift */; };
 		A7E52EF529D1F2F800075F99 /* AnimationCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF429D1F2F800075F99 /* AnimationCreator.swift */; };
 		A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF629D1F43300075F99 /* GameTieEvent.swift */; };
 		A7E52EF929D1F43F00075F99 /* GameOverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */; };
 		A7E52EFB29D1F47900075F99 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EFA29D1F47900075F99 /* Assets.swift */; };
 		A7E52EFD29D1F4E900075F99 /* LavaSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E52EFC29D1F4E900075F99 /* LavaSystem.swift */; };
 		A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF080929D2D6450057D44E /* LavaHitEvent.swift */; };
+		A7EF081229D35E550057D44E /* PowerupDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF081129D35E550057D44E /* PowerupDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,13 +172,13 @@
 		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		A7E439F829C374BE00027AC6 /* Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
-		A7E43A0429C379FC00027AC6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A7E52EF429D1F2F800075F99 /* AnimationCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationCreator.swift; sourceTree = "<group>"; };
 		A7E52EF629D1F43300075F99 /* GameTieEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTieEvent.swift; sourceTree = "<group>"; };
 		A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverSystem.swift; sourceTree = "<group>"; };
 		A7E52EFA29D1F47900075F99 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		A7E52EFC29D1F4E900075F99 /* LavaSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LavaSystem.swift; sourceTree = "<group>"; };
 		A7EF080929D2D6450057D44E /* LavaHitEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LavaHitEvent.swift; sourceTree = "<group>"; };
+		A7EF081129D35E550057D44E /* PowerupDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +306,7 @@
 		7BC8C2CB29D297DE001CF6F7 /* Powerups */ = {
 			isa = PBXGroup;
 			children = (
+				A7EF081129D35E550057D44E /* PowerupDetails.swift */,
 				7BC8C2CC29D297E8001CF6F7 /* Powerup.swift */,
 				7BC8C2CE29D29806001CF6F7 /* GunPowerup.swift */,
 				7BC8C2D029D29816001CF6F7 /* RockPowerup.swift */,
@@ -593,6 +594,7 @@
 				7BC8C2D729D29C77001CF6F7 /* PlayerHitPowerupEvent.swift in Sources */,
 				7BE0FDF829D03A120035AE98 /* Date+Extensions.swift in Sources */,
 				8C3584A829C559FE00BAE8C5 /* PhysicsCreator.swift in Sources */,
+				A7EF081229D35E550057D44E /* PowerupDetails.swift in Sources */,
 				6F499E0729D21FF300245F6E /* Oscillation.swift in Sources */,
 				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
 				7B13494929D1DC3E00E43A7F /* SPCollisions.swift in Sources */,
@@ -626,7 +628,6 @@
 				7BE0FDFA29D03A120035AE98 /* CGVector+Extensions.swift in Sources */,
 				A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */,
 				A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */,
-				8CB0FA6329D17DC000C2FAC8 /* AxeParticleComponent.swift in Sources */,
 				7BC8C2C829D29042001CF6F7 /* BulletAgeSystem.swift in Sources */,
 				7B13495729D1F94300E43A7F /* BulletComponent.swift in Sources */,
 				7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */,

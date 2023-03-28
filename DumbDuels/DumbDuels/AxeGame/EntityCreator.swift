@@ -37,13 +37,15 @@ class EntityCreator {
         withHorizontalOffset offset: CGFloat,
         from position: CGPoint,
         of size: CGSize,
-        facing: FaceDirection) -> Entity {
+        facing: FaceDirection,
+        onPlatform platformId: EntityID) -> Entity {
         let axePosition = CGPoint(x: position.x + offset, y: position.y)
         let axe = entityManager.createEntity {
             PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "axe")
+            SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
 //        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
@@ -87,7 +89,7 @@ class EntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "player")
             CanJumpComponent()
-            SyncXPositionComponent(syncFrom: platformId)
+            SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
         let scoreComponent = ScoreComponent(for: player.id)

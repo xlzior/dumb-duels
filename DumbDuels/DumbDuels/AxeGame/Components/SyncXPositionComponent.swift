@@ -10,9 +10,11 @@ import DuelKit
 class SyncXPositionComponent: Component {
     var id: ComponentID
     var syncFrom: EntityID
+    var offset: Double
 
-    init(syncFrom: EntityID) {
+    init(syncFrom: EntityID, offset: Double) {
         self.id = ComponentID()
         self.syncFrom = syncFrom
+        self.offset = offset
     }
 }

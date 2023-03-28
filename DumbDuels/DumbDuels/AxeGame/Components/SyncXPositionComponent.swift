@@ -12,7 +12,7 @@ class SyncXPositionComponent: Component {
     var syncFrom: EntityID
     var offset: Double
 
-    init(syncFrom: EntityID, offset: Double) {
+    init(syncFrom: EntityID, offset: Double = 0.0) {
         self.id = ComponentID()
         self.syncFrom = syncFrom
         self.offset = offset

@@ -40,7 +40,7 @@
 		8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */; };
 		8C3584AC29C5A50E00BAE8C5 /* CanJumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */; };
 		8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */; };
-		8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */; };
+		8C3584B229C8709200BAE8C5 /* PositionSyncSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3584B129C8709200BAE8C5 /* PositionSyncSystem.swift */; };
 		8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */; };
 		8CB0FA6729D1999100C2FAC8 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6629D1999100C2FAC8 /* Int+Extensions.swift */; };
 		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
@@ -110,7 +110,7 @@
 		8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 		8C3584AB29C5A50E00BAE8C5 /* CanJumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanJumpComponent.swift; sourceTree = "<group>"; };
 		8C3584AF29C86F9600BAE8C5 /* SyncXPositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncXPositionComponent.swift; sourceTree = "<group>"; };
-		8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlatformSyncSystem.swift; sourceTree = "<group>"; };
+		8C3584B129C8709200BAE8C5 /* PositionSyncSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSyncSystem.swift; sourceTree = "<group>"; };
 		8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeParticleSystem.swift; sourceTree = "<group>"; };
 		8CB0FA6629D1999100C2FAC8 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				7BA7EBCA29C36BBD0096457F /* AxeGameInputSystem.swift */,
 				7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */,
 				8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */,
-				8C3584B129C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift */,
+				8C3584B129C8709200BAE8C5 /* PositionSyncSystem.swift */,
 				8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */,
 				A7E52EF829D1F43F00075F99 /* GameOverSystem.swift */,
 			);
@@ -461,7 +461,7 @@
 				6F499E0729D21FF300245F6E /* Oscillation.swift in Sources */,
 				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
-				8C3584B229C8709200BAE8C5 /* PlayerPlatformSyncSystem.swift in Sources */,
+				8C3584B229C8709200BAE8C5 /* PositionSyncSystem.swift in Sources */,
 				7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
 				A7E52EFB29D1F47900075F99 /* Assets.swift in Sources */,

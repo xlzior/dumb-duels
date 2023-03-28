@@ -26,8 +26,8 @@ struct Positions {
     ]
 
     static let pegs: [CGPoint] = [
-        CGPoint(x: 400, y: 375),
-        CGPoint(x: 600, y: 375)
+        CGPoint(x: 400, y: 425),
+        CGPoint(x: 600, y: 425)
     ]
 
     static let lava = CGPoint(x: Sizes.game.width / 2, y: Sizes.lava.height / 2)

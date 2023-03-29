@@ -18,7 +18,7 @@ class SPAnimationCreatorSystem: System {
                                               RotationComponent, SizeComponent>
     private var spaceships: Assemblage3<SpaceshipComponent, PositionComponent, PhysicsComponent>
     private var previousParticleSpawnInfo: [EntityID: Pair<CGPoint, CGFloat>]
-    private let numSpaceshipParticles = 20
+    private let numSpaceshipParticles = 40
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
@@ -73,23 +73,16 @@ class SPAnimationCreatorSystem: System {
         for _ in 0..<numSpaceshipParticles {
             let randomXDelta = CGFloat.random(in: -60...60)
             let randomYDelta = CGFloat.random(in: -60...60)
-            let travelDistance = CGFloat.random(in: 4...6)
+            let travelDistance = CGFloat.random(in: 0.5...2)
             let velocityDirection = CGVector(dx: randomXDelta, dy: randomYDelta).normalized()
             let initialPosition = position.position + CGPoint(x: randomXDelta, y: randomYDelta)
             let deltaPosition = (travelDistance * velocityDirection).toPoint()
-            let travelTime: CGFloat = 0.55
+            let travelTime: CGFloat = 1
 
-            var sprite: String
-            // Bing Sen TODO: Add assets
-            if spaceship.index == 0 {
-                sprite = Assets.axeParticleBrown
-            } else {
-                sprite = Assets.axeParticleGrey
-            }
             entityCreator.createSpaceshipParticle(
                 at: initialPosition,
                 of: SPSizes.spaceshipDestroyParticle,
-                sprite: sprite,
+                sprite: SPAssets.spaceshipParticles[spaceship.index].randomElement() ?? "",
                 deltaPosition: deltaPosition,
                 travelTime: travelTime)
         }

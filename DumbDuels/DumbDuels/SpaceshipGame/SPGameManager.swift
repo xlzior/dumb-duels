@@ -62,7 +62,7 @@ class SPGameManager: GameManager {
         systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(SPAnimationCreatorSystem(for: entityManager))
-        systemManager.register(SPScoreSystem(for: entityManager))
+        systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager))
         systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(PhysicsSystem(

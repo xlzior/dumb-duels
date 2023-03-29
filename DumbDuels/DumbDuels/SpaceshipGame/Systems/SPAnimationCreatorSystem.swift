@@ -16,7 +16,9 @@ class SPAnimationCreatorSystem: System {
 
     private var movingSpaceships: Assemblage4<SpaceshipComponent, PositionComponent,
                                               RotationComponent, SizeComponent>
+    private var spaceships: Assemblage3<SpaceshipComponent, PositionComponent, PhysicsComponent>
     private var previousParticleSpawnInfo: [EntityID: Pair<CGPoint, CGFloat>]
+    private let numSpaceshipParticles = 20
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
@@ -25,6 +27,8 @@ class SPAnimationCreatorSystem: System {
                                                          PositionComponent.self, RotationComponent.self,
                                                          SizeComponent.self,
                                                          excludedComponents: AutoRotateComponent.self)
+        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
+                                                   PositionComponent.self, PhysicsComponent.self)
         previousParticleSpawnInfo = [EntityID: Pair<CGPoint, CGFloat>]()
     }
 
@@ -57,6 +61,42 @@ class SPAnimationCreatorSystem: System {
             return true
         }
         return false
+    }
+
+    func createSpaceshipParticles(spaceshipId: EntityID) {
+        guard let (spaceship, position, physicsComponent) = spaceships.getComponents(for: spaceshipId) else {
+            assertionFailure("Trying to create particles from a non-spaceship entity \(spaceshipId)")
+            return
+        }
+
+        // Create axe particles
+        for _ in 0..<numSpaceshipParticles {
+            let randomXDelta = CGFloat.random(in: -60...60)
+            let randomYDelta = CGFloat.random(in: -60...60)
+            let travelDistance = CGFloat.random(in: 4...6)
+            let velocityDirection = CGVector(dx: randomXDelta, dy: randomYDelta).normalized()
+            let initialPosition = position.position + CGPoint(x: randomXDelta, y: randomYDelta)
+            let deltaPosition = (travelDistance * velocityDirection).toPoint()
+            let travelTime: CGFloat = 0.55
+
+            var sprite: String
+            // Bing Sen TODO: Add assets
+            if spaceship.index == 0 {
+                sprite = Assets.axeParticleBrown
+            } else {
+                sprite = Assets.axeParticleGrey
+            }
+            entityCreator.createSpaceshipParticle(
+                at: initialPosition,
+                of: SPSizes.spaceshipDestroyParticle,
+                sprite: sprite,
+                deltaPosition: deltaPosition,
+                travelTime: travelTime)
+        }
+    }
+
+    func onDestroy(spaceshipId: EntityID) {
+        previousParticleSpawnInfo.removeValue(forKey: spaceshipId)
     }
 
 }

@@ -13,4 +13,5 @@ struct SPSizes {
     static let bullet = CGSize(width: 40, height: 10)
     static let powerup = CGSize(width: 60, height: 60)
     static let accelerationParticle = CGSize(width: 8, height: 8)
+    static let spaceshipDestroyParticle = CGSize(width: 10, height: 10)
 }

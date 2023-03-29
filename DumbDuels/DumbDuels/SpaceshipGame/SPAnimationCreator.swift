@@ -27,4 +27,25 @@ class SPAnimationCreator {
         )
         return component
     }
+
+    func createSpaceshipParticleAnimation(deltaPosition: CGPoint, travelTime: CGFloat) -> AnimationComponent {
+        let component = AnimationComponent(
+            shouldDestroyEntityOnEnd: true,
+            frames: [
+                AnimationFrame(
+                    frameDuration: 0.1,
+                    alpha: 0,
+                    deltaPosition: .zero),
+                AnimationFrame(
+                    frameDuration: travelTime,
+                    alpha: 1,
+                    deltaPosition: deltaPosition),
+                AnimationFrame(
+                    frameDuration: 0.1,
+                    alpha: 0,
+                    deltaPosition: .zero)],
+            numRepeat: 0
+        )
+        return component
+    }
 }

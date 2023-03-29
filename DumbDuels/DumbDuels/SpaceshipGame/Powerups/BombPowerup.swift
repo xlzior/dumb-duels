@@ -21,9 +21,6 @@ struct BombPowerup: Powerup {
             // TODO: User player position for now, but by right should use the BombComponent entity's position
             let displacementFromPlayer = CGVector(angle: angle) * (SPConstants.bombRadius + SPSizes.bullet.height / 2)
             let bulletPosition = playerPosition.position + displacementFromPlayer
-            print("Angle Vector: \(CGVector(angle: angle))")
-            print("Displacement from player: \(displacementFromPlayer)")
-            print("bullet position: \(bulletPosition)")
 
             entityCreator.createBullet(index: spaceship.index, from: playerId,
                                        angle: angle, position: bulletPosition,

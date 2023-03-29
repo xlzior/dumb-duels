@@ -112,4 +112,20 @@ class SPEntityCreator {
 
         return particle
     }
+
+    @discardableResult
+    func createSpaceshipParticle(at position: CGPoint, of size: CGSize, sprite: String,
+                                 deltaPosition: CGPoint, travelTime: CGFloat) -> Entity {
+        let spaceshipParticle = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: sprite)
+        }
+        let animationComponent = animationCreator.createSpaceshipParticleAnimation(
+            deltaPosition: deltaPosition, travelTime: travelTime)
+        spaceshipParticle.assign(component: animationComponent)
+
+        return spaceshipParticle
+    }
 }

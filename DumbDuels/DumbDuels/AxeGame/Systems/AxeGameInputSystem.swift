@@ -13,6 +13,8 @@ class AxeGameInputSystem {
     unowned var entityManager: EntityManager
     private var physicsCreator: PhysicsCreator
 
+    var playerIndexToIdMap: [Int: EntityID]
+
     private var holdingAxePlayer: Assemblage4<PlayerComponent, PositionComponent,
                                               HoldingAxeComponent, WithThrowStrengthComponent>
     private var unthrownAxe: Assemblage3<AxeComponent, SizeComponent, SyncXPositionComponent>
@@ -34,6 +36,7 @@ class AxeGameInputSystem {
             requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
         self.throwStrength = entityManager.assemblage(
             requiredComponents: ThrowStrengthComponent.self, SizeComponent.self)
+        self.playerIndexToIdMap = [Int: EntityID]()
     }
 
     func updateThrowStrength(for entityId: EntityID) {
@@ -98,16 +101,26 @@ class AxeGameInputSystem {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }
     }
+
+    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
+        playerIndexToIdMap[0] = firstPlayer
+        playerIndexToIdMap[1] = secondPlayer
+    }
 }
 
 extension AxeGameInputSystem: InputSystem {
+
     func update() {
         for entityId in longPressStartTimes.keys {
             updateThrowStrength(for: entityId)
         }
     }
 
-    func handleButtonDown(entityId: EntityID) {
+    func handleButtonDown(playerIndex: Int) {
+        guard let entityId = playerIndexToIdMap[playerIndex] else {
+            return
+        }
+
         let hasAxe = entityManager.has(componentTypeId: HoldingAxeComponent.typeId, entityId: entityId)
 
         if hasAxe {
@@ -118,9 +131,11 @@ extension AxeGameInputSystem: InputSystem {
         }
     }
 
-    func handleButtonUp(entityId: EntityID) {
+    func handleButtonUp(playerIndex: Int) {
+        guard let entityId = playerIndexToIdMap[playerIndex] else {
+            return
+        }
         longPressStartTimes[entityId] = nil
         throwAxe(for: entityId)
     }
-
 }

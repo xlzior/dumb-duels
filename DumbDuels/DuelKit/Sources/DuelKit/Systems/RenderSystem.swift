@@ -68,7 +68,7 @@ public class RenderSystem: System {
                 centerPosition: newPosition,
                 width: size.originalSize.width * size.xScale * scalingFactor,
                 height: size.originalSize.height * size.yScale * scalingFactor,
-                rotation: rotation.angleInRadians,
+                rotation: -rotation.angleInRadians,
                 facing: position.faceDirection
             )
 

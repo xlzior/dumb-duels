@@ -33,11 +33,10 @@ class GunSystem: System {
                 return
             }
 
-            // Wenjun TODO: Correct this angle calculation
             // For now use constant size for bullet
             let bulletPosition = position.position +
-            (SPSizes.bullet.height / 2 + size.actualSize.height / 2) *
-                                CGVector(angle: rotation.angleInRadians).reverse()
+            (SPSizes.bullet.width + size.actualSize.height / 2) *
+                                CGVector(angle: rotation.angleInRadians)
             entityCreator.createBullet(index: spaceship.index, from: entity.id,
                                        angle: rotation.angleInRadians, position: bulletPosition)
             gun.numBulletsLeft -= 1

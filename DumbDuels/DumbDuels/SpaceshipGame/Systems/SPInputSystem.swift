@@ -23,9 +23,7 @@ class SPInputSystem: InputSystem {
             return
         }
 
-        // TODO: angle convention for cgvector is not the same as rotation component conventions
-        // TODO: change CGVector+Extensions?
-        let angle = CGVector(angle: Double.pi / 2 - rotation.angleInRadians)
+        let angle = CGVector(angle: rotation.angleInRadians)
         // set the velocity directly so there is no drifting
         physics.velocity = SPConstants.propulsionForce * angle
         physics.linearDamping = SPPhysics.spaceshipMovingDamping

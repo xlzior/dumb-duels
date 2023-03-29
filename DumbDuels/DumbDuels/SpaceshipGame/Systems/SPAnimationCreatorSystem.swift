@@ -34,7 +34,6 @@ class SPAnimationCreatorSystem: System {
                 return
             }
 
-            // Wenjun TODO: Fix this position calculation
             let particlePosistion = position.position + (SPSizes.accelerationParticle.height / 2
                                                          + size.actualSize.height / 2) * CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createAccelerationParticle(at: particlePosistion, of: SPSizes.accelerationParticle)

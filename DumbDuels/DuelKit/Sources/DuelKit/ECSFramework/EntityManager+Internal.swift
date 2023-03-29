@@ -37,8 +37,7 @@ extension EntityManager {
         }
 
         guard !has(componentTypeId: componentTypeId, entityId: entityId) else {
-            // TODO: can delete? just no-op
-//            assertionFailure("\(entityId) already has component type \(componentTypeId).")
+            assertionFailure("\(entityId) already has component type \(componentTypeId).")
             return false
         }
 

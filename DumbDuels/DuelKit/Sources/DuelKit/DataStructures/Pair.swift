@@ -6,8 +6,8 @@
 //
 
 public struct Pair<T, S> {
-    var first: T
-    var second: S
+    public var first: T
+    public var second: S
 
     public init(first: T, second: S) {
         self.first = first

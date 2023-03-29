@@ -61,8 +61,10 @@ class SPGameManager: GameManager {
         systemManager.register(GunSystem(for: entityManager))
         systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
+        systemManager.register(SPAnimationCreatorSystem(for: entityManager))
         systemManager.register(SPScoreSystem(for: entityManager))
         systemManager.register(PowerupSystem(for: entityManager))
+        systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(PhysicsSystem(
             for: entityManager, eventFirer: eventManager,
             scene: simulator.gameScene, contactHandlers: getContactHandlers()))

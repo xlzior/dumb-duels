@@ -11,18 +11,18 @@ import DuelKit
 class GunSystem: System {
     unowned var entityManager: EntityManager
     private var entityCreator: SPEntityCreator
-    private var spaceshipsWithGun: Assemblage4<SpaceshipComponent, GunComponent, PositionComponent, RotationComponent>
+    private var spaceshipsWithGun: Assemblage5<SpaceshipComponent, GunComponent, PositionComponent, RotationComponent, SizeComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.entityCreator = SPEntityCreator(entityManager: entityManager)
         self.spaceshipsWithGun = entityManager.assemblage(
             requiredComponents: SpaceshipComponent.self, GunComponent.self,
-            PositionComponent.self, RotationComponent.self)
+            PositionComponent.self, RotationComponent.self, SizeComponent.self)
     }
 
     func update() {
-        for (entity, spaceship, gun, position, rotation) in spaceshipsWithGun.entityAndComponents {
+        for (entity, spaceship, gun, position, rotation, size) in spaceshipsWithGun.entityAndComponents {
             if gun.numBulletsLeft == 0 {
                 entity.remove(componentType: GunComponent.typeId)
                 return
@@ -34,8 +34,9 @@ class GunSystem: System {
             }
 
             // Wenjun TODO: Correct this angle calculation
+            // For now use constant size for bullet
             let bulletPosition = position.position +
-                                (SPSizes.bullet.height / 2 + SPSizes.spaceship.height / 2) *
+            (SPSizes.bullet.height / 2 + size.actualSize.height / 2) *
                                 CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createBullet(index: spaceship.index, from: entity.id,
                                        angle: rotation.angleInRadians, position: bulletPosition)

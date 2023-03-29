@@ -11,10 +11,12 @@ import DuelKit
 class SPEntityCreator {
     private let entityManager: EntityManager
     private let physicsCreator: SPPhysicsCreator
+    private let animationCreator: SPAnimationCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.physicsCreator = SPPhysicsCreator()
+        self.animationCreator = SPAnimationCreator()
     }
 
     @discardableResult
@@ -92,5 +94,20 @@ class SPEntityCreator {
         }
 
         return powerup
+    }
+
+    @discardableResult
+    func createAccelerationParticle(at position: CGPoint, of size: CGSize) -> Entity {
+        let particle = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: Assets.lava)
+        }
+
+        let animationComponent = animationCreator.createAccelerationParticle()
+        particle.assign(component: animationComponent)
+
+        return particle
     }
 }

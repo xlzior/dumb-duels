@@ -40,6 +40,10 @@ extension CGPoint {
         CGVector(dx: x, dy: y)
     }
 
+    func distanceTo(_ otherPoint: CGPoint) -> Double {
+        (self - otherPoint).length()
+    }
+
     static func random(within size: CGSize) -> CGPoint {
         CGPoint(x: CGFloat.random(in: 0...size.width), y: CGFloat.random(in: 0...size.height))
     }

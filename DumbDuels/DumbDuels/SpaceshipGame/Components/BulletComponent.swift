@@ -13,7 +13,7 @@ class BulletComponent: Component {
     var playerId: EntityID
     var createdAt: Date
     var lifespan: TimeInterval
-    
+
     var destroyTime: Date {
         createdAt.addingTimeInterval(lifespan)
     }

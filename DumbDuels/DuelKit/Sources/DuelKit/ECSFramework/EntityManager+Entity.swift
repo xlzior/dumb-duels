@@ -34,7 +34,7 @@ extension EntityManager {
         entityComponentMap.keys.count
     }
 
-    func exists(entity entityId: EntityID) -> Bool {
+    public func exists(entity entityId: EntityID) -> Bool {
         entityComponentMap.keys.contains(entityId)
     }
 

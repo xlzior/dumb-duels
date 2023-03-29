@@ -22,8 +22,7 @@ class PowerupSystem: System {
     }
 
     func update() {
-        if let lastSpawned,
-           Date() - lastSpawned <= SPConstants.powerupSpawnInterval {
+        guard canSpawnPowerUp() else {
             return
         }
 
@@ -38,5 +37,15 @@ class PowerupSystem: System {
         powerup.powerup.apply(to: playerId, in: entityManager)
         physics.toBeRemoved = true
         physics.shouldDestroyEntityWhenRemove = true
+    }
+
+    private func canSpawnPowerUp() -> Bool {
+        var isTimeToSpawn = true
+        if let lastSpawned,
+           Date() - lastSpawned <= SPConstants.powerupSpawnInterval {
+            isTimeToSpawn = false
+        }
+        let hasReachedMaxSpwans = powerups.count >= SPConstants.maxPowerUpsOnField
+        return isTimeToSpawn && !hasReachedMaxSpwans
     }
 }

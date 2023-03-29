@@ -20,7 +20,7 @@ class BulletAgeSystem: System {
 
     func update() {
         for (bullet, physics) in bullets
-        where Date() - bullet.createdAt > SPConstants.bulletLifespan {
+        where Date() > bullet.destroyTime {
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
         }

@@ -11,7 +11,6 @@ import DuelKit
 class GunSystem: System {
     unowned var entityManager: EntityManager
     private var entityCreator: SPEntityCreator
-    private var lastFired = [EntityID: Date]()
     private var spaceshipsWithGun: Assemblage4<SpaceshipComponent, GunComponent, PositionComponent, RotationComponent>
 
     init(for entityManager: EntityManager) {
@@ -30,11 +29,14 @@ class GunSystem: System {
             }
 
             if let lastFired = gun.lastFired,
-               Date() - lastFired < SPConstants.gunInterval {
+               Date() - lastFired < gun.gunInterval {
                 return
             }
 
-            let bulletPosition = position.position + CGVector(angle: rotation.angleInRadians)
+            // Wenjun TODO: Correct this angle calculation
+            let bulletPosition = position.position +
+                                (SPSizes.bullet.height / 2 + SPSizes.spaceship.height / 2) *
+                                CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createBullet(index: spaceship.index, from: entity.id,
                                        angle: rotation.angleInRadians, position: bulletPosition)
             gun.numBulletsLeft -= 1

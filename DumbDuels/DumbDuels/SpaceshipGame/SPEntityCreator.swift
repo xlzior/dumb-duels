@@ -80,11 +80,11 @@ class SPEntityCreator {
             [
                 SpriteComponent(assetName: "gunPowerup"),
                 PowerupComponent(ofType: GunPowerup())
-            ],
-            [
-                SpriteComponent(assetName: "rockPowerup"),
-                PowerupComponent(ofType: RockPowerup())
             ]
+//            [
+//                SpriteComponent(assetName: "rockPowerup"),
+//                PowerupComponent(ofType: RockPowerup())
+//            ]
         ]
 
         for comp in powerupComponents.randomElement()! {

@@ -28,11 +28,16 @@ class SPInputSystem: InputSystem {
         let angle = CGVector(angle: Double.pi / 2 - rotation.angleInRadians)
         // set the velocity directly so there is no drifting
         physics.velocity = SPConstants.propulsionForce * angle
+        physics.linearDamping = SPPhysics.spaceshipMovingDamping
 
         entityManager.remove(componentType: AutoRotateComponent.typeId, from: entityId)
 
         DispatchQueue.main.asyncAfter(deadline: .now() + SPConstants.rotationStoppedInterval) {
+            guard self.canAssignAutoRotate(entityId: entityId) else {
+                return
+            }
             self.entityManager.assign(component: AutoRotateComponent(), to: entityId)
+            physics.linearDamping = SPPhysics.spaceshipStaticDamping
         }
     }
 
@@ -42,5 +47,10 @@ class SPInputSystem: InputSystem {
 
     func update() {
 
+    }
+
+    private func canAssignAutoRotate(entityId: EntityID) -> Bool {
+        spaceships.isMember(entityId: entityId) &&
+        !entityManager.has(componentTypeId: AutoRotateComponent.typeId, entityId: entityId)
     }
 }

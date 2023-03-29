@@ -16,7 +16,8 @@ struct SPPhysics {
     static let spaceshipZRotation = PhysicsEngineDefaults.zRotation
     static let spaceshipRotation = false
     static let spaceshipFriction = PhysicsEngineDefaults.friction
-    static let spaceshipDamping = PhysicsEngineDefaults.linearDamping
+    static let spaceshipMovingDamping = 0.7
+    static let spaceshipStaticDamping = 0.05
     static let spaceshipImpulse: CGVector = .zero
     static let spaceshipAngularImpulse: CGFloat = .zero
 

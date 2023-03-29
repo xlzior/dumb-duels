@@ -8,9 +8,9 @@
 struct ButtonUpEvent: Event {
     var priority = 1
 
-    var index: Int
+    var entityId: EntityID
 
     func execute(with systems: SystemManager) {
-        systems.inputSystem?.handleButtonUp(playerIndex: index)
+        systems.inputSystem?.handleButtonUp(entityId: entityId)
     }
 }

@@ -16,7 +16,8 @@ class SPGameManager: GameManager {
             let position = CGPoint.random(within: Sizes.game)
             // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
-            initialPlayerIndexToIdMap[index] = spaceship.id
+
+            renderSystemDetails.gameController.registerPlayerID(playerIndex: index, playerEntityID: spaceship.id)
         }
     }
 

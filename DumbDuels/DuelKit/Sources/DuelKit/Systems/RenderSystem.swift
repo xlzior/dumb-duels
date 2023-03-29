@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class RenderSystem: System, IndexMapInitializable {
+public class RenderSystem: System {
     unowned var entityManager: EntityManager
     var gameController: GameController
 
@@ -25,7 +25,6 @@ public class RenderSystem: System, IndexMapInitializable {
     var renderedEntities: Set<EntityID> = Set()
     var renderables: Assemblage4<SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
     var playerScores: Assemblage1<ScoreComponent>
-    public var playerIndexToIdMap: [Int: EntityID]
 
     public init(for entityManager: EntityManager, eventManger: EventManager, details: RenderSystemDetails) {
         self.entityManager = entityManager
@@ -35,7 +34,6 @@ public class RenderSystem: System, IndexMapInitializable {
         self.renderables = entityManager.assemblage(requiredComponents: SpriteComponent.self,
             PositionComponent.self, SizeComponent.self, RotationComponent.self)
         self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
-        self.playerIndexToIdMap = [Int: EntityID]()
     }
 
     public func update() {
@@ -90,16 +88,8 @@ public class RenderSystem: System, IndexMapInitializable {
     }
 
     private func renderScores() {
-        for indexAndId in playerIndexToIdMap {
-            guard let (score) = playerScores.getComponents(for: indexAndId.value) else {
-                continue
-            }
-            gameController.updateScore(for: indexAndId.key, with: score.score)
+        for (score) in playerScores {
+            gameController.updateScore(for: score.playerId, with: score.score)
         }
-    }
-
-    public func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
     }
 }

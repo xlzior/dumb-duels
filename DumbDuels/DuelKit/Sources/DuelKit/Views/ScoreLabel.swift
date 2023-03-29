@@ -10,11 +10,10 @@ import UIKit
 class ScoreLabel: UILabel {
     static let zPosition: CGFloat = 101
     var isPlayerOne: Bool
-    var index: Int
+    var playerID: EntityID?
 
-    init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0, index: Int) {
+    init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0) {
         self.isPlayerOne = isPlayerOne
-        self.index = index
         super.init(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
         text = String(score)
 

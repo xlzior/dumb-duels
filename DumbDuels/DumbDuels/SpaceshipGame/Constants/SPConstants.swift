@@ -22,4 +22,8 @@ enum SPConstants {
     static let bulletLifespan: TimeInterval = 2.0
 
     static let rockForce: CGFloat = 800.0
+
+    static let bombNumBullets: Int = 8
+    static let bombRadius: CGFloat = 25.0
+    static let bombBulletLifespan: TimeInterval = 0.5
 }

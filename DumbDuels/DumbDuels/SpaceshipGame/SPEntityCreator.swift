@@ -7,6 +7,7 @@
 
 import CoreGraphics
 import DuelKit
+import Foundation
 
 class SPEntityCreator {
     private let entityManager: EntityManager
@@ -51,7 +52,8 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint) -> Entity {
+    func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint,
+                      lifespan: TimeInterval = SPConstants.bulletLifespan) -> Entity {
         let size = SPSizes.bullet
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
@@ -60,7 +62,7 @@ class SPEntityCreator {
             RotationComponent(angleInRadians: angle)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
-            BulletComponent(for: playerId)
+            BulletComponent(for: playerId, lifespan: lifespan)
             physicsCreator.createBullet(of: size, pointing: angle)
         }
         return bullet
@@ -79,14 +81,14 @@ class SPEntityCreator {
         }
 
         let powerupComponents: [[Component]] = [
-            [
-                SpriteComponent(assetName: "gunPowerup"),
-                PowerupComponent(ofType: GunPowerup())
-            ]
 //            [
-//                SpriteComponent(assetName: "rockPowerup"),
-//                PowerupComponent(ofType: RockPowerup())
-//            ]
+//                SpriteComponent(assetName: "gunPowerup"),
+//                PowerupComponent(ofType: GunPowerup())
+//            ],
+            [
+                SpriteComponent(assetName: "bombPowerup"),
+                PowerupComponent(ofType: BombPowerup())
+            ]
         ]
 
         for comp in powerupComponents.randomElement()! {

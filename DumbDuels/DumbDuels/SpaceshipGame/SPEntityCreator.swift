@@ -21,7 +21,8 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createSpaceship(index: Int, at position: CGPoint, of size: CGSize) -> Entity {
+    func createSpaceship(index: Int, at position: CGPoint, of size: CGSize,
+                         score: Int = 0) -> Entity {
         let spaceship = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -32,7 +33,8 @@ class SPEntityCreator {
             physicsCreator.createSpaceship(of: size)
         }
 
-        spaceship.assign(component: ScoreComponent(for: spaceship.id))
+        // Bing Sen TODO: Can remove entityId for score component since we using index now
+        spaceship.assign(component: ScoreComponent(score: score, for: spaceship.id))
 
         return spaceship
     }
@@ -127,5 +129,19 @@ class SPEntityCreator {
         spaceshipParticle.assign(component: animationComponent)
 
         return spaceshipParticle
+    }
+
+    @discardableResult
+    func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
+        let battleText = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: Assets.battleText)
+        }
+        let animationComponent = animationCreator.createBattleFlashAnimation()
+        battleText.assign(component: animationComponent)
+
+        return battleText
     }
 }

@@ -70,8 +70,9 @@ class SPScoreSystem: System {
         guard let (_, physicsComponent) = spaceships.getComponents(for: spaceshipId) else {
             return
         }
-        physicsComponent.toBeRemoved = true
-        physicsComponent.shouldDestroyEntityWhenRemove = true
+        // Not removed here, removed in SPRoundSystem in the same update cycle
+//        physicsComponent.toBeRemoved = true
+//        physicsComponent.shouldDestroyEntityWhenRemove = true
         eventFirer.fire(SpaceshipDestroyedEvent(spaceshipId: spaceshipId))
     }
 }

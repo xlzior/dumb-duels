@@ -88,8 +88,8 @@ class SPAnimationCreatorSystem: System {
         }
     }
 
-    func onDestroy(spaceshipId: EntityID) {
-        previousParticleSpawnInfo.removeValue(forKey: spaceshipId)
+    func resetMapping() {
+        previousParticleSpawnInfo.removeAll()
     }
 
 }

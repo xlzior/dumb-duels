@@ -50,13 +50,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
               let secondId = initialPlayerIndexToIdMap[1] else {
             return
         }
-        systemManager.inputSystem?.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
-        for system in systemManager.systems {
-            guard let initializableSystem = system as? IndexMapInitializable else {
-                continue
-            }
-            initializableSystem.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
-        }
+        systemManager.updateIndexToIdMapping(firstId: firstId, secondId: secondId)
     }
 
     private func startGame() {

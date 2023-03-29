@@ -25,4 +25,11 @@ class BulletAgeSystem: System {
             physics.shouldDestroyEntityWhenRemove = true
         }
     }
+
+    func destroyAllBullets() {
+        for (_, physics) in bullets {
+            physics.toBeRemoved = true
+            physics.shouldDestroyEntityWhenRemove = true
+        }
+    }
 }

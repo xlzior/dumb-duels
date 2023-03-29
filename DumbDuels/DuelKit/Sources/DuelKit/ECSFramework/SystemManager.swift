@@ -31,4 +31,14 @@ public class SystemManager {
             system.update()
         }
     }
+
+    public func updateIndexToIdMapping(firstId: EntityID, secondId: EntityID) {
+        inputSystem?.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
+        for system in systems {
+            guard let initializableSystem = system as? IndexMapInitializable else {
+                continue
+            }
+            initializableSystem.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
+        }
+    }
 }

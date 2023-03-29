@@ -56,6 +56,7 @@ class SPGameManager: GameManager {
 
     override func setUpSystems() {
         systemManager.register(SPInputSystem(for: entityManager))
+        systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(BulletAgeSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager))
         systemManager.register(AutoRotateSystem(for: entityManager))

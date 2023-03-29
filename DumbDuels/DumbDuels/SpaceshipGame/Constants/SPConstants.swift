@@ -14,7 +14,7 @@ enum SPConstants {
     static let propulsionForce: CGFloat = 400.0
 
     static let powerupSpawnInterval: TimeInterval = 5.0
-    static let maxPowerUpsOnField: Int = 5
+    static let maxPowerUpsOnField: Int = 3
 
     static let bulletForce: CGFloat = 600.0
     static let gunInterval: TimeInterval = 1.5

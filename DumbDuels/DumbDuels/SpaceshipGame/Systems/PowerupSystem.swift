@@ -48,4 +48,11 @@ class PowerupSystem: System {
         let hasReachedMaxSpwans = powerups.count >= SPConstants.maxPowerUpsOnField
         return isTimeToSpawn && !hasReachedMaxSpwans
     }
+
+    func destroyAllPowerups() {
+        for (_, physics) in powerups {
+            physics.toBeRemoved = true
+            physics.shouldDestroyEntityWhenRemove = true
+        }
+    }
 }

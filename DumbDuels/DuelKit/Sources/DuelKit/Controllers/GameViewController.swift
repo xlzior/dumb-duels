@@ -33,14 +33,14 @@ open class GameViewController: UIViewController {
         view.addSubview(gameView)
         view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))
 
-        let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true)
-        let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false)
+        let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true, index: 0)
+        let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false, index: 1)
         playerButtons.append(contentsOf: [playerOneButton, playerTwoButton])
         view.addSubview(playerOneButton)
         view.addSubview(playerTwoButton)
 
-        let playerOneScore = ScoreLabel(screenSize: screenSize, isPlayerOne: true)
-        let playerTwoScore = ScoreLabel(screenSize: screenSize, isPlayerOne: false)
+        let playerOneScore = ScoreLabel(screenSize: screenSize, isPlayerOne: true, index: 0)
+        let playerTwoScore = ScoreLabel(screenSize: screenSize, isPlayerOne: false, index: 1)
         playerScores.append(contentsOf: [playerOneScore, playerTwoScore])
         view.addSubview(playerOneScore)
         view.addSubview(playerTwoScore)
@@ -65,24 +65,19 @@ open class GameViewController: UIViewController {
     }
 
     @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
-        guard let playerID = (longPressRecognizer.view as? PlayerButton)?.playerID else {
+        guard let playerIndex = (longPressRecognizer.view as? PlayerButton)?.index else {
             return
         }
 
         if longPressRecognizer.state == .began {
-            gameManager?.handleButtonDown(for: playerID)
+            gameManager?.handleButtonDown(for: playerIndex)
         } else if longPressRecognizer.state == .ended {
-            gameManager?.handleButtonUp(for: playerID)
+            gameManager?.handleButtonUp(for: playerIndex)
         }
     }
 }
 
 extension GameViewController: GameController {
-    public func registerPlayerID(playerIndex: Int, playerEntityID: EntityID) {
-        playerButtons[playerIndex].playerID = playerEntityID
-        playerScores[playerIndex].playerID = playerEntityID
-    }
-
     public func goToHomePage() {
         navigationController?.popViewController(animated: true)
     }
@@ -134,8 +129,8 @@ extension GameViewController: GameController {
         entityViewToRemove.removeFromSuperview()
     }
 
-    public func updateScore(for entityID: EntityID, with newScore: Int) {
-        for score in playerScores where score.playerID == entityID {
+    public func updateScore(for playerIndex: Int, with newScore: Int) {
+        for score in playerScores where score.index == playerIndex {
             score.text = String(newScore)
         }
     }

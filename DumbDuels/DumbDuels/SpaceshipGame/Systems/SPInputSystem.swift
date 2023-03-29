@@ -12,14 +12,18 @@ class SPInputSystem: InputSystem {
     unowned var entityManager: EntityManager
     private var spaceships: Assemblage3<SpaceshipComponent, RotationComponent, PhysicsComponent>
 
+    var playerIndexToIdMap: [Int: EntityID]
+
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.spaceships = entityManager.assemblage(
             requiredComponents: SpaceshipComponent.self, RotationComponent.self, PhysicsComponent.self)
+        self.playerIndexToIdMap = [Int: EntityID]()
     }
 
-    func handleButtonDown(entityId: EntityID) {
-        guard let (_, rotation, physics) = spaceships.getComponents(for: entityId) else {
+    func handleButtonDown(playerIndex: Int) {
+        guard let entityId = playerIndexToIdMap[playerIndex],
+              let (_, rotation, physics) = spaceships.getComponents(for: entityId) else {
             return
         }
 
@@ -39,12 +43,17 @@ class SPInputSystem: InputSystem {
         }
     }
 
-    func handleButtonUp(entityId: EntityID) {
+    func handleButtonUp(playerIndex: Int) {
 
     }
 
     func update() {
 
+    }
+
+    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
+        playerIndexToIdMap[0] = firstPlayer
+        playerIndexToIdMap[1] = secondPlayer
     }
 
     private func canAssignAutoRotate(entityId: EntityID) -> Bool {

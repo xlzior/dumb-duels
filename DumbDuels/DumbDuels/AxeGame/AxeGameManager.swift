@@ -43,8 +43,7 @@ class AxeGameManager: GameManager {
                 holding: axe.id,
                 onPlatform: platform.id
             )
-
-            renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
+            initialPlayerIndexToIdMap[playerIndex] = player.id
         }
 
         _ = creator.createLava(at: Positions.lava, of: Sizes.lava)

@@ -94,6 +94,10 @@ class EntityCreator {
             SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
         }
+        // Sync throwStrength entity position using player position
+        let syncXComponent = SyncXPositionComponent(syncFrom: player.id)
+        throwStrengthEntity.assign(component: syncXComponent)
+
         let scoreComponent = ScoreComponent(for: player.id)
         player.assign(component: scoreComponent)
         let physicsComponent = physicsCreator.createPlayer(of: size)
@@ -121,7 +125,7 @@ class EntityCreator {
         return platform
     }
 
-    func createPlatform(withVerticalOffset offset: CGFloat, from position: CGPoint, of size: CGSize) -> Entity {
+    func createPlatform(withVerticalOffset offset: CGFloat, from position: CGPoint, of size: CGSize, index: Int) -> Entity {
         let platformPosition = CGPoint(x: position.x, y: position.y + offset)
         let platform = entityManager.createEntity {
             PositionComponent(position: platformPosition)
@@ -130,8 +134,8 @@ class EntityCreator {
             SpriteComponent(assetName: Assets.platform)
             PlatformComponent()
             OscillationComponent(centerOfOscillation: platformPosition,
-                                 axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude,
-                                 period: Oscillation.platformPeriod, displacement: Oscillation.platformDisplacement)
+                                 axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude[index],
+                                 period: Oscillation.platformPeriod[index], displacement: Oscillation.platformDisplacement[index])
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)
@@ -152,7 +156,7 @@ class EntityCreator {
         return wall
     }
 
-    func createPeg(at position: CGPoint, of size: CGSize) -> Entity {
+    func createPeg(at position: CGPoint, of size: CGSize, index: Int) -> Entity {
         let peg = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -160,8 +164,9 @@ class EntityCreator {
             SpriteComponent(assetName: Assets.peg)
             PegComponent()
             OscillationComponent(centerOfOscillation: position,
-                                 axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude,
-                                 period: Oscillation.pegPeriod, displacement: Double.random(in: 1...10))
+                                 axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude[index],
+                                 period: Oscillation.pegPeriod[index],
+                                 displacement: Double.random(in: 0...Double.pi))
         }
 
         let physicsComponent = physicsCreator.createPeg(of: size)

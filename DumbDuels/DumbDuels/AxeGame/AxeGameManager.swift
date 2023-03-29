@@ -23,7 +23,8 @@ class AxeGameManager: GameManager {
             let platform = creator.createPlatform(
                 withVerticalOffset: verticalOffset,
                 from: playerPosition,
-                of: Sizes.platform
+                of: Sizes.platform,
+                index: playerIndex
             )
 
             let axe = creator.createAxe(
@@ -52,8 +53,8 @@ class AxeGameManager: GameManager {
             _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
         }
 
-        for pegPosition in Positions.pegs {
-            _ = creator.createPeg(at: pegPosition, of: Sizes.peg)
+        for pegIndex in 0..<Positions.pegs.count {
+            _ = creator.createPeg(at: Positions.pegs[pegIndex], of: Sizes.peg, index: pegIndex)
         }
     }
 
@@ -97,7 +98,7 @@ class AxeGameManager: GameManager {
         }
 
         systemManager.register(AxeGameInputSystem(for: entityManager))
-        systemManager.register(PlayerPlatformSyncSystem(for: entityManager))
+        systemManager.register(PositionSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))

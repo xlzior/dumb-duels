@@ -48,7 +48,7 @@ struct Physics {
     // Peg physics constants
     static let pegMass: CGFloat = 1.0
     static let pegGravity = false
-    static let pegCor: CGFloat = 0.1
+    static let pegCor: CGFloat = 0.7
     static let pegIsDynamic = false
     static let pegZRotation = PhysicsEngineDefaults.zRotation
     static let pegRotation = false

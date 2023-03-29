@@ -11,10 +11,11 @@ class PlayerButton: UIButton {
     static let zPosition: CGFloat = 101
     let buttonAspectRatio = 1.8
     var isPlayerOne: Bool
-    var playerID: EntityID?
+    var index: Int
 
-    init(screenSize: CGSize, isPlayerOne: Bool) {
+    init(screenSize: CGSize, isPlayerOne: Bool, index: Int) {
         self.isPlayerOne = isPlayerOne
+        self.index = index
         super.init(frame: CGRect(x: 0, y: 0, width: 180, height: 100))
 
         scale(screenSize.height)

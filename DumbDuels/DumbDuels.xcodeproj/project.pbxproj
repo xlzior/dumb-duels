@@ -261,9 +261,9 @@
 				7BA7EBC829C36BBD0096457F /* Systems */,
 				7BA7EBCE29C36BBD0096457F /* Events */,
 				A7E439FB29C374E800027AC6 /* EntityCreator.swift */,
+				7BE0FDF029D031550035AE98 /* AxeGameManager.swift */,
 				8C3584A729C559FE00BAE8C5 /* PhysicsCreator.swift */,
 				A7E52EF429D1F2F800075F99 /* AnimationCreator.swift */,
-				7BE0FDF029D031550035AE98 /* AxeGameManager.swift */,
 				7BE0FDF229D032EF0035AE98 /* AxeGameViewController.swift */,
 			);
 			path = AxeGame;

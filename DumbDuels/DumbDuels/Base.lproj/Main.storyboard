@@ -8,39 +8,60 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="oFO-2d-mIO">
-                                <rect key="frame" x="248" y="232.5" width="637" height="279.5"/>
+                                <rect key="frame" x="161.5" y="232.5" width="810" height="279.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DUMB DUELS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-cO-7HA">
-                                        <rect key="frame" x="0.0" y="0.0" width="637" height="119.5"/>
+                                        <rect key="frame" x="86.5" y="0.0" width="637" height="119.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="100"/>
                                         <color key="textColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-So-2A3">
-                                        <rect key="frame" x="168.5" y="189.5" width="300" height="90"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="kd0-6c-Ofh"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="PLAY" cornerStyle="large" buttonSize="large">
-                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
-                                            <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
-                                            <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="playButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="858-AW-oGb"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Ai-AH-kuy">
+                                        <rect key="frame" x="0.0" y="189.5" width="810" height="90"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-So-2A3">
+                                                <rect key="frame" x="0.0" y="0.0" width="400" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="kd0-6c-Ofh"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="AXE" cornerStyle="large" buttonSize="large">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
+                                                    <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="ne8-VZ-sUD" kind="show" id="I5y-5S-F89"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afX-5A-bbB">
+                                                <rect key="frame" x="410" y="0.0" width="400" height="90"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="wcf-kg-l1N"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.8980392157" green="0.43137254899999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="SPACESHIP" cornerStyle="large" buttonSize="large">
+                                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
+                                                    <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
+                                                    <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <segue destination="xkm-Vv-Vaz" kind="show" id="p9Q-Ef-HJU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -55,22 +76,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="735.76271186440681" y="8.7804878048780495"/>
+            <point key="canvasLocation" x="768" y="8"/>
         </scene>
         <!--Axe Game View Controller-->
         <scene sceneID="6I2-Pj-YD5">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="ne8-VZ-sUD" customClass="AxeGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ne8-VZ-sUD" customClass="AxeGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wqz-Rh-gMr">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="wMV-BW-YJq"/>
                         <color key="backgroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uT6-hh-cEk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwI-J8-Kah" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1453.3980582524271" y="8.064516129032258"/>
+            <point key="canvasLocation" x="424" y="722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XVv-dT-LyA">
@@ -89,6 +111,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVR-Xw-Eud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="26.949152542372882" y="8.7804878048780495"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="589-bx-SCJ">
+            <objects>
+                <viewController id="xkm-Vv-Vaz" customClass="SPGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oXK-Ur-mGr">
+                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ox6-Yy-ytA"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GZ1-4z-OgJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ufn-Go-124" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105" y="722"/>
         </scene>
     </scenes>
 </document>

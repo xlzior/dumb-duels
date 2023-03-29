@@ -44,6 +44,10 @@ public struct Assemblage<R> where R: AssemblageRequirementsManager {
         manager.isMember(entity, ofAssemblageWithTraits: traits)
     }
 
+    public func isMember(entityId: EntityID) -> Bool {
+        manager.isMember(entityId, ofAssemblageWithTraits: traits)
+    }
+
     public func canBecomeMember(entity: Entity) -> Bool {
         manager.canBecomeMember(entity, ofAssemblageWithTraits: traits)
     }

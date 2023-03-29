@@ -12,6 +12,10 @@ extension CGPoint {
         CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
 
+    static func + (left: CGPoint, right: CGVector) -> CGPoint {
+        CGPoint(x: left.x + right.dx, y: left.y + right.dy)
+    }
+
     static func += (left: inout CGPoint, right: CGPoint) {
         left = left + right
     }
@@ -34,5 +38,13 @@ extension CGPoint {
 
     func toVector() -> CGVector {
         CGVector(dx: x, dy: y)
+    }
+
+    func distanceTo(_ otherPoint: CGPoint) -> Double {
+        (self - otherPoint).length()
+    }
+
+    static func random(within size: CGSize) -> CGPoint {
+        CGPoint(x: CGFloat.random(in: 0...size.width), y: CGFloat.random(in: 0...size.height))
     }
 }

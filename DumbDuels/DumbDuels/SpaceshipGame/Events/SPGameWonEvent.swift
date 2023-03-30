@@ -8,7 +8,7 @@
 import DuelKit
 
 struct SPGameWonEvent: Event {
-    var priority = 2
+    var priority = 4
 
     var entityId: EntityID
 

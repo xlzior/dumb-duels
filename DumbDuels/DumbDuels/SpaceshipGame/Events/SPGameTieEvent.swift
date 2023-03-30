@@ -8,7 +8,7 @@
 import DuelKit
 
 struct SPGameTieEvent: Event {
-    var priority = 2
+    var priority = 4
 
     func execute(with systems: SystemManager) {
         guard let gameOverSystem = systems.get(ofType: SPGameOverSystem.self),

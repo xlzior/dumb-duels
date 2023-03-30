@@ -68,7 +68,8 @@ class SPGameManager: GameManager {
         systemManager.register(SPAnimationCreatorSystem(for: entityManager))
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager))
-        systemManager.register(SPGameOverSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(SPGameOverSystem(for: entityManager, eventFirer: eventManager,
+                                                onGameOver: handleGameOver))
         systemManager.register(AnimationSystem(for: entityManager))
         systemManager.register(PhysicsSystem(
             for: entityManager, eventFirer: eventManager,

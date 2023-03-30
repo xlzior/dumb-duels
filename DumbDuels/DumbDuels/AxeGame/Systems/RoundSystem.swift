@@ -51,7 +51,7 @@ class RoundSystem: System {
 
     func checkWin() {
         var winningEntities = [EntityID]()
-        for (entity, _, score, _, _, _) in players.entityAndComponents where score.score >= 5 {
+        for (entity, _, score, _, _, _) in players.entityAndComponents where score.score >= 1 {
             winningEntities.append(entity.id)
         }
 

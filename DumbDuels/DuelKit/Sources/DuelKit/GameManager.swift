@@ -8,7 +8,7 @@
 import UIKit
 
 open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
-    public let renderSystemDetails: RenderSystemDetails
+    public var renderSystemDetails: RenderSystemDetails
 
     public let entityManager: EntityManager
     public let systemManager: SystemManager
@@ -16,6 +16,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     public var simulator: Simulatable
     public var initialPlayerIndexToIdMap: [Int: EntityID]
+    private var isGameOver: Bool
 
     public init(renderSystemDetails: RenderSystemDetails) {
         self.renderSystemDetails = renderSystemDetails
@@ -28,12 +29,14 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
         self.simulator = Simulator()
         self.initialPlayerIndexToIdMap = [Int: EntityID]()
+        self.isGameOver = false
         simulator.gameScene.gameSceneDelegate = self
         simulator.gameScene.physicsContactDelegate = self
 
         setUpEntities()
         setUpSystems()
         setUpPlayerIndexToIdMappings()
+        self.renderSystemDetails.gameController.onBackToHomePage = self.stopGameLoop
         startGame()
     }
 
@@ -81,8 +84,9 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         if let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) {
             physicsSystem.syncFromPhysicsEngine()
         }
-
-        eventManager.pollAll()
+        if !isGameOver {
+            eventManager.pollAll()
+        }
         systemManager.update()
     }
 
@@ -95,5 +99,15 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     open func didContactEnd(for entityA: EntityID, and entityB: EntityID) {
 
+    }
+
+    open func stopGameLoop() {
+        print("simulator stopped!")
+        simulator.stop()
+    }
+
+    open func handleGameOver() {
+        print("game over!")
+        isGameOver = true
     }
 }

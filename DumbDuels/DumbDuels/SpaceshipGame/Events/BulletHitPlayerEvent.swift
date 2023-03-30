@@ -14,8 +14,7 @@ struct BulletHitPlayerEvent: Event {
     let playerId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let scoreSystem = systems.get(ofType: SPScoreSystem.self),
-              let animationCreatorSystem = systems.get(ofType: SPAnimationCreatorSystem.self) else {
+        guard let scoreSystem = systems.get(ofType: SPScoreSystem.self) else {
             return
         }
 

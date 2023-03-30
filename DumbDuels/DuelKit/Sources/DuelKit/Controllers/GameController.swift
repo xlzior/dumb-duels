@@ -6,6 +6,7 @@
 //
 
 public protocol GameController {
+    var onBackToHomePage: () -> Void { get set }
     func goToHomePage()
     func addView(for entityID: EntityID, with details: RenderDetails)
     func updateView(for entityID: EntityID, with details: RenderDetails)

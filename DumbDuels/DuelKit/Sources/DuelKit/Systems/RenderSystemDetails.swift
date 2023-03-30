@@ -8,7 +8,7 @@
 import CoreGraphics
 
 public struct RenderSystemDetails {
-    public let gameController: GameController
+    public var gameController: GameController
     let screenSize: CGSize
     let screenOffset: CGPoint
 }

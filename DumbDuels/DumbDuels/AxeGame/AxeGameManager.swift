@@ -106,7 +106,8 @@ class AxeGameManager: GameManager {
         systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
                                              scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
-        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator,
+                                             onGameOver: handleGameOver))
         systemManager.register(RenderSystem(
             for: entityManager,
             eventManger: eventManager,

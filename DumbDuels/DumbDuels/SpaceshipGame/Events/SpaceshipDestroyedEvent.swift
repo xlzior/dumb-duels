@@ -8,7 +8,7 @@
 import DuelKit
 
 struct SpaceshipDestroyedEvent: Event {
-    var priority = 2
+    var priority = 3
 
     let spaceshipId: EntityID
 

@@ -15,6 +15,7 @@ open class GameViewController: UIViewController {
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
+    public var onBackToHomePage: () -> Void = {}
 
     public var renderSystemDetails: RenderSystemDetails?
     public var gameManager: GameManager?
@@ -82,6 +83,7 @@ open class GameViewController: UIViewController {
 
 extension GameViewController: GameController {
     public func goToHomePage() {
+        onBackToHomePage()
         navigationController?.popViewController(animated: true)
     }
 

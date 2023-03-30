@@ -80,6 +80,9 @@
 		8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */; };
 		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
 		8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */; };
+		A7C4F17F29D5840200FA8982 /* SPGameTieEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F17E29D5840200FA8982 /* SPGameTieEvent.swift */; };
+		A7C4F18129D5842100FA8982 /* SPGameWonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F18029D5842100FA8982 /* SPGameWonEvent.swift */; };
+		A7C4F18329D5849000FA8982 /* SPGameOverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F18229D5849000FA8982 /* SPGameOverSystem.swift */; };
 		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
 		A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* Sizes.swift */; };
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
@@ -186,6 +189,9 @@
 		8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRoundSystem.swift; sourceTree = "<group>"; };
 		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarComponent.swift; sourceTree = "<group>"; };
+		A7C4F17E29D5840200FA8982 /* SPGameTieEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameTieEvent.swift; sourceTree = "<group>"; };
+		A7C4F18029D5842100FA8982 /* SPGameWonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameWonEvent.swift; sourceTree = "<group>"; };
+		A7C4F18229D5849000FA8982 /* SPGameOverSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameOverSystem.swift; sourceTree = "<group>"; };
 		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		A7E439F829C374BE00027AC6 /* Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
@@ -374,6 +380,7 @@
 				7BC8C2D429D299CA001CF6F7 /* PowerupSystem.swift */,
 				8CB0FA6829D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift */,
 				8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */,
+				A7C4F18229D5849000FA8982 /* SPGameOverSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -398,6 +405,8 @@
 				7BC8C2D629D29C77001CF6F7 /* PlayerHitPowerupEvent.swift */,
 				8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */,
 				8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */,
+				A7C4F17E29D5840200FA8982 /* SPGameTieEvent.swift */,
+				A7C4F18029D5842100FA8982 /* SPGameWonEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -612,6 +621,7 @@
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */,
 				7B13494729D1DB7700E43A7F /* SPPhysics.swift in Sources */,
+				A7C4F17F29D5840200FA8982 /* SPGameTieEvent.swift in Sources */,
 				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */,
 				7BCC620C29D1D7AF0092B602 /* SPGameViewController.swift in Sources */,
@@ -640,6 +650,7 @@
 				8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */,
 				7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */,
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
+				A7C4F18129D5842100FA8982 /* SPGameWonEvent.swift in Sources */,
 				A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
@@ -663,6 +674,7 @@
 				7BC8C2C829D29042001CF6F7 /* BulletAgeSystem.swift in Sources */,
 				7B13495729D1F94300E43A7F /* BulletComponent.swift in Sources */,
 				7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */,
+				A7C4F18329D5849000FA8982 /* SPGameOverSystem.swift in Sources */,
 				7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */,
 				6F67C71329C462DD009E0579 /* Physics.swift in Sources */,
 				7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */,

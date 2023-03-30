@@ -9,13 +9,12 @@ import DuelKit
 import CoreGraphics
 
 class SPRoundSystem: System {
-    func update() {
-    }
 
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
     // TODO: Settle this passing of entity creator, axe game uses unowned and passes in constructor
     private var entityCreator: SPEntityCreator
+
     private var spaceships: Assemblage3<SpaceshipComponent, PhysicsComponent, ScoreComponent>
     private var isGameOver: Bool
 
@@ -28,11 +27,29 @@ class SPRoundSystem: System {
         self.isGameOver = false
     }
 
-    func checkWin() {
+    func update() {}
 
+    func checkWin() {
+        var winningEntities = [EntityID]()
+        for (entity, _, _, score) in spaceships.entityAndComponents where score.score >= 1 {
+            winningEntities.append(entity.id)
+        }
+
+        guard !winningEntities.isEmpty else {
+            return
+        }
+
+        if winningEntities.count > 1 {
+            eventFirer.fire(SPGameTieEvent())
+        } else {
+            eventFirer.fire(SPGameWonEvent(entityId: winningEntities[0]))
+        }
+        isGameOver = true
     }
 
     func reset() {
+        checkWin()
+
         var indexToIdMap = [Int: EntityID]()
         // Should have 2 spaceships at this point because it is not destroyed before physics update
         for (spaceshipComponent, physics, oldScore) in spaceships {

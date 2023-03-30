@@ -37,9 +37,11 @@ class PowerupSystem: System {
     }
 
     func applyPowerup(powerupId: EntityID, to playerId: EntityID) {
-        guard let (powerup, physics, _, _) = powerups.getComponents(for: powerupId) else {
+        guard let (powerup, physics, _, _) = powerups.getComponents(for: powerupId),
+              !powerup.isActivated else {
             return
         }
+        powerup.isActivated = true
         powerup.powerup.apply(to: playerId, in: entityManager)
         physics.toBeRemoved = true
         physics.shouldDestroyEntityWhenRemove = true

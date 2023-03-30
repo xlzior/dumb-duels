@@ -10,9 +10,11 @@ import DuelKit
 class PowerupComponent: Component {
     var id: ComponentID
     var powerup: any Powerup
+    var isActivated: Bool
 
-    init(ofType powerup: any Powerup) {
+    init(ofType powerup: any Powerup, isActivated: Bool = false) {
         self.id = ComponentID()
         self.powerup = powerup
+        self.isActivated = isActivated
     }
 }

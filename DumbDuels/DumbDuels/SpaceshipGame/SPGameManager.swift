@@ -14,6 +14,9 @@ class SPGameManager: GameManager {
 
         for index in 0...1 {
             // TODO: Why is Sizes (from axe game) used here? Should this be extracted to game framework?
+            // WJ's reply: due to some slightly questionable decisions, Sizes comes from DuelKit
+            // AxeGame extends Sizes with its own stuff
+            // refactor later
             let position = CGPoint.random(within: Sizes.game)
             // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)

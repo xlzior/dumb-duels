@@ -17,6 +17,7 @@ class SPRoundSystem: System {
 
     private var spaceships: Assemblage3<SpaceshipComponent, PhysicsComponent, ScoreComponent>
     private var isGameOver: Bool
+    private var isResetThisFrame: Bool
 
     init(for entityManager: EntityManager,
          eventFirer: EventFirer) {
@@ -25,9 +26,12 @@ class SPRoundSystem: System {
         self.entityCreator = SPEntityCreator(entityManager: entityManager)
         self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
         self.isGameOver = false
+        self.isResetThisFrame = false
     }
 
-    func update() {}
+    func update() {
+        isResetThisFrame = false
+    }
 
     func checkWin() {
         var winningEntities = [EntityID]()
@@ -48,6 +52,13 @@ class SPRoundSystem: System {
     }
 
     func reset() {
+        // TODO: not the root cause
+        if isResetThisFrame {
+            return
+        }
+
+        isResetThisFrame = true
+
         checkWin()
 
         var indexToIdMap = [Int: EntityID]()

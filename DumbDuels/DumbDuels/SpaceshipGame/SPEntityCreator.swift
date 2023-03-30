@@ -82,6 +82,7 @@ class SPEntityCreator {
             physicsCreator.createPowerup(of: size)
         }
 
+        // TODO: re-enable all powerups
         let powerupComponents: [[Component]] = [
 //            [
 //                SpriteComponent(assetName: "gunPowerup"),
@@ -91,6 +92,10 @@ class SPEntityCreator {
                 SpriteComponent(assetName: "bombPowerup"),
                 PowerupComponent(ofType: BombPowerup())
             ]
+//            [
+//                SpriteComponent(assetName: "rockPowerup"),
+//                PowerupComponent(ofType: RockPowerup())
+//            ]
         ]
 
         for comp in powerupComponents.randomElement()! {

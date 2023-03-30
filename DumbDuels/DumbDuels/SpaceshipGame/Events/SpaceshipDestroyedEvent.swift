@@ -29,6 +29,7 @@ struct SpaceshipDestroyedEvent: Event {
         // TODO: delay all these reset until the destroy animation ends
         animationCreatorSystem.resetMapping()
         bulletSystem.destroyAllBullets()
+        // TODO: destroy all rocks
         powerupSystem.destroyAllPowerups()
         roundSystem.reset()
     }

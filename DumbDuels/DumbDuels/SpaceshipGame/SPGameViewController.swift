@@ -14,4 +14,8 @@ class SPGameViewController: GameViewController {
         }
         gameManager = SPGameManager(renderSystemDetails: renderSystemDetails)
     }
+
+    override func styleGameViewBackground() {
+        gameView.backgroundColor = .darkGray
+    }
 }

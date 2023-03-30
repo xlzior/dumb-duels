@@ -11,7 +11,7 @@ open class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
     var screenOffset = CGPoint()
 
-    var gameView: UIView!
+    public var gameView: UIImageView!
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
@@ -22,13 +22,16 @@ open class GameViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         setUpGameView()
+        styleGameViewBackground()
         setUpGestureRecognisers()
         setUpRenderSystemDetails()
         setUpGameManager()
     }
 
+    open func styleGameViewBackground() {}
+
     private func setUpGameView() {
-        gameView = GameAreaView(screenSize: screenSize, bgColor: .darkGray)
+        gameView = GameAreaView(screenSize: screenSize)
         screenOffset = gameView.frame.origin
         view.addSubview(gameView)
         view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))

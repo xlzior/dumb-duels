@@ -28,7 +28,7 @@ open class GameViewController: UIViewController {
     }
 
     private func setUpGameView() {
-        gameView = GameAreaView(screenSize: screenSize)
+        gameView = GameAreaView(screenSize: screenSize, bgColor: .darkGray)
         screenOffset = gameView.frame.origin
         view.addSubview(gameView)
         view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))

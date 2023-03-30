@@ -10,15 +10,15 @@ import UIKit
 class GameAreaView: UIView {
     let gameAspectRatio: CGFloat = 1_000 / 650
 
-    init(screenSize: CGSize) {
+    init(screenSize: CGSize, bgColor: UIColor) {
         super.init(frame: CGRect(x: 0, y: 0, width: 1_000, height: 650))
-        style()
+        style(bgColor: bgColor)
         letterBox(screenSize)
         position(screenSize)
     }
 
-    private func style() {
-        backgroundColor = .white
+    private func style(bgColor: UIColor) {
+        backgroundColor = bgColor
     }
 
     private func letterBox(_ screenSize: CGSize) {

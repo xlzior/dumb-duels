@@ -132,11 +132,28 @@ class SPEntityCreator {
     }
 
     @discardableResult
+    func createStarParticle(at position: CGPoint, of size: CGSize) -> Entity {
+        let star = entityManager.createEntity {
+            StarComponent()
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: SPAssets.star)
+        }
+
+        let animationComponent = animationCreator.createStarAnimation(initialPosition: position)
+        star.assign(component: animationComponent)
+
+        return star
+    }
+
+    @discardableResult
     func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
         let battleText = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
+            // TODO: Why is Assets still here
             SpriteComponent(assetName: Assets.battleText)
         }
         let animationComponent = animationCreator.createBattleFlashAnimation()

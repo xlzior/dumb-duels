@@ -17,8 +17,10 @@ class SPAnimationCreatorSystem: System {
     private var movingSpaceships: Assemblage4<SpaceshipComponent, PositionComponent,
                                               RotationComponent, SizeComponent>
     private var spaceships: Assemblage3<SpaceshipComponent, PositionComponent, PhysicsComponent>
+    private var stars: Assemblage1<StarComponent>
     private var previousParticleSpawnInfo: [EntityID: Pair<CGPoint, CGFloat>]
     private let numSpaceshipParticles = 40
+    private let numStarParticles = 40
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
@@ -29,6 +31,7 @@ class SPAnimationCreatorSystem: System {
                                                          excludedComponents: AutoRotateComponent.self)
         self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
                                                    PositionComponent.self, PhysicsComponent.self)
+        self.stars = entityManager.assemblage(requiredComponents: StarComponent.self)
         previousParticleSpawnInfo = [EntityID: Pair<CGPoint, CGFloat>]()
     }
 
@@ -41,6 +44,9 @@ class SPAnimationCreatorSystem: System {
             let particlePosistion = position.position + (SPSizes.accelerationParticle.height / 2
                                                          + size.actualSize.height / 2) * CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createAccelerationParticle(at: particlePosistion, of: SPSizes.accelerationParticle)
+        }
+        while stars.count < numStarParticles {
+            createNewStar()
         }
     }
 
@@ -92,4 +98,10 @@ class SPAnimationCreatorSystem: System {
         previousParticleSpawnInfo.removeAll()
     }
 
+    private func createNewStar() {
+        // TODO: Why is Sizes used here. Can we extract into DuelKit constant?
+        let randomPosition = CGPoint.random(within: Sizes.game)
+
+        entityCreator.createStarParticle(at: randomPosition, of: SPSizes.star)
+    }
 }

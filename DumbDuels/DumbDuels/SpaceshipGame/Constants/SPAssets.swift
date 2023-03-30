@@ -13,4 +13,5 @@ struct SPAssets {
     static let battleText: String = "battle"
     static let gameTiedText: String = "tie"
     static let gameWonText: [String] = ["won1", "won2"]
+    static let star = "star"
 }

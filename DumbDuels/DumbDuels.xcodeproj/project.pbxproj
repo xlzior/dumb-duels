@@ -79,6 +79,7 @@
 		8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */; };
 		8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */; };
 		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
+		8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */; };
 		A7E439F929C374BE00027AC6 /* Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* Positions.swift */; };
 		A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* Sizes.swift */; };
 		A7E439FC29C374E800027AC6 /* EntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* EntityCreator.swift */; };
@@ -184,6 +185,7 @@
 		8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipDestroyedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRoundSystem.swift; sourceTree = "<group>"; };
 		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
+		8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarComponent.swift; sourceTree = "<group>"; };
 		A7E439F729C374BE00027AC6 /* Positions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Positions.swift; sourceTree = "<group>"; };
 		A7E439F829C374BE00027AC6 /* Sizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		A7E439FB29C374E800027AC6 /* EntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCreator.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				7BC8C2D229D2992A001CF6F7 /* PowerupComponent.swift */,
 				7B3C40FA29D2D0FA001C11A7 /* AutoRotateComponent.swift */,
 				8CB0FA6E29D4198E00C2FAC8 /* BombComponent.swift */,
+				8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				7BC8C2D529D299CA001CF6F7 /* PowerupSystem.swift in Sources */,
 				7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */,
 				8CB0FA6D29D4184200C2FAC8 /* BombPowerup.swift in Sources */,
+				8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */,
 				A7E52EFB29D1F47900075F99 /* Assets.swift in Sources */,
 				A7E439F929C374BE00027AC6 /* Positions.swift in Sources */,
 				8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */,

@@ -24,12 +24,20 @@ extension CGPoint {
         CGPoint(x: point.x * scalar, y: point.y * scalar)
     }
 
+    static func * (scalar: CGFloat, point: CGPoint) -> CGPoint {
+        CGPoint(x: point.x * scalar, y: point.y * scalar)
+    }
+
     static func *= (left: inout CGPoint, right: CGFloat) {
         left = left * right
     }
 
     static func - (left: CGPoint, right: CGPoint) -> CGVector {
         CGVector(dx: left.x - right.x, dy: left.y - right.y)
+    }
+
+    static func / (left: CGPoint, right: CGFloat) -> CGPoint {
+        CGPoint(x: left.x / right, y: left.y / right)
     }
 
     func length() -> CGFloat {

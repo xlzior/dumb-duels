@@ -13,6 +13,7 @@ class SPGameManager: GameManager {
         let entityCreator = SPEntityCreator(entityManager: entityManager)
 
         for index in 0...1 {
+            // TODO: Why is Sizes (from axe game) used here? Should this be extracted to game framework?
             let position = CGPoint.random(within: Sizes.game)
             // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)

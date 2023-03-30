@@ -24,7 +24,7 @@ class PlayerButton: UIButton {
     }
 
     private func style() {
-        backgroundColor = Colour.secondary.uiColour
+        backgroundColor = isPlayerOne ? Colour.leftButton.uiColour : Colour.rightButton.uiColour
         layer.borderWidth = 10
         layer.cornerRadius = frame.height / 3
         layer.borderColor = Colour.secondaryDark.cgColour

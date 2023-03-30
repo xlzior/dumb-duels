@@ -71,10 +71,7 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createPowerup() -> Entity {
-        let size = SPSizes.powerup
-        let position = CGPoint.random(within: Sizes.game)
-
+    func createPowerup(at position: CGPoint, of size: CGSize) -> Entity {
         let powerup = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -84,18 +81,18 @@ class SPEntityCreator {
 
         // TODO: re-enable all powerups
         let powerupComponents: [[Component]] = [
-//            [
-//                SpriteComponent(assetName: "gunPowerup"),
-//                PowerupComponent(ofType: GunPowerup())
-//            ],
+            [
+                SpriteComponent(assetName: "gunPowerup"),
+                PowerupComponent(ofType: GunPowerup())
+            ],
             [
                 SpriteComponent(assetName: "bombPowerup"),
                 PowerupComponent(ofType: BombPowerup())
+            ],
+            [
+                SpriteComponent(assetName: "rockPowerup"),
+                PowerupComponent(ofType: RockPowerup())
             ]
-//            [
-//                SpriteComponent(assetName: "rockPowerup"),
-//                PowerupComponent(ofType: RockPowerup())
-//            ]
         ]
 
         for comp in powerupComponents.randomElement()! {

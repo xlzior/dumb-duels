@@ -13,25 +13,31 @@ class PowerupSystem: System {
     private var entityCreator: SPEntityCreator
     private var lastSpawned: Date?
 
-    private var powerups: Assemblage2<PowerupComponent, PhysicsComponent>
+    private var powerups: Assemblage4<PowerupComponent, PhysicsComponent, SizeComponent, PositionComponent>
+    private var rocks: Assemblage2<RockComponent, PhysicsComponent>
+    private var spaceships: Assemblage3<SpaceshipComponent, SizeComponent, PositionComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.entityCreator = SPEntityCreator(entityManager: entityManager)
-        self.powerups = entityManager.assemblage(requiredComponents: PowerupComponent.self, PhysicsComponent.self)
+        self.powerups = entityManager.assemblage(requiredComponents: PowerupComponent.self,
+                                                 PhysicsComponent.self, SizeComponent.self, PositionComponent.self)
+        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
+                                                   SizeComponent.self, PositionComponent.self)
+        self.rocks = entityManager.assemblage(requiredComponents: RockComponent.self, PhysicsComponent.self)
     }
 
     func update() {
         guard canSpawnPowerUp() else {
             return
         }
-
-        entityCreator.createPowerup()
+        let powerupPosition = getPowerupPosition(of: SPSizes.powerup.width)
+        entityCreator.createPowerup(at: powerupPosition, of: SPSizes.powerup)
         lastSpawned = Date()
     }
 
     func applyPowerup(powerupId: EntityID, to playerId: EntityID) {
-        guard let (powerup, physics) = powerups.getComponents(for: powerupId) else {
+        guard let (powerup, physics, _, _) = powerups.getComponents(for: powerupId) else {
             return
         }
         powerup.powerup.apply(to: playerId, in: entityManager)
@@ -50,9 +56,49 @@ class PowerupSystem: System {
     }
 
     func destroyAllPowerups() {
-        for (_, physics) in powerups {
+        for (_, physics, _, _) in powerups {
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
         }
+    }
+
+    func destroyAllRocks() {
+        for (_, physics) in rocks {
+            physics.toBeRemoved = true
+            physics.shouldDestroyEntityWhenRemove = true
+        }
+    }
+
+    private func getPowerupPosition(of maxDimension: CGFloat) -> CGPoint {
+        let boundingBox = CGSize(width: Sizes.game.width - maxDimension,
+                                 height: Sizes.game.height - maxDimension)
+        var position = CGPoint.random(within: boundingBox)
+        position += CGPoint(x: maxDimension / 2, y: maxDimension / 2)
+        while !canAdd(at: position, dimension: maxDimension) {
+            position = CGPoint.random(within: boundingBox)
+            position += CGPoint(x: maxDimension / 2, y: maxDimension / 2)
+        }
+        return position
+    }
+
+    private func canAdd(at position: CGPoint, dimension: CGFloat) -> Bool {
+        // Check collision with existing powerups
+        for (_, _, sizeComponent, positionComponent) in powerups {
+            let otherDimension = max(sizeComponent.actualSize.height, sizeComponent.actualSize.width)
+            let minimumDistanceApart = (otherDimension + dimension) / 2
+            if positionComponent.position.distanceTo(position) <= minimumDistanceApart {
+                return false
+            }
+        }
+
+        // Check collision with spaceships
+        for (_, sizeComponent, positionComponent) in spaceships {
+            let otherDimension = max(sizeComponent.actualSize.height, sizeComponent.actualSize.width)
+            let minimumDistanceApart = (otherDimension + dimension) / 2
+            if positionComponent.position.distanceTo(position) <= minimumDistanceApart {
+                return false
+            }
+        }
+        return true
     }
 }

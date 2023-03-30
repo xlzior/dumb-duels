@@ -80,6 +80,7 @@
 		8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */; };
 		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
 		8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */; };
+		8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */; };
 		A7C4F17F29D5840200FA8982 /* SPGameTieEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F17E29D5840200FA8982 /* SPGameTieEvent.swift */; };
 		A7C4F18129D5842100FA8982 /* SPGameWonEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F18029D5842100FA8982 /* SPGameWonEvent.swift */; };
 		A7C4F18329D5849000FA8982 /* SPGameOverSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C4F18229D5849000FA8982 /* SPGameOverSystem.swift */; };
@@ -189,6 +190,7 @@
 		8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRoundSystem.swift; sourceTree = "<group>"; };
 		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarComponent.swift; sourceTree = "<group>"; };
+		8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		A7C4F17E29D5840200FA8982 /* SPGameTieEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameTieEvent.swift; sourceTree = "<group>"; };
 		A7C4F18029D5842100FA8982 /* SPGameWonEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameWonEvent.swift; sourceTree = "<group>"; };
 		A7C4F18229D5849000FA8982 /* SPGameOverSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPGameOverSystem.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		7BE0FDF429D039D90035AE98 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */,
 				7B13495229D1F42600E43A7F /* CGFloat+Extensions.swift */,
 				7BE0FDF629D03A120035AE98 /* CGPoint+Extensions.swift */,
 				7BE0FDF729D03A120035AE98 /* CGVector+Extensions.swift */,
@@ -653,6 +656,7 @@
 				A7C4F18129D5842100FA8982 /* SPGameWonEvent.swift in Sources */,
 				A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
+				8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
 				7BA7EBE129C36BBD0096457F /* AxeGameInputSystem.swift in Sources */,
 				8CB0FA6729D1999100C2FAC8 /* Int+Extensions.swift in Sources */,

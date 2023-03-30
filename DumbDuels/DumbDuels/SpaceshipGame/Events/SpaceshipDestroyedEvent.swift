@@ -31,6 +31,7 @@ struct SpaceshipDestroyedEvent: Event {
         bulletSystem.destroyAllBullets()
         // TODO: destroy all rocks
         powerupSystem.destroyAllPowerups()
+        powerupSystem.destroyAllRocks()
         roundSystem.reset()
     }
 }

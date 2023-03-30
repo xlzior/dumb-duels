@@ -35,7 +35,7 @@ class SPRoundSystem: System {
 
     func checkWin() {
         var winningEntities = [EntityID]()
-        for (entity, _, _, score) in spaceships.entityAndComponents where score.score >= 1 {
+        for (entity, _, _, score) in spaceships.entityAndComponents where score.score >= 5 {
             winningEntities.append(entity.id)
         }
 
@@ -62,6 +62,8 @@ class SPRoundSystem: System {
         checkWin()
 
         var indexToIdMap = [Int: EntityID]()
+        let (firstPosition, secondPosition) = SPSizes.getSpaceshipResetPositions()
+
         // Should have 2 spaceships at this point because it is not destroyed before physics update
         for (spaceshipComponent, physics, oldScore) in spaceships {
             // destroy the spaceship later durign physics update
@@ -69,8 +71,9 @@ class SPRoundSystem: System {
             physics.shouldDestroyEntityWhenRemove = true
 
             // create new spaceship
-            let position = CGPoint.random(within: Sizes.game)
-            // TODO: make sure the ships don't already collide
+            // The new spaceship will not be iterated in this loop because the iterator is fixed at the
+            // beginning of loop. Therefore we do not need to worry about deletion
+            let position = spaceshipComponent.index == 0 ? firstPosition : secondPosition
             let spaceship = entityCreator.createSpaceship(index: spaceshipComponent.index,
                                                           at: position, of: SPSizes.spaceship,
                                                           score: oldScore.score)

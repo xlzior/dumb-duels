@@ -11,7 +11,8 @@ import DuelKit
 class SPPhysicsCreator {
     func createSpaceship(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(
-            rectangleOf: size, mass: SPPhysics.spaceshipMass, velocity: .zero,
+            rectangleOf: size - CGSize(width: 20, height: 10),
+            mass: SPPhysics.spaceshipMass, velocity: .zero,
             affectedByGravity: SPPhysics.spaceshipGravity,
             linearDamping: SPPhysics.spaceshipStaticDamping,
             isDynamic: SPPhysics.spaceshipIsDynamic,

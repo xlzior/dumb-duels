@@ -29,6 +29,10 @@ open class GameViewController: UIViewController {
         setUpGameManager()
     }
 
+    override open func viewDidDisappear(_ animated: Bool) {
+        onBackToHomePage()
+    }
+
     open func styleGameViewBackground() {}
 
     private func setUpGameView() {

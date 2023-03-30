@@ -89,7 +89,7 @@ class EntityCreator {
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.player)
+            SpriteComponent(assetName: Assets.player[index])
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
@@ -102,7 +102,7 @@ class EntityCreator {
         player.assign(component: scoreComponent)
         let physicsComponent = physicsCreator.createPlayer(of: size)
         player.assign(component: physicsComponent)
-        let animationComponent = animationCreator.createPlayerHitAnimation()
+        let animationComponent = animationCreator.createPlayerHitAnimation(index: index)
         player.assign(component: animationComponent)
 
         entityManager.assign(component: PlayerComponent(idx: index), to: player)

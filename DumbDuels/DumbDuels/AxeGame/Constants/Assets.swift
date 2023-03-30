@@ -6,8 +6,8 @@
 //
 
 struct Assets {
-    static let player: String = "player"
-    static let playerHit: String = "player-flash"
+    static let player: [String] = ["player-0", "player-1"]
+    static let playerHit: [String] = ["player-hit-0", "player-hit-1"]
 
     static let axe: String = "axe"
     static let axeParticleGrey: String = "axe-0"

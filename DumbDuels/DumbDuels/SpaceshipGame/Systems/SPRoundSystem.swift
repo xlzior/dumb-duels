@@ -52,7 +52,6 @@ class SPRoundSystem: System {
     }
 
     func reset() {
-        // TODO: not the root cause
         if isResetThisFrame {
             return
         }
@@ -91,7 +90,7 @@ class SPRoundSystem: System {
             // Bing Sen TODO: Currently using Axe game's Positions, can extract common
             // stuff from EntityCreator, AnimationCreator, PhysicsCreator into DuelKit
             // and some common constants (e.g. Canvas position) into DuelKit as well
-            entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+            entityCreator.createBattleText(at: Positions.text, of: AXSizes.battleText)
         }
     }
 }

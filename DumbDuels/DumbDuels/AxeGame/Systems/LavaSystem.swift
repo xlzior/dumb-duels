@@ -9,7 +9,7 @@ import DuelKit
 import CoreGraphics
 
 class LavaSystem: System {
-    unowned var entityCreator: EntityCreator
+    private var entityCreator: EntityCreator
 
     init(entityCreator: EntityCreator) {
         self.entityCreator = entityCreator
@@ -19,7 +19,7 @@ class LavaSystem: System {
         let randomNumber = Int.random(in: 0...10)
         if randomNumber < 2 { // to limit the amount of lava
             let xPosition = CGFloat.random(in: 0...Sizes.game.width)
-            _ = entityCreator.createLavaSmoke(at: CGPoint(x: xPosition, y: Sizes.lava.height), of: Sizes.particle)
+            _ = entityCreator.createLavaSmoke(at: CGPoint(x: xPosition, y: AXSizes.lava.height), of: AXSizes.particle)
         }
     }
 }

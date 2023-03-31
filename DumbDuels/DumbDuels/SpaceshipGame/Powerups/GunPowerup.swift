@@ -8,6 +8,7 @@
 import DuelKit
 
 struct GunPowerup: Powerup {
+    // TODO: take in numbullets as a parameter
     // Bing Sen TODO: Refactor Powerup design to use generics and updatableData
     func apply(to playerId: EntityID, in entityManager: EntityManager) {
         if entityManager.has(componentTypeId: GunComponent.typeId, entityId: playerId) {

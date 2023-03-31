@@ -12,6 +12,7 @@ class GameOverSystem: System {
     unowned var entityCreator: EntityCreator
     private var onGameOver: () -> Void
 
+    // TODO: game specific, think about how to move it in
     private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
 
     init(for entityManager: EntityManager, entityCreator: EntityCreator, onGameOver: @escaping () -> Void) {
@@ -26,14 +27,14 @@ class GameOverSystem: System {
     func update() {}
 
     func handleGameTied() {
-        entityCreator.createGameOverText(at: Positions.text, of: Sizes.gameTiedText, displaying: Assets.gameTiedText)
+        entityCreator.createGameOverText(at: Positions.text, of: AXSizes.gameTiedText, displaying: Assets.gameTiedText)
         onGameOver()
     }
 
     func handleGameWon(by entityId: EntityID) {
         for (entity, player, _, _, _) in players.entityAndComponents where entity.id == entityId {
             entityCreator.createGameOverText(
-                at: Positions.text, of: Sizes.gameWonText, displaying: Assets.gameWonText[player.idx])
+                at: Positions.text, of: AXSizes.gameWonText, displaying: Assets.gameWonText[player.idx])
             onGameOver()
         }
     }

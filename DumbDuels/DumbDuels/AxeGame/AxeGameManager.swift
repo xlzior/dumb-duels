@@ -19,18 +19,18 @@ class AxeGameManager: GameManager {
             let playerPosition = Positions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
-            let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
+            let verticalOffset = (AXSizes.player.height / 2 + AXSizes.platform.height / 2) * -1
             let platform = creator.createPlatform(
                 withVerticalOffset: verticalOffset,
                 from: playerPosition,
-                of: Sizes.platform,
+                of: AXSizes.platform,
                 index: playerIndex
             )
 
             let axe = creator.createAxe(
-                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
+                withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
-                of: Sizes.axe,
+                of: AXSizes.axe,
                 facing: faceDirection,
                 onPlatform: platform.id
             )
@@ -39,21 +39,21 @@ class AxeGameManager: GameManager {
                 index: playerIndex,
                 at: playerPosition,
                 facing: faceDirection,
-                of: Sizes.player,
+                of: AXSizes.player,
                 holding: axe.id,
                 onPlatform: platform.id
             )
             initialPlayerIndexToIdMap[playerIndex] = player.id
         }
 
-        _ = creator.createLava(at: Positions.lava, of: Sizes.lava)
+        _ = creator.createLava(at: Positions.lava, of: AXSizes.lava)
 
         for wallIndex in 0..<3 {
-            _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
+            _ = creator.createWall(at: Positions.walls[wallIndex], of: AXSizes.walls[wallIndex])
         }
 
         for pegIndex in 0..<Positions.pegs.count {
-            _ = creator.createPeg(at: Positions.pegs[pegIndex], of: Sizes.peg, index: pegIndex)
+            _ = creator.createPeg(at: Positions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
         }
     }
 

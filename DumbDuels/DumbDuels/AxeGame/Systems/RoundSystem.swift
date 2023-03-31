@@ -70,7 +70,7 @@ class RoundSystem: System {
     func reset() {
         // battle animation
         if !isGameOver {
-            entityCreator.createBattleText(at: Positions.text, of: Sizes.battleText)
+            entityCreator.createBattleText(at: Positions.text, of: AXSizes.battleText)
         }
 
         // Destroy all thrown axes since they are out of bounds
@@ -82,9 +82,9 @@ class RoundSystem: System {
         for (playerEntity, player, _, playerPosition, playerPhysics, playerSyncX) in players.entityAndComponents {
             // create new axe
             let axe = entityCreator.createAxe(
-                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
+                withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
                 from: Positions.players[player.idx],
-                of: Sizes.axe,
+                of: AXSizes.axe,
                 facing: playerPosition.faceDirection, onPlatform: playerSyncX.syncFrom
             )
 

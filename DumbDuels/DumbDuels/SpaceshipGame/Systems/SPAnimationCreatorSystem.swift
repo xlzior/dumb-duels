@@ -99,7 +99,6 @@ class SPAnimationCreatorSystem: System {
     }
 
     private func createNewStar() {
-        // TODO: Why is Sizes used here. Can we extract into DuelKit constant?
         let randomPosition = CGPoint.random(within: Sizes.game)
 
         entityCreator.createStarParticle(at: randomPosition, of: SPSizes.star)

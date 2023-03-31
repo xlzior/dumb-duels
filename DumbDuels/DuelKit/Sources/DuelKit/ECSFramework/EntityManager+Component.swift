@@ -22,7 +22,6 @@ extension EntityManager {
         return !allComponentsOfEntity.filter { $0.first == componentTypeId }.isEmpty
     }
 
-    // TODO: Check if needed
     public func countComponents(for entityId: EntityID) -> Int {
         entityComponentMap[entityId]?.count ?? 0
     }

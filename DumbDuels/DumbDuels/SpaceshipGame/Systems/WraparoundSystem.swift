@@ -14,7 +14,7 @@ class WraparoundSystem: System {
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.objects = entityManager.assemblage(requiredComponents: PositionComponent.self)
+        self.objects = entityManager.assemblage(requiredComponents: PositionComponent.self, excludedComponents: BulletComponent.self)
     }
 
     func update() {

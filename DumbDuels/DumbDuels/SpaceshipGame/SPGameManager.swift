@@ -19,7 +19,6 @@ class SPGameManager: GameManager {
             // AxeGame extends Sizes with its own stuff
             // refactor later
             let position = index == 0 ? firstPosition : secondPosition
-            // TODO: make sure the ships don't already collide
             let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
             initialPlayerIndexToIdMap[index] = spaceship.id
         }

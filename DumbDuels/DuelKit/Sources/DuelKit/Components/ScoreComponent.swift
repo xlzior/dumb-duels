@@ -9,6 +9,7 @@ public class ScoreComponent: Component {
     public var id: ComponentID
     public var score: Int
     public var playerId: EntityID
+    // TODO: change this to index
 
     public init(score: Int = 0, for playerId: EntityID) {
         self.id = ComponentID()

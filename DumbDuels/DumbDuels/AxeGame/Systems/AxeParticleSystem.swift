@@ -49,7 +49,7 @@ class AxeParticleSystem: System {
             }
             entityCreator.createAxeParticle(
                 at: axePosition.position,
-                of: Sizes.particle,
+                of: AXSizes.particle,
                 sprite: sprite,
                 impulse: particleImpulse)
         }

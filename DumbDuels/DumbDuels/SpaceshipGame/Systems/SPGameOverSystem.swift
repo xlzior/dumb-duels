@@ -28,14 +28,14 @@ class SPGameOverSystem: System {
     func update() {}
 
     func handleGameTied() {
-        entityCreator.createGameOverText(at: Positions.text, of: Sizes.gameTiedText, displaying: Assets.gameTiedText)
+        entityCreator.createGameOverText(at: Positions.text, of: AXSizes.gameTiedText, displaying: Assets.gameTiedText)
         onGameOver()
     }
 
     func handleGameWon(by entityId: EntityID) {
         for (entity, spaceship, _, _, _) in spaceships.entityAndComponents where entity.id == entityId {
             entityCreator.createGameOverText(
-                at: Positions.text, of: Sizes.gameWonText, displaying: Assets.gameWonText[spaceship.index])
+                at: Positions.text, of: AXSizes.gameWonText, displaying: Assets.gameWonText[spaceship.index])
             onGameOver()
         }
     }

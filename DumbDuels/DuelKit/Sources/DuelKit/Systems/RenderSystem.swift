@@ -90,11 +90,8 @@ public class RenderSystem: System, IndexMapInitializable {
     }
 
     private func renderScores() {
-        for indexAndId in playerIndexToIdMap {
-            guard let (score) = playerScores.getComponents(for: indexAndId.value) else {
-                continue
-            }
-            gameController.updateScore(for: indexAndId.key, with: score.score)
+        for score in playerScores {
+            gameController.updateScore(for: score.playerIndex, with: score.score)
         }
     }
 

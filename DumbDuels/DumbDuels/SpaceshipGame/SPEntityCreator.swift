@@ -33,8 +33,7 @@ class SPEntityCreator {
             physicsCreator.createSpaceship(of: size)
         }
 
-        // Bing Sen TODO: Can remove entityId for score component since we using index now
-        spaceship.assign(component: ScoreComponent(score: score, for: spaceship.id))
+        spaceship.assign(component: ScoreComponent(for: index, withId: spaceship.id, score: score))
 
         return spaceship
     }

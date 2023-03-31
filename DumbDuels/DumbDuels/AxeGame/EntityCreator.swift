@@ -86,6 +86,7 @@ class EntityCreator {
         let throwStrengthEntity = createThrowStrength(at: position + CGPoint(x: 0, y: 100))
 
         let player = entityManager.createEntity {
+            PlayerComponent(idx: index)
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)
@@ -93,20 +94,16 @@ class EntityCreator {
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
+            HoldingAxeComponent(axeEntityID: axeEntityID)
+            physicsCreator.createPlayer(of: size)
+            animationCreator.createPlayerHitAnimation(index: index)
         }
         // Sync throwStrength entity position using player position
         let syncXComponent = SyncXPositionComponent(syncFrom: player.id)
         throwStrengthEntity.assign(component: syncXComponent)
 
-        let scoreComponent = ScoreComponent(for: player.id)
+        let scoreComponent = ScoreComponent(for: index, withId: player.id)
         player.assign(component: scoreComponent)
-        let physicsComponent = physicsCreator.createPlayer(of: size)
-        player.assign(component: physicsComponent)
-        let animationComponent = animationCreator.createPlayerHitAnimation(index: index)
-        player.assign(component: animationComponent)
-
-        entityManager.assign(component: PlayerComponent(idx: index), to: player)
-        player.assign(component: HoldingAxeComponent(axeEntityID: axeEntityID))
 
         return player
     }

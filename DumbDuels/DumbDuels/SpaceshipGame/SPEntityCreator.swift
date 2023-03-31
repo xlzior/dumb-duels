@@ -40,15 +40,15 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createRock(at position: CGPoint, angle: CGFloat, justActivatedBy playerId: EntityID) -> Entity {
+    func createRock(at position: CGPoint, velocity: CGVector, justActivatedBy playerId: EntityID) -> Entity {
         let size = SPSizes.rock
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "rock")
-            RockComponent(justActivatedBy: playerId)
-            physicsCreator.createRock(of: size, pointing: angle)
+            RockComponent()
+            physicsCreator.createRock(of: size, velocity: velocity)
         }
         return rock
     }
@@ -79,7 +79,6 @@ class SPEntityCreator {
             physicsCreator.createPowerup(of: size)
         }
 
-        // TODO: re-enable all powerups
         let powerupComponents: [[Component]] = [
             [
                 SpriteComponent(assetName: "gunPowerup"),

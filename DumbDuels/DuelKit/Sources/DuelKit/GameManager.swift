@@ -90,7 +90,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         systemManager.update()
     }
 
-    open  func didContactBegin(for entityA: EntityID, and entityB: EntityID) {
+    open func didContactBegin(for entityA: EntityID, and entityB: EntityID) {
         guard let physicsSystem = systemManager.get(ofType: PhysicsSystem.self) else {
             return
         }

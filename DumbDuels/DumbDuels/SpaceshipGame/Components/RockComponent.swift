@@ -9,10 +9,8 @@ import DuelKit
 
 class RockComponent: Component {
     var id: ComponentID
-    var playerId: EntityID?
 
-    init(justActivatedBy playerId: EntityID) {
+    init() {
         self.id = ComponentID()
-        self.playerId = playerId
     }
 }

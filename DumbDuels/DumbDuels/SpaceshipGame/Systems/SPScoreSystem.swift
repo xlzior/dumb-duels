@@ -38,13 +38,6 @@ class SPScoreSystem: System {
             return
         }
 
-        if let rockActivatedBy = rock.playerId,
-           rockActivatedBy == playerId {
-            // first collision doesn't count
-            rock.playerId = nil
-            return
-        }
-
         guard !isHitThisFrame.contains(playerId) else {
             return
         }

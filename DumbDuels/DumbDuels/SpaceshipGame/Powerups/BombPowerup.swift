@@ -12,7 +12,6 @@ struct BombPowerup: Powerup {
     let numBullets: Int = SPConstants.bombNumBullets
     let bulletSize: CGSize = SPSizes.bullet
     let radius: CGFloat = SPConstants.bombRadius
-    let bulletLifespan: CGFloat = SPConstants.bombBulletLifespan
 
     func apply(powerupId: EntityID, to playerId: EntityID, in entityManager: EntityManager) {
         guard let spaceship: SpaceshipComponent = entityManager.getComponent(for: playerId),
@@ -27,7 +26,7 @@ struct BombPowerup: Powerup {
 
             entityCreator.createBullet(index: spaceship.index, from: playerId,
                                        size: bulletSize, angle: angle,
-                                       position: bulletPosition, lifespan: bulletLifespan)
+                                       position: bulletPosition)
         }
     }
 }

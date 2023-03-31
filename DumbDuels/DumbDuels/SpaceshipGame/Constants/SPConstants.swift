@@ -19,11 +19,9 @@ enum SPConstants {
     static let bulletForce: CGFloat = 600.0
     static let gunInterval: TimeInterval = 1.5
     static let numBullets = 3
-    static let bulletLifespan: TimeInterval = 1.5
 
     static let rockForce: CGFloat = 3_000.0
 
     static let bombNumBullets: Int = 8
     static let bombRadius: CGFloat = 25.0
-    static let bombBulletLifespan: TimeInterval = 0.4
 }

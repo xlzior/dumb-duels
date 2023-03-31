@@ -15,7 +15,7 @@ struct SpaceshipDestroyedEvent: Event {
     func execute(with systems: SystemManager) {
         guard let animationCreatorSystem = systems.get(ofType: SPAnimationCreatorSystem.self),
               let roundSystem = systems.get(ofType: SPRoundSystem.self),
-              let bulletSystem = systems.get(ofType: BulletAgeSystem.self),
+              let bulletSystem = systems.get(ofType: BulletSystem.self),
               let powerupSystem = systems.get(ofType: PowerupSystem.self) else {
             return
         }

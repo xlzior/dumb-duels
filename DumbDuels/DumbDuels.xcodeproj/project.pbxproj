@@ -40,7 +40,7 @@
 		7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC929C36BBD0096457F /* RoundSystem.swift */; };
 		7BA7EBE129C36BBD0096457F /* AxeGameInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCA29C36BBD0096457F /* AxeGameInputSystem.swift */; };
 		7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */; };
-		7BC8C2C829D29042001CF6F7 /* BulletAgeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2C729D29042001CF6F7 /* BulletAgeSystem.swift */; };
+		7BC8C2C829D29042001CF6F7 /* BulletSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2C729D29042001CF6F7 /* BulletSystem.swift */; };
 		7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2C929D293FE001CF6F7 /* SPScoreSystem.swift */; };
 		7BC8C2CD29D297E8001CF6F7 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2CC29D297E8001CF6F7 /* Powerup.swift */; };
 		7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2CE29D29806001CF6F7 /* GunPowerup.swift */; };
@@ -151,7 +151,7 @@
 		7BA7EBC929C36BBD0096457F /* RoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCA29C36BBD0096457F /* AxeGameInputSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxeGameInputSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
-		7BC8C2C729D29042001CF6F7 /* BulletAgeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletAgeSystem.swift; sourceTree = "<group>"; };
+		7BC8C2C729D29042001CF6F7 /* BulletSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletSystem.swift; sourceTree = "<group>"; };
 		7BC8C2C929D293FE001CF6F7 /* SPScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPScoreSystem.swift; sourceTree = "<group>"; };
 		7BC8C2CC29D297E8001CF6F7 /* Powerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		7BC8C2CE29D29806001CF6F7 /* GunPowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunPowerup.swift; sourceTree = "<group>"; };
@@ -377,7 +377,7 @@
 				7B13494C29D1E2AB00E43A7F /* AutoRotateSystem.swift */,
 				7B13495029D1F14F00E43A7F /* WraparoundSystem.swift */,
 				7B13495E29D203E800E43A7F /* GunSystem.swift */,
-				7BC8C2C729D29042001CF6F7 /* BulletAgeSystem.swift */,
+				7BC8C2C729D29042001CF6F7 /* BulletSystem.swift */,
 				7BC8C2C929D293FE001CF6F7 /* SPScoreSystem.swift */,
 				7BC8C2D429D299CA001CF6F7 /* PowerupSystem.swift */,
 				8CB0FA6829D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift */,
@@ -675,7 +675,7 @@
 				7BE0FDFA29D03A120035AE98 /* CGVector+Extensions.swift in Sources */,
 				A7E439FA29C374BE00027AC6 /* Sizes.swift in Sources */,
 				A7E52EF729D1F43300075F99 /* GameTieEvent.swift in Sources */,
-				7BC8C2C829D29042001CF6F7 /* BulletAgeSystem.swift in Sources */,
+				7BC8C2C829D29042001CF6F7 /* BulletSystem.swift in Sources */,
 				7B13495729D1F94300E43A7F /* BulletComponent.swift in Sources */,
 				7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */,
 				A7C4F18329D5849000FA8982 /* SPGameOverSystem.swift in Sources */,

@@ -57,8 +57,7 @@ class SPEntityCreator {
                       from playerId: EntityID,
                       size: CGSize = SPSizes.bullet,
                       angle: CGFloat,
-                      position: CGPoint,
-                      lifespan: TimeInterval = SPConstants.bulletLifespan
+                      position: CGPoint
     ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
@@ -67,7 +66,7 @@ class SPEntityCreator {
             RotationComponent(angleInRadians: angle)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
-            BulletComponent(for: playerId, lifespan: lifespan)
+            BulletComponent(for: playerId)
             physicsCreator.createBullet(of: size, pointing: angle)
         }
         return bullet

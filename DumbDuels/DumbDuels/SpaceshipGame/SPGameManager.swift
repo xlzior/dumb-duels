@@ -64,7 +64,7 @@ class SPGameManager: GameManager {
 
         systemManager.register(SPInputSystem(for: entityManager))
         systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
-        systemManager.register(BulletAgeSystem(for: entityManager))
+        systemManager.register(BulletSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager, entityCreator: creator))
         systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))

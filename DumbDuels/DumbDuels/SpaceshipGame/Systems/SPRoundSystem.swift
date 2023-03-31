@@ -24,7 +24,8 @@ class SPRoundSystem: System {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.entityCreator = SPEntityCreator(entityManager: entityManager)
-        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
+        self.spaceships = entityManager.assemblage(
+            requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
         self.isGameOver = false
         self.isResetThisFrame = false
     }

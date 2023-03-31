@@ -42,7 +42,7 @@ class PowerupSystem: System {
             return
         }
         powerup.isActivated = true
-        powerup.powerup.apply(to: playerId, in: entityManager)
+        powerup.powerup.apply(powerupId: powerupId, to: playerId, in: entityManager)
         physics.toBeRemoved = true
         physics.shouldDestroyEntityWhenRemove = true
     }

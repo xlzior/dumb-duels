@@ -54,9 +54,13 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint,
-                      lifespan: TimeInterval = SPConstants.bulletLifespan) -> Entity {
-        let size = SPSizes.bullet
+    func createBullet(index: Int,
+                      from playerId: EntityID,
+                      size: CGSize = SPSizes.bullet,
+                      angle: CGFloat,
+                      position: CGPoint,
+                      lifespan: TimeInterval = SPConstants.bulletLifespan
+    ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
         let bullet = entityManager.createEntity {

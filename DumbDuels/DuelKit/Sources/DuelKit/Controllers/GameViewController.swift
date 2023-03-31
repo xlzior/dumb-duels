@@ -16,8 +16,6 @@ open class GameViewController: UIViewController {
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
     public var onBackToHomePage: () -> Void = {}
-
-    public var renderSystemDetails: RenderSystemDetails?
     public var gameManager: GameManager?
 
     override open func viewDidLoad() {
@@ -25,7 +23,6 @@ open class GameViewController: UIViewController {
         setUpGameView()
         styleGameViewBackground()
         setUpGestureRecognisers()
-        setUpRenderSystemDetails()
         setUpGameManager()
     }
 
@@ -63,11 +60,6 @@ open class GameViewController: UIViewController {
         }
     }
 
-    private func setUpRenderSystemDetails() {
-        renderSystemDetails = RenderSystemDetails(
-            gameController: self, screenSize: screenSize, screenOffset: screenOffset)
-    }
-
     open func setUpGameManager() {
         assertionFailure("Override in child class")
     }
@@ -86,18 +78,18 @@ open class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameController {
-    public func goToHomePage() {
+    func goToHomePage() {
         onBackToHomePage()
         navigationController?.popViewController(animated: true)
     }
 
-    public func addView(for entityID: EntityID, with details: RenderDetails) {
+    func addView(for entityID: EntityID, with details: RenderDetails) {
         let entityView = createView(details)
         entityViews[entityID] = entityView
         view.addSubview(entityView)
     }
 
-    public func updateView(for entityID: EntityID, with details: RenderDetails) {
+    func updateView(for entityID: EntityID, with details: RenderDetails) {
         guard let entityViewToUpdate = entityViews[entityID] else {
             return
         }

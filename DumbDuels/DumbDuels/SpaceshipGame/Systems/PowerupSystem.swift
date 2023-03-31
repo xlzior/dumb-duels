@@ -10,16 +10,16 @@ import DuelKit
 
 class PowerupSystem: System {
     unowned var entityManager: EntityManager
-    private var entityCreator: SPEntityCreator
+    unowned var entityCreator: SPEntityCreator
     private var lastSpawned: Date?
 
     private var powerups: Assemblage4<PowerupComponent, PhysicsComponent, SizeComponent, PositionComponent>
     private var rocks: Assemblage2<RockComponent, PhysicsComponent>
     private var spaceships: Assemblage3<SpaceshipComponent, SizeComponent, PositionComponent>
 
-    init(for entityManager: EntityManager) {
+    init(for entityManager: EntityManager, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager
-        self.entityCreator = SPEntityCreator(entityManager: entityManager)
+        self.entityCreator = entityCreator
         self.powerups = entityManager.assemblage(requiredComponents: PowerupComponent.self,
                                                  PhysicsComponent.self, SizeComponent.self, PositionComponent.self)
         self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,

@@ -9,13 +9,16 @@ import CoreGraphics
 import DuelKit
 
 class SPGameManager: GameManager {
+    private var entityCreator: SPEntityCreator?
+
     override func setUpEntities() {
-        let entityCreator = SPEntityCreator(entityManager: entityManager)
+        let creator = SPEntityCreator(entityManager: entityManager)
+        entityCreator = creator
 
         let (firstPosition, secondPosition) = SPSizes.getSpaceshipResetPositions()
         for index in 0...1 {
             let position = index == 0 ? firstPosition : secondPosition
-            let spaceship = entityCreator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
+            let spaceship = creator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
             initialPlayerIndexToIdMap[index] = spaceship.id
         }
     }
@@ -54,26 +57,26 @@ class SPGameManager: GameManager {
         return contactHandlers
     }
 
-    override func setUpSystems() {
+    override func setUpUserSystems() {
+        guard let creator = entityCreator else {
+            return
+        }
+
         systemManager.register(SPInputSystem(for: entityManager))
-        systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(BulletAgeSystem(for: entityManager))
-        systemManager.register(GunSystem(for: entityManager))
+        systemManager.register(GunSystem(for: entityManager, entityCreator: creator))
         systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
-        systemManager.register(SPAnimationCreatorSystem(for: entityManager))
+        systemManager.register(SPAnimationCreatorSystem(for: entityManager, entityCreator: creator))
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
-        systemManager.register(PowerupSystem(for: entityManager))
-        systemManager.register(SPGameOverSystem(for: entityManager, eventFirer: eventManager,
-                                                onGameOver: handleGameOver))
-        systemManager.register(AnimationSystem(for: entityManager))
-        systemManager.register(PhysicsSystem(
+        systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(SPGameOverSystem(
             for: entityManager, eventFirer: eventManager,
-            scene: simulator.gameScene, contactHandlers: getContactHandlers()))
-        systemManager.register(RenderSystem(
-            for: entityManager,
-            eventManger: eventManager,
-            details: renderSystemDetails
-        ))
+            entityCreator: creator, onGameOver: handleGameOver))
+
+        usePhysicsSystem(withContactHandlers: getContactHandlers())
+        useRenderSystem()
+        useAnimationSystem()
     }
 }

@@ -78,7 +78,6 @@ class RoundSystem: System {
             physicsComponent.toBeRemoved = true
             physicsComponent.shouldDestroyEntityWhenRemove = true
         }
-        let entityCreator = EntityCreator(entityManager: entityManager)
         for (playerEntity, player, _, playerPosition, playerPhysics, playerSyncX) in players.entityAndComponents {
             // create new axe
             let axe = entityCreator.createAxe(

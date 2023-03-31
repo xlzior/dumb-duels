@@ -22,9 +22,9 @@ class SPAnimationCreatorSystem: System {
     private let numSpaceshipParticles = 40
     private let numStarParticles = 40
 
-    init(for entityManager: EntityManager) {
+    init(for entityManager: EntityManager, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager
-        self.entityCreator = SPEntityCreator(entityManager: entityManager)
+        self.entityCreator = entityCreator
         self.movingSpaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
                                                          PositionComponent.self, RotationComponent.self,
                                                          SizeComponent.self,

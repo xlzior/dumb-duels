@@ -27,11 +27,11 @@ public class RenderSystem: System, IndexMapInitializable {
     var playerScores: Assemblage1<ScoreComponent>
     public var playerIndexToIdMap: [Int: EntityID]
 
-    public init(for entityManager: EntityManager, eventManger: EventManager, details: RenderSystemDetails) {
+    init(for entityManager: EntityManager, eventManger: EventManager, gameController: GameController) {
         self.entityManager = entityManager
-        self.gameController = details.gameController
-        self.screenSize = details.screenSize
-        self.screenOffset = details.screenOffset
+        self.gameController = gameController
+        self.screenSize = gameController.screenSize
+        self.screenOffset = gameController.screenOffset
         self.renderables = entityManager.assemblage(requiredComponents: SpriteComponent.self,
             PositionComponent.self, SizeComponent.self, RotationComponent.self)
         self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)

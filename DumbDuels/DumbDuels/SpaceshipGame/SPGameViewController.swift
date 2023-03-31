@@ -9,10 +9,7 @@ import DuelKit
 
 class SPGameViewController: GameViewController {
     override func setUpGameManager() {
-        guard let renderSystemDetails else {
-            return assertionFailure("RenderSystemDetails was not populated")
-        }
-        gameManager = SPGameManager(renderSystemDetails: renderSystemDetails)
+        gameManager = SPGameManager(gameController: self)
     }
 
     override func styleGameViewBackground() {

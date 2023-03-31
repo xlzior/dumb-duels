@@ -9,7 +9,7 @@ import UIKit
 import DuelKit
 
 class AxeGameManager: GameManager {
-    var entityCreator: EntityCreator?
+    private var entityCreator: EntityCreator?
 
     override func setUpEntities() {
         let creator = EntityCreator(entityManager: entityManager)
@@ -46,14 +46,14 @@ class AxeGameManager: GameManager {
             initialPlayerIndexToIdMap[playerIndex] = player.id
         }
 
-        _ = creator.createLava(at: Positions.lava, of: AXSizes.lava)
+        creator.createLava(at: Positions.lava, of: AXSizes.lava)
 
         for wallIndex in 0..<3 {
-            _ = creator.createWall(at: Positions.walls[wallIndex], of: AXSizes.walls[wallIndex])
+            creator.createWall(at: Positions.walls[wallIndex], of: AXSizes.walls[wallIndex])
         }
 
         for pegIndex in 0..<Positions.pegs.count {
-            _ = creator.createPeg(at: Positions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
+            creator.createPeg(at: Positions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
         }
     }
 
@@ -91,7 +91,7 @@ class AxeGameManager: GameManager {
         return contactHandlers
     }
 
-    override func setUpSystems() {
+    override func setUpUserSystems() {
         guard let creator = entityCreator else {
             return
         }
@@ -102,16 +102,12 @@ class AxeGameManager: GameManager {
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(AnimationSystem(for: entityManager))
-        systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
-                                             scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
         systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator,
-                                             onGameOver: handleGameOver))
-        systemManager.register(RenderSystem(
-            for: entityManager,
-            eventManger: eventManager,
-            details: renderSystemDetails
-        ))
+                                              onGameOver: handleGameOver))
+
+        useAnimationSystem()
+        usePhysicsSystem(withContactHandlers: getContactHandlers())
+        useRenderSystem()
     }
 }

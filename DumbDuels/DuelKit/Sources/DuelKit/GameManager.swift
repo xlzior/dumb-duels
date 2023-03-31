@@ -8,7 +8,7 @@
 import UIKit
 
 open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
-    public var renderSystemDetails: RenderSystemDetails
+    private var gameController: GameController
 
     public let entityManager: EntityManager
     public let systemManager: SystemManager
@@ -18,8 +18,13 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public var initialPlayerIndexToIdMap: [Int: EntityID]
     private var isGameOver: Bool
 
-    public init(renderSystemDetails: RenderSystemDetails) {
-        self.renderSystemDetails = renderSystemDetails
+    private var isUsingAnimationSystem = false
+    private var isUsingPhysicsSystem = false
+    private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
+    private var isUsingRenderSystem = false
+
+    public init(gameController: GameViewController) {
+        self.gameController = gameController
 
         self.entityManager = EntityManager()
         let systemManager = SystemManager()
@@ -34,9 +39,10 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         simulator.gameScene.physicsContactDelegate = self
 
         setUpEntities()
-        setUpSystems()
+        setUpUserSystems()
+        setUpInternalSystems()
         setUpPlayerIndexToIdMappings()
-        self.renderSystemDetails.gameController.onBackToHomePage = self.stopGameLoop
+        self.gameController.onBackToHomePage = self.stopGameLoop
         startGame()
     }
 
@@ -44,8 +50,44 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     }
 
-    open func setUpSystems() {
+    open func setUpUserSystems() {
 
+    }
+
+    public func useAnimationSystem() {
+        isUsingAnimationSystem = true
+    }
+
+    public func useRenderSystem() {
+        isUsingRenderSystem = true
+    }
+
+    public func usePhysicsSystem(withContactHandlers: PhysicsSystem.ContactHandlerMap) {
+        isUsingPhysicsSystem = true
+        physicsContactHandlers = withContactHandlers
+    }
+
+    private func setUpInternalSystems() {
+        if isUsingAnimationSystem {
+            systemManager.register(AnimationSystem(for: entityManager))
+        }
+
+        if isUsingPhysicsSystem {
+            guard let physicsContactHandlers else {
+                return assertionFailure("No contact handlers found")
+            }
+            systemManager.register(PhysicsSystem(
+                for: entityManager, eventFirer: eventManager,
+                scene: simulator.gameScene, contactHandlers: physicsContactHandlers))
+        }
+
+        if isUsingRenderSystem {
+            systemManager.register(RenderSystem(
+                for: entityManager,
+                eventManger: eventManager,
+                gameController: gameController
+            ))
+        }
     }
 
     private func setUpPlayerIndexToIdMappings() {

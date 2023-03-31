@@ -165,4 +165,16 @@ class SPEntityCreator {
 
         return battleText
     }
+
+    @discardableResult
+    func createGameOverText(at position: CGPoint, of size: CGSize, displaying text: String) -> Entity {
+        let gameOverText = entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: text)
+        }
+
+        return gameOverText
+    }
 }

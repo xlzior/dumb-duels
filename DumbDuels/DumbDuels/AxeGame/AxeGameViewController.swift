@@ -9,9 +9,6 @@ import DuelKit
 
 class AxeGameViewController: GameViewController {
     override func setUpGameManager() {
-        guard let renderSystemDetails else {
-            return assertionFailure("RenderSystemDetails was not populated")
-        }
-        gameManager = AxeGameManager(renderSystemDetails: renderSystemDetails)
+        gameManager = AxeGameManager(gameController: self)
     }
 }

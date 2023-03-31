@@ -9,7 +9,7 @@ import DuelKit
 import CoreGraphics
 
 class LavaSystem: System {
-    private var entityCreator: EntityCreator
+    unowned var entityCreator: EntityCreator
 
     init(entityCreator: EntityCreator) {
         self.entityCreator = entityCreator

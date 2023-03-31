@@ -9,21 +9,18 @@ import DuelKit
 import CoreGraphics
 
 class SPRoundSystem: System {
-
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
-    // TODO: Settle this passing of entity creator, axe game uses unowned and passes in constructor
-    private var entityCreator: SPEntityCreator
+    unowned var entityCreator: SPEntityCreator
 
     private var spaceships: Assemblage3<SpaceshipComponent, PhysicsComponent, ScoreComponent>
     private var isGameOver: Bool
     private var isResetThisFrame: Bool
 
-    init(for entityManager: EntityManager,
-         eventFirer: EventFirer) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.entityCreator = SPEntityCreator(entityManager: entityManager)
+        self.entityCreator = entityCreator
         self.spaceships = entityManager.assemblage(
             requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
         self.isGameOver = false

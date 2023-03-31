@@ -20,6 +20,7 @@ class EntityCreator {
         self.animationCreator = AnimationCreator()
     }
 
+    @discardableResult
     func createAxe(at position: CGPoint, of size: CGSize) -> Entity {
         let axe = entityManager.createEntity {
             PositionComponent(position: position)
@@ -28,13 +29,10 @@ class EntityCreator {
             SpriteComponent(assetName: Assets.axe)
             AxeComponent()
         }
-//        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
-//        let physicsComponent = physicsCreator.createAxe(of: size)
-//        axe.assign(component: collidable)
-//        axe.assign(component: physicsComponent)
         return axe
     }
 
+    @discardableResult
     func createAxe(
         withHorizontalOffset offset: CGFloat,
         from position: CGPoint,
@@ -50,13 +48,10 @@ class EntityCreator {
             SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
-//        let collidable = physicsCreator.axeCollidable(axeId: axe.id)
-//        let physicsComponent = physicsCreator.createAxe(of: size)
-//        axe.assign(component: collidable)
-//        axe.assign(component: physicsComponent)
         return axe
     }
 
+    @discardableResult
     func createThrowStrength(at position: CGPoint) -> Entity {
         let throwStrength = entityManager.createEntity {
             PositionComponent(position: position)
@@ -75,6 +70,7 @@ class EntityCreator {
         return throwStrength
     }
 
+    @discardableResult
     func createPlayer(
         index: Int,
         at position: CGPoint,
@@ -108,6 +104,7 @@ class EntityCreator {
         return player
     }
 
+    @discardableResult
     func createPlatform(at position: CGPoint, of size: CGSize) -> Entity {
         let platform = entityManager.createEntity {
             PositionComponent(position: position)
@@ -122,7 +119,13 @@ class EntityCreator {
         return platform
     }
 
-    func createPlatform(withVerticalOffset offset: CGFloat, from position: CGPoint, of size: CGSize, index: Int) -> Entity {
+    @discardableResult
+    func createPlatform(
+        withVerticalOffset offset: CGFloat,
+        from position: CGPoint,
+        of size: CGSize,
+        index: Int
+    ) -> Entity {
         let platformPosition = CGPoint(x: position.x, y: position.y + offset)
         let platform = entityManager.createEntity {
             PositionComponent(position: platformPosition)
@@ -140,6 +143,7 @@ class EntityCreator {
         return platform
     }
 
+    @discardableResult
     func createWall(at position: CGPoint, of size: CGSize) -> Entity {
         let wall = entityManager.createEntity {
             PositionComponent(position: position)
@@ -153,6 +157,7 @@ class EntityCreator {
         return wall
     }
 
+    @discardableResult
     func createPeg(at position: CGPoint, of size: CGSize, index: Int) -> Entity {
         let peg = entityManager.createEntity {
             PositionComponent(position: position)
@@ -188,6 +193,7 @@ class EntityCreator {
         return axeParticle
     }
 
+    @discardableResult
     func createLava(at position: CGPoint, of size: CGSize) -> Entity {
         let lava = entityManager.createEntity {
             PositionComponent(position: position)
@@ -202,6 +208,7 @@ class EntityCreator {
         return lava
     }
 
+    @discardableResult
     func createLavaSmoke(at position: CGPoint, of size: CGSize) -> Entity {
         let lavaSmoke = entityManager.createEntity {
             PositionComponent(position: position)

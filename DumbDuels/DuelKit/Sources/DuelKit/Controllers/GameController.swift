@@ -5,7 +5,11 @@
 //  Created by Esmanda Wong on 17/3/23.
 //
 
-public protocol GameController {
+import CoreGraphics
+
+protocol GameController {
+    var screenSize: CGSize { get set }
+    var screenOffset: CGPoint { get set }
     var onBackToHomePage: () -> Void { get set }
     func goToHomePage()
     func addView(for entityID: EntityID, with details: RenderDetails)

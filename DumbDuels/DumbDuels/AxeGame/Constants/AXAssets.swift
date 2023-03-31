@@ -1,11 +1,11 @@
 //
-//  Assets.swift
+//  AXAssets.swift
 //  DumbDuels
 //
 //  Created by Esmanda Wong on 27/3/23.
 //
 
-struct Assets {
+struct AXAssets {
     static let player: [String] = ["player-0", "player-1"]
     static let playerHit: [String] = ["player-hit-0", "player-hit-1"]
 

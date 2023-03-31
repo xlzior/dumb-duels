@@ -51,7 +51,8 @@ class RoundSystem: System {
 
     func checkWin() {
         var winningEntities = [EntityID]()
-        for (entity, _, score, _, _, _) in players.entityAndComponents where score.score >= 1 {
+        for (entity, _, score, _, _, _) in players.entityAndComponents
+        where score.score >= Constants.winningScore {
             winningEntities.append(entity.id)
         }
 
@@ -68,9 +69,8 @@ class RoundSystem: System {
     }
 
     func reset() {
-        // battle animation
         if !isGameOver {
-            entityCreator.createBattleText(at: Positions.text, of: AXSizes.battleText)
+            eventFirer.fire(GameStartEvent())
         }
 
         // Destroy all thrown axes since they are out of bounds
@@ -82,14 +82,14 @@ class RoundSystem: System {
             // create new axe
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
-                from: Positions.players[player.idx],
+                from: AXPositions.players[player.idx],
                 of: AXSizes.axe,
                 facing: playerPosition.faceDirection, onPlatform: playerSyncX.syncFrom
             )
 
             // reset player
             playerEntity.assign(component: HoldingAxeComponent(axeEntityID: axe.id))
-            playerPosition.position = Positions.players[player.idx]
+            playerPosition.position = AXPositions.players[player.idx]
             playerPhysics.velocity = CGVector.zero
         }
 

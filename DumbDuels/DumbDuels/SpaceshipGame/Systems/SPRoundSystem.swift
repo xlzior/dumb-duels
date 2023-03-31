@@ -33,7 +33,8 @@ class SPRoundSystem: System {
 
     func checkWin() {
         var winningEntities = [EntityID]()
-        for (entity, _, _, score) in spaceships.entityAndComponents where score.score >= 5 {
+        for (entity, _, _, score) in spaceships.entityAndComponents
+        where score.score >= SPConstants.winningScore {
             winningEntities.append(entity.id)
         }
 
@@ -42,9 +43,9 @@ class SPRoundSystem: System {
         }
 
         if winningEntities.count > 1 {
-            eventFirer.fire(SPGameTieEvent())
+            eventFirer.fire(GameTieEvent())
         } else {
-            eventFirer.fire(SPGameWonEvent(entityId: winningEntities[0]))
+            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
         }
         isGameOver = true
     }
@@ -83,12 +84,8 @@ class SPRoundSystem: System {
         }
         eventFirer.fire(SpaceshipRecreatedEvent(firstSpaceshipId: firstId, secondSpaceshipId: secondId))
 
-        // Create Battle animation
         if !isGameOver {
-            // Bing Sen TODO: Currently using Axe game's Positions, can extract common
-            // stuff from EntityCreator, AnimationCreator, PhysicsCreator into DuelKit
-            // and some common constants (e.g. Canvas position) into DuelKit as well
-            entityCreator.createBattleText(at: Positions.text, of: AXSizes.battleText)
+            eventFirer.fire(GameStartEvent())
         }
     }
 }

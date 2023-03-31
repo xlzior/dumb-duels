@@ -43,9 +43,9 @@ class AxeParticleSystem: System {
             var sprite: String
             let randomNumber = Int.random(in: 0...10)
             if randomNumber < 4 {
-                sprite = Assets.axeParticleBrown
+                sprite = AXAssets.axeParticleBrown
             } else {
-                sprite = Assets.axeParticleGrey
+                sprite = AXAssets.axeParticleGrey
             }
             entityCreator.createAxeParticle(
                 at: axePosition.position,

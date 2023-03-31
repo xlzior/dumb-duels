@@ -16,7 +16,7 @@ class AxeGameManager: GameManager {
         entityCreator = creator
 
         for playerIndex in 0...1 {
-            let playerPosition = Positions.players[playerIndex]
+            let playerPosition = AXPositions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
             let verticalOffset = (AXSizes.player.height / 2 + AXSizes.platform.height / 2) * -1
@@ -46,14 +46,14 @@ class AxeGameManager: GameManager {
             initialPlayerIndexToIdMap[playerIndex] = player.id
         }
 
-        creator.createLava(at: Positions.lava, of: AXSizes.lava)
+        creator.createLava(at: AXPositions.lava, of: AXSizes.lava)
 
         for wallIndex in 0..<3 {
-            creator.createWall(at: Positions.walls[wallIndex], of: AXSizes.walls[wallIndex])
+            creator.createWall(at: AXPositions.walls[wallIndex], of: AXSizes.walls[wallIndex])
         }
 
-        for pegIndex in 0..<Positions.pegs.count {
-            creator.createPeg(at: Positions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
+        for pegIndex in 0..<AXPositions.pegs.count {
+            creator.createPeg(at: AXPositions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
         }
     }
 
@@ -103,9 +103,10 @@ class AxeGameManager: GameManager {
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
         systemManager.register(ScoreSystem(for: entityManager))
-        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator,
-                                              onGameOver: handleGameOver))
 
+        useGameOverSystem(gameStartText: AXAssets.battleText,
+                          gameTieText: AXAssets.gameTiedText,
+                          gameWonTexts: AXAssets.gameWonText)
         useAnimationSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()

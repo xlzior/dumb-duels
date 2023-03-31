@@ -26,7 +26,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.axe)
+            SpriteComponent(assetName: AXAssets.axe)
             AxeComponent()
         }
         return axe
@@ -44,7 +44,7 @@ class EntityCreator {
             PositionComponent(position: axePosition, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.axe)
+            SpriteComponent(assetName: AXAssets.axe)
             SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
@@ -61,7 +61,7 @@ class EntityCreator {
 
         let fsm = EntityStateMachine<ThrowStrengthComponent.State>(entity: throwStrength)
         fsm.createState(name: .charging)
-            .addInstance(SpriteComponent(assetName: Assets.chargingBar))
+            .addInstance(SpriteComponent(assetName: AXAssets.chargingBar))
         fsm.createState(name: .notCharging)
 
         throwStrength.assign(component: ThrowStrengthComponent(fsm: fsm))
@@ -86,7 +86,7 @@ class EntityCreator {
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.player[index])
+            SpriteComponent(assetName: AXAssets.player[index])
             CanJumpComponent()
             SyncXPositionComponent(syncFrom: platformId, offset: 0)
             WithThrowStrengthComponent(throwStrengthEntityId: throwStrengthEntity.id)
@@ -110,7 +110,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.platform)
+            SpriteComponent(assetName: AXAssets.platform)
             PlatformComponent()
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
@@ -131,7 +131,7 @@ class EntityCreator {
             PositionComponent(position: platformPosition)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.platform)
+            SpriteComponent(assetName: AXAssets.platform)
             PlatformComponent()
             OscillationComponent(centerOfOscillation: platformPosition,
                                  axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude[index],
@@ -163,7 +163,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.peg)
+            SpriteComponent(assetName: AXAssets.peg)
             PegComponent()
             OscillationComponent(centerOfOscillation: position,
                                  axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude[index],
@@ -199,7 +199,7 @@ class EntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.lava)
+            SpriteComponent(assetName: AXAssets.lava)
         }
 
         let physicsComponent = physicsCreator.createLava(of: size, for: lava.id)
@@ -210,42 +210,12 @@ class EntityCreator {
 
     @discardableResult
     func createLavaSmoke(at position: CGPoint, of size: CGSize) -> Entity {
-        let lavaSmoke = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.lava)
+            SpriteComponent(assetName: AXAssets.lava)
+            animationCreator.createLavaSmokeAnimation()
         }
-
-        let animationComponent = animationCreator.createLavaSmokeAnimation()
-        lavaSmoke.assign(component: animationComponent)
-
-        return lavaSmoke
-    }
-
-    @discardableResult
-    func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
-        let battleText = entityManager.createEntity {
-            PositionComponent(position: position)
-            RotationComponent()
-            SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.battleText)
-        }
-        let animationComponent = animationCreator.createBattleFlashAnimation()
-        battleText.assign(component: animationComponent)
-
-        return battleText
-    }
-
-    @discardableResult
-    func createGameOverText(at position: CGPoint, of size: CGSize, displaying text: String) -> Entity {
-        let gameOverText = entityManager.createEntity {
-            PositionComponent(position: position)
-            RotationComponent()
-            SizeComponent(originalSize: size)
-            SpriteComponent(assetName: text)
-        }
-
-        return gameOverText
     }
 }

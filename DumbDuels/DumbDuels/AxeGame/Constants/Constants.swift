@@ -16,4 +16,6 @@ enum Constants {
     static let throwForce = CGVector(dx: 600.0, dy: 600.0)
     static let throwAngularForce: CGFloat = 0.1
     static let jumpForce = CGVector(dx: 0.0, dy: 700.0)
+
+    static let winningScore = 5
 }

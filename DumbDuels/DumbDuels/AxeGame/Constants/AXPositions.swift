@@ -1,5 +1,5 @@
 //
-//  Positions.swift
+//  AXPositions.swift
 //  DumbDuels
 //
 //  Created by Esmanda Wong on 16/3/23.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import DuelKit
 
-struct Positions {
+struct AXPositions {
     static let players: [CGPoint] = [
         CGPoint(x: 200, y: 300),
         CGPoint(x: 800, y: 300)
@@ -31,6 +31,4 @@ struct Positions {
     ]
 
     static let lava = CGPoint(x: Sizes.game.width / 2, y: AXSizes.lava.height / 2)
-
-    static let text = CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height * 2 / 3)
 }

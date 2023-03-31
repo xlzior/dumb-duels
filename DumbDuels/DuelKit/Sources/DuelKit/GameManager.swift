@@ -22,6 +22,8 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     private var isUsingPhysicsSystem = false
     private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
     private var isUsingRenderSystem = false
+    private var isUsingGameOverSystem = false
+    private var gameOverAssets: GameOverAssets?
 
     public init(gameController: GameViewController) {
         self.gameController = gameController
@@ -67,7 +69,27 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         physicsContactHandlers = withContactHandlers
     }
 
+    public func useGameOverSystem(
+        gameStartText: String,
+        gameTieText: String,
+        gameWonTexts: [String]
+    ) {
+        isUsingGameOverSystem = true
+        gameOverAssets = GameOverAssets(
+            gameStartText: gameStartText,
+            gameTieText: gameTieText,
+            gameWonTexts: gameWonTexts)
+    }
+
     private func setUpInternalSystems() {
+        if isUsingGameOverSystem {
+            guard let gameOverAssets else {
+                return assertionFailure("No game over assets found")
+            }
+            systemManager.register(GameOverSystem(
+                for: entityManager, onGameOver: handleGameOver, assets: gameOverAssets))
+        }
+
         if isUsingAnimationSystem {
             systemManager.register(AnimationSystem(for: entityManager))
         }

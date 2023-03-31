@@ -32,8 +32,9 @@ public class RenderSystem: System, IndexMapInitializable {
         self.gameController = gameController
         self.screenSize = gameController.screenSize
         self.screenOffset = gameController.screenOffset
-        self.renderables = entityManager.assemblage(requiredComponents: SpriteComponent.self,
-            PositionComponent.self, SizeComponent.self, RotationComponent.self)
+        self.renderables = entityManager.assemblage(
+            requiredComponents: SpriteComponent.self, PositionComponent.self,
+            SizeComponent.self, RotationComponent.self)
         self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
         self.playerIndexToIdMap = [Int: EntityID]()
     }

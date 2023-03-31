@@ -40,6 +40,7 @@ class SPEntityCreator {
 
     @discardableResult
     func createRock(at position: CGPoint, velocity: CGVector, justActivatedBy playerId: EntityID) -> Entity {
+        // TODO: take in size as a parameter
         let size = SPSizes.rock
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
@@ -61,7 +62,7 @@ class SPEntityCreator {
     ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
-        let bullet = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent(angleInRadians: angle)
             SizeComponent(originalSize: size)
@@ -69,7 +70,6 @@ class SPEntityCreator {
             BulletComponent(for: playerId)
             physicsCreator.createBullet(of: size, pointing: angle)
         }
-        return bullet
     }
 
     @discardableResult
@@ -105,75 +105,37 @@ class SPEntityCreator {
 
     @discardableResult
     func createAccelerationParticle(at position: CGPoint, of size: CGSize) -> Entity {
-        let particle = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.lava)
+            SpriteComponent(assetName: AXAssets.lava)
+            animationCreator.createAccelerationParticle()
         }
-
-        let animationComponent = animationCreator.createAccelerationParticle()
-        particle.assign(component: animationComponent)
-
-        return particle
     }
 
     @discardableResult
     func createSpaceshipParticle(at position: CGPoint, of size: CGSize, sprite: String,
                                  deltaPosition: CGPoint, travelTime: CGFloat) -> Entity {
-        let spaceshipParticle = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: sprite)
+            animationCreator.createSpaceshipParticleAnimation(
+                deltaPosition: deltaPosition, travelTime: travelTime)
         }
-        let animationComponent = animationCreator.createSpaceshipParticleAnimation(
-            deltaPosition: deltaPosition, travelTime: travelTime)
-        spaceshipParticle.assign(component: animationComponent)
-
-        return spaceshipParticle
     }
 
     @discardableResult
     func createStarParticle(at position: CGPoint, of size: CGSize) -> Entity {
-        let star = entityManager.createEntity {
+        entityManager.createEntity {
             StarComponent()
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: SPAssets.star)
+            animationCreator.createStarAnimation(initialPosition: position)
         }
-
-        let animationComponent = animationCreator.createStarAnimation(initialPosition: position)
-        star.assign(component: animationComponent)
-
-        return star
-    }
-
-    @discardableResult
-    func createBattleText(at position: CGPoint, of size: CGSize) -> Entity {
-        let battleText = entityManager.createEntity {
-            PositionComponent(position: position)
-            RotationComponent()
-            SizeComponent(originalSize: size)
-            // TODO: Why is Assets still here
-            SpriteComponent(assetName: Assets.battleText)
-        }
-        let animationComponent = animationCreator.createBattleFlashAnimation()
-        battleText.assign(component: animationComponent)
-
-        return battleText
-    }
-
-    @discardableResult
-    func createGameOverText(at position: CGPoint, of size: CGSize, displaying text: String) -> Entity {
-        let gameOverText = entityManager.createEntity {
-            PositionComponent(position: position)
-            RotationComponent()
-            SizeComponent(originalSize: size)
-            SpriteComponent(assetName: text)
-        }
-
-        return gameOverText
     }
 }

@@ -71,10 +71,10 @@ class SPGameManager: GameManager {
         systemManager.register(SPAnimationCreatorSystem(for: entityManager, entityCreator: creator))
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(SPGameOverSystem(
-            for: entityManager, eventFirer: eventManager,
-            entityCreator: creator, onGameOver: handleGameOver))
 
+        useGameOverSystem(gameStartText: SPAssets.battleText,
+                          gameTieText: SPAssets.gameTiedText,
+                          gameWonTexts: SPAssets.gameWonText)
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

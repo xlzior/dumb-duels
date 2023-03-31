@@ -5,12 +5,14 @@
 //  Created by Esmanda Wong on 27/3/23.
 //
 
-import DuelKit
+public struct GameTieEvent: Event {
+    public var priority = 4
 
-struct GameTieEvent: Event {
-    var priority = 2
+    public init(priority: Int = 4) {
+        self.priority = priority
+    }
 
-    func execute(with systems: SystemManager) {
+    public func execute(with systems: SystemManager) {
         guard let gameOverSystem = systems.get(ofType: GameOverSystem.self),
               let renderSystem = systems.get(ofType: RenderSystem.self) else {
             return

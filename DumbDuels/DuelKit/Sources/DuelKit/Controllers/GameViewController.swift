@@ -53,7 +53,7 @@ open class GameViewController: UIViewController {
 
     private func setUpGestureRecognisers() {
         for playerButton in playerButtons {
-            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buttonLongPressed))
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(buttonPressed))
             longPressRecognizer.minimumPressDuration = 0
 
             playerButton.addGestureRecognizer(longPressRecognizer)
@@ -64,7 +64,7 @@ open class GameViewController: UIViewController {
         assertionFailure("Override in child class")
     }
 
-    @objc func buttonLongPressed(longPressRecognizer: UILongPressGestureRecognizer) {
+    @objc func buttonPressed(longPressRecognizer: UILongPressGestureRecognizer) {
         guard let playerIndex = (longPressRecognizer.view as? PlayerButton)?.index else {
             return
         }

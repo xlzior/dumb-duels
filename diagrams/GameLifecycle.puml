@@ -1,0 +1,24 @@
+@startuml GameLifecycle
+
+participant Simulatable
+participant GameManager
+participant SystemManager
+participant EventManager
+participant "Other systems"
+participant PhysicsSystem
+participant RenderSystem
+
+loop game loop
+Simulatable -> GameManager: (1) didFinishUpdate()
+GameManager -> PhysicsSystem: (2) syncFromPhysicsEngine()
+GameManager -> EventManager: (3) pollAll()
+GameManager -> SystemManager: (4) update()
+SystemManager -> "Other systems": (4) update()
+SystemManager -> PhysicsSystem: (4) update()
+PhysicsSystem -> Simulatable: (5) syncToPhysicsEngine()
+SystemManager -> RenderSystem: (6) update()
+RenderSystem -> GameViewController: addView(), updateView()
+GameViewController -> View: updates
+end
+
+@enduml

@@ -8,21 +8,21 @@
 import Foundation
 import CoreGraphics
 
-public class AnimationSystem: System {
+class AnimationSystem: System {
     unowned var entityManager: EntityManager
     var prevTime: Date
 
     var animatables: Assemblage5<
         AnimationComponent, SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
 
-    public init(for entityManager: EntityManager) {
+    init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.prevTime = Date()
         self.animatables = entityManager.assemblage(requiredComponents: AnimationComponent.self,
             SpriteComponent.self, PositionComponent.self, SizeComponent.self, RotationComponent.self)
     }
 
-    public func update() {
+    func update() {
         let currentTime = Date()
         let timeElapsed = currentTime.timeIntervalSince(prevTime)
         prevTime = currentTime

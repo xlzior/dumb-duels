@@ -9,6 +9,7 @@ import UIKit
 import DuelKit
 
 class AxeGameManager: GameManager {
+
     private var entityCreator: EntityCreator?
 
     override func setUpEntities() {

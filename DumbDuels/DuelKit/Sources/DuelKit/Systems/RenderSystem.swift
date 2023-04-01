@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class RenderSystem: System, IndexMapInitializable {
+class RenderSystem: System, IndexMapInitializable {
     unowned var entityManager: EntityManager
     var gameController: GameController
 
@@ -25,7 +25,7 @@ public class RenderSystem: System, IndexMapInitializable {
     var renderedEntities: Set<EntityID> = Set()
     var renderables: Assemblage4<SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
     var playerScores: Assemblage1<ScoreComponent>
-    public var playerIndexToIdMap: [Int: EntityID]
+    var playerIndexToIdMap: [Int: EntityID]
 
     init(for entityManager: EntityManager, eventManger: EventManager, gameController: GameController) {
         self.entityManager = entityManager
@@ -39,12 +39,12 @@ public class RenderSystem: System, IndexMapInitializable {
         self.playerIndexToIdMap = [Int: EntityID]()
     }
 
-    public func update() {
+    func update() {
         renderEntities()
         renderScores()
     }
 
-    public func handleGameOver() {
+    func handleGameOver() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.gameController.goToHomePage()
         }
@@ -96,7 +96,7 @@ public class RenderSystem: System, IndexMapInitializable {
         }
     }
 
-    public func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
+    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
         playerIndexToIdMap[0] = firstPlayer
         playerIndexToIdMap[1] = secondPlayer
     }

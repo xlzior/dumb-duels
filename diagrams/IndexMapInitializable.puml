@@ -1,0 +1,8 @@
+@startuml IndexMapInitializableClassDiagram
+hide empty members
+
+protocol IndexMapInitializable {
+  [Int: EntityID] playerIndexToIdMap
+  
+  setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID)
+}

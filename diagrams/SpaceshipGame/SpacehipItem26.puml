@@ -1,0 +1,21 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+class SPInputSystem { 
+  ~playerIndexToIdMap : [Int: EntityID]
+  ~handleButtonDown(playerIndex:)
+  ~handleButtonUp(playerIndex:)
+  ~setPlayerId(firstPlayer:secondPlayer:)
+}
+
+@enduml

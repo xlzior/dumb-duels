@@ -10,7 +10,7 @@ import DuelKit
 
 struct GunPowerup: Powerup {
     let numBullets: Int = SPConstants.numBullets
-    let gunInternal: CGFloat = SPConstants.gunInterval
+    let gunInterval: CGFloat = SPConstants.gunInterval
 
     func apply(powerupId: EntityID, to playerId: EntityID, in entityManager: EntityManager) {
         if entityManager.has(componentTypeId: GunComponent.typeId, entityId: playerId) {
@@ -18,7 +18,7 @@ struct GunPowerup: Powerup {
         }
 
         entityManager.assign(
-            component: GunComponent(numBulletsLeft: numBullets, gunInterval: gunInternal),
+            component: GunComponent(numBulletsLeft: numBullets, gunInterval: gunInterval),
             to: playerId)
     }
 }

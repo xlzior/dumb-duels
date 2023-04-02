@@ -1,0 +1,18 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+class SpaceshipRecreatedEvent << (S, SkyBlue) >> { 
+  ~firstSpaceshipId : EntityID
+  ~secondSpaceshipId : EntityID
+}
+@enduml

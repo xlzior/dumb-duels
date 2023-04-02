@@ -74,7 +74,6 @@
 		8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6829D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift */; };
 		8CB0FA6B29D3FA4B00C2FAC8 /* SPAnimationCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6A29D3FA4B00C2FAC8 /* SPAnimationCreator.swift */; };
 		8CB0FA6D29D4184200C2FAC8 /* BombPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6C29D4184200C2FAC8 /* BombPowerup.swift */; };
-		8CB0FA6F29D4198E00C2FAC8 /* BombComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6E29D4198E00C2FAC8 /* BombComponent.swift */; };
 		8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */; };
 		8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */; };
 		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
@@ -178,7 +177,6 @@
 		8CB0FA6829D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAnimationCreatorSystem.swift; sourceTree = "<group>"; };
 		8CB0FA6A29D3FA4B00C2FAC8 /* SPAnimationCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAnimationCreator.swift; sourceTree = "<group>"; };
 		8CB0FA6C29D4184200C2FAC8 /* BombPowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombPowerup.swift; sourceTree = "<group>"; };
-		8CB0FA6E29D4198E00C2FAC8 /* BombComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombComponent.swift; sourceTree = "<group>"; };
 		8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipDestroyedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRoundSystem.swift; sourceTree = "<group>"; };
 		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
@@ -349,7 +347,6 @@
 				7B13495C29D2002C00E43A7F /* GunComponent.swift */,
 				7BC8C2D229D2992A001CF6F7 /* PowerupComponent.swift */,
 				7B3C40FA29D2D0FA001C11A7 /* AutoRotateComponent.swift */,
-				8CB0FA6E29D4198E00C2FAC8 /* BombComponent.swift */,
 				8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */,
 			);
 			path = Components;
@@ -594,7 +591,6 @@
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
 				6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */,
-				8CB0FA6F29D4198E00C2FAC8 /* BombComponent.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AxeGameManager.swift in Sources */,

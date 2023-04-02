@@ -1,0 +1,134 @@
+@startuml
+' STYLE START
+hide empty members
+skinparam shadowing false
+' STYLE END
+
+top to bottom direction
+
+class Powerup << (P, GoldenRod) protocol >> { 
+  ~apply(powerupId:to:in:) 
+}
+class GunPowerup << (S, SkyBlue) >> implements Powerup { 
+  ~numBullets : Int
+  ~gunInterval : CGFloat
+}
+class BombPowerup << (S, SkyBlue) >> implements Powerup { 
+  ~numBullets : Int
+  ~bulletSize : CGSize
+  ~radius : CGFloat
+}
+class RockPowerup << (S, SkyBlue) >> implements Powerup { 
+}
+
+package DuelKitComponents {
+  class ScoreComponent {}
+  class RotationComponent {}
+  class PositionComponent {}
+}
+
+package Components {
+  class BulletComponent { 
+    ~playerId : EntityID
+  }
+  class AutoRotateComponent { 
+  }
+  class BombComponent { 
+    ~numBullets : Int
+    ~startingRadius : CGFloat
+  }
+  class RockComponent { 
+  }
+  class SpaceshipComponent { 
+    ~index : Int
+  }
+  class GunComponent { 
+    ~numBulletsLeft
+    ~lastFired : Date?
+    ~gunInterval : TimeInterval
+  }
+  class PowerupComponent { 
+    ~isActivated : Bool
+  }
+
+  PowerupComponent -> Powerup: has a
+
+  class StarComponent { 
+  }
+}
+
+package Event {
+  class SpaceshipRecreatedEvent << (S, SkyBlue) >> { 
+    ~firstSpaceshipId : EntityID
+    ~secondSpaceshipId : EntityID 
+  }
+  class BulletHitPlayerEvent << (S, SkyBlue) >> { 
+    ~bulletId : EntityID
+    ~playerId : EntityID 
+  }
+  class PlayerHitPowerupEvent << (S, SkyBlue) >> { 
+    ~powerupId : EntityID
+    ~playerId : EntityID 
+  }
+  class SpaceshipDestroyedEvent << (S, SkyBlue) >> { 
+    ~spaceshipId : EntityID 
+  }
+  class RockHitPlayerEvent << (S, SkyBlue) >> { 
+    ~rockId : EntityID
+    ~playerId : EntityID 
+  }
+
+  RockHitPlayerEvent -left-> SPScoreSystem : handleRockHitPlayer
+  BulletHitPlayerEvent -left-> SPScoreSystem : handleBulletHitPlayer
+  PlayerHitPowerupEvent -left-> PowerupSystem : applyPowerup
+  SpaceshipDestroyedEvent -left-> PowerupSystem : destroyAllPowerups\ndestroyAllRocks
+}
+
+package Systems {
+  class SPScoreSystem { 
+    ~incrementScoreFor(everyoneBut:)
+    ~handleRockHitPlayer(rockId:playerId:)
+    ~handleBulletHitPlayer(bulletId:playerId:)
+  }
+  class PowerupSystem { 
+    ~applyPowerup(powerupId:to:)
+    ~destroyAllPowerups()
+    ~destroyAllRocks()
+  }
+  class SPAnimationCreatorSystem { 
+                                                RotationComponent, SizeComponent>
+    ~createSpaceshipParticles(spaceshipId:)
+    ~resetMapping()
+  }
+  class AutoRotateSystem {  
+  }
+  class GunSystem {  
+  }
+  class BulletSystem { 
+    ~destroyAllBullets() 
+  }
+  class SPRoundSystem { 
+    ~checkWin()
+    ~reset() 
+  }
+  class WraparoundSystem {  
+  }
+  class SPInputSystem { 
+    ~playerIndexToIdMap : [Int: EntityID]
+    ~handleButtonDown(playerIndex:)
+    ~handleButtonUp(playerIndex:)
+    ~setPlayerId(firstPlayer:secondPlayer:)
+  }
+
+  SPScoreSystem -[dashed]left-> ScoreComponent
+  WraparoundSystem -[dashed]left-> PositionComponent
+  AutoRotateSystem -[dashed]left-> RotationComponent
+  AutoRotateSystem -[dashed]left-> AutoRotateComponent
+  PowerupSystem -[dashed]left-> PowerupComponent
+  PowerupSystem -[dashed]left-> RockComponent
+  GunSystem -[dashed]left-> GunComponent
+  BulletSystem -[dashed]left-> BulletComponent
+  SPAnimationCreatorSystem -[dashed]left-> StarComponent
+}
+
+@enduml

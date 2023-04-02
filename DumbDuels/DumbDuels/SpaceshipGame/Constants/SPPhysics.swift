@@ -21,7 +21,7 @@ struct SPPhysics {
     static let spaceshipImpulse: CGVector = .zero
     static let spaceshipAngularImpulse: CGFloat = .zero
 
-    static let rockMass: CGFloat = 1.0
+    static let rockMass: CGFloat = 10.0
     static let rockGravity = false
     static let rockCor: CGFloat = 0.8
     static let rockIsDynamic = true

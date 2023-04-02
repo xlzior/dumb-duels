@@ -1,0 +1,31 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+class SPGameManager << (C, DarkSeaGreen) >> extends GameManager { 
+  ~setUpEntities()
+  ~setUpUserSystems() 
+}
+class SPGameViewController << (C, DarkSeaGreen) >> extends GameViewController { 
+  ~setUpGameManager()
+  ~styleGameViewBackground() 
+}
+
+class SPInputSystem << (C, DarkSeaGreen) >> implements InputSystem, IndexMapInitializable { 
+  ~entityManager : EntityManager
+  ~playerIndexToIdMap : [Int: EntityID]
+  ~handleButtonDown(playerIndex:)
+  ~handleButtonUp(playerIndex:)
+  ~setPlayerId(firstPlayer:secondPlayer:)
+}
+
+@enduml

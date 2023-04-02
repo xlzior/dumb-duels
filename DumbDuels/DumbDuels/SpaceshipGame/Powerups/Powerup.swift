@@ -8,5 +8,5 @@
 import DuelKit
 
 protocol Powerup {
-    func apply(to playerId: EntityID, in entityManager: EntityManager)
+    func apply(powerupId: EntityID, to playerId: EntityID, in entityManager: EntityManager)
 }

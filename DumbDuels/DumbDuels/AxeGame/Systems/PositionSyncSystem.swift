@@ -1,5 +1,5 @@
 //
-//  PlayerPlatformSyncSystem.swift
+//  PositionSyncSystem.swift
 //  DumbDuels
 //
 //  Created by Bing Sen Lim on 20/3/23.
@@ -8,7 +8,6 @@
 import Foundation
 import DuelKit
 
-// TODO: Rename this to PlatformSyncSystem
 class PositionSyncSystem: System {
     unowned var entityManager: EntityManager
 

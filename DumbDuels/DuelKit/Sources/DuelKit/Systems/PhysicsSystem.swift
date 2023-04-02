@@ -17,7 +17,7 @@ public class PhysicsSystem: System {
     private let oscillation: Assemblage1<OscillationComponent>
     private let contactHandlers: ContactHandlerMap
 
-    public init(for entityManager: EntityManager, eventFirer: EventFirer,
+    init(for entityManager: EntityManager, eventFirer: EventFirer,
                 scene: Scene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
@@ -34,7 +34,7 @@ public class PhysicsSystem: System {
         syncToPhysicsEngine()
     }
 
-    public func syncFromPhysicsEngine() {
+    func syncFromPhysicsEngine() {
         scene.forEachEntity(perform: { id, physicsSimulatableBody in
             if let physicsComponent: PhysicsComponent =
                 entityManager.getComponent(ofType: PhysicsComponent.typeId, for: id) {

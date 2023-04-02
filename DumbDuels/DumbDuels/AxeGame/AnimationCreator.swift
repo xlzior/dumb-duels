@@ -9,16 +9,16 @@ import DuelKit
 import CoreGraphics
 
 class AnimationCreator {
-    func createPlayerHitAnimation() -> AnimationComponent {
+    func createPlayerHitAnimation(index: Int) -> AnimationComponent {
         let component = AnimationComponent(
             isPlaying: false,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.5,
-                    spriteName: "player-flash"),
+                    spriteName: AXAssets.playerHit[index]),
                 AnimationFrame(
                     frameDuration: 0.01,
-                    spriteName: "player")],
+                    spriteName: AXAssets.player[index])],
             numRepeat: 0
         )
         return component
@@ -80,24 +80,4 @@ class AnimationCreator {
         return component
     }
 
-    func createBattleFlashAnimation() -> AnimationComponent {
-        let component = AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
-            frames: [
-                AnimationFrame(
-                    frameDuration: 0.1,
-                    alpha: 0),
-                AnimationFrame(
-                    frameDuration: 0.1,
-                    alpha: 1),
-                AnimationFrame(
-                    frameDuration: 0.1,
-                    alpha: 1),
-                AnimationFrame(
-                    frameDuration: 0.05,
-                    alpha: 0)],
-            numRepeat: 2
-        )
-        return component
-    }
 }

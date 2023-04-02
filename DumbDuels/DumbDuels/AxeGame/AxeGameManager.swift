@@ -9,28 +9,29 @@ import UIKit
 import DuelKit
 
 class AxeGameManager: GameManager {
-    var entityCreator: EntityCreator?
+
+    private var entityCreator: EntityCreator?
 
     override func setUpEntities() {
         let creator = EntityCreator(entityManager: entityManager)
         entityCreator = creator
 
         for playerIndex in 0...1 {
-            let playerPosition = Positions.players[playerIndex]
+            let playerPosition = AXPositions.players[playerIndex]
             let faceDirection: FaceDirection = playerIndex == 0 ? .right : .left
 
-            let verticalOffset = (Sizes.player.height / 2 + Sizes.platform.height / 2) * -1
+            let verticalOffset = (AXSizes.player.height / 2 + AXSizes.platform.height / 2) * -1
             let platform = creator.createPlatform(
                 withVerticalOffset: verticalOffset,
                 from: playerPosition,
-                of: Sizes.platform,
+                of: AXSizes.platform,
                 index: playerIndex
             )
 
             let axe = creator.createAxe(
-                withHorizontalOffset: Sizes.axeOffsetFromPlayer(facing: faceDirection),
+                withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: faceDirection),
                 from: playerPosition,
-                of: Sizes.axe,
+                of: AXSizes.axe,
                 facing: faceDirection,
                 onPlatform: platform.id
             )
@@ -39,22 +40,21 @@ class AxeGameManager: GameManager {
                 index: playerIndex,
                 at: playerPosition,
                 facing: faceDirection,
-                of: Sizes.player,
+                of: AXSizes.player,
                 holding: axe.id,
                 onPlatform: platform.id
             )
-
-            renderSystemDetails.gameController.registerPlayerID(playerIndex: playerIndex, playerEntityID: player.id)
+            initialPlayerIndexToIdMap[playerIndex] = player.id
         }
 
-        _ = creator.createLava(at: Positions.lava, of: Sizes.lava)
+        creator.createLava(at: AXPositions.lava, of: AXSizes.lava)
 
         for wallIndex in 0..<3 {
-            _ = creator.createWall(at: Positions.walls[wallIndex], of: Sizes.walls[wallIndex])
+            creator.createWall(at: AXPositions.walls[wallIndex], of: AXSizes.walls[wallIndex])
         }
 
-        for pegIndex in 0..<Positions.pegs.count {
-            _ = creator.createPeg(at: Positions.pegs[pegIndex], of: Sizes.peg, index: pegIndex)
+        for pegIndex in 0..<AXPositions.pegs.count {
+            creator.createPeg(at: AXPositions.pegs[pegIndex], of: AXSizes.peg, index: pegIndex)
         }
     }
 
@@ -92,7 +92,7 @@ class AxeGameManager: GameManager {
         return contactHandlers
     }
 
-    override func setUpSystems() {
+    override func setUpUserSystems() {
         guard let creator = entityCreator else {
             return
         }
@@ -103,15 +103,13 @@ class AxeGameManager: GameManager {
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(AnimationSystem(for: entityManager))
-        systemManager.register(PhysicsSystem(for: entityManager, eventFirer: eventManager,
-                                             scene: simulator.gameScene, contactHandlers: getContactHandlers()))
         systemManager.register(ScoreSystem(for: entityManager))
-        systemManager.register(GameOverSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(RenderSystem(
-            for: entityManager,
-            eventManger: eventManager,
-            details: renderSystemDetails
-        ))
+
+        useGameOverSystem(gameStartText: AXAssets.battleText,
+                          gameTieText: AXAssets.gameTiedText,
+                          gameWonTexts: AXAssets.gameWonText)
+        useAnimationSystem()
+        usePhysicsSystem(withContactHandlers: getContactHandlers())
+        useRenderSystem()
     }
 }

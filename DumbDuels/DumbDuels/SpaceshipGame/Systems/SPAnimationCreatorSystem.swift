@@ -16,15 +16,22 @@ class SPAnimationCreatorSystem: System {
 
     private var movingSpaceships: Assemblage4<SpaceshipComponent, PositionComponent,
                                               RotationComponent, SizeComponent>
+    private var spaceships: Assemblage3<SpaceshipComponent, PositionComponent, PhysicsComponent>
+    private var stars: Assemblage1<StarComponent>
     private var previousParticleSpawnInfo: [EntityID: Pair<CGPoint, CGFloat>]
+    private let numSpaceshipParticles = 40
+    private let numStarParticles = 40
 
-    init(for entityManager: EntityManager) {
+    init(for entityManager: EntityManager, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager
-        self.entityCreator = SPEntityCreator(entityManager: entityManager)
+        self.entityCreator = entityCreator
         self.movingSpaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
                                                          PositionComponent.self, RotationComponent.self,
                                                          SizeComponent.self,
                                                          excludedComponents: AutoRotateComponent.self)
+        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
+                                                   PositionComponent.self, PhysicsComponent.self)
+        self.stars = entityManager.assemblage(requiredComponents: StarComponent.self)
         previousParticleSpawnInfo = [EntityID: Pair<CGPoint, CGFloat>]()
     }
 
@@ -37,6 +44,9 @@ class SPAnimationCreatorSystem: System {
             let particlePosistion = position.position + (SPSizes.accelerationParticle.height / 2
                                                          + size.actualSize.height / 2) * CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createAccelerationParticle(at: particlePosistion, of: SPSizes.accelerationParticle)
+        }
+        while stars.count < numStarParticles {
+            createNewStar()
         }
     }
 
@@ -59,4 +69,38 @@ class SPAnimationCreatorSystem: System {
         return false
     }
 
+    func createSpaceshipParticles(spaceshipId: EntityID) {
+        guard let (spaceship, position, physicsComponent) = spaceships.getComponents(for: spaceshipId) else {
+            assertionFailure("Trying to create particles from a non-spaceship entity \(spaceshipId)")
+            return
+        }
+
+        // Create axe particles
+        for _ in 0..<numSpaceshipParticles {
+            let randomXDelta = CGFloat.random(in: -60...60)
+            let randomYDelta = CGFloat.random(in: -60...60)
+            let travelDistance = CGFloat.random(in: 0.5...2)
+            let velocityDirection = CGVector(dx: randomXDelta, dy: randomYDelta).normalized()
+            let initialPosition = position.position + CGPoint(x: randomXDelta, y: randomYDelta)
+            let deltaPosition = (travelDistance * velocityDirection).toPoint()
+            let travelTime: CGFloat = 1
+
+            entityCreator.createSpaceshipParticle(
+                at: initialPosition,
+                of: SPSizes.spaceshipDestroyParticle,
+                sprite: SPAssets.spaceshipParticles[spaceship.index].randomElement() ?? "",
+                deltaPosition: deltaPosition,
+                travelTime: travelTime)
+        }
+    }
+
+    func resetMapping() {
+        previousParticleSpawnInfo.removeAll()
+    }
+
+    private func createNewStar() {
+        let randomPosition = CGPoint.random(within: Sizes.game)
+
+        entityCreator.createStarParticle(at: randomPosition, of: SPSizes.star)
+    }
 }

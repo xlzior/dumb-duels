@@ -9,22 +9,27 @@ import DuelKit
 
 class SPScoreSystem: System {
     unowned var entityManager: EntityManager
+    unowned var eventFirer: EventFirer
     private var scores: Assemblage1<ScoreComponent>
+    private var spaceships: Assemblage2<SpaceshipComponent, PhysicsComponent>
+    private var isHitThisFrame: Set<EntityID>
 
-    init(for entityManager: EntityManager) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.scores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
+        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self, PhysicsComponent.self)
+        self.eventFirer = eventFirer
+        self.isHitThisFrame = []
     }
 
     func update() {
-
+        isHitThisFrame.removeAll()
     }
 
     func incrementScoreFor(everyoneBut playerId: EntityID) {
         for score in scores where score.playerId != playerId {
             score.score += 1
         }
-        reset()
     }
 
     func handleRockHitPlayer(rockId: EntityID, playerId: EntityID) {
@@ -33,14 +38,12 @@ class SPScoreSystem: System {
             return
         }
 
-        if let rockActivatedBy = rock.playerId,
-           rockActivatedBy == playerId {
-            // first collision doesn't count
-            rock.playerId = nil
+        guard !isHitThisFrame.contains(playerId) else {
             return
         }
-
+        isHitThisFrame.insert(playerId)
         incrementScoreFor(everyoneBut: playerId)
+        destroySpaceship(playerId)
     }
 
     func handleBulletHitPlayer(bulletId: EntityID, playerId: EntityID) {
@@ -49,14 +52,22 @@ class SPScoreSystem: System {
             return
         }
 
-        if bullet.playerId == playerId {
+        guard bullet.playerId != playerId,
+              !isHitThisFrame.contains(playerId) else {
             return
         }
-
+        isHitThisFrame.insert(playerId)
         incrementScoreFor(everyoneBut: playerId)
+        destroySpaceship(playerId)
     }
 
-    func reset() {
-
+    private func destroySpaceship(_ spaceshipId: EntityID) {
+        guard spaceships.isMember(entityId: spaceshipId) else {
+            return
+        }
+        // Not removed here, removed in SPRoundSystem in the same update cycle
+//        physicsComponent.toBeRemoved = true
+//        physicsComponent.shouldDestroyEntityWhenRemove = true
+        eventFirer.fire(SpaceshipDestroyedEvent(spaceshipId: spaceshipId))
     }
 }

@@ -30,7 +30,6 @@ final class EntityDestroyTests: XCTestCase {
         XCTAssertTrue(manager.exists(entity: entity1.id))
         XCTAssertFalse(manager.exists(entity: entity2.id))
 
-        // TODO: add function to destroy assemblages?
         XCTAssertEqual(manager.members(withTraits: assemblage1.traits), Set([entity1.id]))
         XCTAssertEqual(manager.members(withTraits: assemblage2.traits), Set())
         XCTAssertEqual(manager.members(withTraits: assemblage3.traits), Set())

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameAreaView: UIView {
+class GameAreaView: UIImageView {
     let gameAspectRatio: CGFloat = 1_000 / 650
 
     init(screenSize: CGSize) {

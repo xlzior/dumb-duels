@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class RenderSystem: System {
+class RenderSystem: System, IndexMapInitializable {
     unowned var entityManager: EntityManager
     var gameController: GameController
 
@@ -25,23 +25,26 @@ public class RenderSystem: System {
     var renderedEntities: Set<EntityID> = Set()
     var renderables: Assemblage4<SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
     var playerScores: Assemblage1<ScoreComponent>
+    var playerIndexToIdMap: [Int: EntityID]
 
-    public init(for entityManager: EntityManager, eventManger: EventManager, details: RenderSystemDetails) {
+    init(for entityManager: EntityManager, eventManger: EventManager, gameController: GameController) {
         self.entityManager = entityManager
-        self.gameController = details.gameController
-        self.screenSize = details.screenSize
-        self.screenOffset = details.screenOffset
-        self.renderables = entityManager.assemblage(requiredComponents: SpriteComponent.self,
-            PositionComponent.self, SizeComponent.self, RotationComponent.self)
+        self.gameController = gameController
+        self.screenSize = gameController.screenSize
+        self.screenOffset = gameController.screenOffset
+        self.renderables = entityManager.assemblage(
+            requiredComponents: SpriteComponent.self, PositionComponent.self,
+            SizeComponent.self, RotationComponent.self)
         self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
+        self.playerIndexToIdMap = [Int: EntityID]()
     }
 
-    public func update() {
+    func update() {
         renderEntities()
         renderScores()
     }
 
-    public func handleGameOver() {
+    func handleGameOver() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.gameController.goToHomePage()
         }
@@ -88,8 +91,13 @@ public class RenderSystem: System {
     }
 
     private func renderScores() {
-        for (score) in playerScores {
-            gameController.updateScore(for: score.playerId, with: score.score)
+        for score in playerScores {
+            gameController.updateScore(for: score.playerIndex, with: score.score)
         }
+    }
+
+    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
+        playerIndexToIdMap[0] = firstPlayer
+        playerIndexToIdMap[1] = secondPlayer
     }
 }

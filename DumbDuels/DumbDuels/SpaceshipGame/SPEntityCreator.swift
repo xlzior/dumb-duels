@@ -21,7 +21,8 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createSpaceship(index: Int, at position: CGPoint, of size: CGSize) -> Entity {
+    func createSpaceship(index: Int, at position: CGPoint, of size: CGSize,
+                         score: Int = 0) -> Entity {
         let spaceship = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -32,47 +33,47 @@ class SPEntityCreator {
             physicsCreator.createSpaceship(of: size)
         }
 
-        spaceship.assign(component: ScoreComponent(for: spaceship.id))
+        spaceship.assign(component: ScoreComponent(for: index, withId: spaceship.id, score: score))
 
         return spaceship
     }
 
     @discardableResult
-    func createRock(at position: CGPoint, angle: CGFloat, justActivatedBy playerId: EntityID) -> Entity {
-        let size = SPSizes.rock
+    func createRock(at position: CGPoint,
+                    of size: CGSize = SPSizes.rock,
+                    velocity: CGVector) -> Entity {
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "rock")
-            RockComponent(justActivatedBy: playerId)
-            physicsCreator.createRock(of: size, pointing: angle)
+            RockComponent()
+            physicsCreator.createRock(of: size, velocity: velocity)
         }
         return rock
     }
 
     @discardableResult
-    func createBullet(index: Int, from playerId: EntityID, angle: CGFloat, position: CGPoint,
-                      lifespan: TimeInterval = SPConstants.bulletLifespan) -> Entity {
-        let size = SPSizes.bullet
+    func createBullet(index: Int,
+                      from playerId: EntityID,
+                      size: CGSize = SPSizes.bullet,
+                      angle: CGFloat,
+                      position: CGPoint
+    ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
-        let bullet = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent(angleInRadians: angle)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
-            BulletComponent(for: playerId, lifespan: lifespan)
+            BulletComponent(for: playerId)
             physicsCreator.createBullet(of: size, pointing: angle)
         }
-        return bullet
     }
 
     @discardableResult
-    func createPowerup() -> Entity {
-        let size = SPSizes.powerup
-        let position = CGPoint.random(within: Sizes.game)
-
+    func createPowerup(at position: CGPoint, of size: CGSize) -> Entity {
         let powerup = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -81,13 +82,17 @@ class SPEntityCreator {
         }
 
         let powerupComponents: [[Component]] = [
-//            [
-//                SpriteComponent(assetName: "gunPowerup"),
-//                PowerupComponent(ofType: GunPowerup())
-//            ],
+            [
+                SpriteComponent(assetName: "gunPowerup"),
+                PowerupComponent(ofType: GunPowerup())
+            ],
             [
                 SpriteComponent(assetName: "bombPowerup"),
                 PowerupComponent(ofType: BombPowerup())
+            ],
+            [
+                SpriteComponent(assetName: "rockPowerup"),
+                PowerupComponent(ofType: RockPowerup())
             ]
         ]
 
@@ -100,16 +105,37 @@ class SPEntityCreator {
 
     @discardableResult
     func createAccelerationParticle(at position: CGPoint, of size: CGSize) -> Entity {
-        let particle = entityManager.createEntity {
+        entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: Assets.lava)
+            SpriteComponent(assetName: AXAssets.lava)
+            animationCreator.createAccelerationParticle()
         }
+    }
 
-        let animationComponent = animationCreator.createAccelerationParticle()
-        particle.assign(component: animationComponent)
+    @discardableResult
+    func createSpaceshipParticle(at position: CGPoint, of size: CGSize, sprite: String,
+                                 deltaPosition: CGPoint, travelTime: CGFloat) -> Entity {
+        entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: sprite)
+            animationCreator.createSpaceshipParticleAnimation(
+                deltaPosition: deltaPosition, travelTime: travelTime)
+        }
+    }
 
-        return particle
+    @discardableResult
+    func createStarParticle(at position: CGPoint, of size: CGSize) -> Entity {
+        entityManager.createEntity {
+            StarComponent()
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: SPAssets.star)
+            animationCreator.createStarAnimation(initialPosition: position)
+        }
     }
 }

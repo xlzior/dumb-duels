@@ -11,7 +11,8 @@ import DuelKit
 class SPPhysicsCreator {
     func createSpaceship(of size: CGSize) -> PhysicsComponent {
         let component = PhysicsComponent(
-            rectangleOf: size, mass: SPPhysics.spaceshipMass, velocity: .zero,
+            rectangleOf: size - CGSize(width: 20, height: 10),
+            mass: SPPhysics.spaceshipMass, velocity: .zero,
             affectedByGravity: SPPhysics.spaceshipGravity,
             linearDamping: SPPhysics.spaceshipStaticDamping,
             isDynamic: SPPhysics.spaceshipIsDynamic,
@@ -28,7 +29,7 @@ class SPPhysicsCreator {
         return component
     }
 
-    func createRock(of size: CGSize, pointing: CGFloat) -> PhysicsComponent {
+    func createRock(of size: CGSize, velocity: CGVector) -> PhysicsComponent {
         let component = PhysicsComponent(
             circleOf: size.height / 2, mass: SPPhysics.rockMass, velocity: .zero,
             affectedByGravity: SPPhysics.rockGravity,
@@ -41,7 +42,7 @@ class SPPhysicsCreator {
             collideBitmask: SPCollisions.rockCollideBitmask,
             contactBitmask: SPCollisions.rockContactBitmask,
             zRotation: SPPhysics.rockZRotation,
-            impulse: SPConstants.rockForce * CGVector(angle: pointing),
+            impulse: SPConstants.rockForce * velocity,
             angularImpulse: SPPhysics.rockAngularImpulse)
 
         return component

@@ -1,4 +1,4 @@
-@startuml ButtonPressSequenceDiagram
+@startuml ButtonDownSequenceDiagram
 
 actor User
 participant Main.storyboard <<View>>
@@ -6,22 +6,22 @@ participant GameViewController <<Controller>>
 participant BaseGameScene <<Game Loop>>
 participant GameManager <<Model>>
 participant EventManager
-participant ButtonPressEvent <<Event>>
-participant InputSystem <<System>>
+participant ButtonDownEvent <<Event>>
+participant AXInputSystem <<System>>
 
 == Firing event ==
 
 User -> Main.storyboard: tap player 1's button
-Main.storyboard -> GameViewController: buttonTapped()
-GameViewController -> GameManager: handleButtonPress()
-GameManager -> ButtonPressEvent: init()
-GameManager -> EventManager: fire(ButtonPressEvent())
+Main.storyboard -> GameViewController: buttonPressed()
+GameViewController -> GameManager: handleButtonDown()
+GameManager -> ButtonDownEvent: init()
+GameManager -> EventManager: fire(ButtonDownEvent())
 
 == Executing events ==
 
 BaseGameScene -> GameManager: didFinishUpdate()
 GameManager -> EventManager: pollAll()
-EventManager -> ButtonPressEvent: execute()
-ButtonPressEvent -> InputSystem: handleButtonPress()
+EventManager -> ButtonDownEvent: execute()
+ButtonDownEvent -> AXInputSystem: handleButtonDown()
 
 @enduml

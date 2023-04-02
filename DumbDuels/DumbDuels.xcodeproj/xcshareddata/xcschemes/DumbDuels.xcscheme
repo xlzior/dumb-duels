@@ -38,11 +38,6 @@
                BlueprintName = "DumbDuelsTests"
                ReferencedContainer = "container:DumbDuels.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "NexusEntityTests/testCreateEntityMultipleComponent()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO"

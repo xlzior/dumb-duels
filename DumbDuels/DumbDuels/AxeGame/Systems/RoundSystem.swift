@@ -6,24 +6,40 @@
 //
 
 import CoreGraphics
+import DuelKit
 
 class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
+    unowned var entityCreator: EntityCreator
 
-    private var thrownAxe: Assemblage3<AxeComponent, PositionComponent, PhysicsComponent>
-    private var unthrownAxe: Assemblage1<AxeComponent>
-    private var players: Assemblage4<PlayerComponent, ScoreComponent, PositionComponent, PhysicsComponent>
+    private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
+    private var unthrownAxe: Assemblage2<AxeComponent, SyncXPositionComponent>
+    private var players: Assemblage5<PlayerComponent, ScoreComponent, PositionComponent,
+                                     PhysicsComponent, SyncXPositionComponent>
+    private var platforms: Assemblage2<PlatformComponent, PositionComponent>
+    private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer) {
+    private var isGameOver = false
+
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.thrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
-                                                  PositionComponent.self, PhysicsComponent.self)
-        self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
-                                                    excludedComponents: PhysicsComponent.self)
-        self.players = entityManager.assemblage(requiredComponents: PlayerComponent.self, ScoreComponent.self,
-                                                PositionComponent.self, PhysicsComponent.self)
+        self.entityCreator = entityCreator
+        self.thrownAxe = entityManager.assemblage(
+            requiredComponents: AxeComponent.self, PositionComponent.self,
+            RotationComponent.self, PhysicsComponent.self,
+            excludedComponents: SyncXPositionComponent.self)
+        self.unthrownAxe = entityManager.assemblage(
+            requiredComponents: AxeComponent.self, SyncXPositionComponent.self,
+            excludedComponents: PhysicsComponent.self)
+        self.players = entityManager.assemblage(
+            requiredComponents: PlayerComponent.self, ScoreComponent.self,
+            PositionComponent.self, PhysicsComponent.self, SyncXPositionComponent.self)
+        self.platforms = entityManager.assemblage(
+            requiredComponents: PlatformComponent.self, PositionComponent.self)
+        self.throwStrength = entityManager.assemblage(
+            requiredComponents: ThrowStrengthComponent.self, SizeComponent.self)
     }
 
     func update() {
@@ -34,27 +50,52 @@ class RoundSystem: System {
     }
 
     func checkWin() {
-        for (entity, _, score, _, _) in players.entityAndComponents where score.score >= 5 {
-            eventFirer.fire(GameWonEvent(entityId: entity.id))
+        var winningEntities = [EntityID]()
+        for (entity, _, score, _, _, _) in players.entityAndComponents
+        where score.score >= Constants.winningScore {
+            winningEntities.append(entity.id)
         }
+
+        guard !winningEntities.isEmpty else {
+            return
+        }
+
+        if winningEntities.count > 1 {
+            eventFirer.fire(GameTieEvent())
+        } else {
+            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
+        }
+        isGameOver = true
     }
 
     func reset() {
-        for (entity, player, _, playerPosition, playerPhysics) in players.entityAndComponents {
-            // reset player
-            player.fsm.changeState(name: .holdingAxe)
-            playerPosition.position = Positions.players[player.idx]
-            playerPhysics.velocity = CGVector.zero
+        if !isGameOver {
+            eventFirer.fire(GameStartEvent())
+        }
 
-            // reset axe
-            guard let holdingAxe: HoldingAxeComponent = entityManager.getComponent(for: entity.id),
-                  let (_, _, axePosition, physics) =
-                    thrownAxe.getEntityAndComponents(for: holdingAxe.axeEntityID) else {
-                return
-            }
-            let horizontalOffset = Sizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection)
-            axePosition.position = playerPosition.position + CGPoint(x: horizontalOffset, y: 0)
-            physics.toBeRemoved = true
+        // Destroy all thrown axes since they are out of bounds
+        for (_, _, _, physicsComponent) in thrownAxe {
+            physicsComponent.toBeRemoved = true
+            physicsComponent.shouldDestroyEntityWhenRemove = true
+        }
+        for (playerEntity, player, _, playerPosition, playerPhysics, playerSyncX) in players.entityAndComponents {
+            // create new axe
+            let axe = entityCreator.createAxe(
+                withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
+                from: AXPositions.players[player.idx],
+                of: AXSizes.axe,
+                facing: playerPosition.faceDirection, onPlatform: playerSyncX.syncFrom
+            )
+
+            // reset player
+            playerEntity.assign(component: HoldingAxeComponent(axeEntityID: axe.id))
+            playerPosition.position = AXPositions.players[player.idx]
+            playerPhysics.velocity = CGVector.zero
+        }
+
+        for (throwStrengthComponent, sizeComponent) in throwStrength {
+            throwStrengthComponent.throwStrength = Constants.defaultThrowStrength
+            sizeComponent.xScale = throwStrengthComponent.throwStrength
         }
     }
 
@@ -67,7 +108,7 @@ class RoundSystem: System {
 
     private func isAllThrownAxeOutOfBounds() -> Bool {
         let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (_, _, position, _) in thrownAxe.entityAndComponents where frame.contains(position.position) {
+        for (_, position, _, _) in thrownAxe where frame.contains(position.position) {
             return false
         }
         return true

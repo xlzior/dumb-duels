@@ -5,7 +5,7 @@
 //  Created by Bing Sen Lim on 18/3/23.
 //
 
-import Foundation
+import DuelKit
 
 class CanJumpComponent: Component {
     var id: ComponentID

@@ -33,8 +33,6 @@ public class SystemManager {
     }
 
     public func updateIndexToIdMapping(firstId: EntityID, secondId: EntityID) {
-        // TODO: remove this line and regression test, should not be necessary
-        inputSystem?.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
         for system in systems {
             guard let initializableSystem = system as? IndexMapInitializable else {
                 continue

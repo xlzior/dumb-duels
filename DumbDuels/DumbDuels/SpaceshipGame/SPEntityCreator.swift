@@ -39,9 +39,9 @@ class SPEntityCreator {
     }
 
     @discardableResult
-    func createRock(at position: CGPoint, velocity: CGVector, justActivatedBy playerId: EntityID) -> Entity {
-        // TODO: take in size as a parameter
-        let size = SPSizes.rock
+    func createRock(at position: CGPoint,
+                    of size: CGSize = SPSizes.rock,
+                    velocity: CGVector) -> Entity {
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()

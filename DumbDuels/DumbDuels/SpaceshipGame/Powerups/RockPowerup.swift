@@ -22,6 +22,6 @@ struct RockPowerup: Powerup {
         let rockOffsetFromSpaceship = physics.velocity.normalize() * spaceshipHypotenuse
         let rockPosition = position.position + rockOffsetFromSpaceship
         let rockVelocity = physics.velocity * 1.2
-        entityCreator.createRock(at: rockPosition, velocity: rockVelocity, justActivatedBy: playerId)
+        entityCreator.createRock(at: rockPosition, velocity: rockVelocity)
     }
 }

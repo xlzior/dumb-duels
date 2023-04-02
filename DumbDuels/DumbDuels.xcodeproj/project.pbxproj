@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6F499E0729D21FF300245F6E /* Oscillation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F499E0629D21FF300245F6E /* Oscillation.swift */; };
 		6F67C71329C462DD009E0579 /* Physics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71229C462DD009E0579 /* Physics.swift */; };
-		6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C72029C8454B009E0579 /* WallComponent.swift */; };
 		7B13494729D1DB7700E43A7F /* SPPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494629D1DB7700E43A7F /* SPPhysics.swift */; };
 		7B13494929D1DC3E00E43A7F /* SPCollisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494829D1DC3E00E43A7F /* SPCollisions.swift */; };
 		7B13494B29D1DEA700E43A7F /* SPSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494A29D1DEA700E43A7F /* SPSizes.swift */; };
@@ -108,7 +107,6 @@
 /* Begin PBXFileReference section */
 		6F499E0629D21FF300245F6E /* Oscillation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oscillation.swift; sourceTree = "<group>"; };
 		6F67C71229C462DD009E0579 /* Physics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Physics.swift; sourceTree = "<group>"; };
-		6F67C72029C8454B009E0579 /* WallComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallComponent.swift; sourceTree = "<group>"; };
 		7B13494629D1DB7700E43A7F /* SPPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPPhysics.swift; sourceTree = "<group>"; };
 		7B13494829D1DC3E00E43A7F /* SPCollisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCollisions.swift; sourceTree = "<group>"; };
 		7B13494A29D1DEA700E43A7F /* SPSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSizes.swift; sourceTree = "<group>"; };
@@ -272,7 +270,6 @@
 		7BA7EBBE29C36BBD0096457F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6F67C72029C8454B009E0579 /* WallComponent.swift */,
 				7B2A3DD529CD81A500C735D2 /* PegComponent.swift */,
 				7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */,
 				7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */,
@@ -590,7 +587,6 @@
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
-				6F67C72129C8454B009E0579 /* WallComponent.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AxeGameManager.swift in Sources */,

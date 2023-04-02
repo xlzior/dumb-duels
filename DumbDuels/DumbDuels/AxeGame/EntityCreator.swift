@@ -148,7 +148,6 @@ class EntityCreator {
         let wall = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
-            WallComponent()
         }
 
         let physicsComponent = physicsCreator.createWall(of: size)

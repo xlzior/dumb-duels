@@ -50,8 +50,8 @@ class AnimationCreator {
         var randomYDeltas = [CGFloat]()
 
         for _ in 1...4 {
-            let randomXDelta = CGFloat.random(in: -1.5...1.5)
-            let randomYDelta = CGFloat.random(in: 0.5...4)
+            let randomXDelta = CGFloat.random(in: -15...15)
+            let randomYDelta = CGFloat.random(in: 20...50)
             randomXDeltas.append(randomXDelta)
             randomYDeltas.append(randomYDelta)
         }
@@ -60,9 +60,9 @@ class AnimationCreator {
             shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
-                    frameDuration: 0.1,
+                    frameDuration: 0.01,
                     alpha: 0,
-                    deltaPosition: CGPoint(x: randomXDeltas[0], y: randomYDeltas[0])),
+                    deltaPosition: CGPoint(x: 0, y: 0)),
                 AnimationFrame(
                     frameDuration: 0.3,
                     alpha: 1,

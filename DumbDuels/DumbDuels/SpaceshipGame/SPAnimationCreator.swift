@@ -74,7 +74,7 @@ class SPAnimationCreator {
         let initialAlpha = CGFloat.random(in: 0...0.5)
         // How much alpha to increase or decrease within 1s interval
         let alphaChangeRate = CGFloat.random(in: 0.5...1.0)
-        let velocity = CGPoint(x: CGFloat.random(in: 0.5...1.5), y: 0)
+        let velocity = CGPoint(x: CGFloat.random(in: 10...80), y: 0)
 
         let component = AnimationComponent(
             shouldDestroyEntityOnEnd: true,

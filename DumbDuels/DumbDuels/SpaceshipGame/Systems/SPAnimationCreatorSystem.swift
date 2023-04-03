@@ -79,7 +79,7 @@ class SPAnimationCreatorSystem: System {
         for _ in 0..<numSpaceshipParticles {
             let randomXDelta = CGFloat.random(in: -60...60)
             let randomYDelta = CGFloat.random(in: -60...60)
-            let travelDistance = CGFloat.random(in: 0.5...2)
+            let travelDistance = CGFloat.random(in: 15...80)
             let velocityDirection = CGVector(dx: randomXDelta, dy: randomYDelta).normalized()
             let initialPosition = position.position + CGPoint(x: randomXDelta, y: randomYDelta)
             let deltaPosition = (travelDistance * velocityDirection).toPoint()

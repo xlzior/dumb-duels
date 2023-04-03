@@ -99,10 +99,10 @@ class AnimationSystem: System {
                 frameDuration: currentFrame.frameDuration)
         }
 
-        if let currentPosition = currentFrame.deltaPosition, let nextPosition = nextFrame.deltaPosition {
+        if let deltaPosition = currentFrame.deltaPosition {
             position.position += interpolate(
-                previousValue: currentPosition,
-                nextValue: nextPosition,
+                previousValue: CGPoint(x: 0, y: 0),
+                nextValue: deltaPosition,
                 timeElapsed: timeElapsed,
                 frameDuration: currentFrame.frameDuration)
         }

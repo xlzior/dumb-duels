@@ -89,7 +89,6 @@ class RoundSystem: System {
 
             // reset player
             playerEntity.assign(component: HoldingAxeComponent(axeEntityID: axe.id))
-            playerPosition.position = AXPositions.players[player.idx]
             playerPhysics.velocity = CGVector.zero
         }
 

@@ -16,7 +16,6 @@ struct AXAssets {
     static let platform: String = "platform"
     static let peg: String = "peg"
     static let lava: String = "lava"
-    static let lavaSmoke: String = "lava-smoke"
 
     static let battleText: String = "battle"
     static let gameTiedText: String = "tie"

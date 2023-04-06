@@ -29,6 +29,10 @@
 		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
 		7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293129B82BE300281FC7 /* Assets.xcassets */; };
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
+		7B30774929DF38E500B26744 /* AXAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774829DF38E500B26744 /* AXAssets.xcassets */; };
+		7B30774B29DF39A600B26744 /* SPAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774A29DF39A600B26744 /* SPAssets.xcassets */; };
+		7B30774D29DF3A5E00B26744 /* TAAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */; };
+		7B30774F29DF3A6900B26744 /* SOAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774E29DF3A6900B26744 /* SOAssets.xcassets */; };
 		7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */; };
 		7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C37A529D45986003871F9 /* SPAssets.swift */; };
 		7B85081B29DF35870095A7F6 /* SOGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85081A29DF35870095A7F6 /* SOGameManager.swift */; };
@@ -133,6 +137,10 @@
 		7B2B293629B82BE300281FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B30774829DF38E500B26744 /* AXAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AXAssets.xcassets; sourceTree = "<group>"; };
+		7B30774A29DF39A600B26744 /* SPAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SPAssets.xcassets; sourceTree = "<group>"; };
+		7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TAAssets.xcassets; sourceTree = "<group>"; };
+		7B30774E29DF3A6900B26744 /* SOAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SOAssets.xcassets; sourceTree = "<group>"; };
 		7B4BFFB929CFF5E400FA3EFC /* DuelKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DuelKit; sourceTree = "<group>"; };
 		7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeComponent.swift; sourceTree = "<group>"; };
 		7B4C37A529D45986003871F9 /* SPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAssets.swift; sourceTree = "<group>"; };
@@ -260,6 +268,7 @@
 		7B85081829DF35580095A7F6 /* TankGame */ = {
 			isa = PBXGroup;
 			children = (
+				7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */,
 				7B85081E29DF35B10095A7F6 /* TAGameManager.swift */,
 				7B85082029DF35BA0095A7F6 /* TAGameViewController.swift */,
 			);
@@ -269,6 +278,7 @@
 		7B85081929DF35690095A7F6 /* SoccerGame */ = {
 			isa = PBXGroup;
 			children = (
+				7B30774E29DF3A6900B26744 /* SOAssets.xcassets */,
 				7B85081A29DF35870095A7F6 /* SOGameManager.swift */,
 				7B85081C29DF35A90095A7F6 /* SOGameViewController.swift */,
 			);
@@ -278,6 +288,7 @@
 		7BA7EB7B29C2D4470096457F /* AxeGame */ = {
 			isa = PBXGroup;
 			children = (
+				7B30774829DF38E500B26744 /* AXAssets.xcassets */,
 				A7E439F629C374BE00027AC6 /* Constants */,
 				7BA7EBBE29C36BBD0096457F /* Components */,
 				7BA7EBC829C36BBD0096457F /* Systems */,
@@ -345,6 +356,7 @@
 		7BCC61F629D1D5E60092B602 /* SpaceshipGame */ = {
 			isa = PBXGroup;
 			children = (
+				7B30774A29DF39A600B26744 /* SPAssets.xcassets */,
 				7BC8C2CB29D297DE001CF6F7 /* Powerups */,
 				7BCC61FF29D1D6280092B602 /* Constants */,
 				7BCC61FD29D1D61B0092B602 /* Components */,
@@ -555,6 +567,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */,
+				7B30774D29DF3A5E00B26744 /* TAAssets.xcassets in Resources */,
+				7B30774929DF38E500B26744 /* AXAssets.xcassets in Resources */,
+				7B30774F29DF3A6900B26744 /* SOAssets.xcassets in Resources */,
+				7B30774B29DF39A600B26744 /* SPAssets.xcassets in Resources */,
 				7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */,
 				7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */,
 			);

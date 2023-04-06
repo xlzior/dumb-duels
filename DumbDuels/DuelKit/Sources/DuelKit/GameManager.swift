@@ -18,12 +18,14 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public var initialPlayerIndexToIdMap: [Int: EntityID]
     private var isGameOver: Bool
 
+    // TODO: is this violating any software design principles...
     private var isUsingAnimationSystem = false
     private var isUsingPhysicsSystem = false
     private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
     private var isUsingRenderSystem = false
     private var isUsingGameOverSystem = false
     private var gameOverAssets: GameOverAssets?
+    private var isUsingAutoRotateSystem = false
 
     public init(gameController: GameViewController) {
         self.gameController = gameController
@@ -81,7 +83,15 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
             gameWonTexts: gameWonTexts)
     }
 
+    public func useAutoRotateSystem() {
+        isUsingAutoRotateSystem = true
+    }
+
     private func setUpInternalSystems() {
+        if isUsingAutoRotateSystem {
+            systemManager.register(AutoRotateSystem(for: entityManager))
+        }
+
         if isUsingGameOverSystem {
             guard let gameOverAssets else {
                 return assertionFailure("No game over assets found")

@@ -66,12 +66,12 @@ class SPGameManager: GameManager {
         systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(BulletSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(SPAnimationCreatorSystem(for: entityManager, entityCreator: creator))
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
 
+        useAutoRotateSystem()
         useGameOverSystem(gameStartText: SPAssets.battleText,
                           gameTieText: SPAssets.gameTiedText,
                           gameWonTexts: SPAssets.gameWonText)

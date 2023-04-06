@@ -1,11 +1,9 @@
 //
 //  AutoRotateSystem.swift
-//  DumbDuels
+//  DuelKit
 //
 //  Created by Wen Jun Lye on 27/3/23.
 //
-
-import DuelKit
 
 class AutoRotateSystem: System {
     unowned var entityManager: EntityManager

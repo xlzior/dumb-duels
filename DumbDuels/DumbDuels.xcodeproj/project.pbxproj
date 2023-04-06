@@ -31,6 +31,10 @@
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
 		7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */; };
 		7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C37A529D45986003871F9 /* SPAssets.swift */; };
+		7B85081B29DF35870095A7F6 /* SOGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85081A29DF35870095A7F6 /* SOGameManager.swift */; };
+		7B85081D29DF35A90095A7F6 /* SOGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85081C29DF35A90095A7F6 /* SOGameViewController.swift */; };
+		7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85081E29DF35B10095A7F6 /* TAGameManager.swift */; };
+		7B85082129DF35BA0095A7F6 /* TAGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85082029DF35BA0095A7F6 /* TAGameViewController.swift */; };
 		7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */; };
 		7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */; };
 		7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */; };
@@ -132,6 +136,10 @@
 		7B4BFFB929CFF5E400FA3EFC /* DuelKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DuelKit; sourceTree = "<group>"; };
 		7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeComponent.swift; sourceTree = "<group>"; };
 		7B4C37A529D45986003871F9 /* SPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAssets.swift; sourceTree = "<group>"; };
+		7B85081A29DF35870095A7F6 /* SOGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGameManager.swift; sourceTree = "<group>"; };
+		7B85081C29DF35A90095A7F6 /* SOGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOGameViewController.swift; sourceTree = "<group>"; };
+		7B85081E29DF35B10095A7F6 /* TAGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAGameManager.swift; sourceTree = "<group>"; };
+		7B85082029DF35BA0095A7F6 /* TAGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAGameViewController.swift; sourceTree = "<group>"; };
 		7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldingAxeComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformComponent.swift; sourceTree = "<group>"; };
@@ -239,12 +247,32 @@
 				7BCC61F629D1D5E60092B602 /* SpaceshipGame */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
 				7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */,
+				7B85081829DF35580095A7F6 /* TankGame */,
+				7B85081929DF35690095A7F6 /* SoccerGame */,
 				7B2B292E29B82BE000281FC7 /* Main.storyboard */,
 				7B2B293129B82BE300281FC7 /* Assets.xcassets */,
 				7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */,
 				7B2B293629B82BE300281FC7 /* Info.plist */,
 			);
 			path = DumbDuels;
+			sourceTree = "<group>";
+		};
+		7B85081829DF35580095A7F6 /* TankGame */ = {
+			isa = PBXGroup;
+			children = (
+				7B85081E29DF35B10095A7F6 /* TAGameManager.swift */,
+				7B85082029DF35BA0095A7F6 /* TAGameViewController.swift */,
+			);
+			path = TankGame;
+			sourceTree = "<group>";
+		};
+		7B85081929DF35690095A7F6 /* SoccerGame */ = {
+			isa = PBXGroup;
+			children = (
+				7B85081A29DF35870095A7F6 /* SOGameManager.swift */,
+				7B85081C29DF35A90095A7F6 /* SOGameViewController.swift */,
+			);
+			path = SoccerGame;
 			sourceTree = "<group>";
 		};
 		7BA7EB7B29C2D4470096457F /* AxeGame */ = {
@@ -581,6 +609,8 @@
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
+				7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */,
+				7B85082129DF35BA0095A7F6 /* TAGameViewController.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AxeGameManager.swift in Sources */,
@@ -588,6 +618,7 @@
 				8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */,
+				7B85081B29DF35870095A7F6 /* SOGameManager.swift in Sources */,
 				7B13494729D1DB7700E43A7F /* SPPhysics.swift in Sources */,
 				7BF9D4DC29C4419C00D7B34D /* Constants.swift in Sources */,
 				8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */,
@@ -618,6 +649,7 @@
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
 				A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
+				7B85081D29DF35A90095A7F6 /* SOGameViewController.swift in Sources */,
 				8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
 				7BA7EBE129C36BBD0096457F /* AxeGameInputSystem.swift in Sources */,

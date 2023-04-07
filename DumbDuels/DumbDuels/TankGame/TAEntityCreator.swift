@@ -40,6 +40,8 @@ class TAEntityCreator {
 
         tank.assign(component: TankComponent(index: index, fsm: fsm))
 
+        tank.assign(component: ScoreComponent(for: index, withId: tank.id))
+
         return tank
     }
 

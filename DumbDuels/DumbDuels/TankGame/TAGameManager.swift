@@ -31,7 +31,18 @@ class TAGameManager: GameManager {
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
-        let contactHandlers = PhysicsSystem.ContactHandlerMap()
+        var contactHandlers = PhysicsSystem.ContactHandlerMap()
+        let tank = TACollisions.tankBitmask
+        let cannonball = TACollisions.cannonballBitmask
+
+        contactHandlers[Pair(first: tank, second: cannonball)] = { (tank: EntityID, _: EntityID) -> Event in
+            CannonballHitTankEvent(entityId: tank)
+        }
+
+        contactHandlers[Pair(first: cannonball, second: tank)] = { (_: EntityID, tank: EntityID) -> Event in
+            CannonballHitTankEvent(entityId: tank)
+        }
+
         return contactHandlers
     }
 
@@ -41,6 +52,7 @@ class TAGameManager: GameManager {
         }
 
         systemManager.register(TAInputSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(TAScoreSystem(for: entityManager))
 
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,

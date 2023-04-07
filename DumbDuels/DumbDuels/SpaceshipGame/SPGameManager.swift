@@ -15,7 +15,7 @@ class SPGameManager: GameManager {
         let creator = SPEntityCreator(entityManager: entityManager)
         entityCreator = creator
 
-        let (firstPosition, secondPosition) = SPSizes.getSpaceshipResetPositions()
+        let (firstPosition, secondPosition) = SPSizes.randomSpaceshipPositions()
         for index in 0...1 {
             let position = index == 0 ? firstPosition : secondPosition
             let spaceship = creator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)

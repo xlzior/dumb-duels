@@ -10,19 +10,21 @@ import DuelKit
 class TARoundSystem: System {
     private let entityManager: EntityManager
     private let eventFirer: EventFirer
-    private let tanks: Assemblage2<TankComponent, ScoreComponent>
+    private let tanks: Assemblage3<TankComponent, ScoreComponent, PositionComponent>
     private var isGameOver = false
 
     init(for entityManager: EntityManager, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
-        self.tanks = entityManager.assemblage(requiredComponents: TankComponent.self, ScoreComponent.self)
+        self.tanks = entityManager.assemblage(
+            requiredComponents: TankComponent.self, ScoreComponent.self,
+            PositionComponent.self)
     }
 
     // TODO: logic is duplicated in every game; refactor into duelkit
     func checkWin() {
         var winningEntities = [EntityID]()
-        for (entity, _, score) in tanks.entityAndComponents
+        for (entity, _, score, _) in tanks.entityAndComponents
         where score.score >= TAConstants.winningScore {
             winningEntities.append(entity.id)
         }
@@ -46,7 +48,13 @@ class TARoundSystem: System {
     func reset() {
         checkWin()
 
-        // TODO: reset tanks to random starting positions
+        let (position1, position2) = TAPositions.randomTankPositions()
+        for (tank, _, position) in tanks {
+            tank.isMoving = false
+            tank.chargingSince = nil
+            tank.fsm.changeState(name: .charging0)
+            position.position = tank.index == 0 ? position1 : position2
+        }
 
         if !isGameOver {
             eventFirer.fire(GameStartEvent())

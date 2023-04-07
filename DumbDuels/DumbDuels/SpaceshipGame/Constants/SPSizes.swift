@@ -17,16 +17,7 @@ struct SPSizes {
     static let spaceshipDestroyParticle = CGSize(width: 10, height: 10)
     static let star = CGSize(width: 11, height: 11)
 
-    // TODO: this seems like it should be in SPPositions
-    // TODO: maybe move to duelkit?
-    static func getSpaceshipResetPositions() -> (CGPoint, CGPoint) {
-        let spaceshipDimension = max(spaceship.width, spaceship.height)
-        let safeArea = Sizes.gameRect.insetBy(dx: spaceshipDimension / 2, dy: spaceshipDimension / 2)
-        var firstPosition = CGPoint.random(within: safeArea)
-        var secondPosition = CGPoint.random(within: safeArea)
-        while secondPosition.distanceTo(firstPosition) < spaceshipDimension {
-            secondPosition = CGPoint.random(within: safeArea)
-        }
-        return (firstPosition, secondPosition)
+    static func randomSpaceshipPositions() -> (CGPoint, CGPoint) {
+        Positions.random2(withBuffer: max(spaceship.width, spaceship.height))
     }
 }

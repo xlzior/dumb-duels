@@ -29,4 +29,8 @@ struct TAPositions {
         CGPoint(x: 100, y: 100),
         CGPoint(x: 900, y: 550)
     ]
+
+    static func randomTankPositions() -> (CGPoint, CGPoint) {
+        Positions.random2(withBuffer: max(TASizes.tank.height, TASizes.tank.width))
+    }
 }

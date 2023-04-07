@@ -60,7 +60,7 @@ class SPRoundSystem: System {
         checkWin()
 
         var indexToIdMap = [Int: EntityID]()
-        let (firstPosition, secondPosition) = SPSizes.getSpaceshipResetPositions()
+        let (firstPosition, secondPosition) = SPSizes.randomSpaceshipPositions()
 
         // Should have 2 spaceships at this point because it is not destroyed before physics update
         for (spaceshipComponent, physics, oldScore) in spaceships {

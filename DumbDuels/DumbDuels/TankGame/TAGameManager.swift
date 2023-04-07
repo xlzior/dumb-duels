@@ -15,8 +15,11 @@ class TAGameManager: GameManager {
         let creator = TAEntityCreator(entityManager: entityManager)
         entityCreator = creator
 
+        let (position1, position2) = TAPositions.randomTankPositions()
         for index in 0...1 {
-            let tank = creator.createTank(index: index, at: TAPositions.tanks[index], of: TASizes.tank)
+            let tank = creator.createTank(index: index,
+                                          at: index == 0 ? position1 : position2,
+                                          of: TASizes.tank)
 
             initialPlayerIndexToIdMap[index] = tank.id
         }

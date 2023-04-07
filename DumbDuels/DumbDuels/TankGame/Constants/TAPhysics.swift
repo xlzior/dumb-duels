@@ -15,7 +15,7 @@ struct TAPhysics {
     static let tankIsDynamic = true
     static let tankZRotation = PhysicsEngineDefaults.zRotation
     static let tankRotation = false
-    static let tankFriction = PhysicsEngineDefaults.friction
+    static let tankFriction: CGFloat = 0
     static let tankMovingDamping: CGFloat = 0
     static let tankStaticDamping: CGFloat = 0
     static let tankImpulse: CGVector = .zero
@@ -27,7 +27,7 @@ struct TAPhysics {
     static let cannonballIsDynamic = true
     static let cannonballZRotation = PhysicsEngineDefaults.zRotation
     static let cannonballRotation = false
-    static let cannonballFriction = PhysicsEngineDefaults.friction
+    static let cannonballFriction: CGFloat = 0
     static let cannonballMovingDamping: CGFloat = 0
     static let cannonballStaticDamping: CGFloat = 0
     static let cannonballImpulse: CGVector = .zero
@@ -39,7 +39,7 @@ struct TAPhysics {
     static let wallIsDynamic = false
     static let wallZRotation = PhysicsEngineDefaults.zRotation
     static let wallRotation = false
-    static let wallFriction = PhysicsEngineDefaults.friction
+    static let wallFriction: CGFloat = 0
     static let wallMovingDamping: CGFloat = 0
     static let wallStaticDamping: CGFloat = 0
     static let wallImpulse: CGVector = .zero
@@ -51,7 +51,7 @@ struct TAPhysics {
     static let sideWallIsDynamic = false
     static let sideWallZRotation = PhysicsEngineDefaults.zRotation
     static let sideWallRotation = false
-    static let sideWallFriction = PhysicsEngineDefaults.friction
+    static let sideWallFriction: CGFloat = 0
     static let sideWallMovingDamping: CGFloat = 0
     static let sideWallStaticDamping: CGFloat = 0
     static let sideWallImpulse: CGVector = .zero

@@ -106,8 +106,7 @@ class RoundSystem: System {
     }
 
     private func isAllThrownAxeOutOfBounds() -> Bool {
-        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (_, position, _, _) in thrownAxe where frame.contains(position.position) {
+        for (_, position, _, _) in thrownAxe where Sizes.gameRect.contains(position.position) {
             return false
         }
         return true

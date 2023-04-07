@@ -25,4 +25,11 @@ class CannonballSystem: System {
             physics.shouldDestroyEntityWhenRemove = true
         }
     }
+
+    func removeAllCannonballs() {
+        for (_, physics) in cannonballs {
+            physics.toBeRemoved = true
+            physics.shouldDestroyEntityWhenRemove = true
+        }
+    }
 }

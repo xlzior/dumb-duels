@@ -14,4 +14,6 @@ struct TAConstants {
     static let chargingTime: CGFloat = 0.4
     static let cannonballSpeed: CGFloat = 500
     static let cannonballLifespan: TimeInterval = 5
+
+    static let winningScore = 5
 }

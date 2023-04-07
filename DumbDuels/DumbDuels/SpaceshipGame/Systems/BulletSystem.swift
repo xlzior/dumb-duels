@@ -19,9 +19,8 @@ class BulletSystem: System {
     }
 
     func update() {
-        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
         for (_, position, physics) in bullets
-        where !frame.contains(position.position) {
+        where !Sizes.gameRect.contains(position.position) {
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
         }

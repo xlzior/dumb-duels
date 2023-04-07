@@ -17,90 +17,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="oFO-2d-mIO">
-                                <rect key="frame" x="161.5" y="182.5" width="810" height="379.5"/>
+                                <rect key="frame" x="129" y="177.5" width="875" height="389.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DUMB DUELS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-cO-7HA">
-                                        <rect key="frame" x="86.5" y="0.0" width="637" height="119.5"/>
+                                        <rect key="frame" x="119" y="0.0" width="637" height="119.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="100"/>
                                         <color key="textColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EjV-5a-24Y">
-                                        <rect key="frame" x="0.0" y="189.5" width="810" height="190"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="875" height="200"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Ai-AH-kuy">
-                                                <rect key="frame" x="0.0" y="0.0" width="810" height="90"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="5Ai-AH-kuy">
+                                                <rect key="frame" x="0.0" y="0.0" width="875" height="200"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqT-So-2A3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="90"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g38-ox-Z49">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="kd0-6c-Ofh"/>
+                                                            <constraint firstAttribute="width" secondItem="g38-ox-Z49" secondAttribute="height" multiplier="1:1" id="3iW-d3-uGV"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fkE-1H-5Zj"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="AXE" cornerStyle="large" buttonSize="large">
-                                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
-                                                            <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
-                                                            <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                                            <backgroundConfiguration key="background" image="axegame" strokeWidth="10">
+                                                                <color key="strokeColor" red="0.8406104445" green="0.45710462330000001" blue="0.35290780659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </backgroundConfiguration>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <segue destination="ne8-VZ-sUD" kind="show" id="I5y-5S-F89"/>
+                                                            <segue destination="ne8-VZ-sUD" kind="show" id="Ade-tF-0g9"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afX-5A-bbB">
-                                                        <rect key="frame" x="410" y="0.0" width="400" height="90"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWq-d5-KVe">
+                                                        <rect key="frame" x="225" y="0.0" width="200" height="200"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="wcf-kg-l1N"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="mtf-wm-k6g"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.8980392157" green="0.43137254899999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="SPACESHIP" cornerStyle="large" buttonSize="large">
-                                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
-                                                            <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
-                                                            <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                                            <backgroundConfiguration key="background" image="spaceshipgame" strokeWidth="10">
+                                                                <color key="strokeColor" red="0.8406104445" green="0.45710462330000001" blue="0.35290780659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </backgroundConfiguration>
                                                         </buttonConfiguration>
                                                         <connections>
-                                                            <segue destination="xkm-Vv-Vaz" kind="show" id="p9Q-Ef-HJU"/>
+                                                            <segue destination="xkm-Vv-Vaz" kind="show" id="gva-uZ-1py"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-h6-ZFF">
+                                                        <rect key="frame" x="450" y="0.0" width="200" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gbA-hj-kqm"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                                            <backgroundConfiguration key="background" image="tankgame" strokeWidth="10">
+                                                                <color key="strokeColor" red="0.8406104445" green="0.45710462330000001" blue="0.35290780659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </backgroundConfiguration>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="1He-CL-r56" kind="show" id="mrf-vb-bFJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIA-3S-5jZ">
+                                                        <rect key="frame" x="675" y="0.0" width="200" height="200"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5Ax-HT-KNY"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                                            <backgroundConfiguration key="background" image="soccergame" strokeWidth="10">
+                                                                <color key="strokeColor" red="0.8406104445" green="0.45710462330000001" blue="0.35290780659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </backgroundConfiguration>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="EUX-nb-Vjl" kind="show" id="PyX-Un-Uff"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IoL-AZ-7sR">
-                                                <rect key="frame" x="0.0" y="100" width="810" height="90"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="my9-zH-6u4" userLabel="TANK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="400" height="90"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="hU0-i7-J44"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.8980392157" green="0.43137254899999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="TANK" cornerStyle="large" buttonSize="large">
-                                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
-                                                            <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
-                                                            <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <segue destination="1He-CL-r56" kind="show" id="EyM-yf-Ufg"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36H-BX-VXU">
-                                                        <rect key="frame" x="410" y="0.0" width="400" height="90"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="uyB-bb-fdJ"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.8980392157" green="0.43137254899999999" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="filled" title="SOCCER" cornerStyle="large" buttonSize="large">
-                                                            <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="50"/>
-                                                            <directionalEdgeInsets key="contentInsets" top="15" leading="0.0" bottom="15" trailing="0.0"/>
-                                                            <color key="baseForegroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        </buttonConfiguration>
-                                                        <connections>
-                                                            <segue destination="EUX-nb-Vjl" kind="show" id="jVl-vh-DqN"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="dSg-h6-ZFF" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="ABX-48-a67"/>
+                                                    <constraint firstItem="vWq-d5-KVe" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="Zn3-OH-jN1"/>
+                                                    <constraint firstItem="OIA-3S-5jZ" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="mG2-FR-hcF"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -203,4 +200,10 @@
             <point key="canvasLocation" x="1105" y="1465"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="axegame" width="1024" height="1024"/>
+        <image name="soccergame" width="1024" height="1024"/>
+        <image name="spaceshipgame" width="1024" height="1024"/>
+        <image name="tankgame" width="1024" height="1024"/>
+    </resources>
 </document>

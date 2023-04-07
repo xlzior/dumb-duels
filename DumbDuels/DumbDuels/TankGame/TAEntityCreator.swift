@@ -5,7 +5,7 @@
 //  Created by Wen Jun Lye on 7/4/23.
 //
 
-import CoreGraphics
+import Foundation
 import DuelKit
 
 class TAEntityCreator {
@@ -46,8 +46,10 @@ class TAEntityCreator {
     }
 
     @discardableResult
-    func createCannonball(at position: CGPoint, of size: CGSize, direction: CGFloat) -> Entity {
+    func createCannonball(at position: CGPoint, of size: CGSize,
+                          direction: CGFloat, expiring expiryDate: Date) -> Entity {
         entityManager.createEntity {
+            CannonballComponent(expiring: expiryDate)
             PositionComponent(position: position)
             RotationComponent(angleInRadians: direction)
             SizeComponent(originalSize: size)

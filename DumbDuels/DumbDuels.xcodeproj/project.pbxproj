@@ -11,6 +11,8 @@
 		6F67C71329C462DD009E0579 /* AXPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71229C462DD009E0579 /* AXPhysics.swift */; };
 		7B0378DA29E00FB200AE0C5B /* CannonballHitTankEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378D929E00FB200AE0C5B /* CannonballHitTankEvent.swift */; };
 		7B0378DC29E00FDC00AE0C5B /* TAScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378DB29E00FDC00AE0C5B /* TAScoreSystem.swift */; };
+		7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378DD29E0500300AE0C5B /* CannonballSystem.swift */; };
+		7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378DF29E0501D00AE0C5B /* CannonballComponent.swift */; };
 		7B13494729D1DB7700E43A7F /* SPPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494629D1DB7700E43A7F /* SPPhysics.swift */; };
 		7B13494929D1DC3E00E43A7F /* SPCollisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494829D1DC3E00E43A7F /* SPCollisions.swift */; };
 		7B13494B29D1DEA700E43A7F /* SPSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13494A29D1DEA700E43A7F /* SPSizes.swift */; };
@@ -128,6 +130,8 @@
 		6F67C71229C462DD009E0579 /* AXPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXPhysics.swift; sourceTree = "<group>"; };
 		7B0378D929E00FB200AE0C5B /* CannonballHitTankEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonballHitTankEvent.swift; sourceTree = "<group>"; };
 		7B0378DB29E00FDC00AE0C5B /* TAScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAScoreSystem.swift; sourceTree = "<group>"; };
+		7B0378DD29E0500300AE0C5B /* CannonballSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonballSystem.swift; sourceTree = "<group>"; };
+		7B0378DF29E0501D00AE0C5B /* CannonballComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonballComponent.swift; sourceTree = "<group>"; };
 		7B13494629D1DB7700E43A7F /* SPPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPPhysics.swift; sourceTree = "<group>"; };
 		7B13494829D1DC3E00E43A7F /* SPCollisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPCollisions.swift; sourceTree = "<group>"; };
 		7B13494A29D1DEA700E43A7F /* SPSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSizes.swift; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				7B30775329DFC7B900B26744 /* TankComponent.swift */,
+				7B0378DF29E0501D00AE0C5B /* CannonballComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			children = (
 				7B30775829DFCB0700B26744 /* TAInputSystem.swift */,
 				7B0378DB29E00FDC00AE0C5B /* TAScoreSystem.swift */,
+				7B0378DD29E0500300AE0C5B /* CannonballSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -700,10 +706,12 @@
 				7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */,
 				7B85082129DF35BA0095A7F6 /* TAGameViewController.swift in Sources */,
 				7B30775D29DFD06B00B26744 /* TAEntityCreator.swift in Sources */,
+				7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AXGameManager.swift in Sources */,
 				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
+				7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */,
 				8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */,

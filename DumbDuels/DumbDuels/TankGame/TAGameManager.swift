@@ -53,6 +53,7 @@ class TAGameManager: GameManager {
 
         systemManager.register(TAInputSystem(for: entityManager, entityCreator: creator))
         systemManager.register(TAScoreSystem(for: entityManager))
+        systemManager.register(CannonballSystem(for: entityManager))
 
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,

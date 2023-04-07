@@ -105,9 +105,9 @@ class AXGameManager: GameManager {
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
         systemManager.register(ScoreSystem(for: entityManager))
 
-        useGameOverSystem(gameStartText: AXAssets.battleText,
-                          gameTieText: AXAssets.gameTiedText,
-                          gameWonTexts: AXAssets.gameWonText)
+        useGameOverSystem(gameStartText: Assets.battleText,
+                          gameTieText: Assets.gameTiedText,
+                          gameWonTexts: Assets.gameWonText)
         useAnimationSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()

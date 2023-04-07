@@ -33,6 +33,7 @@
 		7B30774B29DF39A600B26744 /* SPAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774A29DF39A600B26744 /* SPAssets.xcassets */; };
 		7B30774D29DF3A5E00B26744 /* TAAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */; };
 		7B30774F29DF3A6900B26744 /* SOAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774E29DF3A6900B26744 /* SOAssets.xcassets */; };
+		7B30775B29DFCF0C00B26744 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B30775A29DFCF0C00B26744 /* Assets.swift */; };
 		7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */; };
 		7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4C37A529D45986003871F9 /* SPAssets.swift */; };
 		7B85081B29DF35870095A7F6 /* SOGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B85081A29DF35870095A7F6 /* SOGameManager.swift */; };
@@ -141,6 +142,7 @@
 		7B30774A29DF39A600B26744 /* SPAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SPAssets.xcassets; sourceTree = "<group>"; };
 		7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TAAssets.xcassets; sourceTree = "<group>"; };
 		7B30774E29DF3A6900B26744 /* SOAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SOAssets.xcassets; sourceTree = "<group>"; };
+		7B30775A29DFCF0C00B26744 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		7B4BFFB929CFF5E400FA3EFC /* DuelKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DuelKit; sourceTree = "<group>"; };
 		7B4BFFBA29CFF66000FA3EFC /* AxeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeComponent.swift; sourceTree = "<group>"; };
 		7B4C37A529D45986003871F9 /* SPAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPAssets.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				7B85081929DF35690095A7F6 /* SoccerGame */,
 				7B2B292E29B82BE000281FC7 /* Main.storyboard */,
 				7B2B293129B82BE300281FC7 /* Assets.xcassets */,
+				7B30775A29DFCF0C00B26744 /* Assets.swift */,
 				7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */,
 				7B2B293629B82BE300281FC7 /* Info.plist */,
 			);
@@ -675,6 +678,7 @@
 				7BCC620429D1D7790092B602 /* SpaceshipComponent.swift in Sources */,
 				7BE0FDF329D032EF0035AE98 /* AXGameViewController.swift in Sources */,
 				7BC8C2CD29D297E8001CF6F7 /* Powerup.swift in Sources */,
+				7B30775B29DFCF0C00B26744 /* Assets.swift in Sources */,
 				7BCC620229D1D74F0092B602 /* SPInputSystem.swift in Sources */,
 				7BCC61FA29D1D60C0092B602 /* SPEntityCreator.swift in Sources */,
 				7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */,

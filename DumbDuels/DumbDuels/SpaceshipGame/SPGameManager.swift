@@ -72,9 +72,9 @@ class SPGameManager: GameManager {
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
 
         useAutoRotateSystem()
-        useGameOverSystem(gameStartText: SPAssets.battleText,
-                          gameTieText: SPAssets.gameTiedText,
-                          gameWonTexts: SPAssets.gameWonText)
+        useGameOverSystem(gameStartText: Assets.battleText,
+                          gameTieText: Assets.gameTiedText,
+                          gameWonTexts: Assets.gameWonText)
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

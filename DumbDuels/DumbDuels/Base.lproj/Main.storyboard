@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="768" y="8"/>
         </scene>
-        <!--Axe Game View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="6I2-Pj-YD5">
             <objects>
-                <viewController id="ne8-VZ-sUD" customClass="AxeGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ne8-VZ-sUD" customClass="AXGameViewController" customModule="DumbDuels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wqz-Rh-gMr">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

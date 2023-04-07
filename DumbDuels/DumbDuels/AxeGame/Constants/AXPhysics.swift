@@ -1,5 +1,5 @@
 //
-//  Physics.swift
+//  AXPhysics.swift
 //  DumbDuels
 //
 //  Created by Bryan Kwok on 17/3/23.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import DuelKit
 
-struct Physics {
+struct AXPhysics {
     // Player physics constants
     static let playerMass: CGFloat = 1.0
     static let playerGravity = true

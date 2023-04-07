@@ -10,12 +10,12 @@ import DuelKit
 
 class AxeParticleSystem: System {
     unowned var entityManager: EntityManager
-    unowned var entityCreator: EntityCreator
+    unowned var entityCreator: AXEntityCreator
 
     private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
     let numParticles: Int = 20
 
-    init(for entityManager: EntityManager, entityCreator: EntityCreator) {
+    init(for entityManager: EntityManager, entityCreator: AXEntityCreator) {
         self.entityManager = entityManager
         self.entityCreator = entityCreator
         self.thrownAxe = entityManager.assemblage(

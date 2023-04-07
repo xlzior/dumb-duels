@@ -1,5 +1,5 @@
 //
-//  AxeGameManager.swift
+//  AXGameManager.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
@@ -8,12 +8,12 @@
 import UIKit
 import DuelKit
 
-class AxeGameManager: GameManager {
+class AXGameManager: GameManager {
 
-    private var entityCreator: EntityCreator?
+    private var entityCreator: AXEntityCreator?
 
     override func setUpEntities() {
-        let creator = EntityCreator(entityManager: entityManager)
+        let creator = AXEntityCreator(entityManager: entityManager)
         entityCreator = creator
 
         for playerIndex in 0...1 {
@@ -60,10 +60,10 @@ class AxeGameManager: GameManager {
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
-        let player = Collisions.playerBitmask
-        let axe = Collisions.axeBitmask
-        let platform = Collisions.platformBitmask
-        let lava = Collisions.lavaBitmask
+        let player = AXCollisions.playerBitmask
+        let axe = AXCollisions.axeBitmask
+        let platform = AXCollisions.platformBitmask
+        let lava = AXCollisions.lavaBitmask
 
         contactHandlers[Pair(first: player, second: axe)] = { (player: EntityID, axe: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
@@ -97,7 +97,7 @@ class AxeGameManager: GameManager {
             return
         }
 
-        systemManager.register(AxeGameInputSystem(for: entityManager))
+        systemManager.register(AXInputSystem(for: entityManager))
         systemManager.register(PositionSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))

@@ -1,5 +1,5 @@
 //
-//  AxeGameInputSystem.swift
+//  AXInputSystem.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
@@ -9,9 +9,9 @@ import Foundation
 import CoreGraphics
 import DuelKit
 
-class AxeGameInputSystem {
+class AXInputSystem {
     unowned var entityManager: EntityManager
-    private var physicsCreator: PhysicsCreator
+    private var physicsCreator: AXPhysicsCreator
 
     var playerIndexToIdMap: [Int: EntityID]
 
@@ -25,7 +25,7 @@ class AxeGameInputSystem {
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = PhysicsCreator()
+        self.physicsCreator = AXPhysicsCreator()
         self.holdingAxePlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, PositionComponent.self,
             HoldingAxeComponent.self, WithThrowStrengthComponent.self)
@@ -50,11 +50,11 @@ class AxeGameInputSystem {
         throwStrengthComponent.fsm.changeState(name: .charging)
 
         let now = Date()
-        let timeElapsed = (now - longPressStarted).truncatingRemainder(dividingBy: 2 * Constants.chargingTime)
-        let throwStrengthRange = Constants.maximumThrowStrength - Constants.minimumThrowStrength
-        let newThrowStrength = timeElapsed < Constants.chargingTime
-            ? Constants.minimumThrowStrength + timeElapsed / throwStrengthRange
-            : Constants.maximumThrowStrength + Constants.chargingTime - timeElapsed / throwStrengthRange
+        let timeElapsed = (now - longPressStarted).truncatingRemainder(dividingBy: 2 * AXConstants.chargingTime)
+        let throwStrengthRange = AXConstants.maximumThrowStrength - AXConstants.minimumThrowStrength
+        let newThrowStrength = timeElapsed < AXConstants.chargingTime
+            ? AXConstants.minimumThrowStrength + timeElapsed / throwStrengthRange
+            : AXConstants.maximumThrowStrength + AXConstants.chargingTime - timeElapsed / throwStrengthRange
 
         throwStrengthComponent.throwStrength = newThrowStrength
         sizeComponent.xScale = newThrowStrength
@@ -71,7 +71,7 @@ class AxeGameInputSystem {
 
         let towards = playerPosition.faceDirection
 
-        let physicsCreator = PhysicsCreator()
+        let physicsCreator = AXPhysicsCreator()
         let physicsComponent = physicsCreator.createAxe(of: axeSize.actualSize)
         entityManager.assign(component: physicsComponent, to: axeId)
 
@@ -83,11 +83,11 @@ class AxeGameInputSystem {
 
         throwStrengthComponent.fsm.changeState(name: .notCharging)
         let throwStrength = throwStrengthComponent.throwStrength
-        physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * Constants.throwForce.dx,
-                                            dy: throwStrength * Constants.throwForce.dy)
+        physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * AXConstants.throwForce.dx,
+                                            dy: throwStrength * AXConstants.throwForce.dy)
         physicsComponent.angularImpulse = towards == .right
-            ? Constants.throwAngularForce
-            : -Constants.throwAngularForce
+            ? AXConstants.throwAngularForce
+            : -AXConstants.throwAngularForce
         entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
     }
 
@@ -95,7 +95,7 @@ class AxeGameInputSystem {
         guard let (_, canJump, physics) = canJumpPlayer.getComponents(for: playerId) else {
             return
         }
-        physics.impulse += Constants.jumpForce
+        physics.impulse += AXConstants.jumpForce
         canJump.jumpsLeft -= 1
         if canJump.jumpsLeft <= 0 {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
@@ -108,7 +108,7 @@ class AxeGameInputSystem {
     }
 }
 
-extension AxeGameInputSystem: InputSystem {
+extension AXInputSystem: InputSystem {
 
     func update() {
         for entityId in longPressStartTimes.keys {

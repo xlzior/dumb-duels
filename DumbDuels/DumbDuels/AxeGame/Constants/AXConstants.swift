@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-enum Constants {
+enum AXConstants {
     static let defaultThrowStrength: CGFloat = 1.0
     static let minimumThrowStrength: CGFloat = 1.0
     static let maximumThrowStrength: CGFloat = 2.0

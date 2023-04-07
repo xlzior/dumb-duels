@@ -1,5 +1,5 @@
 //
-//  Oscillation.swift
+//  AXOscillation.swift
 //  DumbDuels
 //
 //  Created by Bryan Kwok on 28/3/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Oscillation {
+struct AXOscillation {
     static let horizontalAxis = CGVector(dx: 1, dy: 0)
     static let verticalAxis = CGVector(dx: 0, dy: 1)
 

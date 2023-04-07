@@ -1,5 +1,5 @@
 //
-//  EntityCreator.swift
+//  AXEntityCreator.swift
 //  DumbDuels
 //
 //  Created by Esmanda Wong on 16/3/23.
@@ -9,15 +9,15 @@ import CoreGraphics
 import DuelKit
 import Foundation
 
-class EntityCreator {
+class AXEntityCreator {
     private let entityManager: EntityManager
-    private let physicsCreator: PhysicsCreator
-    private let animationCreator: AnimationCreator
+    private let physicsCreator: AXPhysicsCreator
+    private let animationCreator: AXAnimationCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.physicsCreator = PhysicsCreator()
-        self.animationCreator = AnimationCreator()
+        self.physicsCreator = AXPhysicsCreator()
+        self.animationCreator = AXAnimationCreator()
     }
 
     @discardableResult
@@ -134,8 +134,8 @@ class EntityCreator {
             SpriteComponent(assetName: AXAssets.platform)
             PlatformComponent()
             OscillationComponent(centerOfOscillation: platformPosition,
-                                 axis: Oscillation.horizontalAxis, amplitude: Oscillation.platformAmplitude[index],
-                                 period: Oscillation.platformPeriod[index], displacement: Oscillation.platformDisplacement[index])
+                                 axis: AXOscillation.horizontalAxis, amplitude: AXOscillation.platformAmplitude[index],
+                                 period: AXOscillation.platformPeriod[index], displacement: AXOscillation.platformDisplacement[index])
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)
@@ -165,8 +165,8 @@ class EntityCreator {
             SpriteComponent(assetName: AXAssets.peg)
             PegComponent()
             OscillationComponent(centerOfOscillation: position,
-                                 axis: Oscillation.verticalAxis, amplitude: Oscillation.pegAmplitude[index],
-                                 period: Oscillation.pegPeriod[index],
+                                 axis: AXOscillation.verticalAxis, amplitude: AXOscillation.pegAmplitude[index],
+                                 period: AXOscillation.pegPeriod[index],
                                  displacement: Double.random(in: 0...Double.pi))
         }
 

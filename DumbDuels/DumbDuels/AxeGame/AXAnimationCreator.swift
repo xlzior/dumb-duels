@@ -1,5 +1,5 @@
 //
-//  AnimationCreator.swift
+//  AXAnimationCreator.swift
 //  DumbDuels
 //
 //  Created by Esmanda Wong on 26/3/23.
@@ -8,7 +8,7 @@
 import DuelKit
 import CoreGraphics
 
-class AnimationCreator {
+class AXAnimationCreator {
     func createPlayerHitAnimation(index: Int) -> AnimationComponent {
         let component = AnimationComponent(
             isPlaying: false,

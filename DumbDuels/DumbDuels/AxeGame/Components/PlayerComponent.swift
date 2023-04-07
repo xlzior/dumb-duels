@@ -7,6 +7,7 @@
 
 import DuelKit
 
+// TODO: rename idx to index
 class PlayerComponent: Component {
     var id: ComponentID
     var idx: Int

@@ -20,6 +20,14 @@ class TAGameManager: GameManager {
 
             initialPlayerIndexToIdMap[index] = tank.id
         }
+
+        for (position, size) in zip(TAPositions.walls, TASizes.walls) {
+            creator.createWall(at: position, of: size)
+        }
+
+        for (position, size) in zip(TAPositions.sideWalls, TASizes.sideWalls) {
+            creator.createSideWall(at: position, of: size)
+        }
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {

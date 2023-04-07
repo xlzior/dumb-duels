@@ -44,4 +44,16 @@ struct TAPhysics {
     static let wallStaticDamping = 0.05
     static let wallImpulse: CGVector = .zero
     static let wallAngularImpulse: CGFloat = .zero
+
+    static let sideWallMass: CGFloat = 1.0
+    static let sideWallGravity = false
+    static let sideWallCor: CGFloat = 0.8
+    static let sideWallIsDynamic = false
+    static let sideWallZRotation = PhysicsEngineDefaults.zRotation
+    static let sideWallRotation = false
+    static let sideWallFriction = PhysicsEngineDefaults.friction
+    static let sideWallMovingDamping = 0.7
+    static let sideWallStaticDamping = 0.05
+    static let sideWallImpulse: CGVector = .zero
+    static let sideWallAngularImpulse: CGFloat = .zero
 }

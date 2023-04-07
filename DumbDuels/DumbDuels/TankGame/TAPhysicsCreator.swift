@@ -62,4 +62,22 @@ class TAPhysicsCreator {
                          impulse: TAPhysics.wallImpulse,
                          angularImpulse: TAPhysics.wallAngularImpulse)
     }
+
+    func createSideWall(of size: CGSize) -> PhysicsComponent {
+        PhysicsComponent(rectangleOf: size,
+                         mass: TAPhysics.sideWallMass,
+                         velocity: .zero,
+                         affectedByGravity: TAPhysics.sideWallGravity,
+                         linearDamping: TAPhysics.sideWallStaticDamping,
+                         isDynamic: TAPhysics.sideWallIsDynamic,
+                         allowsRotation: TAPhysics.sideWallRotation,
+                         restitution: TAPhysics.sideWallCor,
+                         friction: TAPhysics.sideWallFriction,
+                         ownBitmask: TACollisions.sideWallBitmask,
+                         collideBitmask: TACollisions.sideWallCollideBitmask,
+                         contactBitmask: TACollisions.sideWallContactBitmask,
+                         zRotation: TAPhysics.sideWallZRotation,
+                         impulse: TAPhysics.sideWallImpulse,
+                         angularImpulse: TAPhysics.sideWallAngularImpulse)
+    }
 }

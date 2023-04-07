@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import DuelKit
 
 struct TASizes {
     static let wallThickness: CGFloat = 10
@@ -18,6 +19,13 @@ struct TASizes {
         CGSize(width: wallThickness, height: wallLength),
         CGSize(width: wallThickness, height: wallLength),
         CGSize(width: 2 * wallLength, height: wallThickness)
+    ]
+
+    static let sideWalls = [
+        CGSize(width: 1, height: Sizes.game.height),
+        CGSize(width: 1, height: Sizes.game.height),
+        CGSize(width: Sizes.game.width, height: 1),
+        CGSize(width: Sizes.game.width, height: 1)
     ]
 
     static let tank = CGSize(width: 80, height: 80)

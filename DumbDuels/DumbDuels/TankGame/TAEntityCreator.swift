@@ -55,13 +55,22 @@ class TAEntityCreator {
     }
 
     @discardableResult
-    func createWall(at position: CGPoint, rotation: CGFloat, of size: CGSize) -> Entity {
+    func createWall(at position: CGPoint, of size: CGSize) -> Entity {
         entityManager.createEntity {
             PositionComponent(position: position)
-            RotationComponent(angleInRadians: rotation)
+            RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: TAAssets.wall)
             physicsCreator.createWall(of: size)
+        }
+    }
+
+    @discardableResult
+    func createSideWall(at position: CGPoint, of size: CGSize) -> Entity {
+        entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            physicsCreator.createSideWall(of: size)
         }
     }
 }

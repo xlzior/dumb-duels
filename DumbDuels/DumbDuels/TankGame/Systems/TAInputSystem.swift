@@ -5,7 +5,7 @@
 //  Created by Wen Jun Lye on 7/4/23.
 //
 
-import CoreGraphics
+import Foundation
 import DuelKit
 
 class TAInputSystem {
@@ -30,15 +30,23 @@ extension TAInputSystem: IndexMapInitializable {
 
 extension TAInputSystem: InputSystem {
     func update() {
+        // after getting pushed by the other tank, velocity goes weird
+        for (tank, rotation, physics) in tanks {
+            physics.velocity = tank.isMoving
+                ? TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
+                : .zero
 
+        }
     }
 
     func handleButtonDown(playerIndex: Int) {
         guard let tankId = playerIndexToIdMap[playerIndex],
-              let (_, rotation, physics) = tanks.getComponents(for: tankId) else {
+              let (tank, rotation, physics) = tanks.getComponents(for: tankId) else {
             return
         }
 
+        tank.isMoving = true
+        tank.chargingSince = Date()
         entityManager.remove(componentType: AutoRotateComponent.typeId, from: tankId)
         physics.velocity = TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
     }
@@ -49,6 +57,7 @@ extension TAInputSystem: InputSystem {
             return
         }
 
+        tankData.isMoving = false
         tankData.rotationDirection *= -1
         tank.assign(component: AutoRotateComponent(by: tankData.rotationDirection * TAConstants.rotationSpeed))
         physics.velocity = .zero

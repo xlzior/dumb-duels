@@ -11,4 +11,6 @@ struct SPAssets {
         ["spaceship-1-1", "spaceship-1-2", "spaceship-1-3"]
     ]
     static let star = "star"
+
+    static let background = "spaceship-background"
 }

@@ -13,4 +13,6 @@ struct TAAssets {
     static let cannonball = "cannonball"
 
     static let wall = "wall"
+
+    static let background = "tank-background"
 }

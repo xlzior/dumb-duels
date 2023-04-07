@@ -9,7 +9,7 @@ import CoreGraphics
 import DuelKit
 
 struct TASizes {
-    static let wallThickness: CGFloat = 20
+    static let wallThickness: CGFloat = 25
     static let wallLength: CGFloat = 160
 
     static let walls = [
@@ -21,11 +21,13 @@ struct TASizes {
         CGSize(width: wallThickness, height: wallLength)
     ]
 
+    static let sideWallThickness: CGFloat = 50
+
     static let sideWalls = [
-        CGSize(width: 1, height: Sizes.game.height),
-        CGSize(width: 1, height: Sizes.game.height),
-        CGSize(width: Sizes.game.width, height: 1),
-        CGSize(width: Sizes.game.width, height: 1)
+        CGSize(width: sideWallThickness, height: Sizes.game.height),
+        CGSize(width: sideWallThickness, height: Sizes.game.height),
+        CGSize(width: Sizes.game.width, height: sideWallThickness),
+        CGSize(width: Sizes.game.width, height: sideWallThickness)
     ]
 
     static let cannonball = CGSize(width: 25, height: 25)

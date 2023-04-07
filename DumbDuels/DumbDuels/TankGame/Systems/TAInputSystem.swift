@@ -40,8 +40,8 @@ extension TAInputSystem: IndexMapInitializable {
 
 extension TAInputSystem: InputSystem {
     func update() {
-        // after getting pushed by the other tank, velocity goes weird
         for (tank, position, rotation, physics) in tanks {
+            // after getting pushed by the other tank, velocity goes weird
             physics.velocity = tank.isMoving
                 ? TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
                 : .zero
@@ -53,8 +53,10 @@ extension TAInputSystem: InputSystem {
                 if chargingStage > 3 {
                     tank.fsm.changeState(name: .charging0)
                     tank.chargingSince = nil
+                    let direction = CGVector(angle: rotation.angleInRadians)
                     let offset = (TASizes.cannonball.width + TASizes.tank.width / 2)
-                    let cannonPosition = position.position + offset * CGVector(angle: rotation.angleInRadians)
+                    let cannonPosition = position.position + offset * direction
+                    physics.impulse = -TAConstants.recoilForce * direction
                     fireCannonball(at: cannonPosition, of: TASizes.cannonball, direction: rotation.angleInRadians)
                 } else if chargingStage > 2 {
                     tank.fsm.changeState(name: .charging2)

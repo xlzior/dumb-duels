@@ -18,11 +18,14 @@ struct TAPositions {
         CGPoint(x: 700, y: 175)
     ]
 
+    static let buffer = TASizes.sideWallThickness / 2
+
+    // TODO: move side walls to DuelKit?? some interface for users to select which of the 4 walls they want
     static let sideWalls: [CGPoint] = [
-        CGPoint(x: 2, y: Sizes.game.height / 2),
-        CGPoint(x: Sizes.game.width - 2, y: Sizes.game.height / 2),
-        CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height - 2),
-        CGPoint(x: Sizes.game.width / 2, y: 2)
+        CGPoint(x: -buffer, y: Sizes.game.height / 2),
+        CGPoint(x: Sizes.game.width + buffer, y: Sizes.game.height / 2),
+        CGPoint(x: Sizes.game.width / 2, y: Sizes.game.height + buffer),
+        CGPoint(x: Sizes.game.width / 2, y: -buffer)
     ]
 
     static let tanks = [

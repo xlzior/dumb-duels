@@ -27,10 +27,10 @@ class TAPhysicsCreator {
                          angularImpulse: TAPhysics.tankAngularImpulse)
     }
 
-    func createCannonball(of size: CGSize) -> PhysicsComponent {
+    func createCannonball(of size: CGSize, direction: CGFloat) -> PhysicsComponent {
         PhysicsComponent(circleOf: size.height / 2,
                          mass: TAPhysics.cannonballMass,
-                         velocity: .zero,
+                         velocity: TAConstants.cannonSpeed * CGVector(angle: direction),
                          affectedByGravity: TAPhysics.cannonballGravity,
                          linearDamping: TAPhysics.cannonballStaticDamping,
                          isDynamic: TAPhysics.cannonballIsDynamic,

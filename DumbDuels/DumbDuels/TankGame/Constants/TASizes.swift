@@ -28,5 +28,7 @@ struct TASizes {
         CGSize(width: Sizes.game.width, height: 1)
     ]
 
+    static let cannonball = CGSize(width: 40, height: 40)
+
     static let tank = CGSize(width: 80, height: 80)
 }

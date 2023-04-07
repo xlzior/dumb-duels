@@ -44,13 +44,13 @@ class TAEntityCreator {
     }
 
     @discardableResult
-    func createCannonball(at position: CGPoint, of size: CGSize) -> Entity {
+    func createCannonball(at position: CGPoint, of size: CGSize, direction: CGFloat) -> Entity {
         entityManager.createEntity {
             PositionComponent(position: position)
-            RotationComponent()
+            RotationComponent(angleInRadians: direction)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: TAAssets.cannonball)
-            physicsCreator.createCannonball(of: size)
+            physicsCreator.createCannonball(of: size, direction: direction)
         }
     }
 

@@ -36,7 +36,11 @@ class TAGameManager: GameManager {
     }
 
     override func setUpUserSystems() {
-        systemManager.register(TAInputSystem(for: entityManager))
+        guard let creator = entityCreator else {
+            return
+        }
+
+        systemManager.register(TAInputSystem(for: entityManager, entityCreator: creator))
 
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,

@@ -7,10 +7,11 @@
 
 import AVFoundation
 
-public class SoundSystem: System {
+public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
     unowned var entityManager: EntityManager
 
-    var player: AVAudioPlayer?
+    var players: [URL: AVAudioPlayer] = [:]
+    var duplicatePlayers: [AVAudioPlayer] = []
     var sounds: Assemblage1<SoundComponent>
 
     init(for entityManager: EntityManager) {
@@ -21,18 +22,34 @@ public class SoundSystem: System {
     public func update() {
         for (soundComponent) in sounds {
             for sound in soundComponent.sounds.values {
-                guard sound.isPlaying else {
+                guard sound.isPlaying,
+                      let player = getAudioPlayer(for: sound.url) else {
                     continue
                 }
-                do {
-    //                player?.insert(AVPlayerItem(url: sound.url), after: nil)
-                    player = try AVAudioPlayer(contentsOf: sound.url)
-                    player?.play()
-                    sound.isPlaying = false
-                } catch {
-                    print("AVPLAYER", error.localizedDescription)
-                }
+                player.play()
+                sound.isPlaying = false
             }
         }
+    }
+
+    private func getAudioPlayer(for url: URL) -> AVAudioPlayer? {
+        guard let player = players[url] else {
+            let player = try? AVAudioPlayer(contentsOf: url)
+            players[url] = player
+            return player
+        }
+
+        guard player.isPlaying else {
+            return player
+        }
+
+        guard let duplicatePlayer = try? AVAudioPlayer(contentsOf: url) else { return nil }
+        duplicatePlayer.delegate = self
+        duplicatePlayers.append(duplicatePlayer)
+        return duplicatePlayer
+    }
+
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        duplicatePlayers.removeAll { $0 == player }
     }
 }

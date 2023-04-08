@@ -11,6 +11,6 @@ struct GameOverAssets {
     let gameStartText: String
     let gameTieText: String
     let gameWonTexts: [String]
-    let gameStartSound: URL
-    let gameEndSound: URL
+    let gameStartSound: () -> Sound
+    let gameEndSound: () -> Sound
 }

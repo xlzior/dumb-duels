@@ -41,7 +41,7 @@ class PlayerSystem: System {
                 continue
             }
             animation.isPlaying = true
-            sound.sounds[AXSounds.playerHit]?.isPlaying = true
+            sound.sounds[AXSoundTypes.playerHit]?.play()
         }
     }
 }

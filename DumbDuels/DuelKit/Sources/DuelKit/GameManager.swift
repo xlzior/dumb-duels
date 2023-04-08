@@ -80,8 +80,8 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         gameStartText: String,
         gameTieText: String,
         gameWonTexts: [String],
-        gameStartSound: URL,
-        gameEndSound: URL
+        gameStartSound: @escaping () -> Sound,
+        gameEndSound: @escaping () -> Sound
     ) {
         isUsingGameOverSystem = true
         gameOverAssets = GameOverAssets(

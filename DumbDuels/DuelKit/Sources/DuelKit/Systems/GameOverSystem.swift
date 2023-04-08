@@ -21,7 +21,7 @@ class GameOverSystem: System {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: text)
-            SoundComponent(sounds: ["game-end": Sound(isPlaying: true, url: assets.gameEndSound)])
+            SoundComponent(sounds: ["game-end": assets.gameEndSound()])
         }
     }
 
@@ -51,7 +51,7 @@ class GameOverSystem: System {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: assets.gameStartText)
-            SoundComponent(sounds: ["battle": Sound(isPlaying: true, url: assets.gameStartSound)])
+            SoundComponent(sounds: ["battle": assets.gameStartSound()])
             createBattleFlashAnimation()
         }
     }

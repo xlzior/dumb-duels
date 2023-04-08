@@ -32,7 +32,7 @@ class AxeParticleSystem: System {
             return
         }
         // Play axe explode sound
-        sound.sounds[AXSounds.axeExplode]?.isPlaying = true
+        sound.sounds[AXSoundTypes.axeExplode]?.play()
 
         // Destroy the axe
         physicsComponent.toBeRemoved = true

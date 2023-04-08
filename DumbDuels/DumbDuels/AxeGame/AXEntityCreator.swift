@@ -50,8 +50,8 @@ class AXEntityCreator {
         }
 
         let soundComponent = SoundComponent(sounds: [
-            AXSounds.axeCollide: Sound(url: AXSounds.axeCollideSound),
-            AXSounds.axeExplode: Sound(url: AXSounds.axeExplodeSound)
+            AXSoundTypes.axeCollide: AxeCollideSound(),
+            AXSoundTypes.axeExplode: AxeExplodeSound()
         ])
         axe.assign(component: soundComponent)
 
@@ -109,8 +109,8 @@ class AXEntityCreator {
         player.assign(component: scoreComponent)
 
         let soundComponent = SoundComponent(sounds: [
-            AXSounds.playerJump: Sound(url: AXSounds.playerJumpSound),
-            AXSounds.playerHit: Sound(url: AXSounds.playerHitSound)
+            AXSoundTypes.playerJump: PlayerJumpSound(),
+            AXSoundTypes.playerHit: PlayerHitSound()
         ])
         player.assign(component: soundComponent)
 

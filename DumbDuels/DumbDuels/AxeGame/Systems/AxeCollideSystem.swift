@@ -26,7 +26,7 @@ class AxeCollideSystem: System {
                 continue
             }
 
-            sound.sounds[AXSounds.axeCollide]?.isPlaying = true
+            sound.sounds[AXSoundTypes.axeCollide]?.play()
         }
     }
 }

@@ -98,7 +98,7 @@ class AXInputSystem {
         }
         physics.impulse += AXConstants.jumpForce
         canJump.jumpsLeft -= 1
-        sound.sounds[AXSounds.playerJump]?.isPlaying = true
+        sound.sounds[AXSoundTypes.playerJump]?.play()
         if canJump.jumpsLeft <= 0 {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }

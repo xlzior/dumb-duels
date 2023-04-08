@@ -7,12 +7,19 @@
 
 import Foundation
 
-public class Sound {
-    public var isPlaying: Bool
-    public var url: URL
+public protocol Sound: AnyObject {
+    var isPlaying: Bool { get set }
+    var url: URL { get }
+    var volume: Float { get }
+    var numLoop: Int { get }
+}
 
-    public init(isPlaying: Bool = false, url: URL) {
-        self.isPlaying = isPlaying
-        self.url = url
+extension Sound {
+    public func play() {
+        self.isPlaying = true
+    }
+
+    public func stop() {
+        self.isPlaying = false
     }
 }

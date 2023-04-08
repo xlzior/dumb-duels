@@ -27,7 +27,7 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
                     continue
                 }
                 player.play()
-                sound.isPlaying = false
+                sound.stop()
             }
         }
     }

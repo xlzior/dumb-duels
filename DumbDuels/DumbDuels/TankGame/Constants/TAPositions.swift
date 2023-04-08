@@ -11,9 +11,9 @@ import DuelKit
 struct TAPositions {
     static let walls = [
         CGPoint(x: 225, y: 450),
-        CGPoint(x: 300, y: 300),
+        CGPoint(x: 293, y: 300),
         CGPoint(x: 525, y: 550),
-        CGPoint(x: 600, y: 475),
+        CGPoint(x: 593, y: 475),
         CGPoint(x: 700, y: 100),
         CGPoint(x: 700, y: 175)
     ]

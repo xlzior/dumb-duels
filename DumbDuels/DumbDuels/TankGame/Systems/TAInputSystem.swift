@@ -54,7 +54,7 @@ extension TAInputSystem: InputSystem {
                     tank.fsm.changeState(name: .charging0)
                     tank.chargingSince = nil
                     let direction = CGVector(angle: rotation.angleInRadians)
-                    let offset = (TASizes.cannonball.width + TASizes.tank.width / 2)
+                    let offset = (TASizes.cannonball.width / 2 + 1 + TASizes.tank.width / 2)
                     let cannonPosition = position.position + offset * direction
                     physics.impulse = -TAConstants.recoilForce * direction
                     fireCannonball(at: cannonPosition, of: TASizes.cannonball, direction: rotation.angleInRadians)

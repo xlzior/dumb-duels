@@ -48,6 +48,13 @@ class AXEntityCreator {
             SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
+
+        let soundComponent = SoundComponent(sounds: [
+            AXSounds.axeCollide: Sound(url: AXSounds.axeCollideSound),
+            AXSounds.axeExplode: Sound(url: AXSounds.axeExplodeSound)
+        ])
+        axe.assign(component: soundComponent)
+
         return axe
     }
 
@@ -100,6 +107,12 @@ class AXEntityCreator {
 
         let scoreComponent = ScoreComponent(for: index, withId: player.id)
         player.assign(component: scoreComponent)
+
+        let soundComponent = SoundComponent(sounds: [
+            AXSounds.playerJump: Sound(url: AXSounds.playerJumpSound),
+            AXSounds.playerHit: Sound(url: AXSounds.playerHitSound)
+        ])
+        player.assign(component: soundComponent)
 
         return player
     }

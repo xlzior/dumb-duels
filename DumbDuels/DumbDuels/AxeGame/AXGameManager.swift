@@ -64,6 +64,8 @@ class AXGameManager: GameManager {
         let axe = AXCollisions.axeBitmask
         let platform = AXCollisions.platformBitmask
         let lava = AXCollisions.lavaBitmask
+        let peg = AXCollisions.pegBitmask
+        let wall = AXCollisions.wallBitmask
 
         contactHandlers[Pair(first: player, second: axe)] = { (player: EntityID, axe: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
@@ -89,6 +91,22 @@ class AXGameManager: GameManager {
             LavaHitEvent(axeEntityId: axe)
         }
 
+        contactHandlers[Pair(first: axe, second: peg)] = { (axe: EntityID, _: EntityID) -> Event in
+            AxeCollideEvent(axeEntityId: axe)
+        }
+
+        contactHandlers[Pair(first: peg, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+            AxeCollideEvent(axeEntityId: axe)
+        }
+
+        contactHandlers[Pair(first: axe, second: wall)] = { (axe: EntityID, _: EntityID) -> Event in
+            AxeCollideEvent(axeEntityId: axe)
+        }
+
+        contactHandlers[Pair(first: wall, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+            AxeCollideEvent(axeEntityId: axe)
+        }
+
         return contactHandlers
     }
 
@@ -103,11 +121,14 @@ class AXGameManager: GameManager {
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
+        systemManager.register(AxeCollideSystem(for: entityManager))
         systemManager.register(ScoreSystem(for: entityManager))
-
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
-                          gameWonTexts: Assets.gameWonText)
+                          gameWonTexts: Assets.gameWonText,
+                          gameStartSound: Sounds.battleSound,
+                          gameEndSound: Sounds.gameEndSound)
+        useSoundSystem()
         useAnimationSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()

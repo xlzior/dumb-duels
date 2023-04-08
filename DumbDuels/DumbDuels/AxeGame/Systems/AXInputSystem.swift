@@ -18,7 +18,7 @@ class AXInputSystem {
     private var holdingAxePlayer: Assemblage4<PlayerComponent, PositionComponent,
                                               HoldingAxeComponent, WithThrowStrengthComponent>
     private var unthrownAxe: Assemblage3<AxeComponent, SizeComponent, SyncXPositionComponent>
-    private var canJumpPlayer: Assemblage3<PlayerComponent, CanJumpComponent, PhysicsComponent>
+    private var canJumpPlayer: Assemblage4<PlayerComponent, CanJumpComponent, PhysicsComponent, SoundComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
     private var longPressStartTimes = [EntityID: Date]()
@@ -32,8 +32,9 @@ class AXInputSystem {
         self.unthrownAxe = entityManager.assemblage(requiredComponents: AxeComponent.self,
                                                     SizeComponent.self, SyncXPositionComponent.self,
                                                     excludedComponents: PhysicsComponent.self)
-        self.canJumpPlayer = entityManager.assemblage(
-            requiredComponents: PlayerComponent.self, CanJumpComponent.self, PhysicsComponent.self)
+        self.canJumpPlayer = entityManager.assemblage(requiredComponents: PlayerComponent.self,
+                                                      CanJumpComponent.self, PhysicsComponent.self,
+                                                      SoundComponent.self)
         self.throwStrength = entityManager.assemblage(
             requiredComponents: ThrowStrengthComponent.self, SizeComponent.self)
         self.playerIndexToIdMap = [Int: EntityID]()
@@ -92,11 +93,12 @@ class AXInputSystem {
     }
 
     func jump(playerId: EntityID) {
-        guard let (_, canJump, physics) = canJumpPlayer.getComponents(for: playerId) else {
+        guard let (_, canJump, physics, sound) = canJumpPlayer.getComponents(for: playerId) else {
             return
         }
         physics.impulse += AXConstants.jumpForce
         canJump.jumpsLeft -= 1
+        sound.sounds[AXSounds.playerJump]?.isPlaying = true
         if canJump.jumpsLeft <= 0 {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }

@@ -19,6 +19,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     private var isGameOver: Bool
 
     // TODO: is this violating any software design principles...
+    private var isUsingSoundSystem = false
     private var isUsingAnimationSystem = false
     private var isUsingPhysicsSystem = false
     private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
@@ -58,6 +59,10 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     }
 
+    public func useSoundSystem() {
+        isUsingSoundSystem = true
+    }
+
     public func useAnimationSystem() {
         isUsingAnimationSystem = true
     }
@@ -74,13 +79,18 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public func useGameOverSystem(
         gameStartText: String,
         gameTieText: String,
-        gameWonTexts: [String]
+        gameWonTexts: [String],
+        gameStartSound: URL,
+        gameEndSound: URL
     ) {
         isUsingGameOverSystem = true
         gameOverAssets = GameOverAssets(
             gameStartText: gameStartText,
             gameTieText: gameTieText,
-            gameWonTexts: gameWonTexts)
+            gameWonTexts: gameWonTexts,
+            gameStartSound: gameStartSound,
+            gameEndSound: gameEndSound
+        )
     }
 
     public func useAutoRotateSystem() {
@@ -98,6 +108,10 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
             }
             systemManager.register(GameOverSystem(
                 for: entityManager, onGameOver: handleGameOver, assets: gameOverAssets))
+        }
+
+        if isUsingSoundSystem {
+            systemManager.register(SoundSystem(for: entityManager))
         }
 
         if isUsingAnimationSystem {

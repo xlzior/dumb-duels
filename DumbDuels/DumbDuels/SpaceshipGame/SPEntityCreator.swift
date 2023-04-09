@@ -35,6 +35,13 @@ class SPEntityCreator {
 
         spaceship.assign(component: ScoreComponent(for: index, withId: spaceship.id, score: score))
 
+        let soundComponent = SoundComponent(sounds: [
+            SPSoundTypes.spaceshipCollide: SpaceshipCollideSound(),
+            SPSoundTypes.spaceshipEngine: SpaceshipEngineSound(),
+            SPSoundTypes.spaceshipExplode: SpaceshipExplodeSound()
+        ])
+        spaceship.assign(component: soundComponent)
+
         return spaceship
     }
 
@@ -68,6 +75,7 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
             BulletComponent(for: playerId)
+            SoundComponent(sounds: [SPSoundTypes.bullet: BulletSound()])
             physicsCreator.createBullet(of: size, pointing: angle)
         }
     }
@@ -78,6 +86,7 @@ class SPEntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
+            SoundComponent(sounds: [SPSoundTypes.powerup: PowerupSound()])
             physicsCreator.createPowerup(of: size)
         }
 

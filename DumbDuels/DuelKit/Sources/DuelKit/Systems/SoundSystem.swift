@@ -26,6 +26,8 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
                       let player = getAudioPlayer(for: sound.url) else {
                     continue
                 }
+                player.numberOfLoops = sound.numLoop
+                player.volume = sound.volume
                 player.play()
                 sound.stop()
             }

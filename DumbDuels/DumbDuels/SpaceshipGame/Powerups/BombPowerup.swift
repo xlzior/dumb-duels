@@ -24,9 +24,19 @@ struct BombPowerup: Powerup {
             let displacement = CGVector(angle: angle) * (radius + bulletSize.height / 2)
             let bulletPosition = powerupPosition.position + displacement
 
-            entityCreator.createBullet(index: spaceship.index, from: playerId,
+            let bullet = entityCreator.createBullet(index: spaceship.index, from: playerId,
                                        size: bulletSize, angle: angle,
                                        position: bulletPosition)
+
+            // Only play sound for 2 of the bullets, else will cause a lag
+            if i > 1 {
+                guard let sound: SoundComponent = entityManager.getComponent(
+                    ofType: SoundComponent.typeId, for: bullet.id) else {
+                    continue
+                }
+
+                sound.sounds[SPSoundTypes.bullet]?.stop()
+            }
         }
     }
 }

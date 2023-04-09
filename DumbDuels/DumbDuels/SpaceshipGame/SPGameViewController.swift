@@ -13,7 +13,8 @@ class SPGameViewController: GameViewController {
         gameManager = SPGameManager(gameController: self)
     }
 
-    override func styleGameViewBackground() {
+    override func customiseBackgroundViewAndSound() {
         gameView.image = UIImage(imageLiteralResourceName: SPAssets.background)
+        backgroundSound = GameBackgroundSound()
     }
 }

@@ -13,7 +13,7 @@ class TAGameViewController: GameViewController {
         gameManager = TAGameManager(gameController: self)
     }
 
-    override func styleGameViewBackground() {
+    override func customiseBackgroundViewAndSound() {
         gameView.image = UIImage(imageLiteralResourceName: TAAssets.background)
     }
 }

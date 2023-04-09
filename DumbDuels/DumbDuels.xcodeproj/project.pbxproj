@@ -127,6 +127,8 @@
 		A7DF478C29E2933E0011AE24 /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF478B29E2933E0011AE24 /* bullet.mp3 */; };
 		A7DF479229E296420011AE24 /* SpaceshipEngineSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF479129E296420011AE24 /* SpaceshipEngineSound.swift */; };
 		A7DF479A29E29A800011AE24 /* engine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF479929E29A800011AE24 /* engine.mp3 */; };
+		A7DF479C29E2AE5D0011AE24 /* game-bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */; };
+		A7DF479E29E2AE6F0011AE24 /* GameBackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */; };
 		A7E439F929C374BE00027AC6 /* AXPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F729C374BE00027AC6 /* AXPositions.swift */; };
 		A7E439FA29C374BE00027AC6 /* AXSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439F829C374BE00027AC6 /* AXSizes.swift */; };
 		A7E439FC29C374E800027AC6 /* AXEntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E439FB29C374E800027AC6 /* AXEntityCreator.swift */; };
@@ -278,6 +280,8 @@
 		A7DF478B29E2933E0011AE24 /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
 		A7DF479129E296420011AE24 /* SpaceshipEngineSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipEngineSound.swift; sourceTree = "<group>"; };
 		A7DF479929E29A800011AE24 /* engine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = engine.mp3; sourceTree = "<group>"; };
+		A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-bg.mp3"; sourceTree = "<group>"; };
+		A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundSound.swift; sourceTree = "<group>"; };
 		A7E439F729C374BE00027AC6 /* AXPositions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXPositions.swift; sourceTree = "<group>"; };
 		A7E439F829C374BE00027AC6 /* AXSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXSizes.swift; sourceTree = "<group>"; };
 		A7E439FB29C374E800027AC6 /* AXEntityCreator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXEntityCreator.swift; sourceTree = "<group>"; };
@@ -601,6 +605,7 @@
 		A7DF475329E16A710011AE24 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */,
 				A7DF475829E174E10011AE24 /* collide.mp3 */,
 				A7DF475C29E1776C0011AE24 /* explode.mp3 */,
 				A7DF475629E16AA40011AE24 /* game-end.mp3 */,
@@ -608,6 +613,7 @@
 				A7DF476E29E1CB570011AE24 /* GameEndSound.swift */,
 				A7DF477029E1CB660011AE24 /* BattleSound.swift */,
 				A7DF477229E1D0A80011AE24 /* Sounds.swift */,
+				A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */,
+				A7DF479C29E2AE5D0011AE24 /* game-bg.mp3 in Resources */,
 				A7DF475D29E1776C0011AE24 /* explode.mp3 in Resources */,
 				A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */,
 				7B30774D29DF3A5E00B26744 /* TAAssets.xcassets in Resources */,
@@ -878,6 +885,7 @@
 				7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */,
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
 				A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */,
+				A7DF479E29E2AE6F0011AE24 /* GameBackgroundSound.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
 				A7DF476F29E1CB570011AE24 /* GameEndSound.swift in Sources */,
 				A7DF478829E1D9B90011AE24 /* SPSoundSystem.swift in Sources */,

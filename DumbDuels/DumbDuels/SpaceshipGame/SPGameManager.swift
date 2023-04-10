@@ -75,6 +75,7 @@ class SPGameManager: GameManager {
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
 
+        useParticleSystem()
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,

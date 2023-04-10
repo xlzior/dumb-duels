@@ -19,6 +19,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     private var isGameOver: Bool
 
     // TODO: is this violating any software design principles...
+    private var isUsingParticleSystem = false
     private var isUsingSoundSystem = false
     private var isUsingAnimationSystem = false
     private var isUsingPhysicsSystem = false
@@ -97,7 +98,15 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         isUsingAutoRotateSystem = true
     }
 
+    public func useParticleSystem() {
+        isUsingParticleSystem = true
+    }
+
     private func setUpInternalSystems() {
+        if isUsingParticleSystem {
+            systemManager.register(ParticleSystem(for: entityManager))
+        }
+
         if isUsingAutoRotateSystem {
             systemManager.register(AutoRotateSystem(for: entityManager))
         }

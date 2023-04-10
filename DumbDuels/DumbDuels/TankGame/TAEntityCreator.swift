@@ -24,6 +24,7 @@ class TAEntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             AutoRotateComponent(by: TAConstants.rotationSpeed)
+            WillExplodeParticlesComponent(particles: Assets.particles[index])
             physicsCreator.createTank(of: size)
         }
 

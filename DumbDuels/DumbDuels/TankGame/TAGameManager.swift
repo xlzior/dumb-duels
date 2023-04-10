@@ -77,6 +77,7 @@ class TAGameManager: GameManager {
         systemManager.register(CannonballSystem(for: entityManager))
         systemManager.register(TARoundSystem(for: entityManager, eventFirer: eventManager))
 
+        useParticleSystem()
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,

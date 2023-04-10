@@ -15,6 +15,7 @@ struct CannonballHitTankEvent: Event {
 
     func execute(with systems: SystemManager) {
         guard let scoreSystem = systems.get(ofType: TAScoreSystem.self),
+              let soundSystem = systems.get(ofType: SoundSystem.self),
               let roundSystem = systems.get(ofType: TARoundSystem.self),
               let cannonballSystem = systems.get(ofType: CannonballSystem.self) else {
             return
@@ -26,6 +27,7 @@ struct CannonballHitTankEvent: Event {
         if didIncrementScore {
             cannonballSystem.removeAllCannonballs()
             roundSystem.reset()
+            soundSystem.play(sound: ExplodeSound())
         }
     }
 }

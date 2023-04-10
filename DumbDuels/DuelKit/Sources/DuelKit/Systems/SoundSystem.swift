@@ -20,7 +20,7 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
     }
 
     public func update() {
-        for (soundComponent) in sounds {
+        for (entity, soundComponent) in sounds.entityAndComponents {
             for sound in soundComponent.sounds.values {
                 guard sound.isPlaying,
                       let player = getAudioPlayer(for: sound.url) else {
@@ -30,7 +30,18 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
                 player.volume = sound.volume
                 player.play()
                 sound.stop()
+
+                if soundComponent.shouldDestroyEntityOnEnd {
+                    entityManager.destroy(entity: entity)
+                }
             }
+        }
+    }
+
+    public func play(sound: Sound) {
+        sound.isPlaying = true
+        entityManager.createEntity {
+            SoundComponent(sounds: ["": sound], shouldDestroyEntityOnEnd: true)
         }
     }
 

@@ -42,6 +42,13 @@ class TAEntityCreator {
 
         tank.assign(component: ScoreComponent(for: index, withId: tank.id))
 
+        let soundComponent = SoundComponent(sounds: [
+            TASoundTypes.tankBeep: BeepSound(),
+            TASoundTypes.tankEngine: EngineSound(),
+            TASoundTypes.tankShoot: BulletSound()
+        ])
+        tank.assign(component: soundComponent)
+
         return tank
     }
 
@@ -49,7 +56,7 @@ class TAEntityCreator {
     func createCannonball(at position: CGPoint, of size: CGSize,
                           direction: CGFloat, expiring expiryDate: Date,
                           firedBy playerId: EntityID, immunityUntil: Date) -> Entity {
-        entityManager.createEntity {
+        let ball = entityManager.createEntity {
             CannonballComponent(expiring: expiryDate, firedBy: playerId, immunityUntil: immunityUntil)
             PositionComponent(position: position)
             RotationComponent(angleInRadians: direction)
@@ -57,6 +64,13 @@ class TAEntityCreator {
             SpriteComponent(assetName: TAAssets.cannonball)
             physicsCreator.createCannonball(of: size, direction: direction)
         }
+
+        let soundComponent = SoundComponent(sounds: [
+            TASoundTypes.cannonballExtinguish: EngineSound()
+        ])
+        ball.assign(component: soundComponent)
+
+        return ball
     }
 
     @discardableResult

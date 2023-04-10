@@ -37,6 +37,8 @@ class TAGameManager: GameManager {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
         let tank = TACollisions.tankBitmask
         let cannonball = TACollisions.cannonballBitmask
+        let wall = TACollisions.wallBitmask
+        let sideWall = TACollisions.sideWallBitmask
 
         contactHandlers[Pair(first: tank, second: cannonball)] = { (tank: EntityID, cannonball: EntityID) -> Event in
             CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
@@ -44,6 +46,22 @@ class TAGameManager: GameManager {
 
         contactHandlers[Pair(first: cannonball, second: tank)] = { (cannonball: EntityID, tank: EntityID) -> Event in
             CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
+        }
+
+        contactHandlers[Pair(first: wall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
+            CollideSoundEvent()
+        }
+
+        contactHandlers[Pair(first: cannonball, second: wall)] = { (_: EntityID, _: EntityID) -> Event in
+            CollideSoundEvent()
+        }
+
+        contactHandlers[Pair(first: sideWall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
+            CollideSoundEvent()
+        }
+
+        contactHandlers[Pair(first: cannonball, second: sideWall)] = { (_: EntityID, _: EntityID) -> Event in
+            CollideSoundEvent()
         }
 
         return contactHandlers
@@ -65,6 +83,7 @@ class TAGameManager: GameManager {
                           gameWonTexts: Assets.gameWonText,
                           gameStartSound: Sounds.battleSound,
                           gameEndSound: Sounds.gameEndSound)
+        useSoundSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

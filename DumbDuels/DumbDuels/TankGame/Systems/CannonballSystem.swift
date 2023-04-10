@@ -10,24 +10,26 @@ import DuelKit
 
 class CannonballSystem: System {
     private let entityManager: EntityManager
-    private let cannonballs: Assemblage2<CannonballComponent, PhysicsComponent>
+    private let cannonballs: Assemblage3<CannonballComponent, PhysicsComponent, SoundComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.cannonballs = entityManager.assemblage(
-            requiredComponents: CannonballComponent.self, PhysicsComponent.self)
+            requiredComponents: CannonballComponent.self, PhysicsComponent.self, SoundComponent.self)
     }
 
     func update() {
-        for (cannonball, physics) in cannonballs
+        for (cannonball, physics, sound) in cannonballs
         where Date() > cannonball.expiryDate {
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
+
+            sound.sounds[TASoundTypes.cannonballExtinguish]?.play()
         }
     }
 
     func removeAllCannonballs() {
-        for (_, physics) in cannonballs {
+        for (_, physics, _) in cannonballs {
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
         }

@@ -75,7 +75,7 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
             BulletComponent(for: playerId)
-            SoundComponent(sounds: [SPSoundTypes.bullet: BulletSound()])
+            SoundComponent(sounds: [SPSoundTypes.bullet: BulletSound(isPlaying: true)])
             physicsCreator.createBullet(of: size, pointing: angle)
         }
     }

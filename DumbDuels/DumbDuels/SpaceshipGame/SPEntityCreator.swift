@@ -26,7 +26,7 @@ class SPEntityCreator {
         let spaceship = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
-            AutoRotateComponent()
+            AutoRotateComponent(by: SPConstants.rotationSpeed)
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "spaceship\(index)")
             SpaceshipComponent(index: index)

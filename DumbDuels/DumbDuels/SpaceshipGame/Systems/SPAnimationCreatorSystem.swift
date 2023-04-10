@@ -25,10 +25,9 @@ class SPAnimationCreatorSystem: System {
     init(for entityManager: EntityManager, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager
         self.entityCreator = entityCreator
-        self.movingSpaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
-                                                         PositionComponent.self, RotationComponent.self,
-                                                         SizeComponent.self,
-                                                         excludedComponents: AutoRotateComponent.self)
+        self.movingSpaceships = entityManager.assemblage(
+            requiredComponents: SpaceshipComponent.self, PositionComponent.self, RotationComponent.self, SizeComponent.self,
+            excludedComponents: AutoRotateComponent.self)
         self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
                                                    PositionComponent.self, PhysicsComponent.self)
         self.stars = entityManager.assemblage(requiredComponents: StarComponent.self)

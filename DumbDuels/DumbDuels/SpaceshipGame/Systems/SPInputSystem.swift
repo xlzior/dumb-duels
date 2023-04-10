@@ -38,7 +38,7 @@ class SPInputSystem: InputSystem {
             guard self.canAssignAutoRotate(entityId: entityId) else {
                 return
             }
-            self.entityManager.assign(component: AutoRotateComponent(), to: entityId)
+            self.entityManager.assign(component: AutoRotateComponent(by: SPConstants.rotationSpeed), to: entityId)
             physics.linearDamping = SPPhysics.spaceshipStaticDamping
         }
     }

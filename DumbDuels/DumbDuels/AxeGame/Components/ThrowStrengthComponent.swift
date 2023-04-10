@@ -9,7 +9,7 @@ import DuelKit
 
 class ThrowStrengthComponent: Component {
     var id: ComponentID
-    var throwStrength = Constants.defaultThrowStrength
+    var throwStrength = AXConstants.defaultThrowStrength
     let fsm: EntityStateMachine<State>
 
     init(fsm: EntityStateMachine<State>) {

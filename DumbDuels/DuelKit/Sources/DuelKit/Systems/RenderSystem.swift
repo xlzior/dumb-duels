@@ -7,6 +7,9 @@
 
 import UIKit
 
+// TODO: bingsen render system doesn't need to conform to IndexMapInitializable
+// playerIndexToIdMap is never used
+// ScoreComponent's index is used to determine which score to update
 class RenderSystem: System, IndexMapInitializable {
     unowned var entityManager: EntityManager
     var gameController: GameController

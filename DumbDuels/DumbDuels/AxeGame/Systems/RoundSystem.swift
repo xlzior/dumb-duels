@@ -11,7 +11,7 @@ import DuelKit
 class RoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
-    unowned var entityCreator: EntityCreator
+    unowned var entityCreator: AXEntityCreator
 
     private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
     private var unthrownAxe: Assemblage2<AxeComponent, SyncXPositionComponent>
@@ -22,7 +22,7 @@ class RoundSystem: System {
 
     private var isGameOver = false
 
-    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: EntityCreator) {
+    init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: AXEntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.entityCreator = entityCreator
@@ -52,7 +52,7 @@ class RoundSystem: System {
     func checkWin() {
         var winningEntities = [EntityID]()
         for (entity, _, score, _, _, _) in players.entityAndComponents
-        where score.score >= Constants.winningScore {
+        where score.score >= AXConstants.winningScore {
             winningEntities.append(entity.id)
         }
 
@@ -93,7 +93,7 @@ class RoundSystem: System {
         }
 
         for (throwStrengthComponent, sizeComponent) in throwStrength {
-            throwStrengthComponent.throwStrength = Constants.defaultThrowStrength
+            throwStrengthComponent.throwStrength = AXConstants.defaultThrowStrength
             sizeComponent.xScale = throwStrengthComponent.throwStrength
         }
     }
@@ -106,8 +106,7 @@ class RoundSystem: System {
     }
 
     private func isAllThrownAxeOutOfBounds() -> Bool {
-        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for (_, position, _, _) in thrownAxe where frame.contains(position.position) {
+        for (_, position, _, _) in thrownAxe where Sizes.gameRect.contains(position.position) {
             return false
         }
         return true

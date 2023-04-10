@@ -31,4 +31,17 @@ extension CGPoint: Interpolatable {
     static func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
         CGPoint(x: point.x / scalar, y: point.y / scalar)
     }
+
+    func length() -> CGFloat {
+        sqrt(x * x + y * y)
+    }
+
+    func distanceTo(_ otherPoint: CGPoint) -> Double {
+        (self - otherPoint).length()
+    }
+
+    static func random(within rect: CGRect) -> CGPoint {
+        CGPoint(x: CGFloat.random(in: rect.minX...rect.maxX),
+                y: CGFloat.random(in: rect.minY...rect.maxY))
+    }
 }

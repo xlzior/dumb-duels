@@ -53,6 +53,12 @@ extension CGPoint {
     }
 
     static func random(within size: CGSize) -> CGPoint {
-        CGPoint(x: CGFloat.random(in: 0...size.width), y: CGFloat.random(in: 0...size.height))
+        CGPoint(x: CGFloat.random(in: 0...size.width),
+                y: CGFloat.random(in: 0...size.height))
+    }
+
+    static func random(within rect: CGRect) -> CGPoint {
+        CGPoint(x: CGFloat.random(in: rect.minX...rect.maxX),
+                y: CGFloat.random(in: rect.minY...rect.maxY))
     }
 }

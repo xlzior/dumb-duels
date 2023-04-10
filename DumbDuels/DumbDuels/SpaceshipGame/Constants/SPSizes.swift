@@ -17,18 +17,7 @@ struct SPSizes {
     static let spaceshipDestroyParticle = CGSize(width: 10, height: 10)
     static let star = CGSize(width: 11, height: 11)
 
-    static func getSpaceshipResetPositions() -> (CGPoint, CGPoint) {
-        let spaceshipDimension = max(spaceship.width, spaceship.height)
-        let boundingBox = CGSize(width: Sizes.game.width - spaceshipDimension,
-                                 height: Sizes.game.height - spaceshipDimension)
-        var firstPosition = CGPoint.random(within: boundingBox)
-        firstPosition += CGPoint(x: spaceshipDimension / 2, y: spaceshipDimension / 2)
-        var secondPosition = CGPoint.random(within: boundingBox)
-        secondPosition += CGPoint(x: spaceshipDimension / 2, y: spaceshipDimension / 2)
-        while secondPosition.distanceTo(firstPosition) < spaceshipDimension {
-            secondPosition = CGPoint.random(within: boundingBox)
-            secondPosition += CGPoint(x: spaceshipDimension / 2, y: spaceshipDimension / 2)
-        }
-        return (firstPosition, secondPosition)
+    static func randomSpaceshipPositions() -> (CGPoint, CGPoint) {
+        Positions.random2(withBuffer: max(spaceship.width, spaceship.height))
     }
 }

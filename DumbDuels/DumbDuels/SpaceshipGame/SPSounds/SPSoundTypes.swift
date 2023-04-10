@@ -6,9 +6,7 @@
 //
 
 struct SPSoundTypes {
-    static let spaceshipCollide: String = "spaceship-collide"
-    static let spaceshipEngine: String = "spaceship-engine"
-    static let spaceshipExplode: String = "spaceship-explode"
+    static let spaceshipEngine: String = "engine"
     static let powerup: String = "powerup"
     static let bullet: String = "bullet"
 }

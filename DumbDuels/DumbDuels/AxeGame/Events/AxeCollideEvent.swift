@@ -10,13 +10,11 @@ import DuelKit
 struct AxeCollideEvent: Event {
     var priority = 2
 
-    var axeEntityId: EntityID
-
     func execute(with systems: SystemManager) {
-        guard let axeCollideSystem = systems.get(ofType: AxeCollideSystem.self) else {
+        guard let soundSystem = systems.get(ofType: SoundSystem.self) else {
             return
         }
 
-        axeCollideSystem.playCollideSound(axeEntityId: axeEntityId)
+        soundSystem.play(sound: CollideSound())
     }
 }

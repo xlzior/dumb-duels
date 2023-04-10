@@ -8,6 +8,6 @@
 import DuelKit
 
 struct Sounds {
-    static func battleSound() -> BattleSound { BattleSound() }
-    static func gameEndSound() -> GameEndSound { GameEndSound() }
+    static func battleSound() -> BattleSound { BattleSound(isPlaying: true) }
+    static func gameEndSound() -> GameEndSound { GameEndSound(isPlaying: true) }
 }

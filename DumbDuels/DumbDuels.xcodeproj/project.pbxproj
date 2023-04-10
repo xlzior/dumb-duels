@@ -108,7 +108,6 @@
 		A7DF475D29E1776C0011AE24 /* explode.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475C29E1776C0011AE24 /* explode.mp3 */; };
 		A7DF476129E1A7950011AE24 /* AXSoundTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476029E1A7950011AE24 /* AXSoundTypes.swift */; };
 		A7DF476329E1B0760011AE24 /* AxeCollideEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476229E1B0760011AE24 /* AxeCollideEvent.swift */; };
-		A7DF476529E1B0B10011AE24 /* AxeCollideSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476429E1B0B10011AE24 /* AxeCollideSystem.swift */; };
 		A7DF476729E1C96B0011AE24 /* PlayerHitSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476629E1C96B0011AE24 /* PlayerHitSound.swift */; };
 		A7DF476929E1CA250011AE24 /* PlayerJumpSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476829E1CA250011AE24 /* PlayerJumpSound.swift */; };
 		A7DF476B29E1CA550011AE24 /* AxeCollideSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF476A29E1CA550011AE24 /* AxeCollideSound.swift */; };
@@ -119,13 +118,9 @@
 		A7DF477A29E1D6010011AE24 /* powerup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF477929E1D6010011AE24 /* powerup.mp3 */; };
 		A7DF477C29E1D6250011AE24 /* PowerupSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF477B29E1D6250011AE24 /* PowerupSound.swift */; };
 		A7DF477E29E1D63A0011AE24 /* BulletSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF477D29E1D63A0011AE24 /* BulletSound.swift */; };
-		A7DF478229E1D6500011AE24 /* SpaceshipCollideSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF478129E1D6500011AE24 /* SpaceshipCollideSound.swift */; };
-		A7DF478429E1D65C0011AE24 /* SpaceshipExplodeSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF478329E1D65B0011AE24 /* SpaceshipExplodeSound.swift */; };
 		A7DF478629E1D74B0011AE24 /* SPSoundTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF478529E1D74B0011AE24 /* SPSoundTypes.swift */; };
-		A7DF478829E1D9B90011AE24 /* SPSoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF478729E1D9B90011AE24 /* SPSoundSystem.swift */; };
 		A7DF478A29E2900D0011AE24 /* SpaceshipCollideEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF478929E2900D0011AE24 /* SpaceshipCollideEvent.swift */; };
 		A7DF478C29E2933E0011AE24 /* bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF478B29E2933E0011AE24 /* bullet.mp3 */; };
-		A7DF479229E296420011AE24 /* SpaceshipEngineSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF479129E296420011AE24 /* SpaceshipEngineSound.swift */; };
 		A7DF479A29E29A800011AE24 /* engine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF479929E29A800011AE24 /* engine.mp3 */; };
 		A7DF479C29E2AE5D0011AE24 /* game-bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */; };
 		A7DF479E29E2AE6F0011AE24 /* GameBackgroundSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */; };
@@ -268,7 +263,6 @@
 		A7DF475C29E1776C0011AE24 /* explode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explode.mp3; sourceTree = "<group>"; };
 		A7DF476029E1A7950011AE24 /* AXSoundTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXSoundTypes.swift; sourceTree = "<group>"; };
 		A7DF476229E1B0760011AE24 /* AxeCollideEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeCollideEvent.swift; sourceTree = "<group>"; };
-		A7DF476429E1B0B10011AE24 /* AxeCollideSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeCollideSystem.swift; sourceTree = "<group>"; };
 		A7DF476629E1C96B0011AE24 /* PlayerHitSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHitSound.swift; sourceTree = "<group>"; };
 		A7DF476829E1CA250011AE24 /* PlayerJumpSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerJumpSound.swift; sourceTree = "<group>"; };
 		A7DF476A29E1CA550011AE24 /* AxeCollideSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxeCollideSound.swift; sourceTree = "<group>"; };
@@ -279,13 +273,9 @@
 		A7DF477929E1D6010011AE24 /* powerup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = powerup.mp3; sourceTree = "<group>"; };
 		A7DF477B29E1D6250011AE24 /* PowerupSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSound.swift; sourceTree = "<group>"; };
 		A7DF477D29E1D63A0011AE24 /* BulletSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletSound.swift; sourceTree = "<group>"; };
-		A7DF478129E1D6500011AE24 /* SpaceshipCollideSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipCollideSound.swift; sourceTree = "<group>"; };
-		A7DF478329E1D65B0011AE24 /* SpaceshipExplodeSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipExplodeSound.swift; sourceTree = "<group>"; };
 		A7DF478529E1D74B0011AE24 /* SPSoundTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSoundTypes.swift; sourceTree = "<group>"; };
-		A7DF478729E1D9B90011AE24 /* SPSoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPSoundSystem.swift; sourceTree = "<group>"; };
 		A7DF478929E2900D0011AE24 /* SpaceshipCollideEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipCollideEvent.swift; sourceTree = "<group>"; };
 		A7DF478B29E2933E0011AE24 /* bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bullet.mp3; sourceTree = "<group>"; };
-		A7DF479129E296420011AE24 /* SpaceshipEngineSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipEngineSound.swift; sourceTree = "<group>"; };
 		A7DF479929E29A800011AE24 /* engine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = engine.mp3; sourceTree = "<group>"; };
 		A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-bg.mp3"; sourceTree = "<group>"; };
 		A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBackgroundSound.swift; sourceTree = "<group>"; };
@@ -484,7 +474,6 @@
 				8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */,
 				8C3584B129C8709200BAE8C5 /* PositionSyncSystem.swift */,
 				8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */,
-				A7DF476429E1B0B10011AE24 /* AxeCollideSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -554,7 +543,6 @@
 				7BC8C2D429D299CA001CF6F7 /* PowerupSystem.swift */,
 				8CB0FA6829D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift */,
 				8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */,
-				A7DF478729E1D9B90011AE24 /* SPSoundSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -621,20 +609,21 @@
 		A7DF475329E16A710011AE24 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				A7DF478B29E2933E0011AE24 /* bullet.mp3 */,
-				A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */,
-				A7DF475829E174E10011AE24 /* collide.mp3 */,
-				A7DF475C29E1776C0011AE24 /* explode.mp3 */,
-				A7DF475629E16AA40011AE24 /* game-end.mp3 */,
 				A7DF475429E16A9C0011AE24 /* battle.mp3 */,
-				A7DF476E29E1CB570011AE24 /* GameEndSound.swift */,
+				A7DF478B29E2933E0011AE24 /* bullet.mp3 */,
+				A7DF475829E174E10011AE24 /* collide.mp3 */,
+				A7DF479929E29A800011AE24 /* engine.mp3 */,
+				A7DF475C29E1776C0011AE24 /* explode.mp3 */,
+				A7DF479B29E2AE5D0011AE24 /* game-bg.mp3 */,
+				A7DF475629E16AA40011AE24 /* game-end.mp3 */,
+				A7DF477229E1D0A80011AE24 /* Sounds.swift */,
 				A7DF477029E1CB660011AE24 /* BattleSound.swift */,
 				A7DF477D29E1D63A0011AE24 /* BulletSound.swift */,
-				A7DF477229E1D0A80011AE24 /* Sounds.swift */,
-				A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */,
 				A7F36EC329E4054A00E47F3E /* CollideSound.swift */,
 				A7F36EC529E405A700E47F3E /* EngineSound.swift */,
 				A7F36EC729E405DC00E47F3E /* ExplodeSound.swift */,
+				A7DF479D29E2AE6F0011AE24 /* GameBackgroundSound.swift */,
+				A7DF476E29E1CB570011AE24 /* GameEndSound.swift */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -642,13 +631,9 @@
 		A7DF477429E1D4FA0011AE24 /* SPSounds */ = {
 			isa = PBXGroup;
 			children = (
-				A7DF479929E29A800011AE24 /* engine.mp3 */,
 				A7DF477929E1D6010011AE24 /* powerup.mp3 */,
 				A7DF478529E1D74B0011AE24 /* SPSoundTypes.swift */,
 				A7DF477B29E1D6250011AE24 /* PowerupSound.swift */,
-				A7DF478129E1D6500011AE24 /* SpaceshipCollideSound.swift */,
-				A7DF479129E296420011AE24 /* SpaceshipEngineSound.swift */,
-				A7DF478329E1D65B0011AE24 /* SpaceshipExplodeSound.swift */,
 			);
 			path = SPSounds;
 			sourceTree = "<group>";
@@ -856,14 +841,12 @@
 				7B30775729DFCAAF00B26744 /* TAAssets.swift in Sources */,
 				7B0378E229E0533900AE0C5B /* TARoundSystem.swift in Sources */,
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
-				A7DF479229E296420011AE24 /* SpaceshipEngineSound.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
 				7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */,
 				7B85082129DF35BA0095A7F6 /* TAGameViewController.swift in Sources */,
 				7B30775D29DFD06B00B26744 /* TAEntityCreator.swift in Sources */,
 				7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */,
-				A7DF478429E1D65C0011AE24 /* SpaceshipExplodeSound.swift in Sources */,
 				A7DF477C29E1D6250011AE24 /* PowerupSound.swift in Sources */,
 				A7F36EC229E404B600E47F3E /* TASoundTypes.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
@@ -873,7 +856,6 @@
 				7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */,
 				A7DF476329E1B0760011AE24 /* AxeCollideEvent.swift in Sources */,
 				8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */,
-				A7DF476529E1B0B10011AE24 /* AxeCollideSystem.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */,
 				7B30776929DFDB3000B26744 /* TAConstants.swift in Sources */,
@@ -924,7 +906,6 @@
 				A7DF479E29E2AE6F0011AE24 /* GameBackgroundSound.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
 				A7DF476F29E1CB570011AE24 /* GameEndSound.swift in Sources */,
-				A7DF478829E1D9B90011AE24 /* SPSoundSystem.swift in Sources */,
 				7B85081D29DF35A90095A7F6 /* SOGameViewController.swift in Sources */,
 				8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
@@ -945,7 +926,6 @@
 				7BCC61F829D1D5FF0092B602 /* SPGameManager.swift in Sources */,
 				8C3584A629C54FE500BAE8C5 /* AXCollisions.swift in Sources */,
 				7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */,
-				A7DF478229E1D6500011AE24 /* SpaceshipCollideSound.swift in Sources */,
 				A7DF476B29E1CA550011AE24 /* AxeCollideSound.swift in Sources */,
 				A7E52EF529D1F2F800075F99 /* AXAnimationCreator.swift in Sources */,
 				A7DF477129E1CB660011AE24 /* BattleSound.swift in Sources */,

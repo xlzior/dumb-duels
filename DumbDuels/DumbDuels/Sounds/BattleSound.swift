@@ -9,8 +9,15 @@ import DuelKit
 import Foundation
 
 class BattleSound: Sound {
-    var isPlaying = true
     var url: URL = Bundle.main.url(forResource: "battle", withExtension: "mp3")!
-    var volume: Float = 0.7
-    var numLoop: Int = 0
+
+    var isPlaying: Bool
+    var volume: Float
+    var numLoop: Int
+
+    init(isPlaying: Bool = false, volume: Float = 0.7, numLoop: Int = 0) {
+        self.isPlaying = isPlaying
+        self.volume = volume
+        self.numLoop = numLoop
+    }
 }

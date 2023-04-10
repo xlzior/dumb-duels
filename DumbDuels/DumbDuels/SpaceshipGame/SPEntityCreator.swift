@@ -30,17 +30,11 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "spaceship\(index)")
             SpaceshipComponent(index: index)
+            SoundComponent(sounds: [SPSoundTypes.spaceshipEngine: EngineSound()])
             physicsCreator.createSpaceship(of: size)
         }
 
         spaceship.assign(component: ScoreComponent(for: index, withId: spaceship.id, score: score))
-
-        let soundComponent = SoundComponent(sounds: [
-            SPSoundTypes.spaceshipCollide: SpaceshipCollideSound(),
-            SPSoundTypes.spaceshipEngine: SpaceshipEngineSound(),
-            SPSoundTypes.spaceshipExplode: SpaceshipExplodeSound()
-        ])
-        spaceship.assign(component: soundComponent)
 
         return spaceship
     }

@@ -8,16 +8,14 @@
 import DuelKit
 
 struct SpaceshipCollideEvent: Event {
-    var priority = 3
-
-    let spaceshipId: EntityID
+    var priority = 2
 
     func execute(with systems: SystemManager) {
-        guard let soundSystem = systems.get(ofType: SPSoundSystem.self) else {
+        guard let soundSystem = systems.get(ofType: SoundSystem.self) else {
             return
         }
 
-        soundSystem.playCollideSound(spaceshipId: spaceshipId)
+        soundSystem.play(sound: CollideSound())
     }
 
 }

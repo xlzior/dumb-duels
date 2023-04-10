@@ -92,19 +92,19 @@ class AXGameManager: GameManager {
         }
 
         contactHandlers[Pair(first: axe, second: peg)] = { (axe: EntityID, _: EntityID) -> Event in
-            AxeCollideEvent(axeEntityId: axe)
+            AxeCollideEvent()
         }
 
         contactHandlers[Pair(first: peg, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
-            AxeCollideEvent(axeEntityId: axe)
+            AxeCollideEvent()
         }
 
         contactHandlers[Pair(first: axe, second: wall)] = { (axe: EntityID, _: EntityID) -> Event in
-            AxeCollideEvent(axeEntityId: axe)
+            AxeCollideEvent()
         }
 
         contactHandlers[Pair(first: wall, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
-            AxeCollideEvent(axeEntityId: axe)
+            AxeCollideEvent()
         }
 
         return contactHandlers

@@ -50,8 +50,7 @@ class AXEntityCreator {
         }
 
         let soundComponent = SoundComponent(sounds: [
-            AXSoundTypes.axeCollide: AxeCollideSound(),
-            AXSoundTypes.axeExplode: AxeExplodeSound()
+            AXSoundTypes.axeExplode: ExplodeSound()
         ])
         axe.assign(component: soundComponent)
 

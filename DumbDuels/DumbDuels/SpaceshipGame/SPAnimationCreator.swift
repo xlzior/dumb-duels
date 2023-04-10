@@ -11,8 +11,6 @@ import DuelKit
 class SPAnimationCreator {
     func createAccelerationParticle() -> AnimationComponent {
         let component = AnimationComponent(
-            isPlaying: true,
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.1,
@@ -23,14 +21,15 @@ class SPAnimationCreator {
                 AnimationFrame(
                     frameDuration: 0.1,
                     alpha: 0)],
-            numRepeat: 0
+            numRepeat: 0,
+            isPlaying: true,
+            shouldDestroyEntityOnEnd: true
         )
         return component
     }
 
     func createSpaceshipParticleAnimation(deltaPosition: CGPoint, travelTime: CGFloat) -> AnimationComponent {
         let component = AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.1,
@@ -44,14 +43,14 @@ class SPAnimationCreator {
                     frameDuration: 0.1,
                     alpha: 0,
                     deltaPosition: .zero)],
-            numRepeat: 0
+            numRepeat: 0,
+            shouldDestroyEntityOnEnd: true
         )
         return component
     }
 
     func createBattleFlashAnimation() -> AnimationComponent {
         let component = AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.1,
@@ -65,7 +64,8 @@ class SPAnimationCreator {
                 AnimationFrame(
                     frameDuration: 0.05,
                     alpha: 0)],
-            numRepeat: 2
+            numRepeat: 2,
+            shouldDestroyEntityOnEnd: true
         )
         return component
     }
@@ -77,7 +77,6 @@ class SPAnimationCreator {
         let velocity = CGPoint(x: CGFloat.random(in: 10...80), y: 0)
 
         let component = AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: (1.0 - initialAlpha) / alphaChangeRate,
@@ -91,7 +90,8 @@ class SPAnimationCreator {
                     frameDuration: initialAlpha / alphaChangeRate,
                     alpha: 0.0,
                     deltaPosition: initialAlpha * velocity / alphaChangeRate)],
-            numRepeat: 50
+            numRepeat: 50,
+            shouldDestroyEntityOnEnd: true
         )
         return component
     }

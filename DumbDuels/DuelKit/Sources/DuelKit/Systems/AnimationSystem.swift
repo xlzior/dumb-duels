@@ -19,7 +19,8 @@ class AnimationSystem: System {
         self.entityManager = entityManager
         self.prevTime = Date()
         self.animatables = entityManager.assemblage(requiredComponents: AnimationComponent.self,
-            SpriteComponent.self, PositionComponent.self, SizeComponent.self, RotationComponent.self)
+                                                    SpriteComponent.self, PositionComponent.self,
+                                                    SizeComponent.self, RotationComponent.self)
     }
 
     func update() {

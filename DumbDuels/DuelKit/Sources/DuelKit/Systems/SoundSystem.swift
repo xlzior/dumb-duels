@@ -56,7 +56,9 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
             return player
         }
 
-        guard let duplicatePlayer = try? AVAudioPlayer(contentsOf: url) else { return nil }
+        guard let duplicatePlayer = try? AVAudioPlayer(contentsOf: url) else {
+            return nil
+        }
         duplicatePlayer.delegate = self
         duplicatePlayers.append(duplicatePlayer)
         return duplicatePlayer

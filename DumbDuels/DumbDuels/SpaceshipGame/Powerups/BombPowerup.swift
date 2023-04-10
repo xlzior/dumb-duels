@@ -25,8 +25,7 @@ struct BombPowerup: Powerup {
             let bulletPosition = powerupPosition.position + displacement
 
             let bullet = entityCreator.createBullet(index: spaceship.index, from: playerId,
-                                       size: bulletSize, angle: angle,
-                                       position: bulletPosition)
+                                                    angle: angle, position: bulletPosition, size: bulletSize)
 
             // Only play sound for 2 of the bullets, else will cause a lag
             if i > 1 {

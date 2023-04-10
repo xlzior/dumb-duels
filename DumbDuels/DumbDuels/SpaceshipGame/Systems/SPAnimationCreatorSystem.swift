@@ -40,8 +40,10 @@ class SPAnimationCreatorSystem: System {
                 return
             }
 
-            let particlePosistion = position.position + (SPSizes.accelerationParticle.height / 2
-                                                         + size.actualSize.height / 2) * CGVector(angle: rotation.angleInRadians).reverse()
+            let particlePosistion = position.position
+                + (SPSizes.accelerationParticle.height / 2
+                + size.actualSize.height / 2)
+                * CGVector(angle: rotation.angleInRadians).reverse()
             entityCreator.createAccelerationParticle(at: particlePosistion, of: SPSizes.accelerationParticle)
         }
         while stars.count < numStarParticles {
@@ -60,7 +62,8 @@ class SPAnimationCreatorSystem: System {
         }
         let prevPosition = prevSpawnInfo.first
         let multiplesOfParticleSize = prevSpawnInfo.second
-        let minimumsSpacing = multiplesOfParticleSize * max(SPSizes.accelerationParticle.height, SPSizes.accelerationParticle.width)
+        let minimumsSpacing = multiplesOfParticleSize
+            * max(SPSizes.accelerationParticle.height, SPSizes.accelerationParticle.width)
         if position.position.distanceTo(prevPosition) > minimumsSpacing {
             previousParticleSpawnInfo[spaceshipId] = Pair(first: position.position, second: nextRandomFactor)
             return true
@@ -69,7 +72,8 @@ class SPAnimationCreatorSystem: System {
     }
 
     func createSpaceshipParticles(spaceshipId: EntityID) {
-        guard let (spaceship, position, physicsComponent) = spaceships.getComponents(for: spaceshipId) else {
+        guard let (spaceship, position, _) = spaceships.getComponents(
+            for: spaceshipId) else {
             assertionFailure("Trying to create particles from a non-spaceship entity \(spaceshipId)")
             return
         }

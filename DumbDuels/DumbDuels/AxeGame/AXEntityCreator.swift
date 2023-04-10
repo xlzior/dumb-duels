@@ -146,8 +146,10 @@ class AXEntityCreator {
             SpriteComponent(assetName: AXAssets.platform)
             PlatformComponent()
             OscillationComponent(centerOfOscillation: platformPosition,
-                                 axis: AXOscillation.horizontalAxis, amplitude: AXOscillation.platformAmplitude[index],
-                                 period: AXOscillation.platformPeriod[index], displacement: AXOscillation.platformDisplacement[index])
+                                 axis: AXOscillation.horizontalAxis,
+                                 amplitude: AXOscillation.platformAmplitude[index],
+                                 period: AXOscillation.platformPeriod[index],
+                                 displacement: AXOscillation.platformDisplacement[index])
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)

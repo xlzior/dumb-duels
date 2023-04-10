@@ -31,6 +31,7 @@ open class GameViewController: UIViewController {
     }
 
     override open func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         player?.stop()
         onBackToHomePage()
     }

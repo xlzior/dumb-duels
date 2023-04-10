@@ -41,8 +41,8 @@ class SPEntityCreator {
 
     @discardableResult
     func createRock(at position: CGPoint,
-                    of size: CGSize = SPSizes.rock,
-                    velocity: CGVector) -> Entity {
+                    velocity: CGVector,
+                    of size: CGSize = SPSizes.rock) -> Entity {
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -57,9 +57,9 @@ class SPEntityCreator {
     @discardableResult
     func createBullet(index: Int,
                       from playerId: EntityID,
-                      size: CGSize = SPSizes.bullet,
                       angle: CGFloat,
-                      position: CGPoint
+                      position: CGPoint,
+                      size: CGSize = SPSizes.bullet
     ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)

@@ -91,19 +91,19 @@ class AXGameManager: GameManager {
             LavaHitEvent(axeEntityId: axe)
         }
 
-        contactHandlers[Pair(first: axe, second: peg)] = { (axe: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(first: axe, second: peg)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: peg, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+        contactHandlers[Pair(first: peg, second: axe)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: axe, second: wall)] = { (axe: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(first: axe, second: wall)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: wall, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+        contactHandlers[Pair(first: wall, second: axe)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
@@ -121,7 +121,6 @@ class AXGameManager: GameManager {
         systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(AxeCollideSystem(for: entityManager))
         systemManager.register(ScoreSystem(for: entityManager))
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,

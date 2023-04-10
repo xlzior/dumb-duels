@@ -27,7 +27,6 @@ class GameOverSystem: System {
 
     func createBattleFlashAnimation() -> AnimationComponent {
         AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.1,
@@ -41,7 +40,8 @@ class GameOverSystem: System {
                 AnimationFrame(
                     frameDuration: 0.05,
                     alpha: 0)],
-            numRepeat: 2
+            numRepeat: 2,
+            shouldDestroyEntityOnEnd: true
         )
     }
 

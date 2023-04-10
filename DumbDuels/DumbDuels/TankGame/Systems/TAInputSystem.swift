@@ -23,15 +23,18 @@ class TAInputSystem {
             RotationComponent.self, PhysicsComponent.self)
     }
 
-    private func fireCannonball(at position: CGPoint, of size: CGSize, direction: CGFloat) {
+    private func fireCannonball(at position: CGPoint, of size: CGSize,
+                                direction: CGFloat, firedBy playerId: EntityID) {
         entityCreator.createCannonball(
             at: position, of: size, direction: direction,
-            expiring: Date().addingTimeInterval(TAConstants.cannonballLifespan))
+            expiring: Date().addingTimeInterval(TAConstants.cannonballLifespan),
+            firedBy: playerId,
+            immunityUntil: Date().addingTimeInterval(TAConstants.cannonballImmunityInterval))
     }
 }
 
 // TODO: (WJ) I don't like this, I don't think it makes sense
-extension TAInputSystem: IndexMapInitializable {
+extension TAInputSystem {
     func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
         playerIndexToIdMap[0] = firstPlayer
         playerIndexToIdMap[1] = secondPlayer
@@ -40,7 +43,7 @@ extension TAInputSystem: IndexMapInitializable {
 
 extension TAInputSystem: InputSystem {
     func update() {
-        for (tank, position, rotation, physics) in tanks {
+        for (entity, tank, position, rotation, physics) in tanks.entityAndComponents {
             // after getting pushed by the other tank, velocity goes weird
             physics.velocity = tank.isMoving
                 ? TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
@@ -57,7 +60,7 @@ extension TAInputSystem: InputSystem {
                     let offset = (TASizes.cannonball.width / 2 + 1 + TASizes.tank.width / 2)
                     let cannonPosition = position.position + offset * direction
                     physics.impulse = -TAConstants.recoilForce * direction
-                    fireCannonball(at: cannonPosition, of: TASizes.cannonball, direction: rotation.angleInRadians)
+                    fireCannonball(at: cannonPosition, of: TASizes.cannonball, direction: rotation.angleInRadians, firedBy: entity.id)
                 } else if chargingStage > 2 {
                     tank.fsm.changeState(name: .charging2)
                 } else if chargingStage > 1 {

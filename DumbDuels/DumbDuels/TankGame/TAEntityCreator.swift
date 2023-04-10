@@ -47,9 +47,10 @@ class TAEntityCreator {
 
     @discardableResult
     func createCannonball(at position: CGPoint, of size: CGSize,
-                          direction: CGFloat, expiring expiryDate: Date) -> Entity {
+                          direction: CGFloat, expiring expiryDate: Date,
+                          firedBy playerId: EntityID, immunityUntil: Date) -> Entity {
         entityManager.createEntity {
-            CannonballComponent(expiring: expiryDate)
+            CannonballComponent(expiring: expiryDate, firedBy: playerId, immunityUntil: immunityUntil)
             PositionComponent(position: position)
             RotationComponent(angleInRadians: direction)
             SizeComponent(originalSize: size)

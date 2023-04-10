@@ -38,12 +38,12 @@ class TAGameManager: GameManager {
         let tank = TACollisions.tankBitmask
         let cannonball = TACollisions.cannonballBitmask
 
-        contactHandlers[Pair(first: tank, second: cannonball)] = { (tank: EntityID, _: EntityID) -> Event in
-            CannonballHitTankEvent(entityId: tank)
+        contactHandlers[Pair(first: tank, second: cannonball)] = { (tank: EntityID, cannonball: EntityID) -> Event in
+            CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
         }
 
-        contactHandlers[Pair(first: cannonball, second: tank)] = { (_: EntityID, tank: EntityID) -> Event in
-            CannonballHitTankEvent(entityId: tank)
+        contactHandlers[Pair(first: cannonball, second: tank)] = { (cannonball: EntityID, tank: EntityID) -> Event in
+            CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
         }
 
         return contactHandlers

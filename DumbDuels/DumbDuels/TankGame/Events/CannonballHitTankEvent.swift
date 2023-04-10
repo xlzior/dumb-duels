@@ -10,7 +10,8 @@ import DuelKit
 struct CannonballHitTankEvent: Event {
     var priority = 2
 
-    var entityId: EntityID
+    var cannonballId: EntityID
+    var tankId: EntityID
 
     func execute(with systems: SystemManager) {
         guard let scoreSystem = systems.get(ofType: TAScoreSystem.self),
@@ -19,8 +20,12 @@ struct CannonballHitTankEvent: Event {
             return
         }
 
-        scoreSystem.handleCannonballHitPlayer(entityId: entityId)
-        cannonballSystem.removeAllCannonballs()
-        roundSystem.reset()
+        let didIncrementScore = scoreSystem.handleCannonballHitPlayer(
+            cannonballId: cannonballId, playerId: tankId)
+
+        if didIncrementScore {
+            cannonballSystem.removeAllCannonballs()
+            roundSystem.reset()
+        }
     }
 }

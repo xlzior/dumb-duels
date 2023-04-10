@@ -6,7 +6,7 @@
 //
 
 public struct GameStartEvent: Event {
-    public var priority = 2
+    public var priority = 4
 
     public init(priority: Int = 4) {
         self.priority = priority

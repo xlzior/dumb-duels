@@ -7,13 +7,12 @@
 
 import DuelKit
 
-// TODO: rename idx to index
 class PlayerComponent: Component {
     var id: ComponentID
-    var idx: Int
+    var index: Int
 
-    init(idx: Int) {
+    init(index: Int) {
         self.id = ComponentID()
-        self.idx = idx
+        self.index = index
     }
 }

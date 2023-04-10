@@ -82,7 +82,7 @@ class AXEntityCreator {
         let throwStrengthEntity = createThrowStrength(at: position + CGPoint(x: 0, y: 100))
 
         let player = entityManager.createEntity {
-            PlayerComponent(idx: index)
+            PlayerComponent(index: index)
             PositionComponent(position: position, faceDirection: faceDirection)
             RotationComponent()
             SizeComponent(originalSize: size)

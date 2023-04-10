@@ -24,6 +24,4 @@ enum SPConstants {
 
     static let bombNumBullets: Int = 8
     static let bombRadius: CGFloat = 25.0
-
-    static let winningScore = 5
 }

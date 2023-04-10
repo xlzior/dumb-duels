@@ -16,6 +16,4 @@ struct TAConstants {
     static let cannonballLifespan: TimeInterval = 5
     static let cannonballImmunityInterval: TimeInterval = 0.2
     static let recoilForce: CGFloat = 800
-
-    static let winningScore = 5
 }

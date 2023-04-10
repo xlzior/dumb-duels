@@ -25,6 +25,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     private var isUsingRenderSystem = false
     private var isUsingGameOverSystem = false
     private var gameOverAssets: GameOverAssets?
+    private var winningScore: Int?
     private var isUsingAutoRotateSystem = false
 
     public init(gameController: GameViewController) {
@@ -74,13 +75,15 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public func useGameOverSystem(
         gameStartText: String,
         gameTieText: String,
-        gameWonTexts: [String]
+        gameWonTexts: [String],
+        winningScore: Int = 3
     ) {
         isUsingGameOverSystem = true
         gameOverAssets = GameOverAssets(
             gameStartText: gameStartText,
             gameTieText: gameTieText,
             gameWonTexts: gameWonTexts)
+        self.winningScore = winningScore
     }
 
     public func useAutoRotateSystem() {
@@ -93,11 +96,13 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         }
 
         if isUsingGameOverSystem {
-            guard let gameOverAssets else {
+            guard let gameOverAssets, let winningScore else {
                 return assertionFailure("No game over assets found")
             }
             systemManager.register(GameOverSystem(
-                for: entityManager, onGameOver: handleGameOver, assets: gameOverAssets))
+                for: entityManager, eventFirer: eventManager,
+                onGameOver: handleGameOver, assets: gameOverAssets,
+                winningScore: winningScore))
         }
 
         if isUsingAnimationSystem {
@@ -116,7 +121,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         if isUsingRenderSystem {
             systemManager.register(RenderSystem(
                 for: entityManager,
-                eventManger: eventManager,
+                eventManager: eventManager,
                 gameController: gameController
             ))
         }

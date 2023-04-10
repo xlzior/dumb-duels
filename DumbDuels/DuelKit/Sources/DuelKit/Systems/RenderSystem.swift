@@ -30,7 +30,7 @@ class RenderSystem: System, IndexMapInitializable {
     var playerScores: Assemblage1<ScoreComponent>
     var playerIndexToIdMap: [Int: EntityID]
 
-    init(for entityManager: EntityManager, eventManger: EventManager, gameController: GameController) {
+    init(for entityManager: EntityManager, eventManager: EventManager, gameController: GameController) {
         self.entityManager = entityManager
         self.gameController = gameController
         self.screenSize = gameController.screenSize

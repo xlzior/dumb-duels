@@ -14,9 +14,10 @@ struct SOPositions {
     private static let halfGoalWidth = SOSizes.goal.width / 2
 
     static let goals = [
-        CGPoint(x: halfGoalWidth, y: midY),
-        CGPoint(x: Sizes.game.width - halfGoalWidth, y: midY)
+        CGPoint(x: Sizes.game.width - halfGoalWidth, y: midY),
+        CGPoint(x: halfGoalWidth, y: midY)
     ]
+    static let goalFacing: [FaceDirection] = [.left, .right]
 
     private static let startingDistanceFromBall: CGFloat = 100
 
@@ -24,8 +25,7 @@ struct SOPositions {
         CGPoint(x: midX - startingDistanceFromBall, y: midY),
         CGPoint(x: midX + startingDistanceFromBall, y: midY)
     ]
-    static let playerRotations: [CGFloat] = [0, Double.pi]
-    static let playerFacing: [FaceDirection] = [.right, .left]
+    static let playerRotations: [CGFloat] = [Double.pi, 0]
 
     static let ball = CGPoint(x: midX, y: midY)
 

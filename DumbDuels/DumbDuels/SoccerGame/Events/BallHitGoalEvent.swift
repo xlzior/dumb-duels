@@ -13,10 +13,12 @@ struct BallHitGoalEvent: Event {
     var goalId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let scoreSystem = systems.get(ofType: SOScoreSystem.self) else {
+        guard let scoreSystem = systems.get(ofType: SOScoreSystem.self),
+              let roundSystem = systems.get(ofType: SORoundSystem.self) else {
             return
         }
 
         scoreSystem.handleBallHitGoal(goalId: goalId)
+        roundSystem.reset()
     }
 }

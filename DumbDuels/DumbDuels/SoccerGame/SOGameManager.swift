@@ -26,7 +26,7 @@ class SOGameManager: GameManager {
                 at: SOPositions.goals[index],
                 of: SOSizes.goal,
                 thickness: SOSizes.goalThickness,
-                facing: SOPositions.playerFacing[index])
+                facing: SOPositions.goalFacing[index])
 
             initialPlayerIndexToIdMap[index] = player.id
         }
@@ -40,6 +40,16 @@ class SOGameManager: GameManager {
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
+        let ball = SOCollisions.ballBitmask
+        let goal = SOCollisions.goalBackBitmask
+
+        contactHandlers[Pair(first: ball, second: goal)] = { (_: EntityID, goal: EntityID) -> Event in
+            BallHitGoalEvent(goalId: goal)
+        }
+
+        contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
+            BallHitGoalEvent(goalId: goal)
+        }
 
         return contactHandlers
     }
@@ -47,7 +57,7 @@ class SOGameManager: GameManager {
     override func setUpUserSystems() {
         systemManager.register(SOInputSystem(for: entityManager))
         systemManager.register(SOScoreSystem(for: entityManager))
-        systemManager.register(SORoundSystem(for: entityManager))
+        systemManager.register(SORoundSystem(for: entityManager, eventFirer: eventManager))
 
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,

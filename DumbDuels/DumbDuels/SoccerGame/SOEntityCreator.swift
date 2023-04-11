@@ -19,7 +19,7 @@ class SOEntityCreator {
 
     @discardableResult
     func createPlayer(index: Int, at position: CGPoint, of size: CGSize, rotation: CGFloat) -> Entity {
-        entityManager.createEntity {
+        let player = entityManager.createEntity {
             SoccerPlayerComponent(index: index)
             PositionComponent(position: position)
             RotationComponent(angleInRadians: rotation)
@@ -28,6 +28,10 @@ class SOEntityCreator {
             SpriteComponent(assetName: SOAssets.players[index])
             physicsCreator.createPlayer(of: size)
         }
+
+        player.assign(component: ScoreComponent(for: index, withId: player.id))
+
+        return player
     }
 
     @discardableResult

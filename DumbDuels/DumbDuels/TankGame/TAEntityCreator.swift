@@ -24,7 +24,7 @@ class TAEntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             AutoRotateComponent(by: TAConstants.rotationSpeed)
-            WillExplodeParticlesComponent(particles: Assets.particles[index])
+            WillExplodeParticlesComponent(particles: TAAssets.particles[index])
             physicsCreator.createTank(of: size)
         }
 
@@ -72,6 +72,17 @@ class TAEntityCreator {
         ball.assign(component: soundComponent)
 
         return ball
+    }
+
+    @discardableResult
+    func createCannonballFire(of size: CGSize, ballId: EntityID) -> Entity {
+        entityManager.createEntity {
+            CannonballFireComponent(ballId: ballId)
+            PositionComponent(position: .zero)
+            RotationComponent(angleInRadians: .zero)
+            SizeComponent(originalSize: size)
+            SpriteComponent(assetName: TAAssets.cannonballFire)
+        }
     }
 
     @discardableResult

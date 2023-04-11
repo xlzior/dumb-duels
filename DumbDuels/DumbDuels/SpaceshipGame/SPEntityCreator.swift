@@ -30,7 +30,7 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "spaceship\(index)")
             SpaceshipComponent(index: index)
-            WillExplodeParticlesComponent(particles: Assets.particles[index])
+            WillExplodeParticlesComponent(particles: SPAssets.particles[index])
             SoundComponent(sounds: [SPSoundTypes.spaceshipEngine: EngineSound()])
             physicsCreator.createSpaceship(of: size)
         }

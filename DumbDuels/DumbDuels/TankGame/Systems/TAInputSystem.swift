@@ -25,11 +25,12 @@ class TAInputSystem {
 
     private func fireCannonball(at position: CGPoint, of size: CGSize,
                                 direction: CGFloat, firedBy playerId: EntityID) {
-        entityCreator.createCannonball(
+        let ball = entityCreator.createCannonball(
             at: position, of: size, direction: direction,
             expiring: Date().addingTimeInterval(TAConstants.cannonballLifespan),
             firedBy: playerId,
             immunityUntil: Date().addingTimeInterval(TAConstants.cannonballImmunityInterval))
+        entityCreator.createCannonballFire(of: TASizes.cannonballFire, ballId: ball.id)
     }
 }
 

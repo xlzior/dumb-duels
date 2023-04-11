@@ -44,7 +44,7 @@ extension EntityManager {
     }
 
     @discardableResult
-    func destroy(entityId: EntityID) -> Bool {
+    public func destroy(entityId: EntityID) -> Bool {
         guard entityComponentMap.keys.contains(entityId) else {
             assertionFailure("Attempt to destroy non-existent entity \(entityId)")
             return false

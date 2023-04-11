@@ -34,12 +34,23 @@ struct SOPositions {
     private static let topWallY = (Sizes.game.height - SOSizes.goal.height) / 4
     private static let bottomWallY = Sizes.game.height - topWallY
 
+    private static let field = Sizes.gameRect.insetBy(dx: SOSizes.goal.width, dy: 0)
+
     static let walls: [CGPoint] = [
-        CGPoint(x: midX, y: -buffer), // bottom
-        CGPoint(x: midX, y: Sizes.game.height + buffer), // top
-        CGPoint(x: SOSizes.goal.width - buffer, y: topWallY), // top left
-        CGPoint(x: Sizes.game.width - SOSizes.goal.width + buffer, y: topWallY),// top right
-        CGPoint(x: SOSizes.goal.width - buffer, y: bottomWallY),// bottom left
-        CGPoint(x: Sizes.game.width - SOSizes.goal.width + buffer, y: bottomWallY)// bottom right
+        CGPoint(x: midX, y: field.minY - buffer), // bottom
+        CGPoint(x: midX, y: field.maxY + buffer), // top
+        CGPoint(x: field.minX - buffer, y: topWallY), // top left
+        CGPoint(x: field.maxX + buffer, y: topWallY),// top right
+        CGPoint(x: field.minX - buffer, y: bottomWallY),// bottom left
+        CGPoint(x: field.maxX + buffer, y: bottomWallY), // bottom right
+        CGPoint(x: field.minX, y: field.minY),
+        CGPoint(x: field.minX, y: field.maxY),
+        CGPoint(x: field.maxX, y: field.minY),
+        CGPoint(x: field.maxX, y: field.maxY)
+    ]
+
+    static let wallRotations: [CGFloat] = [
+        0, 0, 0, 0, 0, 0,
+        Double.pi / 4, Double.pi / 4, Double.pi / 4, Double.pi / 4
     ]
 }

@@ -20,12 +20,18 @@ struct SOSizes {
 
     private static let sideWallHeight = (Sizes.game.height - goal.height) / 2
 
+    static let corner: CGFloat = 40
+
     static let walls = [
         CGSize(width: Sizes.game.width, height: wallThickness), // bottom
         CGSize(width: Sizes.game.width, height: wallThickness), // top
         CGSize(width: wallThickness, height: sideWallHeight), // top left
         CGSize(width: wallThickness, height: sideWallHeight), // top right
         CGSize(width: wallThickness, height: sideWallHeight), // bottom left
-        CGSize(width: wallThickness, height: sideWallHeight) // bottom right
+        CGSize(width: wallThickness, height: sideWallHeight), // bottom right
+        CGSize(width: 2 * corner, height: 2 * corner),
+        CGSize(width: 2 * corner, height: 2 * corner),
+        CGSize(width: 2 * corner, height: 2 * corner),
+        CGSize(width: 2 * corner, height: 2 * corner)
     ]
 }

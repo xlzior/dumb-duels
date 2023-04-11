@@ -91,10 +91,10 @@ class SOEntityCreator {
     }
 
     @discardableResult
-    func createWall(at position: CGPoint, of size: CGSize) -> Entity {
+    func createWall(at position: CGPoint, of size: CGSize, rotation: CGFloat) -> Entity {
         entityManager.createEntity {
             PositionComponent(position: position)
-            RotationComponent()
+            RotationComponent(angleInRadians: rotation)
             SizeComponent(originalSize: size)
             physicsCreator.createWall(of: size)
         }

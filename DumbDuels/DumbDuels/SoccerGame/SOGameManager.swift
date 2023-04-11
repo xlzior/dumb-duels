@@ -31,8 +31,10 @@ class SOGameManager: GameManager {
             initialPlayerIndexToIdMap[index] = player.id
         }
 
-        for (position, size) in zip(SOPositions.walls, SOSizes.walls) {
-            creator.createWall(at: position, of: size)
+        for (position, (size, rotation)) in zip(SOPositions.walls,
+                                                zip(SOSizes.walls,
+                                                    SOPositions.wallRotations)) {
+            creator.createWall(at: position, of: size, rotation: rotation)
         }
 
         creator.createBall(at: SOPositions.ball, of: SOSizes.ball)

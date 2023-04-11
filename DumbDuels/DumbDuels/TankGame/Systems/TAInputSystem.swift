@@ -37,10 +37,6 @@ class TAInputSystem {
 extension TAInputSystem: InputSystem {
     func update() {
         for (entity, tank, position, rotation, physics, sound) in tanks.entityAndComponents {
-            if tank.isMoving {
-                sound.sounds[TASoundTypes.tankEngine]?.play()
-            }
-
             // after getting pushed by the other tank, velocity goes weird
             physics.velocity = tank.isMoving
                 ? TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
@@ -76,7 +72,7 @@ extension TAInputSystem: InputSystem {
 
     func handleButtonDown(playerIndex: Int) {
         guard let tankId = playerIndexToIdMap[playerIndex],
-              let (tank, _, rotation, physics, _) = tanks.getComponents(for: tankId) else {
+              let (tank, _, rotation, physics, sound) = tanks.getComponents(for: tankId) else {
             return
         }
 
@@ -85,6 +81,8 @@ extension TAInputSystem: InputSystem {
         entityManager.remove(componentType: AutoRotateComponent.typeId, from: tankId)
 
         physics.velocity = TAConstants.movingSpeed * CGVector(angle: rotation.angleInRadians)
+
+        sound.sounds[TASoundTypes.tankEngine]?.play()
     }
 
     func handleButtonUp(playerIndex: Int) {

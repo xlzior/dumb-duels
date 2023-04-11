@@ -9,6 +9,11 @@ import Foundation
 
 public protocol IndexMapInitializable {
     var playerIndexToIdMap: [Int: EntityID] { get set }
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID)
+}
 
+extension IndexMapInitializable {
+    mutating func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
+        playerIndexToIdMap[0] = firstPlayer
+        playerIndexToIdMap[1] = secondPlayer
+    }
 }

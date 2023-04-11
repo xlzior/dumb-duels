@@ -103,11 +103,6 @@ class AXInputSystem {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }
     }
-
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
-    }
 }
 
 extension AXInputSystem: InputSystem {

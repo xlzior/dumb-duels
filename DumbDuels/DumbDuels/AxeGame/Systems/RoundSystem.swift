@@ -20,8 +20,6 @@ class RoundSystem: System {
     private var platforms: Assemblage2<PlatformComponent, PositionComponent>
     private var throwStrength: Assemblage2<ThrowStrengthComponent, SizeComponent>
 
-    private var isGameOver = false
-
     init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: AXEntityCreator) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
@@ -44,34 +42,12 @@ class RoundSystem: System {
 
     func update() {
         if isAllAxeThrown() && isAllThrownAxeOutOfBounds() {
-            checkWin()
             reset()
         }
     }
 
-    func checkWin() {
-        var winningEntities = [EntityID]()
-        for (entity, _, score, _, _, _) in players.entityAndComponents
-        where score.score >= AXConstants.winningScore {
-            winningEntities.append(entity.id)
-        }
-
-        guard !winningEntities.isEmpty else {
-            return
-        }
-
-        if winningEntities.count > 1 {
-            eventFirer.fire(GameTieEvent())
-        } else {
-            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
-        }
-        isGameOver = true
-    }
-
     func reset() {
-        if !isGameOver {
-            eventFirer.fire(GameStartEvent())
-        }
+        eventFirer.fire(GameStartEvent())
 
         // Destroy all thrown axes since they are out of bounds
         for (_, _, _, physicsComponent) in thrownAxe {
@@ -82,7 +58,7 @@ class RoundSystem: System {
             // create new axe
             let axe = entityCreator.createAxe(
                 withHorizontalOffset: AXSizes.axeOffsetFromPlayer(facing: playerPosition.faceDirection),
-                from: AXPositions.players[player.idx],
+                from: AXPositions.players[player.index],
                 of: AXSizes.axe,
                 facing: playerPosition.faceDirection, onPlatform: playerSyncX.syncFrom
             )

@@ -30,7 +30,7 @@ class RenderSystem: System, IndexMapInitializable {
     var playerScores: Assemblage1<ScoreComponent>
     var playerIndexToIdMap: [Int: EntityID]
 
-    init(for entityManager: EntityManager, eventManger: EventManager, gameController: GameController) {
+    init(for entityManager: EntityManager, eventManager: EventManager, gameController: GameController) {
         self.entityManager = entityManager
         self.gameController = gameController
         self.screenSize = gameController.screenSize
@@ -97,10 +97,5 @@ class RenderSystem: System, IndexMapInitializable {
         for score in playerScores {
             gameController.updateScore(for: score.playerIndex, with: score.score)
         }
-    }
-
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
     }
 }

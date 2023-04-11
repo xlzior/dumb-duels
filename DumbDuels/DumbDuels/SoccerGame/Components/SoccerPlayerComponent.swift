@@ -1,18 +1,20 @@
 //
-//  PlayerComponent.swift
+//  SoccerPlayerComponent.swift
 //  DumbDuels
 //
-//  Created by Esmanda Wong on 16/3/23.
+//  Created by Wen Jun Lye on 11/4/23.
 //
 
 import DuelKit
 
-class PlayerComponent: Component {
+class SoccerPlayerComponent: Component {
     var id: ComponentID
     var index: Int
+    var isMoving: Bool
 
     init(index: Int) {
         self.id = ComponentID()
         self.index = index
+        self.isMoving = false
     }
 }

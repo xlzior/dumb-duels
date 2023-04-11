@@ -14,7 +14,6 @@ class SPRoundSystem: System {
     unowned var entityCreator: SPEntityCreator
 
     private var spaceships: Assemblage3<SpaceshipComponent, PhysicsComponent, ScoreComponent>
-    private var isGameOver: Bool
     private var isResetThisFrame: Bool
 
     init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: SPEntityCreator) {
@@ -23,31 +22,11 @@ class SPRoundSystem: System {
         self.entityCreator = entityCreator
         self.spaceships = entityManager.assemblage(
             requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
-        self.isGameOver = false
         self.isResetThisFrame = false
     }
 
     func update() {
         isResetThisFrame = false
-    }
-
-    func checkWin() {
-        var winningEntities = [EntityID]()
-        for (entity, _, _, score) in spaceships.entityAndComponents
-        where score.score >= SPConstants.winningScore {
-            winningEntities.append(entity.id)
-        }
-
-        guard !winningEntities.isEmpty else {
-            return
-        }
-
-        if winningEntities.count > 1 {
-            eventFirer.fire(GameTieEvent())
-        } else {
-            eventFirer.fire(GameWonEvent(entityId: winningEntities[0]))
-        }
-        isGameOver = true
     }
 
     func reset() {
@@ -56,8 +35,6 @@ class SPRoundSystem: System {
         }
 
         isResetThisFrame = true
-
-        checkWin()
 
         var indexToIdMap = [Int: EntityID]()
         let (firstPosition, secondPosition) = SPSizes.randomSpaceshipPositions()
@@ -84,8 +61,6 @@ class SPRoundSystem: System {
         }
         eventFirer.fire(SpaceshipRecreatedEvent(firstSpaceshipId: firstId, secondSpaceshipId: secondId))
 
-        if !isGameOver {
-            eventFirer.fire(GameStartEvent())
-        }
+        eventFirer.fire(GameStartEvent())
     }
 }

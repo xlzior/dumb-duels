@@ -53,11 +53,6 @@ class SPInputSystem: InputSystem {
 
     }
 
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
-    }
-
     private func canAssignAutoRotate(entityId: EntityID) -> Bool {
         spaceships.isMember(entityId: entityId) &&
         !entityManager.has(componentTypeId: AutoRotateComponent.typeId, entityId: entityId)

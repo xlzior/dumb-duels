@@ -34,14 +34,6 @@ class TAInputSystem {
     }
 }
 
-// TODO: (WJ) I don't like this, I don't think it makes sense
-extension TAInputSystem {
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
-    }
-}
-
 extension TAInputSystem: InputSystem {
     func update() {
         for (entity, tank, position, rotation, physics, sound) in tanks.entityAndComponents {

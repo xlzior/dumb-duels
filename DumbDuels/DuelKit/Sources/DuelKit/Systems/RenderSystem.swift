@@ -98,9 +98,4 @@ class RenderSystem: System, IndexMapInitializable {
             gameController.updateScore(for: score.playerIndex, with: score.score)
         }
     }
-
-    func setPlayerId(firstPlayer: EntityID, secondPlayer: EntityID) {
-        playerIndexToIdMap[0] = firstPlayer
-        playerIndexToIdMap[1] = secondPlayer
-    }
 }

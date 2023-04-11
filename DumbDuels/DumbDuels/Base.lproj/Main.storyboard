@@ -218,7 +218,7 @@
         <!--Game View Controller-->
         <scene sceneID="Oxa-NU-wgz">
             <objects>
-                <viewController id="vev-zi-EWM" customClass="TTGameViewController" sceneMemberID="viewController">
+                <viewController id="vev-zi-EWM" customClass="TTGameViewController" customModule="DumbDuels" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a7D-5x-BD5">
                         <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

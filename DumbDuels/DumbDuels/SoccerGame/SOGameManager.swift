@@ -64,7 +64,9 @@ class SOGameManager: GameManager {
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
-                          gameWonTexts: Assets.gameWonText)
+                          gameWonTexts: Assets.gameWonText,
+                          gameStartSound: Sounds.battleSound,
+                          gameEndSound: Sounds.gameEndSound)
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

@@ -13,7 +13,8 @@ class SOGameViewController: GameViewController {
         gameManager = SOGameManager(gameController: self)
     }
 
-    override func styleGameViewBackground() {
+    override func customiseBackgroundViewAndSound() {
         gameView.image = UIImage(imageLiteralResourceName: SOAssets.background)
+        backgroundSound = GameBackgroundSound()
     }
 }

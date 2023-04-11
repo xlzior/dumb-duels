@@ -83,7 +83,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         gameTieText: String,
         gameWonTexts: [String],
         gameStartSound: @escaping () -> Sound,
-        gameEndSound: @escaping () -> Sound
+        gameEndSound: @escaping () -> Sound,
         winningScore: Int = 3
     ) {
         isUsingGameOverSystem = true

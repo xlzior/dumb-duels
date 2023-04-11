@@ -48,6 +48,12 @@ class AXEntityCreator {
             SyncXPositionComponent(syncFrom: platformId, offset: offset)
             AxeComponent()
         }
+
+        let soundComponent = SoundComponent(sounds: [
+            AXSoundTypes.axeExplode: ExplodeSound()
+        ])
+        axe.assign(component: soundComponent)
+
         return axe
     }
 
@@ -101,6 +107,12 @@ class AXEntityCreator {
         let scoreComponent = ScoreComponent(for: index, withId: player.id)
         player.assign(component: scoreComponent)
 
+        let soundComponent = SoundComponent(sounds: [
+            AXSoundTypes.playerJump: PlayerJumpSound(),
+            AXSoundTypes.playerHit: PlayerHitSound()
+        ])
+        player.assign(component: soundComponent)
+
         return player
     }
 
@@ -134,8 +146,10 @@ class AXEntityCreator {
             SpriteComponent(assetName: AXAssets.platform)
             PlatformComponent()
             OscillationComponent(centerOfOscillation: platformPosition,
-                                 axis: AXOscillation.horizontalAxis, amplitude: AXOscillation.platformAmplitude[index],
-                                 period: AXOscillation.platformPeriod[index], displacement: AXOscillation.platformDisplacement[index])
+                                 axis: AXOscillation.horizontalAxis,
+                                 amplitude: AXOscillation.platformAmplitude[index],
+                                 period: AXOscillation.platformPeriod[index],
+                                 displacement: AXOscillation.platformDisplacement[index])
         }
         let physicsComponent = physicsCreator.createPlatform(of: size)
         platform.assign(component: physicsComponent)

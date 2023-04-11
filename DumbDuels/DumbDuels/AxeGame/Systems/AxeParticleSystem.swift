@@ -12,7 +12,8 @@ class AxeParticleSystem: System {
     unowned var entityManager: EntityManager
     unowned var entityCreator: AXEntityCreator
 
-    private var thrownAxe: Assemblage4<AxeComponent, PositionComponent, RotationComponent, PhysicsComponent>
+    private var thrownAxe: Assemblage5<
+        AxeComponent, PositionComponent, RotationComponent, PhysicsComponent, SoundComponent>
     let numParticles: Int = 20
 
     init(for entityManager: EntityManager, entityCreator: AXEntityCreator) {
@@ -20,16 +21,19 @@ class AxeParticleSystem: System {
         self.entityCreator = entityCreator
         self.thrownAxe = entityManager.assemblage(
             requiredComponents: AxeComponent.self, PositionComponent.self,
-            RotationComponent.self, PhysicsComponent.self)
+            RotationComponent.self, PhysicsComponent.self, SoundComponent.self)
     }
 
     func update() {}
 
     func createParticlesFrom(axeEntityId: EntityID) {
-        guard let (_, axePosition, _, physicsComponent) = thrownAxe.getComponents(for: axeEntityId) else {
+        guard let (_, axePosition, _, physicsComponent, sound) = thrownAxe.getComponents(for: axeEntityId) else {
             assertionFailure("Trying to create particles from a non-axe entity \(axeEntityId)")
             return
         }
+        // Play axe explode sound
+        sound.sounds[AXSoundTypes.axeExplode]?.play()
+
         // Destroy the axe
         physicsComponent.toBeRemoved = true
         physicsComponent.shouldDestroyEntityWhenRemove = true

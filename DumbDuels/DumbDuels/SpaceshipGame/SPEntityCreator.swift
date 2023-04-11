@@ -30,6 +30,8 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "spaceship\(index)")
             SpaceshipComponent(index: index)
+            WillExplodeParticlesComponent(particles: SPAssets.particles[index])
+            SoundComponent(sounds: [SPSoundTypes.spaceshipEngine: EngineSound()])
             physicsCreator.createSpaceship(of: size)
         }
 
@@ -40,8 +42,8 @@ class SPEntityCreator {
 
     @discardableResult
     func createRock(at position: CGPoint,
-                    of size: CGSize = SPSizes.rock,
-                    velocity: CGVector) -> Entity {
+                    velocity: CGVector,
+                    of size: CGSize = SPSizes.rock) -> Entity {
         let rock = entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
@@ -56,9 +58,9 @@ class SPEntityCreator {
     @discardableResult
     func createBullet(index: Int,
                       from playerId: EntityID,
-                      size: CGSize = SPSizes.bullet,
                       angle: CGFloat,
-                      position: CGPoint
+                      position: CGPoint,
+                      size: CGSize = SPSizes.bullet
     ) -> Entity {
         // index is needed so I know what colour sprite to attach
         // playerId is needed so I know who fired it (if get hit by own bullet, is ok)
@@ -68,6 +70,7 @@ class SPEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: "bullet\(index)")
             BulletComponent(for: playerId)
+            SoundComponent(sounds: [SPSoundTypes.bullet: BulletSound(isPlaying: true)])
             physicsCreator.createBullet(of: size, pointing: angle)
         }
     }
@@ -78,6 +81,7 @@ class SPEntityCreator {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
+            SoundComponent(sounds: [SPSoundTypes.powerup: PowerupSound()])
             physicsCreator.createPowerup(of: size)
         }
 

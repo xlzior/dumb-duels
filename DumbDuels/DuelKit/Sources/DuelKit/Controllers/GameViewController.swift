@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import AVFoundation
 
 open class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
     var screenOffset = CGPoint()
 
+    private var player: AVAudioPlayer?
+    public var backgroundSound: Sound?
     public var gameView: UIImageView!
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
@@ -21,16 +24,30 @@ open class GameViewController: UIViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
         setUpGameView()
-        styleGameViewBackground()
+        customiseBackgroundViewAndSound()
+        setUpSound()
         setUpGestureRecognisers()
         setUpGameManager()
     }
 
     override open func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        player?.stop()
         onBackToHomePage()
     }
 
-    open func styleGameViewBackground() {}
+    open func customiseBackgroundViewAndSound() {}
+
+    private func setUpSound() {
+        guard let sound = backgroundSound else {
+            return
+        }
+
+        player = try? AVAudioPlayer(contentsOf: sound.url)
+        player?.numberOfLoops = sound.numLoop
+        player?.volume = sound.volume
+        player?.play()
+    }
 
     private func setUpGameView() {
         gameView = GameAreaView(screenSize: screenSize)

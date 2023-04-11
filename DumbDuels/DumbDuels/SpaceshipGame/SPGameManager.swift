@@ -54,6 +54,10 @@ class SPGameManager: GameManager {
             PlayerHitPowerupEvent(powerupId: powerup, playerId: spaceship)
         }
 
+        contactHandlers[Pair(first: spaceship, second: spaceship)] = { (_: EntityID, _: EntityID) -> Event in
+            SpaceshipCollideEvent()
+        }
+
         return contactHandlers
     }
 
@@ -71,10 +75,14 @@ class SPGameManager: GameManager {
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
 
+        useParticleSystem()
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
-                          gameWonTexts: Assets.gameWonText)
+                          gameWonTexts: Assets.gameWonText,
+                          gameStartSound: Sounds.battleSound,
+                          gameEndSound: Sounds.gameEndSound)
+        useSoundSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

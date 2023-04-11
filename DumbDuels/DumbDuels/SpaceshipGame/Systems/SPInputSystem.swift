@@ -10,20 +10,20 @@ import DuelKit
 
 class SPInputSystem: InputSystem {
     unowned var entityManager: EntityManager
-    private var spaceships: Assemblage3<SpaceshipComponent, RotationComponent, PhysicsComponent>
+    private var spaceships: Assemblage4<SpaceshipComponent, RotationComponent, PhysicsComponent, SoundComponent>
 
     var playerIndexToIdMap: [Int: EntityID]
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.spaceships = entityManager.assemblage(
-            requiredComponents: SpaceshipComponent.self, RotationComponent.self, PhysicsComponent.self)
+        self.spaceships = entityManager.assemblage(requiredComponents: SpaceshipComponent.self,
+                                                   RotationComponent.self, PhysicsComponent.self, SoundComponent.self)
         self.playerIndexToIdMap = [Int: EntityID]()
     }
 
     func handleButtonDown(playerIndex: Int) {
         guard let entityId = playerIndexToIdMap[playerIndex],
-              let (_, rotation, physics) = spaceships.getComponents(for: entityId) else {
+              let (_, rotation, physics, sound) = spaceships.getComponents(for: entityId) else {
             return
         }
 
@@ -31,6 +31,8 @@ class SPInputSystem: InputSystem {
         // set the velocity directly so there is no drifting
         physics.velocity = SPConstants.propulsionForce * angle
         physics.linearDamping = SPPhysics.spaceshipMovingDamping
+
+        sound.sounds[SPSoundTypes.spaceshipEngine]?.play()
 
         entityManager.remove(componentType: AutoRotateComponent.typeId, from: entityId)
 

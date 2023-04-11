@@ -6,11 +6,12 @@
 //
 
 struct SPAssets {
-    static let spaceshipParticles = [
-        ["spaceship-0-1", "spaceship-0-2", "spaceship-0-3"],
-        ["spaceship-1-1", "spaceship-1-2", "spaceship-1-3"]
-    ]
     static let star = "star"
 
     static let background = "spaceship-background"
+
+    static let particles = [
+        ["red-0-1", "red-0-2", "red-0-3"],
+        ["blue-1-1", "blue-1-2", "blue-1-3"]
+    ]
 }

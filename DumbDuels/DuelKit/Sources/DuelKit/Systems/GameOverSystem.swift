@@ -21,12 +21,12 @@ class GameOverSystem: System {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: text)
+            SoundComponent(sounds: ["game-end": assets.gameEndSound()])
         }
     }
 
     func createBattleFlashAnimation() -> AnimationComponent {
         AnimationComponent(
-            shouldDestroyEntityOnEnd: true,
             frames: [
                 AnimationFrame(
                     frameDuration: 0.1,
@@ -40,7 +40,8 @@ class GameOverSystem: System {
                 AnimationFrame(
                     frameDuration: 0.05,
                     alpha: 0)],
-            numRepeat: 2
+            numRepeat: 2,
+            shouldDestroyEntityOnEnd: true
         )
     }
 
@@ -50,6 +51,7 @@ class GameOverSystem: System {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: assets.gameStartText)
+            SoundComponent(sounds: ["battle": assets.gameStartSound()])
             createBattleFlashAnimation()
         }
     }

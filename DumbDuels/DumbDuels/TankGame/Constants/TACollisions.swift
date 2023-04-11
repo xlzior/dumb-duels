@@ -17,7 +17,7 @@ struct TACollisions {
     static let sideWallCollideBitmask: UInt32 = tankBitmask | cannonballBitmask
 
     static let tankContactBitmask: UInt32 = cannonballBitmask
-    static let cannonballContactBitmask: UInt32 = tankBitmask
-    static let wallContactBitmask: UInt32 = 0
-    static let sideWallContactBitmask: UInt32 = 0
+    static let cannonballContactBitmask: UInt32 = tankBitmask | wallBitmask | sideWallBitmask
+    static let wallContactBitmask: UInt32 = cannonballBitmask
+    static let sideWallContactBitmask: UInt32 = cannonballBitmask
 }

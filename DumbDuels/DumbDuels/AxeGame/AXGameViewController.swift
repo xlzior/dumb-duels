@@ -7,13 +7,15 @@
 
 import UIKit
 import DuelKit
+import AVFoundation
 
 class AXGameViewController: GameViewController {
     override func setUpGameManager() {
         gameManager = AXGameManager(gameController: self)
     }
 
-    override func styleGameViewBackground() {
+    override func customiseBackgroundViewAndSound() {
         gameView.image = UIImage(imageLiteralResourceName: AXAssets.background)
+        backgroundSound = GameBackgroundSound()
     }
 }

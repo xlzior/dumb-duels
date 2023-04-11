@@ -34,12 +34,12 @@ public class PhysicsComponent: Component {
     public var toBeRemoved: Bool
     public var shouldDestroyEntityWhenRemove: Bool
 
-    private init?(shape: Shape, radius: CGFloat? = nil, size: CGSize? = nil,
-                  mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
+    private init?(shape: Shape, mass: CGFloat, velocity: CGVector, affectedByGravity: Bool,
                   linearDamping: CGFloat, isDynamic: Bool, allowsRotation: Bool,
                   restitution: CGFloat, friction: CGFloat, ownBitmask: UInt32,
                   collideBitmask: UInt32, contactBitmask: UInt32,
                   zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat,
+                  radius: CGFloat? = nil, size: CGSize? = nil,
                   toBeRemoved: Bool = false, shouldDestroyEntityWhenRemove: Bool = false) {
         guard (size == nil && radius != nil) || (size != nil && radius == nil) else {
             assertionFailure(
@@ -94,12 +94,12 @@ public class PhysicsComponent: Component {
                             allowsRotation: Bool, restitution: CGFloat, friction: CGFloat,
                             ownBitmask: UInt32, collideBitmask: UInt32, contactBitmask: UInt32,
                             zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
-        self.init(shape: .circle, radius: radius, size: nil, mass: mass,
-                  velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
+        self.init(shape: .circle, mass: mass, velocity: velocity,
+                  affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
                   friction: friction, ownBitmask: ownBitmask, collideBitmask: collideBitmask,
                   contactBitmask: contactBitmask, zRotation: zRotation, impulse: impulse,
-                  angularImpulse: angularImpulse)!
+                  angularImpulse: angularImpulse, radius: radius, size: nil)!
     }
 
     public convenience init(rectangleOf size: CGSize, mass: CGFloat, velocity: CGVector,
@@ -107,11 +107,11 @@ public class PhysicsComponent: Component {
                             allowsRotation: Bool, restitution: CGFloat, friction: CGFloat,
                             ownBitmask: UInt32, collideBitmask: UInt32, contactBitmask: UInt32,
                             zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
-        self.init(shape: .rectangle, radius: nil, size: size, mass: mass,
-                  velocity: velocity, affectedByGravity: affectedByGravity, linearDamping: linearDamping,
+        self.init(shape: .rectangle, mass: mass, velocity: velocity,
+                  affectedByGravity: affectedByGravity, linearDamping: linearDamping,
                   isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
                   friction: friction, ownBitmask: ownBitmask, collideBitmask: collideBitmask,
                   contactBitmask: contactBitmask, zRotation: zRotation, impulse: impulse,
-                  angularImpulse: angularImpulse)!
+                  angularImpulse: angularImpulse, radius: nil, size: size)!
     }
 }

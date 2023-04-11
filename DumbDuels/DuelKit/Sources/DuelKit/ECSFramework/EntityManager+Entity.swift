@@ -39,7 +39,7 @@ extension EntityManager {
     }
 
     @discardableResult
-    func destroy(entity: Entity) -> Bool {
+    public func destroy(entity: Entity) -> Bool {
         destroy(entityId: entity.id)
     }
 

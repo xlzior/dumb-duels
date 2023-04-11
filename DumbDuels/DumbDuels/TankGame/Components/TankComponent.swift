@@ -13,6 +13,7 @@ class TankComponent: Component {
     var index: Int
     var isMoving = false
     var rotationDirection: CGFloat = 1
+    var chargingState: Int = 0
     var chargingSince: Date?
     let fsm: EntityStateMachine<State>
 

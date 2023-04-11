@@ -35,8 +35,8 @@ public class AnimationComponent: ComponentInitializable {
         self.timeElapsedForCurrentFrame = 0
     }
 
-    public init(isPlaying: Bool = true, shouldDestroyEntityOnEnd: Bool = false, frames: [AnimationFrame],
-         currentFrameIdx: Int = 0, numRepeat: Int, timeElapsed: Double = 0) {
+    public init(frames: [AnimationFrame], numRepeat: Int, isPlaying: Bool = true,
+                shouldDestroyEntityOnEnd: Bool = false, currentFrameIdx: Int = 0, timeElapsed: Double = 0) {
         self.id = ComponentID()
         self.isPlaying = isPlaying
         self.shouldDestroyEntityOnEnd = shouldDestroyEntityOnEnd

@@ -12,7 +12,7 @@ class ScoreLabel: UILabel {
     var isPlayerOne: Bool
     var index: Int
 
-    init(screenSize: CGSize, isPlayerOne: Bool, score: Int = 0, index: Int) {
+    init(screenSize: CGSize, isPlayerOne: Bool, index: Int, score: Int = 0) {
         self.isPlayerOne = isPlayerOne
         self.index = index
         super.init(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
@@ -48,6 +48,7 @@ class ScoreLabel: UILabel {
         )
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

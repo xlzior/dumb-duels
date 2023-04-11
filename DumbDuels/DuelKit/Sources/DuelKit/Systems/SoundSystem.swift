@@ -28,7 +28,9 @@ public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
                 }
                 player.numberOfLoops = sound.numLoop
                 player.volume = sound.volume
-                player.play()
+                DispatchQueue.global(qos: .background).async {
+                    player.play()
+                }
                 sound.stop()
 
                 if soundComponent.shouldDestroyEntityOnEnd {

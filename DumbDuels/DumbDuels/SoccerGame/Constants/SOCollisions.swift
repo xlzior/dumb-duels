@@ -20,10 +20,10 @@ struct SOCollisions {
     static let goalCollideBitmask: UInt32 = playerBitmask
     static let wallCollideBitmask: UInt32 = playerBitmask | ballBitmask
 
-    static let playerContactBitmask: UInt32 = 0
-    static let ballContactBitmask: UInt32 = goalBackBitmask
+    static let playerContactBitmask: UInt32 = ballBitmask | wallBitmask
+    static let ballContactBitmask: UInt32 = goalBackBitmask | playerBitmask | wallBitmask
     static let goalBackContactBitmask: UInt32 = ballBitmask
     static let goalSideContactBitmask: UInt32 = 0
     static let goalContactBitmask: UInt32 = 0
-    static let wallContactBitmask: UInt32 = 0
+    static let wallContactBitmask: UInt32 = playerBitmask | ballBitmask
 }

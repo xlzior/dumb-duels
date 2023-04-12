@@ -6,6 +6,7 @@
 //
 
 import DuelKit
+import Foundation
 
 class SORoundSystem: System {
     unowned var entityManager: EntityManager
@@ -30,19 +31,21 @@ class SORoundSystem: System {
     }
 
     func reset() {
-        eventFirer.fire(GameStartEvent())
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+            eventFirer.fire(GameStartEvent())
 
-        for (player, position, rotation, physics) in players {
-            player.isMoving = false
-            position.position = SOPositions.players[player.index]
-            rotation.angleInRadians = 0
-            physics.velocity = .zero
-        }
+            for (player, position, rotation, physics) in players {
+                player.isMoving = false
+                position.position = SOPositions.players[player.index]
+                rotation.angleInRadians = 0
+                physics.velocity = .zero
+            }
 
-        for (_, position, rotation, physics) in ball {
-            position.position = SOPositions.ball
-            rotation.angleInRadians = 0
-            physics.velocity = .zero
-        }
+            for (_, position, rotation, physics) in ball {
+                position.position = SOPositions.ball
+                rotation.angleInRadians = 0
+                physics.velocity = .zero
+            }
+//        }
     }
 }

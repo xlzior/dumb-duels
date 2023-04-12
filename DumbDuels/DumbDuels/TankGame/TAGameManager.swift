@@ -49,19 +49,19 @@ class TAGameManager: GameManager {
         }
 
         contactHandlers[Pair(first: wall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
-            CollideSoundEvent()
+            CollideSoundEvent(sound: CollideSound())
         }
 
         contactHandlers[Pair(first: cannonball, second: wall)] = { (_: EntityID, _: EntityID) -> Event in
-            CollideSoundEvent()
+            CollideSoundEvent(sound: CollideSound())
         }
 
         contactHandlers[Pair(first: sideWall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
-            CollideSoundEvent()
+            CollideSoundEvent(sound: CollideSound())
         }
 
         contactHandlers[Pair(first: cannonball, second: sideWall)] = { (_: EntityID, _: EntityID) -> Event in
-            CollideSoundEvent()
+            CollideSoundEvent(sound: CollideSound())
         }
 
         return contactHandlers

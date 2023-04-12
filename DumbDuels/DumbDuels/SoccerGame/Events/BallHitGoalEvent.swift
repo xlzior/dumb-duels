@@ -14,11 +14,14 @@ struct BallHitGoalEvent: Event {
 
     func execute(with systems: SystemManager) {
         guard let scoreSystem = systems.get(ofType: SOScoreSystem.self),
+              let soundSystem = systems.get(ofType: SoundSystem.self),
               let roundSystem = systems.get(ofType: SORoundSystem.self) else {
             return
         }
 
         scoreSystem.handleBallHitGoal(goalId: goalId)
+        // TODO: Play when can delay the reset round
+//        soundSystem.play(sound: GoalSound())
         roundSystem.reset()
     }
 }

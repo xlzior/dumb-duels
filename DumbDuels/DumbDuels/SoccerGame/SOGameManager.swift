@@ -44,6 +44,8 @@ class SOGameManager: GameManager {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
         let ball = SOCollisions.ballBitmask
         let goal = SOCollisions.goalBackBitmask
+        let player = SOCollisions.playerBitmask
+        let wall = SOCollisions.wallBitmask
 
         contactHandlers[Pair(first: ball, second: goal)] = { (_: EntityID, goal: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
@@ -51,6 +53,24 @@ class SOGameManager: GameManager {
 
         contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
+        }
+        
+        contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
+            BallHitGoalEvent(goalId: goal)
+        }
+
+        let collisionSoundPairs = [
+            Pair(first: player, second: wall),
+            Pair(first: wall, second: player),
+            Pair(first: player, second: ball),
+            Pair(first: ball, second: player),
+            Pair(first: ball, second: wall),
+            Pair(first: wall, second: ball)
+        ]
+        for pair in collisionSoundPairs {
+            contactHandlers[pair] = { (_: EntityID, _: EntityID) -> Event in
+                CollideSoundEvent(sound: CollideSound())
+            }
         }
 
         return contactHandlers
@@ -61,6 +81,7 @@ class SOGameManager: GameManager {
         systemManager.register(SOScoreSystem(for: entityManager))
         systemManager.register(SORoundSystem(for: entityManager, eventFirer: eventManager))
 
+        useSoundSystem()
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,

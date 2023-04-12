@@ -37,7 +37,7 @@ class SORoundSystem: System {
             for (player, position, rotation, physics) in players {
                 player.isMoving = false
                 position.position = SOPositions.players[player.index]
-                rotation.angleInRadians = 0
+                rotation.angleInRadians = SOPositions.playerRotations[player.index]
                 physics.velocity = .zero
             }
 

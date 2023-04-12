@@ -14,11 +14,11 @@ struct PlayerHitWallEvent: Event {
 
     func execute(with systems: SystemManager) {
         guard let particleSystem = systems.get(ofType: ParticleSystem.self),
-              let soundSystem = systems.get(ofType: SoundSystem.self) else {
+              let soundControllerSystem = systems.get(ofType: SOSoundControllerSystem.self) else {
             return
         }
 
         particleSystem.createExplodingParticles(for: playerId)
-        soundSystem.play(sound: CollideSound())
+        soundControllerSystem.playCollideSound()
     }
 }

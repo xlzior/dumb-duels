@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6F499E0729D21FF300245F6E /* AXOscillation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F499E0629D21FF300245F6E /* AXOscillation.swift */; };
 		6F67C71329C462DD009E0579 /* AXPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67C71229C462DD009E0579 /* AXPhysics.swift */; };
+		6F6ACCB029E685E600285A1C /* SOSoundControllerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6ACCAF29E685E600285A1C /* SOSoundControllerSystem.swift */; };
+		6F6ACCB229E68BAD00285A1C /* PlayerHitBallEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6ACCB129E68BAD00285A1C /* PlayerHitBallEvent.swift */; };
 		7B0378DA29E00FB200AE0C5B /* CannonballHitTankEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378D929E00FB200AE0C5B /* CannonballHitTankEvent.swift */; };
 		7B0378DC29E00FDC00AE0C5B /* TAScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378DB29E00FDC00AE0C5B /* TAScoreSystem.swift */; };
 		7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0378DD29E0500300AE0C5B /* CannonballSystem.swift */; };
@@ -183,6 +185,8 @@
 /* Begin PBXFileReference section */
 		6F499E0629D21FF300245F6E /* AXOscillation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXOscillation.swift; sourceTree = "<group>"; };
 		6F67C71229C462DD009E0579 /* AXPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AXPhysics.swift; sourceTree = "<group>"; };
+		6F6ACCAF29E685E600285A1C /* SOSoundControllerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOSoundControllerSystem.swift; sourceTree = "<group>"; };
+		6F6ACCB129E68BAD00285A1C /* PlayerHitBallEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHitBallEvent.swift; sourceTree = "<group>"; };
 		7B0378D929E00FB200AE0C5B /* CannonballHitTankEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonballHitTankEvent.swift; sourceTree = "<group>"; };
 		7B0378DB29E00FDC00AE0C5B /* TAScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAScoreSystem.swift; sourceTree = "<group>"; };
 		7B0378DD29E0500300AE0C5B /* CannonballSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannonballSystem.swift; sourceTree = "<group>"; };
@@ -468,6 +472,7 @@
 			children = (
 				7B46778929E47A61009FF663 /* BallHitGoalEvent.swift */,
 				A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */,
+				6F6ACCB129E68BAD00285A1C /* PlayerHitBallEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				7B46778529E47475009FF663 /* SOScoreSystem.swift */,
 				7B46778729E4747D009FF663 /* SORoundSystem.swift */,
 				A7F67FA529E66C4D007F6207 /* SOAnimationSystem.swift */,
+				6F6ACCAF29E685E600285A1C /* SOSoundControllerSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -961,6 +967,7 @@
 				7B46777629E4737B009FF663 /* SOAssets.swift in Sources */,
 				7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */,
 				A7DF477C29E1D6250011AE24 /* PowerupSound.swift in Sources */,
+				6F6ACCB229E68BAD00285A1C /* PlayerHitBallEvent.swift in Sources */,
 				A7F36EC229E404B600E47F3E /* TASoundTypes.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
@@ -1002,6 +1009,7 @@
 				7B46777A29E47413009FF663 /* SoccerPlayerComponent.swift in Sources */,
 				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
 				7B13494929D1DC3E00E43A7F /* SPCollisions.swift in Sources */,
+				6F6ACCB029E685E600285A1C /* SOSoundControllerSystem.swift in Sources */,
 				7B46779029E51912009FF663 /* SOPhysics.swift in Sources */,
 				7B46778C29E47A92009FF663 /* SOEntityCreator.swift in Sources */,
 				7BC8C2D129D29816001CF6F7 /* RockPowerup.swift in Sources */,
@@ -1252,7 +1260,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
+				DEVELOPMENT_TEAM = 7285BKL8JQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1267,7 +1275,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cs3217;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1285,7 +1293,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
+				DEVELOPMENT_TEAM = 7285BKL8JQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1300,7 +1308,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cs3217;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -75,7 +75,7 @@ class SOGameManager: GameManager {
         ]
         for pair in collisionSoundPairs {
             contactHandlers[pair] = { (_: EntityID, _: EntityID) -> Event in
-                CollideSoundEvent(sound: CollideSound())
+                PlayerHitBallEvent()
             }
         }
 
@@ -85,6 +85,7 @@ class SOGameManager: GameManager {
     override func setUpUserSystems() {
         systemManager.register(SOInputSystem(for: entityManager))
         systemManager.register(SOScoreSystem(for: entityManager))
+        systemManager.register(SOSoundControllerSystem(for: entityManager))
         systemManager.register(SORoundSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(SOAnimationSystem(for: entityManager))
 

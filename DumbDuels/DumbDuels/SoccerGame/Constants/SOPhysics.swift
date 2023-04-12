@@ -27,7 +27,7 @@ struct SOPhysics {
     static let ballZRotation = PhysicsEngineDefaults.zRotation
     static let ballRotation = true
     static let ballFriction: CGFloat = 0
-    static let ballStaticDamping: CGFloat = 0.1
+    static let ballStaticDamping: CGFloat = 0.5
     static let ballImpulse: CGVector = .zero
     static let ballAngularImpulse: CGFloat = .zero
 

@@ -9,5 +9,5 @@ import CoreGraphics
 
 struct SOConstants {
     static let movingSpeed: CGFloat = 350
-    static let rotationSpeed: CGFloat = 0.03
+    static let rotationSpeed: CGFloat = 0.06
 }

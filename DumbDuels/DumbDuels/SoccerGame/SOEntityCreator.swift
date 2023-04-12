@@ -57,7 +57,7 @@ class SOEntityCreator {
             PositionComponent(position: position, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: SOAssets.goal)
+            SpriteComponent(assetName: SOAssets.goal, zPosition: 1)
             physicsCreator.createGoal(of: size)
         }
 

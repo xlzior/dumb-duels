@@ -71,6 +71,7 @@ class RenderSystem: System, IndexMapInitializable {
             let renderDetails = RenderDetails(
                 spriteName: sprite.assetName,
                 alpha: sprite.alpha,
+                zPosition: sprite.zPosition,
                 centerPosition: newPosition,
                 width: size.originalSize.width * size.xScale * scalingFactor,
                 height: size.originalSize.height * size.yScale * scalingFactor,

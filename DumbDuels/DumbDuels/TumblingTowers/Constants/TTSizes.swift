@@ -9,7 +9,7 @@ import CoreGraphics
 import DuelKit
 
 struct TTSizes {
-    static let separatorSize = CGSize(width: 70, height: Sizes.game.height)
+    static let separatorSize = CGSize(width: 10, height: Sizes.game.height)
 
     static let wallSize = CGSize(width: 50, height: Sizes.game.height)
 

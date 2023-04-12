@@ -8,6 +8,6 @@
 import CoreGraphics
 
 struct TTConstants {
-    static let blockXVelocity: CGFloat = 120
-    static let blockInitialVelocity = CGVector(dx: 0, dy: -150)
+    static let blockXVelocity: CGFloat = TTSizes.blockUnitSize / 5
+    static let blockInitialVelocity = CGVector(dx: 0, dy: -100)
 }

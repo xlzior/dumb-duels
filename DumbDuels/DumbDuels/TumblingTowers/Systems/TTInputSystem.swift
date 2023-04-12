@@ -9,26 +9,48 @@ import Foundation
 import DuelKit
 
 class TTInputSystem: InputSystem {
-    private let longPressThreshold = 0.5
+    private let longPressThreshold = 0.2
     private let entityManager: EntityManager
     // A map that maps the index of buttons to its last press time, and for which blockId
     // Tracking which blockId is important, because there might be many cases
     private var longPressStartTimes = [Int: Pair<Date, EntityID>]()
     private let players: Assemblage2<TTPlayerComponent, ScoreComponent>
-    private let controlBlocks: Assemblage4<BlockComponent, HasGuidelineComponent, RotationComponent, PhysicsComponent>
+    private let controlBlocks: Assemblage6<
+        BlockComponent, HasGuidelineComponent, PositionComponent,
+        SizeComponent, RotationComponent, PhysicsComponent>
 
     var playerIndexToIdMap = [Int: EntityID]()
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.players = entityManager.assemblage(requiredComponents: TTPlayerComponent.self, ScoreComponent.self)
-        self.controlBlocks = entityManager.assemblage(requiredComponents: BlockComponent.self,
-                                                      HasGuidelineComponent.self,
-                                                      RotationComponent.self, PhysicsComponent.self)
+        self.controlBlocks = entityManager.assemblage(
+            requiredComponents: BlockComponent.self,
+            HasGuidelineComponent.self, PositionComponent.self,
+            SizeComponent.self, RotationComponent.self, PhysicsComponent.self)
     }
 
     // TODO: Remember to have event to remove the mapping when the block has landed
     func update() {
+        for (key, value) in longPressStartTimes {
+            let timePressed = Date() - value.first
+            if timePressed <= longPressThreshold {
+                continue
+            }
+            guard let (block, _, position, size, _, _) = controlBlocks.getComponents(for: value.second) else {
+                longPressStartTimes[key] = nil
+                return
+            }
 
+            position.position.x += block.movingDirection * TTConstants.blockXVelocity
+            let blockFrame = CGRect(origin: CGPoint(x: position.position.x - size.actualSize.width / 2,
+                                                    y: position.position.y - size.actualSize.height / 2),
+                                    size: size.actualSize)
+            let playerFrame = TTPositions.playerRanges[key]
+            if !playerFrame.contains(blockFrame) {
+                block.movingDirection *= -1
+                position.position.x += block.movingDirection * TTConstants.blockXVelocity
+            }
+        }
     }
 
     func handleButtonDown(playerIndex: Int) {
@@ -53,6 +75,7 @@ class TTInputSystem: InputSystem {
         if timePressed <= longPressThreshold {
             rotateBlock(blockId: mapValue.second)
         }
+        longPressStartTimes.removeValue(forKey: playerIndex)
     }
 
     func removePressMapping(index: Int, blockId: EntityID) {
@@ -65,7 +88,8 @@ class TTInputSystem: InputSystem {
     }
 
     private func rotateBlock(blockId: EntityID) {
-        guard let (block, hasGuide, rotation, _) = controlBlocks.getComponents(for: blockId) else {
+        guard let (block, hasGuide, _, _, rotation, _) = controlBlocks
+            .getComponents(for: blockId) else {
             return
         }
         rotation.angleInRadians = (rotation.angleInRadians + Double.pi / 2)

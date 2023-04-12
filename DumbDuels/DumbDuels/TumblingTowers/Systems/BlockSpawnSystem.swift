@@ -77,6 +77,7 @@ class BlockSpawnSystem: System {
                                                     _ physics: PhysicsComponent) {
         // Change physics component fields for the control block
         physics.restitution = TTPhysics.landedBlockCor
+        physics.affectedByGravity = TTPhysics.landedBlockGravity
         physics.ownBitmask = TTCollisions.landedBlockBitmask
         physics.collideBitmask = TTCollisions.landedBlockCollideBitmask
         physics.contactBitmask = TTCollisions.landedBlockContactBitmask

@@ -86,6 +86,7 @@ class SOGameManager: GameManager {
         systemManager.register(SOInputSystem(for: entityManager))
         systemManager.register(SOScoreSystem(for: entityManager))
         systemManager.register(SORoundSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(SOAnimationSystem(for: entityManager))
 
         useSoundSystem()
         useAutoRotateSystem()

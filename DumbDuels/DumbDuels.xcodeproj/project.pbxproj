@@ -159,6 +159,8 @@
 		A7F67F9C29E6579C007F6207 /* goal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7F67F9B29E6579C007F6207 /* goal.mp3 */; };
 		A7F67F9E29E657AB007F6207 /* GoalSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67F9D29E657AB007F6207 /* GoalSound.swift */; };
 		A7F67FA029E66167007F6207 /* PlayerHitWallEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */; };
+		A7F67FA429E66B8E007F6207 /* SOAnimationCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67FA329E66B8E007F6207 /* SOAnimationCreator.swift */; };
+		A7F67FA629E66C4D007F6207 /* SOAnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67FA529E66C4D007F6207 /* SOAnimationSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -335,6 +337,8 @@
 		A7F67F9B29E6579C007F6207 /* goal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = goal.mp3; sourceTree = "<group>"; };
 		A7F67F9D29E657AB007F6207 /* GoalSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSound.swift; sourceTree = "<group>"; };
 		A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHitWallEvent.swift; sourceTree = "<group>"; };
+		A7F67FA329E66B8E007F6207 /* SOAnimationCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOAnimationCreator.swift; sourceTree = "<group>"; };
+		A7F67FA529E66C4D007F6207 /* SOAnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOAnimationSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +488,7 @@
 				7B46778329E4746B009FF663 /* SOInputSystem.swift */,
 				7B46778529E47475009FF663 /* SOScoreSystem.swift */,
 				7B46778729E4747D009FF663 /* SORoundSystem.swift */,
+				A7F67FA529E66C4D007F6207 /* SOAnimationSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -515,6 +520,7 @@
 				7B46777229E4722C009FF663 /* Events */,
 				7B30774E29DF3A6900B26744 /* SOAssets.xcassets */,
 				7B46778B29E47A92009FF663 /* SOEntityCreator.swift */,
+				A7F67FA329E66B8E007F6207 /* SOAnimationCreator.swift */,
 				7B46778D29E47A9A009FF663 /* SOPhysicsCreator.swift */,
 				7B85081A29DF35870095A7F6 /* SOGameManager.swift */,
 				7B85081C29DF35A90095A7F6 /* SOGameViewController.swift */,
@@ -1017,6 +1023,7 @@
 				A7DF476729E1C96B0011AE24 /* PlayerHitSound.swift in Sources */,
 				A7E439F929C374BE00027AC6 /* AXPositions.swift in Sources */,
 				8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */,
+				A7F67FA429E66B8E007F6207 /* SOAnimationCreator.swift in Sources */,
 				7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */,
 				A7F36EC029E403DE00E47F3E /* BeepSound.swift in Sources */,
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
@@ -1062,6 +1069,7 @@
 				7B30776329DFD4C600B26744 /* TACollisions.swift in Sources */,
 				7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */,
 				7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */,
+				A7F67FA629E66C4D007F6207 /* SOAnimationSystem.swift in Sources */,
 				6F67C71329C462DD009E0579 /* AXPhysics.swift in Sources */,
 				7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */,
 				7B30775429DFC7B900B26744 /* TankComponent.swift in Sources */,

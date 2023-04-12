@@ -10,6 +10,8 @@ struct SOAssets {
 
     static let players = ["soccer-player-0", "soccer-player-1"]
 
+    static let playersGoal = ["soccer-player-flash-0", "soccer-player-flash-1"]
+
     static let ball = "ball"
 
     static let goal = "goal"

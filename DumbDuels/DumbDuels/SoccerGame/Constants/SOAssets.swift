@@ -13,4 +13,6 @@ struct SOAssets {
     static let ball = "ball"
 
     static let goal = "goal"
+
+    static let particles = ["field-particle"]
 }

@@ -158,6 +158,7 @@
 		A7F67F9A29E65618007F6207 /* SoccerCrowdSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67F9929E65618007F6207 /* SoccerCrowdSound.swift */; };
 		A7F67F9C29E6579C007F6207 /* goal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7F67F9B29E6579C007F6207 /* goal.mp3 */; };
 		A7F67F9E29E657AB007F6207 /* GoalSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67F9D29E657AB007F6207 /* GoalSound.swift */; };
+		A7F67FA029E66167007F6207 /* PlayerHitWallEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,7 @@
 		A7F67F9929E65618007F6207 /* SoccerCrowdSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoccerCrowdSound.swift; sourceTree = "<group>"; };
 		A7F67F9B29E6579C007F6207 /* goal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = goal.mp3; sourceTree = "<group>"; };
 		A7F67F9D29E657AB007F6207 /* GoalSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSound.swift; sourceTree = "<group>"; };
+		A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHitWallEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				7B46778929E47A61009FF663 /* BallHitGoalEvent.swift */,
+				A7F67F9F29E66167007F6207 /* PlayerHitWallEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 				7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */,
 				7B46778E29E47A9A009FF663 /* SOPhysicsCreator.swift in Sources */,
 				7B46777E29E4742A009FF663 /* SOSizes.swift in Sources */,
+				A7F67FA029E66167007F6207 /* PlayerHitWallEvent.swift in Sources */,
 				7BCC61F829D1D5FF0092B602 /* SPGameManager.swift in Sources */,
 				8C3584A629C54FE500BAE8C5 /* AXCollisions.swift in Sources */,
 				7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */,

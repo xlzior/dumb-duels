@@ -54,14 +54,20 @@ class SOGameManager: GameManager {
         contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
         }
-        
+
         contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
         }
 
+        contactHandlers[Pair(first: player, second: wall)] = { (player: EntityID, _: EntityID) -> Event in
+            PlayerHitWallEvent(playerId: player)
+        }
+
+        contactHandlers[Pair(first: wall, second: player)] = { (_: EntityID, player: EntityID) -> Event in
+            PlayerHitWallEvent(playerId: player)
+        }
+
         let collisionSoundPairs = [
-            Pair(first: player, second: wall),
-            Pair(first: wall, second: player),
             Pair(first: player, second: ball),
             Pair(first: ball, second: player),
             Pair(first: ball, second: wall),
@@ -89,6 +95,7 @@ class SOGameManager: GameManager {
                           gameStartSound: Sounds.battleSound,
                           gameEndSound: Sounds.gameEndSound)
         usePhysicsSystem(withContactHandlers: getContactHandlers())
+        useParticleSystem()
         useRenderSystem()
         useAnimationSystem()
     }

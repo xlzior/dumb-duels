@@ -26,6 +26,11 @@ class SOEntityCreator {
             SizeComponent(originalSize: size)
             AutoRotateComponent(by: SOConstants.rotationSpeed)
             SpriteComponent(assetName: SOAssets.players[index])
+            WillExplodeParticlesComponent(
+                particles: SOAssets.particles,
+                numExplodingParticles: 1,
+                travelDistanceRange: 10...50
+            )
             physicsCreator.createPlayer(of: size)
         }
 

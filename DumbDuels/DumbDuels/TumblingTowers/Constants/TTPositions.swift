@@ -26,6 +26,11 @@ struct TTPositions {
     static let player1BlockSpawn = CGPoint(x: Sizes.game.width / 4, y: Sizes.game.height)
     static let player2BlockSpawn = CGPoint(x: 3 * Sizes.game.width / 4, y: Sizes.game.height)
 
+    static let playerRanges = [
+        CGRect(x: 0, y: 0, width: Sizes.game.width / 2, height: Sizes.game.height),
+        CGRect(x: Sizes.game.width / 2, y: 0, width: Sizes.game.width / 2, height: Sizes.game.height)
+    ]
+
     static func getScoreLinePositions() -> [CGPoint] {
         // there are 3 score lines at different levels
         let scoreYPositions: [CGFloat] = [

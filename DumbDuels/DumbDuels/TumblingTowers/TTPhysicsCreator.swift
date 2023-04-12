@@ -49,7 +49,7 @@ class TTPhysicsCreator {
         PhysicsComponent(rectangleOf: size,
                          mass: TTPhysics.blockMass,
                          velocity: TTConstants.blockInitialVelocity,
-                         affectedByGravity: TTPhysics.blockGravity,
+                         affectedByGravity: TTPhysics.controlblockGravity,
                          linearDamping: TTPhysics.blockLinearDamping,
                          isDynamic: TTPhysics.blockIsDynamic,
                          allowsRotation: TTPhysics.blockRotation,

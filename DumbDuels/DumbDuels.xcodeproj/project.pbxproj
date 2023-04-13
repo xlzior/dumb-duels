@@ -140,6 +140,7 @@
 		8CB0FAB129E5FE6C00C2FAC8 /* HasGuidelineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB029E5FE6C00C2FAC8 /* HasGuidelineComponent.swift */; };
 		8CB0FAB329E6037900C2FAC8 /* ScoreLineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */; };
 		8CB0FAB529E604F700C2FAC8 /* TTPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */; };
+		8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */; };
 		A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF474D29E1603B0011AE24 /* jump.mp3 */; };
 		A7DF475529E16A9C0011AE24 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475429E16A9C0011AE24 /* battle.mp3 */; };
 		A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475629E16AA40011AE24 /* game-end.mp3 */; };
@@ -343,6 +344,7 @@
 		8CB0FAB029E5FE6C00C2FAC8 /* HasGuidelineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasGuidelineComponent.swift; sourceTree = "<group>"; };
 		8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLineComponent.swift; sourceTree = "<group>"; };
 		8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPlayerComponent.swift; sourceTree = "<group>"; };
+		8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBlockControlEvent.swift; sourceTree = "<group>"; };
 		A7DF474D29E1603B0011AE24 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A7DF475429E16A9C0011AE24 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle.mp3; sourceTree = "<group>"; };
 		A7DF475629E16AA40011AE24 /* game-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-end.mp3"; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 				8CB0FAA629E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift */,
 				8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */,
 				8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */,
+				8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1114,6 +1117,7 @@
 				8CB0FA8D29E5AC6F00C2FAC8 /* TTAssets.swift in Sources */,
 				7BF9D4DC29C4419C00D7B34D /* AXConstants.swift in Sources */,
 				8CB0FA8929E5AA5000C2FAC8 /* TTPhysicsCreator.swift in Sources */,
+				8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */,
 				8CB0FAA529E5B7EE00C2FAC8 /* BlockSpawnSystem.swift in Sources */,
 				8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */,
 				A7DF476D29E1CA710011AE24 /* AxeExplodeSound.swift in Sources */,

@@ -18,7 +18,6 @@ struct BlockContactScorelineEvent: Event {
             return
         }
 
-        // TODO:
-        // TTScoreSystem.handleBlockContact(with: scoreLineId, for: blockId)
+        scoreSystem.handleBlockContactScoreline(landedBlockId: blockId, scorelineId: scoreLineId)
     }
 }

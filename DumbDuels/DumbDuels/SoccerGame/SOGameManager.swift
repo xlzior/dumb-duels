@@ -44,6 +44,8 @@ class SOGameManager: GameManager {
         var contactHandlers = PhysicsSystem.ContactHandlerMap()
         let ball = SOCollisions.ballBitmask
         let goal = SOCollisions.goalBackBitmask
+        let player = SOCollisions.playerBitmask
+        let wall = SOCollisions.wallBitmask
 
         contactHandlers[Pair(first: ball, second: goal)] = { (_: EntityID, goal: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
@@ -53,14 +55,41 @@ class SOGameManager: GameManager {
             BallHitGoalEvent(goalId: goal)
         }
 
+        contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
+            BallHitGoalEvent(goalId: goal)
+        }
+
+        contactHandlers[Pair(first: player, second: wall)] = { (player: EntityID, _: EntityID) -> Event in
+            PlayerHitWallEvent(playerId: player)
+        }
+
+        contactHandlers[Pair(first: wall, second: player)] = { (_: EntityID, player: EntityID) -> Event in
+            PlayerHitWallEvent(playerId: player)
+        }
+
+        let collisionSoundPairs = [
+            Pair(first: player, second: ball),
+            Pair(first: ball, second: player),
+            Pair(first: ball, second: wall),
+            Pair(first: wall, second: ball)
+        ]
+        for pair in collisionSoundPairs {
+            contactHandlers[pair] = { (_: EntityID, _: EntityID) -> Event in
+                PlayerHitBallEvent()
+            }
+        }
+
         return contactHandlers
     }
 
     override func setUpUserSystems() {
         systemManager.register(SOInputSystem(for: entityManager))
         systemManager.register(SOScoreSystem(for: entityManager))
+        systemManager.register(SOSoundControllerSystem(for: entityManager))
         systemManager.register(SORoundSystem(for: entityManager, eventFirer: eventManager))
+        systemManager.register(SOAnimationSystem(for: entityManager))
 
+        useSoundSystem()
         useAutoRotateSystem()
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
@@ -68,6 +97,7 @@ class SOGameManager: GameManager {
                           gameStartSound: Sounds.battleSound,
                           gameEndSound: Sounds.gameEndSound)
         usePhysicsSystem(withContactHandlers: getContactHandlers())
+        useParticleSystem()
         useRenderSystem()
         useAnimationSystem()
     }

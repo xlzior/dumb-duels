@@ -11,10 +11,12 @@ import DuelKit
 class SOEntityCreator {
     private let entityManager: EntityManager
     private let physicsCreator: SOPhysicsCreator
+    private let animationCreator: SOAnimationCreator
 
     init(entityManager: EntityManager) {
         self.entityManager = entityManager
         self.physicsCreator = SOPhysicsCreator()
+        self.animationCreator = SOAnimationCreator()
     }
 
     @discardableResult
@@ -26,6 +28,12 @@ class SOEntityCreator {
             SizeComponent(originalSize: size)
             AutoRotateComponent(by: SOConstants.rotationSpeed)
             SpriteComponent(assetName: SOAssets.players[index])
+            animationCreator.createPlayerGoalAnimation(index: index)
+            WillExplodeParticlesComponent(
+                particles: SOAssets.particles,
+                numExplodingParticles: 1,
+                travelDistanceRange: 10...50
+            )
             physicsCreator.createPlayer(of: size)
         }
 
@@ -52,7 +60,7 @@ class SOEntityCreator {
             PositionComponent(position: position, faceDirection: facing)
             RotationComponent()
             SizeComponent(originalSize: size)
-            SpriteComponent(assetName: SOAssets.goal)
+            SpriteComponent(assetName: SOAssets.goal, zPosition: 1)
             physicsCreator.createGoal(of: size)
         }
 

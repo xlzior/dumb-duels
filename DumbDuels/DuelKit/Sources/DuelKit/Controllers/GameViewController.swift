@@ -129,6 +129,7 @@ extension GameViewController: GameController {
         imageView.image = UIImage(named: details.spriteName)
         imageView.transform = CGAffineTransform(rotationAngle: 0)
         imageView.alpha = details.alpha
+        imageView.layer.zPosition = details.zPosition
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)

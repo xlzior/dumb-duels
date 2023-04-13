@@ -83,6 +83,8 @@ class TTGameManager: GameManager {
         systemManager.register(TTInputSystem(for: entityManager))
         systemManager.register(TTScoreSystem(for: entityManager))
         systemManager.register(BlockSpawnSystem(for: entityManager, entityCreator: creator))
+        // To be save, must be after BlockSpawnSystem, so that we can sync the guideline position after block spawn
+        systemManager.register(GuidelineSystem(for: entityManager))
 
         useParticleSystem()
         useAutoRotateSystem()

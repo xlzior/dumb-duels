@@ -74,6 +74,9 @@ class TTInputSystem: InputSystem {
         // We only handle "tap" cases here, as long press cases are done inside update function
         if timePressed <= longPressThreshold {
             rotateBlock(blockId: mapValue.second)
+        } else {
+            // if it's a long press, we change direction for the next press
+            changeMovingDirection(for: mapValue.second)
         }
         longPressStartTimes.removeValue(forKey: playerIndex)
     }
@@ -98,5 +101,14 @@ class TTInputSystem: InputSystem {
         // TODO: Aside from rotating block, also remember to change the width of the guiding line
         // Can add a field inside block component to track whether the guiding line's width is based on
         // the block;s width or height as it rotates
+        block.useWidthForGuideline.toggle()
+    }
+
+    private func changeMovingDirection(for blockId: EntityID) {
+        guard let (block, _, _, _, _, _) = controlBlocks
+            .getComponents(for: blockId) else {
+            return
+        }
+        block.movingDirection *= -1
     }
 }

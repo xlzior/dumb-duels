@@ -12,10 +12,12 @@ class BlockComponent: Component {
     var id: ComponentID
     var playerId: EntityID
     var movingDirection: CGFloat
+    var useWidthForGuideline: Bool
 
-    init(playerId: EntityID) {
+    init(playerId: EntityID, movingDirection: CGFloat = 1, useWidthForGuideline: Bool = true) {
         self.id = ComponentID()
         self.playerId = playerId
-        self.movingDirection = 1
+        self.movingDirection = movingDirection
+        self.useWidthForGuideline = useWidthForGuideline
     }
 }

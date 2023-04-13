@@ -85,6 +85,7 @@ class TTEntityCreator {
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: TTAssets.scoreLine)
+            ScoreLineComponent()
             physicsCreator.createScoreLine(of: size)
         }
     }

@@ -14,12 +14,14 @@ import DuelKit
 class BlockSpawnSystem: System {
     // Blocks under control assemblage should not have physics component
     private let entityManager: EntityManager
+    private let eventFirer: EventFirer
+
     private let entityCreator: TTEntityCreator
     private let controlBlocks: Assemblage3<BlockComponent, HasGuidelineComponent, PhysicsComponent>
     private let landedBlocks: Assemblage2<BlockComponent, PhysicsComponent>
     private let players: Assemblage2<TTPlayerComponent, ScoreComponent>
 
-    init(for entityManager: EntityManager, entityCreator: TTEntityCreator) {
+    init(for entityManager: EntityManager, entityCreator: TTEntityCreator, eventFirer: EventFirer) {
         self.entityManager = entityManager
         self.entityCreator = entityCreator
         self.players = entityManager.assemblage(requiredComponents: TTPlayerComponent.self, ScoreComponent.self)
@@ -27,6 +29,8 @@ class BlockSpawnSystem: System {
         self.landedBlocks = entityManager.assemblage(requiredComponents: BlockComponent.self,
                                                      PhysicsComponent.self,
                                                      excludedComponents: HasGuidelineComponent.self)
+        self.eventFirer = eventFirer
+        eventFirer.fire(GameStartEvent())
     }
 
     func update() {
@@ -37,6 +41,7 @@ class BlockSpawnSystem: System {
             let newBlock = spawnRandomBlockForPlayer(playerId: entity.id, index: player.index)
             player.moveDirection = 1
             player.currentControllingBlockId = newBlock.id
+            print("spawned new block \(newBlock.id) for player \(player.index)")
         }
     }
 
@@ -91,5 +96,9 @@ class BlockSpawnSystem: System {
         if currentControllingPlayer.currentControllingBlockId == blockId {
             currentControllingPlayer.currentControllingBlockId = nil
         }
+        print("block \(blockId) has landed")
+
+        // Fire event so that input system can no longer control the controlled block
+        eventFirer.fire(RemoveBlockControlEvent(blockIdToRemoveControl: blockId))
     }
 }

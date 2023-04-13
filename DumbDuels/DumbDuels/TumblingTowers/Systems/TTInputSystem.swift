@@ -29,7 +29,6 @@ class TTInputSystem: InputSystem {
             SizeComponent.self, RotationComponent.self, PhysicsComponent.self)
     }
 
-    // TODO: Remember to have event to remove the mapping when the block has landed
     func update() {
         for (key, value) in longPressStartTimes {
             let timePressed = Date() - value.first
@@ -81,13 +80,15 @@ class TTInputSystem: InputSystem {
         longPressStartTimes.removeValue(forKey: playerIndex)
     }
 
-    func removePressMapping(index: Int, blockId: EntityID) {
-        guard let mapValue = longPressStartTimes[index],
-                  mapValue.second == blockId else { // Important to check because it might be different already
+    func removePressMapping(controlBlockId: EntityID) {
+        guard let (block, _, _, _, _, _) = controlBlocks.getComponents(for: controlBlockId),
+              let (player, _) = players.getComponents(for: block.playerId),
+              let mapValue = longPressStartTimes[player.index],
+                  mapValue.second == controlBlockId else { // Important to check because it might be different already
             return
         }
 
-        longPressStartTimes.removeValue(forKey: index)
+        longPressStartTimes.removeValue(forKey: player.index)
     }
 
     private func rotateBlock(blockId: EntityID) {
@@ -98,9 +99,6 @@ class TTInputSystem: InputSystem {
         rotation.angleInRadians = (rotation.angleInRadians + Double.pi / 2)
             .truncatingRemainder(dividingBy: 2 * Double.pi)
 
-        // TODO: Aside from rotating block, also remember to change the width of the guiding line
-        // Can add a field inside block component to track whether the guiding line's width is based on
-        // the block;s width or height as it rotates
         block.useWidthForGuideline.toggle()
     }
 

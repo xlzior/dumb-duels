@@ -34,9 +34,9 @@ struct TTPositions {
     static func getScoreLinePositions() -> [CGPoint] {
         // there are 3 score lines at different levels
         let scoreYPositions: [CGFloat] = [
-            Sizes.game.height / 5,
             Sizes.game.height / 4,
-            Sizes.game.height / 3
+            Sizes.game.height / 3,
+            Sizes.game.height / 2
         ]
         // just left or right
         let playerXPositions: [CGFloat] = [

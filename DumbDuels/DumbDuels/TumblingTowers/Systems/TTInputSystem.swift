@@ -109,4 +109,11 @@ class TTInputSystem: InputSystem {
         }
         block.movingDirection *= -1
     }
+
+    func handleGameOver() {
+        longPressStartTimes.removeAll()
+        for (_, _, _, _, _, physics) in controlBlocks {
+            physics.velocity.dx = 0
+        }
+    }
 }

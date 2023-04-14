@@ -49,6 +49,16 @@ class TTEntityCreator {
     }
 
     @discardableResult
+    func createBottomBoundary(at position: CGPoint, of size: CGSize) -> Entity {
+        entityManager.createEntity {
+            PositionComponent(position: position)
+            RotationComponent()
+            SizeComponent(originalSize: size)
+            physicsCreator.createBottomBoundary(of: size)
+        }
+    }
+
+    @discardableResult
     func createSeparator(at position: CGPoint, of size: CGSize) -> Entity {
         entityManager.createEntity {
             PositionComponent(position: position)
@@ -70,7 +80,7 @@ class TTEntityCreator {
             SizeComponent(originalSize: blockSize)
             SpriteComponent(assetName: blockType.assetName)
             BlockComponent(playerId: playerId)
-            physicsCreator.createBlock(of: blockSize)
+            physicsCreator.createBlock(of: blockSize, area: blockType.width * blockType.length)
         }
         // print("Block width: \(blockWidth). Block Height: \(blockHeight)")
         let guideline = createGuideline(xPosition: position.x, width: blockWidth, for: block.id)
@@ -79,14 +89,14 @@ class TTEntityCreator {
     }
 
     @discardableResult
-    func createScoreLine(at position: CGPoint, of size: CGSize) -> Entity {
+    func createScoreLine(at position: CGPoint, of size: CGSize, for playerId: EntityID) -> Entity {
         entityManager.createEntity {
             PositionComponent(position: position)
             RotationComponent()
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: TTAssets.scoreLine)
-            ScoreLineComponent()
-            physicsCreator.createScoreLine(of: size)
+            ScoreLineComponent(playerId: playerId)
+            // physicsCreator.createScoreLine(of: size)
         }
     }
 

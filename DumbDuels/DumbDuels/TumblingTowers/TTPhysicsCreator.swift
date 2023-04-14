@@ -45,9 +45,27 @@ class TTPhysicsCreator {
                          angularImpulse: TTPhysics.wallAngularImpulse)
     }
 
-    func createBlock(of size: CGSize) -> PhysicsComponent {
+    func createBottomBoundary(of size: CGSize) -> PhysicsComponent {
         PhysicsComponent(rectangleOf: size,
-                         mass: TTPhysics.blockMass,
+                         mass: TTPhysics.wallMass,
+                         velocity: .zero,
+                         affectedByGravity: TTPhysics.wallGravity,
+                         linearDamping: TTPhysics.wallLinearDamping,
+                         isDynamic: TTPhysics.wallIsDynamic,
+                         allowsRotation: TTPhysics.wallRotation,
+                         restitution: TTPhysics.wallCor,
+                         friction: TTPhysics.wallFriction,
+                         ownBitmask: TTCollisions.bottomBoundaryBitmask,
+                         collideBitmask: TTCollisions.bottomBoundaryCollideBitmask,
+                         contactBitmask: TTCollisions.bottomBoundaryContactBitmask,
+                         zRotation: TTPhysics.wallZRotation,
+                         impulse: TTPhysics.wallImpulse,
+                         angularImpulse: TTPhysics.wallAngularImpulse)
+    }
+
+    func createBlock(of size: CGSize, area: Int) -> PhysicsComponent {
+        PhysicsComponent(rectangleOf: size,
+                         mass: area * TTPhysics.blockUnitMass,
                          velocity: TTConstants.blockInitialVelocity,
                          affectedByGravity: TTPhysics.controlblockGravity,
                          linearDamping: TTPhysics.blockLinearDamping,

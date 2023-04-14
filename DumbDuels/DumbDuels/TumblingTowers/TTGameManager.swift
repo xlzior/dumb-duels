@@ -28,16 +28,19 @@ class TTGameManager: GameManager {
         // Create separator
         creator.createSeparator(at: TTPositions.separator, of: TTSizes.separatorSize)
 
-        // Create score lines
-        for scoreLinePosition in TTPositions.getScoreLinePositions() {
-            creator.createScoreLine(at: scoreLinePosition, of: TTSizes.scoreLineSize)
-        }
-
-        // Create player entities
+        // Create player entities and scoreline
         for index in 0...1 {
             let player = creator.createPlayer(index: index)
             initialPlayerIndexToIdMap[index] = player.id
+
+            for scoreLineYPosition in TTPositions.scoreLineYPositions {
+                let scoreLinePosition = CGPoint(x: TTPositions.scoreLineXPositions[index], y: scoreLineYPosition)
+                creator.createScoreLine(at: scoreLinePosition, of: TTSizes.scoreLineSize, for: player.id)
+            }
         }
+
+        // Create bottom boundary
+        creator.createBottomBoundary(at: TTPositions.bottomBoundaryPosition, of: TTSizes.bottomBoundarySize)
     }
 
     private func getContactHandlers() -> PhysicsSystem.ContactHandlerMap {
@@ -45,15 +48,7 @@ class TTGameManager: GameManager {
         let controlBlock = TTCollisions.controlBlockBitmask
         let landedBlock = TTCollisions.landedBlockBitmask
         let platform = TTCollisions.platformBitmask
-        let scoreLine = TTCollisions.scoreLineBitmask
-
-        contactHandlers[Pair(first: landedBlock, second: scoreLine)] = { (landedBlock: EntityID, scoreLine: EntityID) -> Event in
-            BlockContactScorelineEvent(blockId: landedBlock, scoreLineId: scoreLine)
-        }
-
-        contactHandlers[Pair(first: scoreLine, second: landedBlock)] = { (scoreLine: EntityID, landedBlock: EntityID) -> Event in
-            BlockContactScorelineEvent(blockId: landedBlock, scoreLineId: scoreLine)
-        }
+        let bottomBoundary = TTCollisions.bottomBoundaryBitmask
 
         contactHandlers[Pair(first: landedBlock, second: controlBlock)] = { (landedBlock: EntityID, controlBlock: EntityID) -> Event in
             BlockHitBlockEvent(controlBlockId: controlBlock, landedBlockId: landedBlock)
@@ -71,6 +66,22 @@ class TTGameManager: GameManager {
             ControlBlockHitPlatformEvent(controlBlockId: controlBlock)
         }
 
+        contactHandlers[Pair(first: landedBlock, second: bottomBoundary)] = { (landedBlock: EntityID, _: EntityID) -> Event in
+            BlockOutOfGameEvent(blockId: landedBlock)
+        }
+
+        contactHandlers[Pair(first: bottomBoundary, second: landedBlock)] = { (_: EntityID, landedBlock: EntityID) -> Event in
+            BlockOutOfGameEvent(blockId: landedBlock)
+        }
+
+        contactHandlers[Pair(first: bottomBoundary, second: controlBlock)] = { (_: EntityID, controlBlock: EntityID) -> Event in
+            BlockOutOfGameEvent(blockId: controlBlock)
+        }
+
+        contactHandlers[Pair(first: controlBlock, second: bottomBoundary)] = { (controlBlock: EntityID, _: EntityID) -> Event in
+            BlockOutOfGameEvent(blockId: controlBlock)
+        }
+
         return contactHandlers
     }
 
@@ -80,7 +91,7 @@ class TTGameManager: GameManager {
         }
 
         systemManager.register(TTInputSystem(for: entityManager))
-        systemManager.register(TTScoreSystem(for: entityManager))
+        systemManager.register(TTScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(BlockSpawnSystem(for: entityManager, entityCreator: creator, eventFirer: eventManager))
         // To be safe, must be after BlockSpawnSystem, so that we can sync the guideline position after block spawn
         systemManager.register(GuidelineSystem(for: entityManager))
@@ -91,7 +102,8 @@ class TTGameManager: GameManager {
                           gameTieText: Assets.gameTiedText,
                           gameWonTexts: Assets.gameWonText,
                           gameStartSound: Sounds.battleSound,
-                          gameEndSound: Sounds.gameEndSound)
+                          gameEndSound: Sounds.gameEndSound,
+                          winningScore: TTConstants.winningScore)
         // useSoundSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()

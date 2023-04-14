@@ -131,7 +131,6 @@
 		8CB0FA9F29E5B72E00C2FAC8 /* TTScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9E29E5B72E00C2FAC8 /* TTScoreSystem.swift */; };
 		8CB0FAA329E5B7D500C2FAC8 /* BlockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA229E5B7D500C2FAC8 /* BlockComponent.swift */; };
 		8CB0FAA529E5B7EE00C2FAC8 /* BlockSpawnSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA429E5B7EE00C2FAC8 /* BlockSpawnSystem.swift */; };
-		8CB0FAA729E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA629E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift */; };
 		8CB0FAA929E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */; };
 		8CB0FAAB29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */; };
 		8CB0FAAD29E5FC0F00C2FAC8 /* TTPlatformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAAC29E5FC0F00C2FAC8 /* TTPlatformComponent.swift */; };
@@ -139,6 +138,8 @@
 		8CB0FAB329E6037900C2FAC8 /* ScoreLineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */; };
 		8CB0FAB529E604F700C2FAC8 /* TTPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */; };
 		8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */; };
+		8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */; };
+		8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */; };
 		A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF474D29E1603B0011AE24 /* jump.mp3 */; };
 		A7DF475529E16A9C0011AE24 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475429E16A9C0011AE24 /* battle.mp3 */; };
 		A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475629E16AA40011AE24 /* game-end.mp3 */; };
@@ -327,7 +328,6 @@
 		8CB0FA9E29E5B72E00C2FAC8 /* TTScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTScoreSystem.swift; sourceTree = "<group>"; };
 		8CB0FAA229E5B7D500C2FAC8 /* BlockComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockComponent.swift; sourceTree = "<group>"; };
 		8CB0FAA429E5B7EE00C2FAC8 /* BlockSpawnSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSpawnSystem.swift; sourceTree = "<group>"; };
-		8CB0FAA629E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockContactScorelineEvent.swift; sourceTree = "<group>"; };
 		8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockHitBlockEvent.swift; sourceTree = "<group>"; };
 		8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBlockHitPlatformEvent.swift; sourceTree = "<group>"; };
 		8CB0FAAC29E5FC0F00C2FAC8 /* TTPlatformComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPlatformComponent.swift; sourceTree = "<group>"; };
@@ -335,6 +335,8 @@
 		8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLineComponent.swift; sourceTree = "<group>"; };
 		8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPlayerComponent.swift; sourceTree = "<group>"; };
 		8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBlockControlEvent.swift; sourceTree = "<group>"; };
+		8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOutOfGameEvent.swift; sourceTree = "<group>"; };
+		8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameOverEvent.swift; sourceTree = "<group>"; };
 		A7DF474D29E1603B0011AE24 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A7DF475429E16A9C0011AE24 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle.mp3; sourceTree = "<group>"; };
 		A7DF475629E16AA40011AE24 /* game-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-end.mp3"; sourceTree = "<group>"; };
@@ -787,10 +789,11 @@
 		8CB0FA7F29E5A9DA00C2FAC8 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				8CB0FAA629E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift */,
 				8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */,
 				8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */,
 				8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */,
+				8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */,
+				8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -1047,6 +1050,7 @@
 				7B0378E229E0533900AE0C5B /* TARoundSystem.swift in Sources */,
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
+				8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
 				7B46778629E47475009FF663 /* SOScoreSystem.swift in Sources */,
 				7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */,
@@ -1136,7 +1140,6 @@
 				7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */,
 				A7F36EC029E403DE00E47F3E /* BeepSound.swift in Sources */,
 				8C3584A229C44A5A00BAE8C5 /* PlayerHitEvent.swift in Sources */,
-				8CB0FAA729E5BBB300C2FAC8 /* BlockContactScorelineEvent.swift in Sources */,
 				A7EF080A29D2D6450057D44E /* LavaHitEvent.swift in Sources */,
 				A7DF479E29E2AE6F0011AE24 /* GameBackgroundSound.swift in Sources */,
 				7BC8C2CF29D29806001CF6F7 /* GunPowerup.swift in Sources */,
@@ -1152,6 +1155,7 @@
 				8CB0FA6729D1999100C2FAC8 /* Int+Extensions.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */,
+				8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */,
 				7BCC620429D1D7790092B602 /* SpaceshipComponent.swift in Sources */,
 				7BE0FDF329D032EF0035AE98 /* AXGameViewController.swift in Sources */,
 				7BC8C2CD29D297E8001CF6F7 /* Powerup.swift in Sources */,

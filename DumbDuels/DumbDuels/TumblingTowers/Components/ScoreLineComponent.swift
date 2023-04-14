@@ -9,10 +9,10 @@ import DuelKit
 
 class ScoreLineComponent: Component {
     var id: ComponentID
-    var canIncreaseScore: Bool
+    var playerId: EntityID
 
-    init(canIncreaseScore: Bool = true) {
+    init(playerId: EntityID) {
         self.id = ComponentID()
-        self.canIncreaseScore = canIncreaseScore
+        self.playerId = playerId
     }
 }

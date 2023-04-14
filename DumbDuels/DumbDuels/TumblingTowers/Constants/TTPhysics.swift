@@ -33,7 +33,7 @@ struct TTPhysics {
     static let wallImpulse: CGVector = .zero
     static let wallAngularImpulse: CGFloat = .zero
 
-    static let blockMass = 1.0
+    static let blockUnitMass = 1.0
     static let controlblockGravity = false
     static let landedBlockGravity = true
     // Necessary because whne block is falling, it should stick to platform
@@ -42,7 +42,6 @@ struct TTPhysics {
     static let landedBlockCor: CGFloat = 0.2
     static let blockIsDynamic = true
     static let blockZRotation = PhysicsEngineDefaults.zRotation
-    // TODO: Check if this rotation also needs to differentiate between landed and control
     static let blockRotation = true
     static let blockFriction: CGFloat = 0.1
     static let blockLinearDamping: CGFloat = 0

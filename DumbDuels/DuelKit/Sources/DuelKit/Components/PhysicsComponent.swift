@@ -89,29 +89,23 @@ public class PhysicsComponent: Component {
         self.shouldDestroyEntityWhenRemove = shouldDestroyEntityWhenRemove
     }
 
-    public convenience init(circleOf radius: CGFloat, mass: CGFloat, velocity: CGVector,
-                            affectedByGravity: Bool, linearDamping: CGFloat, isDynamic: Bool,
-                            allowsRotation: Bool, restitution: CGFloat, friction: CGFloat,
-                            ownBitmask: UInt32, collideBitmask: UInt32, contactBitmask: UInt32,
-                            zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
-        self.init(shape: .circle, mass: mass, velocity: velocity,
-                  affectedByGravity: affectedByGravity, linearDamping: linearDamping,
-                  isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, ownBitmask: ownBitmask, collideBitmask: collideBitmask,
-                  contactBitmask: contactBitmask, zRotation: zRotation, impulse: impulse,
-                  angularImpulse: angularImpulse, radius: radius, size: nil)!
+    public convenience init(circleOf radius: CGFloat, with details: PhysicsDetails) {
+        self.init(shape: .circle, mass: details.mass, velocity: details.velocity,
+                  affectedByGravity: details.affectedByGravity, linearDamping: details.linearDamping,
+                  isDynamic: details.isDynamic, allowsRotation: details.allowsRotation,
+                  restitution: details.restitution, friction: details.friction, ownBitmask: details.ownBitmask,
+                  collideBitmask: details.collideBitmask, contactBitmask: details.contactBitmask,
+                  zRotation: details.zRotation, impulse: details.impulse, angularImpulse: details.angularImpulse,
+                  radius: radius, size: nil)!
     }
 
-    public convenience init(rectangleOf size: CGSize, mass: CGFloat, velocity: CGVector,
-                            affectedByGravity: Bool, linearDamping: CGFloat, isDynamic: Bool,
-                            allowsRotation: Bool, restitution: CGFloat, friction: CGFloat,
-                            ownBitmask: UInt32, collideBitmask: UInt32, contactBitmask: UInt32,
-                            zRotation: CGFloat, impulse: CGVector, angularImpulse: CGFloat) {
-        self.init(shape: .rectangle, mass: mass, velocity: velocity,
-                  affectedByGravity: affectedByGravity, linearDamping: linearDamping,
-                  isDynamic: isDynamic, allowsRotation: allowsRotation, restitution: restitution,
-                  friction: friction, ownBitmask: ownBitmask, collideBitmask: collideBitmask,
-                  contactBitmask: contactBitmask, zRotation: zRotation, impulse: impulse,
-                  angularImpulse: angularImpulse, radius: nil, size: size)!
+    public convenience init(rectangleOf size: CGSize, with details: PhysicsDetails) {
+        self.init(shape: .rectangle, mass: details.mass, velocity: details.velocity,
+                  affectedByGravity: details.affectedByGravity, linearDamping: details.linearDamping,
+                  isDynamic: details.isDynamic, allowsRotation: details.allowsRotation,
+                  restitution: details.restitution, friction: details.friction, ownBitmask: details.ownBitmask,
+                  collideBitmask: details.collideBitmask, contactBitmask: details.contactBitmask,
+                  zRotation: details.zRotation, impulse: details.impulse, angularImpulse: details.angularImpulse,
+                  radius: nil, size: size)!
     }
 }

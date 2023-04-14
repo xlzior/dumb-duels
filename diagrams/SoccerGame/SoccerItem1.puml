@@ -1,0 +1,20 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+protocol Sound {
+  ~url : URL
+  ~isPlaying : Bool
+  ~volume : Float
+  ~numLoop : Int
+}
+@enduml

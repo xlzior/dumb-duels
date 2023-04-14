@@ -1,0 +1,243 @@
+@startuml
+' STYLE START
+hide empty members
+skinparam shadowing false
+' STYLE END
+
+
+class "SOGameManager" as SOGameManager << (C, DarkSeaGreen) >> { 
+  -entityCreator : SOEntityCreator?
+  ~setUpEntities()
+  -getContactHandlers()
+  ~setUpUserSystems() 
+}
+class "SOEntityCreator" as SOEntityCreator << (C, DarkSeaGreen) >> { 
+  -entityManager : EntityManager
+  -physicsCreator : SOPhysicsCreator
+  -animationCreator : SOAnimationCreator
+  ~init(entityManager:)
+  ~createPlayer(index:at:of:rotation:)
+  ~createBall(at:of:)
+  ~createGoal(attackerId:at:of:thickness:facing:)
+  ~createWall(at:of:rotation:) 
+}
+class "SOPhysics" as SOPhysics << (S, SkyBlue) struct >> { 
+  ~{static} playerMass : CGFloat
+  ~{static} playerGravity
+  ~{static} playerCor : CGFloat
+  ~{static} playerIsDynamic
+  ~{static} playerZRotation
+  ~{static} playerRotation
+  ~{static} playerFriction : CGFloat
+  ~{static} playerStaticDamping : CGFloat
+  ~{static} playerImpulse : CGVector
+  ~{static} playerAngularImpulse : CGFloat
+  ~{static} ballMass : CGFloat
+  ~{static} ballGravity
+  ~{static} ballCor : CGFloat
+  ~{static} ballIsDynamic
+  ~{static} ballZRotation
+  ~{static} ballRotation
+  ~{static} ballFriction : CGFloat
+  ~{static} ballStaticDamping : CGFloat
+  ~{static} ballImpulse : CGVector
+  ~{static} ballAngularImpulse : CGFloat
+  ~{static} goalMass : CGFloat
+  ~{static} goalGravity
+  ~{static} goalCor : CGFloat
+  ~{static} goalIsDynamic
+  ~{static} goalZRotation
+  ~{static} goalRotation
+  ~{static} goalFriction : CGFloat
+  ~{static} goalStaticDamping : CGFloat
+  ~{static} goalImpulse : CGVector
+  ~{static} goalAngularImpulse : CGFloat
+  ~{static} wallMass : CGFloat
+  ~{static} wallGravity
+  ~{static} wallCor : CGFloat
+  ~{static} wallIsDynamic
+  ~{static} wallZRotation
+  ~{static} wallRotation
+  ~{static} wallFriction : CGFloat
+  ~{static} wallStaticDamping : CGFloat
+  ~{static} wallImpulse : CGVector
+  ~{static} wallAngularImpulse : CGFloat 
+}
+class "SOAssets" as SOAssets << (S, SkyBlue) struct >> { 
+  ~{static} background
+  ~{static} players
+  ~{static} playersGoal
+  ~{static} ball
+  ~{static} goal
+  ~{static} particles 
+}
+class "SOPositions" as SOPositions << (S, SkyBlue) struct >> { 
+  -{static} midX
+  -{static} midY
+  -{static} halfGoalWidth
+  ~{static} goals
+  ~{static} goalFacing : [FaceDirection]
+  -{static} startingDistanceFromBall : CGFloat
+  ~{static} players
+  ~{static} playerRotations : [CGFloat]
+  ~{static} ball
+  ~{static} buffer
+  -{static} topWallY
+  -{static} bottomWallY
+  -{static} field
+  ~{static} walls : [CGPoint]
+  ~{static} wallRotations : [CGFloat] 
+}
+class "SOConstants" as SOConstants << (S, SkyBlue) struct >> { 
+  ~{static} movingSpeed : CGFloat
+  ~{static} rotationSpeed : CGFloat 
+}
+class "SOSizes" as SOSizes << (S, SkyBlue) struct >> { 
+  ~{static} goal
+  ~{static} goalThickness : CGFloat
+  ~{static} player
+  ~{static} ball
+  ~{static} wallThickness : CGFloat
+  -{static} sideWallHeight
+  ~{static} corner : CGFloat
+  ~{static} walls 
+}
+class "SOCollisions" as SOCollisions << (S, SkyBlue) struct >> { 
+  ~{static} playerBitmask : UInt32
+  ~{static} ballBitmask : UInt32
+  ~{static} goalSideBitmask : UInt32
+  ~{static} goalBackBitmask : UInt32
+  ~{static} goalBitmask : UInt32
+  ~{static} wallBitmask : UInt32
+  ~{static} playerCollideBitmask : UInt32
+  ~{static} ballCollideBitmask : UInt32
+  ~{static} goalBackCollideBitmask : UInt32
+  ~{static} goalSideCollideBitmask : UInt32
+  ~{static} goalCollideBitmask : UInt32
+  ~{static} wallCollideBitmask : UInt32
+  ~{static} playerContactBitmask : UInt32
+  ~{static} ballContactBitmask : UInt32
+  ~{static} goalBackContactBitmask : UInt32
+  ~{static} goalSideContactBitmask : UInt32
+  ~{static} goalContactBitmask : UInt32
+  ~{static} wallContactBitmask : UInt32 
+}
+class "SOPhysicsCreator" as SOPhysicsCreator << (C, DarkSeaGreen) >> { 
+  ~createPlayer(of:)
+  ~createBall(of:)
+  ~createGoal(of:)
+  ~createGoalSide(of:)
+  ~createGoalBack(of:)
+  ~createWall(of:) 
+}
+class "GoalSound" as GoalSound << (C, DarkSeaGreen) >> { 
+  ~url : URL
+  ~isPlaying : Bool
+  ~volume : Float
+  ~numLoop : Int
+  ~init(isPlaying:volume:numLoop:) 
+}
+class "SoccerCrowdSound" as SoccerCrowdSound << (C, DarkSeaGreen) >> { 
+  ~url : URL
+  ~isPlaying : Bool
+  ~volume : Float
+  ~numLoop : Int
+  ~init(isPlaying:volume:numLoop:) 
+}
+class "SOAnimationCreator" as SOAnimationCreator << (C, DarkSeaGreen) >> { 
+  ~createPlayerGoalAnimation(index:) 
+}
+class "SoccerPlayerComponent" as SoccerPlayerComponent << (C, DarkSeaGreen) >> { 
+  ~id : ComponentID
+  ~index : Int
+  ~isMoving : Bool
+  ~init(index:) 
+}
+class "BallComponent" as BallComponent << (C, DarkSeaGreen) >> { 
+  ~id : ComponentID
+  ~init() 
+}
+class "GoalComponent" as GoalComponent << (C, DarkSeaGreen) >> { 
+  ~id : ComponentID
+  ~attackerId : EntityID
+  ~init(attackerId:) 
+}
+class "BallHitGoalEvent" as BallHitGoalEvent << (S, SkyBlue) struct >> { 
+  ~priority : Int
+  ~goalId : EntityID
+  ~execute(with:) 
+}
+class "PlayerHitWallEvent" as PlayerHitWallEvent << (S, SkyBlue) struct >> { 
+  ~priority : Int
+  ~playerId : EntityID
+  ~execute(with:) 
+}
+class "PlayerHitBallEvent" as PlayerHitBallEvent << (S, SkyBlue) struct >> { 
+  ~priority : Int
+  ~execute(with:) 
+}
+class "SOScoreSystem" as SOScoreSystem << (C, DarkSeaGreen) >> { 
+  ~entityManager : EntityManager
+  -goals : Assemblage1<GoalComponent>
+  -players : Assemblage1<ScoreComponent>
+  ~init(for:)
+  ~update()
+  ~handleBallHitGoal(goalId:) 
+}
+class "SOSoundControllerSystem" as SOSoundControllerSystem << (C, DarkSeaGreen) >> { 
+  -entityManager : EntityManager
+  -collideSoundType : String
+  -lastCollideSoundPlayedTime : Date?
+  -minPlayInterval
+  ~init(for:)
+  ~update()
+  ~playCollideSound()
+  -createSoundAndPlay() 
+}
+class "SOAnimationSystem" as SOAnimationSystem << (C, DarkSeaGreen) >> { 
+  ~entityManager : EntityManager
+  -goals : Assemblage1<GoalComponent>
+  -players : Assemblage2<SoccerPlayerComponent, AnimationComponent>
+  ~init(for:)
+  ~update()
+  ~goalAnimation(goalId:) 
+}
+class "SORoundSystem" as SORoundSystem << (C, DarkSeaGreen) >> { 
+  ~entityManager : EntityManager
+  ~eventFirer : EventFirer
+  -players : Assemblage4<SoccerPlayerComponent, PositionComponent, RotationComponent, PhysicsComponent>
+  -ball : Assemblage4<BallComponent, PositionComponent, RotationComponent, PhysicsComponent>
+  ~init(for:eventFirer:)
+  ~update()
+  ~reset() 
+}
+class "SOInputSystem" as SOInputSystem << (C, DarkSeaGreen) >> { 
+  ~entityManager : EntityManager
+  ~playerIndexToIdMap
+  -players : Assemblage3<SoccerPlayerComponent, RotationComponent, PhysicsComponent>
+  ~init(for:)
+  ~handleButtonDown(playerIndex:)
+  ~handleButtonUp(playerIndex:)
+  ~update() 
+}
+class "SOGameViewController" as SOGameViewController << (C, DarkSeaGreen) >> { 
+  ~setUpGameManager()
+  ~customiseBackgroundViewAndSound() 
+}
+GameManager <|-- SOGameManager : inherits
+Sound <|-- GoalSound : inherits
+Sound <|-- SoccerCrowdSound : inherits
+Component <|-- SoccerPlayerComponent : inherits
+Component <|-- BallComponent : inherits
+Component <|-- GoalComponent : inherits
+Event <|-- BallHitGoalEvent : inherits
+Event <|-- PlayerHitWallEvent : inherits
+Event <|-- PlayerHitBallEvent : inherits
+System <|-- SOScoreSystem : inherits
+System <|-- SOSoundControllerSystem : inherits
+System <|-- SOAnimationSystem : inherits
+System <|-- SORoundSystem : inherits
+InputSystem <|-- SOInputSystem : inherits
+GameViewController <|-- SOGameViewController : inherits
+
+@enduml

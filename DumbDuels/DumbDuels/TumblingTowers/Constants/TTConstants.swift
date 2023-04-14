@@ -9,6 +9,5 @@ import CoreGraphics
 
 struct TTConstants {
     static let blockXVelocity: CGFloat = TTSizes.blockUnitSize / 5
-    static let blockInitialVelocity = CGVector(dx: 0, dy: -100)
     static let winningScore: Int = 3
 }

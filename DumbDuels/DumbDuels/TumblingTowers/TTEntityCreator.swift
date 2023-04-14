@@ -96,7 +96,6 @@ class TTEntityCreator {
             SizeComponent(originalSize: size)
             SpriteComponent(assetName: TTAssets.scoreLine)
             ScoreLineComponent(playerId: playerId)
-            // physicsCreator.createScoreLine(of: size)
         }
     }
 

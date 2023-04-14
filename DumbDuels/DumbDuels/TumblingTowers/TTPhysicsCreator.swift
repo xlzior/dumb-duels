@@ -10,92 +10,19 @@ import DuelKit
 
 class TTPhysicsCreator {
     func createPlatform(of size: CGSize) -> PhysicsComponent {
-        PhysicsComponent(rectangleOf: size,
-                         mass: TTPhysics.platformMass,
-                         velocity: .zero,
-                         affectedByGravity: TTPhysics.platformGravity,
-                         linearDamping: TTPhysics.platformLinearDamping,
-                         isDynamic: TTPhysics.platformIsDynamic,
-                         allowsRotation: TTPhysics.platformRotation,
-                         restitution: TTPhysics.platformCor,
-                         friction: TTPhysics.platformFriction,
-                         ownBitmask: TTCollisions.platformBitmask,
-                         collideBitmask: TTCollisions.platformCollideBitmask,
-                         contactBitmask: TTCollisions.platformContactBitmask,
-                         zRotation: TTPhysics.platformZRotation,
-                         impulse: TTPhysics.platformImpulse,
-                         angularImpulse: TTPhysics.platformAngularImpulse)
+        PhysicsComponent(rectangleOf: size, with: TTPhysics.platformPhysicsDetails)
     }
 
     func createWall(of size: CGSize) -> PhysicsComponent {
-        PhysicsComponent(rectangleOf: size,
-                         mass: TTPhysics.wallMass,
-                         velocity: .zero,
-                         affectedByGravity: TTPhysics.wallGravity,
-                         linearDamping: TTPhysics.wallLinearDamping,
-                         isDynamic: TTPhysics.wallIsDynamic,
-                         allowsRotation: TTPhysics.wallRotation,
-                         restitution: TTPhysics.wallCor,
-                         friction: TTPhysics.wallFriction,
-                         ownBitmask: TTCollisions.wallBitmask,
-                         collideBitmask: TTCollisions.wallCollideBitmask,
-                         contactBitmask: TTCollisions.wallContactBitmask,
-                         zRotation: TTPhysics.wallZRotation,
-                         impulse: TTPhysics.wallImpulse,
-                         angularImpulse: TTPhysics.wallAngularImpulse)
+        PhysicsComponent(rectangleOf: size, with: TTPhysics.wallPhysicsDetails)
     }
 
     func createBottomBoundary(of size: CGSize) -> PhysicsComponent {
-        PhysicsComponent(rectangleOf: size,
-                         mass: TTPhysics.wallMass,
-                         velocity: .zero,
-                         affectedByGravity: TTPhysics.wallGravity,
-                         linearDamping: TTPhysics.wallLinearDamping,
-                         isDynamic: TTPhysics.wallIsDynamic,
-                         allowsRotation: TTPhysics.wallRotation,
-                         restitution: TTPhysics.wallCor,
-                         friction: TTPhysics.wallFriction,
-                         ownBitmask: TTCollisions.bottomBoundaryBitmask,
-                         collideBitmask: TTCollisions.bottomBoundaryCollideBitmask,
-                         contactBitmask: TTCollisions.bottomBoundaryContactBitmask,
-                         zRotation: TTPhysics.wallZRotation,
-                         impulse: TTPhysics.wallImpulse,
-                         angularImpulse: TTPhysics.wallAngularImpulse)
+        PhysicsComponent(rectangleOf: size, with: TTPhysics.bottomBoundaryPhysicsDetails)
     }
 
     func createBlock(of size: CGSize, area: Int) -> PhysicsComponent {
-        PhysicsComponent(rectangleOf: size,
-                         mass: area * TTPhysics.blockUnitMass,
-                         velocity: TTConstants.blockInitialVelocity,
-                         affectedByGravity: TTPhysics.controlblockGravity,
-                         linearDamping: TTPhysics.blockLinearDamping,
-                         isDynamic: TTPhysics.blockIsDynamic,
-                         allowsRotation: TTPhysics.blockRotation,
-                         restitution: TTPhysics.controlBlockCor,
-                         friction: TTPhysics.blockFriction,
-                         ownBitmask: TTCollisions.controlBlockBitmask,
-                         collideBitmask: TTCollisions.controlBlockCollideBitmask,
-                         contactBitmask: TTCollisions.controlBlockContactBitmask,
-                         zRotation: TTPhysics.blockZRotation,
-                         impulse: TTPhysics.blockImpulse,
-                         angularImpulse: TTPhysics.blockAngularImpulse)
-    }
-
-    func createScoreLine(of size: CGSize) -> PhysicsComponent {
-        PhysicsComponent(rectangleOf: size,
-                         mass: TTPhysics.scoreLineMass,
-                         velocity: .zero,
-                         affectedByGravity: TTPhysics.scoreLineGravity,
-                         linearDamping: TTPhysics.scoreLineLinearDamping,
-                         isDynamic: TTPhysics.scoreLineIsDynamic,
-                         allowsRotation: TTPhysics.scoreLineRotation,
-                         restitution: TTPhysics.scoreLineCor,
-                         friction: TTPhysics.scoreLineFriction,
-                         ownBitmask: TTCollisions.scoreLineBitmask,
-                         collideBitmask: TTCollisions.scoreLineCollideBitmask,
-                         contactBitmask: TTCollisions.scoreLineContactBitmask,
-                         zRotation: TTPhysics.scoreLineZRotation,
-                         impulse: TTPhysics.scoreLineImpulse,
-                         angularImpulse: TTPhysics.scoreLineAngularImpulse)
+        let blockPhysicsDetails = TTPhysics.getBlockPhysicsDetails(of: CGFloat(area))
+        return PhysicsComponent(rectangleOf: size, with: blockPhysicsDetails)
     }
 }

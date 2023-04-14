@@ -17,7 +17,9 @@ struct TTSizes {
                                      height: 0.1 * Sizes.game.height)
 
     // Let the platform be able to hold 16-unit length
-    static let blockUnitSize: CGFloat = platformSize.width / 10.0
+    static let blockUnitSize: CGFloat = platformSize.width / 18.0
 
     static let scoreLineSize = CGSize(width: Sizes.game.width / 2, height: 3)
+
+    static let bottomBoundarySize = CGSize(width: Sizes.game.width, height: 50)
 }

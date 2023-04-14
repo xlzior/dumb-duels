@@ -8,7 +8,7 @@
 import DuelKit
 
 struct BlockHitBlockEvent: Event {
-    var priority = 2 // TODO: check this priority
+    var priority = 2
 
     var controlBlockId: EntityID
     var landedBlockId: EntityID

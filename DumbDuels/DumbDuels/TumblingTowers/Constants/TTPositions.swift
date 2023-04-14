@@ -31,26 +31,13 @@ struct TTPositions {
         CGRect(x: Sizes.game.width / 2, y: 0, width: Sizes.game.width / 2, height: Sizes.game.height)
     ]
 
-    static func getScoreLinePositions() -> [CGPoint] {
-        // there are 3 score lines at different levels
-        let scoreYPositions: [CGFloat] = [
-            Sizes.game.height / 4,
-            Sizes.game.height / 3,
-            Sizes.game.height / 2
-        ]
-        // just left or right
-        let playerXPositions: [CGFloat] = [
-            Sizes.game.width / 4,
-            3 * Sizes.game.width / 4
-        ]
+    static let scoreLineYPositions: [CGFloat] = [
+        Sizes.game.height / 3.3,
+        Sizes.game.height / 2.3,
+        Sizes.game.height / 1.7
+    ]
 
-        var scoreLinePositions: [CGPoint] = []
-        for yPosition in scoreYPositions {
-            for xPosition in playerXPositions {
-                scoreLinePositions.append(CGPoint(x: xPosition, y: yPosition))
-            }
-        }
+    static let scoreLineXPositions: [CGFloat] = [Sizes.game.width / 4, 3 * Sizes.game.width / 4]
 
-        return scoreLinePositions
-    }
+    static let bottomBoundaryPosition = CGPoint(x: Sizes.game.width / 2, y: -4 * TTSizes.blockUnitSize)
 }

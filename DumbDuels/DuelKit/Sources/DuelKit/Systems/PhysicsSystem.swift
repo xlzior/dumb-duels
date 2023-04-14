@@ -41,6 +41,9 @@ public class PhysicsSystem: System {
                 physicsComponent.velocity = physicsSimulatableBody.velocity
                 physicsComponent.mass = physicsSimulatableBody.mass
                 physicsComponent.zRotation = physicsSimulatableBody.zRotation
+                physicsComponent.ownBitmask = physicsSimulatableBody.categoryBitMask
+                physicsComponent.contactBitmask = physicsSimulatableBody.contactTestBitMask
+                physicsComponent.collideBitmask = physicsSimulatableBody.collisionBitMask
             }
             if let positionComponent: PositionComponent =
                 entityManager.getComponent(ofType: PositionComponent.typeId, for: id) {

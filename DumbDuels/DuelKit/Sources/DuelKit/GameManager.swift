@@ -18,17 +18,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public var initialPlayerIndexToIdMap: [Int: EntityID]
     private var isGameOver: Bool
 
-    // TODO: is this violating any software design principles...
-    private var isUsingParticleSystem = false
-    private var isUsingSoundSystem = false
-    private var isUsingAnimationSystem = false
-    private var isUsingPhysicsSystem = false
-    private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
-    private var isUsingRenderSystem = false
-    private var isUsingGameOverSystem = false
-    private var gameOverAssets: GameOverAssets?
-    private var winningScore: Int?
-    private var isUsingAutoRotateSystem = false
+    private var internalSystems = [InternalSystem]()
 
     public init(gameController: GameViewController) {
         self.gameController = gameController
@@ -62,20 +52,25 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     }
 
     public func useSoundSystem() {
-        isUsingSoundSystem = true
+        internalSystems.append(SoundSystem(for: entityManager))
     }
 
     public func useAnimationSystem() {
-        isUsingAnimationSystem = true
+        internalSystems.append(AnimationSystem(for: entityManager))
     }
 
     public func useRenderSystem() {
-        isUsingRenderSystem = true
+        internalSystems.append(RenderSystem(
+            for: entityManager,
+            eventManager: eventManager,
+            gameController: gameController
+        ))
     }
 
     public func usePhysicsSystem(withContactHandlers: PhysicsSystem.ContactHandlerMap) {
-        isUsingPhysicsSystem = true
-        physicsContactHandlers = withContactHandlers
+        internalSystems.append(PhysicsSystem(
+            for: entityManager, eventFirer: eventManager,
+            scene: simulator.gameScene, contactHandlers: withContactHandlers))
     }
 
     public func useGameOverSystem(
@@ -86,67 +81,32 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         gameEndSound: @escaping () -> Sound,
         winningScore: Int = 3
     ) {
-        isUsingGameOverSystem = true
-        gameOverAssets = GameOverAssets(
+        let gameOverAssets = GameOverAssets(
             gameStartText: gameStartText,
             gameTieText: gameTieText,
             gameWonTexts: gameWonTexts,
             gameStartSound: gameStartSound,
             gameEndSound: gameEndSound
         )
-        self.winningScore = winningScore
+        internalSystems.append(GameOverSystem(
+            for: entityManager, eventFirer: eventManager,
+            onGameOver: handleGameOver, assets: gameOverAssets,
+            winningScore: winningScore))
     }
 
     public func useAutoRotateSystem() {
-        isUsingAutoRotateSystem = true
+        internalSystems.append(AutoRotateSystem(for: entityManager))
     }
 
     public func useParticleSystem() {
-        isUsingParticleSystem = true
+        internalSystems.append(ParticleSystem(for: entityManager))
     }
 
     private func setUpInternalSystems() {
-        if isUsingParticleSystem {
-            systemManager.register(ParticleSystem(for: entityManager))
-        }
+        internalSystems.sort { $0.priority <= $1.priority }
 
-        if isUsingAutoRotateSystem {
-            systemManager.register(AutoRotateSystem(for: entityManager))
-        }
-
-        if isUsingGameOverSystem {
-            guard let gameOverAssets, let winningScore else {
-                return assertionFailure("No game over assets found")
-            }
-            systemManager.register(GameOverSystem(
-                for: entityManager, eventFirer: eventManager,
-                onGameOver: handleGameOver, assets: gameOverAssets,
-                winningScore: winningScore))
-        }
-
-        if isUsingSoundSystem {
-            systemManager.register(SoundSystem(for: entityManager))
-        }
-
-        if isUsingAnimationSystem {
-            systemManager.register(AnimationSystem(for: entityManager))
-        }
-
-        if isUsingPhysicsSystem {
-            guard let physicsContactHandlers else {
-                return assertionFailure("No contact handlers found")
-            }
-            systemManager.register(PhysicsSystem(
-                for: entityManager, eventFirer: eventManager,
-                scene: simulator.gameScene, contactHandlers: physicsContactHandlers))
-        }
-
-        if isUsingRenderSystem {
-            systemManager.register(RenderSystem(
-                for: entityManager,
-                eventManager: eventManager,
-                gameController: gameController
-            ))
+        internalSystems.forEach { system in
+            systemManager.register(system)
         }
     }
 

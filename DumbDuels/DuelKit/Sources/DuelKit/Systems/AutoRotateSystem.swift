@@ -5,7 +5,9 @@
 //  Created by Wen Jun Lye on 27/3/23.
 //
 
-class AutoRotateSystem: System {
+class AutoRotateSystem: InternalSystem {
+    var priority: InternalSystemOrder = .autoRotate
+
     unowned var entityManager: EntityManager
     private var objects: Assemblage2<RotationComponent, AutoRotateComponent>
 

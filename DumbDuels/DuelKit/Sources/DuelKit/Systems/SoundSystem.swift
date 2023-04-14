@@ -7,7 +7,9 @@
 
 import AVFoundation
 
-public class SoundSystem: NSObject, AVAudioPlayerDelegate, System {
+public class SoundSystem: NSObject, AVAudioPlayerDelegate, InternalSystem {
+    var priority: InternalSystemOrder = .sound
+
     unowned var entityManager: EntityManager
 
     var players: [URL: AVAudioPlayer] = [:]

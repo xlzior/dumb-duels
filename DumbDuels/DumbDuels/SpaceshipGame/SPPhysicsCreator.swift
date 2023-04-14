@@ -10,86 +10,21 @@ import DuelKit
 
 class SPPhysicsCreator {
     func createSpaceship(of size: CGSize) -> PhysicsComponent {
-//        let component = PhysicsComponent(
-//            rectangleOf: size - CGSize(width: 20, height: 10),
-//            mass: SPPhysics.spaceshipMass, velocity: .zero,
-//            affectedByGravity: SPPhysics.spaceshipGravity,
-//            linearDamping: SPPhysics.spaceshipStaticDamping,
-//            isDynamic: SPPhysics.spaceshipIsDynamic,
-//            allowsRotation: SPPhysics.spaceshipRotation,
-//            restitution: SPPhysics.spaceshipCor,
-//            friction: SPPhysics.spaceshipFriction,
-//            ownBitmask: SPCollisions.spaceshipBitmask,
-//            collideBitmask: SPCollisions.spaceshipCollideBitmask,
-//            contactBitmask: SPCollisions.spaceshipContactBitmask,
-//            zRotation: SPPhysics.spaceshipZRotation,
-//            impulse: SPPhysics.spaceshipImpulse,
-//            angularImpulse: SPPhysics.spaceshipAngularImpulse)
-//
-//        return component
         PhysicsComponent(rectangleOf: size - CGSize(width: 20, height: 10), with: SPPhysics.spaceshipPhysicsDetails)
     }
 
     func createRock(of size: CGSize, velocity: CGVector) -> PhysicsComponent {
-//        let component = PhysicsComponent(
-//            circleOf: size.height / 2, mass: SPPhysics.rockMass, velocity: .zero,
-//            affectedByGravity: SPPhysics.rockGravity,
-//            linearDamping: SPPhysics.rockDamping,
-//            isDynamic: SPPhysics.rockIsDynamic,
-//            allowsRotation: SPPhysics.rockRotation,
-//            restitution: SPPhysics.rockCor,
-//            friction: SPPhysics.rockFriction,
-//            ownBitmask: SPCollisions.rockBitmask,
-//            collideBitmask: SPCollisions.rockCollideBitmask,
-//            contactBitmask: SPCollisions.rockContactBitmask,
-//            zRotation: SPPhysics.rockZRotation,
-//            impulse: SPConstants.rockForce * velocity,
-//            angularImpulse: SPPhysics.rockAngularImpulse)
-//
-//        return component
         let rockPhysicsDetails = SPPhysics.getRockPhysicsDetails(with: SPConstants.rockForce * velocity)
         return PhysicsComponent(circleOf: size.height / 2, with: rockPhysicsDetails)
     }
 
     func createBullet(of size: CGSize, pointing: CGFloat) -> PhysicsComponent {
-//        let component = PhysicsComponent(
-//            rectangleOf: size, mass: SPPhysics.bulletMass, velocity: .zero,
-//            affectedByGravity: SPPhysics.bulletGravity,
-//            linearDamping: SPPhysics.bulletDamping,
-//            isDynamic: SPPhysics.bulletIsDynamic,
-//            allowsRotation: SPPhysics.bulletRotation,
-//            restitution: SPPhysics.bulletCor,
-//            friction: SPPhysics.bulletFriction,
-//            ownBitmask: SPCollisions.bulletBitmask,
-//            collideBitmask: SPCollisions.bulletCollideBitmask,
-//            contactBitmask: SPCollisions.bulletContactBitmask,
-//            zRotation: SPPhysics.bulletZRotation,
-//            impulse: SPConstants.bulletForce * CGVector(angle: pointing),
-//            angularImpulse: SPPhysics.bulletAngularImpulse)
-//
-//        return component
         let bulletPhysicsDetails = SPPhysics.getBulletPhysicsDetails(
             with: SPConstants.bulletForce * CGVector(angle: pointing))
         return PhysicsComponent(rectangleOf: size, with: bulletPhysicsDetails)
     }
 
     func createPowerup(of size: CGSize) -> PhysicsComponent {
-//        let component = PhysicsComponent(
-//            circleOf: size.height / 2, mass: SPPhysics.powerupMass, velocity: .zero,
-//            affectedByGravity: SPPhysics.powerupGravity,
-//            linearDamping: SPPhysics.powerupDamping,
-//            isDynamic: SPPhysics.powerupIsDynamic,
-//            allowsRotation: SPPhysics.powerupRotation,
-//            restitution: SPPhysics.powerupCor,
-//            friction: SPPhysics.powerupFriction,
-//            ownBitmask: SPCollisions.powerupBitmask,
-//            collideBitmask: SPCollisions.powerupCollideBitmask,
-//            contactBitmask: SPCollisions.powerupContactBitmask,
-//            zRotation: SPPhysics.powerupZRotation,
-//            impulse: SPPhysics.powerupImpulse,
-//            angularImpulse: SPPhysics.powerupAngularImpulse)
-//
-//        return component
         PhysicsComponent(circleOf: size.height / 2, with: SPPhysics.powerupPhysicsDetails)
     }
 }

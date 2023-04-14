@@ -9,7 +9,6 @@ import CoreGraphics
 import DuelKit
 
 struct AXPhysics {
-    // Player physics details
     static let playerPhysicsDetails = PhysicsDetails(
         allowsRotation: false,
         restitution: 0,
@@ -18,7 +17,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.playerContactBitmask
     )
 
-    // Axe physics details
     static let axePhysicsDetails = PhysicsDetails(
         restitution: 0.1,
         ownBitmask: AXCollisions.axeBitmask,
@@ -26,7 +24,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.axeContactBitmask
     )
 
-    // Platform physics details
     static let platformPhysicsDetails = PhysicsDetails(
         affectedByGravity: false,
         isDynamic: false,
@@ -37,7 +34,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.platformContactBitmask
     )
 
-    // Peg physics details
     static let pegPhysicsDetails = PhysicsDetails(
         affectedByGravity: false,
         isDynamic: false,
@@ -48,7 +44,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.pegContactBitmask
     )
 
-    // Lava physics details
     static let lavaPhysicsDetails = PhysicsDetails(
         affectedByGravity: false,
         isDynamic: false,
@@ -59,7 +54,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.lavaContactBitmask
     )
 
-    // Wall physics physics details
     static let wallPhysicsDetails = PhysicsDetails(
         affectedByGravity: false,
         isDynamic: false,
@@ -70,7 +64,6 @@ struct AXPhysics {
         contactBitmask: AXCollisions.wallContactBitmask
     )
 
-    // Axe particle physics details
     static func getAxeParticlePhysicsDetails(with initialImpulse: CGVector) -> PhysicsDetails {
         PhysicsDetails(
             allowsRotation: false,

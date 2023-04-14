@@ -9,47 +9,51 @@ import DuelKit
 import CoreGraphics
 
 struct TAPhysics {
-    static let tankMass: CGFloat = 1.0
-    static let tankGravity = false
-    static let tankCor: CGFloat = 0.8
-    static let tankIsDynamic = true
-    static let tankZRotation = PhysicsEngineDefaults.zRotation
-    static let tankRotation = false
-    static let tankFriction: CGFloat = 0
-    static let tankStaticDamping: CGFloat = 0
-    static let tankImpulse: CGVector = .zero
-    static let tankAngularImpulse: CGFloat = .zero
+    static let tankPhysicsDetails = PhysicsDetails(
+        affectedByGravity: false,
+        linearDamping: 0,
+        allowsRotation: false,
+        restitution: 0.8,
+        friction: 0,
+        ownBitmask: TACollisions.tankBitmask,
+        collideBitmask: TACollisions.tankCollideBitmask,
+        contactBitmask: TACollisions.tankContactBitmask
+    )
 
-    static let cannonballMass: CGFloat = 1.0
-    static let cannonballGravity = false
-    static let cannonballCor: CGFloat = 1.0
-    static let cannonballIsDynamic = true
-    static let cannonballZRotation = PhysicsEngineDefaults.zRotation
-    static let cannonballRotation = false
-    static let cannonballFriction: CGFloat = 0
-    static let cannonballStaticDamping: CGFloat = 0
-    static let cannonballImpulse: CGVector = .zero
-    static let cannonballAngularImpulse: CGFloat = .zero
+    static func getCannonballPhysicsDetails(with velocity: CGVector) -> PhysicsDetails {
+        PhysicsDetails(
+            velocity: velocity,
+            affectedByGravity: false,
+            linearDamping: 0,
+            allowsRotation: false,
+            friction: 0,
+            ownBitmask: TACollisions.cannonballBitmask,
+            collideBitmask: TACollisions.cannonballCollideBitmask,
+            contactBitmask: TACollisions.cannonballContactBitmask
+        )
+    }
 
-    static let wallMass: CGFloat = 1.0
-    static let wallGravity = false
-    static let wallCor: CGFloat = 1.0
-    static let wallIsDynamic = false
-    static let wallZRotation = PhysicsEngineDefaults.zRotation
-    static let wallRotation = false
-    static let wallFriction: CGFloat = 0
-    static let wallStaticDamping: CGFloat = 0
-    static let wallImpulse: CGVector = .zero
-    static let wallAngularImpulse: CGFloat = .zero
+    static let wallPhysicsDetails = PhysicsDetails(
+        affectedByGravity: false,
+        linearDamping: 0,
+        isDynamic: false,
+        allowsRotation: false,
+        restitution: 1,
+        friction: 0,
+        ownBitmask: TACollisions.wallBitmask,
+        collideBitmask: TACollisions.wallContactBitmask,
+        contactBitmask: TACollisions.wallCollideBitmask
+    )
 
-    static let sideWallMass: CGFloat = 1.0
-    static let sideWallGravity = false
-    static let sideWallCor: CGFloat = 1.0
-    static let sideWallIsDynamic = false
-    static let sideWallZRotation = PhysicsEngineDefaults.zRotation
-    static let sideWallRotation = false
-    static let sideWallFriction: CGFloat = 0
-    static let sideWallStaticDamping: CGFloat = 0
-    static let sideWallImpulse: CGVector = .zero
-    static let sideWallAngularImpulse: CGFloat = .zero
+    static let sideWallPhysicsDetails = PhysicsDetails(
+        affectedByGravity: false,
+        linearDamping: 0,
+        isDynamic: false,
+        allowsRotation: false,
+        restitution: 1,
+        friction: 0,
+        ownBitmask: TACollisions.sideWallBitmask,
+        collideBitmask: TACollisions.sideWallCollideBitmask,
+        contactBitmask: TACollisions.sideWallContactBitmask
+    )
 }

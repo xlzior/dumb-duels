@@ -11,7 +11,6 @@ import DuelKit
 struct AXPhysics {
     // Player physics details
     static let playerPhysicsDetails = PhysicsDetails(
-        mass: 1,
         allowsRotation: false,
         restitution: 0,
         ownBitmask: AXCollisions.playerBitmask,

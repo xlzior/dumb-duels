@@ -14,7 +14,7 @@ class SOGameViewController: GameViewController {
     }
 
     override func customiseBackgroundViewAndSound() {
-        gameView.image = UIImage(imageLiteralResourceName: SOAssets.background)
+        gameViewImage = UIImage(imageLiteralResourceName: SOAssets.background)
         backgroundSound = SoccerCrowdSound()
     }
 }

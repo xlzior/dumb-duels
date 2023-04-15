@@ -15,7 +15,7 @@ class AXGameViewController: GameViewController {
     }
 
     override func customiseBackgroundViewAndSound() {
-        gameView.image = UIImage(imageLiteralResourceName: AXAssets.background)
+        gameViewImage = UIImage(imageLiteralResourceName: AXAssets.background)
         backgroundSound = GameBackgroundSound()
     }
 }

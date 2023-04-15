@@ -11,15 +11,15 @@ class GameAreaBorder: UIView {
     static let zPosition: CGFloat = 101
     let outlineThickness = CGFloat(10)
 
-    init(screenSize: CGSize, gameAreaFrame: CGRect) {
+    init(screenSize: CGSize, gameAreaFrame: CGRect, colour: UIColor?) {
         let origin = CGPoint()
         super.init(frame: CGRect(origin: origin, size: screenSize))
-        addBorders(origin: origin, screenSize: screenSize, gameAreaFrame: gameAreaFrame)
+        addBorders(origin: origin, screenSize: screenSize, gameAreaFrame: gameAreaFrame, colour: colour)
         addOutline(gameAreaFrame: gameAreaFrame)
         layer.zPosition = GameAreaBorder.zPosition
     }
 
-    private func addBorders(origin: CGPoint, screenSize: CGSize, gameAreaFrame: CGRect) {
+    private func addBorders(origin: CGPoint, screenSize: CGSize, gameAreaFrame: CGRect, colour: UIColor?) {
         var borders = [UIView]()
         let topBorder = UIView(frame: CGRect(
             origin: origin,
@@ -39,7 +39,7 @@ class GameAreaBorder: UIView {
         ))
         borders.append(contentsOf: [topBorder, bottomBorder, leftBorder, rightBorder])
         for border in borders {
-            border.backgroundColor = Colour.primary.uiColour
+            border.backgroundColor = (colour != nil) ? colour : Colour.primary.uiColour
             addSubview(border)
         }
     }

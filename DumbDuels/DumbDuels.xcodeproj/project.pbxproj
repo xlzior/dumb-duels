@@ -32,8 +32,6 @@
 		7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */; };
 		7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2A3DD529CD81A500C735D2 /* PegComponent.swift */; };
 		7B2B292929B82BE000281FC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292829B82BE000281FC7 /* AppDelegate.swift */; };
-		7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */; };
-		7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B292E29B82BE000281FC7 /* Main.storyboard */; };
 		7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293129B82BE300281FC7 /* Assets.xcassets */; };
 		7B2B293529B82BE300281FC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */; };
 		7B30774929DF38E500B26744 /* AXAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B30774829DF38E500B26744 /* AXAssets.xcassets */; };
@@ -142,6 +140,7 @@
 		8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */; };
 		8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */; };
 		8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */; };
+		A715102A29EA72820066642E /* GameHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A715102929EA72820066642E /* GameHomeViewController.swift */; };
 		A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF474D29E1603B0011AE24 /* jump.mp3 */; };
 		A7DF475529E16A9C0011AE24 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475429E16A9C0011AE24 /* battle.mp3 */; };
 		A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475629E16AA40011AE24 /* game-end.mp3 */; };
@@ -233,8 +232,6 @@
 		7B2A3DD529CD81A500C735D2 /* PegComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegComponent.swift; sourceTree = "<group>"; };
 		7B2B292529B82BE000281FC7 /* DumbDuels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumbDuels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2B292829B82BE000281FC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7B2B292F29B82BE000281FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B2B293129B82BE300281FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B2B293429B82BE300281FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B2B293629B82BE300281FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -346,6 +343,7 @@
 		8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBlockControlEvent.swift; sourceTree = "<group>"; };
 		8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOutOfGameEvent.swift; sourceTree = "<group>"; };
 		8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameOverEvent.swift; sourceTree = "<group>"; };
+		A715102929EA72820066642E /* GameHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHomeViewController.swift; sourceTree = "<group>"; };
 		A7DF474D29E1603B0011AE24 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A7DF475429E16A9C0011AE24 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle.mp3; sourceTree = "<group>"; };
 		A7DF475629E16AA40011AE24 /* game-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-end.mp3"; sourceTree = "<group>"; };
@@ -445,12 +443,11 @@
 				7BE0FDF429D039D90035AE98 /* Extensions */,
 				7BA7EB7B29C2D4470096457F /* AxeGame */,
 				7BCC61F629D1D5E60092B602 /* SpaceshipGame */,
-				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
-				7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */,
 				8CB0FA7A29E5A9A600C2FAC8 /* TumblingTowers */,
 				7B85081829DF35580095A7F6 /* TankGame */,
 				7B85081929DF35690095A7F6 /* SoccerGame */,
-				7B2B292E29B82BE000281FC7 /* Main.storyboard */,
+				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
+				A715102929EA72820066642E /* GameHomeViewController.swift */,
 				7B2B293129B82BE300281FC7 /* Assets.xcassets */,
 				7B30775A29DFCF0C00B26744 /* Assets.swift */,
 				A7DF475329E16A710011AE24 /* Sounds */,
@@ -1026,7 +1023,6 @@
 				7B30774B29DF39A600B26744 /* SPAssets.xcassets in Resources */,
 				7B2B293229B82BE300281FC7 /* Assets.xcassets in Resources */,
 				A7DF479A29E29A800011AE24 /* engine.mp3 in Resources */,
-				7B2B293029B82BE000281FC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1126,7 @@
 				7B30775F29DFD0B700B26744 /* TAPhysicsCreator.swift in Sources */,
 				A7F36EC829E405DC00E47F3E /* ExplodeSound.swift in Sources */,
 				A7DF477E29E1D63A0011AE24 /* BulletSound.swift in Sources */,
+				A715102A29EA72820066642E /* GameHomeViewController.swift in Sources */,
 				7B13494B29D1DEA700E43A7F /* SPSizes.swift in Sources */,
 				8CB0FA8129E5A9EC00C2FAC8 /* TTEntityCreator.swift in Sources */,
 				7BCC61FC29D1D6170092B602 /* SPPhysicsCreator.swift in Sources */,
@@ -1187,7 +1184,6 @@
 				7BA7EBE129C36BBD0096457F /* AXInputSystem.swift in Sources */,
 				A7DF478629E1D74B0011AE24 /* SPSoundTypes.swift in Sources */,
 				8CB0FA6729D1999100C2FAC8 /* Int+Extensions.swift in Sources */,
-				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */,
 				8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */,
 				7BCC620429D1D7790092B602 /* SpaceshipComponent.swift in Sources */,
@@ -1264,14 +1260,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7B2B292E29B82BE000281FC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B2B292F29B82BE000281FC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7B2B293329B82BE300281FC7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1404,14 +1392,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7285BKL8JQ;
+				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -1420,7 +1407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels21";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1438,14 +1425,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7285BKL8JQ;
+				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -1454,7 +1440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels21";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

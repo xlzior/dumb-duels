@@ -9,7 +9,7 @@ import CoreGraphics
 
 public class SizeComponent: Component {
     public var id: ComponentID
-    let originalSize: CGSize
+    public var originalSize: CGSize
     public var xScale: CGFloat
     public var yScale: CGFloat
     public var actualSize: CGSize {

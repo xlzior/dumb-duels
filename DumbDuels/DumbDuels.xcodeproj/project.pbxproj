@@ -117,6 +117,31 @@
 		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
 		8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */; };
 		8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */; };
+		8CB0FA8129E5A9EC00C2FAC8 /* TTEntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8029E5A9EC00C2FAC8 /* TTEntityCreator.swift */; };
+		8CB0FA8329E5A9FF00C2FAC8 /* TTGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8229E5A9FF00C2FAC8 /* TTGameViewController.swift */; };
+		8CB0FA8729E5AA3E00C2FAC8 /* TTGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8629E5AA3E00C2FAC8 /* TTGameManager.swift */; };
+		8CB0FA8929E5AA5000C2FAC8 /* TTPhysicsCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8829E5AA5000C2FAC8 /* TTPhysicsCreator.swift */; };
+		8CB0FA8B29E5ABA400C2FAC8 /* TTAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8A29E5ABA400C2FAC8 /* TTAssets.xcassets */; };
+		8CB0FA8D29E5AC6F00C2FAC8 /* TTAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8C29E5AC6F00C2FAC8 /* TTAssets.swift */; };
+		8CB0FA8F29E5AC7700C2FAC8 /* TTPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8E29E5AC7700C2FAC8 /* TTPhysics.swift */; };
+		8CB0FA9129E5AC7E00C2FAC8 /* TTCollisions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9029E5AC7E00C2FAC8 /* TTCollisions.swift */; };
+		8CB0FA9329E5AC8700C2FAC8 /* TTPositions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9229E5AC8700C2FAC8 /* TTPositions.swift */; };
+		8CB0FA9529E5AC8E00C2FAC8 /* TTSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9429E5AC8E00C2FAC8 /* TTSizes.swift */; };
+		8CB0FA9729E5AC9800C2FAC8 /* TTConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9629E5AC9800C2FAC8 /* TTConstants.swift */; };
+		8CB0FA9929E5B68F00C2FAC8 /* GuidelineSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9829E5B68F00C2FAC8 /* GuidelineSystem.swift */; };
+		8CB0FA9B29E5B70800C2FAC8 /* TTInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9A29E5B70800C2FAC8 /* TTInputSystem.swift */; };
+		8CB0FA9F29E5B72E00C2FAC8 /* TTScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA9E29E5B72E00C2FAC8 /* TTScoreSystem.swift */; };
+		8CB0FAA329E5B7D500C2FAC8 /* BlockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA229E5B7D500C2FAC8 /* BlockComponent.swift */; };
+		8CB0FAA529E5B7EE00C2FAC8 /* BlockSpawnSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA429E5B7EE00C2FAC8 /* BlockSpawnSystem.swift */; };
+		8CB0FAA929E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */; };
+		8CB0FAAB29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */; };
+		8CB0FAAD29E5FC0F00C2FAC8 /* TTPlatformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAAC29E5FC0F00C2FAC8 /* TTPlatformComponent.swift */; };
+		8CB0FAB129E5FE6C00C2FAC8 /* HasGuidelineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB029E5FE6C00C2FAC8 /* HasGuidelineComponent.swift */; };
+		8CB0FAB329E6037900C2FAC8 /* ScoreLineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */; };
+		8CB0FAB529E604F700C2FAC8 /* TTPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */; };
+		8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */; };
+		8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */; };
+		8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */; };
 		A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF474D29E1603B0011AE24 /* jump.mp3 */; };
 		A7DF475529E16A9C0011AE24 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475429E16A9C0011AE24 /* battle.mp3 */; };
 		A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475629E16AA40011AE24 /* game-end.mp3 */; };
@@ -297,6 +322,31 @@
 		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarComponent.swift; sourceTree = "<group>"; };
 		8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
+		8CB0FA8029E5A9EC00C2FAC8 /* TTEntityCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTEntityCreator.swift; sourceTree = "<group>"; };
+		8CB0FA8229E5A9FF00C2FAC8 /* TTGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameViewController.swift; sourceTree = "<group>"; };
+		8CB0FA8629E5AA3E00C2FAC8 /* TTGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameManager.swift; sourceTree = "<group>"; };
+		8CB0FA8829E5AA5000C2FAC8 /* TTPhysicsCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPhysicsCreator.swift; sourceTree = "<group>"; };
+		8CB0FA8A29E5ABA400C2FAC8 /* TTAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TTAssets.xcassets; sourceTree = "<group>"; };
+		8CB0FA8C29E5AC6F00C2FAC8 /* TTAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTAssets.swift; sourceTree = "<group>"; };
+		8CB0FA8E29E5AC7700C2FAC8 /* TTPhysics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPhysics.swift; sourceTree = "<group>"; };
+		8CB0FA9029E5AC7E00C2FAC8 /* TTCollisions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTCollisions.swift; sourceTree = "<group>"; };
+		8CB0FA9229E5AC8700C2FAC8 /* TTPositions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPositions.swift; sourceTree = "<group>"; };
+		8CB0FA9429E5AC8E00C2FAC8 /* TTSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSizes.swift; sourceTree = "<group>"; };
+		8CB0FA9629E5AC9800C2FAC8 /* TTConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTConstants.swift; sourceTree = "<group>"; };
+		8CB0FA9829E5B68F00C2FAC8 /* GuidelineSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelineSystem.swift; sourceTree = "<group>"; };
+		8CB0FA9A29E5B70800C2FAC8 /* TTInputSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTInputSystem.swift; sourceTree = "<group>"; };
+		8CB0FA9E29E5B72E00C2FAC8 /* TTScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTScoreSystem.swift; sourceTree = "<group>"; };
+		8CB0FAA229E5B7D500C2FAC8 /* BlockComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockComponent.swift; sourceTree = "<group>"; };
+		8CB0FAA429E5B7EE00C2FAC8 /* BlockSpawnSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSpawnSystem.swift; sourceTree = "<group>"; };
+		8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockHitBlockEvent.swift; sourceTree = "<group>"; };
+		8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBlockHitPlatformEvent.swift; sourceTree = "<group>"; };
+		8CB0FAAC29E5FC0F00C2FAC8 /* TTPlatformComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPlatformComponent.swift; sourceTree = "<group>"; };
+		8CB0FAB029E5FE6C00C2FAC8 /* HasGuidelineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasGuidelineComponent.swift; sourceTree = "<group>"; };
+		8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreLineComponent.swift; sourceTree = "<group>"; };
+		8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTPlayerComponent.swift; sourceTree = "<group>"; };
+		8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBlockControlEvent.swift; sourceTree = "<group>"; };
+		8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOutOfGameEvent.swift; sourceTree = "<group>"; };
+		8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameOverEvent.swift; sourceTree = "<group>"; };
 		A7DF474D29E1603B0011AE24 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A7DF475429E16A9C0011AE24 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle.mp3; sourceTree = "<group>"; };
 		A7DF475629E16AA40011AE24 /* game-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-end.mp3"; sourceTree = "<group>"; };
@@ -399,6 +449,7 @@
 				7BCC61F629D1D5E60092B602 /* SpaceshipGame */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
 				7B2B292A29B82BE000281FC7 /* SceneDelegate.swift */,
+				8CB0FA7A29E5A9A600C2FAC8 /* TumblingTowers */,
 				7B85081829DF35580095A7F6 /* TankGame */,
 				7B85081929DF35690095A7F6 /* SoccerGame */,
 				7B2B292E29B82BE000281FC7 /* Main.storyboard */,
@@ -696,6 +747,78 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8CB0FA7A29E5A9A600C2FAC8 /* TumblingTowers */ = {
+			isa = PBXGroup;
+			children = (
+				8CB0FA7F29E5A9DA00C2FAC8 /* Events */,
+				8CB0FA7E29E5A9D300C2FAC8 /* Systems */,
+				8CB0FA7D29E5A9C900C2FAC8 /* Components */,
+				8CB0FA7C29E5A9BF00C2FAC8 /* Constants */,
+				8CB0FA7B29E5A9B900C2FAC8 /* Sounds */,
+				8CB0FA8029E5A9EC00C2FAC8 /* TTEntityCreator.swift */,
+				8CB0FA8829E5AA5000C2FAC8 /* TTPhysicsCreator.swift */,
+				8CB0FA8629E5AA3E00C2FAC8 /* TTGameManager.swift */,
+				8CB0FA8229E5A9FF00C2FAC8 /* TTGameViewController.swift */,
+				8CB0FA8A29E5ABA400C2FAC8 /* TTAssets.xcassets */,
+			);
+			path = TumblingTowers;
+			sourceTree = "<group>";
+		};
+		8CB0FA7B29E5A9B900C2FAC8 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		8CB0FA7C29E5A9BF00C2FAC8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				8CB0FA8C29E5AC6F00C2FAC8 /* TTAssets.swift */,
+				8CB0FA8E29E5AC7700C2FAC8 /* TTPhysics.swift */,
+				8CB0FA9029E5AC7E00C2FAC8 /* TTCollisions.swift */,
+				8CB0FA9229E5AC8700C2FAC8 /* TTPositions.swift */,
+				8CB0FA9429E5AC8E00C2FAC8 /* TTSizes.swift */,
+				8CB0FA9629E5AC9800C2FAC8 /* TTConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		8CB0FA7D29E5A9C900C2FAC8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8CB0FAA229E5B7D500C2FAC8 /* BlockComponent.swift */,
+				8CB0FAAC29E5FC0F00C2FAC8 /* TTPlatformComponent.swift */,
+				8CB0FAB029E5FE6C00C2FAC8 /* HasGuidelineComponent.swift */,
+				8CB0FAB229E6037900C2FAC8 /* ScoreLineComponent.swift */,
+				8CB0FAB429E604F700C2FAC8 /* TTPlayerComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8CB0FA7E29E5A9D300C2FAC8 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				8CB0FA9829E5B68F00C2FAC8 /* GuidelineSystem.swift */,
+				8CB0FA9A29E5B70800C2FAC8 /* TTInputSystem.swift */,
+				8CB0FA9E29E5B72E00C2FAC8 /* TTScoreSystem.swift */,
+				8CB0FAA429E5B7EE00C2FAC8 /* BlockSpawnSystem.swift */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		8CB0FA7F29E5A9DA00C2FAC8 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8CB0FAA829E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift */,
+				8CB0FAAA29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift */,
+				8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */,
+				8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */,
+				8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
 		A7DF474629E15BD10011AE24 /* AXSounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -891,6 +1014,7 @@
 				A7DF479C29E2AE5D0011AE24 /* game-bg.mp3 in Resources */,
 				A7F36EBE29E403D700E47F3E /* beep.mp3 in Resources */,
 				A7DF475D29E1776C0011AE24 /* explode.mp3 in Resources */,
+				8CB0FA8B29E5ABA400C2FAC8 /* TTAssets.xcassets in Resources */,
 				A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */,
 				7B30774D29DF3A5E00B26744 /* TAAssets.xcassets in Resources */,
 				A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */,
@@ -956,14 +1080,17 @@
 				7BC8C2D329D2992A001CF6F7 /* PowerupComponent.swift in Sources */,
 				7BE0FDF929D03A120035AE98 /* CGPoint+Extensions.swift in Sources */,
 				7B30775729DFCAAF00B26744 /* TAAssets.swift in Sources */,
+				8CB0FA9129E5AC7E00C2FAC8 /* TTCollisions.swift in Sources */,
 				7B0378E229E0533900AE0C5B /* TARoundSystem.swift in Sources */,
 				7B4BFFBB29CFF66000FA3EFC /* AxeComponent.swift in Sources */,
 				7B13494F29D1E32700E43A7F /* SPConstants.swift in Sources */,
+				8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */,
 				7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */,
 				7B46778629E47475009FF663 /* SOScoreSystem.swift in Sources */,
 				7B85081F29DF35B10095A7F6 /* TAGameManager.swift in Sources */,
 				7B85082129DF35BA0095A7F6 /* TAGameViewController.swift in Sources */,
 				7B30775D29DFD06B00B26744 /* TAEntityCreator.swift in Sources */,
+				8CB0FAA329E5B7D500C2FAC8 /* BlockComponent.swift in Sources */,
 				7B46777629E4737B009FF663 /* SOAssets.swift in Sources */,
 				7B0378DE29E0500300AE0C5B /* CannonballSystem.swift in Sources */,
 				A7DF477C29E1D6250011AE24 /* PowerupSound.swift in Sources */,
@@ -971,16 +1098,19 @@
 				A7F36EC229E404B600E47F3E /* TASoundTypes.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
+				8CB0FAB529E604F700C2FAC8 /* TTPlayerComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AXGameManager.swift in Sources */,
 				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
 				7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */,
 				A7F2A42C29E549D10067D68F /* SyncBallFireSystem.swift in Sources */,
 				A7DF476329E1B0760011AE24 /* AxeCollideEvent.swift in Sources */,
 				8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */,
+				8CB0FA9B29E5B70800C2FAC8 /* TTInputSystem.swift in Sources */,
 				7B46779229E519C8009FF663 /* SOCollisions.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
 				7B46778829E4747D009FF663 /* SORoundSystem.swift in Sources */,
 				8CB0FA6929D3F23100C2FAC8 /* SPAnimationCreatorSystem.swift in Sources */,
+				8CB0FAB129E5FE6C00C2FAC8 /* HasGuidelineComponent.swift in Sources */,
 				7B30776929DFDB3000B26744 /* TAConstants.swift in Sources */,
 				7B30775929DFCB0700B26744 /* TAInputSystem.swift in Sources */,
 				7B85081B29DF35870095A7F6 /* SOGameManager.swift in Sources */,
@@ -988,17 +1118,24 @@
 				7B46777829E4740A009FF663 /* BallComponent.swift in Sources */,
 				7B0378DC29E00FDC00AE0C5B /* TAScoreSystem.swift in Sources */,
 				7B13494729D1DB7700E43A7F /* SPPhysics.swift in Sources */,
+				8CB0FA8D29E5AC6F00C2FAC8 /* TTAssets.swift in Sources */,
 				7BF9D4DC29C4419C00D7B34D /* AXConstants.swift in Sources */,
+				8CB0FA8929E5AA5000C2FAC8 /* TTPhysicsCreator.swift in Sources */,
+				8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */,
+				8CB0FAA529E5B7EE00C2FAC8 /* BlockSpawnSystem.swift in Sources */,
 				8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */,
 				A7DF476D29E1CA710011AE24 /* AxeExplodeSound.swift in Sources */,
+				8CB0FA8729E5AA3E00C2FAC8 /* TTGameManager.swift in Sources */,
 				7BCC620C29D1D7AF0092B602 /* SPGameViewController.swift in Sources */,
 				7B13495529D1F89E00E43A7F /* RockComponent.swift in Sources */,
 				7B13495129D1F14F00E43A7F /* WraparoundSystem.swift in Sources */,
 				7B46778429E4746B009FF663 /* SOInputSystem.swift in Sources */,
+				8CB0FA9329E5AC8700C2FAC8 /* TTPositions.swift in Sources */,
 				7B30775F29DFD0B700B26744 /* TAPhysicsCreator.swift in Sources */,
 				A7F36EC829E405DC00E47F3E /* ExplodeSound.swift in Sources */,
 				A7DF477E29E1D63A0011AE24 /* BulletSound.swift in Sources */,
 				7B13494B29D1DEA700E43A7F /* SPSizes.swift in Sources */,
+				8CB0FA8129E5A9EC00C2FAC8 /* TTEntityCreator.swift in Sources */,
 				7BCC61FC29D1D6170092B602 /* SPPhysicsCreator.swift in Sources */,
 				7B46777C29E4741B009FF663 /* GoalComponent.swift in Sources */,
 				7BC8C2D729D29C77001CF6F7 /* PlayerHitPowerupEvent.swift in Sources */,
@@ -1008,13 +1145,17 @@
 				6F499E0729D21FF300245F6E /* AXOscillation.swift in Sources */,
 				7B46777A29E47413009FF663 /* SoccerPlayerComponent.swift in Sources */,
 				8C3584B029C86F9600BAE8C5 /* SyncXPositionComponent.swift in Sources */,
+				8CB0FA9729E5AC9800C2FAC8 /* TTConstants.swift in Sources */,
 				7B13494929D1DC3E00E43A7F /* SPCollisions.swift in Sources */,
 				6F6ACCB029E685E600285A1C /* SOSoundControllerSystem.swift in Sources */,
 				7B46779029E51912009FF663 /* SOPhysics.swift in Sources */,
+				8CB0FAAD29E5FC0F00C2FAC8 /* TTPlatformComponent.swift in Sources */,
 				7B46778C29E47A92009FF663 /* SOEntityCreator.swift in Sources */,
 				7BC8C2D129D29816001CF6F7 /* RockPowerup.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
+				8CB0FA9529E5AC8E00C2FAC8 /* TTSizes.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PositionSyncSystem.swift in Sources */,
+				8CB0FA8329E5A9FF00C2FAC8 /* TTGameViewController.swift in Sources */,
 				8CB0FA6B29D3FA4B00C2FAC8 /* SPAnimationCreator.swift in Sources */,
 				7B46778029E47433009FF663 /* SOPositions.swift in Sources */,
 				7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */,
@@ -1028,6 +1169,7 @@
 				A7F36EC429E4054A00E47F3E /* CollideSound.swift in Sources */,
 				8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */,
 				A7E52EFB29D1F47900075F99 /* AXAssets.swift in Sources */,
+				8CB0FA9929E5B68F00C2FAC8 /* GuidelineSystem.swift in Sources */,
 				A7DF476729E1C96B0011AE24 /* PlayerHitSound.swift in Sources */,
 				A7E439F929C374BE00027AC6 /* AXPositions.swift in Sources */,
 				8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */,
@@ -1043,12 +1185,15 @@
 				8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */,
 				A7F67F9A29E65618007F6207 /* SoccerCrowdSound.swift in Sources */,
 				8CB0FA6129D17A1700C2FAC8 /* AxeParticleSystem.swift in Sources */,
+				8CB0FA8F29E5AC7700C2FAC8 /* TTPhysics.swift in Sources */,
+				8CB0FAB329E6037900C2FAC8 /* ScoreLineComponent.swift in Sources */,
 				7B30776529DFD6E500B26744 /* TAPositions.swift in Sources */,
 				7BA7EBE129C36BBD0096457F /* AXInputSystem.swift in Sources */,
 				A7DF478629E1D74B0011AE24 /* SPSoundTypes.swift in Sources */,
 				8CB0FA6729D1999100C2FAC8 /* Int+Extensions.swift in Sources */,
 				7B2B292B29B82BE000281FC7 /* SceneDelegate.swift in Sources */,
 				7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */,
+				8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */,
 				7BCC620429D1D7790092B602 /* SpaceshipComponent.swift in Sources */,
 				7BE0FDF329D032EF0035AE98 /* AXGameViewController.swift in Sources */,
 				7BC8C2CD29D297E8001CF6F7 /* Powerup.swift in Sources */,
@@ -1057,7 +1202,9 @@
 				7BCC620229D1D74F0092B602 /* SPInputSystem.swift in Sources */,
 				7BCC61FA29D1D60C0092B602 /* SPEntityCreator.swift in Sources */,
 				7B4C37A629D45986003871F9 /* SPAssets.swift in Sources */,
+				8CB0FAAB29E5CD2B00C2FAC8 /* ControlBlockHitPlatformEvent.swift in Sources */,
 				7B46778E29E47A9A009FF663 /* SOPhysicsCreator.swift in Sources */,
+				8CB0FAA929E5BDFD00C2FAC8 /* BlockHitBlockEvent.swift in Sources */,
 				7B46777E29E4742A009FF663 /* SOSizes.swift in Sources */,
 				A7F67FA029E66167007F6207 /* PlayerHitWallEvent.swift in Sources */,
 				7BCC61F829D1D5FF0092B602 /* SPGameManager.swift in Sources */,
@@ -1079,6 +1226,7 @@
 				7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */,
 				A7F67FA629E66C4D007F6207 /* SOAnimationSystem.swift in Sources */,
 				6F67C71329C462DD009E0579 /* AXPhysics.swift in Sources */,
+				8CB0FA9F29E5B72E00C2FAC8 /* TTScoreSystem.swift in Sources */,
 				7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */,
 				7B30775429DFC7B900B26744 /* TankComponent.swift in Sources */,
 				7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */,
@@ -1270,6 +1418,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1303,6 +1452,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

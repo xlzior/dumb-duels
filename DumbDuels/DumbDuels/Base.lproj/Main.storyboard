@@ -17,25 +17,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="oFO-2d-mIO">
-                                <rect key="frame" x="129" y="177.5" width="875" height="389.5"/>
+                                <rect key="frame" x="141.5" y="202.5" width="850" height="339.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DUMB DUELS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC8-cO-7HA">
-                                        <rect key="frame" x="119" y="0.0" width="637" height="119.5"/>
+                                        <rect key="frame" x="106.5" y="0.0" width="637" height="119.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="100"/>
                                         <color key="textColor" red="0.89803921568627454" green="0.43137254901960786" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EjV-5a-24Y">
-                                        <rect key="frame" x="0.0" y="189.5" width="875" height="200"/>
+                                        <rect key="frame" x="0.0" y="189.5" width="850" height="150"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="5Ai-AH-kuy">
-                                                <rect key="frame" x="0.0" y="0.0" width="875" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="850" height="150"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g38-ox-Z49">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="g38-ox-Z49" secondAttribute="height" multiplier="1:1" id="3iW-d3-uGV"/>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="fkE-1H-5Zj"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="fkE-1H-5Zj"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="">
@@ -48,9 +48,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWq-d5-KVe">
-                                                        <rect key="frame" x="225" y="0.0" width="200" height="200"/>
+                                                        <rect key="frame" x="175" y="0.0" width="150" height="150"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="mtf-wm-k6g"/>
+                                                            <constraint firstAttribute="width" secondItem="vWq-d5-KVe" secondAttribute="height" multiplier="1:1" id="R1F-jY-wdE"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="">
@@ -63,9 +63,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-h6-ZFF">
-                                                        <rect key="frame" x="450" y="0.0" width="200" height="200"/>
+                                                        <rect key="frame" x="350" y="0.0" width="150" height="150"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gbA-hj-kqm"/>
+                                                            <constraint firstAttribute="width" secondItem="dSg-h6-ZFF" secondAttribute="height" multiplier="1:1" id="rfv-7b-gao"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="">
@@ -78,9 +78,9 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OIA-3S-5jZ">
-                                                        <rect key="frame" x="675" y="0.0" width="200" height="200"/>
+                                                        <rect key="frame" x="525" y="0.0" width="150" height="150"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="5Ax-HT-KNY"/>
+                                                            <constraint firstAttribute="width" secondItem="OIA-3S-5jZ" secondAttribute="height" multiplier="1:1" id="ICw-nk-2o6"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="">
@@ -92,10 +92,26 @@
                                                             <segue destination="EUX-nb-Vjl" kind="show" id="PyX-Un-Uff"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufT-aC-CfN">
+                                                        <rect key="frame" x="700" y="0.0" width="150" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="ufT-aC-CfN" secondAttribute="height" multiplier="1:1" id="DeM-8m-LkA"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="">
+                                                            <backgroundConfiguration key="background" image="tumblingtowersgame" strokeWidth="10">
+                                                                <color key="strokeColor" red="0.8406104445" green="0.45710462330000001" blue="0.35290780659999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </backgroundConfiguration>
+                                                        </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="vev-zi-EWM" kind="show" id="0o4-61-Iae"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="dSg-h6-ZFF" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="ABX-48-a67"/>
                                                     <constraint firstItem="vWq-d5-KVe" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="Zn3-OH-jN1"/>
+                                                    <constraint firstItem="ufT-aC-CfN" firstAttribute="width" secondItem="ufT-aC-CfN" secondAttribute="height" multiplier="1:1" id="aFp-Lo-SsI"/>
                                                     <constraint firstItem="OIA-3S-5jZ" firstAttribute="height" secondItem="g38-ox-Z49" secondAttribute="height" id="mG2-FR-hcF"/>
                                                 </constraints>
                                             </stackView>
@@ -199,11 +215,28 @@
             </objects>
             <point key="canvasLocation" x="1105" y="1465"/>
         </scene>
+        <!--Game View Controller-->
+        <scene sceneID="Oxa-NU-wgz">
+            <objects>
+                <viewController id="vev-zi-EWM" customClass="TTGameViewController" customModule="DumbDuels" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a7D-5x-BD5">
+                        <rect key="frame" x="0.0" y="0.0" width="1133" height="744"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="fSo-tq-rHU"/>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Nwc-P7-aOY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SU2-ut-xCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1536" y="7"/>
+        </scene>
     </scenes>
     <resources>
         <image name="axegame" width="1024" height="1024"/>
         <image name="soccergame" width="1024" height="1024"/>
         <image name="spaceshipgame" width="1024" height="1024"/>
         <image name="tankgame" width="1024" height="1024"/>
+        <image name="tumblingtowersgame" width="1024" height="1024"/>
     </resources>
 </document>

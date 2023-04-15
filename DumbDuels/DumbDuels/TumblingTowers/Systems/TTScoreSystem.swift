@@ -43,8 +43,6 @@ class TTScoreSystem: System {
 
             if playerHighestPoint >= scorelinePosition.position.y {
                 score.score += 1
-                print("highest point is \(playerHighestPoint) socreline position is \(scorelinePosition.position.y)")
-                print("Score for \(scoreline.playerId) is now \(score.score)")
                 entityManager.destroy(entityId: scorelineEntity.id)
             }
             if score.score >= TTConstants.winningScore {

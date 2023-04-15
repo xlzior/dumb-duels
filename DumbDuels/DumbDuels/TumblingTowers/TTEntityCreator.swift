@@ -82,7 +82,6 @@ class TTEntityCreator {
             BlockComponent(playerId: playerId)
             physicsCreator.createBlock(of: blockSize, area: blockType.width * blockType.length)
         }
-        // print("Block width: \(blockWidth). Block Height: \(blockHeight)")
         let guideline = createGuideline(xPosition: position.x, width: blockWidth, for: block.id)
         block.assign(component: HasGuidelineComponent(guidelineId: guideline.id))
         return block
@@ -108,7 +107,6 @@ class TTEntityCreator {
             SpriteComponent(assetName: TTAssets.guideline)
         }
 
-        // print("Guideline width: \(width)")
         return guideline
     }
 }

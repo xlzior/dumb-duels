@@ -48,7 +48,6 @@ class BlockSpawnSystem: System {
             let newBlock = spawnRandomBlockForPlayer(playerId: entity.id, index: player.index)
             player.moveDirection = 1
             player.currentControllingBlockId = newBlock.id
-            print("spawned new block \(newBlock.id) for player \(player.index)")
         }
     }
 
@@ -68,7 +67,6 @@ class BlockSpawnSystem: System {
     }
 
     func handleBlockCollision(controlBlockId: EntityID, landedBlockId: EntityID) {
-        // print("Collision detected between control: \(controlBlockId) and landed: \(landedBlockId)")
         guard let (block, hasGuideline, physics) = controlBlocks.getComponents(for: controlBlockId),
               let (player, _) = players.getComponents(for: block.playerId),
               landedBlocks.isMember(entityId: landedBlockId)  else {
@@ -78,7 +76,6 @@ class BlockSpawnSystem: System {
     }
 
     func handleBlockCollisionWithPlatform(for controlBlockId: EntityID) {
-        // print("Collision detected between control: \(controlBlockId) and platform")
         guard let (block, hasGuideline, physics) = controlBlocks.getComponents(for: controlBlockId),
               let (player, _) = players.getComponents(for: block.playerId) else {
             return
@@ -97,7 +94,6 @@ class BlockSpawnSystem: System {
         physics.ownBitmask = TTCollisions.landedBlockBitmask
 
         // At this point, may not have updated to physics engine
-        print("physcis bitmask of block \(blockId) changed to landed in component")
         physics.collideBitmask = TTCollisions.landedBlockCollideBitmask
         physics.contactBitmask = TTCollisions.landedBlockContactBitmask
         physics.velocity.dy = 0.0
@@ -110,7 +106,6 @@ class BlockSpawnSystem: System {
         if currentControllingPlayer.currentControllingBlockId == blockId {
             currentControllingPlayer.currentControllingBlockId = nil
         }
-        print("block \(blockId) has landed")
 
         // Fire event so that input system can no longer control the controlled block
         eventFirer.fire(RemoveBlockControlEvent(blockIdToRemoveControl: blockId))

@@ -164,12 +164,10 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     }
 
     open func stopGameLoop() {
-        print("simulator stopped!")
         simulator.stop()
     }
 
     open func handleGameOver() {
-        print("game over!")
         isGameOver = true
     }
 }

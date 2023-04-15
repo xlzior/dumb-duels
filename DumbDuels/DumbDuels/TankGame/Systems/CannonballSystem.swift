@@ -23,16 +23,15 @@ class CannonballSystem: System {
 
     func update() {
         syncFireToCannonball()
-        for (ballEntity, cannonball, physics, _, sound) in cannonballs.entityAndComponents {
-            if Date() > cannonball.expiryDate {
-                physics.toBeRemoved = true
-                physics.shouldDestroyEntityWhenRemove = true
+        for (ballEntity, cannonball, physics, _, sound) in cannonballs.entityAndComponents
+        where Date() > cannonball.expiryDate {
+            physics.toBeRemoved = true
+            physics.shouldDestroyEntityWhenRemove = true
 
-                sound.sounds[TASoundTypes.cannonballExtinguish]?.play()
+            sound.sounds[TASoundTypes.cannonballExtinguish]?.play()
 
-                for (fireEntity, fire, _, _) in cannonballFire.entityAndComponents where fire.ballId == ballEntity.id {
-                    entityManager.destroy(entity: fireEntity)
-                }
+            for (fireEntity, fire, _, _) in cannonballFire.entityAndComponents where fire.ballId == ballEntity.id {
+                entityManager.destroy(entity: fireEntity)
             }
         }
     }

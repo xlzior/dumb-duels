@@ -7,7 +7,9 @@
 
 import CoreGraphics
 
-public class PhysicsSystem: System {
+public class PhysicsSystem: InternalSystem {
+    var priority: InternalSystemOrder = .physics
+
     public typealias ContactHandlerMap = [Pair<UInt32, UInt32>: (EntityID, EntityID) -> Event]
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer

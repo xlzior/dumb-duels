@@ -7,10 +7,9 @@
 
 import UIKit
 
-// TODO: bingsen render system doesn't need to conform to IndexMapInitializable
-// playerIndexToIdMap is never used
-// ScoreComponent's index is used to determine which score to update
-class RenderSystem: System, IndexMapInitializable {
+class RenderSystem: InternalSystem {
+    var priority: InternalSystemOrder = .render
+
     unowned var entityManager: EntityManager
     var gameController: GameController
 
@@ -28,7 +27,6 @@ class RenderSystem: System, IndexMapInitializable {
     var renderedEntities: Set<EntityID> = Set()
     var renderables: Assemblage4<SpriteComponent, PositionComponent, SizeComponent, RotationComponent>
     var playerScores: Assemblage1<ScoreComponent>
-    var playerIndexToIdMap: [Int: EntityID]
 
     init(for entityManager: EntityManager, eventManager: EventManager, gameController: GameController) {
         self.entityManager = entityManager
@@ -39,7 +37,6 @@ class RenderSystem: System, IndexMapInitializable {
             requiredComponents: SpriteComponent.self, PositionComponent.self,
             SizeComponent.self, RotationComponent.self)
         self.playerScores = entityManager.assemblage(requiredComponents: ScoreComponent.self)
-        self.playerIndexToIdMap = [Int: EntityID]()
     }
 
     func update() {

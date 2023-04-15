@@ -8,7 +8,9 @@
 import Foundation
 import CoreGraphics
 
-class AnimationSystem: System {
+class AnimationSystem: InternalSystem {
+    var priority: InternalSystemOrder = .animation
+
     unowned var entityManager: EntityManager
     var prevTime: Date
 

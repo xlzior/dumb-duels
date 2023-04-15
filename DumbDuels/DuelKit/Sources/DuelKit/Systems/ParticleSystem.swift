@@ -7,7 +7,9 @@
 
 import CoreGraphics
 
-public class ParticleSystem: System {
+public class ParticleSystem: InternalSystem {
+    var priority: InternalSystemOrder = .particle
+
     unowned var entityManager: EntityManager
 
     var explodingParticles: Assemblage2<WillExplodeParticlesComponent, PositionComponent>

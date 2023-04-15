@@ -1,0 +1,62 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+class TTPlayerComponent { 
+  ~index : Int
+  ~currentControllingBlockId : EntityID?
+  ~moveDirection : Int
+}
+class ScoreLineComponent { 
+  ~playerId : EntityID
+}
+class HasGuidelineComponent { 
+  ~guidelineId : EntityID
+}
+class BlockComponent { 
+  ~playerId : EntityID
+  ~movingDirection : CGFloat
+  ~useWidthForGuideline : Bool
+}
+class TTPlatformComponent
+class ControlBlockHitPlatformEvent << (S, SkyBlue) struct >> { 
+  ~controlBlockId : EntityID 
+}
+class BlockHitBlockEvent << (S, SkyBlue) struct >> { 
+  ~controlBlockId : EntityID
+  ~landedBlockId : EntityID 
+}
+class TTGameOverEvent << (S, SkyBlue) struct >> {  
+}
+class BlockOutOfGameEvent << (S, SkyBlue) struct >> { 
+  ~blockId : EntityID 
+}
+
+class RemoveBlockControlEvent << (S, SkyBlue) struct >> { 
+  ~blockIdToRemoveControl : EntityID
+}
+class GuidelineSystem
+class BlockSpawnSystem { 
+  ~handleBlockCollision(controlBlockId:landedBlockId:)
+  ~handleBlockCollisionWithPlatform(for:)
+  ~removeAndCleanupBlock(blockId:)
+  ~handleGameOver() 
+}
+class TTScoreSystem
+class TTInputSystem { 
+  ~playerIndexToIdMap
+  ~handleButtonDown(playerIndex:)
+  ~handleButtonUp(playerIndex:)
+  ~removePressMapping(controlBlockId:)
+  ~handleGameOver() 
+}
+@enduml

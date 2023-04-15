@@ -7,7 +7,9 @@
 
 import CoreGraphics
 
-class GameOverSystem: System {
+class GameOverSystem: InternalSystem {
+    var priority: InternalSystemOrder = .gameOver
+
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
     private var onGameOver: () -> Void

@@ -1,0 +1,20 @@
+@startuml
+' STYLE START
+hide empty members
+
+skinparam shadowing false
+<style>
+document {
+  BackgroundColor transparent
+  Margin 0
+}
+</style>
+' STYLE END
+
+class BlockSpawnSystem { 
+  ~handleBlockCollision(controlBlockId:landedBlockId:)
+  ~handleBlockCollisionWithPlatform(for:)
+  ~removeAndCleanupBlock(blockId:)
+  ~handleGameOver() 
+}
+@enduml

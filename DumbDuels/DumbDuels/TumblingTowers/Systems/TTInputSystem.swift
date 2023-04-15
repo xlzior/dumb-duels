@@ -92,7 +92,7 @@ class TTInputSystem: InputSystem {
     }
 
     private func rotateBlock(blockId: EntityID) {
-        guard let (block, hasGuide, _, _, rotation, _) = controlBlocks
+        guard let (block, _, _, _, rotation, _) = controlBlocks
             .getComponents(for: blockId) else {
             return
         }

@@ -23,15 +23,17 @@ struct TTCollisions {
     static let wallBitmask: UInt32 = 0x1 << 3
     static let bottomBoundaryBitmask: UInt32 = 0x1 << 4
 
-    static let landedBlockCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask | wallBitmask | platformBitmask
-    static let controlBlockCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask | wallBitmask | platformBitmask
+    static let landedBlockCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask |
+                                                   wallBitmask | platformBitmask
+    static let controlBlockCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask |
+                                                    wallBitmask | platformBitmask
     static let platformCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask
     static let wallCollideBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask
     static let bottomBoundaryCollideBitmask: UInt32 = 0x0
 
     static let landedBlockContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask | wallBitmask | platformBitmask | bottomBoundaryBitmask
-    static let controlBlockContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask | wallBitmask | platformBitmask |
-                                                    bottomBoundaryBitmask
+    static let controlBlockContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask | wallBitmask |
+                                                    platformBitmask | bottomBoundaryBitmask
     static let platformContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask
     static let wallContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask
     static let bottomBoundaryContactBitmask: UInt32 = landedBlockBitmask | controlBlockBitmask

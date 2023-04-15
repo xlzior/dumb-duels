@@ -28,7 +28,8 @@ class GuidelineSystem: System {
 
     func update() {
         for (guideEntity, syncXPosition, guidePosition, guideSize) in guidelines.entityAndComponents {
-            guard let (block, hasGuideline, blockPosition, blockSize, _, _) = controlBlocks.getComponents(for: syncXPosition.syncFrom),
+            guard let (block, hasGuideline, blockPosition, blockSize, _, _) =
+                    controlBlocks.getComponents(for: syncXPosition.syncFrom),
                 hasGuideline.guidelineId == guideEntity.id else {
                 continue
             }

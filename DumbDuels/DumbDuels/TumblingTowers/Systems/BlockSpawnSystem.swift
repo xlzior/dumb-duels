@@ -88,9 +88,9 @@ class BlockSpawnSystem: System {
 
     // This function assumes that all checks/guards have already been done by calling function
     private func changeControlBlockToLandedBlock(_ blockId: EntityID,
-                                                    _ hasGuiding: HasGuidelineComponent,
-                                                    _ currentControllingPlayer: TTPlayerComponent,
-                                                    _ physics: PhysicsComponent) {
+                                                 _ hasGuiding: HasGuidelineComponent,
+                                                 _ currentControllingPlayer: TTPlayerComponent,
+                                                 _ physics: PhysicsComponent) {
         // Change physics component fields for the control block
         physics.restitution = TTPhysics.landedBlockCor
         physics.affectedByGravity = TTPhysics.landedBlockGravity

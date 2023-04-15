@@ -13,7 +13,6 @@ open class HomeViewController: UIViewController {
     public var gameLogo: String?
     public var gameIcons: [String] = []
     public var gameViewControllers: [UIViewController] = []
-    var gameIconButtons: [UIButton] = []
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +49,7 @@ open class HomeViewController: UIViewController {
         for (index, gameIcon) in gameIcons.enumerated() {
             let gameIconButton = GameIconButton(screenSize: screenSize, index: index, icon: gameIcon)
             gameIconButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-            gameIconButtons.append(gameIconButton)
+            gameIconButton.isExclusiveTouch = true
             view.addSubview(gameIconButton)
         }
     }

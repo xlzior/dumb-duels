@@ -2,7 +2,6 @@ excluded:
   - Pods
 
 opt_in_rules:
-  - anyobject_protocol
   - array_init
   - attributes
   - closure_body_length
@@ -83,3 +82,6 @@ disabled_rules:
 line_length:
   warning: 120
   error: 150
+
+file_name:
+  excluded: ["Assemblage+Requirements.generated.swift"]

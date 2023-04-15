@@ -238,8 +238,6 @@
 		7B2B293129B82BE300281FC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B2B293429B82BE300281FC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B2B293629B82BE300281FC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DumbDuelsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B30774829DF38E500B26744 /* AXAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AXAssets.xcassets; sourceTree = "<group>"; };
 		7B30774A29DF39A600B26744 /* SPAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SPAssets.xcassets; sourceTree = "<group>"; };
 		7B30774C29DF3A5E00B26744 /* TAAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TAAssets.xcassets; sourceTree = "<group>"; };
@@ -431,8 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				7B2B292529B82BE000281FC7 /* DumbDuels.app */,
-				7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */,
-				7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,9 +439,9 @@
 				7BE0FDF429D039D90035AE98 /* Extensions */,
 				7BA7EB7B29C2D4470096457F /* AxeGame */,
 				7BCC61F629D1D5E60092B602 /* SpaceshipGame */,
-				8CB0FA7A29E5A9A600C2FAC8 /* TumblingTowers */,
 				7B85081829DF35580095A7F6 /* TankGame */,
 				7B85081929DF35690095A7F6 /* SoccerGame */,
+				8CB0FA7A29E5A9A600C2FAC8 /* TumblingTowers */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
 				A715102929EA72820066642E /* GameHomeViewController.swift */,
 				7B2B293129B82BE300281FC7 /* Assets.xcassets */,
@@ -918,42 +914,6 @@
 			productReference = 7B2B292529B82BE000281FC7 /* DumbDuels.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7B2B293A29B82BE300281FC7 /* DumbDuelsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7B2B295229B82BE300281FC7 /* Build configuration list for PBXNativeTarget "DumbDuelsTests" */;
-			buildPhases = (
-				7B2B293729B82BE300281FC7 /* Sources */,
-				7B2B293829B82BE300281FC7 /* Frameworks */,
-				7B2B293929B82BE300281FC7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7B2B293D29B82BE300281FC7 /* PBXTargetDependency */,
-			);
-			name = DumbDuelsTests;
-			productName = DumbDuelsTests;
-			productReference = 7B2B293B29B82BE300281FC7 /* DumbDuelsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7B2B294429B82BE300281FC7 /* DumbDuelsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7B2B295529B82BE300281FC7 /* Build configuration list for PBXNativeTarget "DumbDuelsUITests" */;
-			buildPhases = (
-				7B2B294129B82BE300281FC7 /* Sources */,
-				7B2B294229B82BE300281FC7 /* Frameworks */,
-				7B2B294329B82BE300281FC7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7B2B294729B82BE300281FC7 /* PBXTargetDependency */,
-			);
-			name = DumbDuelsUITests;
-			productName = DumbDuelsUITests;
-			productReference = 7B2B294529B82BE300281FC7 /* DumbDuelsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -992,8 +952,6 @@
 			projectRoot = "";
 			targets = (
 				7B2B292429B82BE000281FC7 /* DumbDuels */,
-				7B2B293A29B82BE300281FC7 /* DumbDuelsTests */,
-				7B2B294429B82BE300281FC7 /* DumbDuelsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1451,107 +1409,6 @@
 			};
 			name = Release;
 		};
-		7B2B295329B82BE300281FC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DumbDuels.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DumbDuels";
-			};
-			name = Debug;
-		};
-		7B2B295429B82BE300281FC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DumbDuels.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DumbDuels";
-			};
-			name = Release;
-		};
-		7B2B295629B82BE300281FC7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
-				TEST_TARGET_NAME = DumbDuels;
-			};
-			name = Debug;
-		};
-		7B2B295729B82BE300281FC7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NV79569755;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuelsUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
-				TEST_TARGET_NAME = DumbDuels;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1569,24 +1426,6 @@
 			buildConfigurations = (
 				7B2B295029B82BE300281FC7 /* Debug */,
 				7B2B295129B82BE300281FC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B2B295229B82BE300281FC7 /* Build configuration list for PBXNativeTarget "DumbDuelsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B2B295329B82BE300281FC7 /* Debug */,
-				7B2B295429B82BE300281FC7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B2B295529B82BE300281FC7 /* Build configuration list for PBXNativeTarget "DumbDuelsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B2B295629B82BE300281FC7 /* Debug */,
-				7B2B295729B82BE300281FC7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

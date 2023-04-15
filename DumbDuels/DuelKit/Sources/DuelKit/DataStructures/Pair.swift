@@ -9,7 +9,7 @@ public struct Pair<T, S> {
     public var first: T
     public var second: S
 
-    public init(first: T, second: S) {
+    public init(_ first: T, _ second: S) {
         self.first = first
         self.second = second
     }

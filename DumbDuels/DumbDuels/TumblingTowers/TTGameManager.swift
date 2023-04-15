@@ -50,35 +50,35 @@ class TTGameManager: GameManager {
         let platform = TTCollisions.platformBitmask
         let bottomBoundary = TTCollisions.bottomBoundaryBitmask
 
-        contactHandlers[Pair(first: landedBlock, second: controlBlock)] = { (landedBlock: EntityID, controlBlock: EntityID) -> Event in
+        contactHandlers[Pair(landedBlock, controlBlock)] = { (landedBlock: EntityID, controlBlock: EntityID) -> Event in
             BlockHitBlockEvent(controlBlockId: controlBlock, landedBlockId: landedBlock)
         }
 
-        contactHandlers[Pair(first: controlBlock, second: landedBlock)] = { (controlBlock: EntityID, landedBlock: EntityID) -> Event in
+        contactHandlers[Pair(controlBlock, landedBlock)] = { (controlBlock: EntityID, landedBlock: EntityID) -> Event in
             BlockHitBlockEvent(controlBlockId: controlBlock, landedBlockId: landedBlock)
         }
 
-        contactHandlers[Pair(first: controlBlock, second: platform)] = { (controlBlock: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(controlBlock, platform)] = { (controlBlock: EntityID, _: EntityID) -> Event in
             ControlBlockHitPlatformEvent(controlBlockId: controlBlock)
         }
 
-        contactHandlers[Pair(first: platform, second: controlBlock)] = { (_: EntityID, controlBlock: EntityID) -> Event in
+        contactHandlers[Pair(platform, controlBlock)] = { (_: EntityID, controlBlock: EntityID) -> Event in
             ControlBlockHitPlatformEvent(controlBlockId: controlBlock)
         }
 
-        contactHandlers[Pair(first: landedBlock, second: bottomBoundary)] = { (landedBlock: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(landedBlock, bottomBoundary)] = { (landedBlock: EntityID, _: EntityID) -> Event in
             BlockOutOfGameEvent(blockId: landedBlock)
         }
 
-        contactHandlers[Pair(first: bottomBoundary, second: landedBlock)] = { (_: EntityID, landedBlock: EntityID) -> Event in
+        contactHandlers[Pair(bottomBoundary, landedBlock)] = { (_: EntityID, landedBlock: EntityID) -> Event in
             BlockOutOfGameEvent(blockId: landedBlock)
         }
 
-        contactHandlers[Pair(first: bottomBoundary, second: controlBlock)] = { (_: EntityID, controlBlock: EntityID) -> Event in
+        contactHandlers[Pair(bottomBoundary, controlBlock)] = { (_: EntityID, controlBlock: EntityID) -> Event in
             BlockOutOfGameEvent(blockId: controlBlock)
         }
 
-        contactHandlers[Pair(first: controlBlock, second: bottomBoundary)] = { (controlBlock: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(controlBlock, bottomBoundary)] = { (controlBlock: EntityID, _: EntityID) -> Event in
             BlockOutOfGameEvent(blockId: controlBlock)
         }
 

@@ -106,7 +106,7 @@ extension EntityManager {
     // Only inserts component type id and instance id into the entity-to-component map
     // Does not include updating assemblage membership or adding component to the list of all components
     private func assign(_ componentId: ComponentID, _ componentTypeId: ComponentTypeID, _ entityId: EntityID) {
-        let componentIdAndTypeId = Pair(first: componentTypeId, second: componentId)
+        let componentIdAndTypeId = Pair(componentTypeId, componentId)
 
         let isSuccess = entityComponentMap[entityId]?.insert(componentIdAndTypeId)
 

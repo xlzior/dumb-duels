@@ -168,7 +168,7 @@ public class PhysicsSystem: InternalSystem {
 
         let firstCategory = firstPhysicsComponent.ownBitmask
         let secondCategory = secondPhysicsComponent.ownBitmask
-        let key = Pair(first: firstCategory, second: secondCategory)
+        let key = Pair(firstCategory, secondCategory)
         if let eventProducer = contactHandlers[key] {
             let event = eventProducer(firstId, secondId)
             eventFirer.fire(event)

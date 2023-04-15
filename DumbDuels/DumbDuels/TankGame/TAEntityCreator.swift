@@ -53,6 +53,7 @@ class TAEntityCreator {
         return tank
     }
 
+    // swiftlint:disable function_parameter_count
     @discardableResult
     func createCannonball(at position: CGPoint, of size: CGSize,
                           direction: CGFloat, expiring expiryDate: Date,

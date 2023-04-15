@@ -87,6 +87,7 @@ class GameScene: Scene {
         physicsBody.applyAngularImpulse(angularImpulse)
     }
 
+    // swiftlint:disable function_parameter_count
     func beginOscillation(for id: EntityID, at centerOfOscillation: CGPoint, axis: CGVector,
                           amplitude: Double, period: Double, displacement: Double) {
         guard let physicsBody = bodyIDPhysicsMap[id],

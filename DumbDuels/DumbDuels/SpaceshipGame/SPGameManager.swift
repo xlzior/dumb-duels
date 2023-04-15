@@ -30,31 +30,31 @@ class SPGameManager: GameManager {
         let bullet = SPCollisions.bulletBitmask
         let powerup = SPCollisions.powerupBitmask
 
-        contactHandlers[Pair(first: spaceship, second: rock)] = { (spaceship: EntityID, rock: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, rock)] = { (spaceship: EntityID, rock: EntityID) -> Event in
             RockHitPlayerEvent(rockId: rock, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: rock, second: spaceship)] = { (rock: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(rock, spaceship)] = { (rock: EntityID, spaceship: EntityID) -> Event in
             RockHitPlayerEvent(rockId: rock, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: spaceship, second: bullet)] = { (spaceship: EntityID, bullet: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, bullet)] = { (spaceship: EntityID, bullet: EntityID) -> Event in
             BulletHitPlayerEvent(bulletId: bullet, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: bullet, second: spaceship)] = { (bullet: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(bullet, spaceship)] = { (bullet: EntityID, spaceship: EntityID) -> Event in
             BulletHitPlayerEvent(bulletId: bullet, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: spaceship, second: powerup)] = { (spaceship: EntityID, powerup: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, powerup)] = { (spaceship: EntityID, powerup: EntityID) -> Event in
             PlayerHitPowerupEvent(powerupId: powerup, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: powerup, second: spaceship)] = { (powerup: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(powerup, spaceship)] = { (powerup: EntityID, spaceship: EntityID) -> Event in
             PlayerHitPowerupEvent(powerupId: powerup, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: spaceship, second: spaceship)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, spaceship)] = { (_: EntityID, _: EntityID) -> Event in
             SpaceshipCollideEvent()
         }
 

@@ -58,7 +58,7 @@ class TTInputSystem: InputSystem {
               let currentBlockId = player.currentControllingBlockId else {
             return
         }
-        longPressStartTimes[playerIndex] = Pair(first: Date(), second: currentBlockId)
+        longPressStartTimes[playerIndex] = Pair(Date(), currentBlockId)
     }
 
     func handleButtonUp(playerIndex: Int) {

@@ -13,7 +13,7 @@ class GameHomeViewController: HomeViewController {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = UIView.ContentMode.scaleToFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "background")
+        imageView.image = #imageLiteral(resourceName: "background")
         imageView.center = view.center
         view.addSubview(imageView)
         view.sendSubviewToBack(imageView)

@@ -55,7 +55,8 @@ class SOEntityCreator {
     }
 
     @discardableResult
-    func createGoal(attackerId: EntityID, at position: CGPoint, of size: CGSize, thickness: CGFloat, facing: FaceDirection) -> [Entity] {
+    func createGoal(attackerId: EntityID, at position: CGPoint, of size: CGSize,
+                    thickness: CGFloat, facing: FaceDirection) -> [Entity] {
         let sprite = entityManager.createEntity {
             PositionComponent(position: position, faceDirection: facing)
             RotationComponent()

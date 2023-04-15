@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B2B293A29B82BE300281FC7"
-               BuildableName = "DumbDuelsTests.xctest"
+               BuildableName = "DumbDuelsTests"
                BlueprintName = "DumbDuelsTests"
                ReferencedContainer = "container:DumbDuels.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "7B2B294429B82BE300281FC7"
-               BuildableName = "DumbDuelsUITests.xctest"
+               BuildableName = "DumbDuelsUITests"
                BlueprintName = "DumbDuelsUITests"
                ReferencedContainer = "container:DumbDuels.xcodeproj">
             </BuildableReference>

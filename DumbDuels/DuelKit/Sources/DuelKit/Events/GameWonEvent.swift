@@ -10,7 +10,7 @@ struct GameWonEvent: Event {
 
     var entityId: EntityID
 
-    init(priority: Int = 4, entityId: EntityID) {
+    init(entityId: EntityID, priority: Int = 4) {
         self.priority = priority
         self.entityId = entityId
     }

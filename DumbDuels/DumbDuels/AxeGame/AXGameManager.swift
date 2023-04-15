@@ -118,10 +118,10 @@ class AXGameManager: GameManager {
         systemManager.register(AXInputSystem(for: entityManager))
         systemManager.register(PositionSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
-        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
+        systemManager.register(AXRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(ScoreSystem(for: entityManager))
+        systemManager.register(AXScoreSystem(for: entityManager))
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
                           gameWonTexts: Assets.gameWonText,

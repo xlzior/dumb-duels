@@ -28,6 +28,9 @@
 		7B13495B29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */; };
 		7B13495D29D2002C00E43A7F /* GunComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495C29D2002C00E43A7F /* GunComponent.swift */; };
 		7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B13495E29D203E800E43A7F /* GunSystem.swift */; };
+		7B1EEE0E29EAE2720002B363 /* AXScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1EEE0C29EAE2720002B363 /* AXScoreSystem.swift */; };
+		7B1EEE0F29EAE2720002B363 /* AXRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1EEE0D29EAE2720002B363 /* AXRoundSystem.swift */; };
+		7B1EEE1129EAE29B0002B363 /* ResetRoundEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B1EEE1029EAE29B0002B363 /* ResetRoundEvent.swift */; };
 		7B23F6AD29CC2497006677F6 /* WithThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */; };
 		7B23F6AF29CC24A0006677F6 /* ThrowStrengthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */; };
 		7B2A3DD629CD81A500C735D2 /* PegComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2A3DD529CD81A500C735D2 /* PegComponent.swift */; };
@@ -73,9 +76,7 @@
 		7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */; };
 		7BA7EBD929C36BBD0096457F /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */; };
 		7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */; };
-		7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBC929C36BBD0096457F /* RoundSystem.swift */; };
 		7BA7EBE129C36BBD0096457F /* AXInputSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCA29C36BBD0096457F /* AXInputSystem.swift */; };
-		7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */; };
 		7BC8C2C829D29042001CF6F7 /* BulletSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2C729D29042001CF6F7 /* BulletSystem.swift */; };
 		7BC8C2CA29D293FE001CF6F7 /* SPScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2C929D293FE001CF6F7 /* SPScoreSystem.swift */; };
 		7BC8C2CD29D297E8001CF6F7 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC8C2CC29D297E8001CF6F7 /* Powerup.swift */; };
@@ -226,6 +227,9 @@
 		7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletHitPlayerEvent.swift; sourceTree = "<group>"; };
 		7B13495C29D2002C00E43A7F /* GunComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunComponent.swift; sourceTree = "<group>"; };
 		7B13495E29D203E800E43A7F /* GunSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunSystem.swift; sourceTree = "<group>"; };
+		7B1EEE0C29EAE2720002B363 /* AXScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXScoreSystem.swift; sourceTree = "<group>"; };
+		7B1EEE0D29EAE2720002B363 /* AXRoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXRoundSystem.swift; sourceTree = "<group>"; };
+		7B1EEE1029EAE29B0002B363 /* ResetRoundEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetRoundEvent.swift; sourceTree = "<group>"; };
 		7B23F6AC29CC2497006677F6 /* WithThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithThrowStrengthComponent.swift; sourceTree = "<group>"; };
 		7B23F6AE29CC24A0006677F6 /* ThrowStrengthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrowStrengthComponent.swift; sourceTree = "<group>"; };
 		7B2A3DD529CD81A500C735D2 /* PegComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PegComponent.swift; sourceTree = "<group>"; };
@@ -276,9 +280,7 @@
 		7BA7EBC029C36BBD0096457F /* HoldingAxeComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoldingAxeComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC129C36BBD0096457F /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
 		7BA7EBC629C36BBD0096457F /* PlatformComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformComponent.swift; sourceTree = "<group>"; };
-		7BA7EBC929C36BBD0096457F /* RoundSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundSystem.swift; sourceTree = "<group>"; };
 		7BA7EBCA29C36BBD0096457F /* AXInputSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AXInputSystem.swift; sourceTree = "<group>"; };
-		7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		7BC8C2C729D29042001CF6F7 /* BulletSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletSystem.swift; sourceTree = "<group>"; };
 		7BC8C2C929D293FE001CF6F7 /* SPScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPScoreSystem.swift; sourceTree = "<group>"; };
 		7BC8C2CC29D297E8001CF6F7 /* Powerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
@@ -615,9 +617,9 @@
 			isa = PBXGroup;
 			children = (
 				A7E52EFC29D1F4E900075F99 /* LavaSystem.swift */,
-				7BA7EBC929C36BBD0096457F /* RoundSystem.swift */,
+				7B1EEE0D29EAE2720002B363 /* AXRoundSystem.swift */,
 				7BA7EBCA29C36BBD0096457F /* AXInputSystem.swift */,
-				7BA7EBCC29C36BBD0096457F /* ScoreSystem.swift */,
+				7B1EEE0C29EAE2720002B363 /* AXScoreSystem.swift */,
 				8C3584A929C59D5900BAE8C5 /* PlayerSystem.swift */,
 				8C3584B129C8709200BAE8C5 /* PositionSyncSystem.swift */,
 				8CB0FA6029D17A1700C2FAC8 /* AxeParticleSystem.swift */,
@@ -628,6 +630,7 @@
 		7BA7EBCE29C36BBD0096457F /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7B1EEE1029EAE29B0002B363 /* ResetRoundEvent.swift */,
 				8C3584A129C44A5A00BAE8C5 /* PlayerHitEvent.swift */,
 				8C3584A329C44D9B00BAE8C5 /* LandEvent.swift */,
 				A7EF080929D2D6450057D44E /* LavaHitEvent.swift */,
@@ -1088,11 +1091,13 @@
 				A7F36EC229E404B600E47F3E /* TASoundTypes.swift in Sources */,
 				8C3584AA29C59D5900BAE8C5 /* PlayerSystem.swift in Sources */,
 				7BA7EBD829C36BBD0096457F /* HoldingAxeComponent.swift in Sources */,
+				7B1EEE0F29EAE2720002B363 /* AXRoundSystem.swift in Sources */,
 				8CB0FAB529E604F700C2FAC8 /* TTPlayerComponent.swift in Sources */,
 				7BE0FDF129D031550035AE98 /* AXGameManager.swift in Sources */,
 				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
 				7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */,
 				A7DF476329E1B0760011AE24 /* AxeCollideEvent.swift in Sources */,
+				7B1EEE1129EAE29B0002B363 /* ResetRoundEvent.swift in Sources */,
 				8CB0FA9B29E5B70800C2FAC8 /* TTInputSystem.swift in Sources */,
 				7B46779229E519C8009FF663 /* SOCollisions.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
@@ -1143,6 +1148,7 @@
 				7BC8C2D129D29816001CF6F7 /* RockPowerup.swift in Sources */,
 				7BA7EBDE29C36BBD0096457F /* PlatformComponent.swift in Sources */,
 				8CB0FA9529E5AC8E00C2FAC8 /* TTSizes.swift in Sources */,
+				7B1EEE0E29EAE2720002B363 /* AXScoreSystem.swift in Sources */,
 				8C3584B229C8709200BAE8C5 /* PositionSyncSystem.swift in Sources */,
 				8CB0FA8329E5A9FF00C2FAC8 /* TTGameViewController.swift in Sources */,
 				8CB0FA6B29D3FA4B00C2FAC8 /* SPAnimationCreator.swift in Sources */,
@@ -1217,8 +1223,6 @@
 				8CB0FA9F29E5B72E00C2FAC8 /* TTScoreSystem.swift in Sources */,
 				7B13495F29D203E800E43A7F /* GunSystem.swift in Sources */,
 				7B30775429DFC7B900B26744 /* TankComponent.swift in Sources */,
-				7BA7EBE029C36BBD0096457F /* RoundSystem.swift in Sources */,
-				7BA7EBE329C36BBD0096457F /* ScoreSystem.swift in Sources */,
 				7B0378DA29E00FB200AE0C5B /* CannonballHitTankEvent.swift in Sources */,
 				7B13495329D1F42600E43A7F /* CGFloat+Extensions.swift in Sources */,
 				A7E439FC29C374E800027AC6 /* AXEntityCreator.swift in Sources */,
@@ -1388,7 +1392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9T8TNN3ND3;
+				DEVELOPMENT_TEAM = NV79569755;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1403,7 +1407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels0806";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1421,7 +1425,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9T8TNN3ND3;
+				DEVELOPMENT_TEAM = NV79569755;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1436,7 +1440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels0806";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

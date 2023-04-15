@@ -14,7 +14,7 @@ class SPGameViewController: GameViewController {
     }
 
     override func customiseBackgroundViewAndSound() {
-        gameView.image = UIImage(imageLiteralResourceName: SPAssets.background)
+        gameViewImage = UIImage(imageLiteralResourceName: SPAssets.background)
         backgroundSound = GameBackgroundSound()
     }
 }

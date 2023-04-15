@@ -22,11 +22,7 @@ class GameHomeViewController: HomeViewController {
     override func loadGameIconsAndViewControllers() {
         gameLogo = "logo"
         gameIcons = ["axegame", "spaceshipgame", "tankgame", "soccergame"]
-        gameViewControllers = [
-            AXGameViewController(),
-            SPGameViewController(),
-            TAGameViewController(),
-            SOGameViewController()
+        gameViewControllers = [ { AXGameViewController() }, { SPGameViewController() }, { TAGameViewController() }, { SOGameViewController() }
         ]
     }
 }

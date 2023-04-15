@@ -12,7 +12,7 @@ open class HomeViewController: UIViewController {
 
     public var gameLogo: String?
     public var gameIcons: [String] = []
-    public var gameViewControllers: [UIViewController] = []
+    public var gameViewControllers: [() -> UIViewController] = []
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +58,6 @@ open class HomeViewController: UIViewController {
         guard let index = (sender as? GameIconButton)?.index else {
             return
         }
-        navigationController?.pushViewController(gameViewControllers[index], animated: true)
+        navigationController?.pushViewController(gameViewControllers[index](), animated: true)
     }
 }

@@ -14,7 +14,8 @@ open class GameViewController: UIViewController {
 
     private var player: AVAudioPlayer?
     public var backgroundSound: Sound?
-    public var gameView: UIImageView!
+    public var backgroundColour: UIColor?
+    public var gameViewImage: UIImage?
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
@@ -23,8 +24,8 @@ open class GameViewController: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        setUpGameView()
         customiseBackgroundViewAndSound()
+        setUpGameView()
         setUpSound()
         setUpGestureRecognisers()
         setUpGameManager()
@@ -50,10 +51,13 @@ open class GameViewController: UIViewController {
     }
 
     private func setUpGameView() {
-        gameView = GameAreaView(screenSize: screenSize)
+        let gameView = GameAreaView(screenSize: screenSize)
         screenOffset = gameView.frame.origin
+        if let gameViewImage {
+            gameView.image = gameViewImage
+        }
         view.addSubview(gameView)
-        view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))
+        view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame, colour: backgroundColour))
 
         let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true, index: 0)
         let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false, index: 1)

@@ -1,0 +1,18 @@
+@startuml
+participant Scene
+participant GameManager
+participant EventManager
+participant PlayerHitPowerupEvent
+participant PowerupSystem
+participant GunPowerup
+participant EntityManager
+
+== Executing event ==
+Scene -> GameManager : didFinishUpdate()
+GameManager -> EventManager : pollAll()
+EventManager -> PlayerHitPowerupEvent : execute()
+PlayerHitPowerupEvent -> PowerupSystem : applyPowerup(powerupId, playerEntityId)
+PowerupSystem -> GunPowerup : apply(powerupId, playerEntityId, entityManager)
+GunPowerup -> EntityManager : assignComponent(GunComponent, playerEntityId)
+
+@enduml

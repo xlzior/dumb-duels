@@ -1,0 +1,24 @@
+@startuml
+participant BaseGameScene
+participant Scene
+participant GameManager
+participant PhysicsSystem
+participant EventManager
+participant BulletHitPlayerEvent
+participant SPScoreSystem
+
+== Firing event ==
+BaseGameScene -> GameManager : didContactBegin(firstId, secondId)
+GameManager -> PhysicsSystem : handleCollision(firstId, secondId)
+PhysicsSystem -> PhysicsSystem : eventProducer(firstId, secondId)
+PhysicsSystem -> EventManager : fire(BulletHitPlayerEvent)
+
+== Executing event ==
+Scene -> GameManager : didFinishUpdate()
+GameManager -> EventManager : pollAll()
+EventManager -> BulletHitPlayerEvent : execute()
+BulletHitPlayerEvent -> SPScoreSystem : handleBulletHitPlayer(bulletEntityId, playerEntityId)
+SPScoreSystem -> SPScoreSystem : incrementScoreFor(everyoneBut: playerEntityId)
+SPScoreSystem -> SPScoreSystem : destroySpaceship(playerEntityId)
+SPScoreSystem -> EventManager : fire(SpaceshipDestroyedEvent)
+@enduml

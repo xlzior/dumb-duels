@@ -32,7 +32,6 @@ extension EntityManager {
         members(withTraits: traits).contains(entityId)
     }
 
-    // TODO: If needed, this can be moved into Assemblage file
     func createMember<R>(with components: R.Components, for assemblage: Assemblage<R>) -> Entity
         where R: AssemblageRequirementsManager {
             R.createMember(entityManager: self, components: components)

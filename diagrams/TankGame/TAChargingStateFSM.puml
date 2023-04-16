@@ -1,0 +1,16 @@
+@startuml
+participant TAInputSystem
+participant EntityStateMachine
+participant Entity
+participant EntityManager
+participant ComponentProvider
+
+TAInputSystem -> EntityStateMachine : changState(name)
+EntityStateMachine -> Entity : remove(componentType)
+Entity -> EntityManager : remove(componentType, entity)
+EntityStateMachine -> ComponentProvider : getComponent()
+ComponentProvider --> EntityStateMachine : component
+EntityStateMachine -> Entity : assign(component)
+Entity -> EntityManager : assign(component, entity)
+
+@enduml

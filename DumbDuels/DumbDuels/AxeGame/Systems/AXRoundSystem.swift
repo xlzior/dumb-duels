@@ -1,5 +1,5 @@
 //
-//  RoundSystem.swift
+//  AXRoundSystem.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
@@ -8,7 +8,7 @@
 import CoreGraphics
 import DuelKit
 
-class RoundSystem: System {
+class AXRoundSystem: System {
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
     unowned var entityCreator: AXEntityCreator
@@ -42,7 +42,7 @@ class RoundSystem: System {
 
     func update() {
         if isAllAxeThrown() && isAllThrownAxeOutOfBounds() {
-            reset()
+            eventFirer.fire(ResetRoundEvent())
         }
     }
 

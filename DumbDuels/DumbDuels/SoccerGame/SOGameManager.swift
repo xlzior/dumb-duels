@@ -47,31 +47,31 @@ class SOGameManager: GameManager {
         let player = SOCollisions.playerBitmask
         let wall = SOCollisions.wallBitmask
 
-        contactHandlers[Pair(first: ball, second: goal)] = { (_: EntityID, goal: EntityID) -> Event in
+        contactHandlers[Pair(ball, goal)] = { (_: EntityID, goal: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
         }
 
-        contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(goal, ball)] = { (goal: EntityID, _: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
         }
 
-        contactHandlers[Pair(first: goal, second: ball)] = { (goal: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(goal, ball)] = { (goal: EntityID, _: EntityID) -> Event in
             BallHitGoalEvent(goalId: goal)
         }
 
-        contactHandlers[Pair(first: player, second: wall)] = { (player: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(player, wall)] = { (player: EntityID, _: EntityID) -> Event in
             PlayerHitWallEvent(playerId: player)
         }
 
-        contactHandlers[Pair(first: wall, second: player)] = { (_: EntityID, player: EntityID) -> Event in
+        contactHandlers[Pair(wall, player)] = { (_: EntityID, player: EntityID) -> Event in
             PlayerHitWallEvent(playerId: player)
         }
 
         let collisionSoundPairs = [
-            Pair(first: player, second: ball),
-            Pair(first: ball, second: player),
-            Pair(first: ball, second: wall),
-            Pair(first: wall, second: ball)
+            Pair(player, ball),
+            Pair(ball, player),
+            Pair(ball, wall),
+            Pair(wall, ball)
         ]
         for pair in collisionSoundPairs {
             contactHandlers[pair] = { (_: EntityID, _: EntityID) -> Event in

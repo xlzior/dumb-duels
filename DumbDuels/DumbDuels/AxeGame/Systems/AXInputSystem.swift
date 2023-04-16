@@ -40,7 +40,7 @@ class AXInputSystem {
         self.playerIndexToIdMap = [Int: EntityID]()
     }
 
-    func updateThrowStrength(for entityId: EntityID) {
+    private func updateThrowStrength(for entityId: EntityID) {
         guard let longPressStarted = longPressStartTimes[entityId],
               let (_, _, _, withThrowStrength) = holdingAxePlayer.getComponents(for: entityId),
               let (throwStrengthComponent, sizeComponent) = throwStrength.getComponents(
@@ -61,8 +61,8 @@ class AXInputSystem {
         sizeComponent.xScale = newThrowStrength
     }
 
-    func throwAxe(for playerId: EntityID) {
-        guard let (player, playerPosition, holdingAxe, withThrowStrength) =
+    private func throwAxe(for playerId: EntityID) {
+        guard let (_, playerPosition, holdingAxe, withThrowStrength) =
                 holdingAxePlayer.getComponents(for: playerId),
               let (_, axeSize, _) = unthrownAxe.getComponents(for: holdingAxe.axeEntityID) else {
             return
@@ -86,13 +86,11 @@ class AXInputSystem {
         let throwStrength = throwStrengthComponent.throwStrength
         physicsComponent.impulse = CGVector(dx: towards.rawValue * throwStrength * AXConstants.throwForce.dx,
                                             dy: throwStrength * AXConstants.throwForce.dy)
-        physicsComponent.angularImpulse = towards == .right
-            ? AXConstants.throwAngularForce
-            : -AXConstants.throwAngularForce
+        physicsComponent.angularImpulse = towards.rawValue * AXConstants.throwAngularForce
         entityManager.remove(componentType: HoldingAxeComponent.typeId, from: playerId)
     }
 
-    func jump(playerId: EntityID) {
+    private func jump(playerId: EntityID) {
         guard let (_, canJump, physics, sound) = canJumpPlayer.getComponents(for: playerId) else {
             return
         }
@@ -102,6 +100,10 @@ class AXInputSystem {
         if canJump.jumpsLeft <= 0 {
             entityManager.remove(componentType: CanJumpComponent.typeId, from: playerId)
         }
+    }
+
+    func reset() {
+        longPressStartTimes.removeAll()
     }
 }
 
@@ -132,6 +134,12 @@ extension AXInputSystem: InputSystem {
         guard let entityId = playerIndexToIdMap[playerIndex] else {
             return
         }
+
+        guard longPressStartTimes[entityId] != nil else {
+            // round resetted while player was holding, should nullify the long press
+            return
+        }
+
         longPressStartTimes[entityId] = nil
         throwAxe(for: entityId)
     }

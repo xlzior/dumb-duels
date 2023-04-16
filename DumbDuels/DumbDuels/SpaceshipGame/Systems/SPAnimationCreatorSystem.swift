@@ -54,7 +54,7 @@ class SPAnimationCreatorSystem: System {
         }
         let nextRandomFactor = CGFloat.random(in: 2...5)
         guard let prevSpawnInfo = previousParticleSpawnInfo[spaceshipId] else {
-            previousParticleSpawnInfo[spaceshipId] = Pair(first: position.position, second: nextRandomFactor)
+            previousParticleSpawnInfo[spaceshipId] = Pair(position.position, nextRandomFactor)
             return true
         }
         let prevPosition = prevSpawnInfo.first
@@ -62,7 +62,7 @@ class SPAnimationCreatorSystem: System {
         let minimumsSpacing = multiplesOfParticleSize
             * max(SPSizes.accelerationParticle.height, SPSizes.accelerationParticle.width)
         if position.position.distanceTo(prevPosition) > minimumsSpacing {
-            previousParticleSpawnInfo[spaceshipId] = Pair(first: position.position, second: nextRandomFactor)
+            previousParticleSpawnInfo[spaceshipId] = Pair(position.position, nextRandomFactor)
             return true
         }
         return false

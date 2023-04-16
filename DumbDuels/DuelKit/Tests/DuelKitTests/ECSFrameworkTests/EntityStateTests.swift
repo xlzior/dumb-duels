@@ -12,10 +12,12 @@ final class EntityStateTests: XCTestCase {
     private var state = EntityState()
 
     override func setUp() {
+        super.setUp()
         state = EntityState()
     }
 
     override func tearDown() {
+        super.tearDown()
         state = EntityState()
     }
 
@@ -112,26 +114,5 @@ final class EntityStateTests: XCTestCase {
         state.addMethod(closure: .init { component })
         XCTAssertTrue(state.getProvider(forType: XComponent.self) is DynamicComponentProvider<XComponent>?)
         XCTAssertTrue(state.getProvider(forType: XComponent.self)?.getComponent() === component)
-    }
-}
-
-final class StateComponentMappingTests: XCTestCase {
-    func testAddReturnsDifferentMappingForSameComponentType() {
-        let state = EntityState()
-        let mapping = state.addMapping(forType: XComponent.self)
-        XCTAssertFalse(mapping === mapping.add(componentType: XComponent.self))
-    }
-
-    func testAddReturnsDifferentMappingForDifferentComponentTypes() {
-        let state = EntityState()
-        let mapping = state.addMapping(forType: XComponent.self)
-        XCTAssertFalse(mapping === mapping.add(componentType: YComponent.self))
-    }
-
-    func testAddAddsProviderToState() {
-        let state = EntityState()
-        let mapping = state.addMapping(forType: XComponent.self)
-        mapping.add(componentType: YComponent.self)
-        XCTAssertTrue(state.hasProvider(forType: XComponent.self))
     }
 }

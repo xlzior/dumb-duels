@@ -67,43 +67,43 @@ class AXGameManager: GameManager {
         let peg = AXCollisions.pegBitmask
         let wall = AXCollisions.wallBitmask
 
-        contactHandlers[Pair(first: player, second: axe)] = { (player: EntityID, axe: EntityID) -> Event in
+        contactHandlers[Pair(player, axe)] = { (player: EntityID, axe: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
         }
 
-        contactHandlers[Pair(first: axe, second: player)] = { (axe: EntityID, player: EntityID) -> Event in
+        contactHandlers[Pair(axe, player)] = { (axe: EntityID, player: EntityID) -> Event in
             PlayerHitEvent(entityId: player, hitBy: axe)
         }
 
-        contactHandlers[Pair(first: player, second: platform)] = { (player: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(player, platform)] = { (player: EntityID, _: EntityID) -> Event in
             LandEvent(entityId: player)
         }
 
-        contactHandlers[Pair(first: platform, second: player)] = { (_: EntityID, player: EntityID) -> Event in
+        contactHandlers[Pair(platform, player)] = { (_: EntityID, player: EntityID) -> Event in
             LandEvent(entityId: player)
         }
 
-        contactHandlers[Pair(first: axe, second: lava)] = { (axe: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(axe, lava)] = { (axe: EntityID, _: EntityID) -> Event in
             LavaHitEvent(axeEntityId: axe)
         }
 
-        contactHandlers[Pair(first: lava, second: axe)] = { (_: EntityID, axe: EntityID) -> Event in
+        contactHandlers[Pair(lava, axe)] = { (_: EntityID, axe: EntityID) -> Event in
             LavaHitEvent(axeEntityId: axe)
         }
 
-        contactHandlers[Pair(first: axe, second: peg)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(axe, peg)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: peg, second: axe)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(peg, axe)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: axe, second: wall)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(axe, wall)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
-        contactHandlers[Pair(first: wall, second: axe)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(wall, axe)] = { (_: EntityID, _: EntityID) -> Event in
             AxeCollideEvent()
         }
 
@@ -118,10 +118,10 @@ class AXGameManager: GameManager {
         systemManager.register(AXInputSystem(for: entityManager))
         systemManager.register(PositionSyncSystem(for: entityManager))
         systemManager.register(PlayerSystem(for: entityManager))
-        systemManager.register(RoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
+        systemManager.register(AXRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(LavaSystem(entityCreator: creator))
         systemManager.register(AxeParticleSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(ScoreSystem(for: entityManager))
+        systemManager.register(AXScoreSystem(for: entityManager))
         useGameOverSystem(gameStartText: Assets.battleText,
                           gameTieText: Assets.gameTiedText,
                           gameWonTexts: Assets.gameWonText,

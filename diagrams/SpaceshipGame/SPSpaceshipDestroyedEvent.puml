@@ -1,0 +1,18 @@
+@startuml
+participant EventManager
+participant SpaceshipDestroyedEvent
+participant ParticleSystem
+participant AnimationCreatorSystem
+participant BulletSystem
+participant PowerupSystem
+participant SPRoundSystem
+
+EventManager -> SpaceshipDestroyedEvent : execute()
+SpaceshipDestroyedEvent -> ParticleSystem : createSpaceshipParticles(spaceshipId)
+SpaceshipDestroyedEvent -> AnimationCreatorSystem : resetMapping()
+SpaceshipDestroyedEvent -> BulletSystem : destroyAllBullets()
+SpaceshipDestroyedEvent -> PowerupSystem : destroyAllPowerups()
+SpaceshipDestroyedEvent -> PowerupSystem : destroyAllRocks()
+SpaceshipDestroyedEvent -> SPRoundSystem : reset()
+SPRoundSystem -> EventManager : fire(GameStartEvent)
+@enduml

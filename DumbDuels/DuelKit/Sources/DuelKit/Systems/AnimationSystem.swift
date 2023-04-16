@@ -79,6 +79,7 @@ class AnimationSystem: InternalSystem {
         animation.timeElapsedForCurrentFrame = 0
     }
 
+    // swiftlint:disable function_parameter_count
     private func interpolateAnimation(
         timeElapsed: CGFloat,
         animation: AnimationComponent,

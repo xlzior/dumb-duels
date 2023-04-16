@@ -1,0 +1,18 @@
+@startuml
+participant Scene
+participant GameManager
+participant EventManager
+participant PlayerHitEvent
+participant ScoreSystem
+participant AxeParticleSystem
+participant PlayerSystem
+
+== Executing event ==
+Scene -> GameManager : didFinishUpdate()
+GameManager -> EventManager : pollAll()
+EventManager -> PlayerHitEvent : execute()
+PlayerHitEvent -> ScoreSystem : handleAxeHitPlayer(playerEntityId)
+PlayerHitEvent -> AxeParticleSystem : createParticlesFrom(axeEntityId)
+PlayerHitEvent -> PlayerSystem : handleAxeHitPlayer(playerEntityId)
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+participant BaseGameScene
+participant GameManager
+participant PhysicsSystem
+participant EventManager
+
+== Firing event ==
+BaseGameScene -> GameManager : didContactBegin(firstId, secondId)
+GameManager -> PhysicsSystem : handleCollision(firstId, secondId)
+PhysicsSystem -> PhysicsSystem : eventProducer(firstId, secondId)
+PhysicsSystem -> EventManager : fire(PlayerHitPowerupEvent)
+
+@enduml

@@ -10,7 +10,7 @@ public struct CollideSoundEvent: Event {
 
     public var sound: Sound
 
-    public init(priority: Int = 2, sound: Sound) {
+    public init(sound: Sound, priority: Int = 2) {
         self.priority = priority
         self.sound = sound
     }

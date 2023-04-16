@@ -76,6 +76,7 @@ class AXEntityCreator {
         return throwStrength
     }
 
+    // swiftlint:disable function_parameter_count
     @discardableResult
     func createPlayer(
         index: Int,

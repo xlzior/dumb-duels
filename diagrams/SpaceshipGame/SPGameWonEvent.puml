@@ -1,0 +1,18 @@
+@startuml
+participant EventManager
+participant GameStartEvent
+participant GameOverSystem
+participant RenderSystem
+participant SystemManager
+
+EventManager -> GameStartEvent : execute()
+GameStartEvent -> GameOverSystem : handleGameStart()
+GameOverSystem -> GameOverSystem : checkWin()
+GameOverSystem -> EventManager : fire(GameWonEvent(entityId))
+EventManager -> GameWonEvent : execute()
+GameWonEvent -> GameOverSystem : handleGameWon(entityId)
+GameOverSystem -> GameOverSystem : createGameOverText()
+GameOverSystem -> GameOverSystem : onGameOver()
+GameWonEvent -> RenderSystem : handleGameOver()
+RenderSystem -> RenderSystem : goToHomePage()
+@enduml

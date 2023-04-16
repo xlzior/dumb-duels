@@ -19,7 +19,7 @@ extension EntityManager {
             return false
         }
 
-        return !allComponentsOfEntity.filter { $0.first == componentTypeId }.isEmpty
+        return allComponentsOfEntity.contains { $0.first == componentTypeId }
     }
 
     public func countComponents(for entityId: EntityID) -> Int {
@@ -36,7 +36,8 @@ extension EntityManager {
         assign(component: component, to: entity.id)
     }
 
-    public func getComponent<C>(ofType componentType: ComponentTypeID, for entityId: EntityID) -> C? where C: Component {
+    public func getComponent<C>(ofType componentType: ComponentTypeID,
+                                for entityId: EntityID) -> C? where C: Component {
         let component = get(componentType: componentType, for: entityId)
         guard let component else {
             // entity has no such component
@@ -72,7 +73,7 @@ extension EntityManager {
             return
         }
         componentsByType[component.typeId]?.removeValue(forKey: component.id)
-        let componentReference = Pair(first: component.typeId, second: component.id)
+        let componentReference = Pair(component.typeId, component.id)
         let isSuccess = entityComponentMap[entityId]?.remove(componentReference)
 
         assert(isSuccess != nil, "Component reference not removed from entity-to-component map")
@@ -90,7 +91,7 @@ extension EntityManager {
     }
 
     private func get(componentType: ComponentTypeID, for entityId: EntityID) -> Component? {
-        let nilableComponentReference = entityComponentMap[entityId]?.filter { $0.first == componentType }.first
+        let nilableComponentReference = entityComponentMap[entityId]?.first { $0.first == componentType }
         guard let nilableComponentReference else {
             return nil
         }

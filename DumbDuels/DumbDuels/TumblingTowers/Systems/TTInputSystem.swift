@@ -53,23 +53,19 @@ class TTInputSystem: InputSystem {
     }
 
     func handleButtonDown(playerIndex: Int) {
-        print("Button down for player index: \(playerIndex)")
         guard let playerId = playerIndexToIdMap[playerIndex],
               let (player, _) = players.getComponents(for: playerId),
               let currentBlockId = player.currentControllingBlockId else {
             return
         }
-        print("Long press started for block \(currentBlockId)")
-        longPressStartTimes[playerIndex] = Pair(first: Date(), second: currentBlockId)
+        longPressStartTimes[playerIndex] = Pair(Date(), currentBlockId)
     }
 
     func handleButtonUp(playerIndex: Int) {
-        print("Button up for player index: \(playerIndex)")
         guard let mapValue = longPressStartTimes[playerIndex] else {
             return
         }
         let timePressed = Date() - mapValue.first
-        print("Duraction of time pressed is \(timePressed)")
         // We only handle "tap" cases here, as long press cases are done inside update function
         if timePressed <= longPressThreshold {
             rotateBlock(blockId: mapValue.second)

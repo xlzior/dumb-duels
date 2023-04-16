@@ -40,27 +40,27 @@ class TAGameManager: GameManager {
         let wall = TACollisions.wallBitmask
         let sideWall = TACollisions.sideWallBitmask
 
-        contactHandlers[Pair(first: tank, second: cannonball)] = { (tank: EntityID, cannonball: EntityID) -> Event in
+        contactHandlers[Pair(tank, cannonball)] = { (tank: EntityID, cannonball: EntityID) -> Event in
             CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
         }
 
-        contactHandlers[Pair(first: cannonball, second: tank)] = { (cannonball: EntityID, tank: EntityID) -> Event in
+        contactHandlers[Pair(cannonball, tank)] = { (cannonball: EntityID, tank: EntityID) -> Event in
             CannonballHitTankEvent(cannonballId: cannonball, tankId: tank)
         }
 
-        contactHandlers[Pair(first: wall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(wall, cannonball)] = { (_: EntityID, _: EntityID) -> Event in
             CollideSoundEvent(sound: CollideSound())
         }
 
-        contactHandlers[Pair(first: cannonball, second: wall)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(cannonball, wall)] = { (_: EntityID, _: EntityID) -> Event in
             CollideSoundEvent(sound: CollideSound())
         }
 
-        contactHandlers[Pair(first: sideWall, second: cannonball)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(sideWall, cannonball)] = { (_: EntityID, _: EntityID) -> Event in
             CollideSoundEvent(sound: CollideSound())
         }
 
-        contactHandlers[Pair(first: cannonball, second: sideWall)] = { (_: EntityID, _: EntityID) -> Event in
+        contactHandlers[Pair(cannonball, sideWall)] = { (_: EntityID, _: EntityID) -> Event in
             CollideSoundEvent(sound: CollideSound())
         }
 

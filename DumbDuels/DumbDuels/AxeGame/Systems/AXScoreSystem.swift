@@ -1,5 +1,5 @@
 //
-//  ScoreSystem.swift
+//  AXScoreSystem.swift
 //  DumbDuels
 //
 //  Created by Wen Jun Lye on 16/3/23.
@@ -7,7 +7,7 @@
 
 import DuelKit
 
-class ScoreSystem: System {
+class AXScoreSystem: System {
     unowned var entityManager: EntityManager
 
     private var players: Assemblage2<PlayerComponent, ScoreComponent>

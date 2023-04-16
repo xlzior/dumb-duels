@@ -54,7 +54,8 @@ open class HomeViewController: UIViewController {
         }
     }
 
-    @objc private func buttonAction(sender: UIButton!) {
+    @objc
+    private func buttonAction(sender: UIButton!) {
         guard let index = (sender as? GameIconButton)?.index else {
             return
         }

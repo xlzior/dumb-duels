@@ -23,7 +23,8 @@ class GuidelineSystem: System {
             requiredComponents: BlockComponent.self,
             HasGuidelineComponent.self, PositionComponent.self,
             SizeComponent.self, RotationComponent.self, PhysicsComponent.self)
-        self.guidelines = entityManager.assemblage(requiredComponents: SyncXPositionComponent.self, PositionComponent.self, SizeComponent.self)
+        self.guidelines = entityManager.assemblage(
+            requiredComponents: SyncXPositionComponent.self, PositionComponent.self, SizeComponent.self)
     }
 
     func update() {

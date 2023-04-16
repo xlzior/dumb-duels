@@ -38,7 +38,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         setUpEntities()
         setUpUserSystems()
         setUpInternalSystems()
-        setUpPlayerIndexToIdMappings()
+        setUpInputSystemMappings()
         self.gameController.onBackToHomePage = self.stopGameLoop
         startGame()
     }
@@ -110,12 +110,12 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         }
     }
 
-    private func setUpPlayerIndexToIdMappings() {
+    private func setUpInputSystemMappings() {
         guard let firstId = initialPlayerIndexToIdMap[0],
               let secondId = initialPlayerIndexToIdMap[1] else {
             return
         }
-        systemManager.updateIndexToIdMapping(firstId: firstId, secondId: secondId)
+        systemManager.setupInputSystemMapping(firstPlayedId: firstId, secondPlayerId: secondId)
     }
 
     private func startGame() {

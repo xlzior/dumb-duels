@@ -22,12 +22,8 @@ struct SpaceshipDestroyedEvent: Event {
             return
         }
 
-        // If restart round destroys all spaceships before creating new ones, then might as well ask
-        // animationCreatorSystem to clear its hashmap
-//        animationCreatorSystem.createSpaceshipParticles(spaceshipId: spaceshipId)
         particleSystem.createExplodingParticles(for: spaceshipId)
 
-        // TODO: delay all these reset until the destroy animation ends
         animationCreatorSystem.resetMapping()
         soundSystem.play(sound: ExplodeSound())
         bulletSystem.destroyAllBullets()

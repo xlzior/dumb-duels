@@ -32,12 +32,22 @@ public class SystemManager {
         }
     }
 
-    public func updateIndexToIdMapping(firstId: EntityID, secondId: EntityID) {
-        for system in systems {
-            guard var initializableSystem = system as? IndexMapInitializable else {
-                continue
-            }
-            initializableSystem.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
+    public func setupInputSystemMapping(firstPlayedId: EntityID, secondPlayerId: EntityID) {
+        guard var inputSystem else {
+            return
         }
+        var indexMap = [Int: EntityID]()
+        indexMap[0] = firstPlayedId
+        indexMap[1] = secondPlayerId
+        inputSystem.playerIndexToIdMap = indexMap
     }
+
+//    public func updateIndexToIdMapping(firstId: EntityID, secondId: EntityID) {
+//        for system in systems {
+//            guard var initializableSystem = system as? IndexMapInitializable else {
+//                continue
+//            }
+//            initializableSystem.setPlayerId(firstPlayer: firstId, secondPlayer: secondId)
+//        }
+//    }
 }

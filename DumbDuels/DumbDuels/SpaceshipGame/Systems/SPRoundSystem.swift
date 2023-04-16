@@ -13,7 +13,8 @@ class SPRoundSystem: System {
     unowned var eventFirer: EventFirer
     unowned var entityCreator: SPEntityCreator
 
-    private var spaceships: Assemblage3<SpaceshipComponent, PhysicsComponent, ScoreComponent>
+    private var spaceships: Assemblage5<SpaceshipComponent, PhysicsComponent, ScoreComponent,
+                                        PositionComponent, SizeComponent>
     private var isResetThisFrame: Bool
 
     init(for entityManager: EntityManager, eventFirer: EventFirer, entityCreator: SPEntityCreator) {
@@ -21,7 +22,8 @@ class SPRoundSystem: System {
         self.eventFirer = eventFirer
         self.entityCreator = entityCreator
         self.spaceships = entityManager.assemblage(
-            requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self)
+            requiredComponents: SpaceshipComponent.self, PhysicsComponent.self, ScoreComponent.self,
+                                PositionComponent.self, SizeComponent.self)
         self.isResetThisFrame = false
     }
 
@@ -39,8 +41,9 @@ class SPRoundSystem: System {
         var indexToIdMap = [Int: EntityID]()
         let (firstPosition, secondPosition) = SPSizes.randomSpaceshipPositions()
 
-        // Should have 2 spaceships at this point because it is not destroyed before physics update
-        for (spaceshipComponent, physics, oldScore) in spaceships {
+        // edge cases: while creating, there is player input in the same cycle, check input system logic
+
+        for (spaceshipComponent, physics, oldScore, _, _) in spaceships {
             // destroy the spaceship later durign physics update
             physics.toBeRemoved = true
             physics.shouldDestroyEntityWhenRemove = true
@@ -49,6 +52,7 @@ class SPRoundSystem: System {
             // The new spaceship will not be iterated in this loop because the iterator is fixed at the
             // beginning of loop. Therefore we do not need to worry about deletion
             let position = spaceshipComponent.index == 0 ? firstPosition : secondPosition
+
             let spaceship = entityCreator.createSpaceship(index: spaceshipComponent.index,
                                                           at: position, of: SPSizes.spaceship,
                                                           score: oldScore.score)

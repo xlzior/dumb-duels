@@ -13,7 +13,8 @@ struct SpaceshipRecreatedEvent: Event {
     let firstSpaceshipId: EntityID
     let secondSpaceshipId: EntityID
 
+    // TODO: Remove or reimplement this without updateIndexToIdMapping
     func execute(with systems: SystemManager) {
-        systems.updateIndexToIdMapping(firstId: firstSpaceshipId, secondId: secondSpaceshipId)
+        systems.setupInputSystemMapping(firstPlayedId: firstSpaceshipId, secondPlayerId: secondSpaceshipId)
     }
 }

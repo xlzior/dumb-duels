@@ -33,6 +33,7 @@ struct SpaceshipDestroyedEvent: Event {
         bulletSystem.destroyAllBullets()
         powerupSystem.destroyAllPowerups()
         powerupSystem.destroyAllRocks()
+        // must be last, otherwise the newly created 
         roundSystem.reset()
     }
 }

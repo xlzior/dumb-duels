@@ -32,7 +32,7 @@ public class SystemManager {
         }
     }
 
-    public func setupInputSystemMapping(firstPlayedId: EntityID, secondPlayerId: EntityID) {
+    func setupInputSystemMapping(firstPlayedId: EntityID, secondPlayerId: EntityID) {
         guard var inputSystem else {
             return
         }

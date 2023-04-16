@@ -14,6 +14,5 @@ SpaceshipDestroyedEvent -> BulletSystem : destroyAllBullets()
 SpaceshipDestroyedEvent -> PowerupSystem : destroyAllPowerups()
 SpaceshipDestroyedEvent -> PowerupSystem : destroyAllRocks()
 SpaceshipDestroyedEvent -> SPRoundSystem : reset()
-SPRoundSystem -> EventManager : fire(SpaceshipRecreatedEvent)
 SPRoundSystem -> EventManager : fire(GameStartEvent)
 @enduml

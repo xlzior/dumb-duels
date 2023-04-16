@@ -1,13 +1,10 @@
 @startuml
 participant EventManager
 participant GameStartEvent
-participant SpaceshipRecreatedEvent
 participant GameOverSystem
 participant RenderSystem
 participant SystemManager
 
-EventManager -> SpaceshipRecreatedEvent : execute()
-SpaceshipRecreatedEvent -> SystemManager : updateIndexToIdMapping(firstSpaceshipId, secondSpaceshipId)
 EventManager -> GameStartEvent : execute()
 GameStartEvent -> GameOverSystem : handleGameStart()
 GameOverSystem -> GameOverSystem : checkWin()

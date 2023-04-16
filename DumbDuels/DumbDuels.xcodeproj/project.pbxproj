@@ -140,7 +140,7 @@
 		8CB0FAB729E829D400C2FAC8 /* RemoveBlockControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */; };
 		8CB0FAB929E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */; };
 		8CB0FABB29E9965300C2FAC8 /* TTGameOverEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */; };
-		A715102A29EA72820066642E /* GameHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A715102929EA72820066642E /* GameHomeViewController.swift */; };
+		A715102A29EA72820066642E /* GameHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A715102929EA72820066642E /* GameHomeView.swift */; };
 		A7DF474E29E1603B0011AE24 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF474D29E1603B0011AE24 /* jump.mp3 */; };
 		A7DF475529E16A9C0011AE24 /* battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475429E16A9C0011AE24 /* battle.mp3 */; };
 		A7DF475729E16AA40011AE24 /* game-end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A7DF475629E16AA40011AE24 /* game-end.mp3 */; };
@@ -343,7 +343,7 @@
 		8CB0FAB629E829D400C2FAC8 /* RemoveBlockControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveBlockControlEvent.swift; sourceTree = "<group>"; };
 		8CB0FAB829E98DFB00C2FAC8 /* BlockOutOfGameEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockOutOfGameEvent.swift; sourceTree = "<group>"; };
 		8CB0FABA29E9965300C2FAC8 /* TTGameOverEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTGameOverEvent.swift; sourceTree = "<group>"; };
-		A715102929EA72820066642E /* GameHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHomeViewController.swift; sourceTree = "<group>"; };
+		A715102929EA72820066642E /* GameHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHomeView.swift; sourceTree = "<group>"; };
 		A7DF474D29E1603B0011AE24 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		A7DF475429E16A9C0011AE24 /* battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = battle.mp3; sourceTree = "<group>"; };
 		A7DF475629E16AA40011AE24 /* game-end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-end.mp3"; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 				7B85081829DF35580095A7F6 /* TankGame */,
 				7B85081929DF35690095A7F6 /* SoccerGame */,
 				7B2B292829B82BE000281FC7 /* AppDelegate.swift */,
-				A715102929EA72820066642E /* GameHomeViewController.swift */,
+				A715102929EA72820066642E /* GameHomeView.swift */,
 				7B2B293129B82BE300281FC7 /* Assets.xcassets */,
 				7B30775A29DFCF0C00B26744 /* Assets.swift */,
 				A7DF475329E16A710011AE24 /* Sounds */,
@@ -1126,7 +1126,7 @@
 				7B30775F29DFD0B700B26744 /* TAPhysicsCreator.swift in Sources */,
 				A7F36EC829E405DC00E47F3E /* ExplodeSound.swift in Sources */,
 				A7DF477E29E1D63A0011AE24 /* BulletSound.swift in Sources */,
-				A715102A29EA72820066642E /* GameHomeViewController.swift in Sources */,
+				A715102A29EA72820066642E /* GameHomeView.swift in Sources */,
 				7B13494B29D1DEA700E43A7F /* SPSizes.swift in Sources */,
 				8CB0FA8129E5A9EC00C2FAC8 /* TTEntityCreator.swift in Sources */,
 				7BCC61FC29D1D6170092B602 /* SPPhysicsCreator.swift in Sources */,

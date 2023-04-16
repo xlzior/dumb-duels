@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()
-        let mainView = GameHomeViewController(nibName: nil, bundle: nil)
-        navigationController.viewControllers = [mainView]
+        let homeView = HomeViewController(nibName: nil, bundle: nil)
+        let gameHome = GameHomeView(homeView: homeView)
+        navigationController.viewControllers = [homeView]
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 

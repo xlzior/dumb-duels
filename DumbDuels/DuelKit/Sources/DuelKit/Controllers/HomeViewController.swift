@@ -7,27 +7,20 @@
 
 import UIKit
 
-open class HomeViewController: UIViewController {
+public class HomeViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
+
+    public weak var homeViewDelegate: HomeViewDelegate? {
+        didSet {
+            homeViewDelegate?.styleBackground(view: self.view)
+            homeViewDelegate?.loadGameIconsAndViewControllers(self)
+            setUpView()
+        }
+    }
 
     public var gameLogo: String?
     public var gameIcons: [String] = []
     public var gameViewControllers: [() -> UIViewController] = []
-
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-
-        styleBackground()
-        loadGameIconsAndViewControllers()
-        setUpView()
-    }
-
-    open func styleBackground() {
-        view.backgroundColor = #colorLiteral(red: 227 / 255, green: 245 / 255, blue: 245 / 255, alpha: 1)
-    }
-
-    open func loadGameIconsAndViewControllers() {
-    }
 
     private func setUpView() {
         createGameLogo()

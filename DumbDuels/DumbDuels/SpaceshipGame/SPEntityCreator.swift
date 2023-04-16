@@ -11,7 +11,7 @@ import Foundation
 
 class SPEntityCreator {
     private let entityManager: EntityManager
-    private let physicsCreator: SPPhysicsCreator
+    let physicsCreator: SPPhysicsCreator
     private let animationCreator: SPAnimationCreator
 
     init(entityManager: EntityManager) {

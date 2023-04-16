@@ -112,7 +112,6 @@
 		8CB0FA6D29D4184200C2FAC8 /* BombPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA6C29D4184200C2FAC8 /* BombPowerup.swift */; };
 		8CB0FA7129D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */; };
 		8CB0FA7329D47F6400C2FAC8 /* SPRoundSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */; };
-		8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */; };
 		8CB0FA7729D5505E00C2FAC8 /* StarComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */; };
 		8CB0FA7929D5D4D700C2FAC8 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */; };
 		8CB0FA8129E5A9EC00C2FAC8 /* TTEntityCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB0FA8029E5A9EC00C2FAC8 /* TTEntityCreator.swift */; };
@@ -315,7 +314,6 @@
 		8CB0FA6C29D4184200C2FAC8 /* BombPowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BombPowerup.swift; sourceTree = "<group>"; };
 		8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipDestroyedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7229D47F6400C2FAC8 /* SPRoundSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPRoundSystem.swift; sourceTree = "<group>"; };
-		8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceshipRecreatedEvent.swift; sourceTree = "<group>"; };
 		8CB0FA7629D5505E00C2FAC8 /* StarComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarComponent.swift; sourceTree = "<group>"; };
 		8CB0FA7829D5D4D700C2FAC8 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		8CB0FA8029E5A9EC00C2FAC8 /* TTEntityCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTEntityCreator.swift; sourceTree = "<group>"; };
@@ -715,7 +713,6 @@
 				7B13495A29D1FE8E00E43A7F /* BulletHitPlayerEvent.swift */,
 				7BC8C2D629D29C77001CF6F7 /* PlayerHitPowerupEvent.swift */,
 				8CB0FA7029D4417300C2FAC8 /* SpaceshipDestroyedEvent.swift */,
-				8CB0FA7429D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift */,
 				A7DF478929E2900D0011AE24 /* SpaceshipCollideEvent.swift */,
 			);
 			path = Events;
@@ -1096,7 +1093,6 @@
 				7B13495929D1FE8600E43A7F /* RockHitPlayerEvent.swift in Sources */,
 				7B0378E029E0501D00AE0C5B /* CannonballComponent.swift in Sources */,
 				A7DF476329E1B0760011AE24 /* AxeCollideEvent.swift in Sources */,
-				8CB0FA7529D4853A00C2FAC8 /* SpaceshipRecreatedEvent.swift in Sources */,
 				8CB0FA9B29E5B70800C2FAC8 /* TTInputSystem.swift in Sources */,
 				7B46779229E519C8009FF663 /* SOCollisions.swift in Sources */,
 				8C3584A429C44D9B00BAE8C5 /* LandEvent.swift in Sources */,
@@ -1392,7 +1388,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
+				DEVELOPMENT_TEAM = 9T8TNN3ND3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1407,7 +1403,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels21";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels0806";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1425,7 +1421,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G3J8WAPJ4Y;
+				DEVELOPMENT_TEAM = 9T8TNN3ND3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DumbDuels/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dumb Duels";
@@ -1440,7 +1436,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels21";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dumb-duels.DumbDuels0806";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

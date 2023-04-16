@@ -5,6 +5,7 @@
 //  Created by Wen Jun Lye on 26/3/23.
 //
 
+import UIKit
 import DuelKit
 
 class SPGameViewController: GameViewController {
@@ -12,7 +13,8 @@ class SPGameViewController: GameViewController {
         gameManager = SPGameManager(gameController: self)
     }
 
-    override func styleGameViewBackground() {
-        gameView.backgroundColor = .darkGray
+    override func customiseBackgroundViewAndSound() {
+        gameViewImage = UIImage(imageLiteralResourceName: SPAssets.background)
+        backgroundSound = GameBackgroundSound()
     }
 }

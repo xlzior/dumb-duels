@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import AVFoundation
 
 open class GameViewController: UIViewController {
     var screenSize: CGSize = UIScreen.main.bounds.size
     var screenOffset = CGPoint()
 
-    public var gameView: UIImageView!
+    private var player: AVAudioPlayer?
+    public var backgroundSound: Sound?
+    public var backgroundColour: UIColor?
+    public var gameViewImage: UIImage?
     var playerButtons: [PlayerButton] = []
     var playerScores: [ScoreLabel] = []
     var entityViews: [EntityID: UIImageView] = [:]
@@ -20,23 +24,40 @@ open class GameViewController: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        customiseBackgroundViewAndSound()
         setUpGameView()
-        styleGameViewBackground()
+        setUpSound()
         setUpGestureRecognisers()
         setUpGameManager()
     }
 
     override open func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        player?.stop()
         onBackToHomePage()
     }
 
-    open func styleGameViewBackground() {}
+    open func customiseBackgroundViewAndSound() {}
+
+    private func setUpSound() {
+        guard let sound = backgroundSound else {
+            return
+        }
+
+        player = try? AVAudioPlayer(contentsOf: sound.url)
+        player?.numberOfLoops = sound.numLoop
+        player?.volume = sound.volume
+        player?.play()
+    }
 
     private func setUpGameView() {
-        gameView = GameAreaView(screenSize: screenSize)
+        let gameView = GameAreaView(screenSize: screenSize)
         screenOffset = gameView.frame.origin
+        if let gameViewImage {
+            gameView.image = gameViewImage
+        }
         view.addSubview(gameView)
-        view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame))
+        view.addSubview(GameAreaBorder(screenSize: screenSize, gameAreaFrame: gameView.frame, colour: backgroundColour))
 
         let playerOneButton = PlayerButton(screenSize: screenSize, isPlayerOne: true, index: 0)
         let playerTwoButton = PlayerButton(screenSize: screenSize, isPlayerOne: false, index: 1)
@@ -64,7 +85,8 @@ open class GameViewController: UIViewController {
         assertionFailure("Override in child class")
     }
 
-    @objc func buttonPressed(longPressRecognizer: UILongPressGestureRecognizer) {
+    @objc
+    func buttonPressed(longPressRecognizer: UILongPressGestureRecognizer) {
         guard let playerIndex = (longPressRecognizer.view as? PlayerButton)?.index else {
             return
         }
@@ -112,6 +134,7 @@ extension GameViewController: GameController {
         imageView.image = UIImage(named: details.spriteName)
         imageView.transform = CGAffineTransform(rotationAngle: 0)
         imageView.alpha = details.alpha
+        imageView.layer.zPosition = details.zPosition
         imageView.frame = CGRect(x: 0, y: 0, width: details.width, height: details.height)
         imageView.center = details.centerPosition
         imageView.transform = CGAffineTransform(rotationAngle: details.rotation)

@@ -1,0 +1,27 @@
+@startuml
+
+!pragma useVerticalIf on
+start
+  if (Is button pressed) then (yes)
+    if (Is first time button pressed) then (yes)
+      :Start tracking charging\ntime elapsed;
+    else (no)
+      if (Charging time elapsed > 3) then (yes)
+        :Set tank charging state to 0
+        Stop tracking charging time elapsed
+        Fire cannonball;
+      elseif (Charging time elapsed > 2 and\nTank charging state < 2) then (yes)
+        :Set tank charging state to 2;
+      elseif (Charging time elapsed > 1 and\nTank charging state < 1) then (yes)
+        :Set tank charging state to 1;
+      endif
+    endif
+    :Move tank forward;
+  else (no)
+    :Set tank charging state to 0
+    Stop tracking charging time elapsed
+    Stop moving tank forward;
+  endif
+stop
+
+@enduml

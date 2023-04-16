@@ -13,19 +13,19 @@ struct SpaceshipDestroyedEvent: Event {
     let spaceshipId: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let animationCreatorSystem = systems.get(ofType: SPAnimationCreatorSystem.self),
+        guard let particleSystem = systems.get(ofType: ParticleSystem.self),
+              let animationCreatorSystem = systems.get(ofType: SPAnimationCreatorSystem.self),
+              let soundSystem = systems.get(ofType: SoundSystem.self),
               let roundSystem = systems.get(ofType: SPRoundSystem.self),
               let bulletSystem = systems.get(ofType: BulletSystem.self),
               let powerupSystem = systems.get(ofType: PowerupSystem.self) else {
             return
         }
 
-        // If restart round destroys all spaceships before creating new ones, then might as well ask
-        // animationCreatorSystem to clear its hashmap
-        animationCreatorSystem.createSpaceshipParticles(spaceshipId: spaceshipId)
+        particleSystem.createExplodingParticles(for: spaceshipId)
 
-        // TODO: delay all these reset until the destroy animation ends
         animationCreatorSystem.resetMapping()
+        soundSystem.play(sound: ExplodeSound())
         bulletSystem.destroyAllBullets()
         powerupSystem.destroyAllPowerups()
         powerupSystem.destroyAllRocks()

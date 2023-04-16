@@ -17,15 +17,17 @@ class SPGameManager << (C, DarkSeaGreen) >> extends GameManager {
 }
 class SPGameViewController << (C, DarkSeaGreen) >> extends GameViewController { 
   ~setUpGameManager()
-  ~styleGameViewBackground() 
+  ~customiseBackgroundViewAndSound() 
 }
 
-class SPInputSystem << (C, DarkSeaGreen) >> implements InputSystem, IndexMapInitializable { 
-  ~entityManager : EntityManager
+protocol InputSystem {
   ~playerIndexToIdMap : [Int: EntityID]
   ~handleButtonDown(playerIndex:)
   ~handleButtonUp(playerIndex:)
-  ~setPlayerId(firstPlayer:secondPlayer:)
+}
+
+class SPInputSystem << (C, DarkSeaGreen) >> implements InputSystem { 
+  ~entityManager : EntityManager
 }
 
 @enduml

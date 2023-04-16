@@ -14,7 +14,7 @@ struct PlayerHitEvent: Event {
     var hitBy: EntityID
 
     func execute(with systems: SystemManager) {
-        guard let scoreSystem = systems.get(ofType: ScoreSystem.self),
+        guard let scoreSystem = systems.get(ofType: AXScoreSystem.self),
               let axeParticleSystem = systems.get(ofType: AxeParticleSystem.self),
               let playerSystem = systems.get(ofType: PlayerSystem.self) else {
             return

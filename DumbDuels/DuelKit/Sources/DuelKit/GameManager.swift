@@ -18,12 +18,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     public var initialPlayerIndexToIdMap: [Int: EntityID]
     private var isGameOver: Bool
 
-    private var isUsingAnimationSystem = false
-    private var isUsingPhysicsSystem = false
-    private var physicsContactHandlers: PhysicsSystem.ContactHandlerMap?
-    private var isUsingRenderSystem = false
-    private var isUsingGameOverSystem = false
-    private var gameOverAssets: GameOverAssets?
+    private var internalSystems = [InternalSystem]()
 
     public init(gameController: GameViewController) {
         self.gameController = gameController
@@ -43,7 +38,7 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
         setUpEntities()
         setUpUserSystems()
         setUpInternalSystems()
-        setUpPlayerIndexToIdMappings()
+        setUpInputSystemMappings()
         self.gameController.onBackToHomePage = self.stopGameLoop
         startGame()
     }
@@ -56,68 +51,71 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
 
     }
 
+    public func useSoundSystem() {
+        internalSystems.append(SoundSystem(for: entityManager))
+    }
+
     public func useAnimationSystem() {
-        isUsingAnimationSystem = true
+        internalSystems.append(AnimationSystem(for: entityManager))
     }
 
     public func useRenderSystem() {
-        isUsingRenderSystem = true
+        internalSystems.append(RenderSystem(
+            for: entityManager,
+            eventManager: eventManager,
+            gameController: gameController
+        ))
     }
 
     public func usePhysicsSystem(withContactHandlers: PhysicsSystem.ContactHandlerMap) {
-        isUsingPhysicsSystem = true
-        physicsContactHandlers = withContactHandlers
+        internalSystems.append(PhysicsSystem(
+            for: entityManager, eventFirer: eventManager,
+            scene: simulator.gameScene, contactHandlers: withContactHandlers))
     }
 
     public func useGameOverSystem(
         gameStartText: String,
         gameTieText: String,
-        gameWonTexts: [String]
+        gameWonTexts: [String],
+        gameStartSound: @escaping () -> Sound,
+        gameEndSound: @escaping () -> Sound,
+        winningScore: Int = 3
     ) {
-        isUsingGameOverSystem = true
-        gameOverAssets = GameOverAssets(
+        let gameOverAssets = GameOverAssets(
             gameStartText: gameStartText,
             gameTieText: gameTieText,
-            gameWonTexts: gameWonTexts)
+            gameWonTexts: gameWonTexts,
+            gameStartSound: gameStartSound,
+            gameEndSound: gameEndSound
+        )
+        internalSystems.append(GameOverSystem(
+            for: entityManager, eventFirer: eventManager,
+            onGameOver: handleGameOver, assets: gameOverAssets,
+            winningScore: winningScore))
+    }
+
+    public func useAutoRotateSystem() {
+        internalSystems.append(AutoRotateSystem(for: entityManager))
+    }
+
+    public func useParticleSystem() {
+        internalSystems.append(ParticleSystem(for: entityManager))
     }
 
     private func setUpInternalSystems() {
-        if isUsingGameOverSystem {
-            guard let gameOverAssets else {
-                return assertionFailure("No game over assets found")
-            }
-            systemManager.register(GameOverSystem(
-                for: entityManager, onGameOver: handleGameOver, assets: gameOverAssets))
-        }
+        internalSystems.sort { $0.priority <= $1.priority }
 
-        if isUsingAnimationSystem {
-            systemManager.register(AnimationSystem(for: entityManager))
-        }
-
-        if isUsingPhysicsSystem {
-            guard let physicsContactHandlers else {
-                return assertionFailure("No contact handlers found")
-            }
-            systemManager.register(PhysicsSystem(
-                for: entityManager, eventFirer: eventManager,
-                scene: simulator.gameScene, contactHandlers: physicsContactHandlers))
-        }
-
-        if isUsingRenderSystem {
-            systemManager.register(RenderSystem(
-                for: entityManager,
-                eventManger: eventManager,
-                gameController: gameController
-            ))
+        internalSystems.forEach { system in
+            systemManager.register(system)
         }
     }
 
-    private func setUpPlayerIndexToIdMappings() {
+    private func setUpInputSystemMappings() {
         guard let firstId = initialPlayerIndexToIdMap[0],
               let secondId = initialPlayerIndexToIdMap[1] else {
             return
         }
-        systemManager.updateIndexToIdMapping(firstId: firstId, secondId: secondId)
+        systemManager.setupInputSystemMapping(firstPlayedId: firstId, secondPlayerId: secondId)
     }
 
     private func startGame() {
@@ -166,12 +164,10 @@ open class GameManager: GameSceneDelegate, PhysicsContactDelegate {
     }
 
     open func stopGameLoop() {
-        print("simulator stopped!")
         simulator.stop()
     }
 
     open func handleGameOver() {
-        print("game over!")
         isGameOver = true
     }
 }

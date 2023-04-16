@@ -62,7 +62,8 @@ public struct Heap<T> {
         }
     }
 
-    @discardableResult public mutating func remove() -> T? {
+    @discardableResult
+    public mutating func remove() -> T? {
         guard !nodes.isEmpty else {
             return nil
         }

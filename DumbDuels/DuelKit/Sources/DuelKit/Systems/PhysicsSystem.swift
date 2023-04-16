@@ -7,7 +7,9 @@
 
 import CoreGraphics
 
-public class PhysicsSystem: System {
+public class PhysicsSystem: InternalSystem {
+    var priority: InternalSystemOrder = .physics
+
     public typealias ContactHandlerMap = [Pair<UInt32, UInt32>: (EntityID, EntityID) -> Event]
     unowned var entityManager: EntityManager
     unowned var eventFirer: EventFirer
@@ -18,7 +20,7 @@ public class PhysicsSystem: System {
     private let contactHandlers: ContactHandlerMap
 
     init(for entityManager: EntityManager, eventFirer: EventFirer,
-                scene: Scene, contactHandlers: ContactHandlerMap) {
+         scene: Scene, contactHandlers: ContactHandlerMap) {
         self.entityManager = entityManager
         self.eventFirer = eventFirer
         self.scene = scene
@@ -41,6 +43,9 @@ public class PhysicsSystem: System {
                 physicsComponent.velocity = physicsSimulatableBody.velocity
                 physicsComponent.mass = physicsSimulatableBody.mass
                 physicsComponent.zRotation = physicsSimulatableBody.zRotation
+                physicsComponent.ownBitmask = physicsSimulatableBody.categoryBitMask
+                physicsComponent.contactBitmask = physicsSimulatableBody.contactTestBitMask
+                physicsComponent.collideBitmask = physicsSimulatableBody.collisionBitMask
             }
             if let positionComponent: PositionComponent =
                 entityManager.getComponent(ofType: PositionComponent.typeId, for: id) {
@@ -163,7 +168,7 @@ public class PhysicsSystem: System {
 
         let firstCategory = firstPhysicsComponent.ownBitmask
         let secondCategory = secondPhysicsComponent.ownBitmask
-        let key = Pair(first: firstCategory, second: secondCategory)
+        let key = Pair(firstCategory, secondCategory)
         if let eventProducer = contactHandlers[key] {
             let event = eventProducer(firstId, secondId)
             eventFirer.fire(event)

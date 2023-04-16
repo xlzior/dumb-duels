@@ -8,7 +8,9 @@
 import Foundation
 import CoreGraphics
 
-class AnimationSystem: System {
+class AnimationSystem: InternalSystem {
+    var priority: InternalSystemOrder = .animation
+
     unowned var entityManager: EntityManager
     var prevTime: Date
 
@@ -19,7 +21,8 @@ class AnimationSystem: System {
         self.entityManager = entityManager
         self.prevTime = Date()
         self.animatables = entityManager.assemblage(requiredComponents: AnimationComponent.self,
-            SpriteComponent.self, PositionComponent.self, SizeComponent.self, RotationComponent.self)
+                                                    SpriteComponent.self, PositionComponent.self,
+                                                    SizeComponent.self, RotationComponent.self)
     }
 
     func update() {
@@ -76,6 +79,7 @@ class AnimationSystem: System {
         animation.timeElapsedForCurrentFrame = 0
     }
 
+    // swiftlint:disable function_parameter_count
     private func interpolateAnimation(
         timeElapsed: CGFloat,
         animation: AnimationComponent,

@@ -10,8 +10,7 @@ import SpriteKit
 class GameScene: Scene {
     private(set) var baseGameScene: BaseGameScene
     private var bodyIDPhysicsMap: [EntityID: PhysicsBody]
-    private var physicsBodyIDMap: [PhysicsBody: EntityID]
-    private var skNodePhysicsBodyMap: [SKNode: PhysicsBody]
+    private var skNodebodyIDMap: [SKNode: EntityID]
 
     var gameSceneDelegate: GameSceneDelegate? {
         get { baseGameScene.gameSceneDelegate }
@@ -27,8 +26,7 @@ class GameScene: Scene {
         self.baseGameScene = BaseGameScene(size: Sizes.game)
         self.baseGameScene.delegate = self.baseGameScene
         self.bodyIDPhysicsMap = [:]
-        self.physicsBodyIDMap = [:]
-        self.skNodePhysicsBodyMap = [:]
+        self.skNodebodyIDMap = [:]
         self.baseGameScene.gameScene = self
     }
 
@@ -56,8 +54,7 @@ class GameScene: Scene {
 
     func removePhysicsSimulatableBody(for id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap.removeValue(forKey: id),
-              physicsBodyIDMap.removeValue(forKey: physicsBody) != nil,
-              skNodePhysicsBodyMap.removeValue(forKey: physicsBody.node) != nil else {
+              skNodebodyIDMap.removeValue(forKey: physicsBody.node) != nil else {
             assertionFailure("Trying to remove an id that does not exist.")
             return
         }
@@ -66,8 +63,7 @@ class GameScene: Scene {
 
     func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody? {
         guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+              skNodebodyIDMap[physicsBody.node] != nil else {
             return nil
         }
         return physicsBody
@@ -75,8 +71,7 @@ class GameScene: Scene {
 
     func apply(impulse: CGVector, to id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+              skNodebodyIDMap[physicsBody.node] != nil else {
             assertionFailure("Trying to apply impulse to an id that does not exist.")
             return
         }
@@ -85,19 +80,19 @@ class GameScene: Scene {
 
     func apply(angularImpulse: CGFloat, to id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+              skNodebodyIDMap[physicsBody.node] != nil else {
             assertionFailure("Trying to apply impulse to an id that does not exist.")
             return
         }
         physicsBody.applyAngularImpulse(angularImpulse)
     }
 
+    // swiftlint:disable function_parameter_count
     func beginOscillation(for id: EntityID, at centerOfOscillation: CGPoint, axis: CGVector,
                           amplitude: Double, period: Double, displacement: Double) {
         guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+              skNodebodyIDMap[physicsBody.node] != nil else {
+            assertionFailure("Trying to start oscillation for an entity that does not exist.")
             return
         }
         let oscillate = SKAction.oscillation(centerOfOscillation: centerOfOscillation, axis: axis,
@@ -107,8 +102,8 @@ class GameScene: Scene {
 
     func stopOscillation(for id: EntityID) {
         guard let physicsBody = bodyIDPhysicsMap[id],
-              physicsBodyIDMap[physicsBody] != nil,
-              skNodePhysicsBodyMap[physicsBody.node] != nil else {
+              skNodebodyIDMap[physicsBody.node] != nil else {
+            assertionFailure("Trying to stop oscillation for an entity that does not exist.")
             return
         }
         physicsBody.node.removeAction(forKey: "oscillation")
@@ -116,22 +111,18 @@ class GameScene: Scene {
 
     func addBody(for id: EntityID, bodyToAdd: PhysicsBody) {
         guard bodyIDPhysicsMap[id] == nil,
-              physicsBodyIDMap[bodyToAdd] == nil,
-              skNodePhysicsBodyMap[bodyToAdd.node] == nil else {
+              skNodebodyIDMap[bodyToAdd.node] == nil else {
             assertionFailure("Trying to add an id that already exists.")
             return
         }
         baseGameScene.addChild(bodyToAdd.node)
         bodyIDPhysicsMap[id] = bodyToAdd
-        physicsBodyIDMap[bodyToAdd] = id
-        skNodePhysicsBodyMap[bodyToAdd.node] = bodyToAdd
+        skNodebodyIDMap[bodyToAdd.node] = id
     }
 
     func getEntityID(for skPhysicsBody: SKPhysicsBody) -> EntityID? {
         if let skNode = skPhysicsBody.node,
-           let physicsBody = skNodePhysicsBodyMap[skNode],
-           let entityID = physicsBodyIDMap[physicsBody],
-           bodyIDPhysicsMap[entityID] == physicsBody {
+           let entityID = skNodebodyIDMap[skNode] {
             return entityID
         }
         assertionFailure("Could not find corresponding BodyID for SKPhysicsBody")

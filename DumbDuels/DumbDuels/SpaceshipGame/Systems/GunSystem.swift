@@ -11,7 +11,8 @@ import DuelKit
 class GunSystem: System {
     unowned var entityManager: EntityManager
     unowned var entityCreator: SPEntityCreator
-    private var spaceshipsWithGun: Assemblage5<SpaceshipComponent, GunComponent, PositionComponent, RotationComponent, SizeComponent>
+    private var spaceshipsWithGun: Assemblage5<
+        SpaceshipComponent, GunComponent, PositionComponent, RotationComponent, SizeComponent>
 
     init(for entityManager: EntityManager, entityCreator: SPEntityCreator) {
         self.entityManager = entityManager

@@ -18,7 +18,8 @@ struct RockPowerup: Powerup {
         }
         let entityCreator = SPEntityCreator(entityManager: entityManager)
 
-        let spaceshipHypotenuse = sqrt(SPSizes.spaceship.width * SPSizes.spaceship.width + SPSizes.spaceship.height * SPSizes.spaceship.height)
+        let spaceshipHypotenuse = sqrt(
+            SPSizes.spaceship.width * SPSizes.spaceship.width + SPSizes.spaceship.height * SPSizes.spaceship.height)
         let rockOffsetFromSpaceship = physics.velocity.normalize() * spaceshipHypotenuse
         let rockPosition = position.position + rockOffsetFromSpaceship
         let rockVelocity = physics.velocity * 1.2

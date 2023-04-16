@@ -1,0 +1,29 @@
+@startuml
+participant AXRoundSystem
+participant Scene
+participant GameManager
+participant EventManager
+participant GameStartEvent
+participant GameOverSystem
+participant RenderSystem
+
+== Firing event ==
+AXRoundSystem -> AXRoundSystem : isAllAxeThrown()
+AXRoundSystem -> AXRoundSystem : isAllThrownAxeOutOfBounds()
+AXRoundSystem -> AXRoundSystem : reset()
+AXRoundSystem -> EventManager : fire(GameStartEvent)
+
+== Executing event ==
+Scene -> GameManager : didFinishUpdate()
+GameManager -> EventManager : pollAll()
+EventManager -> GameStartEvent : execute()
+GameStartEvent -> GameOverSystem : handleGameStart()
+GameOverSystem -> GameOverSystem : checkWin()
+GameOverSystem -> EventManager : fire(GameWonEvent(entityId))
+EventManager -> GameWonEvent : execute()
+GameWonEvent -> GameOverSystem : handleGameWon(entityId)
+GameOverSystem -> GameOverSystem : createGameOverText()
+GameOverSystem -> GameOverSystem : onGameOver()
+GameWonEvent -> RenderSystem : handleGameOver()
+RenderSystem -> RenderSystem : goToHomePage()
+@enduml

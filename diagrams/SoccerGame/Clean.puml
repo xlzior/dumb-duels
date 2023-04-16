@@ -1,0 +1,49 @@
+@startuml
+' STYLE START
+hide empty members
+skinparam shadowing false
+' STYLE END
+
+protocol Sound {
+  ~url : URL
+  ~isPlaying : Bool
+  ~volume : Float
+  ~numLoop : Int
+}
+
+class GoalSound
+class SoccerCrowdSound
+class SoccerPlayerComponent { 
+  ~index : Int
+  ~isMoving : Bool
+}
+class BallComponent
+class GoalComponent { 
+  ~attackerId : EntityID
+}
+class BallHitGoalEvent << (S, SkyBlue) struct >> { 
+  ~goalId : EntityID
+}
+class PlayerHitWallEvent << (S, SkyBlue) struct >> { 
+  ~playerId : EntityID
+}
+class PlayerHitBallEvent << (S, SkyBlue) struct >>
+class SOScoreSystem { 
+  ~handleBallHitGoal(goalId:) 
+}
+class SOSoundControllerSystem { 
+  ~playCollideSound()
+}
+class SOAnimationSystem { 
+  ~goalAnimation(goalId:) 
+}
+class SORoundSystem { 
+  ~reset() 
+}
+class SOInputSystem { 
+  ~playerIndexToIdMap
+  ~handleButtonDown(playerIndex:)
+  ~handleButtonUp(playerIndex:) 
+}
+
+@enduml

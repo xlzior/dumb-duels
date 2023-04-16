@@ -16,7 +16,7 @@ class SPCollisions {
     static let bulletCollideBitmask: UInt32 = 0
     static let powerupCollideBitmask: UInt32 = 0
 
-    static let spaceshipContactBitmask: UInt32 = rockBitmask | bulletBitmask
+    static let spaceshipContactBitmask: UInt32 = rockBitmask | bulletBitmask | spaceshipBitmask
     static let rockContactBitmask: UInt32 = spaceshipBitmask
     static let bulletContactBitmask: UInt32 = spaceshipBitmask
     static let powerupContactBitmask: UInt32 = spaceshipBitmask

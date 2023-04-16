@@ -12,15 +12,15 @@ class PlayerSystem: System {
     unowned var entityManager: EntityManager
 
     private var cannotJumpPlayer: Assemblage2<PlayerComponent, PhysicsComponent>
-    private var animatePlayer: Assemblage2<PlayerComponent, AnimationComponent>
+    private var animateAndSoundPlayer: Assemblage3<PlayerComponent, AnimationComponent, SoundComponent>
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
         self.cannotJumpPlayer = entityManager.assemblage(
             requiredComponents: PlayerComponent.self, PhysicsComponent.self,
             excludedComponents: CanJumpComponent.self)
-        self.animatePlayer = entityManager.assemblage(
-            requiredComponents: PlayerComponent.self, AnimationComponent.self)
+        self.animateAndSoundPlayer = entityManager.assemblage(
+            requiredComponents: PlayerComponent.self, AnimationComponent.self, SoundComponent.self)
     }
 
     func update() {
@@ -36,11 +36,12 @@ class PlayerSystem: System {
     }
 
     func handleAxeHitPlayer(withEntityId entityId: EntityID) {
-        for (entity, _, animation) in animatePlayer.entityAndComponents {
+        for (entity, _, animation, sound) in animateAndSoundPlayer.entityAndComponents {
             guard entity.id == entityId else {
                 continue
             }
             animation.isPlaying = true
+            sound.sounds[AXSoundTypes.playerHit]?.play()
         }
     }
 }

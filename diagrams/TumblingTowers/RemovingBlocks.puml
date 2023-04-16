@@ -1,0 +1,31 @@
+@startuml Removing blocks
+
+participant "GameManager"
+participant "Physics\nSystem" as PhysicsSystem
+participant "EventManager"
+participant "BlockOutOfGame\nEvent" as BlockOutOfGameEvent
+participant "BlockSpawn\nSystem" as BlockSpawnSystem
+participant "RemoveBlockControl\nEvent" as RemoveBlockControlEvent
+participant "TTInput\nSystem" as TTInputSystem
+
+== Contact detected ==
+
+GameManager -> PhysicsSystem: handleCollision()
+PhysicsSystem -> EventManager: fire "block out\nof game" event
+
+== Event polling ==
+
+GameManager -> EventManager: pollAll()
+EventManager -> BlockOutOfGameEvent: execute()
+
+BlockOutOfGameEvent -> BlockSpawnSystem: remove and\ncleanup block
+
+opt block is a control block
+  BlockSpawnSystem -> EventManager: fire RemoveBlockControlEvent
+  EventManager -> RemoveBlockControlEvent: execute()
+  RemoveBlockControlEvent -> TTInputSystem: remove press\nmapping
+end
+
+EventManager --> GameManager: finished polling
+
+@enduml

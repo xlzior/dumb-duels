@@ -22,6 +22,8 @@ public protocol Scene {
     func getPhysicsSimulatableBody(for id: EntityID) -> PhysicsSimulatableBody?
     func apply(impulse: CGVector, to id: EntityID)
     func apply(angularImpulse: CGFloat, to id: EntityID)
+
+    // swiftlint:disable function_parameter_count
     func beginOscillation(for id: EntityID, at centerOfOscillation: CGPoint, axis: CGVector,
                           amplitude: Double, period: Double, displacement: Double)
     func stopOscillation(for id: EntityID)

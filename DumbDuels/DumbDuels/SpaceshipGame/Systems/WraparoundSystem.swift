@@ -14,14 +14,14 @@ class WraparoundSystem: System {
 
     init(for entityManager: EntityManager) {
         self.entityManager = entityManager
-        self.objects = entityManager.assemblage(requiredComponents: PositionComponent.self, excludedComponents: BulletComponent.self)
+        self.objects = entityManager.assemblage(
+            requiredComponents: PositionComponent.self, excludedComponents: BulletComponent.self)
     }
 
     func update() {
-        let frame = CGRect(origin: CGPoint.zero, size: Sizes.game)
-        for position in objects where !frame.contains(position.position) {
-            let newX = position.position.x.modulo(frame.width)
-            let newY = position.position.y.modulo(frame.height)
+        for position in objects where !Sizes.gameRect.contains(position.position) {
+            let newX = position.position.x.modulo(Sizes.game.width)
+            let newY = position.position.y.modulo(Sizes.game.height)
             position.position = CGPoint(x: newX, y: newY)
         }
     }

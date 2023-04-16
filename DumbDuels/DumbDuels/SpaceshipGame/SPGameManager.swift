@@ -15,7 +15,7 @@ class SPGameManager: GameManager {
         let creator = SPEntityCreator(entityManager: entityManager)
         entityCreator = creator
 
-        let (firstPosition, secondPosition) = SPSizes.getSpaceshipResetPositions()
+        let (firstPosition, secondPosition) = SPSizes.randomSpaceshipPositions()
         for index in 0...1 {
             let position = index == 0 ? firstPosition : secondPosition
             let spaceship = creator.createSpaceship(index: index, at: position, of: SPSizes.spaceship)
@@ -30,28 +30,32 @@ class SPGameManager: GameManager {
         let bullet = SPCollisions.bulletBitmask
         let powerup = SPCollisions.powerupBitmask
 
-        contactHandlers[Pair(first: spaceship, second: rock)] = { (spaceship: EntityID, rock: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, rock)] = { (spaceship: EntityID, rock: EntityID) -> Event in
             RockHitPlayerEvent(rockId: rock, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: rock, second: spaceship)] = { (rock: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(rock, spaceship)] = { (rock: EntityID, spaceship: EntityID) -> Event in
             RockHitPlayerEvent(rockId: rock, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: spaceship, second: bullet)] = { (spaceship: EntityID, bullet: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, bullet)] = { (spaceship: EntityID, bullet: EntityID) -> Event in
             BulletHitPlayerEvent(bulletId: bullet, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: bullet, second: spaceship)] = { (bullet: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(bullet, spaceship)] = { (bullet: EntityID, spaceship: EntityID) -> Event in
             BulletHitPlayerEvent(bulletId: bullet, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: spaceship, second: powerup)] = { (spaceship: EntityID, powerup: EntityID) -> Event in
+        contactHandlers[Pair(spaceship, powerup)] = { (spaceship: EntityID, powerup: EntityID) -> Event in
             PlayerHitPowerupEvent(powerupId: powerup, playerId: spaceship)
         }
 
-        contactHandlers[Pair(first: powerup, second: spaceship)] = { (powerup: EntityID, spaceship: EntityID) -> Event in
+        contactHandlers[Pair(powerup, spaceship)] = { (powerup: EntityID, spaceship: EntityID) -> Event in
             PlayerHitPowerupEvent(powerupId: powerup, playerId: spaceship)
+        }
+
+        contactHandlers[Pair(spaceship, spaceship)] = { (_: EntityID, _: EntityID) -> Event in
+            SpaceshipCollideEvent()
         }
 
         return contactHandlers
@@ -66,15 +70,19 @@ class SPGameManager: GameManager {
         systemManager.register(SPRoundSystem(for: entityManager, eventFirer: eventManager, entityCreator: creator))
         systemManager.register(BulletSystem(for: entityManager))
         systemManager.register(GunSystem(for: entityManager, entityCreator: creator))
-        systemManager.register(AutoRotateSystem(for: entityManager))
         systemManager.register(WraparoundSystem(for: entityManager))
         systemManager.register(SPAnimationCreatorSystem(for: entityManager, entityCreator: creator))
         systemManager.register(SPScoreSystem(for: entityManager, eventFirer: eventManager))
         systemManager.register(PowerupSystem(for: entityManager, entityCreator: creator))
 
-        useGameOverSystem(gameStartText: SPAssets.battleText,
-                          gameTieText: SPAssets.gameTiedText,
-                          gameWonTexts: SPAssets.gameWonText)
+        useParticleSystem()
+        useAutoRotateSystem()
+        useGameOverSystem(gameStartText: Assets.battleText,
+                          gameTieText: Assets.gameTiedText,
+                          gameWonTexts: Assets.gameWonText,
+                          gameStartSound: Sounds.battleSound,
+                          gameEndSound: Sounds.gameEndSound)
+        useSoundSystem()
         usePhysicsSystem(withContactHandlers: getContactHandlers())
         useRenderSystem()
         useAnimationSystem()

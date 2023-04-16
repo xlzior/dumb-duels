@@ -1,3 +1,4 @@
+// swiftlint:disable:this file_name
 //
 //  SampleComponents.swift
 //  DuelKit
@@ -5,6 +6,7 @@
 //  Created by Bing Sen Lim on 15/3/23.
 //
 // swiftlint:disable identifier_name
+
 import Foundation
 
 class XComponent: ComponentInitializable {

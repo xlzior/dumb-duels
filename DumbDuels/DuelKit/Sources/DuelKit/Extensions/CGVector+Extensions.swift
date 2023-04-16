@@ -163,4 +163,8 @@ extension CGVector {
     static func /= (vector: inout CGVector, scalar: CGFloat) {
         vector = vector / scalar
     }
+
+    func toPoint() -> CGPoint {
+        CGPoint(x: dx, y: dy)
+    }
 }
